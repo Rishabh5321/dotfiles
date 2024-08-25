@@ -94,6 +94,7 @@
           spicetify-nix
           flakeDir
           #pkgs-unstable
+          
           pkgs
           ;
       };
