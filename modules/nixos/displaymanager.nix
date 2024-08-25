@@ -34,6 +34,7 @@
       #  };
       #theme = "${import ./pkgs/sddm-astronaut-theme.nix { inherit pkgs; }}";
       autoNumlock = true;
+      theme = "sddm-sugar-candy-nix";
       #theme = "where_is_my_sddm_theme";
     };
   };

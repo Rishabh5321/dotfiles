@@ -151,7 +151,7 @@
     #google-chrome
     # vivaldi
     # vivaldi-ffmpeg-codecs
-    # kdePackages.sddm-kcm
+    kdePackages.sddm-kcm
     # libsForQt5.krohnkite
     #libsForQt5.sddm-kcm
     #inputs.zen-browser.packages."${system}".generic

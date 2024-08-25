@@ -40,11 +40,11 @@
     #   url = "github:lilyinstarlight/nixos-cosmic";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    # sddm-sugar-candy-nix = {
-    #   url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
-    #   # Optional, by default this flake follows nixpkgs-unstable.
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    sddm-sugar-candy-nix = {
+      url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
+      # Optional, by default this flake follows nixpkgs-unstable.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     #zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
@@ -55,7 +55,7 @@
     home-manager,
     spicetify-nix,
     alejandra,
-    #sddm-sugar-candy-nix,
+    sddm-sugar-candy-nix,
     #nixos-cosmic,
     #chaotic,
     #impermanence,
@@ -94,7 +94,6 @@
           spicetify-nix
           flakeDir
           #pkgs-unstable
-          
           pkgs
           ;
       };
@@ -104,15 +103,15 @@
         darkmatter-grub-theme.nixosModule
         inputs.stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
-        #sddm-sugar-candy-nix.nixosModules.default
+        sddm-sugar-candy-nix.nixosModules.default
         #sops-nix.nixosModules.sops
         #chaotic.nixosModules.default
         #impermanence.nixosModules.impermanence
         #grub2-themes.nixosModules.default
         {
-          # nixpkgs = {
-          #   overlays = [sddm-sugar-candy-nix.overlays.default];
-          # };
+          nixpkgs = {
+            overlays = [sddm-sugar-candy-nix.overlays.default];
+          };
         }
         {
           home-manager.extraSpecialArgs = {
