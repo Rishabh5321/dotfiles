@@ -17,7 +17,7 @@ jobs:
     steps:
     - name: Send Test Telegram Notification
       run: |
-        MESSAGE="Checking repo Rishabh5321/nix-dotfiles please wait for response "
+        MESSAGE="Checking repo Rishabh5321/dotfiles please wait for response "
         curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
           -d chat_id=$CHAT_ID \
           -d text="$MESSAGE"
