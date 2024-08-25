@@ -2,9 +2,7 @@
   pkgs,
   username,
   ...
-}: let
-  inherit (import ./variables.nix) gitUsername;
-in {
+}: {
   #sops.secrets.ta-password.neededForUsers = true;
   #users.mutableUsers = false;
 
