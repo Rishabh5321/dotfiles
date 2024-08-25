@@ -1,0 +1,87 @@
+name: Flake Format and Check
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */12 * * *'
+
+jobs:
+  flake-check:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+    - name: Send Test Telegram Notification
+      run: |
+        MESSAGE="Checking repo Rishabh5321/nix-dotfiles please wait for response "
+        curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
+          -d chat_id=$CHAT_ID \
+          -d text="$MESSAGE"
+      env:
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        CHAT_ID: ${{ secrets.CHAT_ID }}
+
+    - name: Checkout repository
+      id: checkout
+      uses: actions/checkout@v4
+
+    - name: Install Nix
+      id: install-nix
+      uses: cachix/install-nix-action@V27
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+
+    - name: Install Nix Linting and Formatting Tools
+      id: install-tools
+      run: nix-env -i statix nixpkgs-fmt -f '<nixpkgs>'
+
+    - name: Run Statix Lint
+      id: run-statix
+      run: statix fix
+
+    - name: Run Nix Format
+      id: run-nix-fmt
+      run: nix fmt
+
+    - name: Nix Flake Checker
+      id: nix-flake-checker
+      uses: DeterminateSystems/flake-checker-action@v8
+
+    - name: Commit
+      id: commit
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: Auto lint/format
+
+    - name: Set Result
+      if: failure()
+      run: echo "result=failure" >> $GITHUB_ENV
+
+    - name: Set Failed Step
+      if: failure()
+      run: |
+        for step in ${{ toJson(steps) }}; do
+          if [ "$step.outcome" == "failure" ]; then
+            echo "failed_step=${step.name}" >> $GITHUB_ENVdeaknix
+            break
+          fi
+        done
+
+    - name: Send Telegram Notification
+      if: always()
+      run: |
+        if [ "${{ env.result }}" == "failure" ]; then
+          MESSAGE="Flake Check:GitHub Action failed at step: ${{ env.failed_step }} ❌"
+        else
+          MESSAGE="GitHub Action completed successfully: Flake Check:Rishabh:5321 ✅"
+        fi
+        curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
+          -d chat_id=$CHAT_ID \
+          -d text="$MESSAGE"
+      env:
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        CHAT_ID: ${{ secrets.CHAT_ID }}

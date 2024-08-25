@@ -1,0 +1,27 @@
+name: Flake ❄️ Lock 🔒️ Updater ✨
+
+on:
+  schedule:
+    # run this daily at 8am UTC, or roughly 4am eastern
+    - cron: '0 */12 * * *'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v13
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update flake.lock
+        uses: DeterminateSystems/update-flake-lock@v23
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          pr-title: "Update flake.lock"
+          pr-labels: |
+            dependencies
+            automated

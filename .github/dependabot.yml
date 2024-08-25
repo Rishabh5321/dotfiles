@@ -1,0 +1,11 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: daily
+      time: '19:05'
+      timezone: 'Asia/Kolkata'
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "chore(github):"
