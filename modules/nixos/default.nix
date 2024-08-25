@@ -9,6 +9,7 @@
     ./bluetooth.nix
     ./cache.nix
     ./desktop_env.nix
+    ./displaymanager.nix
     ./graphics.nix
     ./locale.nix
     ./nh.nix

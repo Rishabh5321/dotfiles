@@ -10,6 +10,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/nixos
+    ./power.nix
   ];
 
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
