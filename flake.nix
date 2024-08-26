@@ -66,7 +66,7 @@
     inherit (self) outputs;
     systems = ["x86_64-linux"];
     username = "rishabh";
-    wallpaper = "wall71.jpg";
+    wallpaper = "wall20.png";
     flakeDir = "~/dotfiles";
     # pkgs-unstable = import nixpkgs-unstable {
     #   system = "x86_64-linux";
@@ -108,7 +108,7 @@
             inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs;
           };
           home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = ".m";
+          home-manager.backupFileExtension = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
           home-manager.users.rishabh = import ./home-manager/home.nix;
         }
       ];
