@@ -158,6 +158,8 @@
       # libsForQt5.krohnkite
       #libsForQt5.sddm-kcm
       #inputs.zen-browser.packages."${system}".generic
+      marwaita-icons
+      dracula-icon-theme
     ];
 
   #services.plex.enable = true;

@@ -66,7 +66,7 @@
     inherit (self) outputs;
     systems = ["x86_64-linux"];
     username = "rishabh";
-    wallpaper = "wall79.png";
+    wallpaper = "wall71.jpg";
     flakeDir = "~/dotfiles";
     # pkgs-unstable = import nixpkgs-unstable {
     #   system = "x86_64-linux";
@@ -85,18 +85,7 @@
 
     commonConfig = {hostname}: {
       specialArgs = {
-        inherit
-          inputs
-          outputs
-          username
-          home-manager
-          wallpaper
-          spicetify-nix
-          flakeDir
-          #pkgs-unstable
-          
-          pkgs
-          ;
+        inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs;
       };
       modules = [
         ./nixos/${hostname}/configuration.nix
@@ -116,18 +105,10 @@
         }
         {
           home-manager.extraSpecialArgs = {
-            inherit
-              inputs
-              outputs
-              username
-              wallpaper
-              flakeDir
-              spicetify-nix
-              pkgs
-              ;
+            inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs;
           };
           home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = ".j";
+          home-manager.backupFileExtension = ".m";
           home-manager.users.rishabh = import ./home-manager/home.nix;
         }
       ];
