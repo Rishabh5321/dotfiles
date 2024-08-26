@@ -29,9 +29,15 @@
   # You can disable this if you're only using the Wayland session.
 
   # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+  services = {
+    xserver = {
+      enable = true;
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
+      videoDrivers = ["intel"];
+    };
   };
 
   # Enable CUPS to print documents.
