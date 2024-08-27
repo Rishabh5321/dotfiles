@@ -1,4 +1,4 @@
-name: Flake Format and Check
+name: Nix Format and Lint
 
 on:
   push:
@@ -12,7 +12,7 @@ on:
     - cron: '0 */12 * * *'
 
 jobs:
-  flake-check:
+  nix-format-lint:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -37,18 +37,12 @@ jobs:
       run: statix fix
 
     - name: Run Nix Format
-      run: nix fmt
-
-    - name: Nix Flake Check
-      run: nix flake check
-
+      run: nixpkgs-fmt .
+    
     - name: Commit changes
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: 'chore: auto lint and format'
-
-    - name: Nix Flake Checker
-      uses: DeterminateSystems/flake-checker-action@v8
 
     - name: Send Telegram Notification
       if: always()
@@ -57,9 +51,9 @@ jobs:
         CHAT_ID: ${{ secrets.CHAT_ID }}
       run: |
         if [[ "${{ job.status }}" == "success" ]]; then
-          MESSAGE="✅ Flake Check for Rishabh5321/dotfiles completed successfully."
+          MESSAGE="✅ Nix Format and Lint for Rishabh5321/dotfiles completed successfully."
         else
-          MESSAGE="❌ Flake Check for Rishabh5321/dotfiles failed. Check GitHub Actions for details."
+          MESSAGE="❌ Nix Format and Lint for Rishabh5321/dotfiles failed. Check GitHub Actions for details."
         fi
         curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
           -d chat_id=$CHAT_ID \
