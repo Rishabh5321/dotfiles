@@ -2,7 +2,7 @@ name: Dead code analysis
 on:
   push:
     branches:
-      - 'main'
+      - 'master'
     tags-ignore:
       - 'update'
 jobs:
