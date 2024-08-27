@@ -29,7 +29,7 @@ jobs:
     - name: Install Nix Linting and Formatting Tools
       run: |
         nix-channel --update
-        nix-env -iA nixpkgs.statix nixpkgs.nixpkgs-fmt
+        nix-env -i statix nixpkgs-fmt -f '<nixpkgs>'
       env:
         NIX_PATH: nixpkgs=channel:nixos-unstable
 
