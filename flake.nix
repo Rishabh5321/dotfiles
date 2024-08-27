@@ -119,7 +119,7 @@
     overlays = import ./overlays {inherit inputs;};
     #nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
-    defaultPackage.x86_64-linux = self.packages.x86_64-linux.lint;
+    #defaultPackage.x86_64-linux = self.packages.x86_64-linux.lint;
     nixosConfigurations = {
       redmi = nixpkgs.lib.nixosSystem (commonConfig {
         hostname = "redmi";
