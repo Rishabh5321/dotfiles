@@ -41,7 +41,7 @@ jobs:
       - uses: cpcloud/flake-update-action@v2.0.1
         with:
           dependency: ${{ matrix.flake }}
-          pull-request-token: ${{ secrets.PAT }}
+          pull-request-token: ${{ secrets.REPO_ACCESS_TOKEN }}
           pull-request-author: github[bot] <noreply@github.com>
           delete-branch: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
