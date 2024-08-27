@@ -1,26 +1,64 @@
-name: Flake ❄️ Lock 🔒️ Updater ✨
+name: Update Flake Lock
 
 on:
   schedule:
-    # run this daily at 8am UTC, or roughly 4am eastern
-    - cron: '0 */12 * * *'
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    - cron: '0 23 * * 0' # Every Sunday at 11:00 PM
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  update:
+  check-build:
+    uses: ./.github/workflows/build-template.yml
+    with:
+      template: 'starter'
+      arch: 'x86_64-linux'
+
+  update-flake:
     runs-on: ubuntu-latest
+    needs: check-build
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v13
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Setup Cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Initalize flake
+        run: |
+          mkdir -p my-config && cd my-config
+          nix flake --extra-experimental-features 'nix-command flakes' init -t github:dustinlyons/nixos-config#starter
+
+      - name: Apply CI User Info
+        run: |
+          # Set basic values for variables
+          export USERNAME="ciuser"
+          export GIT_EMAIL="ciuser@example.com"
+          export GIT_NAME="CI User"
+          export PRIMARY_IFACE="eth0"
+          export HOST_NAME="ci-host"
+          export BOOT_DISK="sda"
+
+          # Function to replace tokens in each file
+          replace_tokens() {
+            local file="$1"
+            if [[ $(basename "$file") != "apply" ]]; then
+              sed -i -e "s/%USER%/$USERNAME/g" -e "s/%EMAIL%/$GIT_EMAIL/g" -e "s/%NAME%/$GIT_NAME/g" \
+                     -e "s/%INTERFACE%/$PRIMARY_IFACE/g" -e "s/%DISK%/$BOOT_DISK/g" -e "s/%HOST%/$HOST_NAME/g" "$file"
+            fi
+          }
+
+          # Traverse directories and replace tokens in each Nix file
+          export -f replace_tokens
+          cd /home/runner/work/nixos-config/nixos-config/my-config
+          find . -type f -exec bash -c 'replace_tokens "$0"' {} \;
+
+          echo "$USERNAME" > /tmp/username.txt
+
       - name: Update flake.lock
-        uses: DeterminateSystems/update-flake-lock@v23
+        uses: DeterminateSystems/update-flake-lock@main
         with:
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
           pr-title: "Update flake.lock"
           pr-labels: |
             dependencies
