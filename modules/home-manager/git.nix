@@ -9,7 +9,7 @@ _: {
     pull.rebase = true;
   };
 
-  programs.git.ignores = ["*~"];
+  programs.git.ignores = [ "*~" ];
 
   programs.git.userEmail = "rishabh98818@outlook.com";
   programs.git.userName = "Rishabh5321";

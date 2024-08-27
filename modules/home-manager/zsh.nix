@@ -1,7 +1,6 @@
-{
-  username,
-  wallpaper,
-  ...
+{ username
+, wallpaper
+, ...
 }: {
   programs.zsh = {
     enable = true;
@@ -11,7 +10,7 @@
     historySubstringSearch.enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = ["git"];
+      plugins = [ "git" ];
       theme = "intheloop";
     };
     initExtraFirst = ''
