@@ -1,6 +1,7 @@
 name: Update Flake Lock
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 23 * * 0' # Every Sunday at 11:00 PM
 
@@ -24,7 +25,7 @@ jobs:
       - name: Setup Cache
         uses: DeterminateSystems/magic-nix-cache-action@main
 
-      - name: Initalize flake
+      - name: Initialize flake
         run: |
           mkdir -p my-config && cd my-config
           nix flake --extra-experimental-features 'nix-command flakes' init -t github:dustinlyons/nixos-config#starter
