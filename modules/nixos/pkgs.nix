@@ -159,6 +159,7 @@
       #libsForQt5.sddm-kcm
       #inputs.zen-browser.packages."${system}".generic
       marwaita-icons
+      kodiPackages.inputstream-adaptive
       dracula-icon-theme
     ];
 

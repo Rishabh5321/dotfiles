@@ -1,6 +1,8 @@
 _: {
   zramSwap = {
     enable = true;
-    #memoryMax = 16000000000;
+    algorithm = "lz4";
+    memoryPercent = 100;
+    priority = 999;
   };
 }
