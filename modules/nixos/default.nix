@@ -22,5 +22,6 @@
     ./swap.nix
     ./syncthing.nix
     ./users.nix
+    ./virtualisation.nix
   ];
 }
