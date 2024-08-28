@@ -20,6 +20,6 @@
     ./spicetify.nix
     ./stylix.nix
     ./zsh.nix
-    ./plasma.nix
+    #./plasma.nix
   ];
 }
