@@ -1,14 +1,19 @@
-{ pkgs, ... }: {
-  environment.systemPackages = with pkgs; [
-    qemu
-    swtpm
-    libvirt
-  ];
-
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      package = pkgs.qemu;
+{pkgs, ...}: {
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu.ovmf.enable = true;
+      qemu.swtpm.enable = true;
+      #qemuOvmfPackage = pkgs.OVMFFull;
     };
   };
+
+  environment.sessionVariables.LIBVIRT_DEFAULT_URI = ["qemu:///system"];
+  environment.systemPackages = with pkgs; [
+    virt-manager
+    win-virtio
+    libvirt
+    qemu
+    swtpm
+  ];
 }
