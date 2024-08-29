@@ -47,87 +47,85 @@
     };
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , #nixpkgs-unstable,
-      home-manager
-    , spicetify-nix
-    , alejandra
-    , sddm-sugar-candy-nix
-    , #nixos-cosmic,
-      #chaotic,
-      #impermanence,
-      #grub2-themes,
-      darkmatter-grub-theme
-    , ...
-    } @ inputs:
-    let
-      inherit (self) outputs;
-      systems = [ "x86_64-linux" ];
-      username = "rishabh";
-      wallpaper = "wall20.png";
-      flakeDir = "~/dotfiles";
-      # pkgs-unstable = import nixpkgs-unstable {
-      #   system = "x86_64-linux";
-      #   config = {
-      #     allowUnfree = true;
-      #   };
-      # };
-      pkgs = import nixpkgs {
-        system = "x86_64-linux";
-        config = {
-          allowUnfree = true;
-        };
-      };
-      formatter = forAllSystems (system: nixpkgs.legacyPackages."${system}".nixpkgs-fmt);
-      forAllSystems = nixpkgs.lib.genAttrs systems;
-
-      commonConfig = { hostname }: {
-        specialArgs = {
-          inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs;
-        };
-        modules = [
-          ./nixos/${hostname}/configuration.nix
-          #nixos-cosmic.nixosModules.default
-          darkmatter-grub-theme.nixosModule
-          inputs.stylix.nixosModules.stylix
-          home-manager.nixosModules.home-manager
-          sddm-sugar-candy-nix.nixosModules.default
-          #sops-nix.nixosModules.sops
-          #chaotic.nixosModules.default
-          #impermanence.nixosModules.impermanence
-          #grub2-themes.nixosModules.default
-          {
-            nixpkgs = {
-              overlays = [ sddm-sugar-candy-nix.overlays.default ];
-            };
-          }
-          {
-            home-manager.extraSpecialArgs = {
-              inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs;
-            };
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
-            home-manager.users.rishabh = import ./home-manager/home.nix;
-          }
-        ];
-      };
-    in
-    {
-      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-      overlays = import ./overlays { inherit inputs; };
-      #nixosModules = import ./modules/nixos;
-      #homeManagerModules = import ./modules/home-manager;
-      #defaultPackage.x86_64-linux = self.packages.x86_64-linux.lint;
-      nixosConfigurations = {
-        redmi = nixpkgs.lib.nixosSystem (commonConfig {
-          hostname = "redmi";
-        });
-        dell = nixpkgs.lib.nixosSystem (commonConfig {
-          hostname = "dell";
-        });
+  outputs = {
+    self,
+    nixpkgs,
+    #nixpkgs-unstable,
+    home-manager,
+    spicetify-nix,
+    alejandra,
+    sddm-sugar-candy-nix,
+    #nixos-cosmic,
+    #chaotic,
+    #impermanence,
+    #grub2-themes,
+    darkmatter-grub-theme,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+    systems = ["x86_64-linux"];
+    username = "rishabh";
+    wallpaper = "wall20.png";
+    flakeDir = "~/dotfiles";
+    # pkgs-unstable = import nixpkgs-unstable {
+    #   system = "x86_64-linux";
+    #   config = {
+    #     allowUnfree = true;
+    #   };
+    # };
+    pkgs = import nixpkgs {
+      system = "x86_64-linux";
+      config = {
+        allowUnfree = true;
       };
     };
+    formatter = forAllSystems (system: nixpkgs.legacyPackages."${system}".nixpkgs-fmt);
+    forAllSystems = nixpkgs.lib.genAttrs systems;
+
+    commonConfig = {hostname}: {
+      specialArgs = {
+        inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs;
+      };
+      modules = [
+        ./nixos/${hostname}/configuration.nix
+        #nixos-cosmic.nixosModules.default
+        darkmatter-grub-theme.nixosModule
+        inputs.stylix.nixosModules.stylix
+        home-manager.nixosModules.home-manager
+        sddm-sugar-candy-nix.nixosModules.default
+        #sops-nix.nixosModules.sops
+        #chaotic.nixosModules.default
+        #impermanence.nixosModules.impermanence
+        #grub2-themes.nixosModules.default
+        {
+          nixpkgs = {
+            overlays = [sddm-sugar-candy-nix.overlays.default];
+          };
+        }
+        {
+          home-manager.extraSpecialArgs = {
+            inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs;
+          };
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
+          home-manager.users.rishabh = import ./home-manager/home.nix;
+        }
+      ];
+    };
+  in {
+    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    overlays = import ./overlays {inherit inputs;};
+    #nixosModules = import ./modules/nixos;
+    #homeManagerModules = import ./modules/home-manager;
+    #defaultPackage.x86_64-linux = self.packages.x86_64-linux.lint;
+    nixosConfigurations = {
+      redmi = nixpkgs.lib.nixosSystem (commonConfig {
+        hostname = "redmi";
+      });
+      dell = nixpkgs.lib.nixosSystem (commonConfig {
+        hostname = "dell";
+      });
+    };
+  };
 }

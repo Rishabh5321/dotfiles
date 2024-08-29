@@ -1,6 +1,7 @@
-{ config
-, outputs
-, ...
+{
+  config,
+  outputs,
+  ...
 }: {
   # Optimization settings and garbage collection automation
   nix = {
