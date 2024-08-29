@@ -2,6 +2,7 @@ _: {
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm.enable = true;
   services.xserver.enable = true;
+  services.displayManager.sddm.theme = "sddm-astronaut-theme";
   #services.desktopManager.cosmic.enable = true;
   # services.xserver = {
   #   enable = true;

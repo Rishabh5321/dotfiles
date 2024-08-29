@@ -163,6 +163,7 @@
       dracula-icon-theme
       libvirt
       quickemu
+      sddm-astronaut
     ];
 
   #services.plex.enable = true;
