@@ -370,6 +370,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1724479785,
+        "narHash": "sha256-pP3Azj5d6M5nmG68Fu4JqZmdGt4S4vqI5f8te+E/FTw=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d0e1602ddde669d5beb01aec49d71a51937ed7be",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "plasma-manager": {
       "inputs": {
         "home-manager": [
@@ -403,7 +419,8 @@
         "plasma-manager": "plasma-manager",
         "sddm-sugar-candy-nix": "sddm-sugar-candy-nix",
         "spicetify-nix": "spicetify-nix",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "zen-browser": "zen-browser"
       }
     },
     "rust-analyzer-src": {
@@ -508,6 +525,24 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1724901719,
+        "narHash": "sha256-HXyeu2wwjQcymelWZs/7V7nHl/cvrt/bBKP+jpVa/YQ=",
+        "owner": "MarceColl",
+        "repo": "zen-browser-flake",
+        "rev": "bc16bbb32255566db797124065785eafd6e746a8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MarceColl",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

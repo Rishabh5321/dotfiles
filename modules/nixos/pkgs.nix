@@ -1,11 +1,11 @@
-{ pkgs
-, inputs
-, ...
+{
+  pkgs,
+  inputs,
+  ...
 }: {
-  environment.systemPackages =
-    let
-      cursor = pkgs.callPackage ../../pkgs/cursor.nix { };
-    in
+  environment.systemPackages = let
+    cursor = pkgs.callPackage ../../pkgs/cursor.nix {};
+  in
     with pkgs; [
       #age
       #amdvlk
@@ -157,7 +157,7 @@
       kdePackages.sddm-kcm
       # libsForQt5.krohnkite
       #libsForQt5.sddm-kcm
-      #inputs.zen-browser.packages."${system}".generic
+      inputs.zen-browser.packages."${system}".default
       marwaita-icons
       kodiPackages.inputstream-adaptive
       dracula-icon-theme
@@ -179,7 +179,7 @@
       powerline
       nerdfonts
       material-icons
-      (nerdfonts.override { fonts = [ "Meslo" ]; })
+      (nerdfonts.override {fonts = ["Meslo"];})
     ];
   };
 }
