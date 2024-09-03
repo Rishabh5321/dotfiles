@@ -500,11 +500,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1725273590,
-        "narHash": "sha256-/GY7CIsOmNW4XGUjKI8sedd9Go6jFSmRMLjaUAtCYw0=",
+        "lastModified": 1725290973,
+        "narHash": "sha256-+jwXF9KI0HfvDgpsoJGvOdfOGGSKOrID1wQB79zjUbo=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "c95de3625235390b7a5160bddaae7243a89f811f",
+        "rev": "ef81ad9e85e60420cc83d4642619c14b57139d33",
         "type": "github"
       },
       "original": {
