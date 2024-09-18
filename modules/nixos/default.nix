@@ -8,7 +8,7 @@
     ./boot.nix
     ./bluetooth.nix
     ./cache.nix
-    ./desktop_env.nix
+    #./desktop_env.nix
     #./displaymanager.nix
     ./graphics.nix
     ./locale.nix
@@ -16,11 +16,11 @@
     ./nix_settings.nix
     ./pkgs.nix
     ./program.nix
-    ./proton.nix
+    #./proton.nix
     ./sound.nix
     ./stylix.nix
     ./swap.nix
-    ./syncthing.nix
+    #./syncthing.nix
     ./users.nix
     ./virtualisation.nix
   ];

@@ -11,38 +11,38 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" "amdgpu" "i915" ];
-  boot.kernelParams = [ "amdgpu.si_support=1" "amdgpu.si_support=0" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" ];
+  #boot.kernelParams = [ "amdgpu.si_support=1" "amdgpu.si_support=0" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/1765dc52-45b2-4bd4-988d-d0cb08395cb4";
+    device = "/dev/disk/by-uuid/750fcdb5-8951-4f82-85ad-dc5aa5fe6cb9";
     fsType = "btrfs";
     options = [ "subvol=@" ];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/C0C0-B22B";
+    device = "/dev/disk/by-uuid/0D24-E453";
     fsType = "vfat";
     options = [ "fmask=0022" "dmask=0022" ];
   };
 
-  swapDevices = [
-    {
-      device = "/dev/disk/by-uuid/88b987f5-e215-4969-b225-0d7f1e5f5510";
-    }
-  ];
+  # swapDevices = [
+  #   {
+  #     device = "/dev/disk/by-uuid/88b987f5-e215-4969-b225-0d7f1e5f5510";
+  #   }
+  # ];
 
   fileSystems."/mnt/Raid" = {
-    device = "/dev/disk/by-uuid/d35415ef-75c1-4708-9759-b7d1ae846559";
-    fsType = "ext4";
+    device = "/dev/disk/by-uuid/603A67F03A67C220";
+    fsType = "ntfs";
   };
 
   fileSystems."/mnt/E_Disk" = {
-    device = "/dev/disk/by-uuid/b03102c2-5807-4f8c-bcde-4de8758679b0";
-    fsType = "ext4";
+    device = "/dev/disk/by-uuid/48BA6FEDBA6FD5CA";
+    fsType = "ntfs";
   };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -56,7 +56,7 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  systemd.tmpfiles.rules = [
-    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-  ];
+  #systemd.tmpfiles.rules = [
+  #  "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+  #];
 }

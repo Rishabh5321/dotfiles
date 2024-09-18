@@ -17,12 +17,12 @@
       bat
       beeper
       bitwarden-desktop
-      bottles
+      #bottles
       #brave
       #brightnessctl
       btop
-      brave
-      inputs.alejandra.defaultPackage.${system}
+      #brave
+      #inputs.alejandra.defaultPackage.${system}
       cava
       #cliphist
       #cmatrix
@@ -41,7 +41,7 @@
       #file-roller
       filezilla
       firefox
-      floorp
+      #floorp
       fzf
       gedit
       gh
@@ -51,7 +51,7 @@
       gnome-disk-utility
       gnome-system-monitor
       grim
-      heroic
+      #heroic
       htop
       # hyprlock
       # hyprpicker
@@ -73,7 +73,7 @@
       #lm_sensors
       #lolcat
       #lshw
-      lutris
+      #lutris
       #lxqt.lxqt-policykit
       #mesa
       #meson
@@ -100,7 +100,7 @@
       #playerctl
       #plex-media-player
       #polkit_gnome
-      protonup-qt
+      #protonup-qt
       qbittorrent
       #radeontop # For AMD GPU monitoring
       ranger
@@ -114,7 +114,7 @@
       spicetify-cli
       spotify
       spotdl
-      steam
+      #steam
       stremio
       #swappy
       #swaynotificationcenter
@@ -154,7 +154,7 @@
       #google-chrome
       # vivaldi
       # vivaldi-ffmpeg-codecs
-      kdePackages.sddm-kcm
+      #kdePackages.sddm-kcm
       # libsForQt5.krohnkite
       #libsForQt5.sddm-kcm
       inputs.zen-browser.packages."${system}".default
@@ -163,7 +163,7 @@
       dracula-icon-theme
       libvirt
       quickemu
-      sddm-astronaut
+      #sddm-astronaut
       rose-pine-icon-theme
     ];
 
