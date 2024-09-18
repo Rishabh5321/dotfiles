@@ -40,7 +40,7 @@
   # };
 
   services.xserver = {
-    enable = true;   
+    enable = true;
     desktopManager = {
       xterm.enable = false;
       xfce = {
@@ -50,8 +50,8 @@
       };
     };
     xkb = {
-        layout = "us";
-        variant = "";
+      layout = "us";
+      variant = "";
     };
     windowManager.i3.enable = true;
   };
