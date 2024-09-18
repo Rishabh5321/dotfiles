@@ -28,11 +28,12 @@
   };
 
   fileSystems."/home" =
-   { device = "/dev/disk/by-uuid/11c58d4e-6cde-4e8b-8ada-af1baf721318";
-     fsType = "btrfs";
-   };
-   
-   swapDevices = [ ];
+    {
+      device = "/dev/disk/by-uuid/11c58d4e-6cde-4e8b-8ada-af1baf721318";
+      fsType = "btrfs";
+    };
+
+  swapDevices = [ ];
 
 
 
