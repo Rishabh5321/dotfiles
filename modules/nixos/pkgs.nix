@@ -61,7 +61,7 @@
       # inputs.alejandra.defaultPackage.${system}
       # inxi
       jellyfin-media-player
-      kdePackages.kdeconnect-kde
+      #kdePackages.kdeconnect-kde
       # killall
       kodi-wayland
       #lazycli
