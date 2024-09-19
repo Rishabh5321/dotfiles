@@ -73,6 +73,7 @@
       #lm_sensors
       #lolcat
       #lshw
+      #lsof
       #lutris
       #lxqt.lxqt-policykit
       #mesa

@@ -25,35 +25,35 @@
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
 
-  # services = {
-  #   xserver = {
-  #     enable = true;
-  #     displayManager.lightdm.enable = true;
-  #     desktopManager.xfce.enable = true;
-  #     xkb = {
-  #       layout = "us";
-  #       variant = "";
-  #     };
-  #   };
-  # };
+  services = {
+     xserver = {
+       enable = true;
+       displayManager.gdm.enable = true;
+       desktopManager.gnome.enable = true;
+       xkb = {
+         layout = "us";
+         variant = "";
+       };
+     };
+   };
 
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xterm.enable = false;
-      xfce = {
-        enable = true;
-        noDesktop = true;
-        enableXfwm = false;
-      };
-    };
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
-    windowManager.i3.enable = true;
-  };
-  services.displayManager.defaultSession = "xfce";
+  #services.xserver = {
+  #  enable = true;
+  #  desktopManager = {
+  #    xterm.enable = false;
+  #    xfce = {
+  #      enable = true;
+  #      #noDesktop = true;
+  #      enableXfwm = false;
+  #    };
+  #  };
+  #  xkb = {
+  #    layout = "us";
+  #    variant = "";
+  #  };
+  #  windowManager.i3.enable = true;
+  #};
+  #services.displayManager.defaultSession = "xfce";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

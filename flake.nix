@@ -93,7 +93,7 @@
           darkmatter-grub-theme.nixosModule
           inputs.stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
-          sddm-sugar-candy-nix.nixosModules.default
+          #sddm-sugar-candy-nix.nixosModules.default
           #sops-nix.nixosModules.sops
           #chaotic.nixosModules.default
           #impermanence.nixosModules.impermanence
@@ -109,7 +109,7 @@
             };
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
-            home-manager.users.rishabh = import ./home-manager/home.nix;
+            home-manager.users.rishabh = import ./nixos/${hostname}/home.nix;
           }
         ];
       };
