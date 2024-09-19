@@ -26,16 +26,16 @@
   # You can disable this if you're only using the Wayland session.
 
   services = {
-     xserver = {
-       enable = true;
-       displayManager.gdm.enable = true;
-       desktopManager.gnome.enable = true;
-       xkb = {
-         layout = "us";
-         variant = "";
-       };
-     };
-   };
+    xserver = {
+      enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
+    };
+  };
 
   #services.xserver = {
   #  enable = true;

@@ -16,7 +16,7 @@
     enable = true;
     autoSuspend = false;
   };
-  
+
   powerManagement.enable = true;
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 }
