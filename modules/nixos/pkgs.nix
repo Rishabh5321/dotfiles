@@ -159,11 +159,13 @@
       # libsForQt5.krohnkite
       #libsForQt5.sddm-kcm
       inputs.zen-browser.packages."${system}".default
-      marwaita-icons
-      kodiPackages.inputstream-adaptive
+      #marwaita-icons
+      #kodiPackages.inputstream-adaptive
       dracula-icon-theme
       libvirt
       quickemu
+      dconf-editor
+      gnome-tweaks
       #sddm-astronaut
       rose-pine-icon-theme
     ];
