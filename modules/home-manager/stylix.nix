@@ -11,11 +11,11 @@
       gtk-application-prefer-dark-theme = 1;
     };
   };
-  # qt = {
-  #   enable = true;
-  #   style.name = "Adw-gtk3";
-  #   platformTheme.name = "gtk3";
-  # };
+  qt = {
+    enable = true;
+    style.name = "Adw-gtk3";
+    platformTheme.name = "gtk3";
+  };
   #stylix.targets.waybar.enable = false;
   stylix.targets.rofi.enable = false;
   #stylix.targets.hyprland.enable = false;
