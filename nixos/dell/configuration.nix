@@ -28,8 +28,8 @@
   services = {
     xserver = {
       enable = true;
-      #displayManager.gdm.enable = true;
-      #desktopManager.gnome.enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
       xkb = {
         layout = "us";
         variant = "";
@@ -37,9 +37,9 @@
     };
   };
 
-  services.displayManager.sddm.theme = "sddm-astronaut-theme";
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm.enable = true;
+  #services.displayManager.sddm.theme = "sddm-astronaut-theme";
+  #services.desktopManager.plasma6.enable = true;
+  #services.displayManager.sddm.enable = true;
 
   #services.xserver = {
   #  enable = true;
