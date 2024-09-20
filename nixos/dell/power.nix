@@ -12,10 +12,10 @@
   # Enable powertop
   #powerManagement.powertop.enable = true;
 
-  #services.xserver.displayManager.gdm = {
-  #  enable = true;
-  #  autoSuspend = false;
-  #};
+  services.xserver.displayManager.gdm = {
+    enable = true;
+    autoSuspend = false;
+  };
 
   powerManagement.enable = true;
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
