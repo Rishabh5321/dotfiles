@@ -8,8 +8,8 @@
     in
     with pkgs; [
       #age
-      #amdvlk
       alacritty
+      #amdvlk
       android-tools
       #appimage-run
       atuin
@@ -18,20 +18,20 @@
       beeper
       bitwarden-desktop
       #bottles
-      #brave
+      brave
       #brightnessctl
       btop
-      #brave
-      #inputs.alejandra.defaultPackage.${system}
       cava
       #cliphist
       #cmatrix
       #cowsay
       cursor
+      dconf-editor
       discord
       distrobox
       docker
       docker-compose
+      dracula-icon-theme
       #duf
       eza
       fast-cli
@@ -50,6 +50,8 @@
       #glxinfo
       gnome-disk-utility
       gnome-system-monitor
+      gnome-tweaks
+      #google-chrome
       grim
       #heroic
       htop
@@ -57,25 +59,31 @@
       # hyprpicker
       # hyprshot
       # imv
+      #inputs.alejandra.defaultPackage.${system}
       #intel-gpu-tools # For Intel GPU tools
-      # inputs.alejandra.defaultPackage.${system}
       # inxi
+      inputs.zen-browser.packages."${system}".default
       jellyfin-media-player
       #kdePackages.kdeconnect-kde
+      #kdePackages.sddm-kcm
       # killall
+      #kodiPackages.inputstream-adaptive
       kodi-wayland
       #lazycli
       lazydocker
       #lazygit
       #libnotify
       libreoffice
-      #libvirt
+      #libsForQt5.krohnkite
+      #libsForQt5.sddm-kcm
+      libvirt
       #lm_sensors
       #lolcat
       #lshw
       #lsof
       #lutris
       #lxqt.lxqt-policykit
+      #marwaita-icons
       #mesa
       #meson
       micro
@@ -93,7 +101,6 @@
       oh-my-posh
       onlyoffice-bin_latest
       #pavucontrol
-      #pciutils
       #pciutils # For lspci command
       peaclock
       pfetch-rs
@@ -103,11 +110,16 @@
       #polkit_gnome
       #protonup-qt
       qbittorrent
+      #qemu
+      quickemu
       #radeontop # For AMD GPU monitoring
       ranger
       #resilio-sync
       #ripgrep
+      rose-pine-icon-theme
       rquickshare
+      #rtkit
+      #sddm-astronaut
       #slurp
       #socat
       #sops
@@ -120,6 +132,7 @@
       #swappy
       #swaynotificationcenter
       #swww
+      #swtpm
       telegram-desktop
       tldr
       tree
@@ -131,6 +144,8 @@
       ventoy
       vim
       virt-viewer
+      # vivaldi
+      # vivaldi-ffmpeg-codecs
       vlc
       vscode
       #vulkan-tools # For vulkaninfo and other Vulkan tools
@@ -148,26 +163,6 @@
       #zoxide
       zsh
       #zsh-powerlevel10k
-
-      #qemu
-      #swtpm
-      #rtkit
-      #google-chrome
-      # vivaldi
-      # vivaldi-ffmpeg-codecs
-      #kdePackages.sddm-kcm
-      # libsForQt5.krohnkite
-      #libsForQt5.sddm-kcm
-      inputs.zen-browser.packages."${system}".default
-      #marwaita-icons
-      #kodiPackages.inputstream-adaptive
-      dracula-icon-theme
-      libvirt
-      quickemu
-      dconf-editor
-      gnome-tweaks
-      #sddm-astronaut
-      rose-pine-icon-theme
     ];
 
   #services.plex.enable = true;

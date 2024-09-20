@@ -108,7 +108,7 @@
               inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs;
             };
             home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
+            home-manager.backupFileExtension = "backupa-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
             home-manager.users.rishabh = import ./nixos/${hostname}/home.nix;
           }
         ];
