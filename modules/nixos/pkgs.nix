@@ -63,7 +63,7 @@
       #intel-gpu-tools # For Intel GPU tools
       # inxi
       inputs.zen-browser.packages."${system}".default
-      jellyfin-media-player
+      #jellyfin-media-player
       #kdePackages.kdeconnect-kde
       #kdePackages.sddm-kcm
       # killall
@@ -119,7 +119,7 @@
       rose-pine-icon-theme
       rquickshare
       #rtkit
-      #sddm-astronaut
+      sddm-astronaut
       #slurp
       #socat
       #sops

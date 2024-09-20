@@ -2,7 +2,7 @@
   description = "Laptop and server config";
 
   inputs = {
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -54,6 +54,7 @@
       home-manager
     , spicetify-nix
     , alejandra
+    , nixpkgs-stable
     , sddm-sugar-candy-nix
     , #nixos-cosmic,
       #chaotic,
@@ -68,12 +69,12 @@
       username = "rishabh";
       wallpaper = "wall184.jpg";
       flakeDir = "~/dotfiles";
-      # pkgs-unstable = import nixpkgs-unstable {
-      #   system = "x86_64-linux";
-      #   config = {
-      #     allowUnfree = true;
-      #   };
-      # };
+      pkgs-stable = import nixpkgs-stable {
+        system = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+        };
+      };
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         config = {
@@ -85,7 +86,7 @@
 
       commonConfig = { hostname }: {
         specialArgs = {
-          inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs;
+          inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs pkgs-stable;
         };
         modules = [
           ./nixos/${hostname}/configuration.nix
@@ -105,10 +106,10 @@
           }
           {
             home-manager.extraSpecialArgs = {
-              inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs;
+              inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs pkgs-stable;
             };
             home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backupa-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
+            home-manager.backupFileExtension = "backupb-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
             home-manager.users.rishabh = import ./nixos/${hostname}/home.nix;
           }
         ];
