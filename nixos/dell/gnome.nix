@@ -65,7 +65,7 @@ _: {
         "org.gnome.Nautilus.desktop"
         "discord.desktop"
         "spotify.desktop"
-        "code.desktop"
+        "vscode.desktop"
         "cursor.desktop"
         "github-desktop.desktop"
         "steam.desktop"
@@ -78,7 +78,7 @@ _: {
         "com.heroicgameslauncher.hgl.desktop"
         "firefox.desktop"
         "org.telegram.desktop.desktop"
-        "plexmediaplayer.desktop"
+        #"plexmediaplayer.desktop"
         "dev.zed.Zed.desktop"
       ];
     };

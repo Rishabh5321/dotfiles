@@ -14,8 +14,8 @@
       { package = pkgs.gnomeExtensions.dash-to-dock; }
       { package = pkgs.gnomeExtensions.gsconnect; }
       { package = pkgs.gnomeExtensions.pop-shell; }
-      { package = pkgs.gnomeExtensions.unite; }
-      { package = pkgs.gnomeExtensions.blur-my-shell; }
+      #{ package = pkgs.gnomeExtensions.unite; }
+      #{ package = pkgs.gnomeExtensions.blur-my-shell; }
       #{package = pkgs-unstable.gnome-shell-extension-tilingnome-unstable;}
     ];
   };
@@ -50,13 +50,13 @@
     #   style-dash-to-dock = 5;
     # };
 
-    "org/gnome/shell/extensions/blur-my-shell/panel" = {
-      blur = true;
-      brightness = 0.6;
-      sigma = 0;
-      static-blur = false;
-      style-panel = 3;
-    };
+    #"org/gnome/shell/extensions/blur-my-shell/panel" = {
+    #  blur = true;
+    #  brightness = 0.6;
+    #  sigma = 0;
+    #  static-blur = false;
+    #  style-panel = 3;
+    #};
 
     "org/gnome/shell/extensions/caffeine" = {
       indicator-position = -1;
@@ -108,12 +108,12 @@
       enable = true;
     };
 
-    "org/gnome/shell/extensions/unite" = {
-      extend-left-box = false;
-      greyscale-tray-icons = false;
-      hide-app-menu-icon = true;
-      use-activities-text = true;
-    };
+    # "org/gnome/shell/extensions/unite" = {
+    #   extend-left-box = false;
+    #   greyscale-tray-icons = false;
+    #   hide-app-menu-icon = true;
+    #   use-activities-text = true;
+    # };
 
     "org/gnome/shell/extensions/pop-shell" = {
       active-hint = true;
