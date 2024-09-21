@@ -55,7 +55,7 @@
     , spicetify-nix
     , alejandra
     , nixpkgs-stable
-    #, sddm-sugar-candy-nix
+      #, sddm-sugar-candy-nix
     , #nixos-cosmic,
       #chaotic,
       #impermanence,
