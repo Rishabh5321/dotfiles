@@ -31,6 +31,7 @@
       url = "github:VonHeikemen/fine-cmdline.nvim";
       flake = false;
     };
+    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
     darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
     #grub2-themes.url = "github:vinceliuice/grub2-themes";
@@ -52,6 +53,7 @@
     , nixpkgs
     , #nixpkgs-unstable,
       home-manager
+    , aagl
     , spicetify-nix
     , alejandra
     , nixpkgs-stable
@@ -94,6 +96,7 @@
           darkmatter-grub-theme.nixosModule
           inputs.stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
+          aagl.nixosModules.default 
           #sddm-sugar-candy-nix.nixosModules.default
           #sops-nix.nixosModules.sops
           #chaotic.nixosModules.default
