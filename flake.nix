@@ -96,7 +96,7 @@
           darkmatter-grub-theme.nixosModule
           inputs.stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
-          aagl.nixosModules.default 
+          aagl.nixosModules.default
           #sddm-sugar-candy-nix.nixosModules.default
           #sops-nix.nixosModules.sops
           #chaotic.nixosModules.default
