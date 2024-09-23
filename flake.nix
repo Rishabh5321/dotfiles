@@ -31,7 +31,7 @@
       url = "github:VonHeikemen/fine-cmdline.nvim";
       flake = false;
     };
-    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+    aagl.url = "github:ezKEa/aagl-gtk-on-nix/release-24.05";
     darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
     darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
     #grub2-themes.url = "github:vinceliuice/grub2-themes";
@@ -88,7 +88,7 @@
 
       commonConfig = { hostname }: {
         specialArgs = {
-          inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs pkgs-stable;
+          inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs pkgs-stable aagl;
         };
         modules = [
           ./nixos/${hostname}/configuration.nix
