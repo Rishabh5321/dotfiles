@@ -1,8 +1,10 @@
-_: {
+{pkgs,...}: {
   # OpenGL
   hardware.graphics = {
     enable = true;
-    #extraPackages = with pkgs; [vaapiIntel vaapiVdpau libvdpau-va-gl libvdpau-va-gl];
+    extraPackages = with pkgs; [
+      vpl-gpu-rt 
+    ];
     enable32Bit = true;
   };
 }
