@@ -51,12 +51,12 @@
   outputs =
     { self
     , nixpkgs
-    , nixpkgs-unstable,
-      home-manager
+    , nixpkgs-unstable
+    , home-manager
     , aagl
     , spicetify-nix
     , alejandra
-     #,nixpkgs-stable
+      #,nixpkgs-stable
       #, sddm-sugar-candy-nix
     , #nixos-cosmic,
       #chaotic,
@@ -109,7 +109,7 @@
           }
           {
             home-manager.extraSpecialArgs = {
-              inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs pkgs-unstable ;
+              inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs pkgs-unstable;
             };
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backupaa-" + builtins.readFile (pkgs.runCommand "timestamp" { } ''
