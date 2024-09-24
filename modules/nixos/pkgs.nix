@@ -26,7 +26,7 @@
       #cmatrix
       #cowsay
       cursor
-      dconf-editor
+      #dconf-editor
       discord
       distrobox
       docker
@@ -48,9 +48,9 @@
       git
       github-desktop
       #glxinfo
-      gnome-disk-utility
-      gnome-system-monitor
-      gnome-tweaks
+      gnome.gnome-disk-utility
+      gnome.gnome-system-monitor
+      gnome.gnome-tweaks
       #google-chrome
       grim
       #heroic
@@ -88,7 +88,7 @@
       #meson
       micro
       #mpv
-      nautilus
+      gnome.nautilus
       #ncdu
       #neovide
       #networkmanagerapplet
@@ -119,7 +119,7 @@
       rose-pine-icon-theme
       rquickshare
       #rtkit
-      sddm-astronaut
+      #sddm-astronaut
       #slurp
       #socat
       #sops
@@ -158,7 +158,7 @@
       # yad
       #ydotool
       #yubioath-flutter
-      zed-editor
+      #zed-editor
       #zinit
       #zoxide
       zsh

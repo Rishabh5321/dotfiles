@@ -2,9 +2,9 @@
   description = "Laptop and server config";
 
   inputs = {
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
@@ -51,12 +51,12 @@
   outputs =
     { self
     , nixpkgs
-    , #nixpkgs-unstable,
+    , nixpkgs-unstable,
       home-manager
     , aagl
     , spicetify-nix
     , alejandra
-    , nixpkgs-stable
+     #,nixpkgs-stable
       #, sddm-sugar-candy-nix
     , #nixos-cosmic,
       #chaotic,
@@ -71,7 +71,7 @@
       username = "rishabh";
       wallpaper = "wall126.png";
       flakeDir = "~/dotfiles";
-      pkgs-stable = import nixpkgs-stable {
+      pkgs-unstable = import nixpkgs-unstable {
         system = "x86_64-linux";
         config = {
           allowUnfree = true;
@@ -88,7 +88,7 @@
 
       commonConfig = { hostname }: {
         specialArgs = {
-          inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs pkgs-stable aagl;
+          inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs pkgs-unstable aagl;
         };
         modules = [
           ./nixos/${hostname}/configuration.nix
@@ -109,7 +109,7 @@
           }
           {
             home-manager.extraSpecialArgs = {
-              inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs pkgs-stable;
+              inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs pkgs-unstable ;
             };
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backupaa-" + builtins.readFile (pkgs.runCommand "timestamp" { } ''

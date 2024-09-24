@@ -1,6 +1,6 @@
 # Add your reusable NixOS modules to this directory, on their own file (https://nixos.wiki/wiki/Module).
 # These should be stuff you would like to share with others, not your personal configurations.
-{
+{pkgs,...}:{
   # List your module files here
   # my-module = import ./my-module.nix;
   imports = [
@@ -15,7 +15,7 @@
     ./nh.nix
     ./nix_settings.nix
     ./pkgs.nix
-    ./pkgs_stable.nix
+    #./pkgs_stable.nix
     ./program.nix
     #./proton.nix
     ./sound.nix
@@ -25,4 +25,6 @@
     ./users.nix
     ./virtualisation.nix
   ];
+
+  environment.gnome.excludePackages = [  ];
 }
