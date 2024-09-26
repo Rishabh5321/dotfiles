@@ -17,13 +17,13 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/750fcdb5-8951-4f82-85ad-dc5aa5fe6cb9";
+    device = "/dev/disk/by-uuid/5d9c633e-852b-41e7-af63-c4c78722d6d7";
     fsType = "btrfs";
     options = [ "subvol=@" ];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/0D24-E453";
+    device = "/dev/disk/by-uuid/F6B3-0A8A";
     fsType = "vfat";
     options = [ "fmask=0022" "dmask=0022" ];
   };
@@ -40,7 +40,7 @@
   };
 
   fileSystems."/mnt/E_Disk" = {
-    device = "/dev/disk/by-uuid/48BA6FEDBA6FD5CA";
+    device = "/dev/disk/by-uuid/48EC77156D5D3589";
     fsType = "ntfs";
   };
 
