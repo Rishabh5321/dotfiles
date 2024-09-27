@@ -469,11 +469,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1727343412,
-        "narHash": "sha256-Uoxb8Qr1bQp05SQIcAYCOfzImOJXIbWk4chTfxsd/us=",
+        "lastModified": 1727410670,
+        "narHash": "sha256-DI22QeBUBIHQQi5XCLq9tmy4z1IPiDD8IpnHVfBL0EM=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "2f429398aef267d98858ca98d2f2a38a8ee90fb3",
+        "rev": "cc02909bbfaa51dfe5849cf6997cd2fd0492e972",
         "type": "github"
       },
       "original": {
