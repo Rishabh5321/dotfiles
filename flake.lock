@@ -501,11 +501,11 @@
         "tinted-tmux": "tinted-tmux"
       },
       "locked": {
-        "lastModified": 1727355527,
-        "narHash": "sha256-qFSPHeImI00fBzGTA94D66HMD+fJDkuz04WHp2Sg8eA=",
+        "lastModified": 1727362643,
+        "narHash": "sha256-Ceiq/aYjRlRBU677lBaemn8ZU2Jpr08Iso6UlBc9nFc=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "993fcabd83d1e0ee5ea038b87041593cc73c1ebe",
+        "rev": "e3eb7fdf8d129ff3676dfbc84ee1262322ca6fb4",
         "type": "github"
       },
       "original": {
