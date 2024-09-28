@@ -8,7 +8,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos
     ./power.nix
-    ./aagl.nix
+    #./aagl.nix
   ];
 
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
