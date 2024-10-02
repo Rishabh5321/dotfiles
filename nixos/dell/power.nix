@@ -13,8 +13,8 @@
   #powerManagement.powertop.enable = true;
 
   services.xserver.displayManager.gdm = {
-   enable = true;
-   autoSuspend = false;
+    enable = true;
+    autoSuspend = false;
   };
 
   powerManagement.enable = true;
