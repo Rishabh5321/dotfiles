@@ -1,10 +1,11 @@
-{ pkgs, ... }: {
+{ pkgs, pkgs-unstable, ... }: {
   # OpenGL
-  hardware.graphics = {
+  hardware.opengl = {
     enable = true;
-    extraPackages = with pkgs; [
+    extraPackages = with pkgs-unstable; [
       vpl-gpu-rt
     ];
-    enable32Bit = true;
+    #enable32Bit = true;
+    driSupport32Bit = true;
   };
 }

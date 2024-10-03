@@ -26,12 +26,12 @@
       #cmatrix
       #cowsay
       cursor
-      dconf-editor
+      #dconf-editor
       discord
       distrobox
       docker
       docker-compose
-      dracula-icon-theme
+      #dracula-icon-theme
       #duf
       eza
       fast-cli
@@ -48,9 +48,6 @@
       git
       github-desktop
       #glxinfo
-      gnome-disk-utility
-      gnome-system-monitor
-      gnome-tweaks
       #google-chrome
       grim
       #heroic
@@ -88,7 +85,6 @@
       #meson
       micro
       #mpv
-      nautilus
       #ncdu
       #neovide
       #networkmanagerapplet
@@ -116,10 +112,10 @@
       ranger
       #resilio-sync
       #ripgrep
-      rose-pine-icon-theme
+      #rose-pine-icon-theme
       rquickshare
       #rtkit
-      sddm-astronaut
+      #sddm-astronaut
       #slurp
       #socat
       #sops
@@ -158,7 +154,6 @@
       # yad
       #ydotool
       #yubioath-flutter
-      zed-editor
       #zinit
       #zoxide
       zsh

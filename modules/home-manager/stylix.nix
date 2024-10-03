@@ -19,7 +19,7 @@
   #stylix.targets.waybar.enable = false;
   stylix.targets.rofi.enable = false;
   #stylix.targets.hyprland.enable = false;
-  stylix.targets.kde.enable = true;
+  #stylix.targets.kde.enable = true;
   #programs.gpg.enable = true;
 
   #services.gpg-agent.enable = true;
