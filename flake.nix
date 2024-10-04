@@ -33,7 +33,7 @@
       flake = false;
     };
     aagl.url = "github:ezKEa/aagl-gtk-on-nix/release-24.05";
-    aagl.nixpkgs.follows = "nixpkgs";
+    aagl.inputs.nixpkgs.follows = "nixpkgs"; # Name of nixpkgs input you want to use
     darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
     darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
     #grub2-themes.url = "github:vinceliuice/grub2-themes";
