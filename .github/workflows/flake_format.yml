@@ -24,14 +24,14 @@ jobs:
     - name: Install Nix
       uses: cachix/install-nix-action@v30
       with:
-        nix_path: nixpkgs=channel:nixos-stable
+        nix_path: nixpkgs=channel:nixos-24.05
 
     - name: Install Nix Linting and Formatting Tools
       run: |
         nix-channel --update
         nix-env -i statix nixpkgs-fmt -f '<nixpkgs>'
       env:
-        NIX_PATH: nixpkgs=channel:nixos-stable
+        NIX_PATH: nixpkgs=channel:nixos-24.05
 
     - name: Run Statix Lint
       run: statix fix
