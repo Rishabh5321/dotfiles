@@ -53,12 +53,12 @@
   outputs =
     { self
     , nixpkgs
-    , nixpkgs-unstable,
-      home-manager
+    , nixpkgs-unstable
+    , home-manager
     , aagl
     , spicetify-nix
     , alejandra
-    #, nixpkgs-stable
+      #, nixpkgs-stable
       #, sddm-sugar-candy-nix
     , #nixos-cosmic,
       #chaotic,
