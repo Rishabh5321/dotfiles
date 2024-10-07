@@ -65,7 +65,7 @@
       #kdePackages.sddm-kcm
       # killall
       #kodiPackages.inputstream-adaptive
-      kodi-wayland
+      kodi
       #lazycli
       lazydocker
       #lazygit
@@ -176,4 +176,6 @@
       (nerdfonts.override { fonts = [ "Meslo" ]; })
     ];
   };
+
+
 }

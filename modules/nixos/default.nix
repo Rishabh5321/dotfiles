@@ -25,5 +25,6 @@
     #./syncthing.nix
     ./users.nix
     ./virtualisation.nix
+    ./kodi.nix
   ];
 }
