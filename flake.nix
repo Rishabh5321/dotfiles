@@ -66,7 +66,7 @@
       #chaotic,
       #impermanence,
       #grub2-themes,
-      ,darkmatter-grub-theme
+    , darkmatter-grub-theme
     , ...
     } @ inputs:
     let
