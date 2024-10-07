@@ -65,7 +65,7 @@
       #kdePackages.sddm-kcm
       # killall
       #kodiPackages.inputstream-adaptive
-      kodi
+      #kodi
       #lazycli
       lazydocker
       #lazygit

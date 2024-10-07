@@ -6,5 +6,5 @@ _: {
     alsa.enable = true;
     pulse.enable = true;
   };
-  #services.pipewire-media-session.enable = true;
+
 }
