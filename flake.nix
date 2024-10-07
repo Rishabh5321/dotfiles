@@ -48,6 +48,8 @@
     #  # Optional, by default this flake follows nixpkgs-unstable.
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
+    #nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    #nixpkgs.follows = "nixos-cosmic/nixpkgs-stable";
   };
 
   outputs =
@@ -60,11 +62,11 @@
     , alejandra
       #, nixpkgs-stable
       #, sddm-sugar-candy-nix
-    , #nixos-cosmic,
+      # , nixos-cosmic,
       #chaotic,
       #impermanence,
       #grub2-themes,
-      darkmatter-grub-theme
+      ,darkmatter-grub-theme
     , ...
     } @ inputs:
     let
@@ -90,7 +92,7 @@
 
       commonConfig = { hostname }: {
         specialArgs = {
-          inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs pkgs-unstable aagl;
+          inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir aagl pkgs-unstable;
         };
         modules = [
           ./nixos/${hostname}/configuration.nix
@@ -111,7 +113,7 @@
           }
           {
             home-manager.extraSpecialArgs = {
-              inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs pkgs-unstable aagl;
+              inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs-unstable aagl;
             };
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backupaa-" + builtins.readFile (pkgs.runCommand "timestamp" { } ''

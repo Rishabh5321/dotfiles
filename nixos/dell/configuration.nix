@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ ...
+{pkgs , ...
 }: {
   imports = [
     # Include the results of the hardware scan.
@@ -24,20 +24,27 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-
+  services.blueman.enable = true;
   services = {
     xserver = {
       enable = true;
-      #displayManager.lightdm.enable = true;
-      #desktopManager.xfce.enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
+      displayManager.lightdm.enable = true;
+      desktopManager.xfce.enable = true;
+      #displayManager.gdm.enable = true;
+      #desktopManager.gnome.enable = true;
       xkb = {
         layout = "us";
         variant = "";
       };
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    pavucontrol
+    xfce.xfce4-pulseaudio-plugin
+  ];
+
+  #services.desktopManager.cosmic.enable = true;
 
   #services.displayManager.sddm.theme = "sddm-astronaut-theme";
   #services.desktopManager.plasma6.enable = true;
