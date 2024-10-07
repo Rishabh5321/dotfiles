@@ -3,8 +3,8 @@
 
   inputs = {
     #nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix/release-24.05";
@@ -17,17 +17,6 @@
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "nixpkgs";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
-    #nixos-conf-editor.url = "github:snowfallorg/nixos-conf-editor";
-    #nix-software-center.url = "github:snowfallorg/nix-software-center";
-    #nix-github-actions = {
-    #  url = "github:zhaofengli/nix-github-actions/matrix-name";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
-    #chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    # hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
-    # hyprland-plugins.inputs.hyprland.follows = "hyprland";
-    #impermanence.url = "github:nix-community/impermanence";
     fine-cmdline = {
       url = "github:VonHeikemen/fine-cmdline.nvim";
       flake = false;
@@ -55,7 +44,7 @@
   outputs =
     { self
     , nixpkgs
-    , nixpkgs-unstable
+    , nixpkgs-stable
     , home-manager
     , aagl
     , spicetify-nix
@@ -75,7 +64,7 @@
       username = "rishabh";
       wallpaper = "wall101.jpg";
       flakeDir = "~/dotfiles";
-      pkgs-unstable = import nixpkgs-unstable {
+      pkgs-stable = import nixpkgs-stable {
         system = "x86_64-linux";
         config = {
           allowUnfree = true;
@@ -92,7 +81,7 @@
 
       commonConfig = { hostname }: {
         specialArgs = {
-          inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir aagl pkgs-unstable;
+          inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir aagl pkgs-stable;
         };
         modules = [
           ./nixos/${hostname}/configuration.nix
@@ -113,7 +102,7 @@
           }
           {
             home-manager.extraSpecialArgs = {
-              inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs-unstable aagl;
+              inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs-stable aagl;
             };
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backupaa-" + builtins.readFile (pkgs.runCommand "timestamp" { } ''

@@ -16,7 +16,7 @@
     ./nh.nix
     ./nix_settings.nix
     ./pkgs.nix
-    ./pkgs_unstable.nix
+    ./pkgs_stable.nix
     ./program.nix
     #./proton.nix
     ./sound.nix

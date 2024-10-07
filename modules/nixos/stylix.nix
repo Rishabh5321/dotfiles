@@ -26,7 +26,7 @@
     # };
     polarity = "dark";
     opacity.terminal = 0.9;
-    cursor.package = pkgs-unstable.afterglow-cursors-recolored;
+    cursor.package = pkgs.afterglow-cursors-recolored;
     cursor.name = "Afterglow-Recolored-Catppuccin-Flamingo";
     cursor.size = 24;
     fonts = {
