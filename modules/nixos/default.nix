@@ -5,7 +5,7 @@
   # my-module = import ./my-module.nix;
   imports = [
     # Include the results of the hardware scan.
-    ./aagl.nix
+    #./aagl.nix
     ./boot.nix
     ./bluetooth.nix
     ./cache.nix
