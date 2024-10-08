@@ -159,12 +159,12 @@
       zsh
       #zsh-powerlevel10k
 
-          dconf-editor
-    gnome-disk-utility
-    gnome-system-monitor
-    gnome-tweaks
-    nautilus
-    zed-editor
+      dconf-editor
+      gnome-disk-utility
+      gnome-system-monitor
+      gnome-tweaks
+      nautilus
+      zed-editor
     ];
 
   #services.plex.enable = true;

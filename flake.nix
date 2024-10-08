@@ -46,7 +46,7 @@
     , nixpkgs
     , nixpkgs-stable
     , home-manager
-    #, aagl
+      #, aagl
     , spicetify-nix
     , alejandra
       #, nixpkgs-stable
