@@ -16,10 +16,11 @@
     ./mangohud.nix
     ./neovim.nix
     ./oh-my-posh.nix
-    ./rofi/rofi.nix
+    #./rofi/rofi.nix
     ./spicetify.nix
     ./stylix.nix
     ./zsh.nix
     #./plasma.nix
+    ./hyprland
   ];
 }
