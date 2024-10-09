@@ -27,7 +27,4 @@
     ./virtualisation.nix
     ./kodi.nix
   ];
-
-  programs.kdeconnect.enable = true;
-  programs.kdeconnect.package = pkgs.kdePackages.kdeconnect-kde;
 }

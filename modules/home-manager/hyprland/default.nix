@@ -1,4 +1,4 @@
-{username,pkgs,host,...}:{
+{username,pkgs,pkgs-stable,host,...}:{
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -69,7 +69,6 @@
     pkgs.wayland-utils
     pkgs.wlr-randr
     pkgs.brightnessctl  
-    pkgs.kdePackages.kdeconnect-kde
+    pkgs-stable.kdePackages.kdeconnect-kde
   ];
-  
 }
