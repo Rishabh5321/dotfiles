@@ -1,4 +1,4 @@
-{username,pkgs,pkgs-stable,host,...}:{
+{ username, pkgs, pkgs-stable, host, ... }: {
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -38,7 +38,7 @@
     fill_shape=false
   '';
 
-    # Create XDG Dirs
+  # Create XDG Dirs
   xdg = {
     userDirs = {
       enable = true;
@@ -68,7 +68,7 @@
     pkgs.wayland-protocols
     pkgs.wayland-utils
     pkgs.wlr-randr
-    pkgs.brightnessctl  
+    pkgs.brightnessctl
     pkgs-stable.kdePackages.kdeconnect-kde
   ];
 }
