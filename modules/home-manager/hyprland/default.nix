@@ -52,7 +52,7 @@
     (import ./pkgs/task-waybar.nix { inherit pkgs; })
     #(import ../pkgs/squirtle.nix {inherit pkgs;})
     #(import ../pkgs/nvidia-offload.nix { inherit pkgs; })
-    (import ../pkgs/wallsetter.nix {
+    (import ./pkgs/wallsetter.nix {
       inherit pkgs;
       inherit username;
     })
@@ -65,5 +65,11 @@
     })
     #(import ../pkgs/startup.nix {inherit pkgs;})
     #(import ../pkgs/battery.nix {inherit pkgs;})
+    pkgs.wayland-protocols
+    pkgs.wayland-utils
+    pkgs.wlr-randr
+    pkgs.brightnessctl  
+    pkgs.kdePackages.kdeconnect-kde
   ];
+  
 }

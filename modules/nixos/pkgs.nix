@@ -127,7 +127,7 @@
       stremio
       #swappy
       #swaynotificationcenter
-      #swww
+      swww
       #swtpm
       telegram-desktop
       tldr

@@ -42,7 +42,6 @@
 
   environment.systemPackages = with pkgs; [
     pavucontrol
-    kdePackages.kdeconnect-kde
     xfce.xfce4-pulseaudio-plugin
   ];
 

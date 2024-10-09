@@ -51,7 +51,8 @@ with lib; {
           exec-once = wl-paste --type text --watch cliphist store #Stores only text data
           exec-once = wl-paste --type image --watch cliphist store #Stores only image data
           exec-once = sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/${wallpaper}
-          monitor=,preferred,auto,1
+          monitor=eDP-1,preferred,1600x0,1
+          monitor=DP-1,preferred,0x0,1
           ${extraMonitorSettings}
           # plugin {
           #   hyprtrails {
