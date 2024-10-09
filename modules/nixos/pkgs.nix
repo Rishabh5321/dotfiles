@@ -89,6 +89,7 @@
       #neovide
       #networkmanagerapplet
       nh
+      nwg-look
       #ninja
       #nixfmt-rfc-style
       #nixos-generators
