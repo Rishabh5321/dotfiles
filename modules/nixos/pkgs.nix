@@ -22,7 +22,7 @@
       #brightnessctl
       btop
       cava
-      #cliphist
+      cliphist
       #cmatrix
       #cowsay
       cursor
@@ -31,7 +31,7 @@
       distrobox
       docker
       docker-compose
-      #dracula-icon-theme
+      dracula-icon-theme
       #duf
       eza
       fast-cli
@@ -48,7 +48,7 @@
       git
       github-desktop
       #glxinfo
-      #google-chrome
+      google-chrome
       grim
       #heroic
       htop
@@ -87,7 +87,7 @@
       #mpv
       #ncdu
       #neovide
-      #networkmanagerapplet
+      networkmanagerapplet
       nh
       nwg-look
       #ninja
@@ -149,7 +149,7 @@
       #wayland-pipewire-idle-inhibit
       wget
       #wezterm
-      #wl-clipboard
+      wl-clipboard
       #wlroots
       #xfce.xfce4-pulseaudio-plugin
       # yad

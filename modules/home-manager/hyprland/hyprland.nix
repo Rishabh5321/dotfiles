@@ -155,8 +155,6 @@ with lib; {
           bind = ${modifier},E,exec,emopicker9000
           bind = ${modifier},S,exec,screenshootin
           bind = ${modifier},D,exec,discord
-          bind = ${modifier},G,exec,togglegroup
-          bind = ${modifier}SHIFT,tab,changegroupactive
           bind = ${modifier},C,exec,hyprpicker -a
           bind = ${modifier}SHIFT,G,exec,godot4
           bind = ${modifier},T,exec,thunar
@@ -211,6 +209,8 @@ with lib; {
           bindm = ${modifier},mouse:272,movewindow
           bindm = ${modifier},mouse:273,resizewindow
           bind = ALT,Tab,cyclenext
+bind = ${modifier}, G, togglegroup
+bind = ${modifier} CTRL, tab, changegroupactive  #change focus to another window
           bind = ALT,Tab,bringactivetotop
           bind = ,XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
           bind = ,XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-

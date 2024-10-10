@@ -30,14 +30,19 @@
     xserver = {
       enable = true;
       displayManager.lightdm.enable = true;
-      desktopManager.xfce.enable = true;
+      #desktopManager.xfce = { 
+      #  enable = true;
+        #enableXfwm = false;
+      #};
       #displayManager.gdm.enable = true;
       #desktopManager.gnome.enable = true;
       xkb = {
         layout = "us";
         variant = "";
       };
+      #windowManager.i3.enable = true;
     };
+    displayManager.defaultSession = "hyprland";
   };
 
   environment.systemPackages = with pkgs; [
