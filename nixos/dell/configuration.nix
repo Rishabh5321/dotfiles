@@ -32,7 +32,7 @@
       displayManager.lightdm.enable = true;
       #desktopManager.xfce = { 
       #  enable = true;
-        #enableXfwm = false;
+      #enableXfwm = false;
       #};
       #displayManager.gdm.enable = true;
       #desktopManager.gnome.enable = true;
