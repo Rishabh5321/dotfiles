@@ -1,6 +1,5 @@
 { pkgs
 , inputs
-, config
 , spicetify-nix
 , ...
 }: {
