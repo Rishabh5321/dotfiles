@@ -8,7 +8,6 @@
   programs.spicetify =
     let
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-      palette = config.stylix.base16Scheme;
     in
     {
       enable = true;
