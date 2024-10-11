@@ -166,6 +166,11 @@
       gnome-tweaks
       nautilus
       zed-editor
+
+      qt5.qtbase
+      qt5.qtwayland.bin
+      qt6.qtwayland
+      qt6.qtbase
     ];
 
   #services.plex.enable = true;
