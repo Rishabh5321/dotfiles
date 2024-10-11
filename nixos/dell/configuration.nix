@@ -54,16 +54,16 @@
     enable = true;
     sddm = {
       enable = true;
-            wayland = {
+      wayland = {
         enable = true;
       };
-              settings = {
-          Autologin = {
-            Session = "hyprland";
-            User = "rishabh";
-          };
+      settings = {
+        Autologin = {
+          Session = "hyprland";
+          User = "rishabh";
         };
-        autoNumlock = true;
+      };
+      autoNumlock = true;
     };
   };
   #services.desktopManager.cosmic.enable = true;
