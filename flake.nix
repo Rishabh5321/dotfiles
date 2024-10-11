@@ -7,7 +7,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    stylix.url = "github:danth/stylix/release-24.05";
+    stylix.url = "github:danth/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
