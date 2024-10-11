@@ -1,13 +1,13 @@
 name: Nix Format and Lint
 
 on:
+  pull_request:
+  workflow_dispatch:
   push:
     branches:
       - 'master'
     tags-ignore:
       - 'update'
-  pull_request:
-  workflow_dispatch:
   schedule:
     - cron: '0 */12 * * *'
 

@@ -29,7 +29,7 @@
   services = {
     xserver = {
       enable = true;
-      displayManager.lightdm.enable = true;
+      #displayManager.lightdm.enable = true;
       #desktopManager.xfce = { 
       #  enable = true;
       #enableXfwm = false;
@@ -50,6 +50,22 @@
     xfce.xfce4-pulseaudio-plugin
   ];
 
+  services.displayManager = {
+    enable = true;
+    sddm = {
+      enable = true;
+            wayland = {
+        enable = true;
+      };
+              settings = {
+          Autologin = {
+            Session = "hyprland";
+            User = "rishabh";
+          };
+        };
+        autoNumlock = true;
+    };
+  };
   #services.desktopManager.cosmic.enable = true;
 
   #services.displayManager.sddm.theme = "sddm-astronaut-theme";

@@ -1,5 +1,7 @@
 name: Dead code analysis
 on:
+  pull_request:
+  workflow_dispatch:
   push:
     branches:
       - 'master'

@@ -45,7 +45,7 @@ with lib; {
                     exec-once = killall -q swaync;sleep .5 && swaync
                     exec-once = nm-applet --indicator
                     #exec-once = lxqt-policykit-agent
-                    #exec-once = hyprlock --immediate
+                    exec-once = hyprlock --immediate
                     #exec-once = sleep 1.5 && startup
                     exec-once = sleep 5 && kdeconnect-settings && kdeconnect-indicator
                     exec-once = wl-paste --type text --watch cliphist store #Stores only text data
