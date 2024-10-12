@@ -1,7 +1,6 @@
-{
-  pkgs,
-  username,
-  ...
+{ pkgs
+, username
+, ...
 }: {
   #sops.secrets.ta-password.neededForUsers = true;
   #users.mutableUsers = false;
@@ -25,7 +24,7 @@
       ];
       shell = pkgs.zsh;
       ignoreShellProgramCheck = true;
-      packages = with pkgs; [];
+      packages = with pkgs; [ ];
     };
     # "newuser" = {
     #   homeMode = "755";

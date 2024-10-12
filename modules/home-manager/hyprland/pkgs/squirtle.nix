@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 pkgs.writeShellScriptBin "squirtle" ''
   echo "
   [38;2;0;0;0m      ████████                  ██████

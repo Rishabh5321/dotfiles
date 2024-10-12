@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 pkgs.writeShellScriptBin "wallsetter" ''
 
   TIMEOUT=1000000000000000

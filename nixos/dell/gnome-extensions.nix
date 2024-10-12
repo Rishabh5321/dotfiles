@@ -1,20 +1,19 @@
-{
-  pkgs,
-  #pkgs,
+{ pkgs
+, #pkgs,
   ...
 }: {
   programs.gnome-shell = {
     enable = true;
     extensions = [
-      {package = pkgs.gnomeExtensions.appindicator;}
-      {package = pkgs.gnomeExtensions.caffeine;}
-      {package = pkgs.gnomeExtensions.clipboard-indicator;}
-      {package = pkgs.gnomeExtensions.user-themes;}
-      {package = pkgs.gnomeExtensions.alphabetical-app-grid;}
-      {package = pkgs.gnomeExtensions.system-monitor;}
-      {package = pkgs.gnomeExtensions.dash-to-dock;}
-      {package = pkgs.gnomeExtensions.gsconnect;}
-      {package = pkgs.gnomeExtensions.pop-shell;}
+      { package = pkgs.gnomeExtensions.appindicator; }
+      { package = pkgs.gnomeExtensions.caffeine; }
+      { package = pkgs.gnomeExtensions.clipboard-indicator; }
+      { package = pkgs.gnomeExtensions.user-themes; }
+      { package = pkgs.gnomeExtensions.alphabetical-app-grid; }
+      { package = pkgs.gnomeExtensions.system-monitor; }
+      { package = pkgs.gnomeExtensions.dash-to-dock; }
+      { package = pkgs.gnomeExtensions.gsconnect; }
+      { package = pkgs.gnomeExtensions.pop-shell; }
       #{ package = pkgs.gnomeExtensions.unite; }
       #{ package = pkgs.gnomeExtensions.blur-my-shell; }
       #{package = pkgs-unstable.gnome-shell-extension-tilingnome-unstable;}
@@ -65,7 +64,7 @@
       screen-blank = "never";
       show-indicator = "only-active";
       show-notifications = false;
-      toggle-shortcut = ["<Super>c"];
+      toggle-shortcut = [ "<Super>c" ];
     };
 
     "org/gnome/shell/extensions/clipboard-indicator" = {
@@ -76,9 +75,9 @@
       strip-text = true;
       topbar-preview-size = 8;
 
-      clear-history = [];
-      private-mode-binding = [];
-      toggle-menu = ["<Super><Control>v"];
+      clear-history = [ ];
+      private-mode-binding = [ ];
+      toggle-menu = [ "<Super><Control>v" ];
     };
 
     "org/gnome/shell/extensions/alphabetical-app-grid" = {

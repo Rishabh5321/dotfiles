@@ -1,8 +1,7 @@
-{
-  lib,
-  wallpaper,
-  config,
-  ...
+{ lib
+, wallpaper
+, config
+, ...
 }: {
   services.displayManager = {
     enable = true;

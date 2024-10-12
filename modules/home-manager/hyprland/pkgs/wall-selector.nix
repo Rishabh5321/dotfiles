@@ -1,7 +1,6 @@
-{
-  pkgs,
-  wallpaperDir,
-  ...
+{ pkgs
+, wallpaperDir
+, ...
 }:
 pkgs.writeShellScriptBin "wallSelector" ''
   # Find all wallpapers in the directory that match the pattern "wall*"
