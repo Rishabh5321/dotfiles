@@ -1,11 +1,11 @@
-{ pkgs
-, inputs
-, ...
+{
+  pkgs,
+  inputs,
+  ...
 }: {
-  environment.systemPackages =
-    let
-      cursor = pkgs.callPackage ../../pkgs/cursor.nix { };
-    in
+  environment.systemPackages = let
+    cursor = pkgs.callPackage ../../pkgs/cursor.nix {};
+  in
     with pkgs; [
       #age
       alacritty
@@ -56,7 +56,7 @@
       # hyprpicker
       # hyprshot
       # imv
-      #inputs.alejandra.defaultPackage.${system}
+      inputs.alejandra.defaultPackage.${system}
       #intel-gpu-tools # For Intel GPU tools
       # inxi
       inputs.zen-browser.packages."${system}".default
@@ -186,9 +186,7 @@
       powerline
       nerdfonts
       material-icons
-      (nerdfonts.override { fonts = [ "Meslo" ]; })
+      (nerdfonts.override {fonts = ["Meslo"];})
     ];
   };
-
-
 }

@@ -4,15 +4,15 @@
 #     https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/at/atuin/package.nix
 #
 # Helpful documentation: https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md
-{ lib
-, stdenv
-, installShellFiles
-, rustPlatform
-, libiconv
-, Security
-, SystemConfiguration
-, AppKit
-,
+{
+  lib,
+  stdenv,
+  installShellFiles,
+  rustPlatform,
+  libiconv,
+  Security,
+  SystemConfiguration,
+  AppKit,
 }:
 rustPlatform.buildRustPackage {
   name = "atuin";
@@ -25,9 +25,9 @@ rustPlatform.buildRustPackage {
     allowBuiltinFetchGit = true;
   };
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [installShellFiles];
 
-  buildInputs = lib.optionals stdenv.isDarwin [ libiconv Security SystemConfiguration AppKit ];
+  buildInputs = lib.optionals stdenv.isDarwin [libiconv Security SystemConfiguration AppKit];
 
   postInstall = ''
     installShellCompletion --cmd atuin \

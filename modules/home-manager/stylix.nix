@@ -1,4 +1,8 @@
-{ lib, pkgs, ... }: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   gtk = {
     iconTheme = {
       name = "Tela-blue";

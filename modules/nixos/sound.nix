@@ -6,5 +6,4 @@ _: {
     alsa.enable = true;
     pulse.enable = true;
   };
-
 }

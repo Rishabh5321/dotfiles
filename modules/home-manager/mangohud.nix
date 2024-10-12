@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = [
     (pkgs.writeShellScriptBin "mangohud-opengl" ''
       ${pkgs.mangohud}/bin/mangohud --dlsym $@
