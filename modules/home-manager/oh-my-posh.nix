@@ -1,7 +1,7 @@
 _: {
   programs.oh-my-posh = {
     enable = true;
-    useTheme = "paradox";
+    useTheme = "night-owl";
     enableBashIntegration = true;
     enableZshIntegration = true;
   };
