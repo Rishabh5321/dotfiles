@@ -81,7 +81,7 @@
       #lutris
       #lxqt.lxqt-policykit
       #marwaita-icons
-      #mesa
+      mesa
       #meson
       micro
       #mpv
@@ -166,11 +166,10 @@
       gnome-tweaks
       nautilus
       zed-editor
+      inputs.wfetch.packages.${pkgs.system}.default
 
-      qt5.qtbase
-      qt5.qtwayland.bin
-      qt6.qtwayland
-      qt6.qtbase
+      libsForQt5.qt5.qtbase
+      libsForQt5.qt5.qtsvg
     ];
 
   #services.plex.enable = true;

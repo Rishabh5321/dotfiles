@@ -17,8 +17,8 @@
   qt = {
     enable = true;
     platformTheme.name = "gtk";
-    style.name = "adwaita";
-    style.package = pkgs.adwaita-qt;
+    style.name = "qt6gtk2";
+    #style.package = pkgs.zuki-themes;
   };
   home.sessionVariables = {
     # QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
