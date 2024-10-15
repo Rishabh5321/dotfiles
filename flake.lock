@@ -1234,11 +1234,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1728879375,
-        "narHash": "sha256-wvh1/Mo1T0sshh9838nK3hyPJgRhXRYhEeYFXcHGkEI=",
+        "lastModified": 1728993873,
+        "narHash": "sha256-mC9K7SfTocYTNHXh6IaVshdiyc8TJYo3AaeFf+Y26Dg=",
         "owner": "iynaix",
         "repo": "wfetch",
-        "rev": "ed577b2a2fa9b6a76259c7292ea17621fb36ecce",
+        "rev": "d534d8e0adfb9055a7cbd85f52caeb24b4aead6e",
         "type": "github"
       },
       "original": {
