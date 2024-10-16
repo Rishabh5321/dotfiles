@@ -16,13 +16,13 @@
       #authenticator
       bat
       beeper
-      bitwarden-desktop
+      #bitwarden-desktop
       #bottles
       brave
       #brightnessctl
       btop
       cava
-      cliphist
+      #cliphist
       #cmatrix
       #cowsay
       cursor

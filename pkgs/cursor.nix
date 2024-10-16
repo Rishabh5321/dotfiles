@@ -2,7 +2,7 @@
 { pkgs, ... }:
 let
   pname = "cursor";
-  version = "0.41.2";
+  version = "0.42.2";
 
   src = pkgs.fetchurl {
     # this will break if the version is updated.
@@ -11,7 +11,7 @@ let
     # alternatively, download the appimage manually and
     # include it via src = ./cursor.AppImage, instead of fetchurl
     url = "https://downloader.cursor.sh/linux/appImage/x64";
-    hash = "sha256-WtfyiNGnUn8g1HR0TQPyn3SMJmjqe+otAYeyokMIO+w=";
+    hash = "sha256-HDZ8i/86qZOqrsBcMbgeXGtZ5hmQfeDCqv9scBT1fak=";
   };
   appimageContents = pkgs.appimageTools.extract { inherit pname version src; };
 in
