@@ -1233,11 +1233,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1728993873,
-        "narHash": "sha256-mC9K7SfTocYTNHXh6IaVshdiyc8TJYo3AaeFf+Y26Dg=",
+        "lastModified": 1729008524,
+        "narHash": "sha256-hcicD+zPMB5eotivlu9O1JJ2Lg8e9Tg+4J905ZyyIAY=",
         "owner": "iynaix",
         "repo": "wfetch",
-        "rev": "d534d8e0adfb9055a7cbd85f52caeb24b4aead6e",
+        "rev": "a9d5d6522e29f150d8123d59e0cad64369da93b5",
         "type": "github"
       },
       "original": {
