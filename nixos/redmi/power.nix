@@ -6,7 +6,7 @@ _: {
   # services.power-profiles-daemon.enable = false;
 
   # Enable powertop
-  powerManagement.powertop.enable = true;
+  #powerManagement.powertop.enable = true;
 
   # Enable thermald (only necessary if on Intel CPUs)
   services.thermald.enable = true;
