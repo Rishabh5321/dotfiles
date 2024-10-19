@@ -50,7 +50,7 @@
       #glxinfo
       google-chrome
       grim
-      #heroic
+      heroic
       htop
       # hyprlock
       # hyprpicker
