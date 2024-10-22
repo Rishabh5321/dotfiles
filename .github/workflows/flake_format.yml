@@ -1,4 +1,4 @@
-name: Nix Format and Lint
+name: flake_format
 
 on:
   pull_request:

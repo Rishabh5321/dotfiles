@@ -1,4 +1,4 @@
-name: Flake Check
+name: flake_check
 
 on:
   push:

@@ -1,34 +1,20 @@
-name: Pull Request Build
+pull_request_rules:
+  - name: "Merge when all checks pass"
+    conditions:
+      # Check if the required GitHub Actions workflows have succeeded
+      - "status-success=flake_deadnix"
+      - "status-success=flake_check"
+      - "status-success=flake_format"
+    actions:
+      merge:
+        method: rebase
 
-on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    # Add your build or test steps here
-    - name: Run your build/test
-      run: echo "Running build or tests" # Replace with actual commands
-
-    - name: Check build result
-      if: ${{ failure() }}
-      run: |
-        echo "Build failed, closing pull request"
-        gh pr close ${{ github.event.pull_request.number }} -R ${{ github.repository }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Merge on success
-      if: ${{ success() }}
-      run: |
-        echo "Build succeeded, merging pull request"
-        gh pr merge ${{ github.event.pull_request.number }} --rebase -R ${{ github.repository }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  - name: "Close if any checks fail"
+    conditions:
+      # Check if any of the required GitHub Actions workflows have failed
+      - "status-failure=flake_deadnix"
+      - "status-failure=flake_check"
+      - "status-failure=flake_format"
+    actions:
+      close:
+        message: "Closing this pull request as one or more checks failed."

@@ -1,4 +1,4 @@
-name: Dead code analysis
+name: flake_deadnix
 on:
   push:
     branches:
