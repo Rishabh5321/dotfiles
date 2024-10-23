@@ -1,0 +1,55 @@
+name: Merge Flake Update
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+
+jobs:
+  wait_for_other_workflows:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check if other workflows are completed
+        uses: actions/github-script@v6
+        id: check_workflows
+        with:
+          script: |
+            const { owner, repo, pull_number } = context.issue;
+            const runs = await github.actions.listWorkflowRunsForRepo({
+              owner,
+              repo,
+              event: 'pull_request',
+              branch: 'main',
+            });
+
+            const isSuccess = runs.data.workflow_runs.every(run => run.conclusion === 'success');
+
+            if (!isSuccess) {
+              core.setFailed('Not all workflows have succeeded.');
+            } else {
+              console.log('All workflows are successful.');
+            }
+
+  merge_or_close_pr:
+    needs: wait_for_other_workflows
+    runs-on: ubuntu-latest
+    if: success()
+    
+    steps:
+      - name: Merge Pull Request
+        uses: "peter-evans/merge-pull-request@v3"
+        with:
+          pull-request-number: ${{ github.event.pull_request.number }}
+          merge-method: squash
+
+  close_pr:
+    needs: wait_for_other_workflows
+    runs-on: ubuntu-latest
+    if: failure()
+
+    steps:
+      - name: Close Pull Request
+        run: |
+          gh pr close ${{ github.event.pull_request.number }} --repo ${{ github.repository }}
