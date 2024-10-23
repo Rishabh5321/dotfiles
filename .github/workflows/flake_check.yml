@@ -32,10 +32,11 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
         run: |
+          BRANCH_NAME="${{ github.ref_name }}"
           if [[ "${{ job.status }}" == "success" ]]; then
-            MESSAGE="✅ Nix Format and Lint for Rishabh5321/dotfiles completed successfully."
+            MESSAGE="✅ Flake check for Rishabh5321/dotfiles completed successfully on branch $BRANCH_NAME."
           else
-            MESSAGE="❌ Nix Format and Lint for Rishabh5321/dotfiles failed. Check GitHub Actions for details."
+            MESSAGE="❌ Flake check for Rishabh5321/dotfiles failed on branch $BRANCH_NAME. Check GitHub Actions for details."
           fi
           curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
             -d chat_id=$CHAT_ID \
