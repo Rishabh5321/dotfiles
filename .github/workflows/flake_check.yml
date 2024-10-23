@@ -7,7 +7,7 @@ on:
 
 jobs:
   flake-checks:
-    name: Nix Flake Checks
+    name: flake_check
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,7 @@ jobs:
             auto-optimise-store = true
             experimental-features = nix-command flakes
 
-      - name: Run Nix Flake Check
+      - name: flake_check
         run: nix flake check
 
         
