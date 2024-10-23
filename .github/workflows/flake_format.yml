@@ -43,18 +43,3 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: 'chore: auto lint and format'
-
-    - name: Send Telegram Notification
-      if: always()
-      env:
-        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-        CHAT_ID: ${{ secrets.CHAT_ID }}
-      run: |
-        if [[ "${{ job.status }}" == "success" ]]; then
-          MESSAGE="✅ Nix Format and Lint for Rishabh5321/dotfiles completed successfully."
-        else
-          MESSAGE="❌ Nix Format and Lint for Rishabh5321/dotfiles failed. Check GitHub Actions for details."
-        fi
-        curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
-          -d chat_id=$CHAT_ID \
-          -d text="$MESSAGE"
