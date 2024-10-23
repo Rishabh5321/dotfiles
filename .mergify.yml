@@ -1,0 +1,7 @@
+pull_request_rules:
+  - name: Merge flake
+    description: Merge when PR passes all branch protection during office hours
+    conditions:
+      - check-success = flake_check
+    actions:
+      merge:
