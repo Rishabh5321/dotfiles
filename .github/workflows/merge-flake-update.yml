@@ -16,15 +16,25 @@ jobs:
         id: check_workflows
         with:
           script: |
-            const { owner, repo, pull_number } = context.issue;
-            const runs = await github.actions.listWorkflowRunsForRepo({
-              owner,
-              repo,
-              event: 'pull_request',
-              branch: 'main',
-            });
+            const { owner, repo } = context.repo;
+            const pull_number = context.payload.pull_request.number;
 
-            const isSuccess = runs.data.workflow_runs.every(run => run.conclusion === 'success');
+            // Fetch all workflow runs for this repo
+            const runs = await github.paginate(
+              github.rest.actions.listWorkflowRunsForRepo,
+              {
+                owner: owner,
+                repo: repo,
+                event: 'pull_request',
+                branch: 'main'
+              }
+            );
+
+            // Filter the runs for the current pull request
+            const currentPRRuns = runs.filter(run => run.pull_requests.some(pr => pr.number === pull_number));
+
+            // Check if all workflow runs for the current PR are successful
+            const isSuccess = currentPRRuns.every(run => run.conclusion === 'success');
 
             if (!isSuccess) {
               core.setFailed('Not all workflows have succeeded.');
@@ -36,7 +46,7 @@ jobs:
     needs: wait_for_other_workflows
     runs-on: ubuntu-latest
     if: success()
-    
+
     steps:
       - name: Merge Pull Request
         uses: "peter-evans/merge-pull-request@v3"
