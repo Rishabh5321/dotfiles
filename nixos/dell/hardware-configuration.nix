@@ -4,14 +4,15 @@
 { config
 , lib
 , modulesPath
+, pkgs
 , ...
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" ];
-  #boot.kernelParams = [ "amdgpu.si_support=1" "amdgpu.si_support=0" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" "amdgpu" ];
+  boot.kernelParams = ["radeon.si_support=0" "amdgpu.si_support=1" "radeon.cik_support=0" "amdgpu.cik_support=1" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
@@ -58,4 +59,15 @@
   #systemd.tmpfiles.rules = [
   #  "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
   #];
+
+  hardware.graphics = {
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd
+    ];
+  };
+
+  environment.variables = {
+  ROC_ENABLE_PRE_VEGA = "1";
+};
+
 }

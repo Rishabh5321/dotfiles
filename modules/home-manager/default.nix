@@ -22,5 +22,6 @@
     ./zsh.nix
     #./plasma.nix
     ./hyprland
+    ./libnotify.nix
   ];
 }

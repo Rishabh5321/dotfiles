@@ -22,10 +22,12 @@
       #brightnessctl
       btop
       cava
+      clinfo
       #cliphist
       #cmatrix
       #cowsay
       cursor
+      dunst
       #dconf-editor
       discord
       distrobox
