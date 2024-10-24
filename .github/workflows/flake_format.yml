@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
 
     steps:
     - name: Checkout repository
@@ -39,7 +40,11 @@ jobs:
     - name: Run Nix Format
       run: nixpkgs-fmt .
     
-    - name: Commit changes
-      uses: stefanzweifel/git-auto-commit-action@v5
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
       with:
-        commit_message: 'chore: auto lint and format'
+        commit-message: 'chore: auto lint and format'
+        title: 'Auto Lint and Format'
+        body: 'This is an auto-generated PR with linting and formatting changes.'
+        branch: auto-lint-format
+        delete-branch: true
