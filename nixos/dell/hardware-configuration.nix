@@ -12,7 +12,7 @@
   ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" "amdgpu" ];
-  boot.kernelParams = ["radeon.si_support=0" "amdgpu.si_support=1" "radeon.cik_support=0" "amdgpu.cik_support=1" ];
+  boot.kernelParams = [ "radeon.si_support=0" "amdgpu.si_support=1" "radeon.cik_support=0" "amdgpu.cik_support=1" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
@@ -67,7 +67,7 @@
   };
 
   environment.variables = {
-  ROC_ENABLE_PRE_VEGA = "1";
-};
+    ROC_ENABLE_PRE_VEGA = "1";
+  };
 
 }
