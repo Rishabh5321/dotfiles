@@ -26,7 +26,7 @@
     style.name = "adw-gtk3-dark";
     #style.package = pkgs.zuki-themes;
   };
-  
+
   stylix.targets.waybar.enable = false;
   stylix.targets.rofi.enable = false;
   stylix.targets.hyprland.enable = false;
