@@ -16,7 +16,7 @@
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "nixpkgs";
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
     fine-cmdline = {
       url = "github:VonHeikemen/fine-cmdline.nvim";
       flake = false;
