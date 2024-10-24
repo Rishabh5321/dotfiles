@@ -48,3 +48,5 @@ jobs:
         body: 'This is an auto-generated PR with linting and formatting changes.'
         branch: auto-lint-format
         delete-branch: true
+        token: ${{ secrets.REPO_ACCESS_TOKEN }}
+        
