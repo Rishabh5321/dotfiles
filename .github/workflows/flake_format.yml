@@ -41,7 +41,7 @@ jobs:
       run: nixpkgs-fmt .
     
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v5
+      uses: peter-evans/create-pull-request@v7
       with:
         commit-message: 'chore: auto lint and format'
         title: 'Auto Lint and Format'
