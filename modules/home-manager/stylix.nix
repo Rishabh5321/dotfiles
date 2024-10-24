@@ -1,5 +1,6 @@
 { lib
 , pkgs
+, config
 , ...
 }: {
   gtk = {
@@ -8,27 +9,24 @@
       package = pkgs.tela-icon-theme;
     };
     gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
+      #gtk-application-prefer-dark-theme = 1;
     };
     gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
+      #gtk-application-prefer-dark-theme = 1;
     };
+    #theme = {
+    #  name = "adw-gtk3-dark";
+    #  package = pkgs.adw-gtk3;
+    #};
+    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
   };
   qt = {
     enable = true;
     platformTheme.name = "gtk";
-    style.name = "qt6gtk2";
+    style.name = "adw-gtk3-dark";
     #style.package = pkgs.zuki-themes;
   };
-  home.sessionVariables = {
-    # QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
-    QT_PLUGIN_PATH = lib.concatStringsSep ":" [
-      "${pkgs.qt5.qtbase}/${pkgs.qt5.qtbase.qtPluginPrefix}"
-      "${pkgs.qt5.qtwayland.bin}/${pkgs.qt5.qtbase.qtPluginPrefix}"
-      "${pkgs.qt6.qtwayland}/lib/qt-6/plugins"
-      "${pkgs.qt6.qtbase}/${pkgs.qt6.qtbase.qtPluginPrefix}"
-    ];
-  };
+  
   stylix.targets.waybar.enable = false;
   stylix.targets.rofi.enable = false;
   stylix.targets.hyprland.enable = false;

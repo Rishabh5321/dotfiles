@@ -45,6 +45,7 @@
       firefox
       #floorp
       fzf
+      gamescope
       gedit
       gh
       git
@@ -162,6 +163,7 @@
       zsh
       #zsh-powerlevel10k
 
+      winetricks
       dconf-editor
       gnome-disk-utility
       gnome-system-monitor
