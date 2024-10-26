@@ -21,9 +21,8 @@
   };
   qt = {
     enable = true;
-    platformTheme.name = "gtk";
-    style.name = "adw-gtk3-dark";
-    #style.package = pkgs.zuki-themes;
+    style.name = "adwaita-dark";
+    platformTheme.name = "gtk3";
   };
 
   stylix.targets.waybar.enable = false;
