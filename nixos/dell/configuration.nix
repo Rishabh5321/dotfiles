@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos
     ./power.nix
-    ./intel-drivers.nix 
+    ./intel-drivers.nix
     #./amd-drivers.nix
   ];
 
