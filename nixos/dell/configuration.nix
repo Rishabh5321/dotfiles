@@ -8,11 +8,11 @@
     ../../modules/nixos
     ./power.nix
     ./intel-drivers.nix 
-    ./amd-drivers.nix
+    #./amd-drivers.nix
   ];
 
   drivers.intel.enable = true;
-  drivers.amdgpu.enable = true;
+  #drivers.amdgpu.enable = false;
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.hostName = "dell"; # Define your hostname.
