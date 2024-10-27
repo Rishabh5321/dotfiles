@@ -24,7 +24,7 @@ _: {
       env = {
         term = "xterm-256color";
       };
-      live_config_reload = true;
+      general.live_config_reload = true;
     };
   };
 }
