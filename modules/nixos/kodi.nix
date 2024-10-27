@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   services.xserver.desktopManager.kodi.enable = true;
-  services.xserver.desktopManager.kodi.package = pkgs.kodi-gbm.withPackages (p:
+  services.xserver.desktopManager.kodi.package = pkgs.kodi-wayland.withPackages (p:
     with p; [
       jellyfin
       pvr-iptvsimple
