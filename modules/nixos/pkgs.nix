@@ -84,6 +84,7 @@
       #lutris
       #lxqt.lxqt-policykit
       #marwaita-icons
+      mangohud
       mesa
       #meson
       micro

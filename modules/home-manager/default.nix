@@ -13,7 +13,7 @@
     ./git.nix
     ./htop.nix
     ./kitty.nix
-    ./mangohud.nix
+    #./mangohud.nix
     ./neovim.nix
     ./oh-my-posh.nix
     #./rofi/rofi.nix
