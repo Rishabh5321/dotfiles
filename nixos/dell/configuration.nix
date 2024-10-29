@@ -42,14 +42,19 @@
         layout = "us";
         variant = "";
       };
+      videoDrivers = [ "modesetting" "intel" ];
       #windowManager.i3.enable = true;
     };
     displayManager.defaultSession = "hyprland";
   };
 
   environment.systemPackages = with pkgs; [
+    dunst
     pavucontrol
     xfce.xfce4-pulseaudio-plugin
+    docker
+    docker-compose
+    lazydocker
   ];
 
   services.displayManager = {

@@ -18,7 +18,7 @@
       beeper
       #bitwarden-desktop
       #bottles
-      brave
+      #brave
       #brightnessctl
       btop
       cava
@@ -27,12 +27,9 @@
       #cmatrix
       #cowsay
       cursor
-      dunst
       #dconf-editor
       discord
-      distrobox
-      docker
-      docker-compose
+      #distrobox
       dracula-icon-theme
       #duf
       eza
@@ -53,7 +50,6 @@
       #glxinfo
       google-chrome
       grim
-      heroic
       htop
       # hyprlock
       # hyprpicker
@@ -70,7 +66,6 @@
       #kodiPackages.inputstream-adaptive
       #kodi
       #lazycli
-      lazydocker
       #lazygit
       #libnotify
       libreoffice

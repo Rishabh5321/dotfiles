@@ -13,6 +13,8 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" ];
   #boot.kernelParams = [ "radeon.si_support=0" "amdgpu.si_support=1" "radeon.cik_support=0" "amdgpu.cik_support=1" ];
   boot.initrd.kernelModules = [ ];
+  boot.kernelParams = [ "radeon.runpm=0" "amdgpu.runpm=0" ];
+  boot.blacklistedKernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 

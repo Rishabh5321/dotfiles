@@ -91,4 +91,9 @@
       pkgs.xdg-desktop-portal
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    heroic
+  ];
+
 }
