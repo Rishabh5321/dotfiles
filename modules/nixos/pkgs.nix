@@ -35,7 +35,7 @@
       eza
       fast-cli
       fastfetch
-      ffmpeg
+      #ffmpeg
       #figlet
       #file-roller
       filezilla
