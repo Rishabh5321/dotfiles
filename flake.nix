@@ -40,10 +40,10 @@
     #nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     #nixpkgs.follows = "nixos-cosmic/nixpkgs-stable";
 
-    wfetch = {
-      url = "github:iynaix/wfetch";
-      inputs.nixpkgs.follows = "nixpkgs"; # override this repo's nixpkgs snapshot
-    };
+    #wfetch = {
+    #  url = "github:iynaix/wfetch";
+    #  inputs.nixpkgs.follows = "nixpkgs"; # override this repo's nixpkgs snapshot
+    #};
   };
 
   outputs =

@@ -166,7 +166,7 @@
       gnome-tweaks
       nautilus
       zed-editor
-      inputs.wfetch.packages.${pkgs.system}.default
+      #inputs.wfetch.packages.${pkgs.system}.default
 
       libsForQt5.qt5.qtbase
       libsForQt5.qt5.qtsvg
