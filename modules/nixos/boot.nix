@@ -31,11 +31,16 @@
       mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
+    plymouth = {
+    enable = false;
+    theme = "dna";
+    themePackages = [pkgs.adi1090x-plymouth-themes];
+  };
     #plymouth.enable = true;
   };
   #Uncomment after enabling stylix
   stylix.targets.grub.enable = false;
-  #stylix.targets.plymouth.enable = false;
+  stylix.targets.plymouth.enable = false;
   boot.loader.grub = {
     darkmatter-theme = {
       enable = true;
