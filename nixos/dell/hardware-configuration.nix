@@ -13,28 +13,28 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" ];
   #boot.kernelParams = [ "radeon.si_support=0" "amdgpu.si_support=1" "radeon.cik_support=0" "amdgpu.cik_support=1" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelParams = [ "radeon.runpm=0" "amdgpu.runpm=0" ];
+  #boot.kernelParams = [ "radeon.runpm=0" "amdgpu.runpm=0" ];
   boot.blacklistedKernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/5d9c633e-852b-41e7-af63-c4c78722d6d7";
+    device = "/dev/disk/by-uuid/0b3bb14a-982f-4982-8585-297dc23545e2";
     fsType = "btrfs";
     options = [ "subvol=@" ];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/F6B3-0A8A";
+    device = "/dev/disk/by-uuid/91C1-C24A";
     fsType = "vfat";
     options = [ "fmask=0022" "dmask=0022" ];
   };
 
-  # swapDevices = [
-  #   {
-  #     device = "/dev/disk/by-uuid/88b987f5-e215-4969-b225-0d7f1e5f5510";
-  #   }
-  # ];
+  swapDevices = [
+    {
+      device = "/dev/disk/by-uuid/ef057973-02c6-45a6-96dd-01808bfeda1a";
+    }
+  ];
 
   fileSystems."/mnt/Raid" = {
     device = "/dev/disk/by-uuid/603A67F03A67C220";

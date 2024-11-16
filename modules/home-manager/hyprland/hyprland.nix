@@ -124,10 +124,10 @@ with lib; {
           }
           decoration {
             rounding = 4
-            drop_shadow = false
-            shadow_range = 10
-            shadow_render_power = 3
-            col.shadow = rgba(1a1a1aee)
+            #drop_shadow = false
+            #shadow_range = 10
+            #shadow_render_power = 3
+            #col.shadow = rgba(1a1a1aee)
             blur {
             enabled = true
             size = 2
