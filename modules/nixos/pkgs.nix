@@ -21,7 +21,7 @@
       #brave
       #brightnessctl
       btop
-      cava
+      #cava
       clinfo
       #cliphist
       #cmatrix
@@ -160,12 +160,12 @@
       #zsh-powerlevel10k
 
       winetricks
-      dconf-editor
+      #dconf-editor
       gnome-disk-utility
       gnome-system-monitor
-      gnome-tweaks
+      #gnome-tweaks
       nautilus
-      zed-editor
+      #zed-editor
       #inputs.wfetch.packages.${pkgs.system}.default
 
       libsForQt5.qt5.qtbase
