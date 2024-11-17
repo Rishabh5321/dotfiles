@@ -32,10 +32,10 @@
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
     plymouth = {
-    enable = false;
-    theme = "dna";
-    themePackages = [pkgs.adi1090x-plymouth-themes];
-  };
+      enable = false;
+      theme = "dna";
+      themePackages = [ pkgs.adi1090x-plymouth-themes ];
+    };
     #plymouth.enable = true;
   };
   #Uncomment after enabling stylix
