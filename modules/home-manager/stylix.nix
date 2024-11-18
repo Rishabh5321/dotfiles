@@ -27,6 +27,7 @@
 
   stylix.targets.waybar.enable = false;
   stylix.targets.rofi.enable = false;
+  stylix.targets.wofi.enable = false;
   stylix.targets.hyprland.enable = false;
   #stylix.targets.kde.enable = true;
   #programs.gpg.enable = true;

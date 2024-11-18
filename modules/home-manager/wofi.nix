@@ -1,13 +1,13 @@
 # Wofi is a launcher for Wayland, inspired by rofi.
 { config, pkgs, lib, ... }:
 let
-  accent = "#${config.lib.stylix.colors.base0D}";
-  background = "#${config.lib.stylix.colors.base00}";
-  background-alt = "#${config.lib.stylix.colors.base01}";
-  foreground = "#${config.lib.stylix.colors.base05}";
-  font = config.stylix.fonts.serif.name;
-  rounding = config.var.theme.rounding;
-  font-size = config.stylix.fonts.sizes.popups;
+  accent = "#${config.stylix.base16Scheme.base0D}";
+  background = "#${config.stylix.base16Scheme.base00}";
+  background-alt = "#${config.stylix.base16Scheme.base01}";
+  foreground = "#${config.stylix.base16Scheme.base05}";
+  font = "JetBrainsMono NF ExtraBold 12";
+  rounding = "5";
+  font-size = "20";
 in {
 
   home.packages = with pkgs; [ wofi-emoji ];
@@ -29,7 +29,7 @@ in {
       line_wrap = "off";
       dynamic_lines = false;
       allow_images = true;
-      image_size = 24;
+      image_size = 50;
       exec_search = false;
       hide_search = false;
       parse_search = false;
