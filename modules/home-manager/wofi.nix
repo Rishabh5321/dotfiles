@@ -8,7 +8,8 @@ let
   font = "JetBrainsMono NF ExtraBold 12";
   rounding = "5";
   font-size = "20";
-in {
+in
+{
 
   home.packages = with pkgs; [ wofi-emoji ];
 
