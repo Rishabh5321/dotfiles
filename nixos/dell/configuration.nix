@@ -42,7 +42,7 @@
         layout = "us";
         variant = "";
       };
-      videoDrivers = [ "modesetting" "intel" ];
+      videoDrivers = [ "intel" ];
       #windowManager.i3.enable = true;
     };
     displayManager.defaultSession = "hyprland";

@@ -23,5 +23,6 @@
     #./plasma.nix
     ./hyprland
     ./libnotify.nix
+    ./wofi.nix
   ];
 }
