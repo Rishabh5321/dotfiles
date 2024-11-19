@@ -32,8 +32,8 @@
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
     plymouth = {
-      enable = false;
-      theme = "dna";
+      enable = true;
+      theme = "colorful_loop";
       themePackages = [ pkgs.adi1090x-plymouth-themes ];
     };
     #plymouth.enable = true;

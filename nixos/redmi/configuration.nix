@@ -101,6 +101,8 @@
 
   environment.systemPackages = with pkgs; [
     heroic
+    dconf-editor
+    gnome-tweaks
   ];
 
 }

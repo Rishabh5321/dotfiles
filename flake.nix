@@ -13,9 +13,9 @@
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
     alejandra.url = "github:kamadorueda/alejandra";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
-    plasma-manager.url = "github:pjones/plasma-manager";
-    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
-    plasma-manager.inputs.home-manager.follows = "nixpkgs";
+    #plasma-manager.url = "github:pjones/plasma-manager";
+    #plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
+    #plasma-manager.inputs.home-manager.follows = "nixpkgs";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     fine-cmdline = {
       url = "github:VonHeikemen/fine-cmdline.nvim";
@@ -67,7 +67,7 @@
       inherit (self) outputs;
       systems = [ "x86_64-linux" ];
       username = "rishabh";
-      wallpaper = "wall164.jpg";
+      wallpaper = "wall103.jpg";
       flakeDir = "~/dotfiles";
       pkgs-stable = import nixpkgs-stable {
         system = "x86_64-linux";
