@@ -55,6 +55,7 @@
     docker
     docker-compose
     lazydocker
+    brightnessctl
   ];
 
   services.displayManager = {
