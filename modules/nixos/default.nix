@@ -25,6 +25,7 @@
     #./syncthing.nix
     ./users.nix
     ./virtualisation.nix
-    ./kodi.nix
+    #./kodi.nix
+    ./flatpak.nix
   ];
 }
