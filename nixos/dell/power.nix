@@ -18,5 +18,6 @@
   #};
 
   powerManagement.enable = true;
-  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+  powerManagement.cpuFreqGovernor = "performance";
+
 }
