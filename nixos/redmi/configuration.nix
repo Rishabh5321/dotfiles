@@ -101,6 +101,7 @@
 
   environment.systemPackages = with pkgs; [
     heroic
+    lutris
     dconf-editor
     gnome-tweaks
   ];
