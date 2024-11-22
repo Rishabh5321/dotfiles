@@ -1,5 +1,5 @@
-{ ... }: {  
-    imports = [
-        ./gnome.nix
-    ];
+{ ... }: {
+  imports = [
+    ./gnome.nix
+  ];
 }
