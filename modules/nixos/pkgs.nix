@@ -23,7 +23,7 @@
       btop
       #cava
       clinfo
-      #cliphist
+      cliphist
       #cmatrix
       #cowsay
       cursor
