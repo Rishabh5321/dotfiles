@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos
     ./power.nix
+    ../Gnome/main
     #./aagl.nix
   ];
 
@@ -33,8 +34,8 @@
   services = {
     xserver = {
       enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
+      #displayManager.gdm.enable = true;
+      #desktopManager.gnome.enable = true;
       xkb = {
         layout = "us";
         variant = "";

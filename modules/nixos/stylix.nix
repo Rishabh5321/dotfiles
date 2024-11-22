@@ -49,4 +49,5 @@
       };
     };
   };
+  gtk.iconCache.enable = true;
 }
