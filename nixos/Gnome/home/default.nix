@@ -1,6 +1,6 @@
-{ ... }: {  
-    imports = [
-        ./gnome-extensions.nix
-        ./gnome.nix
-    ];
+{ ... }: {
+  imports = [
+    ./gnome-extensions.nix
+    ./gnome.nix
+  ];
 }
