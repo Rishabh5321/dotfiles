@@ -52,7 +52,7 @@
     recursive = true;
   };
 
-  gtk.qt = {
+  qt = {
     enable = true;
     style.name = "adwaita-dark";
     platformTheme.name = "gtk3";
