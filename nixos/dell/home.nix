@@ -52,6 +52,12 @@
     recursive = true;
   };
 
+  gtk.qt = {
+    enable = true;
+    style.name = "adwaita-dark";
+    platformTheme.name = "gtk3";
+  };
+
   # TODO: Set your username
   home = {
     username = "rishabh";

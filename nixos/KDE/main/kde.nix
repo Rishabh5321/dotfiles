@@ -3,6 +3,6 @@
 _: {
   services = {
     displayManager.sddm.enable = true;
-    desktopManager.kde.enable = true;
+    desktopManager.plasma6.enable = true;
   };
 }
