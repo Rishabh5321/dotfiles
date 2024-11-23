@@ -7,7 +7,8 @@
     ./hardware-configuration.nix
     ../../modules/nixos
     ./power.nix
-    ../Gnome/main
+    #../Gnome/main
+    ../KDE/main
     #./aagl.nix
   ];
 
