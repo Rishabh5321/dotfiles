@@ -44,6 +44,7 @@
     #  url = "github:iynaix/wfetch";
     #  inputs.nixpkgs.follows = "nixpkgs"; # override this repo's nixpkgs snapshot
     #};
+    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
   outputs =

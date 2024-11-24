@@ -104,6 +104,7 @@
   environment.systemPackages = with pkgs; [
     heroic
     lutris
+    protonup-qt
     dconf-editor
     gnome-tweaks
   ];
