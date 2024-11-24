@@ -1,4 +1,4 @@
-{pkgs,inputs,...}: {
+{ pkgs, inputs, ... }: {
   # Better scheduling for CPU cycles - thanks System76!!!
   services.system76-scheduler.settings.cfsProfiles.enable = true;
 
@@ -15,7 +15,8 @@
 
   services.logind.lidSwitchDocked = "ignore";
 
-  environment.systemPackages = [ # or home.packages
+  environment.systemPackages = [
+    # or home.packages
     inputs.nix-gaming.packages.${pkgs.system}.wine-ge # installs a package
   ];
 
