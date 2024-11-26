@@ -52,8 +52,11 @@ with lib; {
           exec-once = wl-paste --type text --watch cliphist store #Stores only text data
           exec-once = wl-paste --type image --watch cliphist store #Stores only image data
           exec-once = sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/${wallpaper}
-          monitor=eDP-1,preferred,0x0,1
-          #monitor=DP-1,preferred,1500x0,1
+# Disable eDP-1
+monitor=eDP-1,disable
+
+# Enable DP-1 with the preferred resolution
+monitor=DP-1,preferred,0x0,1
           ${extraMonitorSettings}
           # plugin {
           #   hyprtrails {
