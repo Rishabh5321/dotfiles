@@ -1,5 +1,5 @@
 let
-  waybarStyle = "simplebar"; # simplebar, slickbar, or default
+  waybarStyle = "slickbar"; # simplebar, slickbar, or default
 in
 {
   # Git Configuration ( For Pulling Software Repos )

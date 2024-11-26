@@ -42,24 +42,24 @@ in
         vibrancy_darkness = 0.0
     }
 
-    input-field {
-        monitor =
-        size = 250, 50
-        outline_thickness = 3
-        dots_size = 0.33 # Scale of input-field height, 0.2 - 0.8
-        dots_spacing = 0.15 # Scale of dots' absolute size, 0.0 - 1.0
-        dots_center = true
-        outer_color = ${color5}
-        inner_color = ${color0}
-        font_color = ${color14}
-        fade_on_empty = true
-        placeholder_text = <i>Password...</i> # Text rendered in the input box when it's empty.
-        hide_input = false
+    #input-field {
+    #    monitor =
+    #    size = 250, 50
+    #    outline_thickness = 3
+    #    dots_size = 0.33 # Scale of input-field height, 0.2 - 0.8
+    #    dots_spacing = 0.15 # Scale of dots' absolute size, 0.0 - 1.0
+    #    dots_center = true
+    #    outer_color = ${color5}
+    #    inner_color = ${color0}
+    #    font_color = ${color14}
+    #    fade_on_empty = true
+    #    placeholder_text = <i>Password...</i> # Text rendered in the input box when it's empty.
+    #    hide_input = false
 
-        position = 0, 200
-        halign = center
-        valign = bottom
-    }
+    #    position = 0, 200
+    #    halign = center
+    #    valign = bottom
+    #}
 
     # Date
     label {

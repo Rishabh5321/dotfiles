@@ -10,7 +10,6 @@
     output_folder=/home/nix/mango-stats
     permit_upload=1
     cpu_temp
-    gpu_temp
     cpu_mhz
   '';
 }

@@ -1,6 +1,6 @@
 { pkgs-stable, ... }: {
   environment.systemPackages = with pkgs-stable; [
-    #jellyfin-media-player
+    jellyfin-media-player
     #cliphist
   ];
 }
