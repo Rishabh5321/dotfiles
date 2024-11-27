@@ -19,8 +19,8 @@
     ../rofi/config-wallpaper.nix
     ./emoji.nix
     ./hyprland.nix
-    ./hypridle.nix
-    ./hyprlock.nix
+    #./hypridle.nix
+    #./hyprlock.nix
     ./swaync.nix
     ./waybar.nix
     ./swaync.nix

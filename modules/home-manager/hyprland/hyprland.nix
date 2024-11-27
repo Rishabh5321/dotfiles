@@ -47,7 +47,7 @@ with lib; {
           #exec-once = lxqt-policykit-agent
           #exec-once = hyprlock --immediate
           #exec-once = sleep 1.5 && startup
-          exec-once = sleep 5 && tv.kodi.Kodi
+          exec-once = sleep 3 && tv.kodi.Kodi
           #exec-once = sleep 5 && kdeconnect-settings && kdeconnect-indicator
           exec-once = wl-paste --type text --watch cliphist store #Stores only text data
           exec-once = wl-paste --type image --watch cliphist store #Stores only image data
@@ -159,6 +159,7 @@ with lib; {
           bind = ${modifier},S,exec,screenshootin
           bind = ${modifier},D,exec,discord
           bind = ${modifier},C,exec,hyprpicker -a
+          bind = ${modifier},K,exec,tv.kodi.Kodi
           bind = ${modifier}SHIFT,G,exec,godot4
           bind = ${modifier},T,exec,thunar
           bind = ${modifier},M,exec,spotify
@@ -181,7 +182,7 @@ with lib; {
           bind = ${modifier},up,movefocus,u
           bind = ${modifier},down,movefocus,d
           bind = ${modifier},h,movefocus,l
-          bind = ${modifier},k,movefocus,u
+          #bind = ${modifier},k,movefocus,u
           bind = ${modifier},j,movefocus,d
           bind = ${modifier},1,workspace,1
           bind = ${modifier},2,workspace,2

@@ -8,6 +8,7 @@
     ../../modules/nixos
     ./power.nix
     ./intel-drivers.nix
+    ../KDE/main
     #./amd-drivers.nix
   ];
 

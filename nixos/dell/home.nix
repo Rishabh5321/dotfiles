@@ -9,6 +9,7 @@
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
     ../../modules/home-manager
+    ../KDE/home
     #./gnome.nix
     #./gnome-extensions.nix
     # Or modules exported from other flakes (such as nix-colors):
@@ -52,11 +53,11 @@
     recursive = true;
   };
 
-  qt = {
-    enable = true;
-    style.name = "adwaita-dark";
-    platformTheme.name = "gtk3";
-  };
+#  qt = {
+#    enable = true;
+#    style.name = "adwaita-dark";
+#    platformTheme.name = "gtk3";
+#  };
 
   # TODO: Set your username
   home = {

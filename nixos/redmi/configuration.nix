@@ -41,7 +41,7 @@
         layout = "us";
         variant = "";
       };
-      #displayManager.sddm.enable = true;
+      displayManager.sddm.enable = true;
       #videoDrivers = [ "intel" ];
     };
   };
