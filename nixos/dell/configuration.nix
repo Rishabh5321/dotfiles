@@ -50,13 +50,13 @@
   };
 
   environment.systemPackages = with pkgs; [
-    dunst
-    pavucontrol
-    xfce.xfce4-pulseaudio-plugin
+    brightnessctl
     docker
     docker-compose
+    dunst
     lazydocker
-    brightnessctl
+    pavucontrol
+    xfce.xfce4-pulseaudio-plugin
   ];
 
   services.displayManager = {

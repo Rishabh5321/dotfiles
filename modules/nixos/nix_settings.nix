@@ -11,11 +11,11 @@
         "flakes"
       ];
     };
-    # gc = {
-    #   automatic = true;
-    #   dates = "weekly";
-    #   options = "--delete-older-than 7d";
-    # };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 3d";
+    };
   };
 
   nixpkgs = {

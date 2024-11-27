@@ -12,17 +12,17 @@
     ./fzf.nix
     ./git.nix
     ./htop.nix
+    ./hyprland
     ./kitty.nix
+    ./libnotify.nix
     #./mangohud.nix
     ./neovim.nix
     ./oh-my-posh.nix
-    #./rofi/rofi.nix
-    ./spicetify.nix
-    ./stylix.nix
-    ./zsh.nix
     #./plasma.nix
-    ./hyprland
-    ./libnotify.nix
+    #./rofi/rofi.nix
+    ./spicetify.nix 
+    ./stylix.nix
     ./wofi.nix
+    ./zsh.nix
   ];
 }

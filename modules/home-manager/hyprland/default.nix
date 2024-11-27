@@ -13,17 +13,17 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
-    ../rofi/rofi.nix
+    ./emoji.nix
+    #./hypridle.nix
+    ./hyprland.nix
+    #./hyprlock.nix
     ../rofi/config-emoji.nix
     ../rofi/config-long.nix
     ../rofi/config-wallpaper.nix
-    ./emoji.nix
-    ./hyprland.nix
-    #./hypridle.nix
-    #./hyprlock.nix
+    ../rofi/rofi.nix
+    ./swaync.nix
     ./swaync.nix
     ./waybar.nix
-    ./swaync.nix
     ./wlogout.nix
   ];
 

@@ -4,16 +4,16 @@
   # List your module files here
   # my-module = import ./my-module.nix;
   imports = [
-    # Include the results of the hardware scan.
-    #./aagl.nix
-    ./boot.nix
     ./bluetooth.nix
+    ./boot.nix
     ./cache.nix
     #./desktop_env.nix
     #./displaymanager.nix
+    ./flatpak.nix
     ./graphics.nix
+    #./kodi.nix
     ./locale.nix
-    ./nh.nix
+    #./nh.nix
     ./nix_settings.nix
     ./pkgs.nix
     ./pkgs_stable.nix
@@ -21,11 +21,9 @@
     #./proton.nix
     ./sound.nix
     ./stylix.nix
-    ./swap.nix
     #./syncthing.nix
+    ./swap.nix
     ./users.nix
-    ./virtualisation.nix
-    #./kodi.nix
-    ./flatpak.nix
+    #./virtualisation.nix
   ];
 }

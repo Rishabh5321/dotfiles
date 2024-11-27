@@ -71,7 +71,7 @@
       libreoffice
       #libsForQt5.krohnkite
       #libsForQt5.sddm-kcm
-      libvirt
+      #libvirt
       #lm_sensors
       #lolcat
       #lshw
@@ -92,13 +92,13 @@
       #ninja
       #nixfmt-rfc-style
       #nixos-generators
-      nvtopPackages.full
+      #nvtopPackages.full
       obsidian
       oh-my-posh
       onlyoffice-bin_latest
       #pavucontrol
       #pciutils # For lspci command
-      peaclock
+      #peaclock
       pfetch-rs
       #pkg-config
       #playerctl
@@ -107,7 +107,7 @@
       #protonup-qt
       qbittorrent
       #qemu
-      quickemu
+      #quickemu
       #radeontop # For AMD GPU monitoring
       ranger
       #resilio-sync
@@ -137,7 +137,7 @@
       unzip
       #uwufetch
       #v4l-utils
-      ventoy
+      #ventoy
       vim
       virt-viewer
       # vivaldi
