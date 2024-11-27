@@ -53,11 +53,11 @@
     recursive = true;
   };
 
-#  qt = {
-#    enable = true;
-#    style.name = "adwaita-dark";
-#    platformTheme.name = "gtk3";
-#  };
+  #  qt = {
+  #    enable = true;
+  #    style.name = "adwaita-dark";
+  #    platformTheme.name = "gtk3";
+  #  };
 
   # TODO: Set your username
   home = {
