@@ -109,7 +109,7 @@
       pfetch-rs
       #pkg-config
       #playerctl
-      plex-media-player
+      #plex-media-player
       #polkit_gnome
       #protonup-qt
       qbittorrent
