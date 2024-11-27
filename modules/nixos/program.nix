@@ -1,6 +1,5 @@
 { pkgs
 , options
-, lib
 , ...
 }: {
   programs = {
