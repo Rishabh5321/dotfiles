@@ -20,7 +20,7 @@
     ./oh-my-posh.nix
     #./plasma.nix
     #./rofi/rofi.nix
-    ./spicetify.nix 
+    ./spicetify.nix
     ./stylix.nix
     ./wofi.nix
     ./zsh.nix
