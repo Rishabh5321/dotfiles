@@ -12,8 +12,8 @@
       #amdvlk
       android-tools
       #appimage-run
-      atuin
       #authenticator
+      atuin
       bat
       beeper
       #bitwarden-desktop
@@ -48,28 +48,34 @@
       git
       github-desktop
       #glxinfo
+      gnome-disk-utility
+      gnome-system-monitor
+      #gnome-tweaks
       google-chrome
       grim
       htop
-      # hyprlock
-      # hyprpicker
-      # hyprshot
-      # imv
+      #hyprlock
+      #hyprpicker
+      #hyprshot
+      #imv
+      #inputs.wfetch.packages.${pkgs.system}.default
       inputs.alejandra.defaultPackage.${system}
       #intel-gpu-tools # For Intel GPU tools
-      # inxi
+      #inxi
       inputs.zen-browser.packages."${system}".default
       #jellyfin-media-player
       #kdePackages.kdeconnect-kde
       #kdePackages.sddm-kcm
-      # killall
-      #kodiPackages.inputstream-adaptive
+      #killall
       #kodi
+      #kodiPackages.inputstream-adaptive
       #lazycli
       #lazygit
       #libnotify
       libreoffice
       #libsForQt5.krohnkite
+      libsForQt5.qt5.qtbase
+      libsForQt5.qt5.qtsvg
       #libsForQt5.sddm-kcm
       #libvirt
       #lm_sensors
@@ -78,20 +84,21 @@
       #lsof
       #lutris
       #lxqt.lxqt-policykit
-      #marwaita-icons
       mangohud
+      #marwaita-icons
       mesa
       #meson
       micro
       #mpv
+      nautilus
       #ncdu
       #neovide
       networkmanagerapplet
       nh
-      nwg-look
       #ninja
       #nixfmt-rfc-style
       #nixos-generators
+      nwg-look
       #nvtopPackages.full
       obsidian
       oh-my-posh
@@ -102,7 +109,7 @@
       pfetch-rs
       #pkg-config
       #playerctl
-      #plex-media-player
+      plex-media-player
       #polkit_gnome
       #protonup-qt
       qbittorrent
@@ -140,36 +147,26 @@
       #ventoy
       vim
       virt-viewer
-      # vivaldi
-      # vivaldi-ffmpeg-codecs
+      #vivaldi
+      #vivaldi-ffmpeg-codecs
       vlc
       vscode
       #vulkan-tools # For vulkaninfo and other Vulkan tools
       #wayland-pipewire-idle-inhibit
       wget
       #wezterm
+      winetricks
       wl-clipboard
       #wlroots
       #xfce.xfce4-pulseaudio-plugin
-      # yad
+      #yad
       #ydotool
       #yubioath-flutter
       #zinit
       #zoxide
+      zed-editor
       zsh
       #zsh-powerlevel10k
-
-      winetricks
-      #dconf-editor
-      gnome-disk-utility
-      gnome-system-monitor
-      #gnome-tweaks
-      nautilus
-      #zed-editor
-      #inputs.wfetch.packages.${pkgs.system}.default
-
-      libsForQt5.qt5.qtbase
-      libsForQt5.qt5.qtsvg
     ];
 
   #services.plex.enable = true;
