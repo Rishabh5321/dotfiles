@@ -47,7 +47,7 @@ with lib; {
           #exec-once = lxqt-policykit-agent
           #exec-once = hyprlock --immediate
           #exec-once = sleep 1.5 && startup
-          exec-once = sleep 3 && tv.kodi.Kodi
+          exec-once = sleep 2 && flatpak run --command=sh tv.kodi.Kodi -c "kodi --debug"
           #exec-once = sleep 5 && kdeconnect-settings && kdeconnect-indicator
           exec-once = wl-paste --type text --watch cliphist store #Stores only text data
           exec-once = wl-paste --type image --watch cliphist store #Stores only image data
@@ -55,7 +55,7 @@ with lib; {
           # Disable eDP-1
           monitor=eDP-1,disable
           # Enable DP-1 with the preferred resolution
-          monitor=DP-1,preferred,0x0,1
+          monitor=DP-1,1600x900@60,0x0,1
           ${extraMonitorSettings}
           # plugin {
           #   hyprtrails {
@@ -90,6 +90,7 @@ with lib; {
           windowrule = float, swayimg|vlc|Viewnior|pavucontrol
           windowrule = float, nwg-look|qt5ct|mpv
           windowrule = float, zoom
+          windowrule = fullscreen,^(tv.kodi.Kodi|tv.kodi.Kodi)$
           windowrulev2 = stayfocused, title:^()$,class:^(steam)$
           windowrulev2 = minsize 1 1, title:^()$,class:^(steam)$
           windowrule = animation fade,^(wlogout)$
