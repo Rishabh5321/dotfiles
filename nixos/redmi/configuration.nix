@@ -41,9 +41,9 @@
         layout = "us";
         variant = "";
       };
-      displayManager.sddm.enable = true;
       #videoDrivers = [ "intel" ];
     };
+    displayManager.sddm.enable = true;
   };
 
   # Enable CUPS to print documents.
