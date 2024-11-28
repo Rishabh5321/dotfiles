@@ -166,11 +166,11 @@
     "flake-compat_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1696426674,
-        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
+        "lastModified": 1732722421,
+        "narHash": "sha256-HRJ/18p+WoXpWJkcdsk9St5ZiukCqSDgbOGFa8Okehg=",
         "owner": "edolstra",
         "repo": "flake-compat",
-        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
+        "rev": "9ed2ac151eada2306ca8c418ebd97807bb08f6ac",
         "type": "github"
       },
       "original": {
@@ -459,11 +459,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1732681011,
-        "narHash": "sha256-LZomF/Q9DR9WJsf4JoLxKmiRmGIng0c46olLAtQYYlc=",
+        "lastModified": 1732767447,
+        "narHash": "sha256-O5mz3CbSfITGjMgUw3f0uBYC7q/FuLfLeFhADdpz/Uw=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "5d4ec6aded85cfb4434b1b9258dfc21fe827d6d2",
+        "rev": "9dc23fcd0775bb6e42ebc6267edb97d349548450",
         "type": "github"
       },
       "original": {
