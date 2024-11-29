@@ -167,6 +167,9 @@
       zed-editor
       zsh
       #zsh-powerlevel10k
+
+
+      inputs.nix-gaming.packages.${pkgs.system}.wine-ge # installs a package
     ];
 
   #services.plex.enable = true;

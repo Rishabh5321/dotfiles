@@ -15,9 +15,4 @@
 
   services.logind.lidSwitchDocked = "ignore";
 
-  environment.systemPackages = [
-    # or home.packages
-    inputs.nix-gaming.packages.${pkgs.system}.wine-ge # installs a package
-  ];
-
 }
