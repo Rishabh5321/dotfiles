@@ -183,9 +183,11 @@
       font-awesome
       symbola
       powerline
-      nerdfonts
+      nerd-fonts.jetbrains-mono
       material-icons
-      (nerdfonts.override { fonts = [ "Meslo" ]; })
+      nerd-fonts.meslo-lg
+      nerd-fonts.monaspace
+      nerd-fonts.fira-mono
     ];
   };
 }

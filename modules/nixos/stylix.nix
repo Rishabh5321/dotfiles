@@ -1,46 +1,41 @@
 { pkgs
 , wallpaper
 , ...
-}: {
+}:{
   stylix = {
     enable = true;
-    image = ../../wallpapers/${wallpaper};
-    # base16Scheme = {
-    #   base00 = "232136";
-    #   base01 = "2a273f";
-    #   base02 = "393552";
-    #   base03 = "6e6a86";
-    #   base04 = "908caa";
-    #   base05 = "e0def4";
-    #   base06 = "e0def4";
-    #   base07 = "56526e";
-    #   base08 = "eb6f92";
-    #   base09 = "f6c177";
-    #   base0A = "ea9a97";
-    #   base0B = "3e8fb0";
-    #   base0C = "9ccfd8";
-    #   base0D = "c4a7e7";
-    #   base0E = "f6c177";
-    #   base0F = "56526e";
-    # };
+    image = ../../wallpapers/${wallpaper}; # Ensure the path resolves correctly
     polarity = "dark";
     opacity.terminal = 0.9;
-    cursor.package = pkgs.afterglow-cursors-recolored;
-    cursor.name = "Afterglow-Recolored-Catppuccin-Flamingo";
-    cursor.size = 24;
+
+    cursor = {
+      package = pkgs.afterglow-cursors-recolored;
+      name = "Afterglow-Recolored-Catppuccin-Flamingo";
+      size = 24;
+    };
+
     fonts = {
-      monospace = {
-        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-        name = "JetBrainsMono Nerd Font Mono";
-      };
-      sansSerif = {
-        package = pkgs.nerdfonts;
-        name = "JetBrainsMono Nerd Font Mono";
-      };
+
       serif = {
-        package = pkgs.nerdfonts;
-        name = "JetBrainsMono Nerd Font Mono";
+        package = pkgs.aleo-fonts;
+        name = "Aleo";
       };
+
+      sansSerif = {
+        package = pkgs.noto-fonts-cjk-sans;
+        name = "Noto Sans CJK JP";
+      };
+
+      monospace = {
+        package = pkgs.maple-mono;
+        name = "Maple Mono";
+      };
+
+      emoji = {
+        package = pkgs.noto-fonts-emoji;
+        name = "Noto Color Emoji";
+      };
+
       sizes = {
         applications = 12;
         terminal = 15;
@@ -49,5 +44,6 @@
       };
     };
   };
+
   gtk.iconCache.enable = true;
 }
