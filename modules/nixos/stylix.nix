@@ -1,7 +1,7 @@
 { pkgs
 , wallpaper
 , ...
-}:{
+}: {
   stylix = {
     enable = true;
     image = ../../wallpapers/${wallpaper}; # Ensure the path resolves correctly
