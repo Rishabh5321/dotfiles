@@ -14,9 +14,9 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     ./emoji.nix
-    #./hypridle.nix
+    ./hypridle.nix
     ./hyprland.nix
-    #./hyprlock.nix
+    ./hyprlock.nix
     ../rofi/config-emoji.nix
     ../rofi/config-long.nix
     ../rofi/config-wallpaper.nix
