@@ -9,7 +9,7 @@
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
     ../../modules/home-manager
-    ../KDE/home
+    #../KDE/home
     #./gnome.nix
     #./gnome-extensions.nix
     # Or modules exported from other flakes (such as nix-colors):
@@ -51,12 +51,6 @@
   home.file.".config/fastfetch" = {
     source = ../../modules/home-manager/fastfetch;
     recursive = true;
-  };
-
-  qt = {
-    enable = true;
-    # platformTheme = "gtk";
-    style = { name = "adwaita-dark"; };
   };
 
   # TODO: Set your username

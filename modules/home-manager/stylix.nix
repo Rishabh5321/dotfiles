@@ -20,7 +20,12 @@
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
   };
 
-
+  qt = {
+    enable = true;
+    # platformTheme = "gtk";
+    style = { name = "adwaita-dark"; };
+  };
+  
   stylix.targets.waybar.enable = false;
   stylix.targets.rofi.enable = false;
   stylix.targets.wofi.enable = false;

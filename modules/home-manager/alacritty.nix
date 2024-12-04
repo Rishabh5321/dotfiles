@@ -22,7 +22,7 @@ _: {
         };
       };
       env = {
-        term = "xterm-256color";
+        term = "xterm-256color ssh";
       };
       general.live_config_reload = true;
     };

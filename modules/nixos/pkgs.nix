@@ -48,6 +48,7 @@
       git
       github-desktop
       #glxinfo
+      gnome-console
       gnome-disk-utility
       gnome-system-monitor
       #gnome-tweaks
@@ -123,7 +124,7 @@
       rquickshare
       #rtkit
       #sddm-astronaut
-      #slurp
+      slurp
       #socat
       #sops
       speedtest-cli
@@ -132,12 +133,13 @@
       spotdl
       #steam
       stremio
-      #swappy
+      swappy
       #swaynotificationcenter
       swww
       #swtpm
       telegram-desktop
       tldr
+      tmux
       tree
       #unetbootin
       unrar
