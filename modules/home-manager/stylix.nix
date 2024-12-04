@@ -25,7 +25,7 @@
     # platformTheme = "gtk";
     style = { name = "adwaita-dark"; };
   };
-  
+
   stylix.targets.waybar.enable = false;
   stylix.targets.rofi.enable = false;
   stylix.targets.wofi.enable = false;
