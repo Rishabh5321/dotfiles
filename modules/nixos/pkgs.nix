@@ -185,11 +185,8 @@
       font-awesome
       symbola
       powerline
-      nerd-fonts.jetbrains-mono
       material-icons
-      nerd-fonts.meslo-lg
-      nerd-fonts.monaspace
-      nerd-fonts.fira-mono
+      nerdfonts
     ];
   };
 }
