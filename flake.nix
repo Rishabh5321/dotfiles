@@ -2,9 +2,9 @@
   description = "Laptop and server config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    home-manager.url = "github:nix-community/home-manager";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +25,7 @@
   outputs =
     { self
     , nixpkgs
-    , nixpkgs-stable
+    , nixpkgs-unstable
     , home-manager
     , spicetify-nix
     , alejandra
@@ -38,7 +38,7 @@
       username = "rishabh";
       wallpaper = "wall168.jpg";
       flakeDir = "~/dotfiles";
-      pkgs-stable = import nixpkgs-stable {
+      pkgs-unstable = import nixpkgs-unstable {
         system = "x86_64-linux";
         config = {
           allowUnfree = true;
@@ -55,7 +55,7 @@
 
       commonConfig = { hostname }: {
         specialArgs = {
-          inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs-stable;
+          inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs-unstable;
         };
         modules = [
           ./nixos/${hostname}/configuration.nix
@@ -64,7 +64,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager.extraSpecialArgs = {
-              inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs-stable;
+              inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs-unstable;
             };
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension =

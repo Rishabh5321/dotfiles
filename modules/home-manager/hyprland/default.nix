@@ -1,6 +1,5 @@
 { username
 , pkgs
-, pkgs-stable
 , host
 , ...
 }: {
@@ -74,6 +73,6 @@
     pkgs.wayland-utils
     pkgs.wlr-randr
     pkgs.brightnessctl
-    pkgs-stable.kdePackages.kdeconnect-kde
+    pkgs.kdePackages.kdeconnect-kde
   ];
 }
