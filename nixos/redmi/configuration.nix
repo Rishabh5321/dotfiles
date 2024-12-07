@@ -105,8 +105,8 @@
     heroic
     lutris
     protonup-qt
-    #dconf-editor
-    #gnome-tweaks
+    dconf-editor
+    gnome-tweaks
   ];
 
 }
