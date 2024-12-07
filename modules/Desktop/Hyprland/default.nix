@@ -16,10 +16,10 @@
     ./hypridle.nix
     ./hyprland.nix
     ./hyprlock.nix
-    ../rofi/config-emoji.nix
-    ../rofi/config-long.nix
-    ../rofi/config-wallpaper.nix
-    ../rofi/rofi.nix
+    ./rofi/config-emoji.nix
+    ./rofi/config-long.nix
+    ./rofi/config-wallpaper.nix
+    ./rofi/rofi.nix
     ./swaync.nix
     ./swaync.nix
     ./waybar.nix

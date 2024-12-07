@@ -7,8 +7,8 @@
     ./hardware-configuration.nix
     ../../modules/nixos
     ./power.nix
-    ../Gnome/main
-    #../KDE/main
+    ../../modules/Desktop/Gnome/main
+    #../../modules/Desktop/KDE/main
     #./aagl.nix
   ];
 
@@ -43,7 +43,7 @@
       };
       #videoDrivers = [ "intel" ];
     };
-    displayManager.sddm.enable = true;
+    #displayManager.sddm.enable = true;
   };
 
   # Enable CUPS to print documents.

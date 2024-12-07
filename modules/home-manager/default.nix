@@ -12,7 +12,6 @@
     ./fzf.nix
     ./git.nix
     ./htop.nix
-    ./hyprland
     ./kitty.nix
     ./libnotify.nix
     #./mangohud.nix
