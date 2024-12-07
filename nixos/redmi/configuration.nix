@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ pkgs, ... }: {
+{ pkgs, pkgs-unstable,... }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -101,12 +101,12 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs-unstable; [
     heroic
     lutris
     protonup-qt
-    dconf-editor
-    gnome-tweaks
+    #dconf-editor
+    #gnome-tweaks
   ];
 
 }
