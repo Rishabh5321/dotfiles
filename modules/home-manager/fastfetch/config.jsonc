@@ -18,17 +18,17 @@
         },
         {
             "type": "cpu",
-            "key": "│ ",
+            "key": "│  ",
             "keyColor": "35"
         },
         {
             "type": "gpu",
-            "key": "│ 󰍛",
+            "key": "│ 󰍛 ",
             "keyColor": "35"
         },
         {
             "type": "memory",
-            "key": "│ 󰑭",
+            "key": "│ 󰑭 ",
             "keyColor": "35"
         },
         {
@@ -46,33 +46,33 @@
         },
         {
             "type": "kernel",
-            "key": "│ ├",
+            "key": "│ ├ ",
             "keyColor": "31"
         },
         {
             "type": "packages",
-            "key": "│ ├󰏖",
+            "key": "│ ├󰏖 ",
             "keyColor": "31"
         },
         {
             "type": "shell",
-            "key": "└ └",
+            "key": "└ └ ",
             "keyColor": "31"
         },
         "break",
         {
             "type": "wm",
-            "key": " WM",
+            "key": " WM ",
             "keyColor": "32"
         },
         {
             "type": "wmtheme",
-            "key": "│ ├󰉼",
+            "key": "│ ├󰉼 ",
             "keyColor": "32"
         },
         {
             "type": "terminal",
-            "key": "└ └",
+            "key": "└ └ ",
             "keyColor": "32"
         },
         {
@@ -86,13 +86,13 @@
         },
         {
             "type": "command",
-            "key": "│ ",
+            "key": "│  ",
             "keyColor": "33",
             "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
         },
         {
             "type": "uptime",
-            "key": "│ ",
+            "key": "│  ",
             "keyColor": "33"
         },
         {

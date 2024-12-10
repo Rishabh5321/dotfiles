@@ -1,8 +1,13 @@
 { pkgs-unstable, ... }: {
   environment.systemPackages = with pkgs-unstable; [
+    brave
+    google-chrome
     oh-my-posh
     jellyfin-media-player
     plex-media-player
-    #cliphist
+    spotify
+    stremio
+    winetricks
+    zed-editor
   ];
 }

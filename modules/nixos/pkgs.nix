@@ -52,7 +52,7 @@
       gnome-disk-utility
       gnome-system-monitor
       #gnome-tweaks
-      google-chrome
+      #google-chrome
       grim
       htop
       #hyprlock
@@ -128,11 +128,9 @@
       #socat
       #sops
       speedtest-cli
-      spicetify-cli
-      spotify
+      #spicetify-cli
       spotdl
       #steam
-      stremio
       swappy
       #swaynotificationcenter
       swww
@@ -157,7 +155,6 @@
       #wayland-pipewire-idle-inhibit
       wget
       #wezterm
-      winetricks
       wl-clipboard
       #wlroots
       #xfce.xfce4-pulseaudio-plugin
@@ -166,7 +163,6 @@
       #yubioath-flutter
       #zinit
       #zoxide
-      zed-editor
       zsh
       #zsh-powerlevel10k
 
