@@ -102,7 +102,7 @@
       nwg-look
       #nvtopPackages.full
       obsidian
-      oh-my-posh
+      #oh-my-posh
       onlyoffice-bin_latest
       #pavucontrol
       #pciutils # For lspci command
