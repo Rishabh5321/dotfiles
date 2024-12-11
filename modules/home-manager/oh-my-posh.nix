@@ -2,7 +2,7 @@
   programs.oh-my-posh = {
     enable = true;
     package = pkgs-unstable.oh-my-posh;
-    useTheme = "markbull";
+    useTheme = "quick-term";
     enableBashIntegration = true;
     enableZshIntegration = true;
   };
