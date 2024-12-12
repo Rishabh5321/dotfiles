@@ -101,12 +101,4 @@
     ];
   };
 
-  environment.systemPackages = with pkgs-unstable; [
-    heroic
-    lutris
-    protonup-qt
-    dconf-editor
-    gnome-tweaks
-  ];
-
 }
