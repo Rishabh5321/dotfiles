@@ -56,6 +56,7 @@
     dunst
     lazydocker
     pavucontrol
+    samba
     xfce.xfce4-pulseaudio-plugin
   ];
 
@@ -147,4 +148,29 @@
       pkgs.xdg-desktop-portal
     ];
   };
+
+  services.samba = {
+    enable = true;
+    settings = {
+      "root" = {
+        path = "/";   # Replace with the directory you want to share
+        browseable = true;        # Allow it to be seen in the network browser
+        readOnly = false;         # Enable write access
+        validUsers = [ "rishabh" ]; # Use 'rishabh' as the username
+      };
+      "mnt" = {
+        path = "/mnt";   # Replace with the directory you want to share
+        browseable = true;        # Allow it to be seen in the network browser
+        readOnly = false;         # Enable write access
+        validUsers = [ "rishabh" ]; # Use 'rishabh' as the username
+      };
+      "home" = {
+        path = "/home/rishabh";   # Replace with the directory you want to share
+        browseable = true;        # Allow it to be seen in the network browser
+        readOnly = false;         # Enable write access
+        validUsers = [ "rishabh" ]; # Use 'rishabh' as the username
+      };
+    };
+  };
+
 }

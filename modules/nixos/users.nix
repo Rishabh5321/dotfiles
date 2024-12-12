@@ -21,6 +21,7 @@
         "docker"
         "kvm"
         "qemu-libvirtd"
+        "sambashare"
       ];
       shell = pkgs.zsh;
       ignoreShellProgramCheck = true;
