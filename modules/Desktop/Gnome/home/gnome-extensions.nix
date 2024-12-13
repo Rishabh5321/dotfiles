@@ -108,7 +108,7 @@
       enable = true;
     };
 
-   "org/gnome/shell/extensions/unite" = {
+    "org/gnome/shell/extensions/unite" = {
       extend-left-box = false;
       greyscale-tray-icons = false;
       hide-app-menu-icon = true;
