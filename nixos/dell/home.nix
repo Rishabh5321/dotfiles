@@ -10,7 +10,7 @@
     # outputs.homeManagerModules.example
     ../../modules/home-manager
     ../../modules/Desktop/Gnome/home
-    ../../modules/Desktop/Hyprland
+    #../../modules/Desktop/Hyprland
     #../KDE/home
     #./gnome.nix
     #./gnome-extensions.nix
