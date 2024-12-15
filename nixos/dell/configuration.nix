@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos
     ./power.nix
+    ../../modules/Desktop/Gnome/main
     ./intel-drivers.nix
     #../KDE/main
     #./amd-drivers.nix
@@ -46,7 +47,7 @@
       videoDrivers = [ "intel" ];
       #windowManager.i3.enable = true;
     };
-    displayManager.defaultSession = "hyprland";
+    #displayManager.defaultSession = "hyprland";
   };
 
   environment.systemPackages = with pkgs; [
@@ -60,22 +61,22 @@
     xfce.xfce4-pulseaudio-plugin
   ];
 
-  services.displayManager = {
-    enable = true;
-    sddm = {
-      enable = true;
-      wayland = {
-        enable = true;
-      };
-      settings = {
-        Autologin = {
-          Session = "hyprland";
-          User = "rishabh";
-        };
-      };
-      autoNumlock = true;
-    };
-  };
+  #services.displayManager = {
+  #  enable = true;
+  #  sddm = {
+  #    enable = true;
+  #    wayland = {
+  #      enable = true;
+  #    };
+  #    settings = {
+  #      Autologin = {
+  #        Session = "hyprland";
+  #        User = "rishabh";
+  #      };
+  #    };
+  #    autoNumlock = true;
+  #  };
+  #};
   #services.desktopManager.cosmic.enable = true;
 
   #services.displayManager.sddm.theme = "sddm-astronaut-theme";
