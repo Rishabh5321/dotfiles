@@ -1,10 +1,17 @@
 _:
 {
-  # Optionally, set up Flatpak permissions
-  services.flatpak.enable = true;
-
-  services.flatpak.packages = [
-    "org.dupot.easyflatpak"
-    "tv.kodi.Kodi"
-  ];
+  services.flatpak = {
+    enable = true;
+    packages = [ 
+      "org.dupot.easyflatpak"
+       "tv.kodi.Kodi"
+      ];
+    update = {
+      onActivation = true;
+      auto = {
+        enable = true;
+        onCalendar = "weekly"; # Default value
+      };
+    };
+  };
 }
