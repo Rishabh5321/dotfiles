@@ -50,8 +50,8 @@ _: {
     "org/gnome/mutter" = {
       overlay-key = "Super_L";
       edge-tiling = true;
-      dynamic-workspaces = false;
-      workspaces-only-on-primary = true;
+      dynamic-workspaces = true;
+      workspaces-only-on-primary = false;
       auto-maximize = false;
     };
 
@@ -61,6 +61,7 @@ _: {
       favorite-apps = [
         "kitty.desktop"
         "Alacritty.desktop"
+        "zen.desktop"
         "brave-browser.desktop"
         "org.gnome.Nautilus.desktop"
         "discord.desktop"
