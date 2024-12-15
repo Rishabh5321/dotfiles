@@ -2,10 +2,10 @@ _:
 {
   services.flatpak = {
     enable = true;
-    packages = [ 
+    packages = [
       "org.dupot.easyflatpak"
-       "tv.kodi.Kodi"
-      ];
+      "tv.kodi.Kodi"
+    ];
     update = {
       onActivation = true;
       auto = {
