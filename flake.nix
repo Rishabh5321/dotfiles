@@ -17,6 +17,7 @@
       url = "github:VonHeikemen/fine-cmdline.nvim";
       flake = false;
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
     darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
     darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
     nix-gaming.url = "github:fufexan/nix-gaming";
@@ -30,6 +31,7 @@
     , spicetify-nix
     , alejandra
     , darkmatter-grub-theme
+    , nix-flatpak
     , ...
     } @ inputs:
     let
@@ -61,6 +63,7 @@
           ./nixos/${hostname}/configuration.nix
           darkmatter-grub-theme.nixosModule
           inputs.stylix.nixosModules.stylix
+          nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
           {
             home-manager.extraSpecialArgs = {
@@ -68,7 +71,7 @@
             };
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension =
-              "backupaa-"
+              "backups-"
               + builtins.readFile (pkgs.runCommand "timestamp" { } ''
                 date "+%Y%m%d%H%M%S" > $out
               '');
