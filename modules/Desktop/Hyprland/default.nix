@@ -26,7 +26,7 @@
     ./wlogout.nix
   ];
 
-  programs = {    
+  programs = {
     hyprland = {
       enable = true;
       package = pkgs.hyprland;
@@ -91,5 +91,5 @@
     pkgs.brightnessctl
     pkgs.kdePackages.kdeconnect-kde
   ];
-  
+
 }
