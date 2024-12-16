@@ -4,11 +4,11 @@
 }: {
   programs = {
     firefox.enable = true;
-    hyprland = {
-      enable = true;
-      package = pkgs.hyprland;
-      xwayland.enable = true;
-    };
+    #hyprland = {
+    #  enable = true;
+    #  package = pkgs.hyprland;
+    #  xwayland.enable = true;
+    #};
     dconf.enable = true;
     #seahorse.enable = lib.mkForce true;
     #fuse.userAllowOther = true;

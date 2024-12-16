@@ -26,6 +26,22 @@
     ./wlogout.nix
   ];
 
+  programs = {    
+    hyprland = {
+      enable = true;
+      package = pkgs.hyprland;
+      xwayland.enable = true;
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    brightnessctl
+    dunst
+    lazydocker
+    pavucontrol
+    xfce.xfce4-pulseaudio-plugin
+  ];
+
   home.file.".config/wlogout/icons" = {
     source = ./wlogout;
   };
@@ -75,4 +91,5 @@
     pkgs.brightnessctl
     pkgs.kdePackages.kdeconnect-kde
   ];
+  
 }

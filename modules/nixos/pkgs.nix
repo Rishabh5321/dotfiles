@@ -166,7 +166,9 @@
       zsh
       #zsh-powerlevel10k
 
-
+      samba
+      docker
+      docker-compose
       inputs.nix-gaming.packages.${pkgs.system}.wine-ge # installs a package
     ];
 
