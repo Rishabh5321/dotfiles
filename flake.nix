@@ -71,7 +71,7 @@
             };
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension =
-              "backup-"
+              "b-"
               + builtins.readFile (pkgs.runCommand "timestamp" { } ''
                 date "+%Y%m%d%H%M%S" > $out
               '');
