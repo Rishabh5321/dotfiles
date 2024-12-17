@@ -4,7 +4,7 @@ _: {
   services.logind.lidSwitchDocked = "ignore";
 
   # Disable GNOMEs power management
-  #services.power-profiles-daemon.enable = false;
+  services.power-profiles-daemon.enable = true;
 
   # Enable thermald (only necessary if on Intel CPUs)
   services.thermald.enable = true;
