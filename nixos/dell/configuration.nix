@@ -7,7 +7,8 @@
     ./hardware-configuration.nix
     ../../modules/nixos
     ./power.nix
-    ../../modules/Desktop/Gnome/main
+    #../../modules/Desktop/Gnome/main
+    ../../modules/Desktop/KDE/main
     ./intel-drivers.nix
     #../KDE/main
     #./amd-drivers.nix
