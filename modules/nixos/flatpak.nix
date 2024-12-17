@@ -5,6 +5,7 @@ _:
     packages = [
       "org.dupot.easyflatpak"
       "tv.kodi.Kodi"
+      "org.jdownloader.JDownloader"
     ];
     update = {
       onActivation = true;
