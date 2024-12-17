@@ -7,7 +7,7 @@ _: {
       enable = true;
       sddm = {
         enable = true;
-          wayland = {
+        wayland = {
           enable = true;
         };
       };
