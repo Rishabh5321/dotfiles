@@ -2,7 +2,7 @@
 { pkgs, ... }:
 let
   pname = "cursor";
-  version = "0.42.5";
+  version = "0.44.5";
 
   src = pkgs.fetchurl {
     # this will break if the version is updated.

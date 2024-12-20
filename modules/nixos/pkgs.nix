@@ -7,64 +7,112 @@
       cursor = pkgs.callPackage ../../pkgs/cursor.nix { };
     in
     with pkgs; [
-      #age
       alacritty
-      #amdvlk
       android-tools
-      #appimage-run
-      #authenticator
       atuin
       bat
       beeper
-      #bitwarden-desktop
-      #bottles
-      #brave
-      #brightnessctl
+      brave
       btop
-      #cava
       clinfo
       cliphist
-      #cmatrix
-      #cowsay
       cursor
-      #dconf-editor
+      dconf-editor
       discord
-      #distrobox
+      docker
+      docker-compose
       dracula-icon-theme
-      #duf
       eza
       fast-cli
       fastfetch
-      #ffmpeg
-      #figlet
-      #file-roller
       filezilla
       firefox
-      #floorp
       fzf
       gamescope
       gedit
       gh
       git
       github-desktop
-      #glxinfo
       gnome-console
       gnome-disk-utility
       gnome-system-monitor
-      #gnome-tweaks
-      #google-chrome
+      gnome-tweaks
+      google-chrome
       grim
+      heroic
       htop
+      inputs.alejandra.defaultPackage.${system}
+      inputs.nix-gaming.packages.${pkgs.system}.wine-ge
+      inputs.zen-browser.packages."${system}".default
+      jellyfin-media-player
+      libreoffice
+      libsForQt5.qt5.qtbase
+      libsForQt5.qt5.qtsvg
+      lutris
+      mangohud
+      mesa
+      micro
+      nautilus
+      networkmanagerapplet
+      nh
+      nwg-look
+      obsidian
+      oh-my-posh
+      onlyoffice-bin_latest
+      pfetch-rs
+      plex-media-player
+      protonup-qt
+      qbittorrent
+      ranger
+      rquickshare
+      samba
+      slurp
+      speedtest-cli
+      spotify
+      spotdl
+      stremio
+      swappy
+      swww
+      telegram-desktop
+      tldr
+      tmux
+      tree
+      unrar
+      unzip
+      vim
+      virt-viewer
+      vlc
+      vscode
+      wget
+      winetricks
+      wl-clipboard
+      zed-editor
+      zsh
+
+      #age
+      #amdvlk
+      #appimage-run
+      #authenticator
+      #bitwarden-desktop
+      #bottles
+      #brightnessctl
+      #cava
+      #cmatrix
+      #cowsay
+      #distrobox
+      #duf
+      #ffmpeg
+      #figlet
+      #file-roller
+      #floorp
+      #glxinfo
       #hyprlock
       #hyprpicker
       #hyprshot
       #imv
       #inputs.wfetch.packages.${pkgs.system}.default
-      inputs.alejandra.defaultPackage.${system}
-      #intel-gpu-tools # For Intel GPU tools
+      #intel-gpu-tools
       #inxi
-      inputs.zen-browser.packages."${system}".default
-      #jellyfin-media-player
       #kdePackages.kdeconnect-kde
       #kdePackages.sddm-kcm
       #killall
@@ -73,89 +121,52 @@
       #lazycli
       #lazygit
       #libnotify
-      libreoffice
       #libsForQt5.krohnkite
-      libsForQt5.qt5.qtbase
-      libsForQt5.qt5.qtsvg
       #libsForQt5.sddm-kcm
       #libvirt
       #lm_sensors
       #lolcat
       #lshw
       #lsof
-      #lutris
       #lxqt.lxqt-policykit
-      mangohud
       #marwaita-icons
-      mesa
       #meson
-      micro
       #mpv
-      nautilus
       #ncdu
       #neovide
-      networkmanagerapplet
-      nh
       #ninja
       #nixfmt-rfc-style
       #nixos-generators
-      nwg-look
       #nvtopPackages.full
-      obsidian
-      #oh-my-posh
-      onlyoffice-bin_latest
       #pavucontrol
-      #pciutils # For lspci command
+      #pciutils
       #peaclock
-      pfetch-rs
       #pkg-config
       #playerctl
-      #plex-media-player
       #polkit_gnome
-      #protonup-qt
-      qbittorrent
       #qemu
       #quickemu
-      #radeontop # For AMD GPU monitoring
-      ranger
+      #radeontop
       #resilio-sync
       #ripgrep
       #rose-pine-icon-theme
-      rquickshare
       #rtkit
       #sddm-astronaut
-      slurp
       #socat
       #sops
-      speedtest-cli
       #spicetify-cli
-      spotdl
       #steam
-      swappy
       #swaynotificationcenter
-      swww
       #swtpm
-      telegram-desktop
-      tldr
-      tmux
-      tree
       #unetbootin
-      unrar
-      unzip
       #uwufetch
       #v4l-utils
       #ventoy
-      vim
-      virt-viewer
       #vivaldi
       #vivaldi-ffmpeg-codecs
-      vlc
-      vscode
-      #vulkan-tools # For vulkaninfo and other Vulkan tools
+      #vulkan-tools
       #wayland-pipewire-idle-inhibit
-      wget
       #wezterm
-      wl-clipboard
       #wlroots
       #xfce.xfce4-pulseaudio-plugin
       #yad
@@ -163,28 +174,7 @@
       #yubioath-flutter
       #zinit
       #zoxide
-      zsh
       #zsh-powerlevel10k
-
-      samba
-      docker
-      docker-compose
-      inputs.nix-gaming.packages.${pkgs.system}.wine-ge # installs a package
-
-      brave
-      dconf-editor
-      gnome-tweaks
-      google-chrome
-      heroic
-      jellyfin-media-player
-      lutris
-      oh-my-posh
-      plex-media-player
-      protonup-qt
-      spotify
-      stremio
-      winetricks
-      zed-editor
     ];
 
   #services.plex.enable = true;
