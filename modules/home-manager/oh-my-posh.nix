@@ -1,7 +1,7 @@
-{ pkgs-unstable, ... }: {
+{ pkgs, ... }: {
   programs.oh-my-posh = {
     enable = true;
-    package = pkgs-unstable.oh-my-posh;
+    package = pkgs.oh-my-posh;
     useTheme = "quick-term";
     enableBashIntegration = true;
     enableZshIntegration = true;

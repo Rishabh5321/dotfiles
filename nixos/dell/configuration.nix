@@ -9,6 +9,7 @@
     ./power.nix
     #../../modules/Desktop/Gnome/main
     ../../modules/Desktop/KDE/main
+    #../../modules/Desktop/XFCE/main
     ./intel-drivers.nix
     #../KDE/main
     #./amd-drivers.nix
@@ -45,7 +46,6 @@
         layout = "us";
         variant = "";
       };
-      videoDrivers = [ "intel" ];
       #windowManager.i3.enable = true;
     };
     #displayManager.defaultSession = "hyprland";

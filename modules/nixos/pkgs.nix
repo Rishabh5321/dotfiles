@@ -170,6 +170,21 @@
       docker
       docker-compose
       inputs.nix-gaming.packages.${pkgs.system}.wine-ge # installs a package
+
+      brave
+      dconf-editor
+      gnome-tweaks
+      google-chrome
+      heroic
+      jellyfin-media-player
+      lutris
+      oh-my-posh
+      plex-media-player
+      protonup-qt
+      spotify
+      stremio
+      winetricks
+      zed-editor
     ];
 
   #services.plex.enable = true;

@@ -10,7 +10,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" "btrfs" "i915" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" "btrfs" "i915"];
   #boot.kernelParams = [ "radeon.si_support=0" "amdgpu.si_support=1" "radeon.cik_support=0" "amdgpu.cik_support=1" ];
   boot.initrd.kernelModules = [ ];
   #boot.kernelParams = [ "radeon.runpm=0" "amdgpu.runpm=0" ];
@@ -19,20 +19,20 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/0b3bb14a-982f-4982-8585-297dc23545e2";
+    device = "/dev/disk/by-uuid/3bebe1bf-773a-4446-9ae3-008553cd1c22";
     fsType = "btrfs";
     options = [ "subvol=@" ];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/91C1-C24A";
+    device = "/dev/disk/by-uuid/DC12-5C09";
     fsType = "vfat";
     options = [ "fmask=0022" "dmask=0022" ];
   };
 
   swapDevices = [
     {
-      device = "/dev/disk/by-uuid/ef057973-02c6-45a6-96dd-01808bfeda1a";
+      device = "/dev/disk/by-uuid/2ca8d892-7452-4592-8a45-240ab8f5f841";
     }
   ];
 

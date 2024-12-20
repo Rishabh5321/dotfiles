@@ -12,6 +12,7 @@
     #../../modules/Desktop/Gnome/home
     #../../modules/Desktop/Hyprland
     ../../modules/Desktop/KDE/home
+    #../../modules/Desktop/XFCE/home
     #../KDE/home
     #./gnome.nix
     #./gnome-extensions.nix
