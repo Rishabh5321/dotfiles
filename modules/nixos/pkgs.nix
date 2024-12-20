@@ -199,7 +199,6 @@
       symbola
       powerline
       material-icons
-      nerdfonts
     ];
   };
 }
