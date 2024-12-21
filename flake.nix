@@ -34,7 +34,7 @@
     , alejandra
     , darkmatter-grub-theme
     , nix-flatpak
-    #, nixos-cosmic
+      #, nixos-cosmic
     , ...
     } @ inputs:
     let
