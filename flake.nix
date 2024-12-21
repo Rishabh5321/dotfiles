@@ -17,8 +17,8 @@
       url = "github:VonHeikemen/fine-cmdline.nvim";
       flake = false;
     };
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
-    nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    #nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    #nixpkgs.follows = "nixos-cosmic/nixpkgs";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
     darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
@@ -34,7 +34,7 @@
     , alejandra
     , darkmatter-grub-theme
     , nix-flatpak
-    , nixos-cosmic
+    #, nixos-cosmic
     , ...
     } @ inputs:
     let
@@ -65,7 +65,7 @@
         modules = [
           ./nixos/${hostname}/configuration.nix
           darkmatter-grub-theme.nixosModule
-          nixos-cosmic.nixosModules.default
+          #nixos-cosmic.nixosModules.default
           inputs.stylix.nixosModules.stylix
           nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
