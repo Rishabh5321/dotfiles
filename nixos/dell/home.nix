@@ -9,18 +9,7 @@
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
     ../../modules/home-manager
-    #../../modules/Desktop/Gnome/home
-    #../../modules/Desktop/Hyprland
-    ../../modules/Desktop/KDE/home
-    #../../modules/Desktop/XFCE/home
-    #../KDE/home
-    #./gnome.nix
-    #./gnome-extensions.nix
-    # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
+    ../../modules/Desktop/Cinnamon/home
   ];
 
   nixpkgs = {
