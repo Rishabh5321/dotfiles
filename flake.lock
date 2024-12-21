@@ -346,11 +346,11 @@
         "umu": "umu"
       },
       "locked": {
-        "lastModified": 1734658860,
-        "narHash": "sha256-72LJNZJ9NyF+VuC2mVdxzXCPW7bNiOP8ZhKZ4zjnmh8=",
+        "lastModified": 1734745142,
+        "narHash": "sha256-Wp4DMm9eQ2iow9QzOOXN4IOM9lRgBCf2ZbUHHAfkLcs=",
         "owner": "fufexan",
         "repo": "nix-gaming",
-        "rev": "8137dad521d4067c34291ca25209598b87a95d5e",
+        "rev": "d767a7410d7fce228e15429eac2964153a04e26e",
         "type": "github"
       },
       "original": {
