@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos
     ./power.nix
-    ../../modules/Desktop/Cosmic/main
+    ../../modules/Desktop/Pantheon/main
     ./intel-drivers.nix
     #./amd-drivers.nix
   ];
