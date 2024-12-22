@@ -9,7 +9,7 @@
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
     ../../modules/home-manager
-    ../../modules/Desktop/Pantheon/home
+    ../../modules/Desktop/Budgie/home
   ];
 
   nixpkgs = {

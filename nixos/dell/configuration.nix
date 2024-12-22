@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos
     ./power.nix
-    ../../modules/Desktop/Pantheon/main
+    ../../modules/Desktop/Budgie/main
     ./intel-drivers.nix
     #./amd-drivers.nix
   ];
