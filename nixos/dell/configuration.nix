@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos
     ./power.nix
-    ../../modules/Desktop/Budgie/main
+    ../../modules/Desktop/Gnome/main
     ./intel-drivers.nix
     #./amd-drivers.nix
   ];
