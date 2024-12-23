@@ -10,7 +10,7 @@
     # outputs.homeManagerModules.example
     ../../modules/home-manager
     #../../modules/Desktop/Gnome/home
-    ../../modules/Desktop/KDE/home
+    ../../modules/Desktop/Gnome/home
     #./gnome.nix
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
