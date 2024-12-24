@@ -1,5 +1,5 @@
 { ... }: {
   imports = [
-    ./xfce.nix
+    ./hyprland.nix
   ];
 }

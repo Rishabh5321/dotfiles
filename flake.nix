@@ -17,6 +17,8 @@
       url = "github:VonHeikemen/fine-cmdline.nvim";
       flake = false;
     };
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # hyprland development
+    hyprland.inputs.nixpkgs.follows = "nixpkgs";
     #nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     #nixpkgs.follows = "nixos-cosmic/nixpkgs";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
@@ -76,7 +78,7 @@
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension =
               builtins.readFile (pkgs.runCommand "timestamp" { } ''
-                date "+%Y%m%d%H%M%S" > $out
+                date "+%Y%m%d%H%M" > $out
               '');
             home-manager.users.rishabh = import ./nixos/${hostname}/home.nix;
           }

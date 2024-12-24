@@ -1,6 +1,7 @@
 { username
 , pkgs
 , host
+, inputs
 , ...
 }: {
   imports = [
@@ -24,6 +25,11 @@
     ./swaync.nix
     ./waybar.nix
     ./wlogout.nix
+    inputs.hyprland.homeManagerModules.default
+  ];
+
+  systemd.user.targets.hyprland-session.Unit.Wants = [
+    "xdg-desktop-autostart.target"
   ];
 
   home.file.".config/wlogout/icons" = {

@@ -17,7 +17,6 @@
       clinfo
       cliphist
       cursor
-      dconf-editor
       discord
       docker
       docker-compose
@@ -36,7 +35,6 @@
       gnome-console
       gnome-disk-utility
       gnome-system-monitor
-      gnome-tweaks
       google-chrome
       grim
       heroic

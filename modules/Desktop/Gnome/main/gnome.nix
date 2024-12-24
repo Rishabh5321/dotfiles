@@ -10,4 +10,10 @@ _: {
     # Browser integration
     gnome.gnome-browser-connector.enable = true;
   };
+
+  environment.systemPackages =
+  with pkgs; [
+    gnome-tweaks
+    dconf-editor
+  ];
 }
