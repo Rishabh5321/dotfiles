@@ -1,6 +1,6 @@
 # Gnome Configuration
 #- <https://wiki.nixos.org/wiki/GNOME>
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs = {
     hyprland = {
       enable = true;
@@ -37,7 +37,7 @@
       settings = {
         Autologin = {
           Session = "hyprland";
-         User = "rishabh";
+          User = "rishabh";
         };
       };
       autoNumlock = true;
