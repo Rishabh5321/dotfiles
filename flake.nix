@@ -75,8 +75,7 @@
             };
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension =
-              "a-"
-              + builtins.readFile (pkgs.runCommand "timestamp" { } ''
+              builtins.readFile (pkgs.runCommand "timestamp" { } ''
                 date "+%Y%m%d%H%M%S" > $out
               '');
             home-manager.users.rishabh = import ./nixos/${hostname}/home.nix;
