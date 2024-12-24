@@ -12,8 +12,8 @@ _: {
   };
 
   environment.systemPackages =
-  with pkgs; [
-    gnome-tweaks
-    dconf-editor
-  ];
+    with pkgs; [
+      gnome-tweaks
+      dconf-editor
+    ];
 }
