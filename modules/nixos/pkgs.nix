@@ -37,7 +37,7 @@
       gnome-system-monitor
       google-chrome
       grim
-      
+
       htop
       inputs.alejandra.defaultPackage.${system}
       inputs.nix-gaming.packages.${pkgs.system}.wine-ge
@@ -46,8 +46,8 @@
       libreoffice
       libsForQt5.qt5.qtbase
       libsForQt5.qt5.qtsvg
-      
-      
+
+
       mesa
       micro
       nautilus
@@ -59,7 +59,7 @@
       onlyoffice-bin_latest
       #pfetch-rs
       plex-media-player
-      
+
       qbittorrent
       ranger
       rquickshare
