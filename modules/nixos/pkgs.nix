@@ -37,17 +37,14 @@
       gnome-system-monitor
       google-chrome
       grim
-
       htop
       inputs.alejandra.defaultPackage.${system}
       inputs.nix-gaming.packages.${pkgs.system}.wine-ge
-      inputs.zen-browser.packages."${system}".default
+      inputs.zen-browser.packages."${system}"
       jellyfin-media-player
       libreoffice
       libsForQt5.qt5.qtbase
       libsForQt5.qt5.qtsvg
-
-
       mesa
       micro
       nautilus
