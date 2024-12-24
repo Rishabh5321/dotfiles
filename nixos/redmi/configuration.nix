@@ -99,4 +99,11 @@
     ];
   };
 
+  environment.systemPackages =with pkgs; [
+    heroic
+    lutris
+    mangohud
+    protonup-qt
+  ];
+
 }

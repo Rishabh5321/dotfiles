@@ -37,7 +37,7 @@
       gnome-system-monitor
       google-chrome
       grim
-      heroic
+      
       htop
       inputs.alejandra.defaultPackage.${system}
       inputs.nix-gaming.packages.${pkgs.system}.wine-ge
@@ -46,8 +46,8 @@
       libreoffice
       libsForQt5.qt5.qtbase
       libsForQt5.qt5.qtsvg
-      lutris
-      mangohud
+      
+      
       mesa
       micro
       nautilus
@@ -57,9 +57,9 @@
       obsidian
       oh-my-posh
       onlyoffice-bin_latest
-      pfetch-rs
+      #pfetch-rs
       plex-media-player
-      protonup-qt
+      
       qbittorrent
       ranger
       rquickshare
