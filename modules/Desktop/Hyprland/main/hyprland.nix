@@ -1,6 +1,6 @@
 # Gnome Configuration
 #- <https://wiki.nixos.org/wiki/GNOME>
-{ pkgs, ... }: {
+{ inputs,pkgs, ... }: {
   programs = {
     hyprland = {
       enable = true;
@@ -10,6 +10,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    inputs.hyprland-qtutils.packages."${pkgs.system}".default
     brightnessctl
     dunst
     lazydocker
