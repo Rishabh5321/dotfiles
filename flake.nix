@@ -17,7 +17,11 @@
       url = "github:VonHeikemen/fine-cmdline.nvim";
       flake = false;
     };
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # hyprland development
+    hyprland = {
+      type = "git";
+      url = "https://github.com/hyprwm/Hyprland";
+      submodules = true;
+    };
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
     #nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     #nixpkgs.follows = "nixos-cosmic/nixpkgs";
