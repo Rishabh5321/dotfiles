@@ -40,7 +40,7 @@
       htop
       inputs.alejandra.defaultPackage.${system}
       inputs.nix-gaming.packages.${pkgs.system}.wine-ge
-      inputs.zen-browser.packages."${system}"
+      inputs.zen-browser.packages."${system}".default
       jellyfin-media-player
       libreoffice
       libsForQt5.qt5.qtbase
@@ -56,7 +56,6 @@
       onlyoffice-bin_latest
       #pfetch-rs
       plex-media-player
-
       qbittorrent
       ranger
       rquickshare
