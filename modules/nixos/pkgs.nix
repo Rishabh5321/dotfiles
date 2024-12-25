@@ -78,6 +78,7 @@
       virt-viewer
       vlc
       vscode
+      wgcf
       wget
       winetricks
       wl-clipboard
