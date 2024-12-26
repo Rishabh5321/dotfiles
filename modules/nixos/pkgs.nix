@@ -16,6 +16,7 @@
       btop
       clinfo
       cliphist
+      cloudflare-warp
       cursor
       discord
       docker
