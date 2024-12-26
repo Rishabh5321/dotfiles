@@ -4,7 +4,7 @@
   systemd = {
     services.nixos-upgrade = {
       description = "NixOS Upgrade Service";
-      path = [ 
+      path = [
         pkgs.nix
         pkgs.git
       ];
