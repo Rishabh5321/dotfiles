@@ -1,4 +1,4 @@
-{...}:{
+{inputs, ...}:{
     system.autoUpgrade = {
     enable = true;
     flake = inputs.self.outPath;
@@ -7,7 +7,7 @@
         "nixpkgs"
         "-L" # print build logs
     ];
-    dates = "22:25";
+    dates = "22:28";
     #randomizedDelaySec = "45min";
     };
 }
