@@ -185,17 +185,7 @@
       symbola
       powerline
       material-icons
-      nerd-fonts._0xproto
-      nerd-fonts.fira-code
-      nerd-fonts.fira-mono
-      nerd-fonts.jetbrains-mono
-      nerd-fonts.meslo-lg
-      nerd-fonts.monaspace
-      nerd-fonts.noto
-      nerd-fonts.ubuntu
-      nerd-fonts.ubuntu-mono
-      nerd-fonts.ubuntu-sans
-      nerd-fonts.zed-mono
+      nerdfonts
     ];
   };
 }
