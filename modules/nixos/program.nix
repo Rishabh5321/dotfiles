@@ -47,7 +47,6 @@
       enable = true;
       setSocketVariable = true;
     };
-    storageDriver = "btrfs";
   };
   services.udisks2.enable = true;
   services.fstrim.enable = true;
