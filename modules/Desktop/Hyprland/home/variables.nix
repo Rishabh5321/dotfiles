@@ -9,7 +9,7 @@ in
   # Hyprland Settings
   extraMonitorSettings = "";
 
-  flakeDir = "/home/rishabh/nix-dotfiles";
+  flakeDir = "/home/rishabh/dotfiles";
 
   # Waybar Settings
   clock24h = false;
