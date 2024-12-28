@@ -28,7 +28,7 @@
       filezilla
       firefox
       fzf
-      gamescope
+      #gamescope
       gedit
       gh
       git
@@ -39,9 +39,6 @@
       google-chrome
       grim
       htop
-      inputs.alejandra.defaultPackage.${system}
-      inputs.nix-gaming.packages.${pkgs.system}.wine-ge
-      inputs.zen-browser.packages."${system}".default
       jellyfin-media-player
       libreoffice
       libsForQt5.qt5.qtbase
@@ -53,7 +50,7 @@
       nh
       nwg-look
       obsidian
-      oh-my-posh
+      #oh-my-posh
       onlyoffice-bin_latest
       #pfetch-rs
       plex-media-player
@@ -65,7 +62,6 @@
       speedtest-cli
       spotify
       spotdl
-      stremio
       swappy
       swww
       telegram-desktop
@@ -76,13 +72,10 @@
       unzip
       vim
       virt-viewer
-      vlc
-      vscode
+      vlc 
       wgcf
       wget
-      winetricks
       wl-clipboard
-      zed-editor
       zsh
 
       #age
