@@ -72,7 +72,7 @@
       unzip
       vim
       virt-viewer
-      vlc 
+      vlc
       wgcf
       wget
       wl-clipboard
