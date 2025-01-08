@@ -402,11 +402,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1736114838,
-        "narHash": "sha256-FxbuGQExtN37ToWYnGmO6weOYN6WPHN/RAqbr7gNPek=",
+        "lastModified": 1736257999,
+        "narHash": "sha256-chDO669EUPz9JAO0AhdgkmUSAhIeNfu090W//tdL200=",
         "owner": "hyprwm",
         "repo": "hyprland-qtutils",
-        "rev": "6997fe382dcf396704227d2b98ffdd5066da6959",
+        "rev": "6cc1cf51f2f10352ec97c2095f49dc5556e43954",
         "type": "github"
       },
       "original": {
