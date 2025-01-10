@@ -488,11 +488,11 @@
         "umu": "umu"
       },
       "locked": {
-        "lastModified": 1736275344,
-        "narHash": "sha256-96yQIFgep6DT5XuGEYl7O0GCbPOZv6NVctl7nw0m3Gg=",
+        "lastModified": 1736499181,
+        "narHash": "sha256-G1DHB4JJH/iWe4dhxNKq2jBxguNZEk5oUbX6jqPpX8w=",
         "owner": "fufexan",
         "repo": "nix-gaming",
-        "rev": "6f431d614aa0e50a01253b7167c8c97a0ec83872",
+        "rev": "58c0f214331ce8fb13e6a4bfb40f30000bd2a10e",
         "type": "github"
       },
       "original": {
@@ -771,11 +771,11 @@
       },
       "locked": {
         "dir": "packaging/nix",
-        "lastModified": 1736284266,
-        "narHash": "sha256-yCfpnL/EtGK5eb1Ev9f2Rkg8hLkjPwvOOpHLivXy024=",
+        "lastModified": 1736468146,
+        "narHash": "sha256-Y4sobTZCfR9ANeF9HEIS08XdS447zlp+nZQ7dt3xAtY=",
         "ref": "refs/heads/main",
-        "rev": "57f9dfce97e4c49b74eea3e19376834f949f2d69",
-        "revCount": 883,
+        "rev": "fc3ec7aba3c622fd92f22750ec18fb31ea676a14",
+        "revCount": 894,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix"
