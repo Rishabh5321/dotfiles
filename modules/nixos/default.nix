@@ -26,5 +26,7 @@
     ./swap.nix
     ./users.nix
     #./virtualisation.nix
+
+    ./gaming.nix
   ];
 }

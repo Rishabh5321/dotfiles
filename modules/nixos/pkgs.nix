@@ -77,6 +77,9 @@
       wl-clipboard
       zsh
 
+      inputs.alejandra.defaultPackage.${system}
+      inputs.zen-browser.packages."${system}".default
+
       #age
       #amdvlk
       #appimage-run
