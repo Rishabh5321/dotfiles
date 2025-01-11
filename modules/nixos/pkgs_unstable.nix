@@ -5,5 +5,9 @@
     vscode
     winetricks
     zed-editor
+    heroic
+    lutris
+    mangohud
+    protonup-qt
   ];
 }

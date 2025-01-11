@@ -99,11 +99,4 @@
     ];
   };
 
-  environment.systemPackages = with pkgs-unstable; [
-    heroic
-    lutris
-    mangohud
-    protonup-qt
-  ];
-
 }
