@@ -1,4 +1,5 @@
 { pkgs
+, inputs
 , ...
 }: {
   environment.systemPackages =
