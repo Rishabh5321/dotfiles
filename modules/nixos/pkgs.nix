@@ -191,7 +191,14 @@
       symbola
       powerline
       material-icons
-      nerdfonts
+      nerd-fonts.ubuntu-sans
+      nerd-fonts.ubuntu-mono
+      nerd-fonts.ubuntu
+      nerd-fonts.roboto-mono
+      nerd-fonts.profont
+      nerd-fonts.noto
+      nerd-fonts.monaspace
+      nerd-fonts.meslo-lg
     ];
   };
 }
