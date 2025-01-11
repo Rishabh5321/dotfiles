@@ -1,5 +1,5 @@
 { pkgs
-, pkgs-unstable
+, pkgs-stable
 , wallpaper
 , ...
 }: {
@@ -18,7 +18,7 @@
     fonts = {
 
       serif = {
-        package = pkgs-unstable.aleo-fonts;
+        package = pkgs.aleo-fonts;
         name = "Aleo";
       };
 

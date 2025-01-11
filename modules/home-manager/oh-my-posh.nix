@@ -1,7 +1,7 @@
-{ pkgs-unstable, ... }: {
+{ pkgs, ... }: {
   programs.oh-my-posh = {
     enable = true;
-    package = pkgs-unstable.oh-my-posh;
+    package = pkgs.oh-my-posh;
     useTheme = "mojada";
     enableBashIntegration = true;
     enableZshIntegration = true;

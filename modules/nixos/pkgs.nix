@@ -81,6 +81,16 @@
       inputs.alejandra.defaultPackage.${system}
       inputs.zen-browser.packages."${system}".default
 
+      gamescope
+      stremio
+      vscode
+      winetricks
+      zed-editor
+      heroic
+      lutris
+      mangohud
+      protonup-qt
+
       #age
       #amdvlk
       #appimage-run
