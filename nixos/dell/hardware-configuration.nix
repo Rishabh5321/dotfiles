@@ -14,12 +14,12 @@
   #boot.kernelParams = [ "radeon.si_support=0" "amdgpu.si_support=1" "radeon.cik_support=0" "amdgpu.cik_support=1" ];
   boot.initrd.kernelModules = [ ];
   #boot.kernelParams = [ "radeon.runpm=0" "amdgpu.runpm=0" ];
-  boot.blacklistedKernelModules = [ "amdgpu" "radeon"];
+  boot.blacklistedKernelModules = [ "amdgpu" "radeon" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [
-  "modprobe.blacklist=amdgpu"
-  "modprobe.blacklist=radeon"
+    "modprobe.blacklist=amdgpu"
+    "modprobe.blacklist=radeon"
   ];
 
   fileSystems."/" = {
