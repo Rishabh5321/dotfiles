@@ -1,4 +1,4 @@
-{ pkgs-unstable, inputs, ... }: {
+{ pkgs-unstable, ... }: {
   environment.systemPackages = with pkgs-unstable; [
     gamescope
     stremio
