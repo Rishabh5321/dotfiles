@@ -90,6 +90,7 @@
       lutris
       mangohud
       protonup-qt
+      steam
 
       #age
       #amdvlk
