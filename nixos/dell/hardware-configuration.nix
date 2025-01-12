@@ -23,12 +23,17 @@
   ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/7880fe03-accf-4681-93a8-e28c06f6e780";
+    device = "/dev/disk/by-uuid/efef5197-ffb4-46b4-a54b-1d3ecee0aa0d";
+    fsType = "ext4";
+  };
+  
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/fdcf188c-7880-45f5-838a-bcab67d49a4b";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/1B2A-F3F4";
+    device = "/dev/disk/by-uuid/B7FE-03BE";
     fsType = "vfat";
     options = [ "fmask=0022" "dmask=0022" ];
   };
@@ -49,10 +54,10 @@
     fsType = "ntfs";
   };
 
-  fileSystems."/mnt/Win_Disk" = {
-    device = "/dev/disk/by-uuid/78CCFCB0CCFC69B0";
-    fsType = "ntfs";
-  };
+  #fileSystems."/mnt/Win_Disk" = {
+  #  device = "/dev/disk/by-uuid/78CCFCB0CCFC69B0";
+  #  fsType = "ntfs";
+  #};
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
