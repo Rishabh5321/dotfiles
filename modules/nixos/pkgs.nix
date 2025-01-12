@@ -199,6 +199,7 @@
       nerd-fonts.noto
       nerd-fonts.monaspace
       nerd-fonts.meslo-lg
+      nerd-fonts.jetbrains-mono
     ];
   };
 }
