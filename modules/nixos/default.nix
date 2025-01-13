@@ -28,6 +28,5 @@
     #./virtualisation.nix
 
     ./gaming.nix
-    ./fhs.nix
   ];
 }
