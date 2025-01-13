@@ -5,8 +5,12 @@
   environment.systemPackages =
     let
       cursor = pkgs.callPackage ../../pkgs/cursor.nix { };
+      grayjay = pkgs.callPackage ../../pkgs/grayjay.nix { };
     in
     with pkgs; [
+
+      grayjay
+
       alacritty
       android-tools
       atuin
