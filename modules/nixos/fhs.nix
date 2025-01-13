@@ -1,36 +1,43 @@
-{pkgs,...}{
-  (pkgs.buildFHSUserEnv {
-  name = "fhs";
-  targetPkgs = _: with pkgs; [
-    libz
-    icu
-    openssl # For updater
+{ config, pkgs, ... }:
 
-    xorg.libX11
-    xorg.libXcomposite
-    xorg.libXdamage
-    xorg.libXext
-    xorg.libXfixes
-    xorg.libXrandr
-    xorg.libxcb
+let
+  fhsEnv = pkgs.buildFHSEnv {
+    name = "fhs";
+    targetPkgs = _: with pkgs; [
+      libz
+      icu
+      openssl # For updater
 
-    gtk3
-    glib
-    nss
-    nspr
-    dbus
-    atk
-    cups
-    libdrm
-    expat
-    libxkbcommon
-    pango
-    cairo
-    udev
-    alsa-lib
-    mesa
-    libGL
-    libsecret
+      xorg.libX11
+      xorg.libXcomposite
+      xorg.libXdamage
+      xorg.libXext
+      xorg.libXfixes
+      xorg.libXrandr
+      xorg.libxcb
+
+      gtk3
+      glib
+      nss
+      nspr
+      dbus
+      atk
+      cups
+      libdrm
+      expat
+      libxkbcommon
+      pango
+      cairo
+      udev
+      alsa-lib
+      mesa
+      libGL
+      libsecret
+    ];
+  };
+in
+{
+  environment.systemPackages = with pkgs; [
+    fhsEnv
   ];
-}).env
 }
