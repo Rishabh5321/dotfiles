@@ -3,11 +3,12 @@
     enable = true;
     flake = inputs.self.outPath;
     flags = [
-      "--update-input"
+      "flake update"
       "nixpkgs"
       "-L" # print build logs
+      "switch"
     ];
-    dates = "8:30";
+    dates = "08:20";
     #randomizedDelaySec = "45min";
   };
 }
