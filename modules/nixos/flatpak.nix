@@ -8,7 +8,6 @@ _:
       "org.jdownloader.JDownloader"
     ];
     update = {
-      onActivation = true;
       auto = {
         enable = true;
         onCalendar = "weekly"; # Default value
