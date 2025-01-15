@@ -4,9 +4,10 @@
     flake = inputs.self.outPath;
     flags = [
       "--update-input"
+      "nixpkgs"
       "-L" # print build logs
     ];
-    dates = "9:40";
+    dates = "8:30";
     #randomizedDelaySec = "45min";
   };
 }
