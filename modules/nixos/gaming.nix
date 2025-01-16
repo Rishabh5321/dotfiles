@@ -10,4 +10,4 @@
   ];
   #programs.steam.platformOptimizations.enable = true;
 }
-z
+  z
