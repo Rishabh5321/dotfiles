@@ -8,7 +8,7 @@ _: {
         watchstate = {
           image = "ghcr.io/arabcoders/watchstate:latest";
           autoStart = true;
-          user: "0:0";
+          user = "0:0";
           ports = [
             "8500:8080"
             "8600:9000"
