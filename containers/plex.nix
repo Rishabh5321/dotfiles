@@ -30,7 +30,7 @@ _: {
             PUID = "1000";
             PGID = "1000";
             TZ = "Asia/Kolkata";
-            VERSION="docker";
+            VERSION = "docker";
           };
         };
       };

@@ -8,7 +8,7 @@ _: {
         portainer = {
           image = "portainer/portainer-ce:latest";
           autoStart = true;
-          ports = [      
+          ports = [
             "8000:8000"
             "9443:9443"
             "9000:9000"

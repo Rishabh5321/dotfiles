@@ -8,7 +8,7 @@ _: {
         suwayomi = {
           image = "ghcr.io/suwayomi/tachidesk:preview";
           autoStart = true;
-          ports = ["4567:4567"];
+          ports = [ "4567:4567" ];
           volumes = [
             "/mnt/Docker/Docker/Tachiyomi_Config:/home/suwayomi/.local/share/Tachidesk"
           ];

@@ -17,14 +17,14 @@ _: {
             "/mnt/Docker/Docker/Qbittorrent_Config:/config"
             "/mnt/Docker/Downloads:/downloads"
             "/mnt/Raid/Downloads:/downloads1"
-            "/mnt/E_Disk/Games:/Games"  
+            "/mnt/E_Disk/Games:/Games"
           ];
           environment = {
             PUID = "1000";
             PGID = "1000";
             TZ = "Asia/Kolkata";
-            WEBUI_PORT= "8080";
-            TORRENTING_PORT= "6881";
+            WEBUI_PORT = "8080";
+            TORRENTING_PORT = "6881";
           };
         };
       };

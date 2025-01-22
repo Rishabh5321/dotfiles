@@ -8,7 +8,7 @@ _: {
         duplicati = {
           image = "lscr.io/linuxserver/duplicati:latest";
           autoStart = true;
-          ports = ["8200:8200"];
+          ports = [ "8200:8200" ];
           volumes = [
             "/mnt/Docker/Docker/Duplicati_Config:/config"
             "/mnt/Raid/Backup/:/backups"
@@ -20,8 +20,8 @@ _: {
             PUID = "1000";
             PGID = "1000";
             TZ = "Asia/Kolkata";
-            SETTINGS_ENCRYPTION_KEY= "Pass12345";   #STARTER PASSWORD CHANGED AFTER DEPLOYING CHECK 1
-            DUPLICATI__WEBSERVICE_PASSWORD= "Pass12345";  #STARTER PASSWORD CHANGED AFTER DEPLOYING CHECK 1
+            SETTINGS_ENCRYPTION_KEY = "Pass12345"; #STARTER PASSWORD CHANGED AFTER DEPLOYING CHECK 1
+            DUPLICATI__WEBSERVICE_PASSWORD = "Pass12345"; #STARTER PASSWORD CHANGED AFTER DEPLOYING CHECK 1
           };
         };
       };

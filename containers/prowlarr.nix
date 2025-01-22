@@ -8,9 +8,9 @@ _: {
         prowlarr = {
           image = "lscr.io/linuxserver/prowlarr:latest";
           autoStart = true;
-          ports = ["9696:9696"];
+          ports = [ "9696:9696" ];
           volumes = [
-            "/mnt/Docker/Docker/Prowlarr_Config:/config"  
+            "/mnt/Docker/Docker/Prowlarr_Config:/config"
           ];
           environment = {
             PUID = "1000";
