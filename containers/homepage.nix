@@ -8,7 +8,7 @@ _: {
         homepage = {
           image = "ghcr.io/gethomepage/homepage:latest";
           autoStart = true;
-          ports = ["2500:3000"];
+          ports = [ "2500:3000" ];
           volumes = [
             "/mnt/Docker/Docker/HomePage_Config:/app/config"
             "/mnt/Raid:/mnt/Raid"

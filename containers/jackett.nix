@@ -8,7 +8,7 @@ _: {
         jackett = {
           image = "lscr.io/linuxserver/jackett:latest";
           autoStart = true;
-          ports = ["9117:9117"];
+          ports = [ "9117:9117" ];
           volumes = [
             "/mnt/Docker/Docker/Jackett_Config:/config"
             "/mnt/Docker/Downloads:/downloads"
@@ -17,7 +17,7 @@ _: {
           environment = {
             PUID = "1000";
             PGID = "1000";
-            AUTO_UPDATE= "true";
+            AUTO_UPDATE = "true";
             TZ = "Asia/Kolkata";
           };
         };

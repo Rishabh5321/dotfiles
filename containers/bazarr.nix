@@ -8,7 +8,7 @@ _: {
         bazarr = {
           image = "lscr.io/linuxserver/bazarr:latest";
           autoStart = true;
-          ports = ["6767:6767"];
+          ports = [ "6767:6767" ];
           volumes = [
             "/mnt/Docker/Docker/Bazarr_Docker:/config"
             "/mnt/Raid/Learn/Bonus:/data"

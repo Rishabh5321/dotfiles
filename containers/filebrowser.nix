@@ -9,13 +9,13 @@ _: {
           image = "hurlenko/filebrowser";
           autoStart = true;
           user = "1000";
-          ports = ["700:8080"];
+          ports = [ "700:8080" ];
           volumes = [
             "/:/data"
             "/mnt/Docker/Docker/FileBrowser_Config:/config"
           ];
           environment = {
-            FB_BASEURL="/filebrowser";
+            FB_BASEURL = "/filebrowser";
           };
         };
       };

@@ -8,7 +8,7 @@ _: {
         sonarr = {
           image = "lscr.io/linuxserver/sonarr:latest";
           autoStart = true;
-          ports = ["8989:8989"];
+          ports = [ "8989:8989" ];
           volumes = [
             "/mnt/Docker/Docker/Sonarr_Config:/config"
             "/mnt/Raid/Learn/Bonus:/data"

@@ -8,7 +8,7 @@ _: {
         radarr = {
           image = "lscr.io/linuxserver/radarr:latest";
           autoStart = true;
-          ports = ["7878:7878"];
+          ports = [ "7878:7878" ];
           volumes = [
             "/mnt/Docker/Docker/Radarr_Config:/config"
             "/mnt/Raid/Learn/Bonus:/data"
