@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos
     ./power.nix
-    ../../containers
+    #../../containers
     ../../modules/Desktop/Hyprland/main
     ./intel-drivers.nix
     #./amd-drivers.nix
