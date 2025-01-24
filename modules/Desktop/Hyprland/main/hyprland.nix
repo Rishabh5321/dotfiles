@@ -1,6 +1,6 @@
 # Gnome Configuration
 #- <https://wiki.nixos.org/wiki/GNOME>
-{ inputs, pkgs, ... }: {
+{ pkgs, ... }: {
   programs = {
     hyprland = {
       enable = true;
