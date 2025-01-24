@@ -801,11 +801,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1737573247,
-        "narHash": "sha256-qYr17CTrtmudrwcDXBZjgZM6E8elQ8O7SfMhmZj7x00=",
+        "lastModified": 1737656612,
+        "narHash": "sha256-Lfi7TNgkEEz1mbTpwltdzUfTdZ1Ez1F9M9a7NRU3K3I=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "c3ea41c78e72866919a46116a5231c4e92062327",
+        "rev": "654bb9ee35d1116f401c72f545bf307fb62bfb3c",
         "type": "github"
       },
       "original": {
