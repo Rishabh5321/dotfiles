@@ -10,7 +10,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    inputs.hyprland-qtutils.packages."${pkgs.system}".default
+    #inputs.hyprland-qtutils.packages."${pkgs.system}".default
     brightnessctl
     dunst
     lazydocker

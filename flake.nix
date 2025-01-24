@@ -17,7 +17,7 @@
       url = "github:VonHeikemen/fine-cmdline.nvim";
       flake = false;
     };
-    hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils"; # NOTE Temp until fixed upstream
+    #hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils"; # NOTE Temp until fixed upstream
     #nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     #nixpkgs.follows = "nixos-cosmic/nixpkgs";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
