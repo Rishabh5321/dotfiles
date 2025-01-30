@@ -27,9 +27,9 @@
       ];
     };
     gamemode.enable = true;
-};
+  };
   virtualisation.libvirtd.enable = true;
-  users.groups.libvirtd.members = ["${username}"];
+  users.groups.libvirtd.members = [ "${username}" ];
   virtualisation.spiceUSBRedirection.enable = true;
   services.gvfs.enable = true;
 
@@ -44,14 +44,14 @@
   networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "prohibit-password";
-  virtualisation = { 
+  virtualisation = {
     docker = {
       enable = true;
       rootless = {
         enable = true;
         setSocketVariable = true;
-          };
       };
+    };
     podman = {
       enable = true;
     };
