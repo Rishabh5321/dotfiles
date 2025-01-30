@@ -14,7 +14,7 @@
   grayjay-desktop-file = pkgs.makeDesktopItem {
     name = "Grayjay_Bye";
     type = "Application";
-    desktopName = "Grayjay";
+    desktopName = "Grayjay_bye";
     genericName = "Desktop Client for Grayjay";
     comment = "A desktop client for Grayjay to stream and download video content";
     icon = "${installDir}/grayjay.png";
@@ -27,7 +27,7 @@
       "Player"
     ];
     startupNotify = true;
-    startupWMClass = "Grayjay";
+    startupWMClass = "Grayjay_bye";
     prefersNonDefaultGPU = false;
   };
 
@@ -69,6 +69,6 @@
   runScript = "start-grayjay";
   extraInstallCommands = ''
     mkdir -p $out/share/applications/
-    cp ${grayjay-desktop-file}/share/applications/Grayjay.desktop $out/share/applications/
+    cp ${grayjay-desktop-file}/share/applications/Grayjay_Bye.desktop $out/share/applications/
   '';
 })
