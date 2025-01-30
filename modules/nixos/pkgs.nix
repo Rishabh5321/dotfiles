@@ -23,6 +23,7 @@
       #cloudflare-warp
       cursor
       discord
+      distrobox
       docker
       docker-compose
       dracula-icon-theme

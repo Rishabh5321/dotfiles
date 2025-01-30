@@ -1,5 +1,6 @@
 { pkgs
 , options
+, username
 , ...
 }: {
   programs = {
@@ -26,8 +27,10 @@
       ];
     };
     gamemode.enable = true;
-  };
-
+};
+  virtualisation.libvirtd.enable = true;
+  users.groups.libvirtd.members = ["${username}"];
+  virtualisation.spiceUSBRedirection.enable = true;
   services.gvfs.enable = true;
 
   # services.gnome.gnome-keyring = {
@@ -41,11 +44,16 @@
   networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "prohibit-password";
-  virtualisation.docker = {
-    enable = true;
-    rootless = {
+  virtualisation = { 
+    docker = {
       enable = true;
-      setSocketVariable = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+          };
+      };
+    podman = {
+      enable = true;
     };
   };
   services.udisks2.enable = true;
