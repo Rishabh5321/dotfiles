@@ -6,10 +6,12 @@
     let
       cursor = pkgs.callPackage ../../pkgs/cursor.nix { };
       grayjay = pkgs.callPackage ../../pkgs/grayjay.nix { };
+      grayjay_bye = pkgs.callPackage ../../pkgs/grayjay_bye.nix { };
     in
     with pkgs; [
 
       grayjay
+      grayjay_bye
 
       alacritty
       android-tools
