@@ -5,6 +5,8 @@ This repository contains the NixOS configuration for both a laptop and a server.
 ## Table of Contents
 
 - [Overview](#overview)
+- [Directory Structure](#directory-structure)
+- [Features](#features)
 - [Inputs](#inputs)
 - [Outputs](#outputs)
   - [Packages](#packages)
@@ -23,6 +25,57 @@ This repository contains the NixOS configuration for both a laptop and a server.
 
 This configuration is designed to be modular and reusable across different machines. It includes settings for both system-wide configurations and user-specific home-manager configurations. The setup leverages various NixOS modules and community contributions to enhance functionality and aesthetics.
 
+## Directory Structure
+
+The repository is organized as follows:
+```
+.
+├── containers/               # Containerized applications (e.g., Jellyfin, Plex, Sonarr)
+├── modules/                  # Modular configurations for desktop environments and tools
+│   ├── Desktop/              # Desktop environment configurations (e.g., Hyprland, GNOME, KDE)
+│   ├── home-manager/         # User-specific configurations (e.g., Neovim, Alacritty, Zsh)
+│   └── nixos/                # System-wide NixOS modules (e.g., Bluetooth, Gaming, Virtualization)
+├── nixos/                    # Host-specific configurations
+│   ├── dell/                 # Configuration for Dell systems
+│   └── redmi/                # Configuration for Redmi systems
+├── overlays/                 # Custom Nixpkgs overlays
+├── pkgs/                     # Custom packages (e.g., Grayjay, cursor themes)
+├── screenshot/               # Screenshots of the system in action
+├── wallpapers/               # Collection of wallpapers
+├── flake.lock                # Nix flake lock file
+├── flake.nix                 # Nix flake configuration
+├── LICENSE                   # License file
+└── README.md                 # This documentation
+```
+
+## Features
+
+- **Desktop Environments**: Supports multiple desktop environments, including:
+  - Hyprland
+  - GNOME
+  - KDE
+  - XFCE
+  - Budgie
+  - Cinnamon
+  - Pantheon
+  - Cosmic (WIP)
+- **Containerized Applications**: Pre-configured containers for media servers and download managers:
+  - Jellyfin
+  - Plex
+  - Sonarr
+  - Radarr
+  - qBittorrent
+  - Portainer
+- **Home Manager**: User-specific configurations for tools like:
+  - Neovim
+  - Alacritty
+  - Zsh
+  - Fastfetch
+  - Spicetify
+- **Custom Packages**: Includes custom packages and overlays for additional functionality.
+- **Theming**: Styling and theming support via `stylix` and custom GRUB themes.
+
+---
 ## Inputs
 
 The following inputs are used in this configuration:
@@ -100,18 +153,31 @@ Each host has its own directory under `./nixos/<hostname>`, containing:
 
 This configuration relies on several external inputs and modules. Ensure that all dependencies are available and properly configured before applying the configuration.
 
-## Screenshots
+## Screenshots 🖼️
 
 Here are some screenshots of the system in action:
 
+---
+
+### 🖥️ **Desktop Environment with Custom Theming**
 ![Screenshot 1](screenshot/screenshot1.png)  
-*Desktop environment with custom theming.*
+*Experience a sleek and modern desktop environment with custom themes, widgets, and layouts tailored for productivity and aesthetics.*
 
+---
+
+### 🛠️ **Home-Manager Configuration for User-Specific Settings**
 ![Screenshot 2](screenshot/screenshot2.png)  
-*Home-manager configuration for user-specific settings.*
+*Customize your workflow with user-specific configurations managed by `home-manager`, including Neovim, Alacritty, and more.*
 
+---
+
+### 🖋️ **Terminal Theme**
 ![Screenshot 3](screenshot/screenshot3.png)  
-*Terminal Theme.*
+*A beautifully themed terminal setup with powerline prompts, syntax highlighting, and seamless integration with your workflow.*
+
+---
+
+✨ **Explore the full potential of this NixOS configuration!**
 
 ## License
 
