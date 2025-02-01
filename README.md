@@ -134,7 +134,7 @@ Replace redmi with dell for the server configuration.
 
 ## Configuration Details
 
-## Common Configuration
+### Common Configuration
 
 The `commonConfig` function generates a common set of configurations for all hosts. It includes:
 
