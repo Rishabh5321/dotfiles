@@ -12,7 +12,7 @@
 
       grayjay
       grayjay_bye
-
+      mission-center
       alacritty
       android-tools
       atuin
