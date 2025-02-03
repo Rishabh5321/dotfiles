@@ -13,7 +13,7 @@
       grayjay
       grayjay_bye
       mission-center
-      flatpak-builder 
+      flatpak-builder
       alacritty
       android-tools
       atuin
