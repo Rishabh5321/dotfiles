@@ -9,7 +9,7 @@
       grayjay_bye = pkgs.callPackage ../../pkgs/grayjay_bye.nix { };
     in
     with pkgs; [
-
+      ethtool
       grayjay
       grayjay_bye
       mission-center

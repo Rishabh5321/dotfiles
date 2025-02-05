@@ -5,6 +5,6 @@
   ];
 
   services.tailscale.enable = true;
-  services.tailscale.useRoutingFeatures = true;
-
+  services.tailscale.useRoutingFeatures = "server";
+  networking.firewall.checkReversePath = "loose";
 }
