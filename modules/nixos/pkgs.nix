@@ -47,7 +47,7 @@
       google-chrome
       grim
       htop
-      jellyfin-media-player
+      #jellyfin-media-player
       libreoffice
       libsForQt5.qt5.qtbase
       libsForQt5.qt5.qtsvg
