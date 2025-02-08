@@ -6,24 +6,24 @@ pkgs.appimageTools.wrapType2 rec {
 
   src = pkgs.fetchurl {
     url = "https://github.com/K3vinb5/Unyo/releases/download/v${version}/Unyo-v${version}-linux.AppImage";
-    hash = "sha256-eZEXrxBPvfteoBCKDGBlAFzQob9Ya11cbRqsbwgUPIw=";
+    hash = "sha256-fHrDewdnseGit1jjvejXUimeCavIPYc0pV4FZLF1o88=";
   };
 
   extraInstallCommands = let
     contents = pkgs.appimageTools.extract {inherit pname version src;};
   in ''
-    install -m 444 -D ${contents}/unyo.desktop -t $out/share/applications
-    substituteInPlace $out/share/applications/unyo.desktop --replace 'Exec=AppRun' 'Exec=${pname}'
-    cp -r ${contents}/usr/share/icons $out/share
+    install -m 444 -D ${contents}/Unyo.desktop -t $out/share/applications
+    substituteInPlace $out/share/applications/Unyo.desktop --replace 'Exec=AppRun' 'Exec=${pname}'
+    
   '';
-
+#cp -r ${contents}/usr/share/logo.png $out/share
   meta = with pkgs.lib; {
-    name = "unyo";
+    name = "Unyo";
     description = "Bittorrent streaming software for cats.";
     homepage = "https://github.com/ThaUnknown/unyo";
     license = licenses.gpl3;
     maintainers = with maintainers; [karitham];
     platforms = ["x86_64-linux"];
-    mainProgram = "unyo";
+    mainProgram = "Unyo";
   };
 }
