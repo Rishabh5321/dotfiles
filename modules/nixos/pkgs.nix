@@ -89,17 +89,6 @@
       inputs.alejandra.defaultPackage.${system}
       inputs.zen-browser.packages."${system}".default
 
-      gamescope
-      stremio
-      vscode
-      winetricks
-      zed-editor
-      heroic
-      lutris
-      mangohud
-      protonup-qt
-      steam
-
       #age
       #amdvlk
       #appimage-run
@@ -200,15 +189,18 @@
       symbola
       powerline
       material-icons
-      nerd-fonts.ubuntu-sans
-      nerd-fonts.ubuntu-mono
-      nerd-fonts.ubuntu
-      nerd-fonts.roboto-mono
-      nerd-fonts.profont
-      nerd-fonts.noto
-      nerd-fonts.monaspace
-      nerd-fonts.meslo-lg
-      nerd-fonts.jetbrains-mono
+      nerdfonts # for 24.11
+
+      #for unstable
+      # nerd-fonts.ubuntu-sans
+      # nerd-fonts.ubuntu-mono
+      # nerd-fonts.ubuntu
+      # nerd-fonts.roboto-mono
+      # nerd-fonts.profont
+      # nerd-fonts.noto
+      # nerd-fonts.monaspace
+      # nerd-fonts.meslo-lg
+      # nerd-fonts.jetbrains-mono
     ];
   };
 }

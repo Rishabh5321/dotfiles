@@ -1,6 +1,6 @@
 _: {
-  #sound.enable = true;
-  services.pulseaudio.enable = false;
+  #sound.enable = true; 
+  # services.pulseaudio.enable = false; # for unstable
 
   # make pipewire realtime-capable
   security.rtkit.enable = true;

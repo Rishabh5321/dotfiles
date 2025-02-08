@@ -1,10 +1,10 @@
 # Gnome Configuration
 #- <https://wiki.nixos.org/wiki/GNOME>
-{ pkgs, ... }: {
+{ pkgs, pkgs-unstable, ... }: {
   programs = {
     hyprland = {
       enable = true;
-      package = pkgs.hyprland;
+      package = pkgs-unstable.hyprland;
       xwayland.enable = true;
     };
   };
@@ -23,7 +23,7 @@
     wlr.enable = true;
     xdgOpenUsePortal = true;
     extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
+      #pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
     ];
   };
