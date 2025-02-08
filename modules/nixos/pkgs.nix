@@ -8,8 +8,12 @@
       grayjay = pkgs.callPackage ../../pkgs/grayjay.nix { };
       grayjay_bye = pkgs.callPackage ../../pkgs/grayjay_bye.nix { };
       miru = pkgs.callPackage ../../pkgs/miru.nix { };
+      migu = pkgs.callPackage ../../pkgs/migu.nix { };
+      unyo = pkgs.callPackage ../../pkgs/unyo.nix { };
     in
     with pkgs; [
+      unyo
+      migu
       miru
       ethtool
       grayjay
