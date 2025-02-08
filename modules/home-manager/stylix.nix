@@ -22,8 +22,8 @@
 
   qt = {
     enable = true;
-    # platformTheme = "gtk";
-    #style = { name = "adwaita-dark"; };
+    platformTheme.name = "gtk";
+    style = { name = "adwaita-dark"; };
   };
 
   stylix.targets.waybar.enable = false;
