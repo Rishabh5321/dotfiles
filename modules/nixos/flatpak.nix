@@ -7,6 +7,8 @@ _:
       "tv.kodi.Kodi"
       "org.jdownloader.JDownloader"
       "com.github.iwalton3.jellyfin-media-player"
+      "org.videolan.VLC"
+      "io.mpv.Mpv"
     ];
     update = {
       auto = {
