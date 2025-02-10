@@ -10,6 +10,8 @@
       grayjay_bye = pkgs.callPackage ../../pkgs/grayjay_bye.nix { };
     in
     with pkgs; [
+      papirus-icon-theme
+      #tela-icon-theme
       kdePackages.qtstyleplugin-kvantum
       miru
       grayjay
