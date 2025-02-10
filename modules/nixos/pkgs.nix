@@ -24,7 +24,7 @@
       btop
       clinfo
       cliphist
-      #cloudflare-warp
+      cloudflare-warp
       cursor
       discord
       distrobox

@@ -162,6 +162,6 @@
     };
   };
 
-  #services.cloudflare-warp.enable = true;
+  services.cloudflare-warp.enable = true;
 
 }
