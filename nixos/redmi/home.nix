@@ -9,7 +9,7 @@
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
     ../../modules/home-manager
-    ../../modules/Desktop/Hyprland/home
+    ../../modules/Desktop/Gnome/home
     #../../modules/Desktop/Gnome/home
     #./gnome.nix
     # Or modules exported from other flakes (such as nix-colors):
