@@ -13,7 +13,8 @@
       name = "Afterglow-Recolored-Catppuccin-Flamingo";
       size = 24;
     };
-
+    targets.qt.enable = true;
+    targets.qt.platform = "qtct";
     fonts = {
 
       serif = {

@@ -13,7 +13,7 @@
     ./tailscale.nix
     #./amd-drivers.nix
   ];
-
+  services.blueman.enable = true;
   drivers.intel.enable = true;
   #drivers.amdgpu.enable = false;
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
