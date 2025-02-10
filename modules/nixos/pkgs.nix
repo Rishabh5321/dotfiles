@@ -6,9 +6,11 @@
     let
       cursor = pkgs.callPackage ../../pkgs/cursor.nix { };
       grayjay = pkgs.callPackage ../../pkgs/grayjay.nix { };
+      miru = pkgs.callPackage ../../pkgs/miru.nix { };
       grayjay_bye = pkgs.callPackage ../../pkgs/grayjay_bye.nix { };
     in
     with pkgs; [
+      miru
       grayjay
       grayjay_bye
       mission-center
