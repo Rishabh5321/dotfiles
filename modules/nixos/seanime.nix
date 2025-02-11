@@ -1,4 +1,4 @@
-{}:
+{...}:
 
 {
   systemd.user.services.seanime = {
