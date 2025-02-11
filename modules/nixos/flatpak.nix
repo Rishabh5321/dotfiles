@@ -8,6 +8,7 @@ _:
       "org.jdownloader.JDownloader"
       "com.github.iwalton3.jellyfin-media-player"
       "io.github.giantpinkrobots.varia"
+      "info.febvre.Komikku"
     ];
     update = {
       auto = {

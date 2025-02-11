@@ -7,11 +7,11 @@
       cursor = pkgs.callPackage ../../pkgs/cursor.nix { };
       grayjay = pkgs.callPackage ../../pkgs/grayjay.nix { };
       miru = pkgs.callPackage ../../pkgs/miru.nix { };
-      houdoku = pkgs.callPackage ../../pkgs/houdoku.nix { };
+      #houdoku = pkgs.callPackage ../../pkgs/houdoku.nix { };
       grayjay_bye = pkgs.callPackage ../../pkgs/grayjay_bye.nix { };
     in
     with pkgs; [
-      houdoku
+      #houdoku
       papirus-icon-theme
       #tela-icon-theme
       kdePackages.qtstyleplugin-kvantum

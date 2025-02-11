@@ -6,7 +6,7 @@ pkgs.appimageTools.wrapType2 rec {
 
   src = pkgs.fetchurl {
     url = "https://github.com/xgi/houdoku/releases/download/v${version}/Houdoku-${version}.AppImage";
-    hash = "sha256-AhaGiZ/Vx9nJmIXrzZ1JMLqjWfQDyoKpzl55NT712Ro=";
+    hash = "sha256-P9f8t5K6c9hF/qe0Fqv5pAgB3rjya9FswV6sPF1ykOg=";
   };
 
   extraInstallCommands =
@@ -14,7 +14,7 @@ pkgs.appimageTools.wrapType2 rec {
       contents = pkgs.appimageTools.extract { inherit pname version src; };
     in
     ''
-      install -m 444 -D ${contents}/miru.desktop -t $out/share/applications
+      install -m 444 -D ${contents}/houdoku.desktop -t $out/share/applications
       substituteInPlace $out/share/applications/houdoku.desktop --replace 'Exec=AppRun' 'Exec=${pname}'
       cp -r ${contents}/usr/share/icons $out/share
     '';
