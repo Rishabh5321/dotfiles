@@ -11,6 +11,7 @@
       grayjay_bye = pkgs.callPackage ../../pkgs/grayjay_bye.nix { };
     in
     with pkgs; [
+      mpv-unwrapped
       #houdoku
       papirus-icon-theme
       #tela-icon-theme
