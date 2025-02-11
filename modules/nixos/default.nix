@@ -28,5 +28,8 @@
     #./virtualisation.nix
 
     ./gaming.nix
+    ./seanime.nix
   ];
+
 }
+
