@@ -58,4 +58,5 @@
   };
   services.udisks2.enable = true;
   services.fstrim.enable = true;
+  services.cloudflare-warp.enable = true;
 }
