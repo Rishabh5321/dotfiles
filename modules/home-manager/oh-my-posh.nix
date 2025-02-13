@@ -2,7 +2,7 @@
   programs.oh-my-posh = {
     enable = true;
     package = pkgs.oh-my-posh;
-    useTheme = "mojada";
+    useTheme = "powerlevel10k_rainbow";
     enableBashIntegration = true;
     enableZshIntegration = true;
   };
