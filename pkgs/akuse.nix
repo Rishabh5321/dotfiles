@@ -6,7 +6,7 @@ pkgs.appimageTools.wrapType2 rec {
 
   src = pkgs.fetchurl {
     url = "https://github.com/akuse-app/akuse/releases/download/${version}/linux-akuse-${version}.AppImage";
-    hash = "sha256-AhaGiZ/Vx9nJmIXrzZ1JMLqjWfQDyoKpzl55NT712Ro=";
+    hash = "sha256-1o+uhD84KmPN9sN6chEOnASj8yyazHOlMCoF/kK5yvE=";
   };
 
   extraInstallCommands =
@@ -14,8 +14,8 @@ pkgs.appimageTools.wrapType2 rec {
       contents = pkgs.appimageTools.extract { inherit pname version src; };
     in
     ''
-      install -m 444 -D ${contents}/akuse.desktop -t $out/share/applications
-      substituteInPlace $out/share/applications/akuse.desktop --replace 'Exec=AppRun' 'Exec=${pname}'
+      install -m 444 -D ${contents}/akuse-beta.desktop -t $out/share/applications
+      substituteInPlace $out/share/applications/akuse-beta.desktop --replace 'Exec=AppRun' 'Exec=${pname}'
       cp -r ${contents}/usr/share/icons $out/share
     '';
 
