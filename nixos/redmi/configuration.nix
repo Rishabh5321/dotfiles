@@ -63,10 +63,10 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-networking.firewall = {
-  allowedTCPPorts = [ 53 80 5353 8080 ];
-  allowedUDPPorts = [ 53 80 5353 8080 ];
-};
+  networking.firewall = {
+    allowedTCPPorts = [ 53 80 5353 8080 ];
+    allowedUDPPorts = [ 53 80 5353 8080 ];
+  };
 
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
