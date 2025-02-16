@@ -132,6 +132,11 @@ Apply the configuration to a specific host:
 
 Replace redmi with dell for the server configuration.
 
+Important Warning:
+Ensure that you modify the hardware configuration according to your computer's specifications. The provided configurations are tailored for specific devices (e.g., redmi or dell), and using them without adjustments may lead to compatibility issues or improper system behavior. Always review and customize the hardware settings (e.g., storage, GPU, etc.) to match your system.
+
+For example, check and update files like hardware-configuration.nix or any device-specific settings in the nixos directory before applying the configuration.
+
 ## Configuration Details
 
 ### Common Configuration
