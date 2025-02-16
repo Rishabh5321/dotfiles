@@ -6,19 +6,19 @@
     let
       cursor = pkgs.callPackage ../../pkgs/cursor.nix { };
       grayjay = pkgs.callPackage ../../pkgs/grayjay.nix { };
-      miru = pkgs.callPackage ../../pkgs/miru.nix { };
+      #miru = pkgs.callPackage ../../pkgs/miru.nix { };
       #houdoku = pkgs.callPackage ../../pkgs/houdoku.nix { };
       grayjay_bye = pkgs.callPackage ../../pkgs/grayjay_bye.nix { };
-      #akuse = pkgs.callPackage ../../pkgs/akuse.nix {};
+      akuse = pkgs.callPackage ../../pkgs/akuse.nix {};
     in
     with pkgs; [
-      #akuse
+      akuse
       mpv-unwrapped
       #houdoku
       papirus-icon-theme
       #tela-icon-theme
       kdePackages.qtstyleplugin-kvantum
-      miru
+      #miru
       grayjay
       grayjay_bye
       mission-center

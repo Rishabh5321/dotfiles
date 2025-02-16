@@ -14,9 +14,11 @@ pkgs.appimageTools.wrapType2 rec {
       contents = pkgs.appimageTools.extract { inherit pname version src; };
     in
     ''
+      echo "Installing desktop file and icons..."
       install -m 444 -D ${contents}/akuse-beta.desktop -t $out/share/applications
       substituteInPlace $out/share/applications/akuse-beta.desktop --replace 'Exec=AppRun' 'Exec=${pname}'
       cp -r ${contents}/usr/share/icons $out/share
+      echo "Installation complete."
     '';
 
   meta = with pkgs.lib; {
