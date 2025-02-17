@@ -59,4 +59,8 @@
   services.udisks2.enable = true;
   services.fstrim.enable = true;
   services.cloudflare-warp.enable = true;
+
+  # slows down boot time
+  systemd.services.NetworkManager-wait-online.enable = false;
+
 }
