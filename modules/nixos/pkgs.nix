@@ -9,7 +9,7 @@
       #miru = pkgs.callPackage ../../pkgs/miru.nix { };
       #houdoku = pkgs.callPackage ../../pkgs/houdoku.nix { };
       grayjay_bye = pkgs.callPackage ../../pkgs/grayjay_bye.nix { };
-      akuse = pkgs.callPackage ../../pkgs/akuse.nix {};
+      akuse = pkgs.callPackage ../../pkgs/akuse.nix { };
     in
     with pkgs; [
       akuse
