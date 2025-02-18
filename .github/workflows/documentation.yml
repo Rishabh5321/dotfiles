@@ -1,0 +1,36 @@
+name: Build and Deploy Documentation
+
+on:
+  push:
+    branches:
+      - main  # Trigger on pushes to the main branch
+  pull_request:
+    branches:
+      - main 
+  workflow_dispatch: # Trigger on pull requests to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Nix
+        uses: cachix/install-nix-action@v20
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: Install mdBook
+        run: nix-env -iA nixpkgs.mdbook
+
+      - name: Build Documentation
+        run: mdbook build ./path/to/your/docs
+
+      - name: Deploy Documentation
+        if: github.ref == 'refs/heads/main'  # Only deploy on the main branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./path/to/your/docs/book  # Path to the built documentation
