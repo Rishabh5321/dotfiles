@@ -61,6 +61,6 @@
   services.cloudflare-warp.enable = true;
 
   # slows down boot time
-  systemd.services.NetworkManager-wait-online.enable = false;
+  #systemd.services.NetworkManager-wait-online.enable = false;
 
 }
