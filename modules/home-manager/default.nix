@@ -15,7 +15,7 @@
     ./kitty.nix
     ./libnotify.nix
     #./mangohud.nix
-    ./neovim.nix
+    #./neovim.nix
     ./oh-my-posh.nix
     #./plasma.nix
     #./rofi/rofi.nix

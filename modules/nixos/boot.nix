@@ -33,7 +33,7 @@
     };
     plymouth = {
       enable = true;
-      theme = "colorful_loop";
+      theme = "cuts";
       themePackages = [ pkgs.adi1090x-plymouth-themes ];
     };
     #plymouth.enable = true;
@@ -41,21 +41,21 @@
   #Uncomment after enabling stylix
   stylix.targets.grub.enable = false;
   stylix.targets.plymouth.enable = false;
-  boot.loader.grub = {
-    darkmatter-theme = {
-      enable = true;
-      style = "nixos";
-      icon = "color";
-    };
-  };
+  #boot.loader.grub = {
+  #  darkmatter-theme = {
+  #    enable = true;
+  #    style = "nixos";
+  #    icon = "color";
+  #  };
+  #};
   # Theme names can be
   # 1. tela , 2.vimix , 3.stylish , 4. whitesur
 
-  # boot.loader.grub2-theme = {
-  #   enable = true;
-  #   theme = "whitesur";
-  #   footer = true;
-  # };
+  boot.loader.grub2-theme = {
+    enable = true;
+    theme = "tela";
+    footer = true;
+  };
 
   # boot.loader.grub.theme = pkgs.stdenv.mkDerivation {
   #   pname = "distro-grub-themes";

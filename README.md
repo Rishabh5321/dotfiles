@@ -87,7 +87,6 @@ The following inputs are used in this configuration:
 - `spicetify-nix`: Customizes Spotify with themes and extensions.
 - `alejandra`: A Nix code formatter.
 - `zen-browser`: A minimalistic browser configuration.
-- `fine-cmdline`: A Neovim plugin for command-line interfaces.
 - `nix-flatpak`: Integrates Flatpak applications with NixOS.
 - `darkmatter-grub-theme`: A GRUB theme for a dark aesthetic.
 - `nix-gaming`: Optimizations and packages for gaming on NixOS.

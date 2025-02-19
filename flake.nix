@@ -7,22 +7,25 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix/release-24.11";
-    stylix.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.inputs.nixpkgs.follows = "nixpkgs-stable";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs-stable";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
     alejandra.url = "github:kamadorueda/alejandra";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    fine-cmdline = {
-      url = "github:VonHeikemen/fine-cmdline.nvim";
-      flake = false;
-    };
+    #fine-cmdline = {
+    #  url = "github:VonHeikemen/fine-cmdline.nvim";
+    #  flake = false;
+    #};
     #hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils"; # NOTE Temp until fixed upstream
     #nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     #nixpkgs.follows = "nixos-cosmic/nixpkgs";
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
-    darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
-    darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    #darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
+    #darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
+    grub2-themes = {
+      url = "github:vinceliuice/grub2-themes";
+    };
     nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
@@ -33,7 +36,8 @@
     , home-manager
     , spicetify-nix
     , alejandra
-    , darkmatter-grub-theme
+    #, darkmatter-grub-theme
+    , grub2-themes
     , nix-flatpak
       #, nixos-cosmic
     , ...
@@ -65,11 +69,12 @@
         };
         modules = [
           ./nixos/${hostname}/configuration.nix
-          darkmatter-grub-theme.nixosModule
+          #darkmatter-grub-theme.nixosModule
           #nixos-cosmic.nixosModules.default
           inputs.stylix.nixosModules.stylix
           nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
+          grub2-themes.nixosModules.default
           {
             home-manager.extraSpecialArgs = {
               inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs-stable;
