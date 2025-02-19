@@ -36,7 +36,7 @@
     , home-manager
     , spicetify-nix
     , alejandra
-    #, darkmatter-grub-theme
+      #, darkmatter-grub-theme
     , grub2-themes
     , nix-flatpak
       #, nixos-cosmic
