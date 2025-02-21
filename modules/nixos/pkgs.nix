@@ -22,6 +22,7 @@
       akuse = pkgs.callPackage ../../pkgs/akuse.nix { };
     in
     with pkgs; [
+      resilio-sync
       act #test github workflow
       akuse
       mpv-unwrapped
