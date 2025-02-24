@@ -23,9 +23,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     #darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
     #darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
-    grub2-themes = {
-      url = "github:vinceliuice/grub2-themes";
-    };
+    grub2-themes.url = "github:vinceliuice/grub2-themes";
     nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
