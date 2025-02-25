@@ -14,7 +14,7 @@
   };
   environment.systemPackages =
     let
-      cursor = pkgs.callPackage ../../pkgs/cursor.nix { };
+      #cursor = pkgs.callPackage ../../pkgs/cursor.nix { };
       grayjay = pkgs.callPackage ../../pkgs/grayjay.nix { };
       #miru = pkgs.callPackage ../../pkgs/miru.nix { };
       #houdoku = pkgs.callPackage ../../pkgs/houdoku.nix { };
@@ -22,6 +22,7 @@
       akuse = pkgs.callPackage ../../pkgs/akuse.nix { };
     in
     with pkgs; [
+      inputs.cursor-flake.packages.${system}.cursor
       inputs.miru-flake.packages.${system}.miru
       resilio-sync
       act #test github workflow
@@ -46,7 +47,7 @@
       clinfo
       cliphist
       cloudflare-warp
-      cursor
+      #cursor
       discord
       distrobox
       docker
