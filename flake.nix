@@ -36,7 +36,6 @@
     , home-manager
     , spicetify-nix
     , alejandra
-    , miru-flake
     , cursor-flake
       #, darkmatter-grub-theme
     , grub2-themes
