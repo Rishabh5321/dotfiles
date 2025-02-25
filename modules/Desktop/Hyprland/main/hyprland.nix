@@ -9,6 +9,11 @@
     };
   };
 
+  security.pam.services.hyprlock = {
+  enableGnomeKeyring = true;
+  startSession = true; # Ensure a session is started
+  };
+
   environment.systemPackages = with pkgs; [
     #inputs.hyprland-qtutils.packages."${pkgs.system}".default
     brightnessctl

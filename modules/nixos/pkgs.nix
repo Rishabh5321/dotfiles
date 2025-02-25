@@ -24,6 +24,7 @@
     with pkgs; [
       inputs.cursor-flake.packages.${system}.cursor
       inputs.miru-flake.packages.${system}.miru
+      gnome-keyring
       resilio-sync
       act #test github workflow
       akuse
