@@ -17,7 +17,7 @@
     pavucontrol
     xfce.xfce4-pulseaudio-plugin
   ];
-
+services.blueman.enable = true;
   xdg.portal = {
     enable = true;
     wlr.enable = true;

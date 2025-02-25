@@ -8,12 +8,12 @@
     ../../modules/nixos
     ./power.nix
     #../../containers
-    ../../modules/Desktop/Hyprland/main
+    ../../modules/Desktop/Gnome/main
     ./intel-drivers.nix
     ./tailscale.nix
     #./amd-drivers.nix
   ];
-  services.blueman.enable = true;
+  
   drivers.intel.enable = true;
   #drivers.amdgpu.enable = false;
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
