@@ -339,6 +339,24 @@
         "type": "github"
       }
     },
+    "miru-flake": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1740467697,
+        "narHash": "sha256-m9Mox0OjlRZQYl+VgQ3Dc8NO49Np8P1KzrCTsAw/u6M=",
+        "owner": "Rishabh5321",
+        "repo": "miru-flake",
+        "rev": "8cc3976fc38f1a2e895d55f88d8a24b0a811caa8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Rishabh5321",
+        "repo": "miru-flake",
+        "type": "github"
+      }
+    },
     "nix-flatpak": {
       "locked": {
         "lastModified": 1739444422,
@@ -358,7 +376,7 @@
     "nix-gaming": {
       "inputs": {
         "flake-parts": "flake-parts",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1740361404,
@@ -376,11 +394,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1740408884,
-        "narHash": "sha256-e5l3bB1xBuIKfpGdRsW1ttKSgfk6QfXaa0dGpTIR6gM=",
+        "lastModified": 1740469778,
+        "narHash": "sha256-DzBKRCZtWI82E4YuVWBkF/+GWIpvyGmkChqex2e2aPs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1c4fe4d409bdaf4f7ad8aac67e500ed3f26136c6",
+        "rev": "ed56e033a6719dfaab9560062241a99aa91862c3",
         "type": "github"
       },
       "original": {
@@ -420,6 +438,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1740367490,
+        "narHash": "sha256-WGaHVAjcrv+Cun7zPlI41SerRtfknGQap281+AakSAw=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "0196c0175e9191c474c26ab5548db27ef5d34b05",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1740019556,
         "narHash": "sha256-vn285HxnnlHLWnv59Og7muqECNMS33mWLM14soFIv2g=",
         "owner": "NixOS",
@@ -434,7 +468,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1740367490,
         "narHash": "sha256-WGaHVAjcrv+Cun7zPlI41SerRtfknGQap281+AakSAw=",
@@ -450,7 +484,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1735471104,
         "narHash": "sha256-0q9NGQySwDQc7RhAV2ukfnu7Gxa5/ybJ2ANT8DQrQrs=",
@@ -471,9 +505,10 @@
         "alejandra": "alejandra",
         "grub2-themes": "grub2-themes",
         "home-manager": "home-manager",
+        "miru-flake": "miru-flake",
         "nix-flatpak": "nix-flatpak",
         "nix-gaming": "nix-gaming",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "nixpkgs-stable": "nixpkgs-stable",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
@@ -635,14 +670,14 @@
     },
     "zen-browser": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1740390943,
-        "narHash": "sha256-F8EuAkiLuDZlJ+jKaSJENVZnLz0/9T2rq7qB7vuUIak=",
+        "lastModified": 1740464728,
+        "narHash": "sha256-1BgSGQTLf48FjQxzNdwp3LkWh+SXxbpTgNwOBoPy3VE=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "e8ac7b958a121a4fdb7daf14894c9c029054b9f6",
+        "rev": "e66c876920bbfbaf391c1188e7ba8db691d92356",
         "type": "github"
       },
       "original": {
