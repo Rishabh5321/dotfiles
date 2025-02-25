@@ -13,7 +13,7 @@
     alejandra.url = "github:kamadorueda/alejandra";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    miru-flake.url = "github:Rishabh5321/miru-flake"; 
+    miru-flake.url = "github:Rishabh5321/miru-flake";
     #fine-cmdline = {
     #  url = "github:VonHeikemen/fine-cmdline.nvim";
     #  flake = false;
@@ -22,7 +22,7 @@
     #nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     #nixpkgs.follows = "nixos-cosmic/nixpkgs";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-    cursor-flake.url = "github:Rishabh5321/cursor-flake"; 
+    cursor-flake.url = "github:Rishabh5321/cursor-flake";
     #darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
     #darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
     grub2-themes.url = "github:vinceliuice/grub2-themes";
