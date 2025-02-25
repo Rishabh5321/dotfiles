@@ -22,8 +22,8 @@
       akuse = pkgs.callPackage ../../pkgs/akuse.nix { };
     in
     with pkgs; [
-      inputs.cursor-flake.packages.${system}.cursor
-      inputs.miru-flake.packages.${system}.miru
+      code-cursor
+      miru
       gnome-keyring
       resilio-sync
       act #test github workflow
