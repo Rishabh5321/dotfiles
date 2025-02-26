@@ -13,6 +13,7 @@
     alejandra.url = "github:kamadorueda/alejandra";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    akuse-flake.url = "github:Rishabh5321/akuse-flake";
     # miru-flake.url = "github:Rishabh5321/miru-flake";
     #fine-cmdline = {
     #  url = "github:VonHeikemen/fine-cmdline.nvim";
@@ -36,6 +37,7 @@
     , home-manager
     , spicetify-nix
     , alejandra
+    , akuse-flake 
       #, darkmatter-grub-theme
     , grub2-themes
     , nix-flatpak
