@@ -28,7 +28,7 @@
     #./virtualisation.nix
 
     ./gaming.nix
-    ./seanime.nix
+    #./seanime.nix
   ];
 
 }
