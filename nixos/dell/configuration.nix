@@ -14,6 +14,19 @@
     #./amd-drivers.nix
   ];
 
+  services.avahi = {
+    enable = true;
+    publish = {
+      enable = true;
+      addresses = true;
+      domain = true;
+      hinfo = true;
+      userServices = true;
+      workstation = true;
+    };
+    nssmdns = true; # Enable mDNS resolution
+  };
+
   drivers.intel.enable = true;
   #drivers.amdgpu.enable = false;
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
