@@ -8,7 +8,7 @@
     ../../modules/nixos
     ./power.nix
     #../../containers
-    ../../modules/Desktop/Hyprland/main
+    ../../modules/Desktop/Gnome/main
     ./intel-drivers.nix
     ./tailscale.nix
     #./amd-drivers.nix
