@@ -8,7 +8,7 @@
     ../../modules/nixos
     ./power.nix
     #../../containers
-    ../../modules/Desktop/Gnome/main
+    ../../modules/Desktop/Hyprland/main
     ./intel-drivers.nix
     ./tailscale.nix
     #./amd-drivers.nix
@@ -141,11 +141,11 @@
     wlr.enable = true;
     xdgOpenUsePortal = true;
     extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
+      #pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal
     ];
     configPackages = [
-      #pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gnome
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal
     ];

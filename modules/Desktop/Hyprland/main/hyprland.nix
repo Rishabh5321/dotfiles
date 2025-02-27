@@ -20,6 +20,7 @@
     dunst
     lazydocker
     pavucontrol
+    xdg-utils
     xfce.xfce4-pulseaudio-plugin
   ];
   services.blueman.enable = true;
