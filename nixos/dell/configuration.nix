@@ -24,7 +24,7 @@
       userServices = true;
       workstation = true;
     };
-    nssmdns = true; # Enable mDNS resolution
+    nssmdns4 = true; # Enable mDNS resolution
   };
 
   drivers.intel.enable = true;
