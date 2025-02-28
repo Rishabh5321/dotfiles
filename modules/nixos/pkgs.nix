@@ -22,6 +22,9 @@
       #akuse = pkgs.callPackage ../../pkgs/akuse.nix { };
     in
     with pkgs; [
+      xdg-desktop-portal
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
       inputs.akuse-flake.packages.${system}.akuse
       code-cursor
       miru

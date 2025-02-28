@@ -10,6 +10,16 @@ _:
       "io.github.giantpinkrobots.varia"
       "info.febvre.Komikku"
     ];
+    overrides = {
+      global = {
+        # Force Wayland by default
+        Context.sockets = [
+          "wayland"
+          "!x11"
+          "!fallback-x11"
+        ];
+      };
+    };
     update = {
       auto = {
         enable = true;

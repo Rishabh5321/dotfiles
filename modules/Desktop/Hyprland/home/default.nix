@@ -1,4 +1,5 @@
 { username
+, inputs
 , pkgs
 , host
 , ...
@@ -24,6 +25,8 @@
     ./swaync.nix
     ./waybar.nix
     ./wlogout.nix
+    ./variable.nix
+    inputs.hyprland.homeManagerModules.default
   ];
 
   systemd.user.targets.hyprland-session.Unit.Wants = [

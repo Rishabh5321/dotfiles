@@ -1,6 +1,8 @@
 { lib
 , username
+, pkgs
 , config
+, inputs
 , wallpaper
 , ...
 }:
@@ -9,9 +11,15 @@ let
   inherit (import ./variables.nix) browser terminal extraMonitorSettings;
 in
 with lib; {
+  systemd.user.targets.hyprland-session.Unit.Wants = [
+    "xdg-desktop-autostart.target"
+  ];
   wayland.windowManager.hyprland = {
     enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.default;
     xwayland.enable = true;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     systemd = {
       enable = true;
       extraCommands = [ "systemctl --user start hypridle.service" ];

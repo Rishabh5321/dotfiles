@@ -14,7 +14,7 @@
     ./graphics.nix
     #./kodi.nix
     ./locale.nix
-    #./nh.nix
+    ./nh.nix
     ./nix_settings.nix
     ./pkgs.nix
     ./pkgs_stable.nix

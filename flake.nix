@@ -28,6 +28,7 @@
     #darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     nix-gaming.url = "github:fufexan/nix-gaming";
+    hyprland.url = "github:hyprwm/hyprland/nix-module";
   };
 
   outputs =

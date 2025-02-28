@@ -14,6 +14,7 @@
       theme = "intheloop";
     };
     initExtraFirst = ''
+      export PATH=$PATH:/run/current-system/sw/bin
       HISTFILE=~/.histfile
       HISTSIZE=1000
       SAVEHIST=1000
