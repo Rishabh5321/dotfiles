@@ -54,6 +54,7 @@
       inputs.akuse-flake.packages.${system}.akuse
       inputs.alejandra.defaultPackage.${system}
       inputs.zen-browser.packages."${system}".default
+      jellyfin-media-player
       kdePackages.qtstyleplugin-kvantum
       libreoffice
       libsForQt5.qt5.qtbase

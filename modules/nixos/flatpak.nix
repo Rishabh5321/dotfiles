@@ -6,7 +6,7 @@ _:
       "org.dupot.easyflatpak"
       "tv.kodi.Kodi"
       "org.jdownloader.JDownloader"
-      "com.github.iwalton3.jellyfin-media-player"
+      #"com.github.iwalton3.jellyfin-media-player"
       "io.github.giantpinkrobots.varia"
       "info.febvre.Komikku"
     ];
