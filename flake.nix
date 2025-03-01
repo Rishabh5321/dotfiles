@@ -38,7 +38,6 @@
     , home-manager
     , spicetify-nix
     , alejandra
-    , akuse-flake
     , darkmatter-grub-theme
       #, grub2-themes
     , nix-flatpak
