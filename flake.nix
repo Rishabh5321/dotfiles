@@ -24,9 +24,9 @@
     #nixpkgs.follows = "nixos-cosmic/nixpkgs";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     #cursor-flake.url = "github:Rishabh5321/cursor-flake";
-    #darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
-    #darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
-    grub2-themes.url = "github:vinceliuice/grub2-themes";
+    darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
+    darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
+    #grub2-themes.url = "github:vinceliuice/grub2-themes";
     nix-gaming.url = "github:fufexan/nix-gaming";
     hyprland.url = "github:hyprwm/hyprland/nix-module";
   };
@@ -39,8 +39,8 @@
     , spicetify-nix
     , alejandra
     , akuse-flake
-      #, darkmatter-grub-theme
-    , grub2-themes
+    , darkmatter-grub-theme
+      #, grub2-themes
     , nix-flatpak
       #, nixos-cosmic
     , ...
@@ -72,12 +72,12 @@
         };
         modules = [
           ./nixos/${hostname}/configuration.nix
-          #darkmatter-grub-theme.nixosModule
+          darkmatter-grub-theme.nixosModule
           #nixos-cosmic.nixosModules.default
           inputs.stylix.nixosModules.stylix
           nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
-          grub2-themes.nixosModules.default
+          #grub2-themes.nixosModules.default
           {
             home-manager.extraSpecialArgs = {
               inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs-stable;
