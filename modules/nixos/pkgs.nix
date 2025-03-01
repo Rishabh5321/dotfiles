@@ -106,7 +106,7 @@
       xdg-desktop-portal-wlr
       zed-editor
       zsh
-      
+
       #age
       #akuse
       #amdvlk
