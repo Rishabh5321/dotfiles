@@ -22,27 +22,7 @@
       #akuse = pkgs.callPackage ../../pkgs/akuse.nix { };
     in
     with pkgs; [
-      zed-editor
-      xdg-desktop-portal
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-wlr
-      inputs.akuse-flake.packages.${system}.akuse
-      code-cursor
-      miru
-      gnome-keyring
-      resilio-sync
       act #test github workflow
-      #akuse
-      mpv-unwrapped
-      #houdoku
-      papirus-icon-theme
-      #tela-icon-theme
-      kdePackages.qtstyleplugin-kvantum
-      #miru
-      #grayjay
-      #grayjay_bye
-      mission-center
-      flatpak-builder
       alacritty
       android-tools
       atuin
@@ -53,52 +33,66 @@
       clinfo
       cliphist
       cloudflare-warp
-      #cursor
+      code-cursor
       discord
       distrobox
       docker
       docker-compose
       dracula-icon-theme
       eza
-      fast-cli
       fastfetch
+      fast-cli
       filezilla
       firefox
+      flatpak-builder
       fzf
-      #gamescope
+      gamescope
       gedit
       gh
       git
       github-desktop
       gnome-console
       gnome-disk-utility
+      gnome-keyring
       gnome-system-monitor
       google-chrome
       grim
+      heroic
       htop
-      #jellyfin-media-player
+      inputs.akuse-flake.packages.${system}.akuse
+      inputs.alejandra.defaultPackage.${system}
+      inputs.zen-browser.packages."${system}".default
+      kdePackages.qtstyleplugin-kvantum
       libreoffice
       libsForQt5.qt5.qtbase
       libsForQt5.qt5.qtsvg
+      lutris
+      mangohud
       mesa
       micro
+      miru
+      mission-center
+      mpv-unwrapped
       nautilus
       networkmanagerapplet
       nh
       nwg-look
       obsidian
-      #oh-my-posh
       onlyoffice-bin_latest
-      #pfetch-rs
+      papirus-icon-theme
       plex-media-player
+      protonup-qt
       qbittorrent
       ranger
+      resilio-sync
       rquickshare
       samba
       slurp
       speedtest-cli
-      spotify
       spotdl
+      spotify
+      steam
+      stremio
       swappy
       swww
       telegram-desktop
@@ -110,26 +104,19 @@
       vim
       virt-viewer
       vlc
+      vscode
       wgcf
       wget
-      wl-clipboard
-      zsh
-
-      inputs.alejandra.defaultPackage.${system}
-      inputs.zen-browser.packages."${system}".default
-
-      gamescope
-      stremio
-      vscode
       winetricks
-      #zed-editor
-      heroic
-      lutris
-      mangohud
-      protonup-qt
-      steam
-
+      wl-clipboard
+      xdg-desktop-portal
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+      zed-editor
+      zsh
+      
       #age
+      #akuse
       #amdvlk
       #appimage-run
       #authenticator
@@ -139,13 +126,18 @@
       #cava
       #cmatrix
       #cowsay
+      #cursor
       #distrobox
       #duf
       #ffmpeg
       #figlet
       #file-roller
       #floorp
+      #gamescope
       #glxinfo
+      #grayjay
+      #grayjay_bye
+      #houdoku
       #hyprlock
       #hyprpicker
       #hyprshot
@@ -153,6 +145,7 @@
       #inputs.wfetch.packages.${pkgs.system}.default
       #intel-gpu-tools
       #inxi
+      #jellyfin-media-player
       #kdePackages.kdeconnect-kde
       #kdePackages.sddm-kcm
       #killall
@@ -171,6 +164,7 @@
       #lxqt.lxqt-policykit
       #marwaita-icons
       #meson
+      #miru
       #mpv
       #ncdu
       #neovide
@@ -178,9 +172,11 @@
       #nixfmt-rfc-style
       #nixos-generators
       #nvtopPackages.full
+      #oh-my-posh
       #pavucontrol
       #pciutils
       #peaclock
+      #pfetch-rs
       #pkg-config
       #playerctl
       #polkit_gnome
@@ -198,6 +194,7 @@
       #steam
       #swaynotificationcenter
       #swtpm
+      #tela-icon-theme
       #unetbootin
       #uwufetch
       #v4l-utils
@@ -212,6 +209,7 @@
       #yad
       #ydotool
       #yubioath-flutter
+      #zed-editor
       #zinit
       #zoxide
       #zsh-powerlevel10k
