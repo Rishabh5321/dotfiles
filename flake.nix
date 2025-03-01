@@ -14,6 +14,11 @@
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     akuse-flake.url = "github:Rishabh5321/akuse-flake";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
+    darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
+    nix-gaming.url = "github:fufexan/nix-gaming";
+    hyprland.url = "github:hyprwm/hyprland/nix-module";
     # miru-flake.url = "github:Rishabh5321/miru-flake";
     #fine-cmdline = {
     #  url = "github:VonHeikemen/fine-cmdline.nvim";
@@ -22,13 +27,9 @@
     #hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils"; # NOTE Temp until fixed upstream
     #nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     #nixpkgs.follows = "nixos-cosmic/nixpkgs";
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     #cursor-flake.url = "github:Rishabh5321/cursor-flake";
-    darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
-    darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
     #grub2-themes.url = "github:vinceliuice/grub2-themes";
-    nix-gaming.url = "github:fufexan/nix-gaming";
-    hyprland.url = "github:hyprwm/hyprland/nix-module";
+
   };
 
   outputs =
@@ -37,11 +38,11 @@
     , nixpkgs-stable
     , home-manager
     , spicetify-nix
+    , akuse-flake
     , alejandra
     , darkmatter-grub-theme
       #, grub2-themes
     , nix-flatpak
-    , akuse-flake
       #, nixos-cosmic
     , ...
     } @ inputs:
