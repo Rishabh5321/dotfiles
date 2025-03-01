@@ -51,7 +51,7 @@
       systems = [ "x86_64-linux" ];
       username = "rishabh";
       wallpaper = "wall2.png";
-      flakeDir = "~/dotfiles";
+      flakeDir = "/home/${username}/dotfiles";
       pkgs-stable = import nixpkgs-stable {
         system = "x86_64-linux";
         config = {
@@ -84,7 +84,9 @@
               inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs-stable;
             };
             home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = builtins.readFile (pkgs.runCommand "timestamp" { } ''
+            home-manager.backupFileExtension = builtins.readFile (pkgs.runCommand "timestamp" {
+              nativeBuildInputs = [ pkgs.inetutils ];
+            } ''
               date "+backup_%Y-%m-%d_%H-%M-%S_$(hostname)" > $out
             '');
             home-manager.users.rishabh = import ./nixos/${hostname}/home.nix;
