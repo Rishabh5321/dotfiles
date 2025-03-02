@@ -23,11 +23,19 @@
     ./stylix.nix
     ./wofi.nix
     ./zsh.nix
+    ./seanime.nix
   ];
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = [ "qemu:///system" ];
       uris = [ "qemu:///system" ];
+    };
+  };
+
+
+  modules.home = {
+    services = {
+      seanime.enable = true;
     };
   };
 
