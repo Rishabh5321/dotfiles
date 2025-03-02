@@ -1,8 +1,7 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
+{ pkgs
+, lib
+, config
+, ...
 }:
 # Got some stuff from here:
 # https://github.com/Th4tGuy69/nixos-config/blob/ad922c2b3483e3861ca432046c701f0405831221/packages/seanime.nix#
@@ -18,7 +17,7 @@ let
       sha256 = "sha256-Vtm+SkrUTUkVQQR4nrpc5pJXMORrBFYH4lj2R1BAFkY=";
     };
 
-    phases = ["installPhase"];
+    phases = [ "installPhase" ];
 
     installPhase = ''
       mkdir -p $out/bin
@@ -31,7 +30,8 @@ let
       license = lib.licenses.gpl3Only;
     };
   };
-in {
+in
+{
   options.modules.home.services.seanime = {
     enable = lib.mkEnableOption "seanime";
   };
@@ -49,7 +49,7 @@ in {
       };
 
       Install = {
-        WantedBy = ["default.target"];
+        WantedBy = [ "default.target" ];
       };
 
       Service = {
