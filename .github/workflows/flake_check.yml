@@ -22,10 +22,18 @@ jobs:
             auto-optimise-store = true
             experimental-features = nix-command flakes
 
-      - name: flake_check
-        run: nix flake check
+      - name: Run flake check and capture logs
+        id: flake_check
+        run: |
+          nix flake check 2>&1 | tee flake_check.log || true
+          grep -E "(warning:|error:)" flake_check.log > flake_check_filtered.log || echo "No warnings or errors." > flake_check_filtered.log
+          echo "flake_check_log=$(jq -Rs . < flake_check_filtered.log)" >> $GITHUB_ENV
 
-        
+      - name: Debug Logs
+        run: |
+          echo "Flake Check Log:"
+          cat flake_check_filtered.log
+
       - name: Send Telegram Notification
         if: always()
         env:
@@ -33,11 +41,18 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
         run: |
           BRANCH_NAME="${{ github.ref_name }}"
+          FLAKE_CHECK_LOG=$(echo "$flake_check_log" | sed ':a;N;$!ba;s/\n/\\n/g')
+
           if [[ "${{ job.status }}" == "success" ]]; then
             MESSAGE="✅ Flake check for Rishabh5321/dotfiles completed successfully on branch $BRANCH_NAME."
           else
             MESSAGE="❌ Flake check for Rishabh5321/dotfiles failed on branch $BRANCH_NAME. Check GitHub Actions for details."
           fi
+
+          # Truncate logs to fit Telegram's message limit (4096 characters)
+          FLAKE_CHECK_LOG_TRUNCATED=$(echo "$FLAKE_CHECK_LOG" | cut -c -2000)
+
+          # Send the message with logs
           curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
             -d chat_id=$CHAT_ID \
-            -d text="$MESSAGE"
+            -d text="$MESSAGE%0A%0AFlake Check Log:%0A$FLAKE_CHECK_LOG_TRUNCATED%0A%0A"
