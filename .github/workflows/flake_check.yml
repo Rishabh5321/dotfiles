@@ -79,7 +79,7 @@ jobs:
           fi
           
           echo "" >> telegram_message.txt
-          echo "Generated on $(date)" >> telegram_message.txt
+          echo "Generated on $(TZ='Asia/Kolkata' date)" >> telegram_message.txt
           
           # Prepare the message for Telegram (convert newlines to URL-encoded format)
           MESSAGE=$(cat telegram_message.txt | perl -pe 's/\n/%0A/g')
