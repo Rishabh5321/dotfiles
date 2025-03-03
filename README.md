@@ -1,5 +1,8 @@
 # NixOS Configuration for Laptop and Server
 
+[![NixOS](https://img.shields.io/badge/NixOS-supported-blue.svg)](https://nixos.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 This repository contains the NixOS configuration for both a laptop and a server. The configuration is managed using Nix flakes, which allows for reproducible and declarative system setups.
 
 ## Table of Contents
