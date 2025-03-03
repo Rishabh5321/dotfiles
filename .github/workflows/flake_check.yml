@@ -22,7 +22,7 @@ jobs:
         run: |
           nix flake check 2>&1 | tee flake_check.log || true
           grep -E "(warning:|error:)" flake_check.log > flake_check_filtered.log || echo "No warnings or errors." > flake_check_filtered.log
-          echo "flake_check_log=$(jq -Rs . < flake_check_filtered.log)" >> $GITHUB_ENV
+          echo "flake_check_log=$(cat flake_check_filtered.log | jq -Rs .)" >> $GITHUB_ENV
       - name: Debug Logs
         run: |
           echo "Flake Check Log:"
@@ -36,49 +36,56 @@ jobs:
           BRANCH_NAME="${{ github.ref_name }}"
           REPO_NAME="${{ github.repository }}"
           
-          # Process log output - organize warnings by type and number them
+          # Create a temporary file for formatting the message
+          touch telegram_message.txt
+          
+          # Start with status header
+          if [[ "${{ job.status }}" == "success" ]]; then
+            echo "✅ Flake check for $REPO_NAME completed successfully on branch $BRANCH_NAME." > telegram_message.txt
+          else
+            echo "❌ Flake check for $REPO_NAME failed on branch $BRANCH_NAME. Check GitHub Actions for details." > telegram_message.txt
+          fi
+          
+          echo "" >> telegram_message.txt
+          echo "Flake Check Results:" >> telegram_message.txt
+          echo "" >> telegram_message.txt
+          
+          # Process warnings with proper formatting
           if [ -s flake_check_filtered.log ]; then
-            # Create a more readable log with numbered entries
-            COUNT=1
-            echo "" > organized_log.txt
-            
-            # Group general warnings
-            grep -v "evaluation warning:" flake_check_filtered.log | while read -r LINE; do
-              echo "$COUNT. $LINE" >> organized_log.txt
-              COUNT=$((COUNT+1))
-            done
-            
-            # Add a separator if both types of warnings exist
-            if grep -q "evaluation warning:" flake_check_filtered.log && grep -v -q "evaluation warning:" flake_check_filtered.log; then
-              echo "" >> organized_log.txt
-              echo "Evaluation warnings:" >> organized_log.txt
+            # Extract and number general warnings
+            GENERAL_WARNINGS=$(grep -v "evaluation warning:" flake_check_filtered.log || echo "")
+            if [ ! -z "$GENERAL_WARNINGS" ]; then
+              echo "General warnings:" >> telegram_message.txt
+              COUNT=1
+              echo "$GENERAL_WARNINGS" | while IFS= read -r line; do
+                echo "$COUNT. $line" >> telegram_message.txt
+                COUNT=$((COUNT+1))
+              done
+              echo "" >> telegram_message.txt
             fi
             
-            # Process evaluation warnings, removing duplicates
-            if grep -q "evaluation warning:" flake_check_filtered.log; then
-              grep "evaluation warning:" flake_check_filtered.log | sort | uniq | while read -r LINE; do
-                echo "$COUNT. $LINE" >> organized_log.txt
+            # Extract, deduplicate, and number evaluation warnings
+            EVAL_WARNINGS=$(grep "evaluation warning:" flake_check_filtered.log | sort | uniq || echo "")
+            if [ ! -z "$EVAL_WARNINGS" ]; then
+              echo "Evaluation warnings:" >> telegram_message.txt
+              COUNT=1
+              echo "$EVAL_WARNINGS" | while IFS= read -r line; do
+                echo "$COUNT. $line" >> telegram_message.txt
                 COUNT=$((COUNT+1))
               done
             fi
-            
-            ORGANIZED_LOG=$(cat organized_log.txt | sed ':a;N;$!ba;s/\n/\\n/g')
           else
-            ORGANIZED_LOG="No warnings or errors found."
+            echo "No warnings or errors found." >> telegram_message.txt
           fi
           
-          # Create status message
-          if [[ "${{ job.status }}" == "success" ]]; then
-            MESSAGE="✅ Flake check for $REPO_NAME completed successfully on branch $BRANCH_NAME."
-          else
-            MESSAGE="❌ Flake check for $REPO_NAME failed on branch $BRANCH_NAME. Check GitHub Actions for details."
-          fi
+          echo "" >> telegram_message.txt
+          echo "Generated on $(date)" >> telegram_message.txt
           
-          # Truncate logs to fit Telegram's message limit (4096 characters)
-          ORGANIZED_LOG_TRUNCATED=$(echo "$ORGANIZED_LOG" | cut -c -3500)
+          # Prepare the message for Telegram (convert newlines to URL-encoded format)
+          MESSAGE=$(cat telegram_message.txt | perl -pe 's/\n/%0A/g')
           
-          # Send the message with organized logs
-          curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
-            -d chat_id=$CHAT_ID \
-            -d parse_mode=HTML \
-            -d text="<b>$MESSAGE</b>%0A%0A<b>Flake Check Results:</b>%0A$ORGANIZED_LOG_TRUNCATED%0A%0A<i>Generated on $(date)</i>"
+          # Send the message to Telegram
+          curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
+            -d "chat_id=$CHAT_ID" \
+            -d "text=$MESSAGE" \
+            -d "parse_mode=HTML"
