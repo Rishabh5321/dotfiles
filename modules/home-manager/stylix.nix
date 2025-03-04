@@ -23,7 +23,7 @@
   qt = {
     enable = true;
     platformTheme.name = "gtk3";
-    style.name = "breeze";
+    #style.name = "breeze";
   };
 
   stylix.targets.waybar.enable = false;
