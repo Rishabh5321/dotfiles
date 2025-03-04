@@ -22,8 +22,8 @@
 
   qt = {
     enable = true;
-    #platformTheme = "gtk";
-    style = { name = "kvantum"; };
+    platformTheme.name = "gtk3";
+    style.name = "breeze";
   };
 
   stylix.targets.waybar.enable = false;
