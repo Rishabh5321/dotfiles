@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1741002434,
-        "narHash": "sha256-S60jjbb6xEeE9ls1AOiJa2HM1quDC9U1JnyIMEJdvTw=",
+        "lastModified": 1741036897,
+        "narHash": "sha256-a4vpU6iNq5Us5qxU2psd21ywVqTBgMf5EuvkdS47n1c=",
         "owner": "Rishabh5321",
         "repo": "akuse-flake",
-        "rev": "7bdf72734efcf4267151e96260477dd2c50cdf6d",
+        "rev": "cc17d8d039acfdd9c7dcb2720ce067def81d31a6",
         "type": "github"
       },
       "original": {
@@ -743,11 +743,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1740828860,
-        "narHash": "sha256-cjbHI+zUzK5CPsQZqMhE3npTyYFt9tJ3+ohcfaOF/WM=",
+        "lastModified": 1741010256,
+        "narHash": "sha256-WZNlK/KX7Sni0RyqLSqLPbK8k08Kq7H7RijPJbq9KHM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "303bd8071377433a2d8f76e684ec773d70c5b642",
+        "rev": "ba487dbc9d04e0634c64e3b1f0d25839a0a68246",
         "type": "github"
       },
       "original": {
