@@ -30,23 +30,9 @@
     #nixpkgs.follows = "nixos-cosmic/nixpkgs";
     #cursor-flake.url = "github:Rishabh5321/cursor-flake";
     #grub2-themes.url = "github:vinceliuice/grub2-themes";
-
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , nixpkgs-stable
-    , home-manager
-    , spicetify-nix
-    , akuse-flake
-    , alejandra
-    , darkmatter-grub-theme
-      #, grub2-themes
-    , nix-flatpak
-      #, nixos-cosmic
-    , ...
-    } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, spicetify-nix, akuse-flake, alejandra, darkmatter-grub-theme, nix-flatpak, ... } @ inputs:
     let
       inherit (self) outputs;
       systems = [ "x86_64-linux" ];
@@ -55,15 +41,11 @@
       flakeDir = "/home/${username}/dotfiles";
       pkgs-stable = import nixpkgs-stable {
         system = "x86_64-linux";
-        config = {
-          allowUnfree = true;
-        };
+        config = { allowUnfree = true; };
       };
       pkgs = import nixpkgs {
         system = "x86_64-linux";
-        config = {
-          allowUnfree = true;
-        };
+        config = { allowUnfree = true; };
       };
       formatter = forAllSystems (system: nixpkgs.legacyPackages."${system}".nixpkgs-fmt);
       forAllSystems = nixpkgs.lib.genAttrs systems;
@@ -75,20 +57,20 @@
         modules = [
           ./nixos/${hostname}/configuration.nix
           darkmatter-grub-theme.nixosModule
-          #nixos-cosmic.nixosModules.default
           inputs.stylix.nixosModules.stylix
           nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
-          #grub2-themes.nixosModules.default
+          ({ pkgs, ... }: {
+            environment.systemPackages = [ inputs.akuse-flake.packages."x86_64-linux".akuse ];
+          })
           {
             home-manager.extraSpecialArgs = {
               inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs-stable;
             };
             home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = builtins.readFile (pkgs.runCommand "timestamp"
-              {
-                nativeBuildInputs = [ pkgs.inetutils ];
-              } ''
+            home-manager.backupFileExtension = builtins.readFile (pkgs.runCommand "timestamp" {
+              nativeBuildInputs = [ pkgs.inetutils ];
+            } ''
               date "+backup_%Y-%m-%d_%H-%M-%S_$(hostname)" > $out
             '');
             home-manager.users.rishabh = import ./nixos/${hostname}/home.nix;
@@ -101,12 +83,8 @@
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
       overlays = import ./overlays { inherit inputs; };
       nixosConfigurations = {
-        redmi = nixpkgs.lib.nixosSystem (commonConfig {
-          hostname = "redmi";
-        });
-        dell = nixpkgs.lib.nixosSystem (commonConfig {
-          hostname = "dell";
-        });
+        redmi = nixpkgs.lib.nixosSystem (commonConfig { hostname = "redmi"; });
+        dell = nixpkgs.lib.nixosSystem (commonConfig { hostname = "dell"; });
       };
     };
 }
