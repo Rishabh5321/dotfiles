@@ -39,7 +39,6 @@
     , nixpkgs-stable
     , home-manager
     , spicetify-nix
-    , akuse-flake
     , alejandra
     , darkmatter-grub-theme
       #, grub2-themes
