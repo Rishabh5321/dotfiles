@@ -20,11 +20,11 @@
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
   };
 
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk3";
-    style.name = "breeze";
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme.name = "qtct";
+  #   style.name = "kvantum";
+  # };
 
   stylix.targets.waybar.enable = false;
   stylix.targets.rofi.enable = false;
