@@ -3,7 +3,7 @@
 }:
 (pkgs.buildFHSEnv rec {
   pname = "grayjay";
-  version = "2";
+  version = "5";
   # Absolute path to where the contents of Grayjay.Desktop-linux-x64-v{x} is located
   installDir = "/home/rishabh/Grayjay";
 
