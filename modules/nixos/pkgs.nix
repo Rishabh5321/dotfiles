@@ -22,8 +22,6 @@
       #akuse = pkgs.callPackage ../../pkgs/akuse.nix { };
     in
     with pkgs; [
-      inputs.grayjay.packages.${pkgs.system}.grayjay-with-desktop
-      #grayjay
       act #test github workflow
       alacritty
       android-tools
@@ -63,6 +61,7 @@
       htop
       #inputs.akuse-flake.packages.${system}.akuse
       inputs.alejandra.defaultPackage.${system}
+      inputs.grayjay.packages.${pkgs.system}.grayjay-with-desktop
       inputs.zen-browser.packages."${system}".default
       jellyfin-media-player
       kdePackages.qtstyleplugin-kvantum

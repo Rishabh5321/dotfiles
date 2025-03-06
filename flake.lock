@@ -431,11 +431,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1741250766,
-        "narHash": "sha256-TLQQuSh5aKIwd0Hac+gG2EN9r62oD3xdZg68mOMqnVM=",
+        "lastModified": 1741258338,
+        "narHash": "sha256-odXMC65RySHmUN+DLIi+So+GyA0mzq/S/+fVrrjlGtU=",
         "owner": "rishabh5321",
         "repo": "grayjay-flake",
-        "rev": "5cb2e963906fd6dc4a70089df8d1a1d05b9319d3",
+        "rev": "4a9a2a612142b69e2bc6ea8766c13065dfc215b5",
         "type": "github"
       },
       "original": {
