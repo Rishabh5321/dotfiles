@@ -13,14 +13,14 @@
     ];
   };
   environment.systemPackages =
-    let
-      #cursor = pkgs.callPackage ../../pkgs/cursor.nix { };
-      #grayjay = pkgs.callPackage ../../pkgs/grayjay.nix { };
-      #miru = pkgs.callPackage ../../pkgs/miru.nix { };
-      #houdoku = pkgs.callPackage ../../pkgs/houdoku.nix { };
-      #grayjay_bye = pkgs.callPackage ../../pkgs/grayjay_bye.nix { };
-      #akuse = pkgs.callPackage ../../pkgs/akuse.nix { };
-    in
+    let                                                                   # deadnix: skip
+      #cursor = pkgs.callPackage ../../pkgs/cursor.nix { };               # deadnix: skip  
+      #grayjay = pkgs.callPackage ../../pkgs/grayjay.nix { };             # deadnix: skip
+      #miru = pkgs.callPackage ../../pkgs/miru.nix { };                   # deadnix: skip
+      #houdoku = pkgs.callPackage ../../pkgs/houdoku.nix { };             # deadnix: skip
+      #grayjay_bye = pkgs.callPackage ../../pkgs/grayjay_bye.nix { };     # deadnix: skip
+      #akuse = pkgs.callPackage ../../pkgs/akuse.nix { };                 # deadnix: skip
+    in                                                                    # deadnix: skip
     with pkgs; [
       act #test github workflow
       alacritty
