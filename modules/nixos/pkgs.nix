@@ -22,6 +22,7 @@
       #akuse = pkgs.callPackage ../../pkgs/akuse.nix { };
     in
     with pkgs; [
+      inputs.grayjay.packages.${pkgs.system}.grayjay-with-desktop
       #grayjay
       act #test github workflow
       alacritty

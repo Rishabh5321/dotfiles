@@ -19,6 +19,7 @@
     darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
     nix-gaming.url = "github:fufexan/nix-gaming";
     hyprland.url = "github:hyprwm/Hyprland";
+    grayjay.url = "github:rishabh5321/grayjay-flake";
     seanime.url = "github:rishabh5321/seanime-flake";
     # miru-flake.url = "github:Rishabh5321/miru-flake";
     #fine-cmdline = {
