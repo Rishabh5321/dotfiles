@@ -9,6 +9,7 @@
     ./btop.nix
     ./cava.nix
     ./eza.nix
+    ./fastfetch.nix
     ./fzf.nix
     ./git.nix
     ./htop.nix

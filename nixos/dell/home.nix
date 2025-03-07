@@ -41,10 +41,6 @@
     source = ../../wallpapers;
     recursive = true;
   };
-  home.file.".config/fastfetch" = {
-    source = ../../modules/home-manager/fastfetch;
-    recursive = true;
-  };
 
   # TODO: Set your username
   home = {
