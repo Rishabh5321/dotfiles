@@ -1,5 +1,5 @@
 let
-  waybarStyle = "slickbar"; # simplebar, slickbar, or default
+  waybarStyle = "simplebar"; # simplebar, slickbar, or default
 in
 {
   # Git Configuration ( For Pulling Software Repos )
@@ -16,7 +16,7 @@ in
 
   # Program Options
   browser = "firefox"; # Set Default Browser (google-chrome-stable for google-chrome)
-  terminal = "alacritty"; # Set Default System Terminal
+  terminal = "kitty"; # Set Default System Terminal
 
   theShell = "zsh";
   host = "dell";
