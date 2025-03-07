@@ -70,6 +70,7 @@
       libsForQt5.qt5.qtbase
       libsForQt5.qt5.qtsvg
       lutris
+      mangayomi
       mangohud
       mesa
       micro
@@ -104,6 +105,7 @@
       tree
       unrar
       unzip
+      #varia
       vim
       virt-viewer
       vlc

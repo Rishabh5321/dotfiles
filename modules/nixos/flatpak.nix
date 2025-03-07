@@ -7,7 +7,7 @@ _:
       "tv.kodi.Kodi"
       "org.jdownloader.JDownloader"
       #"com.github.iwalton3.jellyfin-media-player"
-      "io.github.giantpinkrobots.varia"
+      #"io.github.giantpinkrobots.varia"
       "info.febvre.Komikku"
     ];
     overrides = {
