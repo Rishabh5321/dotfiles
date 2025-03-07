@@ -10,24 +10,24 @@
   ];
   #programs.steam.platformOptimizations.enable = true;
   programs = {
-      steam = {
-        enable = true;
+    steam = {
+      enable = true;
 
-        remotePlay.openFirewall = true;
-        dedicatedServer.openFirewall = false;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = false;
 
-        gamescopeSession.enable = true;
+      gamescopeSession.enable = true;
 
-        extraCompatPackages = [ pkgs.proton-ge-bin ];
-      };
-
-      gamescope = {
-        enable = true;
-        capSysNice = true;
-        args = [
-          "--rt"
-          "--expose-wayland"
-        ];
-      };
+      extraCompatPackages = [ pkgs.proton-ge-bin ];
     };
+
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+      args = [
+        "--rt"
+        "--expose-wayland"
+      ];
+    };
+  };
 }
