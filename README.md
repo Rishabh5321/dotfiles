@@ -2,7 +2,7 @@
 
 [![NixOS](https://img.shields.io/badge/NixOS-supported-blue.svg)](https://nixos.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![flake_check](https://github.com/Rishabh5321/dotfiles/actions/workflows/flake_check.yml/badge.svg)](https://github.com/Rishabh5321/dotfiles/actions/workflows/flake_check.yml)
+[![flake_check](https://github.com/Rishabh5321/grayjay-flake/actions/workflows/flake_check.yml/badge.svg)](https://github.com/Rishabh5321/grayjay-flake/actions/workflows/flake_check.yml)
 
 This repository contains the NixOS configuration for both a laptop and a server. The configuration is managed using Nix flakes, which allows for reproducible and declarative system setups.
 
