@@ -11,6 +11,8 @@
     #  xwayland.enable = true;
     #};
     dconf.enable = true;
+    nix-ld.enable = true;
+    nix-ld.libraries = with pkgs; [ ];
     #seahorse.enable = lib.mkForce true;
     #fuse.userAllowOther = true;
     #mtr.enable = true;dconf

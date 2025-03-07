@@ -61,7 +61,7 @@
       htop
       #inputs.akuse-flake.packages.${system}.akuse
       inputs.alejandra.defaultPackage.${system}
-      inputs.grayjay.packages.${pkgs.system}.grayjay
+      inputs.grayjay.packages.${system}.grayjay
       inputs.zen-browser.packages."${system}".default
       jellyfin-media-player
       kdePackages.qtstyleplugin-kvantum

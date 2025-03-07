@@ -1,19 +1,13 @@
-_: {
-  #sound.enable = true;
+{ pkgs, ... }:
+{
   services.pulseaudio.enable = false;
-
-  # make pipewire realtime-capable
-  security.rtkit.enable = true;
-
-  # pipewire low latency
   services.pipewire = {
     enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
-    wireplumber.enable = true;
-
-    alsa = {
-      enable = true;
-      support32Bit = true;
-    };
+    # lowLatency.enable = true;
   };
+  hardware.alsa.enablePersistence = true;
+  environment.systemPackages = with pkgs; [ pulseaudioFull ];
 }

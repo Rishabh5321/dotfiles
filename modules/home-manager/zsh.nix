@@ -49,7 +49,6 @@
       c = "clear";
       cd = "z";
       tt = "gtrash put";
-      cat = "bat";
       nano = "micro";
       #code = "vscode";
       py = "python";
