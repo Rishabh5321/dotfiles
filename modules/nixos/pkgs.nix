@@ -118,6 +118,7 @@
       xdg-desktop-portal
       xdg-desktop-portal-gtk
       xdg-desktop-portal-wlr
+      youtube-music
       zed-editor
       zsh
 
