@@ -5,7 +5,7 @@
   programs.kodi = {
     enable = true;
   };
-  
+
   # Install Kodi plugins as separate packages
   home.packages = with pkgs.kodiPlugins; [
     jellyfin
