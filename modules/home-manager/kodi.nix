@@ -1,17 +1,17 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
+  # Home Manager Kodi configuration
   programs.kodi = {
     enable = true;
-    package = pkgs.kodi;
-    
-    # Enabling the specified plugins
-    addons = with pkgs.kodi-addons; [
-      jellyfin
-      pvr-iptvsimple
-      vfs-sftp
-      inputstream-adaptive
-      websocket
-    ];
   };
+  
+  # Install Kodi plugins as separate packages
+  home.packages = with pkgs.kodiPlugins; [
+    jellyfin
+    pvr-iptvsimple
+    vfs-sftp
+    inputstream-adaptive
+    websocket
+  ];
 }

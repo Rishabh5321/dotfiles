@@ -89,6 +89,7 @@
       qbittorrent
       ranger
       resilio-sync
+      revanced-cli
       rquickshare
       samba
       slurp

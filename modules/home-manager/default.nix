@@ -25,7 +25,7 @@
     ./wofi.nix
     ./zsh.nix
     #./seanime.nix
-    ./kodi.nix
+    #./kodi.nix
     inputs.seanime.nixosModules.seanime
   ];
   dconf.settings = {
