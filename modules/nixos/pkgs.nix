@@ -30,7 +30,7 @@
       beeper
       brave
       btop
-      clinfo
+      #clinfo
       cliphist
       cloudflare-warp
       code-cursor
@@ -44,7 +44,7 @@
       fast-cli
       filezilla
       firefox
-      flatpak-builder
+      #flatpak-builder
       fzf
       gamescope
       gedit
@@ -101,6 +101,7 @@
       swappy
       swww
       telegram-desktop
+      thunderbird-latest
       tldr
       tmux
       tree
