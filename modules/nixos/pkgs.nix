@@ -21,7 +21,7 @@
     #grayjay_bye = pkgs.callPackage ../../pkgs/grayjay_bye.nix { };     # deadnix: skip
     #akuse = pkgs.callPackage ../../pkgs/akuse.nix { };                 # deadnix: skip
     #in                                                                    # deadnix: skip
-    with pkgs; [      
+    with pkgs; [
       act #test github workflow
       alacritty
       android-tools
