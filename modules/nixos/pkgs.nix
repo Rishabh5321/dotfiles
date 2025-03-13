@@ -64,11 +64,13 @@
       #inputs.akuse-flake.packages.${system}.akuse
       inputs.alejandra.defaultPackage.${system}
       inputs.grayjay.packages.${system}.grayjay
+      inputs.thorium.packages."x86_64-linux".thorium-avx2   
       inputs.zen-browser.packages."${system}".default
       jellyfin-media-player
       kdePackages.qtstyleplugin-kvantum
       libsForQt5.qtstyleplugin-kvantum
       libreoffice
+      librewolf
       libsForQt5.qt5.qtbase
       libsForQt5.qt5.qtsvg
       lutris
@@ -112,6 +114,8 @@
       #varia
       vim
       virt-viewer
+      #vivaldi
+      #vivaldi-ffmpeg-codecs
       vlc
       vscode
       wgcf
