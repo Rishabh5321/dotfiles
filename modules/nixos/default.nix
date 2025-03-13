@@ -12,7 +12,7 @@
     #./displaymanager.nix
     ./flatpak.nix
     ./graphics.nix
-    #./kodi.nix
+    ./kodi.nix
     ./locale.nix
     ./nh.nix
     ./nix_settings.nix
