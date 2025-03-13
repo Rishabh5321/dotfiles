@@ -42,6 +42,7 @@
       eza
       fastfetch
       fast-cli
+      file-roller
       filezilla
       firefox
       floorp
