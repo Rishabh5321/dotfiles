@@ -44,6 +44,7 @@
       fast-cli
       filezilla
       firefox
+      floorp
       #flatpak-builder
       fzf
       gamescope
