@@ -111,7 +111,7 @@
       tree
       unrar
       unzip
-      #varia
+      varia
       vim
       virt-viewer
       #vivaldi
