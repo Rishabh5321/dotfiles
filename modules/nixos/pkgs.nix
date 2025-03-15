@@ -92,7 +92,7 @@
       protonup-qt
       qbittorrent
       ranger
-      resilio-sync
+      #resilio-sync
       revanced-cli
       rquickshare
       samba
