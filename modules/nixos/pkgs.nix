@@ -22,7 +22,7 @@
     #akuse = pkgs.callPackage ../../pkgs/akuse.nix { };                 # deadnix: skip
     #in                                                                    # deadnix: skip
     with pkgs; [
-      act #test github workflow
+      ferdium
       alacritty
       android-tools
       atuin
@@ -45,7 +45,6 @@
       file-roller
       filezilla
       firefox
-      floorp
       #flatpak-builder
       fzf
       gamescope
@@ -62,7 +61,7 @@
       heroic
       htop
       #inputs.akuse-flake.packages.${system}.akuse
-      inputs.alejandra.defaultPackage.${system}
+      #inputs.alejandra.defaultPackage.${system}
       inputs.grayjay.packages.${system}.grayjay
       inputs.thorium.packages."x86_64-linux".thorium-avx2
       inputs.zen-browser.packages."${system}".default

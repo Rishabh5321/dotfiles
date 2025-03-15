@@ -10,8 +10,8 @@
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
-    alejandra.url = "github:kamadorueda/alejandra";
-    alejandra.inputs.nixpkgs.follows = "nixpkgs";
+    #alejandra.url = "github:kamadorueda/alejandra";
+    #alejandra.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     akuse-flake.url = "github:Rishabh5321/akuse-flake";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
@@ -34,7 +34,7 @@
     #grub2-themes.url = "github:vinceliuice/grub2-themes";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, spicetify-nix, akuse-flake, alejandra, darkmatter-grub-theme, nix-flatpak, ... } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, spicetify-nix, akuse-flake, darkmatter-grub-theme, nix-flatpak, ... } @ inputs:
     let
       inherit (self) outputs;
       systems = [ "x86_64-linux" ];
@@ -83,7 +83,7 @@
     in
     {
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+      #formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
       overlays = import ./overlays { inherit inputs; };
       nixosConfigurations = {
         redmi = nixpkgs.lib.nixosSystem (commonConfig { hostname = "redmi"; });
