@@ -1231,11 +1231,11 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1742055607,
-        "narHash": "sha256-25JbKaztsf9Iv+pgfBvChRLLVsQpXXUcMC1HuHMUyo4=",
+        "lastModified": 1742065992,
+        "narHash": "sha256-G0/hK4Khox9O8cNF2wEO1sh16i9LioyRIj51ZJWh7WY=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "574e149f7f51976c9a4650bad34538495c8f725e",
+        "rev": "09269be63797cd668ca41bd13fc8a2d29f3e6afc",
         "type": "github"
       },
       "original": {
