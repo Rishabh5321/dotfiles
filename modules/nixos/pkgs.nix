@@ -22,7 +22,6 @@
     #akuse = pkgs.callPackage ../../pkgs/akuse.nix { };                 # deadnix: skip
     #in                                                                    # deadnix: skip
     with pkgs; [
-      ferdium
       alacritty
       android-tools
       atuin
