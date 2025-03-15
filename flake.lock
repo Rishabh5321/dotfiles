@@ -1146,16 +1146,16 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1741890385,
-        "narHash": "sha256-UKfrMSfuV9YE8qg3u0Thl3bqEhG3cbxBf1OBSanQd8k=",
+        "lastModified": 1742019038,
+        "narHash": "sha256-t5Ld0xNllAq5cDSzKsNZVdHLMsAslFOEWekiNINXaYM=",
         "owner": "Rishabh5321",
-        "repo": "thorium_nix",
-        "rev": "5296ae58b15bcf1913fc8a4d6e1fff5dfea2955f",
+        "repo": "thorium_flake",
+        "rev": "f33043df9d6f402e7a0a1f1332090d182fc11cd8",
         "type": "github"
       },
       "original": {
         "owner": "Rishabh5321",
-        "repo": "thorium_nix",
+        "repo": "thorium_flake",
         "type": "github"
       }
     },
@@ -1309,11 +1309,11 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1741554872,
-        "narHash": "sha256-A/Iim9o0hHJjDJVynwtLzkox7NquvPc8CsJ/8OB4dDw=",
+        "lastModified": 1742018660,
+        "narHash": "sha256-xF766iA8/UNEY7/uw7AV7twnw/uji9SBonDX0BHOfcA=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "a4408170c5a2168bb79abcf587c5072e2ee5fb90",
+        "rev": "9a6a8b54fdac8bf1a761624b50ed66d9982403c7",
         "type": "github"
       },
       "original": {

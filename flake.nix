@@ -21,7 +21,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     grayjay.url = "github:rishabh5321/grayjay-flake";
     seanime.url = "github:rishabh5321/seanime-flake";
-    thorium.url = "github:Rishabh5321/thorium_nix";
+    thorium.url = "github:Rishabh5321/thorium_flake";
     # miru-flake.url = "github:Rishabh5321/miru-flake";
     #fine-cmdline = {
     #  url = "github:VonHeikemen/fine-cmdline.nvim";
