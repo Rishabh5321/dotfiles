@@ -49,7 +49,6 @@
         system = "x86_64-linux";
         config = { allowUnfree = true; };
       };
-      formatter = forAllSystems (system: nixpkgs.legacyPackages."${system}".nixpkgs-fmt);
       forAllSystems = nixpkgs.lib.genAttrs systems;
 
       commonConfig = { hostname }: {
