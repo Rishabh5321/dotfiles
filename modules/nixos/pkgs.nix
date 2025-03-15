@@ -83,21 +83,21 @@
       nautilus
       networkmanagerapplet
       nh
-      nwg-look
+      #nwg-look
       obsidian
       onlyoffice-bin_latest
       papirus-icon-theme
       plex-media-player
-      protonup-qt
+      #protonup-qt
       qbittorrent
       ranger
       #resilio-sync
-      revanced-cli
+      #revanced-cli
       rquickshare
       samba
       slurp
       speedtest-cli
-      spotdl
+      #spotdl
       spotify
       steam
       stremio
@@ -106,7 +106,7 @@
       telegram-desktop
       thunderbird-latest
       tldr
-      tmux
+      #tmux
       tree
       unrar
       unzip
