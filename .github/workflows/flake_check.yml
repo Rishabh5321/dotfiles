@@ -18,6 +18,12 @@ jobs:
             auto-optimise-store = true
             experimental-features = nix-command flakes
             download-buffer-size = 500000000
+      - name: Build NixOS Configurations
+        id: build_config
+        run: |
+          # Build both configurations
+          nix build .#nixosConfigurations.dell.config.system.build.toplevel
+          nix build .#nixosConfigurations.redmi.config.system.build.toplevel
       - name: Run flake check and capture logs
         id: flake_check
         run: |
