@@ -65,6 +65,7 @@
       inputs.thorium.packages."x86_64-linux".thorium-avx2
       inputs.zen-browser.packages."${system}".default
       jellyfin-media-player
+      kdePackages.dolphin
       kdePackages.qtstyleplugin-kvantum
       libsForQt5.qtstyleplugin-kvantum
       libreoffice
