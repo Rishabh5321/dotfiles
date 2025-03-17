@@ -1068,11 +1068,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1742120384,
-        "narHash": "sha256-FQfxVrd0fm+n44zLx15RC20pYefB/6xGM1v1EU60JEg=",
+        "lastModified": 1742212563,
+        "narHash": "sha256-bgeHCo7ViBUVNrZXhM86EDUUdrtVqBm86ElG0r1i0hY=",
         "owner": "Rishabh5321",
         "repo": "thorium_flake",
-        "rev": "a0e68f9c55f5ecfd4a3d9d3b76ea411b72b9a874",
+        "rev": "f86ec07f64e39f735a0879101214d5045e36c7ef",
         "type": "github"
       },
       "original": {
