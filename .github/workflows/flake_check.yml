@@ -1,15 +1,17 @@
-name: flake_check
+name: flake-check
 on:
   push:
   pull_request:
   workflow_dispatch:
+
 jobs:
   flake-checks:
-    name: flake_check
+    name: Flake Check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
@@ -18,16 +20,16 @@ jobs:
             auto-optimise-store = true
             experimental-features = nix-command flakes
             download-buffer-size = 500000000
-      - name: Run flake check and capture logs
+
+      - name: Run Flake Check
         id: flake_check
         run: |
           nix flake check 2>&1 | tee flake_check.log || true
           grep -E "(warning:|error:)" flake_check.log > flake_check_filtered.log || echo "No warnings or errors." > flake_check_filtered.log
-          echo "flake_check_log=$(cat flake_check_filtered.log | jq -Rs .)" >> $GITHUB_ENV
+
       - name: Debug Logs
-        run: |
-          echo "Flake Check Log:"
-          cat flake_check_filtered.log
+        run: cat flake_check_filtered.log
+
       - name: Send Telegram Notification
         if: always()
         env:
@@ -36,57 +38,25 @@ jobs:
         run: |
           BRANCH_NAME="${{ github.ref_name }}"
           REPO_NAME="${{ github.repository }}"
+          STATUS="${{ job.status }}"
           
-          # Create a temporary file for formatting the message
-          touch telegram_message.txt
-          
-          # Start with status header
-          if [[ "${{ job.status }}" == "success" ]]; then
-            echo "✅ Flake check for $REPO_NAME completed successfully on branch $BRANCH_NAME." > telegram_message.txt
+          # Define status message
+          if [[ "$STATUS" == "success" ]]; then
+            STATUS_MESSAGE="✅ Flake check for *$REPO_NAME* passed on branch *$BRANCH_NAME*."
           else
-            echo "❌ Flake check for $REPO_NAME failed on branch $BRANCH_NAME. Check GitHub Actions for details." > telegram_message.txt
+            STATUS_MESSAGE="❌ Flake check for *$REPO_NAME* failed on branch *$BRANCH_NAME*.\nCheck GitHub Actions for details."
           fi
-          
-          echo "" >> telegram_message.txt
-          echo "Flake Check Results:" >> telegram_message.txt
-          echo "" >> telegram_message.txt
-          
-          # Process warnings with proper formatting
+
+          # Process warnings and errors
           if [ -s flake_check_filtered.log ]; then
-            # Extract and number general warnings
-            GENERAL_WARNINGS=$(grep -v "evaluation warning:" flake_check_filtered.log || echo "")
-            if [ ! -z "$GENERAL_WARNINGS" ]; then
-              echo "General warnings:" >> telegram_message.txt
-              COUNT=1
-              echo "$GENERAL_WARNINGS" | while IFS= read -r line; do
-                echo "$COUNT. $line" >> telegram_message.txt
-                COUNT=$((COUNT+1))
-              done
-              echo "" >> telegram_message.txt
-            fi
-            
-            # Extract, deduplicate, and number evaluation warnings
-            EVAL_WARNINGS=$(grep "evaluation warning:" flake_check_filtered.log | sort | uniq || echo "")
-            if [ ! -z "$EVAL_WARNINGS" ]; then
-              echo "Evaluation warnings:" >> telegram_message.txt
-              COUNT=1
-              echo "$EVAL_WARNINGS" | while IFS= read -r line; do
-                echo "$COUNT. $line" >> telegram_message.txt
-                COUNT=$((COUNT+1))
-              done
-            fi
+            WARNINGS=$(awk '{print NR". "$0}' flake_check_filtered.log | head -15)  # Limit to 15 lines
+            MESSAGE="Flake Check Results:\n\`\`\`\n$WARNINGS\n\`\`\`"
           else
-            echo "No warnings or errors found." >> telegram_message.txt
+            MESSAGE="No warnings or errors found."
           fi
-          
-          echo "" >> telegram_message.txt
-          echo "Generated on $(TZ='Asia/Kolkata' date)" >> telegram_message.txt
-          
-          # Prepare the message for Telegram (convert newlines to URL-encoded format)
-          MESSAGE=$(cat telegram_message.txt | perl -pe 's/\n/%0A/g')
-          
-          # Send the message to Telegram
+
+          # Send message to Telegram
           curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
             -d "chat_id=$CHAT_ID" \
-            -d "text=$MESSAGE" \
-            -d "parse_mode=HTML"
+            -d "text=$STATUS_MESSAGE\n\n$MESSAGE\n\nGenerated on $(TZ='Asia/Kolkata' date)" \
+            -d "parse_mode=Markdown"
