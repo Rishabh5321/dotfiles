@@ -1,6 +1,7 @@
 _: {
   nix.settings = {
     substituters = [
+      "http://192.168.1.100:5500 https://cache.nixos.org"
       "https://nixpkgs-wayland.cachix.org"
       "https://cosmic.cachix.org/"
       "https://nix-config.cachix.org"
@@ -9,6 +10,7 @@ _: {
     ];
 
     trusted-public-keys = [
+      "http://192.168.1.100:5500"
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
       "nix-config.cachix.org-1:Vd6raEuldeIZpttVQfrUbLvXJHzzzkS0pezXCVVjDG4="
