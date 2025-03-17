@@ -1,4 +1,4 @@
-{ ... }: {
+_: {
   networking = {
     # Disable resolvconf to avoid conflicts with systemd-resolved
     resolvconf.enable = false;
