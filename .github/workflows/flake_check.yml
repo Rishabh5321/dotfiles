@@ -39,18 +39,18 @@ jobs:
           BRANCH_NAME="${{ github.ref_name }}"
           REPO_NAME="${{ github.repository }}"
           STATUS="${{ job.status }}"
-          
+
           # Define status message
           if [[ "$STATUS" == "success" ]]; then
-            STATUS_MESSAGE="✅ Flake check for *$REPO_NAME* passed on branch *$BRANCH_NAME*."
+            STATUS_MESSAGE="✅ Flake check for $REPO_NAME passed on branch $BRANCH_NAME."
           else
-            STATUS_MESSAGE="❌ Flake check for *$REPO_NAME* failed on branch *$BRANCH_NAME*.\nCheck GitHub Actions for details."
+            STATUS_MESSAGE="❌ Flake check for $REPO_NAME failed on branch $BRANCH_NAME.%0ACheck GitHub Actions for details."
           fi
 
           # Process warnings and errors
           if [ -s flake_check_filtered.log ]; then
-            WARNINGS=$(awk '{print NR". "$0}' flake_check_filtered.log | head -15)  # Limit to 15 lines
-            MESSAGE="Flake Check Results:\n\`\`\`\n$WARNINGS\n\`\`\`"
+            WARNINGS=$(awk '{print NR". "$0}' flake_check_filtered.log | head -15 | perl -pe 's/\n/%0A/g')  # Limit to 15 lines
+            MESSAGE="Flake Check Results:%0A\`\`\`%0A$WARNINGS%0A\`\`\`"
           else
             MESSAGE="No warnings or errors found."
           fi
@@ -58,5 +58,5 @@ jobs:
           # Send message to Telegram
           curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
             -d "chat_id=$CHAT_ID" \
-            -d "text=$STATUS_MESSAGE\n\n$MESSAGE\n\nGenerated on $(TZ='Asia/Kolkata' date)" \
+            -d "text=$STATUS_MESSAGE%0A%0A$MESSAGE%0A%0AGenerated on $(TZ='Asia/Kolkata' date)" \
             -d "parse_mode=Markdown"
