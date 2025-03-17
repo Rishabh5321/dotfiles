@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos
     ./power.nix
+    ./serve.nix
     #../../containers
     ../../modules/Desktop/Gnome/main
     ./intel-drivers.nix

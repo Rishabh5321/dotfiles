@@ -82,6 +82,7 @@
       mpv-unwrapped
       nautilus
       networkmanagerapplet
+      nix-serve
       nh
       #nwg-look
       obsidian
