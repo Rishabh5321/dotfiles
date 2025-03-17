@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1742120479,
-        "narHash": "sha256-J+c0PlxdBjb9voaPiD8j0CU92WwLzjRX5ugdv3EmCgk=",
+        "lastModified": 1742212279,
+        "narHash": "sha256-1miIsFseosZXp0h2OgQjl6BQVg04w5CDaQ2MF4e0WyU=",
         "owner": "Rishabh5321",
         "repo": "akuse-flake",
-        "rev": "f5de1fe15b628c4c8ae8fb138163e07faa9d1098",
+        "rev": "5182e66c4a2e855667f7a37c71664fad21504f05",
         "type": "github"
       },
       "original": {
