@@ -21,7 +21,7 @@ jobs:
             download-buffer-size = 500000000
 
       - name: Set up Cachix
-        uses: cachix/cachix-action@v12
+        uses: cachix/cachix-action@v16
         with:
           name: buildcache  # Replace with your Cachix cache name
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
