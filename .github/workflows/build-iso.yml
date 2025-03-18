@@ -11,11 +11,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Nix
-        uses: cachix/install-nix-action@v22
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
         with:
+          install_url: https://nixos.org/nix/install
           extra_nix_config: |
+            auto-optimise-store = true
             experimental-features = nix-command flakes
+            download-buffer-size = 500000000
 
       - name: Set up Cachix
         uses: cachix/cachix-action@v12
