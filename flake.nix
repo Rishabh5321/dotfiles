@@ -108,7 +108,7 @@
             # Base ISO configuration
             "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
             # Our custom ISO configuration
-            ({ config, lib, pkgs, ... }: {
+            ({ lib, pkgs, ... }: {
               imports = [ ./nixos/iso/configuration.nix ];
               
               # Explicitly disable wireless to avoid conflict with NetworkManager

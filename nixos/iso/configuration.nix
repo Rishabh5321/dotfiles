@@ -1,5 +1,5 @@
 # nixos/iso/configuration.nix
-{ config, lib, pkgs, inputs, username, ... }:
+{ config, pkgs, username, ... }:
 
 {
   # ISO-specific configurations
