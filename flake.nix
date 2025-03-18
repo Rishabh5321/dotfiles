@@ -133,12 +133,6 @@
                 inputs.akuse-flake.packages."x86_64-linux".akuse
               ];
 
-              # Make sure stylix has access to the wallpaper
-              stylix = {
-                enable = true;
-                image = ./nixos/wallpapers/${wallpaper};
-                base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-              };
             })
             # Add stylix module
             inputs.stylix.nixosModules.stylix
