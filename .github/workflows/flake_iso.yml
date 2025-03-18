@@ -1,0 +1,105 @@
+# .github/workflows/build-iso.yml
+name: Build and Release NixOS ISO
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'flake.nix'
+      - 'nixos/**'
+      - '.github/workflows/build-iso.yml'
+  # Allow manual trigger
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Custom release tag (optional)'
+        required: false
+        default: ''
+
+jobs:
+  build-iso:
+    name: Build NixOS ISO
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Install Nix
+        uses: cachix/install-nix-action@v25
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            allow-import-from-derivation = true
+            substituters = https://cache.nixos.org/ https://nix-community.cachix.org
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
+          
+      - name: Set up Cachix
+        uses: cachix/cachix-action@v14
+        with:
+          name: nixos-iso
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          
+      - name: Generate release date
+        id: release_date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+        
+      - name: Generate version
+        id: version
+        run: |
+          if [ -n "${{ github.event.inputs.release_tag }}" ]; then
+            echo "version=${{ github.event.inputs.release_tag }}" >> $GITHUB_OUTPUT
+          else
+            echo "version=${{ steps.release_date.outputs.date }}-$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Build ISO
+        run: |
+          nix build .#iso --print-build-logs
+          mkdir -p dist
+          cp -L result/iso/*.iso dist/
+          ISO_NAME=$(basename dist/*.iso)
+          echo "ISO_PATH=dist/${ISO_NAME}" >> $GITHUB_ENV
+          echo "ISO_NAME=${ISO_NAME}" >> $GITHUB_ENV
+          
+      - name: Create checksum
+        run: |
+          cd dist
+          sha256sum "${ISO_NAME}" > "${ISO_NAME}.sha256"
+          
+      - name: Create release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: NixOS ISO v${{ steps.version.outputs.version }}
+          body: |
+            NixOS custom ISO build for version ${{ steps.version.outputs.version }}
+            
+            **Build Date:** ${{ steps.release_date.outputs.date }}
+            **Git Commit:** ${{ github.sha }}
+            
+            ### Installation Instructions
+            
+            1. Download the ISO file
+            2. Write it to a USB drive using a tool like Etcher, Rufus, or `dd`
+            3. Boot from the USB drive
+            4. Follow the installation instructions in the included readme
+          files: |
+            ${{ env.ISO_PATH }}
+            dist/${{ env.ISO_NAME }}.sha256
+          draft: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: nixos-iso
+          path: |
+            dist/*.iso
+            dist/*.sha256
