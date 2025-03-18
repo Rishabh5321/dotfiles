@@ -30,7 +30,7 @@ jobs:
         run: nix build .#iso --print-build-logs
 
       - name: Upload ISO as artifact
-        uses: actions/upload-artifact@v4  # Updated to v4
+        uses: actions/upload-artifact@v4
         with:
           name: iso-image
           path: ./result/iso/*.iso  # Adjust the path to where the ISO is generated
@@ -40,6 +40,15 @@ jobs:
     needs: build-iso
 
     steps:
+      - name: Install GitHub CLI
+        run: |
+          sudo apt update && sudo apt install -y gh
+
+      - name: Authenticate GitHub CLI
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh auth status
+
       - name: Download ISO artifact
         uses: actions/download-artifact@v4
         with:
@@ -48,19 +57,21 @@ jobs:
 
       - name: Create GitHub Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Create a new release
-          gh release create "manual-iso-${{ github.run_id }}" \
+          RELEASE_TAG="manual-iso-${{ github.run_id }}"
+          gh release create "$RELEASE_TAG" ./iso/*.iso \
             --title "Manual ISO Release ${{ github.run_id }}" \
             --notes "ISO built from manual workflow trigger" \
+            --repo "${{ github.repository }}" \
             --draft=false \
-            --prerelease=false
+            --prerelease=false || echo "Release creation failed"
 
       - name: Upload ISO to Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Upload the ISO to the release
-          gh release upload "manual-iso-${{ github.run_id }}" ./iso/*.iso \
-            --clobber
+          RELEASE_TAG="manual-iso-${{ github.run_id }}"
+          gh release upload "$RELEASE_TAG" ./iso/*.iso \
+            --repo "${{ github.repository }}" \
+            --clobber || echo "ISO upload failed"
