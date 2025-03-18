@@ -79,7 +79,7 @@
     in
     {
       # Define all packages in one location
-      packages = forAllSystems (system: 
+      packages = forAllSystems (system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
           customPkgs = import ./pkgs pkgs;
@@ -91,17 +91,17 @@
           default = customPkgs.default or self.nixosConfigurations.iso.config.system.build.isoImage;
         }
       );
-      
+
       #formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
       overlays = import ./overlays { inherit inputs; };
       nixosConfigurations = {
         redmi = nixpkgs.lib.nixosSystem (commonConfig { hostname = "redmi"; });
         dell = nixpkgs.lib.nixosSystem (commonConfig { hostname = "dell"; });
-        
+
         # ISO configuration
         iso = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { 
+          specialArgs = {
             inherit inputs outputs username wallpaper spicetify-nix flakeDir pkgs-stable;
           };
           modules = [
@@ -110,10 +110,10 @@
             # Our custom ISO configuration
             ({ lib, pkgs, ... }: {
               imports = [ ./nixos/iso/configuration.nix ];
-              
+
               # Explicitly disable wireless to avoid conflict with NetworkManager
               networking.wireless.enable = lib.mkForce false;
-              
+
               # Basic ISO configuration
               networking.hostName = "nixos-live";
               users.users.${username} = {
@@ -121,7 +121,7 @@
                 extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
                 initialPassword = "nixos";
               };
-              
+
               # Add some basic packages for installation
               environment.systemPackages = with pkgs; [
                 git
@@ -132,7 +132,7 @@
                 htop
                 inputs.akuse-flake.packages."x86_64-linux".akuse
               ];
-              
+
               # Make sure stylix has access to the wallpaper
               stylix = {
                 enable = true;
