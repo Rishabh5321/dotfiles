@@ -1,10 +1,7 @@
 name: Build ISO and Create Release
 
 on:
-  push:
-    tags:
-      - 'v*'  # Trigger the workflow on tag pushes (e.g., v1.0.0)
-  workflow_dispatch:
+  workflow_dispatch:  # Allows manual triggering of the workflow
 
 jobs:
   build-iso:
@@ -12,13 +9,19 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Nix
         uses: cachix/install-nix-action@v22
         with:
           extra_nix_config: |
             experimental-features = nix-command flakes
+
+      - name: Set up Cachix
+        uses: cachix/cachix-action@v12
+        with:
+          name: your-cachix-cache-name  # Replace with your Cachix cache name
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
       - name: Build ISO
         run: nix build .#iso --print-build-logs
@@ -46,8 +49,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: manual-iso-${{ github.run_id }}  # Unique tag for manual runs
+          release_name: Manual ISO Release ${{ github.run_id }}
           draft: false
           prerelease: false
 
