@@ -3,35 +3,35 @@
 
 {
   # ISO-specific configurations
-  
+
   # Enable networking - fix conflict between NetworkManager and wireless
   networking = {
     networkmanager.enable = true;
     # Disable default wireless configuration since we're using NetworkManager
     wireless.enable = false;
   };
-  
+
   # Enable SSH for remote assistance during installation
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "yes";
-  
+
   # Set up basic system configuration
-  time.timeZone = "Asia/Kolkata";  # Adjust to your timezone
+  time.timeZone = "Asia/Kolkata"; # Adjust to your timezone
   i18n.defaultLocale = "en_US.UTF-8";
-  
+
   # Configure console keymap
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
   };
-  
+
   # Enable basic graphical environment
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
   };
-  
+
   # Add the flake to the ISO so it can be easily accessed
   system.activationScripts = {
     dotfiles = ''
@@ -40,7 +40,7 @@
       chown -R ${username}:users /home/${username}/dotfiles
     '';
   };
-  
+
   # Add helpful tools for installation
   environment.systemPackages = with pkgs; [
     firefox
@@ -61,7 +61,7 @@
     neofetch
     vscode
   ];
-  
+
   # # Configure stylix with your wallpaper
   # stylix = {
   #   enable = true;
@@ -72,7 +72,7 @@
   #     name = "Bibata-Modern-Classic";
   #   };
   # };
-  
+
   # Enable nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
@@ -90,7 +90,7 @@
     '';
     mode = "0755";
   };
-  
+
   # Create a simple readme
   environment.etc."README.md" = {
     text = ''
