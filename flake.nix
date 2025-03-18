@@ -130,7 +130,7 @@
                 vim
                 gparted
                 htop
-                inputs.akuse-flake.packages."x86_64-linux".akuse
+                #inputs.akuse-flake.packages."x86_64-linux".akuse
               ];
 
             })
