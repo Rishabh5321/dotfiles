@@ -20,14 +20,14 @@ jobs:
       - name: Set up Cachix
         uses: cachix/cachix-action@v12
         with:
-          name: your-cachix-cache-name  # Replace with your Cachix cache name
+          name: buildcache  # Replace with your Cachix cache name
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
       - name: Build ISO
         run: nix build .#iso --print-build-logs
 
       - name: Upload ISO as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # Updated to v4
         with:
           name: iso-image
           path: ./result/iso/*.iso  # Adjust the path to where the ISO is generated
@@ -38,14 +38,14 @@ jobs:
 
     steps:
       - name: Download ISO artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4  # Updated to v4
         with:
           name: iso-image
           path: ./iso
 
       - name: Create GitHub Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: actions/create-release@v2  # Updated to v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -55,7 +55,7 @@ jobs:
           prerelease: false
 
       - name: Upload ISO to Release
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v2  # Updated to v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
