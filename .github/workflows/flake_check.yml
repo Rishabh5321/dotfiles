@@ -24,7 +24,7 @@ jobs:
       - name: Setup Cachix
         uses: cachix/cachix-action@v14
         with:
-          name: build-cache  # Modified: Changed from "build cache" to "build-cache" (with hyphen, no spaces)
+          name: buildcache  # Corrected cache name to "buildcache" (no hyphen)
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
           pushFilter: ".*"  # Configure which store paths to push (default is all)
 
