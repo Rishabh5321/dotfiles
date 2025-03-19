@@ -26,7 +26,7 @@
   services.xserver = {
     enable = true;
     #displayManager.lightdm.enable = true;
-    desktopManager.cinnamon.enable = true;
+    desktopManager.budgie.enable = true;
   };
 
   #services.displayManager.autoLogin = {
