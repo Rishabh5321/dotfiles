@@ -64,7 +64,7 @@
   # Enable nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
-  
+
   # Create installation helpers
   environment.etc."install-system.sh" = {
     text = ''
