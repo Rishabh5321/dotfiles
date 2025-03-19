@@ -21,6 +21,13 @@ jobs:
             experimental-features = nix-command flakes
             download-buffer-size = 500000000
 
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v14
+        with:
+          name: build cache  # Replace with your cachix cache name
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          pushFilter: ".*"  # Configure which store paths to push (default is all)
+
       - name: Run Flake Check
         id: flake_check
         run: |
