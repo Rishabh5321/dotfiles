@@ -22,38 +22,20 @@
     keyMap = "us";
   };
 
-  # Enable MATE desktop environment (Optional, can be disabled if using TTY only)
-  #services.xserver.enable = false; # Disable Xserver for now to ensure TTY works
-
-  # Enable a display manager (If you want GUI later, set services.xserver.enable = true;)
-  # services.xserver.displayManager.sddm.enable = true;
-
-  # Enable TTY login prompt
-  #systemd.defaultTarget = "multi-user.target";
-  #services.getty.defaultUser = username;
-  #services.getty.autoLogin = true;
-  #systemd.services."getty@tty1".enable = true;
-
   # Ensure essential kernel modules are available
-  boot.initrd.kernelModules = [ "i915" "amdgpu" ];
+  boot.initrd.kernelModules = [ "i915" "amdgpu" "radeon" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "systemd.log_level=debug" "systemd.log_target=console" ];
+  boot.kernelParams = [ "systemd.log_level=debug" "systemd.log_target=console" "nomodeset" ];
+  hardware.enableAllFirmware = true;
 
-  # Enable GRUB for the ISO
-  #boot.loader.grub.enable = true;
-  #boot.loader.grub.device = "nodev";
-  #boot.loader.grub.useOSProber = false;
-  #boot.loader.timeout = 5;
-
-  # Add the flake to the ISO
-  system.activationScripts.dotfiles = ''
-    mkdir -p /home/${username}/dotfiles
-    cp -r ${../..}/* /home/${username}/dotfiles/
-    chown -R ${username}:users /home/${username}/dotfiles
-  '';
-
-  # Essential installation tools
+  # Add graphics support and essential installation tools
   environment.systemPackages = with pkgs; [
+    mesa
+    libva
+    libvdpau-va-gl
+    vulkan-tools
+    glxinfo
+    libva-utils
     gnome.gnome-terminal
     gnome.nautilus
     firefox-esr
@@ -67,6 +49,13 @@
     pciutils
     usbutils
   ];
+
+  # Add the flake to the ISO
+  system.activationScripts.dotfiles = ''
+    mkdir -p /home/${username}/dotfiles
+    cp -r ${../..}/* /home/${username}/dotfiles/
+    chown -R ${username}:users /home/${username}/dotfiles
+  '';
 
   # Enable nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
