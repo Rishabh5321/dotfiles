@@ -22,12 +22,7 @@
     keyMap = "us";
   };
 
-  # Enable GNOME desktop environment
-  services.xserver = {
-    enable = true;
-    #displayManager.lightdm.enable = true;
-    desktopManager.budgie.enable = true;
-  };
+services.xserver.desktopManager.mate.enable = true;
 
   #services.displayManager.autoLogin = {
   #  enable = true;
