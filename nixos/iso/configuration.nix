@@ -1,4 +1,3 @@
-# nixos/iso/configuration.nix
 { config, pkgs, username, ... }:
 
 {
@@ -7,8 +6,6 @@
   # Enable networking with NetworkManager only
   networking = {
     networkmanager.enable = true;
-    # Explicitly disable wireless to avoid conflicts
-    wireless.enable = true;
   };
 
   # Enable SSH for remote assistance during installation
@@ -25,20 +22,11 @@
     keyMap = "us";
   };
 
-  # Enable minimal Xfce desktop environment
+  # Enable GNOME desktop environment
   services.xserver = {
     enable = true;
-    displayManager = {
-      lightdm.enable = true;
-      # Auto-login for convenience
-      #autoLogin = {
-      #  enable = true;
-      #  user = username;
-      #};
-    };
-    desktopManager.xfce.enable = true;
-    # Disable unnecessary X11 packages
-    excludePackages = with pkgs; [ xterm ];
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
   };
 
   services.displayManager.autoLogin = {
@@ -53,23 +41,21 @@
     chown -R ${username}:users /home/${username}/dotfiles
   '';
 
-  # Minimal set of essential installation tools
+  # Essential installation tools
   environment.systemPackages = with pkgs; [
-    # Terminal essentials
-    git
+    # Terminal and utilities
+    gnome.gnome-terminal
+    gnome.nautilus
+    firefox-esr # Smaller than regular Firefox
     gparted
     parted
+    git
 
     # Filesystem tools
     ntfs3g
     btrfs-progs
     e2fsprogs
     dosfstools
-
-    # Basic utilities
-    xfce.xfce4-terminal
-    xfce.thunar
-    firefox-esr # Smaller than regular Firefox
 
     # Hardware detection
     pciutils
@@ -109,7 +95,6 @@
   # Disable unnecessary services
   services.printing.enable = false;
   services.avahi.enable = false;
-  #services.accounts-daemon.enable = false;
 
   # Minimize system size
   documentation.enable = false;
