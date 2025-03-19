@@ -27,7 +27,7 @@
 
   # Enable a display manager (If you want GUI later, set services.xserver.enable = true;)
   # services.xserver.displayManager.sddm.enable = true;
-  
+
   # Enable TTY login prompt
   #systemd.defaultTarget = "multi-user.target";
   #services.getty.defaultUser = username;
