@@ -109,7 +109,7 @@
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares.nix"
           
           # Disable unnecessary stuff from the base image
-          ({ lib, pkgs, ... }: {
+          ({ lib, ... }: {
             # Disable unnecessary large packages
             environment.defaultPackages = lib.mkForce [];
             #services.xserver.desktopManager.plasma5.enable = lib.mkForce false;
