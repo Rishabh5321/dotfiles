@@ -40,7 +40,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true
+  networking.networkmanager.enable = true;
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
