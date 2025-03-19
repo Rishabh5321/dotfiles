@@ -24,7 +24,7 @@ jobs:
       - name: Setup Cachix
         uses: cachix/cachix-action@v14
         with:
-          name: build cache  # Replace with your cachix cache name
+          name: build-cache  # Modified: Changed from "build cache" to "build-cache" (with hyphen, no spaces)
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
           pushFilter: ".*"  # Configure which store paths to push (default is all)
 
@@ -33,12 +33,12 @@ jobs:
         run: |
           nix flake check 2>&1 | tee flake_check.log
           if grep -E "(warning:|error:)" flake_check.log > flake_check_filtered.log; then
-            echo "::set-output name=has_issues::true"
+            echo "has_issues=true" >> $GITHUB_OUTPUT
             echo "FLAKE_STATUS=failed" >> $GITHUB_ENV
             exit 1
           else
             echo "No warnings or errors." > flake_check_filtered.log
-            echo "::set-output name=has_issues::false"
+            echo "has_issues=false" >> $GITHUB_OUTPUT
             echo "FLAKE_STATUS=passed" >> $GITHUB_ENV
           fi
 
