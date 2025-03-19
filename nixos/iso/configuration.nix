@@ -25,14 +25,14 @@
   # Enable GNOME desktop environment
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+    #displayManager.lightdm.enable = true;
+    desktopManager.cinnamon.enable = true;
   };
 
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = username;
-  };
+  #services.displayManager.autoLogin = {
+  #  enable = true;
+  #  user = username;
+  #};
 
   # Add the flake to the ISO
   system.activationScripts.dotfiles = ''
