@@ -59,18 +59,18 @@
     git
     gparted
     parted
-    
+
     # Filesystem tools
     ntfs3g
     btrfs-progs
     e2fsprogs
     dosfstools
-    
+
     # Basic utilities
     xfce.xfce4-terminal
     xfce.thunar
-    firefox-esr  # Smaller than regular Firefox
-    
+    firefox-esr # Smaller than regular Firefox
+
     # Hardware detection
     pciutils
     usbutils
@@ -105,12 +105,12 @@
     '';
     mode = "0644";
   };
-  
+
   # Disable unnecessary services
   services.printing.enable = false;
   services.avahi.enable = false;
   #services.accounts-daemon.enable = false;
-  
+
   # Minimize system size
   documentation.enable = false;
   documentation.nixos.enable = false;
