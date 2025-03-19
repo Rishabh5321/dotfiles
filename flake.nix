@@ -35,7 +35,7 @@
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, spicetify-nix, akuse-flake, darkmatter-grub-theme, nix-flatpak, ... } @ inputs:
     let
       inherit (self) outputs;
-      systems = [ "x86_64-linux" ]
+      systems = [ "x86_64-linux" ];
       username = "rishabh";
       wallpaper = "wall1.png";
       flakeDir = "/home/${username}/dotfiles";
