@@ -4,102 +4,117 @@
 {
   # ISO-specific configurations
 
-  # Enable networking - fix conflict between NetworkManager and wireless
+  # Enable networking with NetworkManager only
   networking = {
     networkmanager.enable = true;
-    # Disable default wireless configuration since we're using NetworkManager
+    # Explicitly disable wireless to avoid conflicts
     wireless.enable = true;
   };
 
   # Enable SSH for remote assistance during installation
-  services.openssh.enable = true;
-  services.openssh.settings.PermitRootLogin = "yes";
+  services.openssh = {
+    enable = true;
+    settings.PermitRootLogin = "yes";
+  };
 
   # Set up basic system configuration
-  time.timeZone = "Asia/Kolkata"; # Adjust to your timezone
+  time.timeZone = "Asia/Kolkata";
   i18n.defaultLocale = "en_US.UTF-8";
-
-  # Configure console keymap
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
   };
 
-  # Enable Xfce instead of GNOME for a lighter desktop environment
+  # Enable minimal Xfce desktop environment
   services.xserver = {
     enable = true;
-    displayManager.lightdm.enable = true;
+    displayManager = {
+      lightdm.enable = true;
+      # Auto-login for convenience
+      #autoLogin = {
+      #  enable = true;
+      #  user = username;
+      #};
+    };
     desktopManager.xfce.enable = true;
+    # Disable unnecessary X11 packages
+    excludePackages = with pkgs; [ xterm ];
   };
 
-  # Add the flake to the ISO so it can be easily accessed
-  system.activationScripts = {
-    dotfiles = ''
-      mkdir -p /home/${username}/dotfiles
-      cp -r ${../..}/* /home/${username}/dotfiles/
-      chown -R ${username}:users /home/${username}/dotfiles
-    '';
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = username;
   };
 
-  # Add helpful tools for installation - reduced and more lightweight
+  # Add the flake to the ISO
+  system.activationScripts.dotfiles = ''
+    mkdir -p /home/${username}/dotfiles
+    cp -r ${../..}/* /home/${username}/dotfiles/
+    chown -R ${username}:users /home/${username}/dotfiles
+  '';
+
+  # Minimal set of essential installation tools
   environment.systemPackages = with pkgs; [
-    firefox
-    xfce.xfce4-terminal
-    xfce.thunar
-    xfce.xfce4-taskmanager
-    parted
+    # Terminal essentials
+    git
     gparted
-    gptfdisk
+    parted
+    
+    # Filesystem tools
     ntfs3g
-    cryptsetup
     btrfs-progs
     e2fsprogs
     dosfstools
+    
+    # Basic utilities
+    xfce.xfce4-terminal
+    xfce.thunar
+    firefox-esr  # Smaller than regular Firefox
+    
+    # Hardware detection
     pciutils
     usbutils
-    git
-    neofetch
   ];
 
   # Enable nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 
-  # Create installation helpers
+  # Create installation helper script
   environment.etc."install-system.sh" = {
     text = ''
       #!/bin/sh
-      echo "This script will help you install your NixOS system using your flake"
+      echo "======================= NixOS Installation Helper ======================="
       echo "Your flake is available at /home/${username}/dotfiles"
       echo ""
-      echo "Quick commands:"
-      echo "- cd /home/${username}/dotfiles"
-      echo "- sudo nixos-install --flake .#redmi"
-      echo "- sudo nixos-install --flake .#dell"
+      echo "Quick install commands:"
+      echo "cd /home/${username}/dotfiles"
+      echo "sudo nixos-install --flake .#redmi    # For Redmi laptop"
+      echo "sudo nixos-install --flake .#dell     # For Dell laptop"
+      echo "=================================================================="
     '';
     mode = "0755";
   };
 
-  # Create a simple readme
+  # Smaller README
   environment.etc."README.md" = {
     text = ''
       # NixOS Installation ISO
       
-      This is a custom NixOS installation ISO with your configuration flake included.
-      
-      ## Installation Instructions
-      
-      1. Connect to the internet using NetworkManager
-      2. Partition your disks using GParted or the command line tools
-      3. Mount your partitions under /mnt
-      4. Run the installation:
-         ```
-         sudo nixos-install --flake /home/${username}/dotfiles#your-hostname
-         ```
-      5. Reboot into your new system
-      
-      Your flake is available at `/home/${username}/dotfiles`
+      Run /etc/install-system.sh for installation instructions.
     '';
     mode = "0644";
   };
+  
+  # Disable unnecessary services
+  services.printing.enable = false;
+  services.avahi.enable = false;
+  #services.accounts-daemon.enable = false;
+  
+  # Minimize system size
+  documentation.enable = false;
+  documentation.nixos.enable = false;
+  documentation.man.enable = false;
+  documentation.info.enable = false;
+  documentation.doc.enable = false;
 }

@@ -100,43 +100,31 @@
 
         # ISO configuration
         iso = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs outputs username wallpaper spicetify-nix flakeDir pkgs-stable;
-          };
-          modules = [
-            # Base ISO configuration
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-            # Our custom ISO configuration
-            ({ lib, pkgs, ... }: {
-              imports = [ ./nixos/iso/configuration.nix ];
-
-              # Explicitly disable wireless to avoid conflict with NetworkManager
-              networking.wireless.enable = lib.mkForce false;
-
-              # Basic ISO configuration
-              networking.hostName = "nixos-live";
-              users.users.${username} = {
-                isNormalUser = true;
-                extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
-                initialPassword = "nixos";
-              };
-
-              # Add some basic packages for installation
-              environment.systemPackages = with pkgs; [
-                git
-                wget
-                curl
-                vim
-                gparted
-                htop
-                #inputs.akuse-flake.packages."x86_64-linux".akuse
-              ];
-
-            })
-            # Add stylix module
-            inputs.stylix.nixosModules.stylix
-          ];
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs outputs username wallpaper flakeDir;
+        };
+        modules = [
+          # Use the graphical image as base for better hardware support
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares.nix"
+          
+          # Disable unnecessary stuff from the base image
+          ({ lib, pkgs, ... }: {
+            # Disable unnecessary large packages
+            environment.defaultPackages = lib.mkForce [];
+            #services.xserver.desktopManager.plasma5.enable = lib.mkForce false;
+            boot.supportedFilesystems = lib.mkForce [ "btrfs" "ext4" "vfat" ];
+            
+            # Disable the Calamares installer (saves space)
+            environment.systemPackages = lib.mkForce [];
+          })
+          
+          # Our custom ISO configuration
+          ./nixos/iso/configuration.nix
+          
+          # Add stylix module if needed
+          #inputs.stylix.nixosModules.stylix
+        ];
         };
       };
     };
