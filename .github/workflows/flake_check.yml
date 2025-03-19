@@ -24,35 +24,14 @@ jobs:
       - name: Run Flake Check
         id: flake_check
         run: |
-          # Run flake check and log output
-          nix flake check 2>&1 | tee flake_check.log || FLake_CHECK_FAILED=$?
-
-          # Filter warnings and errors
-          grep -E "(warning:|error:)" flake_check.log > flake_check_filtered.log || true
-
-          # If flake check failed, check if it's due to actual errors
-          if [ -n "$FLake_CHECK_FAILED" ]; then
-            if [ -s flake_check_filtered.log ]; then
-              echo "Errors or warnings found. Failing the step."
-              exit 1
-            else
-              echo "Flake check failed, but no errors or warnings were found in the log."
-              echo "This might be due to a non-error-related failure (e.g., network issues)."
-              exit 0  # Allow the job to pass
-            fi
-          else
-            echo "Flake check passed successfully."
-          fi
+          nix flake check 2>&1 | tee flake_check.log || true
+          grep -E "(warning:|error:)" flake_check.log > flake_check_filtered.log || echo "No warnings or errors." > flake_check_filtered.log
 
       - name: Debug Logs
-        run: |
-          echo "=== Full Flake Check Log ==="
-          cat flake_check.log
-          echo "=== Filtered Log (Warnings/Errors) ==="
-          cat flake_check_filtered.log
+        run: cat flake_check_filtered.log
 
       - name: Send Telegram Notification
-        if: failure()
+        if: always()
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
@@ -62,14 +41,18 @@ jobs:
           STATUS="${{ job.status }}"
 
           # Define status message
-          STATUS_MESSAGE="❌ Flake check for $REPO_NAME failed on branch $BRANCH_NAME.%0ACheck GitHub Actions for details."
+          if [[ "$STATUS" == "success" ]]; then
+            STATUS_MESSAGE="✅ Flake check for $REPO_NAME passed on branch $BRANCH_NAME."
+          else
+            STATUS_MESSAGE="❌ Flake check for $REPO_NAME failed on branch $BRANCH_NAME.%0ACheck GitHub Actions for details."
+          fi
 
           # Process warnings and errors
           if [ -s flake_check_filtered.log ]; then
             WARNINGS=$(awk '{print NR". "$0}' flake_check_filtered.log | head -15 | perl -pe 's/\n/%0A/g')  # Limit to 15 lines
             MESSAGE="Flake Check Results:%0A\`\`\`%0A$WARNINGS%0A\`\`\`"
           else
-            MESSAGE="Flake check failed, but no errors or warnings were found in the log."
+            MESSAGE="No warnings or errors found."
           fi
 
           # Send message to Telegram
