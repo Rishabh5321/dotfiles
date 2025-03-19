@@ -22,7 +22,7 @@
     keyMap = "us";
   };
 
-services.xserver.desktopManager.mate.enable = true;
+  services.xserver.desktopManager.mate.enable = true;
 
   #services.displayManager.autoLogin = {
   #  enable = true;
