@@ -24,14 +24,25 @@ jobs:
       - name: Run Flake Check
         id: flake_check
         run: |
-          nix flake check 2>&1 | tee flake_check.log || true
-          grep -E "(warning:|error:)" flake_check.log > flake_check_filtered.log || echo "No warnings or errors." > flake_check_filtered.log
+          # Run flake check and log output
+          nix flake check 2>&1 | tee flake_check.log
+
+          # Filter warnings and errors
+          grep -E "(warning:|error:)" flake_check.log > flake_check_filtered.log
+
+          # Fail the step if errors or warnings are found
+          if [ -s flake_check_filtered.log ]; then
+            echo "Errors or warnings found. Failing the step."
+            exit 1
+          else
+            echo "No warnings or errors."
+          fi
 
       - name: Debug Logs
         run: cat flake_check_filtered.log
 
       - name: Send Telegram Notification
-        if: always()
+        if: failure()
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
@@ -41,11 +52,7 @@ jobs:
           STATUS="${{ job.status }}"
 
           # Define status message
-          if [[ "$STATUS" == "success" ]]; then
-            STATUS_MESSAGE="✅ Flake check for $REPO_NAME passed on branch $BRANCH_NAME."
-          else
-            STATUS_MESSAGE="❌ Flake check for $REPO_NAME failed on branch $BRANCH_NAME.%0ACheck GitHub Actions for details."
-          fi
+          STATUS_MESSAGE="❌ Flake check for $REPO_NAME failed on branch $BRANCH_NAME.%0ACheck GitHub Actions for details."
 
           # Process warnings and errors
           if [ -s flake_check_filtered.log ]; then
