@@ -8,7 +8,7 @@
   networking = {
     networkmanager.enable = true;
     # Disable default wireless configuration since we're using NetworkManager
-    wireless.enable = false;
+    wireless.enable = true;
   };
 
   # Enable SSH for remote assistance during installation
@@ -25,11 +25,11 @@
     keyMap = "us";
   };
 
-  # Enable basic graphical environment
+  # Enable Xfce instead of GNOME for a lighter desktop environment
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+    displayManager.lightdm.enable = true;
+    desktopManager.xfce.enable = true;
   };
 
   # Add the flake to the ISO so it can be easily accessed
@@ -41,14 +41,14 @@
     '';
   };
 
-  # Add helpful tools for installation
+  # Add helpful tools for installation - reduced and more lightweight
   environment.systemPackages = with pkgs; [
     firefox
-    gnome-terminal
-    nautilus
-    gnome-system-monitor
+    xfce.xfce4-terminal
+    xfce.thunar
+    xfce.xfce4-taskmanager
     parted
-    gnome-disk-utility
+    gparted
     gptfdisk
     ntfs3g
     cryptsetup
@@ -59,23 +59,12 @@
     usbutils
     git
     neofetch
-    vscode
   ];
-
-  # # Configure stylix with your wallpaper
-  # stylix = {
-  #   enable = true;
-  #   image = ../wallpapers/${config.wallpaper};
-  #   base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-  #   cursor = {
-  #     package = pkgs.bibata-cursors;
-  #     name = "Bibata-Modern-Classic";
-  #   };
-  # };
 
   # Enable nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
+  
   # Create installation helpers
   environment.etc."install-system.sh" = {
     text = ''
@@ -100,7 +89,7 @@
       
       ## Installation Instructions
       
-      1. Connect to the internet using NetworkManager (nm-connection-editor)
+      1. Connect to the internet using NetworkManager
       2. Partition your disks using GParted or the command line tools
       3. Mount your partitions under /mnt
       4. Run the installation:
