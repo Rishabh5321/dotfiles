@@ -23,16 +23,16 @@
   };
 
   # Enable MATE desktop environment (Optional, can be disabled if using TTY only)
-  services.xserver.enable = false; # Disable Xserver for now to ensure TTY works
+  #services.xserver.enable = false; # Disable Xserver for now to ensure TTY works
 
   # Enable a display manager (If you want GUI later, set services.xserver.enable = true;)
   # services.xserver.displayManager.sddm.enable = true;
   
   # Enable TTY login prompt
-  systemd.defaultTarget = "multi-user.target";
-  services.getty.defaultUser = username;
-  services.getty.autoLogin = true;
-  systemd.services."getty@tty1".enable = true;
+  #systemd.defaultTarget = "multi-user.target";
+  #services.getty.defaultUser = username;
+  #services.getty.autoLogin = true;
+  #systemd.services."getty@tty1".enable = true;
 
   # Ensure essential kernel modules are available
   boot.initrd.kernelModules = [ "i915" "amdgpu" ];
@@ -40,10 +40,10 @@
   boot.kernelParams = [ "systemd.log_level=debug" "systemd.log_target=console" ];
 
   # Enable GRUB for the ISO
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.useOSProber = false;
-  boot.loader.timeout = 5;
+  #boot.loader.grub.enable = true;
+  #boot.loader.grub.device = "nodev";
+  #boot.loader.grub.useOSProber = false;
+  #boot.loader.timeout = 5;
 
   # Add the flake to the ISO
   system.activationScripts.dotfiles = ''
