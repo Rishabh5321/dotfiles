@@ -34,7 +34,7 @@ jobs:
           lfs: false
       - uses: DeterminateSystems/nix-installer-action@v16
         with:
-          nix-installer-branch: main
+          source-branch: main
           extra-conf: accept-flake-config = true
       - run: git config --global user.email "noreply@github.com"
       - run: git config --global user.name "github[bot]"

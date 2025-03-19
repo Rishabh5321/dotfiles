@@ -78,54 +78,12 @@
       };
     in
     {
-      # Define all packages in one location
-      packages = forAllSystems (system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-          customPkgs = import ./pkgs pkgs;
-        in
-        customPkgs // {
-          # Add ISO image to packages
-          iso = self.nixosConfigurations.iso.config.system.build.isoImage;
-          # Set default package
-          default = customPkgs.default or self.nixosConfigurations.iso.config.system.build.isoImage;
-        }
-      );
 
       #formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
       overlays = import ./overlays { inherit inputs; };
       nixosConfigurations = {
         redmi = nixpkgs.lib.nixosSystem (commonConfig { hostname = "redmi"; });
         dell = nixpkgs.lib.nixosSystem (commonConfig { hostname = "dell"; });
-
-        # ISO configuration
-        iso = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs outputs username wallpaper flakeDir;
-          };
-          modules = [
-            # Use the graphical image as base for better hardware support
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares.nix"
-
-            # Disable unnecessary stuff from the base image
-            ({ lib, ... }: {
-              # Disable unnecessary large packages
-              environment.defaultPackages = lib.mkForce [ ];
-              #services.xserver.desktopManager.plasma5.enable = lib.mkForce false;
-              boot.supportedFilesystems = lib.mkForce [ "btrfs" "ext4" "vfat" ];
-
-              # Disable the Calamares installer (saves space)
-              environment.systemPackages = lib.mkForce [ ];
-            })
-
-            # Our custom ISO configuration
-            ./nixos/iso/configuration.nix
-
-            # Add stylix module if needed
-            #inputs.stylix.nixosModules.stylix
-          ];
-        };
       };
     };
 }
