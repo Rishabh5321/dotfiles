@@ -1,4 +1,4 @@
-{ host, ... }: {
+{ ... }: {
   services = {
     printing = {
       enable = printEnable;
