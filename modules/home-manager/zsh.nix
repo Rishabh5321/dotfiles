@@ -64,8 +64,9 @@
       cdnix = "cd ~/dotfiles && code ~/dotfiles";
       ns = "nix-shell --run zsh";
       nix-shell = "nix-shell --run zsh";
-      nix-switch = "nh os switch ~/dotfiles";
-      nix-switchu = "nh os switch -u ~/dotfiles";
+      nix-switch = "cd ~/dotfiles && nh os switch ~/dotfiles";
+      nix-switchg = "cd ~/dotfiles && git pull && nh os switch ~/dotfiles";
+      nix-switchu = "cd ~/dotfiles && git pull && nh os switch -u ~/dotfiles";
       #nix-flake-update = "sudo nix flake update ~/dotfiles#";
       wallswitch = "swww img /home/${username}/Pictures/Wallpapers/${wallpaper}";
       nix-clean = "sudo nix-collect-garbage && sudo nix-collect-garbage -d && sudo rm /nix/var/nix/gcroots/auto/* && nix-collect-garbage && nix-collect-garbage -d";
