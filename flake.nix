@@ -35,7 +35,6 @@
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, spicetify-nix, akuse-flake, darkmatter-grub-theme, nix-flatpak, ... } @ inputs:
     let
       inherit (self) outputs;
-      systems = [ "x86_64-linux" ];
       username = "rishabh";
       wallpaper = "wall1.png";
       flakeDir = "/home/${username}/dotfiles";
@@ -47,7 +46,6 @@
         system = "x86_64-linux";
         config = { allowUnfree = true; };
       };
-      forAllSystems = nixpkgs.lib.genAttrs systems;
       commonConfig = { hostname }: {
         specialArgs = {
           inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs-stable;
