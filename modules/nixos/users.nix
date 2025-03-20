@@ -38,7 +38,7 @@
     # };
   };
   users.extraUsers.kodi.isNormalUser = true;
-  nix.settings.allowed-users = ["${username}"];
+  nix.settings.allowed-users = [ "${username}" ];
   location.provider = "geoclue2";
   services.geoclue2.enable = true;
 }

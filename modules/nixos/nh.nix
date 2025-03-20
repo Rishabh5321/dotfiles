@@ -1,7 +1,6 @@
-{
-  pkgs,
-  username,
-  ...
+{ pkgs
+, username
+, ...
 }: {
   programs.nh = {
     enable = true;
