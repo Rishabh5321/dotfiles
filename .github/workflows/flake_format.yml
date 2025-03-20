@@ -49,4 +49,4 @@ jobs:
         branch: auto-lint-format
         delete-branch: true
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
-        
+        labels: automated chore
