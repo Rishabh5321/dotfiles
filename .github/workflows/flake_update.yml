@@ -43,6 +43,7 @@ jobs:
           dependency: ${{ matrix.flake }}
           pull-request-token: ${{ secrets.REPO_ACCESS_TOKEN }}
           pull-request-author: github[bot] <noreply@github.com>
+          pull-request-labels: "dependencies, automated" 
           delete-branch: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-branch-prefix: update-
