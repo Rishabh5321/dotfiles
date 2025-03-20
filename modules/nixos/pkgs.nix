@@ -240,6 +240,8 @@
       font-awesome
       symbola
       powerline
+      fira-code
+      fira-code-symbols
       material-icons
       nerd-fonts.ubuntu-sans
       nerd-fonts.ubuntu-mono

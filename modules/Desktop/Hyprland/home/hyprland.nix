@@ -91,19 +91,19 @@ with lib; {
             sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
             accel_profile = flat
           }
-          windowrule = noborder,^(rofi)$
-          windowrule = center,^(rofi)$
-          windowrule = center,^(steam)$
-          windowrule = float, nm-connection-editor|blueman-manager
-          windowrule = float, swayimg|vlc|Viewnior|pavucontrol
-          windowrule = float, nwg-look|qt5ct|mpv
-          windowrule = float, zoom
-          windowrule = fullscreen,^(tv.kodi.Kodi|tv.kodi.Kodi)$
-          windowrulev2 = stayfocused, title:^()$,class:^(steam)$
-          windowrulev2 = minsize 1 1, title:^()$,class:^(steam)$
-          windowrule = animation fade,^(wlogout)$
-          windowrule = animation fade,^(rofi)$,1,1.5
-          windowrule = fullscreen, ^(wlogout)$
+          # windowrule = noborder,^(rofi)$
+          # windowrule = center,^(rofi)$
+          # windowrule = center,^(steam)$
+          # windowrule = float, nm-connection-editor|blueman-manager
+          # windowrule = float, swayimg|vlc|Viewnior|pavucontrol
+          # windowrule = float, nwg-look|qt5ct|mpv
+          # windowrule = float, zoom
+          # windowrule = fullscreen,^(tv.kodi.Kodi|tv.kodi.Kodi)$
+          # windowrulev2 = stayfocused, title:^()$,class:^(steam)$
+          # windowrulev2 = minsize 1 1, title:^()$,class:^(steam)$
+          # windowrule = animation fade,^(wlogout)$
+          # windowrule = animation fade,^(rofi)$,1,1.5
+          # windowrule = fullscreen, ^(wlogout)$
           gestures {
             workspace_swipe = true
           }

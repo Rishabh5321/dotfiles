@@ -13,13 +13,13 @@
     dconf.enable = true;
     nix-ld.enable = true;
     nix-ld.libraries = with pkgs; [ ];
-    #seahorse.enable = lib.mkForce true;
+    seahorse.enable = true;
     #fuse.userAllowOther = true;
     #mtr.enable = true;dconf
-    # gnupg.agent = {
-    #   enable = true;
-    #   enableSSHSupport = true;
-    # };
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
     virt-manager.enable = true;
     thunar = {
       enable = true;

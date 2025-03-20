@@ -3,7 +3,7 @@
 , ...
 }: {
   #sops.secrets.ta-password.neededForUsers = true;
-  #users.mutableUsers = false;
+  users.mutableUsers = true;
 
   users.users = {
     "${username}" = {
@@ -38,7 +38,7 @@
     # };
   };
   users.extraUsers.kodi.isNormalUser = true;
-
+  nix.settings.allowed-users = ["${username}"];
   location.provider = "geoclue2";
   services.geoclue2.enable = true;
 }
