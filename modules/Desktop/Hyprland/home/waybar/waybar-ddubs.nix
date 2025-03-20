@@ -184,8 +184,8 @@ in
       style = concatStrings [
         ''
           * {
-            font-family: JetBrainsMono Nerd Font Mono;
-            font-size: 14px;
+            font-family: JetBrainsMono Nerd Font, JetBrainsMono Nerd Font , JetBrainsMono Nerd Font;
+            font-size: 16px;
             border-radius: 0px;
             border: none;
             min-height: 0px;
@@ -196,15 +196,15 @@ in
           #workspaces {
             color: #${config.lib.stylix.colors.base00};
             background: #${config.lib.stylix.colors.base01};
-            margin: 4px 4px;
+            margin: 4px 0px;
             padding: 5px 5px;
-            border-radius: 16px;
+            border-radius: 8px 8px 8px 8px;
           }
           #workspaces button {
             font-weight: bold;
             padding: 0px 5px;
             margin: 0px 3px;
-            border-radius: 16px;
+            border-radius: 8px 8px 8px 8px;
             color: #${config.lib.stylix.colors.base00};
             background: linear-gradient(45deg, #${config.lib.stylix.colors.base08}, #${config.lib.stylix.colors.base0D});
             opacity: 0.5;

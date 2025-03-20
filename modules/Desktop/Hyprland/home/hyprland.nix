@@ -157,7 +157,7 @@ with lib; {
           preserve_split = true
           }
           bind = ${modifier},Return,exec,${terminal}
-          bind = ${modifier}SHIFT,Return,exec,wofi
+          bind = ${modifier}SHIFT,Return,exec,rofi -show drun
           bind = ${modifier},V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy
           bind = ${modifier}SHIFT,W,exec,web-search
           bind = ${modifier}ALT,W,exec,wallSelector
