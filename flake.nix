@@ -56,9 +56,6 @@
           inputs.stylix.nixosModules.stylix
           nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
-          (_: {
-            environment.systemPackages = [ inputs.akuse-flake.packages."x86_64-linux".akuse ];
-          })
           {
             home-manager.extraSpecialArgs = {
               inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs-stable;

@@ -59,7 +59,7 @@
       grim
       heroic
       htop
-      #inputs.akuse-flake.packages.${system}.akuse
+      inputs.akuse-flake.packages.${system}.akuse
       #inputs.alejandra.defaultPackage.${system}
       inputs.grayjay.packages.${system}.grayjay
       inputs.thorium.packages."x86_64-linux".thorium-avx2
