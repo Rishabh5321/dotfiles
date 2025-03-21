@@ -41,13 +41,12 @@ jobs:
         id: build
         if: always() # Run even if flake check fails
         run: |
-          nix build . 2>&1 | tee build.log
-          if [ $? -ne 0 ]; then
-            echo "BUILD_STATUS=failed" >> $GITHUB_ENV
-            cat build.log > build_filtered.log
-          else
+          if nix build .#dell 2>&1 | tee build.log; then
             echo "BUILD_STATUS=passed" >> $GITHUB_ENV
             echo "Build completed successfully" > build_filtered.log
+          else
+            echo "BUILD_STATUS=failed" >> $GITHUB_ENV
+            cat build.log > build_filtered.log
           fi
       - name: Debug Logs
         run: |
