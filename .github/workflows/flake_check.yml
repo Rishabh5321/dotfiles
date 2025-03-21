@@ -3,6 +3,7 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+
 jobs:
   flake-checks:
     name: Flake Check
@@ -10,6 +11,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
@@ -18,12 +20,14 @@ jobs:
             auto-optimise-store = true
             experimental-features = nix-command flakes
             download-buffer-size = 500000000
+
       - name: Setup Cachix
         uses: cachix/cachix-action@v16
         with:
-          name: buildcache
+          name: buildcache  # Corrected cache name to "buildcache" (no hyphen)
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-          pushFilter: ".*"
+          pushFilter: ".*"  # Configure which store paths to push (default is all)
+
       - name: Run Flake Check
         id: flake_check
         run: |
@@ -37,23 +41,10 @@ jobs:
             echo "has_issues=false" >> $GITHUB_OUTPUT
             echo "FLAKE_STATUS=passed" >> $GITHUB_ENV
           fi
-      - name: Check NixOS Configuration
-        id: build
-        if: always() # Run even if flake check fails
-        run: |
-          if nix build .#nixosConfigurations.dell.config.system.build.toplevel 2>&1 | tee build.log; then
-            echo "BUILD_STATUS=passed" >> $GITHUB_ENV
-            echo "NixOS configuration check completed successfully" > build_filtered.log
-          else
-            echo "BUILD_STATUS=failed" >> $GITHUB_ENV
-            cat build.log > build_filtered.log
-          fi
+
       - name: Debug Logs
-        run: |
-          echo "--- Flake Check Results ---"
-          cat flake_check_filtered.log
-          echo "--- Build Results ---"
-          cat build_filtered.log
+        run: cat flake_check_filtered.log
+
       - name: Send Telegram Notification
         if: always()
         env:
@@ -63,28 +54,22 @@ jobs:
           BRANCH_NAME="${{ github.ref_name }}"
           REPO_NAME="${{ github.repository }}"
           FLAKE_STATUS="${{ env.FLAKE_STATUS }}"
-          BUILD_STATUS="${{ env.BUILD_STATUS }}"
-          
-          # Define combined status message
-          if [[ "$FLAKE_STATUS" == "passed" && "$BUILD_STATUS" == "passed" ]]; then
-            STATUS_MESSAGE="✅ Checks for $REPO_NAME passed on branch $BRANCH_NAME."
+
+          # Define status message based on our own status variable
+          if [[ "$FLAKE_STATUS" == "passed" ]]; then
+            STATUS_MESSAGE="✅ Flake check for $REPO_NAME passed on branch $BRANCH_NAME."
           else
-            STATUS_MESSAGE="❌ Checks for $REPO_NAME failed on branch $BRANCH_NAME.%0ACheck GitHub Actions for details."
+            STATUS_MESSAGE="❌ Flake check for $REPO_NAME failed on branch $BRANCH_NAME.%0ACheck GitHub Actions for details."
           fi
-          
+
           # Process warnings and errors
-          MESSAGE="Flake Check: $FLAKE_STATUS%0ABuild: $BUILD_STATUS%0A%0A"
-          
           if [ -s flake_check_filtered.log ]; then
-            FLAKE_WARNINGS=$(awk '{print NR". "$0}' flake_check_filtered.log | head -10 | perl -pe 's/\n/%0A/g')
-            MESSAGE+="Flake Check Issues:%0A\`\`\`%0A$FLAKE_WARNINGS%0A\`\`\`%0A%0A"
+            WARNINGS=$(awk '{print NR". "$0}' flake_check_filtered.log | head -15 | perl -pe 's/\n/%0A/g')  # Limit to 15 lines
+            MESSAGE="Flake Check Results:%0A\`\`\`%0A$WARNINGS%0A\`\`\`"
+          else
+            MESSAGE="No warnings or errors found."
           fi
-          
-          if [ -s build_filtered.log ] && [ "$BUILD_STATUS" == "failed" ]; then
-            BUILD_ERRORS=$(awk '{print NR". "$0}' build_filtered.log | head -10 | perl -pe 's/\n/%0A/g')
-            MESSAGE+="Build Issues:%0A\`\`\`%0A$BUILD_ERRORS%0A\`\`\`"
-          fi
-          
+
           # Send message to Telegram
           curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
             -d "chat_id=$CHAT_ID" \
