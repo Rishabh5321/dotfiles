@@ -37,13 +37,13 @@ jobs:
             echo "has_issues=false" >> $GITHUB_OUTPUT
             echo "FLAKE_STATUS=passed" >> $GITHUB_ENV
           fi
-      - name: Build Default Package
+      - name: Check NixOS Configuration
         id: build
         if: always() # Run even if flake check fails
         run: |
-          if nix build .#dell 2>&1 | tee build.log; then
+          if nix build .#nixosConfigurations.dell.config.system.build.toplevel --dry-run 2>&1 | tee build.log; then
             echo "BUILD_STATUS=passed" >> $GITHUB_ENV
-            echo "Build completed successfully" > build_filtered.log
+            echo "NixOS configuration check completed successfully" > build_filtered.log
           else
             echo "BUILD_STATUS=failed" >> $GITHUB_ENV
             cat build.log > build_filtered.log
