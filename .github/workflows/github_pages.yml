@@ -30,12 +30,16 @@ jobs:
       - name: Generate Redmi configuration docs
         run: |
           nix-shell -p nixos-generators --run "nixos-generate-config --dir public/redmi-config --show-hardware-config" || true
-          nix eval --json .#nixosConfigurations.redmi.config.system.build.manual.optionsJSON | jq . > public/redmi-options.json
+          nix eval --json .#nixosConfigurations.redmi.config.system.build.manual.optionsJSON | jq . > public/redmi-options.json || echo "Failed to generate Redmi options JSON"
 
       - name: Generate Dell configuration docs
         run: |
           nix-shell -p nixos-generators --run "nixos-generate-config --dir public/dell-config --show-hardware-config" || true
-          nix eval --json .#nixosConfigurations.dell.config.system.build.manual.optionsJSON | jq . > public/dell-options.json
+          nix eval --json .#nixosConfigurations.dell.config.system.build.manual.optionsJSON | jq . > public/dell-options.json || echo "Failed to generate Dell options JSON"
+
+      # Create a .nojekyll file to disable Jekyll processing
+      - name: Disable Jekyll
+        run: touch public/.nojekyll
 
       # Generate a simple index page
       - name: Create index page
@@ -97,7 +101,7 @@ jobs:
               </ul>
             </div>
             
-            <a href="https://github.com/${GITHUB_REPOSITORY}" class="repository-link">View on GitHub</a>
+            <a href="https://github.com/\${GITHUB_REPOSITORY}" class="repository-link">View on GitHub</a>
           </body>
           </html>
           EOF
@@ -116,8 +120,8 @@ jobs:
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          force_orphan: true
+          folder: public
+          branch: gh-pages
+          clean: true
