@@ -1,0 +1,123 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  # Allows manual triggering from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v25
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            substituters = https://cache.nixos.org https://nix-community.cachix.org
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
+
+      - name: Create docs directory
+        run: mkdir -p public
+
+      # Generate system configuration documentation
+      - name: Generate Redmi configuration docs
+        run: |
+          nix-shell -p nixos-generators --run "nixos-generate-config --dir public/redmi-config --show-hardware-config" || true
+          nix eval --json .#nixosConfigurations.redmi.config.system.build.manual.optionsJSON | jq . > public/redmi-options.json
+
+      - name: Generate Dell configuration docs
+        run: |
+          nix-shell -p nixos-generators --run "nixos-generate-config --dir public/dell-config --show-hardware-config" || true
+          nix eval --json .#nixosConfigurations.dell.config.system.build.manual.optionsJSON | jq . > public/dell-options.json
+
+      # Generate a simple index page
+      - name: Create index page
+        run: |
+          cat > public/index.html << EOF
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Rishabh's NixOS Configuration</title>
+            <style>
+              body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                line-height: 1.6;
+                color: #333;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+              }
+              h1 { color: #2563eb; }
+              h2 { color: #4b5563; margin-top: 30px; }
+              a { color: #2563eb; text-decoration: none; }
+              a:hover { text-decoration: underline; }
+              .config-box {
+                border: 1px solid #e5e7eb;
+                border-radius: 8px;
+                padding: 20px;
+                margin-bottom: 20px;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+              }
+              .repository-link {
+                display: inline-block;
+                margin-top: 30px;
+                padding: 10px 20px;
+                background-color: #2563eb;
+                color: white;
+                border-radius: 4px;
+              }
+            </style>
+          </head>
+          <body>
+            <h1>Rishabh's NixOS Configuration</h1>
+            <p>This is the documentation for my personal NixOS configurations for my laptop and server setup.</p>
+            
+            <div class="config-box">
+              <h2>Redmi Configuration</h2>
+              <ul>
+                <li><a href="redmi-config/hardware-configuration.nix">Hardware Configuration</a></li>
+                <li><a href="redmi-options.json">System Options (JSON)</a></li>
+              </ul>
+            </div>
+            
+            <div class="config-box">
+              <h2>Dell Configuration</h2>
+              <ul>
+                <li><a href="dell-config/hardware-configuration.nix">Hardware Configuration</a></li>
+                <li><a href="dell-options.json">System Options (JSON)</a></li>
+              </ul>
+            </div>
+            
+            <a href="https://github.com/${GITHUB_REPOSITORY}" class="repository-link">View on GitHub</a>
+          </body>
+          </html>
+          EOF
+
+      # Create a flake overview document
+      - name: Create flake overview
+        run: |
+          echo "# Flake Overview" > public/flake-overview.md
+          echo "## Inputs" >> public/flake-overview.md
+          nix flake metadata --json | jq -r '.locks.nodes.root.inputs | keys[]' | sort | sed 's/^/- /' >> public/flake-overview.md
+          echo "" >> public/flake-overview.md
+          echo "## Outputs" >> public/flake-overview.md
+          echo "### NixOS Configurations" >> public/flake-overview.md
+          echo "- redmi" >> public/flake-overview.md
+          echo "- dell" >> public/flake-overview.md
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          force_orphan: true
