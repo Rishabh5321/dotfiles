@@ -1,0 +1,23 @@
+site_name: My GitHub Pages
+site_url: https://rishabh5321.github.io/dotfiles/
+theme:
+  name: material
+  palette:
+    scheme: slate  # Enables dark mode
+  features:
+    - navigation.tabs
+    - navigation.top
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+
+nav:
+  - Home: index.md
+  - About: about.md
+  - Contact: contact.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
