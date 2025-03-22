@@ -3,7 +3,18 @@ site_url: https://rishabh5321.github.io/dotfiles/
 theme:
   name: material
   palette:
-    scheme: slate  # Enables dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: pink
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    - scheme: default
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
   features:
     - navigation.tabs
     - navigation.top
