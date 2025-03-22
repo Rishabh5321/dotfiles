@@ -9,6 +9,15 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -22,8 +31,8 @@ jobs:
             substituters = https://cache.nixos.org https://nix-community.cachix.org
             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
 
-      - name: Setup jq
-        uses: dcarbone/install-jq-action@v2.0.1
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
       - name: Create site directory
         run: mkdir -p site
@@ -53,7 +62,7 @@ jobs:
           
           # Create flake documentation
           echo "# Flake Inputs" > site/flake-inputs.md
-          nix flake metadata --json | jq -r '.locks.nodes.root.inputs | keys[]' | sort | sed 's/^/- /' >> site/flake-inputs.md
+          nix flake metadata --json | jq -r '.locks.nodes.root.inputs | keys[]' | sort | sed 's/^/- /' >> site/flake-inputs.md || echo "Failed to extract flake inputs"
           
           # Extract flake.nix content
           cat flake.nix > site/flake.nix
@@ -124,11 +133,11 @@ jobs:
           </html>
           EOF
 
-      # Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          artifact_name: github-pages
-          path: site
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: './site'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
