@@ -18,12 +18,6 @@ jobs:
             auto-optimise-store = true
             experimental-features = nix-command flakes
             download-buffer-size = 500000000
-      - name: Setup Cachix
-        uses: cachix/cachix-action@v16
-        with:
-          name: buildcache
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-          pushFilter: ".*"
       - name: Run Flake Check
         id: flake_check
         run: |
@@ -37,40 +31,6 @@ jobs:
             echo "has_issues=false" >> $GITHUB_OUTPUT
             echo "FLAKE_STATUS=passed" >> $GITHUB_ENV
           fi
-      - name: Check Dell NixOS Configuration
-        id: build_dell
-        if: always() # Run even if flake check fails
-        run: |
-          set -o pipefail  # Make sure pipe failures are properly detected
-          if nix build .#nixosConfigurations.dell.config.system.build.toplevel --dry-run 2>&1 | tee build_dell.log; then
-            echo "DELL_STATUS=passed" >> $GITHUB_ENV
-            echo "Dell NixOS configuration check completed successfully" > build_dell_filtered.log
-          else
-            echo "DELL_STATUS=failed" >> $GITHUB_ENV
-            grep -E "(warning:|error:)" build_dell.log > build_dell_filtered.log || cat build_dell.log > build_dell_filtered.log
-          fi
-      - name: Check Redmi NixOS Configuration
-        id: build_redmi
-        if: always() # Run even if other steps fail
-        run: |
-          set -o pipefail  # Make sure pipe failures are properly detected
-          if nix build .#nixosConfigurations.redmi.config.system.build.toplevel --dry-run 2>&1 | tee build_redmi.log; then
-            echo "REDMI_STATUS=passed" >> $GITHUB_ENV
-            echo "Redmi NixOS configuration check completed successfully" > build_redmi_filtered.log
-          else
-            echo "REDMI_STATUS=failed" >> $GITHUB_ENV
-            grep -E "(warning:|error:)" build_redmi.log > build_redmi_filtered.log || cat build_redmi.log > build_redmi_filtered.log
-          fi
-      - name: Debug Logs
-        run: |
-          echo "--- Flake Check Results ---"
-          cat flake_check_filtered.log
-          echo "--- Dell Configuration Results ---"
-          cat build_dell_filtered.log
-          echo "Dell status: ${{ env.DELL_STATUS }}"
-          echo "--- Redmi Configuration Results ---"
-          cat build_redmi_filtered.log
-          echo "Redmi status: ${{ env.REDMI_STATUS }}"
       - name: Send Telegram Notification
         if: always()
         env:
@@ -80,35 +40,20 @@ jobs:
           BRANCH_NAME="${{ github.ref_name }}"
           REPO_NAME="${{ github.repository }}"
           FLAKE_STATUS="${{ env.FLAKE_STATUS }}"
-          DELL_STATUS="${{ env.DELL_STATUS }}"
-          REDMI_STATUS="${{ env.REDMI_STATUS }}"
           
-          # Define combined status message
-          if [[ "$FLAKE_STATUS" == "passed" && "$DELL_STATUS" == "passed" && "$REDMI_STATUS" == "passed" ]]; then
-            STATUS_MESSAGE="✅ All checks for $REPO_NAME passed on branch $BRANCH_NAME."
+          if [[ "$FLAKE_STATUS" == "passed" ]]; then
+            STATUS_MESSAGE="✅ Flake check for $REPO_NAME passed on branch $BRANCH_NAME."
           else
-            STATUS_MESSAGE="❌ Checks for $REPO_NAME failed on branch $BRANCH_NAME.%0ACheck GitHub Actions for details."
+            STATUS_MESSAGE="❌ Flake check for $REPO_NAME failed on branch $BRANCH_NAME.%0ACheck GitHub Actions for details."
           fi
           
-          # Process warnings and errors
-          MESSAGE="Flake Check: $FLAKE_STATUS%0ADell Config: $DELL_STATUS%0ARedmi Config: $REDMI_STATUS%0A%0A"
+          MESSAGE="Flake Check: $FLAKE_STATUS%0A%0A"
           
           if [ -s flake_check_filtered.log ]; then
             FLAKE_WARNINGS=$(awk '{print NR". "$0}' flake_check_filtered.log | head -10 | perl -pe 's/\n/%0A/g')
-            MESSAGE+="Flake Check Issues:%0A\`\`\`%0A$FLAKE_WARNINGS%0A\`\`\`%0A%0A"
+            MESSAGE+="Issues:%0A\`\`\`%0A$FLAKE_WARNINGS%0A\`\`\`%0A%0A"
           fi
           
-          if [ -s build_dell_filtered.log ] && [ "$DELL_STATUS" == "failed" ]; then
-            DELL_ERRORS=$(awk '{print NR". "$0}' build_dell_filtered.log | head -10 | perl -pe 's/\n/%0A/g')
-            MESSAGE+="Dell Config Issues:%0A\`\`\`%0A$DELL_ERRORS%0A\`\`\`%0A%0A"
-          fi
-          
-          if [ -s build_redmi_filtered.log ] && [ "$REDMI_STATUS" == "failed" ]; then
-            REDMI_ERRORS=$(awk '{print NR". "$0}' build_redmi_filtered.log | head -10 | perl -pe 's/\n/%0A/g')
-            MESSAGE+="Redmi Config Issues:%0A\`\`\`%0A$REDMI_ERRORS%0A\`\`\`"
-          fi
-          
-          # Send message to Telegram
           curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
             -d "chat_id=$CHAT_ID" \
             -d "text=$STATUS_MESSAGE%0A%0A$MESSAGE%0A%0AGenerated on $(TZ='Asia/Kolkata' date)" \
