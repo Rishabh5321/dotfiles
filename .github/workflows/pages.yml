@@ -1,8 +1,9 @@
 name: Deploy GitHub Pages
+
 on:
   push:
     branches:
-      - main
+      - main  # Change if your branch is different
 
 permissions:
   contents: read
@@ -12,23 +13,27 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: github-pages  # <-- Required for GitHub Pages deployment
+    environment: github-pages  # Required for GitHub Pages deployment
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install MkDocs Material
+        run: pip install mkdocs-material
 
       - name: Build site
-        run: |
-          mkdir -p docs
-          cp README.md docs/index.md
+        run: mkdocs build -d site  # Builds the site into the "site" directory
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
+          path: site
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
