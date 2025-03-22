@@ -36,7 +36,7 @@
     let
       inherit (self) outputs;
       username = "rishabh";
-      wallpaper = "wall1.png";
+      wallpaper = "wall2.jpg";
       flakeDir = "/home/${username}/dotfiles";
       pkgs-stable = import nixpkgs-stable {
         system = "x86_64-linux";
