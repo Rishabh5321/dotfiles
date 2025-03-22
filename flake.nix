@@ -32,7 +32,7 @@
     #cursor-flake.url = "github:Rishabh5321/cursor-flake";
     #grub2-themes.url = "github:vinceliuice/grub2-themes";
   };
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, spicetify-nix, akuse-flake, darkmatter-grub-theme, nix-flatpak, ... } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, spicetify-nix, darkmatter-grub-theme, nix-flatpak, ... } @ inputs:
     let
       inherit (self) outputs;
       username = "rishabh";
