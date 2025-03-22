@@ -1,8 +1,3 @@
-# Welcome to My GitHub Pages 🚀
-
-This is a beautiful documentation site built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/).
-
-
 # NixOS Configuration for Laptop and Server
 
 [![NixOS](https://img.shields.io/badge/NixOS-supported-blue.svg)](https://nixos.org)
