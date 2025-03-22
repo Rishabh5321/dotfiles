@@ -7,11 +7,12 @@ on:
 permissions:
   contents: read
   pages: write
-  id-token: write  # <-- Required for OIDC authentication
+  id-token: write  # Required for OIDC authentication
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: github-pages  # <-- Required for GitHub Pages deployment
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
