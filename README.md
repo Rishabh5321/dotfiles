@@ -167,19 +167,19 @@ Here are some screenshots of the system in action:
 ---
 
 ### 🖥️ **Desktop Environment with Custom Theming**
-![Screenshot 1](screenshot/screenshot1.png)  
+![Screenshot 1](docs/screenshot/screenshot1.png)  
 *Experience a sleek and modern desktop environment with custom themes, widgets, and layouts tailored for productivity and aesthetics.*
 
 ---
 
 ### 🛠️ **Home-Manager Configuration for User-Specific Settings**
-![Screenshot 2](screenshot/screenshot2.png)  
+![Screenshot 2](docs/screenshot/screenshot2.png)  
 *Customize your workflow with user-specific configurations managed by `home-manager`, including Neovim, Alacritty, and more.*
 
 ---
 
 ### 🖋️ **Terminal Theme**
-![Screenshot 3](screenshot/screenshot3.png)  
+![Screenshot 3](docs/screenshot/screenshot3.png)  
 *A beautifully themed terminal setup with powerline prompts, syntax highlighting, and seamless integration with your workflow.*
 
 ---
