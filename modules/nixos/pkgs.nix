@@ -22,6 +22,9 @@
     #akuse = pkgs.callPackage ../../pkgs/akuse.nix { };                 # deadnix: skip
     #in                                                                    # deadnix: skip
     with pkgs; [
+      nodejs_23
+
+      
       alacritty
       android-tools
       atuin
