@@ -1,0 +1,24 @@
+Containers:
+  - changed-files:
+      - any-glob-to-any-file: containers/*
+Modules:
+  - changed-files:
+      - any-glob-to-any-file: modules/*
+Hosts:
+  - changed-files:
+      - any-glob-to-any-file: nixos/*
+Packages:
+  - changed-files:
+      - any-glob-to-any-file: modules/*
+Systems:
+  - changed-files:
+      - any-glob-to-any-file: nixos/*
+repo:
+  - changed-files:
+      - any-glob-to-any-file: "*"
+GitHub-Action:
+  - changed-files:
+      - any-glob-to-any-file: .github/workflows/*
+GitHub:
+  - changed-fils:
+      - any-glob-to-any-file: .github/*
