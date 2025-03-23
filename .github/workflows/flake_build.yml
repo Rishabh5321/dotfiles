@@ -1,4 +1,4 @@
-name: build-configs
+name: Flake_build
 on:
     push:
     pull_request:
