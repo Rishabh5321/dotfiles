@@ -1,3 +1,4 @@
+
 # NixOS Configuration for Laptop and Server
 
 [![NixOS](https://img.shields.io/badge/NixOS-supported-blue.svg)](https://nixos.org)
