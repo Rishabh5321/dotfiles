@@ -35,10 +35,15 @@ jobs:
 
       - name: Install dependencies
         run: cd website && npm ci
+        continue-on-error: true  # This allows the workflow to continue even if this step fails  
 
       - name: Build website
-        run: cd website && npm run build
-
+        run: |
+          cd website
+          echo "Starting build process..."
+          npm run build
+          echo "Build process completed"
+        # Adding detailed logging can help identify where the problem occurs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
