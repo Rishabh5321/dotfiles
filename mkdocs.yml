@@ -1,4 +1,4 @@
-site_name: My GitHub Pages
+site_name: My Nix Config
 site_url: https://rishabh5321.github.io/dotfiles/
 theme:
   name: material
