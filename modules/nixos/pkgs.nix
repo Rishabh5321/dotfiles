@@ -24,7 +24,7 @@
     with pkgs; [
       nodejs_23
 
-      
+
       alacritty
       android-tools
       atuin
