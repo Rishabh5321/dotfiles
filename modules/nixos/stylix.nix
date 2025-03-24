@@ -30,6 +30,7 @@
       monospace = {
         package = pkgs.dejavu_fonts;
         name = "dejavu-fonts";
+
       };
 
       emoji = {
