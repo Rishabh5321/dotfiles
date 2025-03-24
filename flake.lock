@@ -1022,11 +1022,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1742703429,
-        "narHash": "sha256-/07c78WpRta925dyZEhwQi+D+rd+zVoDPApur+907p4=",
+        "lastModified": 1742816943,
+        "narHash": "sha256-BMQg7gJmbMbm0HkaMr7n+pmLJRsy/+JxQkjg8SS5iLk=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "d86aca850354c8db834c20feb170356e3d28a5c6",
+        "rev": "5979517ff68c1ae011503d5027d98d0472d392e8",
         "type": "github"
       },
       "original": {
