@@ -28,8 +28,8 @@
       };
 
       monospace = {
-        package = pkgs.maple-mono.variable;
-        name = "Maple Mono";
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans Mono";
       };
 
       emoji = {
