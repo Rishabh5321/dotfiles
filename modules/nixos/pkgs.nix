@@ -234,7 +234,7 @@
 
   fonts = {
     packages = with pkgs; [
-      maple-mono
+      #maple-mono
       noto-fonts
       noto-fonts-emoji
       noto-fonts-cjk-sans
