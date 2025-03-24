@@ -1,6 +1,5 @@
 { pkgs
 , wallpaper
-, lib
 , ...
 }: {
   stylix = {
