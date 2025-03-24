@@ -1,5 +1,6 @@
 { pkgs
 , wallpaper
+, lib
 , ...
 }: {
   stylix = {
@@ -28,9 +29,8 @@
       };
 
       monospace = {
-        package = pkgs.dejavu_fonts;
-        name = "dejavu-fonts";
-
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono NFM";
       };
 
       emoji = {
