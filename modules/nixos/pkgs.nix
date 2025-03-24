@@ -22,9 +22,6 @@
     #akuse = pkgs.callPackage ../../pkgs/akuse.nix { };                 # deadnix: skip
     #in                                                                    # deadnix: skip
     with pkgs; [
-      nodejs_23
-
-
       alacritty
       android-tools
       atuin
@@ -237,6 +234,7 @@
 
   fonts = {
     packages = with pkgs; [
+      maple-mono
       noto-fonts
       noto-fonts-emoji
       noto-fonts-cjk-sans
