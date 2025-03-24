@@ -126,9 +126,9 @@
       xdg-desktop-portal-gtk
       xdg-desktop-portal-wlr
       youtube-music
-      zed-editor
+      #zed-editor
       zsh
-
+      inputs.better-control.packages.${pkgs.system}.better-control
       #age
       #akuse
       #amdvlk
