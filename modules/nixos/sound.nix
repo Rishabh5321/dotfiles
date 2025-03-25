@@ -10,4 +10,13 @@
   };
   hardware.alsa.enablePersistence = true;
   environment.systemPackages = with pkgs; [ pulseaudioFull ];
+
+  # services.pulseaudio.enable = true;
+
+  # services.pipewire.enable = false;
+
+  # hardware.alsa.enablePersistence = true;
+
+  # environment.systemPackages = with pkgs; [ pulseaudioFull ];
+
 }
