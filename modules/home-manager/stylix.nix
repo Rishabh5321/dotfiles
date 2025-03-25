@@ -1,8 +1,8 @@
 { pkgs, config, ... }: {
   gtk = {
     iconTheme = {
-      name = "Qogir";
-      package = pkgs.qogir-icon-theme;
+      name = "Tela";
+      package = pkgs.tela-icon-theme;
     };
     gtk3.extraConfig = {
       #gtk-application-prefer-dark-theme = 1;

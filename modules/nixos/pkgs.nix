@@ -105,6 +105,7 @@
       stremio
       swappy
       swww
+      tela-icon-theme
       telegram-desktop
       thunderbird-latest
       tldr
