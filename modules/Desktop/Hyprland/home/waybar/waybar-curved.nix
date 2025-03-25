@@ -23,10 +23,10 @@ with lib; {
           "pulseaudio"
           "cpu"
           "memory"
-          "idle_inhibitor"
         ];
         modules-right = [
-          "custom/hyprbindings"
+          "idle_inhibitor"
+          #"custom/hyprbindings"
           "custom/notification"
           "custom/exit"
           "battery"

@@ -84,13 +84,14 @@
       networkmanagerapplet
       nix-serve
       nh
-      #nwg-look
+      nwg-look
       obsidian
       onlyoffice-bin_latest
       papirus-icon-theme
       plex-media-player
       #protonup-qt
       qbittorrent
+      qogir-icon-theme
       ranger
       #resilio-sync
       #revanced-cli
