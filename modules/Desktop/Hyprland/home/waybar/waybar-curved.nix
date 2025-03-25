@@ -235,7 +235,7 @@ with lib; {
         tooltip label {
           color: #${config.lib.stylix.colors.base08};
         }
-        #window, #pulseaudio, #cpu, #memory, #idle_inhibitor {
+        #window, #pulseaudio, #cpu, #memory {
           font-weight: bold;
           margin: 4px 0px;
           margin-left: 7px;
@@ -253,7 +253,7 @@ with lib; {
           border-radius: 0px 0px 40px 0px;
         }
         #custom-hyprbindings, #network, #battery,
-        #custom-notification, #tray, #custom-exit {
+        #custom-notification, #tray, #custom-exit , #idle_inhibitor {
           font-weight: bold;
           background: #${config.lib.stylix.colors.base0F};
           color: #${config.lib.stylix.colors.base00};
