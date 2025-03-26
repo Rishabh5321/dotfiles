@@ -1300,11 +1300,11 @@
         "nixpkgs": "nixpkgs_9"
       },
       "locked": {
-        "lastModified": 1742957618,
-        "narHash": "sha256-cBf2TgLrAAfGyrLF5eVCFXwbXiGEa0zXgJKn4X4hf9M=",
+        "lastModified": 1742957876,
+        "narHash": "sha256-gMW/S6xEpzfPkFt/pE6bi3wd4/eVPOYKZGDUz9vVML4=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "8f1edb3dbf61eaff42d564421398985dc399c956",
+        "rev": "1e40a8e9fa79991940c17a2e6d354346c73ad002",
         "type": "github"
       },
       "original": {
