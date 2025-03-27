@@ -3,7 +3,7 @@ _: {
   services.system76-scheduler.settings.cfsProfiles.enable = true;
 
   # Disable GNOMEs power management
-  services.power-profiles-daemon.enable = false;
+  services.power-profiles-daemon.enable = true;
 
   # Enable powertop
   powerManagement.powertop.enable = true;

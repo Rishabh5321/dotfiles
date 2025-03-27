@@ -4,13 +4,13 @@ _: {
   services.logind.lidSwitchDocked = "ignore";
 
   # Disable GNOMEs power management
-  #services.power-profiles-daemon.enable = true;
+  services.power-profiles-daemon.enable = true;
 
   # Enable thermald (only necessary if on Intel CPUs)
   services.thermald.enable = true;
 
   # Enable powertop
-  #powerManagement.powertop.enable = true;
+  powerManagement.powertop.enable = true;
 
   #services.xserver.displayManager.gdm = {
   #  enable = true;
