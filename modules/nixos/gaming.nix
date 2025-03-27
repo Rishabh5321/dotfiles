@@ -6,7 +6,7 @@
   environment.systemPackages = [
     # or home.packages
     inputs.nix-gaming.packages.${pkgs.system}.wine-ge
-    inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
+    #inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
   ];
   #programs.steam.platformOptimizations.enable = true;
   programs = {
