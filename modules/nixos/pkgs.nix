@@ -41,6 +41,7 @@
       eza
       fastfetch
       fast-cli
+      ferdium
       file-roller
       filezilla
       firefox
