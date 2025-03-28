@@ -11,36 +11,47 @@ env:
   SYSTEM: "x86_64-linux"          
 
 jobs:
-  setup-cachix:
+  setup:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    - uses: cachix/install-nix-action@v31
+    - name: Install Nix
+      uses: cachix/install-nix-action@v31
       with:
         nix_path: nixpkgs=channel:nixos-unstable
         extra_nix_config: |
           experimental-features = nix-command flakes
           substituters = https://${{ env.CACHIX_NAME }}.cachix.org https://cache.nixos.org
-          trusted-public-keys = ${{ secrets.CACHIX_PUBLIC_KEY }} cache.nixos.org-1:6NCHdD59X431o0niz+iQsNJlWhRM4tG/2aK+YRDjYTU=
+          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0niz+iQsNJlWhRM4tG/2aK+YRDjYTU= cachix.cachix.org-1:Kq8rLSmFVD2UMl3EsjEAXP6J08QbEINa6Zx7RirzOJc=
 
-    - uses: cachix/cachix-action@v16
-      with:
-        name: ${{ env.CACHIX_NAME }}
-        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+    - name: Install Cachix
+      run: nix-env -iA nixpkgs.cachix
+
+    - name: Authenticate Cachix
+      run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
 
   build-and-push:
-    needs: setup-cachix
+    needs: setup
     runs-on: ubuntu-latest
     strategy:
       matrix:
         host: ["redmi", "dell"]  # Your host configurations from flake.nix
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    - uses: cachix/install-nix-action@v31
+    - name: Install Nix
+      uses: cachix/install-nix-action@v31
       with:
         nix_path: nixpkgs=channel:nixos-unstable
+
+    - name: Install Cachix
+      run: nix-env -iA nixpkgs.cachix
+
+    - name: Authenticate Cachix
+      run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
 
     - name: Build and push system configuration
       run: |
