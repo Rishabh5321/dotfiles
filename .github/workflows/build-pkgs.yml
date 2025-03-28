@@ -21,8 +21,8 @@ jobs:
         nix_path: nixpkgs=channel:nixos-unstable
         extra_nix_config: |
           experimental-features = nix-command flakes
-          substituters = https://cache.nixos.org https://${{ env.CACHIX_NAME }}.cachix.org
-          trusted-public-keys = prebuild-pkgs.cachix.org-1:s/ghpCBw/JYgqD++qyRktRzM3Up9rZaDk904xvfv51E= ${{ secrets.CACHIX_PUBLIC_KEY }}
+          substituters = https://${{ env.CACHIX_NAME }}.cachix.org https://cache.nixos.org
+          trusted-public-keys = ${{ secrets.CACHIX_PUBLIC_KEY }} cache.nixos.org-1:6NCHdD59X431o0niz+iQsNJlWhRM4tG/2aK+YRDjYTU=
 
     - uses: cachix/cachix-action@v14
       with:
