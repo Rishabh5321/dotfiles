@@ -25,7 +25,7 @@ jobs:
 
       - name: Build NixOS Configurations
         run: |
-          CONFIGURATIONS=$(nix flake metadata . | jq -r ".outputs.nixosConfigurations | keys[]")
+          CONFIGURATIONS=$(nix flake metadata --json . | jq -r ".outputs.nixosConfigurations | keys[]")
           for CONFIGURATION in $CONFIGURATIONS; do
             echo "Building configuration: $CONFIGURATION"
             nix build ".#nixosConfigurations.$CONFIGURATION.config.system.build.toplevel"
