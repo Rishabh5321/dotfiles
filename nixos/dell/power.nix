@@ -10,7 +10,7 @@ _: {
   services.thermald.enable = true;
 
   # Enable powertop
-  powerManagement.powertop.enable = true;
+  #powerManagement.powertop.enable = true;
 
   #services.xserver.displayManager.gdm = {
   #  enable = true;
