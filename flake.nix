@@ -47,36 +47,46 @@
         system = "x86_64-linux";
         config = { allowUnfree = true; };
       };
-      commonConfig = { hostname }: {
-        specialArgs = {
-          inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs-stable;
-        };
-        modules = [
+
+      # Configuration shared between different hosts
+      commonConfig = { hostname }:
+      let
+        system = "x86_64-linux";
+        configurationModules = [
           ./nixos/${hostname}/configuration.nix
           darkmatter-grub-theme.nixosModule
           inputs.stylix.nixosModules.stylix
           nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
-          {
-            home-manager.extraSpecialArgs = {
-              inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs-stable;
-            };
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = builtins.readFile (pkgs.runCommand "timestamp"
-              {
-                nativeBuildInputs = [ pkgs.inetutils ];
-              } ''
-              date "+backup_%Y-%m-%d_%H-%M-%S_$(hostname)" > $out
-            '');
-            home-manager.users.rishabh = import ./nixos/${hostname}/home.nix;
-          }
         ];
+        homeManagerConfig = {
+          home-manager.extraSpecialArgs = {
+            inherit inputs outputs username wallpaper flakeDir spicetify-nix pkgs-stable;
+          };
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = builtins.readFile (pkgs.runCommand "timestamp"
+            {
+              nativeBuildInputs = [ pkgs.inetutils ];
+            } ''
+            date "+backup_%Y-%m-%d_%H-%M-%S" > $out
+          '');
+          home-manager.users.${username} = import ./nixos/${hostname}/home.nix;
+        };
+        specialArgs = {
+          inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs-stable system;
+        };
+      in
+      {
+        specialArgs = specialArgs;
+        modules = configurationModules ++ [ homeManagerConfig ];
       };
     in
     {
 
       #formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-      overlays = import ./overlays { inherit inputs; };
+      # Import overlays defined in the ./overlays directory
+      overlays = import ./overlays { inherit inputs self; };
+      # Define NixOS configurations for different hosts
       nixosConfigurations = {
         redmi = nixpkgs.lib.nixosSystem (commonConfig { hostname = "redmi"; });
         dell = nixpkgs.lib.nixosSystem (commonConfig { hostname = "dell"; });
