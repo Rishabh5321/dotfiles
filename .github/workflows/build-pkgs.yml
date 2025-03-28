@@ -24,8 +24,7 @@ jobs:
         extra_nix_config: |
           experimental-features = nix-command flakes
           substituters = https://${{ env.CACHIX_NAME }}.cachix.org https://cache.nixos.org
-          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0niz+iQsNJlWhRM4tG/2aK+YRDjYTU= cachix.cachix.org-1:Kq8rLSmFVD2UMl3EsjEAXP6J08QbEINa6Zx7RirzOJc=
-
+          
     - name: Install Cachix
       run: nix profile install nixpkgs#cachix
 
