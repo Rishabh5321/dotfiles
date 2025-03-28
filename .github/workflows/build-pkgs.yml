@@ -1,37 +1,49 @@
-name: Build and Upload to Cachix
+name: Build and Push to Cachix
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  CACHIX_NAME: "prebuild-pkgs"    
+  SYSTEM: "x86_64-linux"          
 
 jobs:
-  build-and-upload:
+  setup-cachix:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
-        with:
-          nix_path: nixpkgs=channel:nixos-unstable
+    - uses: cachix/install-nix-action@v31
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+        extra_nix_config: |
+          experimental-features = nix-command flakes
+          substituters = https://cache.nixos.org https://${{ env.CACHIX_NAME }}.cachix.org
+          trusted-public-keys = prebuild-pkgs.cachix.org-1:s/ghpCBw/JYgqD++qyRktRzM3Up9rZaDk904xvfv51E= ${{ secrets.CACHIX_PUBLIC_KEY }}
 
-      - name: Install Cachix and jq
-        run: |
-          nix profile install nixpkgs#cachix
-          nix profile install nixpkgs#jq
+    - uses: cachix/cachix-action@v14
+      with:
+        name: ${{ env.CACHIX_NAME }}
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-      - name: Build NixOS Configurations
-        run: |
-          CONFIGURATIONS=$(nix flake metadata --json . | jq -r ".outputs.nixosConfigurations | keys[]")
-          for CONFIGURATION in $CONFIGURATIONS; do
-            echo "Building configuration: $CONFIGURATION"
-            nix build ".#nixosConfigurations.$CONFIGURATION.config.system.build.toplevel"
-          done
+  build-and-push:
+    needs: setup-cachix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        host: ["redmi", "dell"]  # Your host configurations from flake.nix
+    steps:
+    - uses: actions/checkout@v4
 
-      - name: Upload to Cachix
-        run: cachix push "your-cache-name" $(nix store path-info --all --recursive result) --token "${{ secrets.CACHIX_AUTH_TOKEN }}"
-        env:
-          CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
+    - uses: cachix/install-nix-action@v31
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+
+    - name: Build and push system configuration
+      run: |
+        nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel --json \
+          | jq -r '.[].outputs[]' \
+          | cachix push ${{ env.CACHIX_NAME }}
