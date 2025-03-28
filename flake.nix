@@ -82,7 +82,6 @@
         };
     in
     {
-      inherit outputs;
       #formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
       # Import overlays defined in the ./overlays directory
       overlays = import ./overlays { inherit inputs self; };

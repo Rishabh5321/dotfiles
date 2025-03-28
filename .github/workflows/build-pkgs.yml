@@ -27,7 +27,7 @@ jobs:
           trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0niz+iQsNJlWhRM4tG/2aK+YRDjYTU= cachix.cachix.org-1:Kq8rLSmFVD2UMl3EsjEAXP6J08QbEINa6Zx7RirzOJc=
 
     - name: Install Cachix
-      run: nix-env -iA nixpkgs.cachix
+      run: nix profile install nixpkgs#cachix
 
     - name: Authenticate Cachix
       run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
