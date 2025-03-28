@@ -48,7 +48,7 @@ jobs:
         nix_path: nixpkgs=channel:nixos-unstable
 
     - name: Install Cachix
-      run: nix-env -iA nixpkgs.cachix
+      run: nix profile install nixpkgs#cachix
 
     - name: Authenticate Cachix
       run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
