@@ -40,20 +40,23 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
+ 
     - name: Install Nix
       uses: cachix/install-nix-action@v31
       with:
         nix_path: nixpkgs=channel:nixos-unstable
-
+    
     - name: Install Cachix
       run: nix profile install nixpkgs#cachix
-
+    
     - name: Authenticate Cachix
       run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
-
-    - name: Build and push system configuration
+     
+    - name: Build and push only missing packages
       run: |
-        nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel --json \
-          | jq -r '.[].outputs[]' \
-          | cachix push ${{ env.CACHIX_NAME }}
+        nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel --dry-run --json \
+        | jq -r '.[].outputs[]' > paths-to-push.txt
+         
+        while read -r path; do
+          cachix push ${{ env.CACHIX_NAME }} "$path"
+        done < paths-to-push.txt
