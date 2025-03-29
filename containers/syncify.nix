@@ -4,7 +4,7 @@ _: {
       backend = "podman";
 
       containers = {
-        prowlarr = {
+        syncify = {
           image = "thewicklowwolf/syncify:latest";
           autoStart = true;
           ports = [ "5000:5000" ];
