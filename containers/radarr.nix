@@ -21,7 +21,7 @@ _: {
             PGID = "1000";
             TZ = "Asia/Kolkata";
           };
-          pull="newer";
+          pull = "newer";
         };
       };
     };

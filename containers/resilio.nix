@@ -21,7 +21,7 @@
             PGID = "1000";
             TZ = "Asia/Kolkata";
           };
-          pull="newer"; # Podman uses autoPull, not
+          pull = "newer"; # Podman uses autoPull, not
         };
       };
     };
