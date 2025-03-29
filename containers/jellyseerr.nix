@@ -2,7 +2,7 @@
 _: {
   virtualisation = {
     oci-containers = {
-      backend = "docker";
+      backend = "podman";
 
       containers = {
         jellyseerr = {
@@ -16,6 +16,7 @@ _: {
             LOG_LEVEL = "debug";
             TZ = "Asia/Kolkata";
           };
+          pull = "newer";
         };
       };
     };

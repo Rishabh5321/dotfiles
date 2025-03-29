@@ -1,8 +1,7 @@
-# <https://github.com/dockur/casa>
 _: {
   virtualisation = {
     oci-containers = {
-      backend = "docker";
+      backend = "podman";
 
       containers = {
         jackett = {
@@ -20,6 +19,7 @@ _: {
             AUTO_UPDATE = "true";
             TZ = "Asia/Kolkata";
           };
+          pull = "newer";
         };
       };
     };

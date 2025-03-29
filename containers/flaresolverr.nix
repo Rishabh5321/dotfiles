@@ -2,7 +2,7 @@
 _: {
   virtualisation = {
     oci-containers = {
-      backend = "docker";
+      backend = "podman";
 
       containers = {
         flaresolverr = {
@@ -12,6 +12,7 @@ _: {
           environment = {
             TZ = "Asia/Kolkata";
           };
+          pull = "newer";
         };
       };
     };

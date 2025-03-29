@@ -2,7 +2,7 @@
 _: {
   virtualisation = {
     oci-containers = {
-      backend = "docker";
+      backend = "podman";
 
       containers = {
         suwayomi = {
@@ -17,6 +17,7 @@ _: {
             FLARESOLVERR_ENABLED = "true";
             FLARESOLVERR_URL = "http://flaresolverr:8191";
           };
+          pull = "newer";
         };
       };
     };

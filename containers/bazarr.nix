@@ -2,7 +2,7 @@
 _: {
   virtualisation = {
     oci-containers = {
-      backend = "docker";
+      backend = "podman";
 
       containers = {
         bazarr = {
@@ -19,6 +19,7 @@ _: {
             PGID = "1000";
             TZ = "Asia/Kolkata";
           };
+          pull = "newer";
         };
       };
     };

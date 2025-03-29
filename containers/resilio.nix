@@ -1,28 +1,27 @@
-_: {
+{
   virtualisation = {
     oci-containers = {
       backend = "podman";
 
       containers = {
-        portainer = {
-          image = "portainer/portainer-ce:lts";
+        resilio-sync = {
+          image = "lscr.io/linuxserver/resilio-sync:latest";
           autoStart = true;
-          privileged = true;
-          #restartPolicy = "always";
           ports = [
-            "8000:8000"
-            "9443:9443"
+            "8888:8888"
+            "55555:55555"
           ];
           volumes = [
-            "/run/podman/podman.sock:/var/run/docker.sock"
-            "portainer_data:/data"
+            "/mnt/Docker/Docker/Resilio_Config:/config"
+            "/mnt/Raid/Downloads:/downloads"
+            "/mnt/Raid/Learn/Bonus/Music:/sync"
           ];
           environment = {
             PUID = "1000";
             PGID = "1000";
             TZ = "Asia/Kolkata";
           };
-          pull = "newer";
+          pull="newer"; # Podman uses autoPull, not
         };
       };
     };

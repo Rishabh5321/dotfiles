@@ -1,8 +1,7 @@
-# <https://github.com/dockur/casa>
 _: {
   virtualisation = {
     oci-containers = {
-      backend = "docker";
+      backend = "podman";
 
       containers = {
         filebrowser = {
@@ -17,6 +16,7 @@ _: {
           environment = {
             FB_BASEURL = "/filebrowser";
           };
+          pull = "newer";
         };
       };
     };

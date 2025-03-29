@@ -10,7 +10,7 @@ _: {
           autoStart = true;
           ports = [ "2375:2375" ];
           volumes = [
-            "/var/run/docker.sock:/var/run/docker.sock:ro"
+            "/var/run/docker.sock:/var/run/docker.sock"
           ];
           environment = {
             CONTAINERS = "1"; # Allow access to viewing containers

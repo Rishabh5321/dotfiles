@@ -1,8 +1,7 @@
-# <https://github.com/dockur/casa>
-_: {
+{
   virtualisation = {
     oci-containers = {
-      backend = "docker";
+      backend = "podman"; # Change backend to podman
 
       containers = {
         qbittorrent = {
@@ -15,9 +14,8 @@ _: {
           ];
           volumes = [
             "/mnt/Docker/Docker/Qbittorrent_Config:/config"
-            "/mnt/Docker/Downloads:/downloads"
-            "/mnt/Raid/Downloads:/downloads1"
-            "/mnt/E_Disk/Games:/Games"
+            "/mnt/Raid/Downloads:/downloads"
+            "/mnt/Raid/Learn/Bonus:/mnt/Raid/Learn/Bonus"
           ];
           environment = {
             PUID = "1000";
@@ -26,6 +24,7 @@ _: {
             WEBUI_PORT = "8080";
             TORRENTING_PORT = "6881";
           };
+          pull = "newer";
         };
       };
     };

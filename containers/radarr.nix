@@ -2,7 +2,7 @@
 _: {
   virtualisation = {
     oci-containers = {
-      backend = "docker";
+      backend = "podman";
 
       containers = {
         radarr = {
@@ -12,8 +12,8 @@ _: {
           volumes = [
             "/mnt/Docker/Docker/Radarr_Config:/config"
             "/mnt/Raid/Learn/Bonus:/data"
-            "/mnt/Docker/Downloads:/downloads"
-            "/mnt/Raid/Downloads:/downloads1"
+            "/mnt/Raid/Downloads:/downloads"
+            #"/mnt/Raid/Downloads:/downloads1"
             "/mnt/E_Disk/Learn/Bonus:/data1"
           ];
           environment = {
@@ -21,6 +21,7 @@ _: {
             PGID = "1000";
             TZ = "Asia/Kolkata";
           };
+          pull="newer";
         };
       };
     };

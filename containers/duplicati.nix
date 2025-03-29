@@ -2,7 +2,7 @@
 _: {
   virtualisation = {
     oci-containers = {
-      backend = "docker";
+      backend = "podman";
 
       containers = {
         duplicati = {
@@ -23,6 +23,7 @@ _: {
             SETTINGS_ENCRYPTION_KEY = "Pass12345"; #STARTER PASSWORD CHANGED AFTER DEPLOYING CHECK 1
             DUPLICATI__WEBSERVICE_PASSWORD = "Pass12345"; #STARTER PASSWORD CHANGED AFTER DEPLOYING CHECK 1
           };
+          pull = "newer";
         };
       };
     };
