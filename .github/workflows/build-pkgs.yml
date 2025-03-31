@@ -7,12 +7,15 @@ on:
     branches: [ main ]
 
 env:
-  CACHIX_NAME: "prebuild-pkgs"    
-  SYSTEM: "x86_64-linux"          
+  CACHIX_NAME: "prebuild-pkgs"
+  SYSTEM: "x86_64-linux"
 
 jobs:
-  setup:
+  build-and-push:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        host: ["redmi", "dell"]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -24,39 +27,23 @@ jobs:
         extra_nix_config: |
           experimental-features = nix-command flakes
           substituters = https://${{ env.CACHIX_NAME }}.cachix.org https://cache.nixos.org
-          
+          trusted-public-keys = ${{ env.CACHIX_NAME }}.cachix.org-1:eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIzYzUyMjYwZS0yYjg0LTQ1ZWItOTljNi03NzQyNGQ1ZmEwNDIiLCJzY29wZXMiOiJjYWNoZSJ9.ZeiZPtO3hk4vmdNUhJ9m0-9EJDINZWBzdiqfT4VfRCE
+
     - name: Install Cachix
       run: nix profile install nixpkgs#cachix
 
     - name: Authenticate Cachix
       run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-  build-and-push:
-    needs: setup
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        host: ["redmi", "dell"]  # Your host configurations from flake.nix
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
- 
-    - name: Install Nix
-      uses: cachix/install-nix-action@v31
-      with:
-        nix_path: nixpkgs=channel:nixos-unstable
-    
-    - name: Install Cachix
-      run: nix profile install nixpkgs#cachix
-    
-    - name: Authenticate Cachix
-      run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
-     
-    - name: Build and push only missing packages
+    - name: Build system
+      run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel --print-build-logs
+
+    - name: Push to Cachix
       run: |
-        nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel --dry-run --json \
-        | jq -r '.[].outputs[]' > paths-to-push.txt
-         
+        # Get all runtime dependencies
+        nix path-info --recursive $(readlink -f result) > paths-to-push.txt
+        
+        # Push each path
         while read -r path; do
-          cachix push ${{ env.CACHIX_NAME }} "$path"
+          cachix push ${{ env.CACHIX_NAME }} "$path" || echo "Failed to push $path (might already exist)"
         done < paths-to-push.txt

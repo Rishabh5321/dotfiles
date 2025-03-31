@@ -2,7 +2,7 @@
   nix.settings = {
     substituters = [
       "https://buildcache.cachix.org"
-      "http://192.168.1.100:5500"
+      #"http://192.168.1.100:5500"
       "https://cache.nixos.org"
       "https://nixpkgs-wayland.cachix.org"
       "https://cosmic.cachix.org/"
@@ -13,7 +13,7 @@
 
     trusted-substituters = [
       "https://buildcache.cachix.org"
-      "http://192.168.1.100:5500"
+      #"http://192.168.1.100:5500"
       "https://cache.nixos.org"
       "https://nixpkgs-wayland.cachix.org"
       "https://cosmic.cachix.org/"
