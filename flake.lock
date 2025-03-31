@@ -1059,11 +1059,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1743442833,
-        "narHash": "sha256-v6PrGSxY/Rgu3JzHyFSzGUv5USLxPTUMPr/8i4zbOKs=",
+        "lastModified": 1743451752,
+        "narHash": "sha256-PXHHMhGea0b4CNKXkcAPHT9AlFOrptaVwlcMjPE/MVk=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "1a2f1af9f999b23c44a0b15a8841a7a297576a9c",
+        "rev": "b45eb498944ffeae47aba8d1e42b8449fd07ca08",
         "type": "github"
       },
       "original": {
