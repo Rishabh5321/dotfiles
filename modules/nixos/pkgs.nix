@@ -81,6 +81,9 @@
       onlyoffice-bin_latest
       papirus-icon-theme
       plex-media-player
+      podman-tui
+      podman-desktop
+      #pods
       #protonup-qt
       qbittorrent
       qogir-icon-theme
@@ -97,6 +100,7 @@
       stremio
       swappy
       swww
+      toipe
       tela-icon-theme
       telegram-desktop
       thunderbird-latest
