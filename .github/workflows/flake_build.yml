@@ -1,77 +1,82 @@
-name: Builder
-
+name: flake_build
 on:
-  schedule:
-    - cron: "0 2 * * *"
-  workflow_dispatch: {}
-
+  push:
+  pull_request:
+  workflow_dispatch:
 jobs:
-  generate_matrix:
-    runs-on: ubuntu-20.04
-    outputs:
-      packages: ${{ steps.gen_packages.outputs.packages }}
-      checks: ${{ steps.gen_checks.outputs.checks }}
+  build-configurations:
+    name: Build NixOS Configurations
+    runs-on: ubuntu-latest
     steps:
-      - name: Clone repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Install nix
+      - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
+          install_url: https://nixos.org/nix/install
           extra_nix_config: |
+            auto-optimise-store = true
             experimental-features = nix-command flakes
-            substituters = https://cache.nixos.org/ https://nix-community.cachix.org
-            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
-      - name: Generate flake.json
-        run: nix flake show --json > flake.json
-      - id: gen_packages
+            download-buffer-size = 500000000
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v16
+        with:
+          name: buildcache
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          pushFilter: ".*"
+      - name: Check Dell Configuration
+        id: build_dell
         run: |
-          packages=$(jq -c '.packages."x86_64-linux" | keys' < flake.json)
-          echo "packages=$packages" >> $GITHUB_OUTPUT
-      - id: gen_checks
+          set -o pipefail
+          if nix build .#nixosConfigurations.dell.config.system.build.toplevel --dry-run 2>&1 | tee build_dell.log; then
+            echo "DELL_STATUS=passed" >> $GITHUB_ENV
+            echo "Dell configuration check completed successfully" > build_dell_filtered.log
+          else
+            echo "DELL_STATUS=failed" >> $GITHUB_ENV
+            grep -E "(warning:|error:)" build_dell.log > build_dell_filtered.log || cat build_dell.log > build_dell_filtered.log
+          fi
+      - name: Check Redmi Configuration
+        id: build_redmi
+        if: always()
         run: |
-          checks=$(jq -c '.checks."x86_64-linux" | keys' < flake.json)
-          echo "checks=$checks" >> $GITHUB_OUTPUT
+          set -o pipefail
+          if nix build .#nixosConfigurations.redmi.config.system.build.toplevel --dry-run 2>&1 | tee build_redmi.log; then
+            echo "REDMI_STATUS=passed" >> $GITHUB_ENV
+            echo "Redmi configuration check completed successfully" > build_redmi_filtered.log
+          else
+            echo "REDMI_STATUS=failed" >> $GITHUB_ENV
+            grep -E "(warning:|error:)" build_redmi.log > build_redmi_filtered.log || cat build_redmi.log > build_redmi_filtered.log
+          fi
+      - name: Send Telegram Notification
+        if: always()
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+        run: |
+          BRANCH_NAME="${{ github.ref_name }}"
+          REPO_NAME="${{ github.repository }}"
+          DELL_STATUS="${{ env.DELL_STATUS }}"
+          REDMI_STATUS="${{ env.REDMI_STATUS }}"
 
-  build_packages:
-    runs-on: ubuntu-20.04
-    needs: generate_matrix
-    strategy:
-      fail-fast: false
-      matrix:
-        package: ${{fromJson(needs.generate_matrix.outputs.packages)}}
-    steps:
-      - name: Free diskspace
-        uses: easimon/maximize-build-space@master
-        with:
-          root-reserve-mb: 5120
-      - name: Clone repository
-        uses: actions/checkout@v4
-      - name: Install nix
-        uses: cachix/install-nix-action@v31
-        with:
-          extra_nix_config: |
-            experimental-features = nix-command flakes
-      - name: Set up cachix
-        uses: cachix/cachix-action@master
-        with:
-          name: rishabh5321
-      - name: Build package
-        run: nix build .#${{ matrix.package }}
+          if [[ "$DELL_STATUS" == "passed" && "$REDMI_STATUS" == "passed" ]]; then
+            STATUS_MESSAGE="✅ NixOS configurations for $REPO_NAME passed on branch $BRANCH_NAME."
+          else
+            STATUS_MESSAGE="❌ NixOS configurations for $REPO_NAME failed on branch $BRANCH_NAME.%0ACheck GitHub Actions for details."
+          fi
 
-  run_checks:
-    runs-on: ubuntu-20.04
-    needs: generate_matrix
-    strategy:
-      fail-fast: false
-      matrix:
-        check: ${{fromJson(needs.generate_matrix.outputs.checks)}}
-    steps:
-      - name: Clone repository
-        uses: actions/checkout@v4
-      - name: Install nix
-        uses: cachix/install-nix-action@v31
-        with:
-          extra_nix_config: |
-            experimental-features = nix-command flakes
-      - name: Run check
-        run: nix build .#checks.x86_64-linux.${{ matrix.check }} --no-link
+          MESSAGE="Dell Config: $DELL_STATUS%0ARedmi Config: $REDMI_STATUS%0A%0A"
+
+          if [ -s build_dell_filtered.log ] && [ "$DELL_STATUS" == "failed" ]; then
+            DELL_ERRORS=$(awk '{print NR". "$0}' build_dell_filtered.log | head -10 | perl -pe 's/\n/%0A/g')
+            MESSAGE+="Dell Issues:%0A\`\`\`%0A$DELL_ERRORS%0A\`\`\`%0A%0A"
+          fi
+
+          if [ -s build_redmi_filtered.log ] && [ "$REDMI_STATUS" == "failed" ]; then
+            REDMI_ERRORS=$(awk '{print NR". "$0}' build_redmi_filtered.log | head -10 | perl -pe 's/\n/%0A/g')
+            MESSAGE+="Redmi Issues:%0A\`\`\`%0A$REDMI_ERRORS%0A\`\`\`"
+          fi
+
+          curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
+            -d "chat_id=$CHAT_ID" \
+            -d "text=$STATUS_MESSAGE%0A%0A$MESSAGE%0A%0AGenerated on $(TZ='Asia/Kolkata' date)" \
+            -d "parse_mode=Markdown"
