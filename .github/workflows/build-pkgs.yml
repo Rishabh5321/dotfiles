@@ -35,6 +35,11 @@ jobs:
     - name: Authenticate Cachix
       run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
 
+    - name: Free disk space
+      run: |
+        sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/boost
+        df -h
+
     - name: Build minimal system
       run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel --option sandbox false --option keep-outputs false --print-build-logs
     
