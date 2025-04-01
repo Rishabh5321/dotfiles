@@ -1,4 +1,4 @@
-name: Build and Push to Cachix
+name: Build and Push Minimal Configs to Cachix
 
 on:
   push:
@@ -17,14 +17,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Nix
+      - name: Install Nix (minimal)
         uses: cachix/install-nix-action@v31
         with:
           nix_path: nixpkgs=channel:nixos-24-11
           extra_nix_config: |
             experimental-features = nix-command flakes
-            #substituters = https://${{ env.CACHIX_NAME }}.cachix.org https://cache.nixos.org
-            #trusted-public-keys = ${{ env.CACHIX_NAME }}.cachix.org-1:eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIzYzUyMjYwZS0yYjg0LTQ1ZWItOTljNi03NzQyNGQ1ZmEwNDIiLCJzY29wZXMiOiJjYWNoZSJ9.ZeiZPtO3hk4vmdNUhJ9m0-9EJDINZWBzdiqfT4VfRCE
+            auto-optimise-store = true
+            keep-outputs = false
+            keep-derivations = false
 
       - name: Install Cachix
         run: nix profile install nixpkgs#cachix
@@ -32,35 +33,49 @@ jobs:
       - name: Authenticate Cachix
         run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-      - name: Free disk space
+      - name: Free disk space (aggressive)
         run: |
-          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/boost
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/boost /swapfile
+          sudo apt-get clean
           df -h
 
-      - name: Build and push redmi configuration
+      - name: Build and push redmi (minimal)
         run: |
-          nix build .#nixosConfigurations.redmi.config.system.build.toplevel --print-build-logs
-
-          # Push to Cachix
-          nix path-info --recursive $(readlink -f result) > paths-to-push.txt
-          while read -r path; do
-            cachix push ${{ env.CACHIX_NAME }} "$path" || echo "Failed to push $path (might already exist)"
-          done < paths-to-push.txt
-
-          # Clean up
+          # Build with minimal dependencies
+          nix build .#nixosConfigurations.redmi.config.system.build.toplevel \
+            --option sandbox false \
+            --option warn-dirty false \
+            --print-build-logs
+          
+          # Push only essential paths
+          nix-store -qR --include-outputs $(readlink -f result) | sort -u > paths-to-push.txt
+          cachix push ${{ env.CACHIX_NAME }} -j4 < paths-to-push.txt || echo "Some paths failed to push"
+          
+          # Aggressive cleanup
           rm -rf result paths-to-push.txt
           nix-collect-garbage --delete-old
+          nix store gc
 
-      - name: Build and push dell configuration
+      - name: Intermediate cleanup
         run: |
-          nix build .#nixosConfigurations.dell.config.system.build.toplevel --print-build-logs
+          nix-collect-garbage --delete-old
+          nix store gc
+          df -h
 
-          # Push to Cachix
-          nix path-info --recursive $(readlink -f result) > paths-to-push.txt
-          while read -r path; do
-            cachix push ${{ env.CACHIX_NAME }} "$path" || echo "Failed to push $path (might already exist)"
-          done < paths-to-push.txt
-
-          # Clean up
+      - name: Build and push dell (minimal)
+        run: |
+          # Build with minimal dependencies
+          nix build .#nixosConfigurations.dell.config.system.build.toplevel \
+            --option sandbox false \
+            --option warn-dirty false \
+            --print-build-logs
+          
+          # Push only essential paths
+          nix-store -qR --include-outputs $(readlink -f result) | sort -u > paths-to-push.txt
+          cachix push ${{ env.CACHIX_NAME }} -j4 < paths-to-push.txt || echo "Some paths failed to push"
+          
+          # Final cleanup
           rm -rf result paths-to-push.txt
           nix-collect-garbage --delete-old
+          nix store gc
+          df -h
