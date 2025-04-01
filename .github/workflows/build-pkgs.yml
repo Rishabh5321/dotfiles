@@ -26,8 +26,8 @@ jobs:
         nix_path: nixpkgs=channel:nixos-24-11
         extra_nix_config: |
           experimental-features = nix-command flakes
-          substituters = https://${{ env.CACHIX_NAME }}.cachix.org https://cache.nixos.org
-          trusted-public-keys = ${{ env.CACHIX_NAME }}.cachix.org-1:eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIzYzUyMjYwZS0yYjg0LTQ1ZWItOTljNi03NzQyNGQ1ZmEwNDIiLCJzY29wZXMiOiJjYWNoZSJ9.ZeiZPtO3hk4vmdNUhJ9m0-9EJDINZWBzdiqfT4VfRCE
+          #substituters = https://${{ env.CACHIX_NAME }}.cachix.org https://cache.nixos.org
+          #trusted-public-keys = ${{ env.CACHIX_NAME }}.cachix.org-1:eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIzYzUyMjYwZS0yYjg0LTQ1ZWItOTljNi03NzQyNGQ1ZmEwNDIiLCJzY29wZXMiOiJjYWNoZSJ9.ZeiZPtO3hk4vmdNUhJ9m0-9EJDINZWBzdiqfT4VfRCE
 
     - name: Install Cachix
       run: nix profile install nixpkgs#cachix
