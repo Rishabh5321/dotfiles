@@ -4,7 +4,7 @@ def "main clean-actions" [] {
   $env.NO_PAGER = 1
   $env.GH_PAGER = "cat"
   
-  let keep_runs = 10
+  let keep_runs = 50
 
   let runurl = $"repos/($env.GITHUB_REPOSITORY)/actions/runs"
 
