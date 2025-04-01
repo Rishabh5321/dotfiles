@@ -1,0 +1,29 @@
+name: Cleanup Old Workflow Runs
+on:
+  schedule:
+    - cron: "0 0 * * 0"  # Runs every Sunday at midnight (UTC)
+  workflow_dispatch:  # Allow manual triggers
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Nushell
+        run: |
+          bash <(curl -s https://raw.githubusercontent.com/nushell/nushell/main/install.sh)
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+      - name: Setup GitHub CLI
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Run Cleanup Script
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Auto-generated permissions
+        run: |
+          nu clean_actions.nu
