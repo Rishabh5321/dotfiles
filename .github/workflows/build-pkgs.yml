@@ -17,7 +17,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Nix (minimal)
+      - name: Install Nix (with all caches)
         uses: cachix/install-nix-action@v31
         with:
           nix_path: nixpkgs=channel:nixos-24-11
@@ -26,6 +26,9 @@ jobs:
             auto-optimise-store = true
             keep-outputs = false
             keep-derivations = false
+            substituters = https://${{ env.CACHIX_NAME }}.cachix.org https://buildcache.cachix.org https://cache.nixos.org https://nixpkgs-wayland.cachix.org https://cosmic.cachix.org/ https://nix-config.cachix.org https://nix-community.cachix.org https://ezkea.cachix.org
+            trusted-substituters = https://${{ env.CACHIX_NAME }}.cachix.org https://buildcache.cachix.org https://cache.nixos.org https://nixpkgs-wayland.cachix.org https://cosmic.cachix.org/ https://nix-config.cachix.org https://nix-community.cachix.org https://ezkea.cachix.org
+            trusted-public-keys = ${{ env.CACHIX_NAME }}.cachix.org-1:eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIzYzUyMjYwZS0yYjg0LTQ1ZWItOTljNi03NzQyNGQ1ZmEwNDIiLCJzY29wZXMiOiJjYWNoZSJ9.ZeiZPtO3hk4vmdNUhJ9m0-9EJDINZWBzdiqfT4VfRCE buildcache.cachix.org-1:wSD0TZc1ZAIuI9LMRJiAytEZGQc9MkPqeICrByOFFAE= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE= nix-config.cachix.org-1:Vd6raEuldeIZpttVQfrUbLvXJHzzzkS0pezXCVVjDG4= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=
 
       - name: Install Cachix
         run: nix profile install nixpkgs#cachix
@@ -33,25 +36,22 @@ jobs:
       - name: Authenticate Cachix
         run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-      - name: Free disk space (aggressive)
+      - name: Free disk space
         run: |
           sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/boost /swapfile
           sudo apt-get clean
           df -h
 
-      - name: Build and push redmi (minimal)
+      - name: Build and push redmi configuration
         run: |
-          # Build with minimal dependencies
           nix build .#nixosConfigurations.redmi.config.system.build.toplevel \
             --option sandbox false \
             --option warn-dirty false \
             --print-build-logs
           
-          # Push only essential paths
           nix-store -qR --include-outputs $(readlink -f result) | sort -u > paths-to-push.txt
           cachix push ${{ env.CACHIX_NAME }} -j4 < paths-to-push.txt || echo "Some paths failed to push"
           
-          # Aggressive cleanup
           rm -rf result paths-to-push.txt
           nix-collect-garbage --delete-old
           nix store gc
@@ -62,19 +62,16 @@ jobs:
           nix store gc
           df -h
 
-      - name: Build and push dell (minimal)
+      - name: Build and push dell configuration
         run: |
-          # Build with minimal dependencies
           nix build .#nixosConfigurations.dell.config.system.build.toplevel \
             --option sandbox false \
             --option warn-dirty false \
             --print-build-logs
           
-          # Push only essential paths
           nix-store -qR --include-outputs $(readlink -f result) | sort -u > paths-to-push.txt
           cachix push ${{ env.CACHIX_NAME }} -j4 < paths-to-push.txt || echo "Some paths failed to push"
           
-          # Final cleanup
           rm -rf result paths-to-push.txt
           nix-collect-garbage --delete-old
           nix store gc
