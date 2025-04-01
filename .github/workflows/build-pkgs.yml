@@ -2,9 +2,9 @@ name: Build and Push to Cachix
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 env:
   CACHIX_NAME: "prebuild-pkgs"
@@ -14,53 +14,53 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Install Nix
-      uses: cachix/install-nix-action@v31
-      with:
-        nix_path: nixpkgs=channel:nixos-24-11
-        extra_nix_config: |
-          experimental-features = nix-command flakes
-          #substituters = https://${{ env.CACHIX_NAME }}.cachix.org https://cache.nixos.org
-          #trusted-public-keys = ${{ env.CACHIX_NAME }}.cachix.org-1:eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIzYzUyMjYwZS0yYjg0LTQ1ZWItOTljNi03NzQyNGQ1ZmEwNDIiLCJzY29wZXMiOiJjYWNoZSJ9.ZeiZPtO3hk4vmdNUhJ9m0-9EJDINZWBzdiqfT4VfRCE
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-24-11
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            #substituters = https://${{ env.CACHIX_NAME }}.cachix.org https://cache.nixos.org
+            #trusted-public-keys = ${{ env.CACHIX_NAME }}.cachix.org-1:eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIzYzUyMjYwZS0yYjg0LTQ1ZWItOTljNi03NzQyNGQ1ZmEwNDIiLCJzY29wZXMiOiJjYWNoZSJ9.ZeiZPtO3hk4vmdNUhJ9m0-9EJDINZWBzdiqfT4VfRCE
 
-    - name: Install Cachix
-      run: nix profile install nixpkgs#cachix
+      - name: Install Cachix
+        run: nix profile install nixpkgs#cachix
 
-    - name: Authenticate Cachix
-      run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: Authenticate Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-    - name: Free disk space
-      run: |
-        sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/boost
-        df -h
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/boost
+          df -h
 
-    - name: Build and push redmi configuration
-      run: |
-        nix build .#nixosConfigurations.redmi.config.system.build.toplevel --option sandbox false --option keep-outputs false --print-build-logs
-        
-        # Push to Cachix
-        nix path-info --recursive $(readlink -f result) > paths-to-push.txt
-        while read -r path; do
-          cachix push ${{ env.CACHIX_NAME }} "$path" || echo "Failed to push $path (might already exist)"
-        done < paths-to-push.txt
-        
-        # Clean up
-        rm -rf result paths-to-push.txt
-        nix-collect-garbage --delete-old
+      - name: Build and push redmi configuration
+        run: |
+          nix build .#nixosConfigurations.redmi.config.system.build.toplevel --print-build-logs
 
-    - name: Build and push dell configuration
-      run: |
-        nix build .#nixosConfigurations.dell.config.system.build.toplevel --option sandbox false --option keep-outputs false --print-build-logs
-        
-        # Push to Cachix
-        nix path-info --recursive $(readlink -f result) > paths-to-push.txt
-        while read -r path; do
-          cachix push ${{ env.CACHIX_NAME }} "$path" || echo "Failed to push $path (might already exist)"
-        done < paths-to-push.txt
-        
-        # Clean up
-        rm -rf result paths-to-push.txt
-        nix-collect-garbage --delete-old
+          # Push to Cachix
+          nix path-info --recursive $(readlink -f result) > paths-to-push.txt
+          while read -r path; do
+            cachix push ${{ env.CACHIX_NAME }} "$path" || echo "Failed to push $path (might already exist)"
+          done < paths-to-push.txt
+
+          # Clean up
+          rm -rf result paths-to-push.txt
+          nix-collect-garbage --delete-old
+
+      - name: Build and push dell configuration
+        run: |
+          nix build .#nixosConfigurations.dell.config.system.build.toplevel --print-build-logs
+
+          # Push to Cachix
+          nix path-info --recursive $(readlink -f result) > paths-to-push.txt
+          while read -r path; do
+            cachix push ${{ env.CACHIX_NAME }} "$path" || echo "Failed to push $path (might already exist)"
+          done < paths-to-push.txt
+
+          # Clean up
+          rm -rf result paths-to-push.txt
+          nix-collect-garbage --delete-old
