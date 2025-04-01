@@ -13,9 +13,6 @@ env:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        host: ["redmi", "dell"]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -40,15 +37,30 @@ jobs:
         sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/boost
         df -h
 
-    - name: Build without symlink
-      run: nix-build . -A nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel --no-out-link
-
-    - name: Push to Cachix
+    - name: Build and push redmi configuration
       run: |
-        # Get all runtime dependencies
-        nix path-info --recursive $(readlink -f result) > paths-to-push.txt
+        nix build .#nixosConfigurations.redmi.config.system.build.toplevel --option sandbox false --option keep-outputs false --print-build-logs
         
-        # Push each path
+        # Push to Cachix
+        nix path-info --recursive $(readlink -f result) > paths-to-push.txt
         while read -r path; do
           cachix push ${{ env.CACHIX_NAME }} "$path" || echo "Failed to push $path (might already exist)"
         done < paths-to-push.txt
+        
+        # Clean up
+        rm -rf result paths-to-push.txt
+        nix-collect-garbage --delete-old
+
+    - name: Build and push dell configuration
+      run: |
+        nix build .#nixosConfigurations.dell.config.system.build.toplevel --option sandbox false --option keep-outputs false --print-build-logs
+        
+        # Push to Cachix
+        nix path-info --recursive $(readlink -f result) > paths-to-push.txt
+        while read -r path; do
+          cachix push ${{ env.CACHIX_NAME }} "$path" || echo "Failed to push $path (might already exist)"
+        done < paths-to-push.txt
+        
+        # Clean up
+        rm -rf result paths-to-push.txt
+        nix-collect-garbage --delete-old
