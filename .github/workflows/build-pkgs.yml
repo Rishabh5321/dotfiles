@@ -40,9 +40,9 @@ jobs:
         sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/boost
         df -h
 
-    - name: Build minimal system
-      run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel --option sandbox false --option keep-outputs false --print-build-logs
-    
+    - name: Build without symlink
+      run: nix-build . -A nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel --no-out-link
+
     - name: Push to Cachix
       run: |
         # Get all runtime dependencies
