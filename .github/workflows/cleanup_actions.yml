@@ -24,7 +24,7 @@ jobs:
 
       - name: Install Nushell (if needed)
         run: |
-          nix-env -iA nixpkgs.nushell  # Installs Nushell via Nix
+          nix profile install nixpkgs#nushell  # Installs Nushell via Nix
 
       - name: Run Cleanup Script
         env:
