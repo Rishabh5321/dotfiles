@@ -23,7 +23,7 @@ jobs:
         with:
           extra-conf: ${{ env.nix-conf }}
       - uses: cachix/cachix-action@v16
-        if: ${{ secrets.CACHIX_SIGNING_KEY }}
+        if: ${{ github.event_name != 'pull_request' }}  # Only run on push/workflow_dispatch
         with:
           name: pkgss
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
@@ -38,7 +38,7 @@ jobs:
         with:
           extra-conf: ${{ env.nix-conf }}
       - uses: cachix/cachix-action@v16
-        if: ${{ secrets.CACHIX_SIGNING_KEY }}
+        if: ${{ github.event_name != 'pull_request' }}  # Only run on push/workflow_dispatch
         with:
           name: pkgss
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
@@ -59,7 +59,7 @@ jobs:
         with:
           extra-conf: ${{ env.nix-conf }}
       - uses: cachix/cachix-action@v16
-        if: ${{ secrets.CACHIX_SIGNING_KEY }}
+        if: ${{ github.event_name != 'pull_request' }}  # Only run on push/workflow_dispatch
         with:
           name: pkgss
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
