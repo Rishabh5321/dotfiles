@@ -52,8 +52,8 @@ jobs:
     strategy:
       matrix:
         attr:
-          - packages.x86_64-linux.default
-          - devShells.x86_64-linux.default
+          - nixosConfigurations.dell
+          - nixosConfigurations.redmi
     steps:
       - uses: DeterminateSystems/nix-installer-action@v16
         with:
