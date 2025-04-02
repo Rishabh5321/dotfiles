@@ -23,7 +23,12 @@ jobs:
           extra-conf: |
             extra-substituters = https://cache.nixos.org https://nixpkgs-wayland.cachix.org https://nix-gaming.cachix.org
             extra-trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=
-            download-buffer-size = 500000000
+            builders-use-substitutes = true
+            keep-outputs = false
+            keep-derivations = false
+            auto-optimise-store = true
+            max-free = 5368709120  # 5GB
+            min-free = 1073741824  # 1GB
               
       - name: Install Cachix
         run: nix profile install nixpkgs#cachix
@@ -34,52 +39,72 @@ jobs:
       - name: Use Cachix cache
         run: cachix use ${{ env.CACHIX_NAME }}
 
+      - name: Initial disk cleanup
+        run: |
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /swapfile
+          df -h
+
       - name: Disk Space Reclaimer
         uses: insightsengineering/disk-space-reclaimer@v1.1.0
 
-      - name: Build and push redmi configuration (only missing packages)
+      - name: Build and push redmi configuration
         run: |
           # First try to substitute everything
-          nix build .#nixosConfigurations.redmi.config.system.build.toplevel --no-link --substitute
+          if nix build .#nixosConfigurations.redmi.config.system.build.toplevel --no-link --substitute; then
+            echo "All dependencies were available in cache"
+          else
+            # Build only what's missing with aggressive garbage collection
+            nix build .#nixosConfigurations.redmi.config.system.build.toplevel --no-link \
+              --option sandbox false \
+              --option warn-dirty false \
+              --print-build-logs || true
+            
+            # Cleanup between build phases
+            nix-collect-garbage --delete-old
+            nix store gc
+          fi
           
-          # Then build only what's missing
-          nix build .#nixosConfigurations.redmi.config.system.build.toplevel --no-link \
-            --option sandbox false \
-            --option warn-dirty false \
-            --print-build-logs
-          
-          # Push only the new paths
-          nix path-info --json $(readlink -f result) | jq -r '.[].closureSize' > closure-size.txt
-          nix-store -qR --include-outputs $(readlink -f result) | sort -u > paths-to-push.txt
-          cachix push ${{ env.CACHIX_NAME }} -j4 < paths-to-push.txt || echo "Some paths failed to push"
-          
-          rm -rf result paths-to-push.txt closure-size.txt
-          nix-collect-garbage --delete-old
-          nix store gc
+          # Push only the new paths if they exist
+          if [ -e result ]; then
+            nix-store -qR --include-outputs $(readlink -f result) | sort -u > paths-to-push.txt
+            cachix push ${{ env.CACHIX_NAME }} -j4 < paths-to-push.txt || echo "Some paths failed to push"
+            rm -rf result paths-to-push.txt
+          fi
 
       - name: Intermediate cleanup
         run: |
           nix-collect-garbage --delete-old
           nix store gc
+          sudo rm -rf /tmp/*
           df -h
 
-      - name: Build and push dell configuration (only missing packages)
+      - name: Build and push dell configuration
         run: |
           # First try to substitute everything
-          nix build .#nixosConfigurations.dell.config.system.build.toplevel --no-link --substitute
+          if nix build .#nixosConfigurations.dell.config.system.build.toplevel --no-link --substitute; then
+            echo "All dependencies were available in cache"
+          else
+            # Build only what's missing with aggressive garbage collection
+            nix build .#nixosConfigurations.dell.config.system.build.toplevel --no-link \
+              --option sandbox false \
+              --option warn-dirty false \
+              --print-build-logs || true
+            
+            # Cleanup between build phases
+            nix-collect-garbage --delete-old
+            nix store gc
+          fi
           
-          # Then build only what's missing
-          nix build .#nixosConfigurations.dell.config.system.build.toplevel --no-link \
-            --option sandbox false \
-            --option warn-dirty false \
-            --print-build-logs
-          
-          # Push only the new paths
-          nix path-info --json $(readlink -f result) | jq -r '.[].closureSize' > closure-size.txt
-          nix-store -qR --include-outputs $(readlink -f result) | sort -u > paths-to-push.txt
-          cachix push ${{ env.CACHIX_NAME }} -j4 < paths-to-push.txt || echo "Some paths failed to push"
-          
-          rm -rf result paths-to-push.txt closure-size.txt
+          # Push only the new paths if they exist
+          if [ -e result ]; then
+            nix-store -qR --include-outputs $(readlink -f result) | sort -u > paths-to-push.txt
+            cachix push ${{ env.CACHIX_NAME }} -j4 < paths-to-push.txt || echo "Some paths failed to push"
+            rm -rf result paths-to-push.txt
+          fi
+
+      - name: Final cleanup
+        run: |
           nix-collect-garbage --delete-old
           nix store gc
+          sudo rm -rf /tmp/*
           df -h
