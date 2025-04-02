@@ -9,3 +9,5 @@ updates:
     open-pull-requests-limit: 10
     commit-message:
       prefix: "chore(github):"
+    reviewers:
+      - rishabh5321
