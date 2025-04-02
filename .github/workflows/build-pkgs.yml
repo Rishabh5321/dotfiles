@@ -21,30 +21,39 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: |
-            extra-substituters = https://cache.nixos.org https://nixpkgs-wayland.cachix.org https://nix-gaming.cachix.org
-            extra-trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=
+            extra-substituters = https://${{ env.CACHIX_NAME }}.cachix.org https://cache.nixos.org https://nixpkgs-wayland.cachix.org https://nix-gaming.cachix.org
+            extra-trusted-public-keys = ${{ env.CACHIX_NAME }}.cachix.org-1:<YOUR_CACHIX_PUBLIC_KEY> cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=
             download-buffer-size = 500000000
               
-      - name: Install Cachix (if needed)
+      - name: Install Cachix
         run: nix profile install nixpkgs#cachix
         
       - name: Authenticate Cachix
         run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
 
+      - name: Use Cachix cache
+        run: cachix use ${{ env.CACHIX_NAME }}
+
       - name: Disk Space Reclaimer
         uses: insightsengineering/disk-space-reclaimer@v1.1.0
 
-      - name: Build and push redmi configuration
+      - name: Build and push redmi configuration (only missing packages)
         run: |
+          # First try to substitute everything
+          nix build .#nixosConfigurations.redmi.config.system.build.toplevel --no-link --substitute
+          
+          # Then build only what's missing
           nix build .#nixosConfigurations.redmi.config.system.build.toplevel --no-link \
             --option sandbox false \
             --option warn-dirty false \
             --print-build-logs
           
+          # Push only the new paths
+          nix path-info --json $(readlink -f result) | jq -r '.[].closureSize' > closure-size.txt
           nix-store -qR --include-outputs $(readlink -f result) | sort -u > paths-to-push.txt
           cachix push ${{ env.CACHIX_NAME }} -j4 < paths-to-push.txt || echo "Some paths failed to push"
           
-          rm -rf result paths-to-push.txt
+          rm -rf result paths-to-push.txt closure-size.txt
           nix-collect-garbage --delete-old
           nix store gc
 
@@ -54,17 +63,23 @@ jobs:
           nix store gc
           df -h
 
-      - name: Build and push dell configuration
+      - name: Build and push dell configuration (only missing packages)
         run: |
-          nix build .#nixosConfigurations.dell.config.system.build.toplevel \
+          # First try to substitute everything
+          nix build .#nixosConfigurations.dell.config.system.build.toplevel --no-link --substitute
+          
+          # Then build only what's missing
+          nix build .#nixosConfigurations.dell.config.system.build.toplevel --no-link \
             --option sandbox false \
             --option warn-dirty false \
             --print-build-logs
           
+          # Push only the new paths
+          nix path-info --json $(readlink -f result) | jq -r '.[].closureSize' > closure-size.txt
           nix-store -qR --include-outputs $(readlink -f result) | sort -u > paths-to-push.txt
           cachix push ${{ env.CACHIX_NAME }} -j4 < paths-to-push.txt || echo "Some paths failed to push"
           
-          rm -rf result paths-to-push.txt
+          rm -rf result paths-to-push.txt closure-size.txt
           nix-collect-garbage --delete-old
           nix store gc
           df -h
