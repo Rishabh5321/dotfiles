@@ -36,7 +36,7 @@ jobs:
 
       - name: Build and push redmi configuration
         run: |
-          nix build .#nixosConfigurations.redmi.config.system.build.toplevel \
+          nix build .#nixosConfigurations.redmi.config.system.build.toplevel --no-link \
             --option sandbox false \
             --option warn-dirty false \
             --print-build-logs
