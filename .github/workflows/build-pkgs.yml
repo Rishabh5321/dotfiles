@@ -1,110 +1,70 @@
-name: Build and Push Minimal Configs to Cachix
-
+name: Build
 on:
+  workflow_dispatch:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
-
-env:
-  CACHIX_NAME: "prebuild-pkgs"
-  SYSTEM: "x86_64-linux"
+    paths:
+      - "**.nix"
+      - "flake.lock"
 
 jobs:
-  build-and-push:
-    runs-on: ubuntu-latest
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            target: pride
+          - os: ubuntu-latest
+            target: sloth
+          - os: ubuntu-latest
+            target: eden
+          - os: ubuntu-latest
+            target: wrath
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: Checkout repository
+      - name: Create nix mount point
+        if: contains(matrix.os, 'ubuntu')
+        run: sudo mkdir /nix
+
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@v10
+        if: contains(matrix.os, 'ubuntu')
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          build-mount-path: "/nix"
+          remove-dotnet: true
+          remove-android: true
+          remove-haskell: true
+          remove-docker-images: true
+          remove-codeql: true
+          overprovision-lvm: true
+
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Nix (with Cachix support)
-        uses: DeterminateSystems/nix-installer-action@main
+      - name: Install nix
+        uses: cachix/install-nix-action@V27
         with:
-          extra-conf: |
-            extra-substituters = https://pkgs-build.cachix.org https://cache.nixos.org https://nixpkgs-wayland.cachix.org https://nix-gaming.cachix.org
-            extra-trusted-public-keys = prebuild-pkgs.cachix.org-1:s/ghpCBw/JYgqD++qyRktRzM3Up9rZaDk904xvfv51E= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=
-            builders-use-substitutes = true
-            keep-outputs = false
-            keep-derivations = false
-            auto-optimise-store = true
-            max-free = 5368709120  # 5GB
-            min-free = 1073741824  # 1GB
-              
-      - name: Install Cachix
-        run: nix profile install nixpkgs#cachix
-        
-      - name: Authenticate Cachix
-        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
-      - name: Use Cachix cache
-        run: cachix use ${{ env.CACHIX_NAME }}
+      - name: Setup cachix
+        uses: cachix/cachix-action@v15
+        with:
+          name: edeneast
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
-      - name: Initial disk cleanup
+      - name: Build target
         run: |
-          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /swapfile
-          df -h
+          set -o pipefail
+          nix build .#top.${{ matrix.target }} --fallback --show-trace -v --log-format raw > >(tee /tmp/nix-build-out.log) 2> >(tee /tmp/nix-build-err.log >&2)
 
-      - name: Disk Space Reclaimer
-        uses: insightsengineering/disk-space-reclaimer@v1.1.0
-
-      - name: Build and push redmi configuration
+      - name: Output build failure
+        if: failure()
         run: |
-          # First try to substitute everything
-          if nix build .#nixosConfigurations.redmi.config.system.build.toplevel --no-link --substitute; then
-            echo "All dependencies were available in cache"
-          else
-            # Build only what's missing with aggressive garbage collection
-            nix build .#nixosConfigurations.redmi.config.system.build.toplevel --no-link \
-              --option sandbox false \
-              --option warn-dirty false \
-              --print-build-logs || true
-            
-            # Cleanup between build phases
-            nix-collect-garbage --delete-old
-            nix store gc
-          fi
-          
-          # Push only the new paths if they exist
-          if [ -e result ]; then
-            nix-store -qR --include-outputs $(readlink -f result) | sort -u > paths-to-push.txt
-            cachix push ${{ env.CACHIX_NAME }} -j4 < paths-to-push.txt || echo "Some paths failed to push"
-            rm -rf result paths-to-push.txt
-          fi
-
-      - name: Intermediate cleanup
-        run: |
-          nix-collect-garbage --delete-old
-          nix store gc
-          sudo rm -rf /tmp/*
-          df -h
-
-      - name: Build and push dell configuration
-        run: |
-          # First try to substitute everything
-          if nix build .#nixosConfigurations.dell.config.system.build.toplevel --no-link --substitute; then
-            echo "All dependencies were available in cache"
-          else
-            # Build only what's missing with aggressive garbage collection
-            nix build .#nixosConfigurations.dell.config.system.build.toplevel --no-link \
-              --option sandbox false \
-              --option warn-dirty false \
-              --print-build-logs || true
-            
-            # Cleanup between build phases
-            nix-collect-garbage --delete-old
-            nix store gc
-          fi
-          
-          # Push only the new paths if they exist
-          if [ -e result ]; then
-            nix-store -qR --include-outputs $(readlink -f result) | sort -u > paths-to-push.txt
-            cachix push ${{ env.CACHIX_NAME }} -j4 < paths-to-push.txt || echo "Some paths failed to push"
-            rm -rf result paths-to-push.txt
-          fi
-
-      - name: Final cleanup
-        run: |
-          nix-collect-garbage --delete-old
-          nix store gc
-          sudo rm -rf /tmp/*
-          df -h
+          drv=$(grep "For full logs, run" /tmp/nix-build-err.log | grep -oE "/nix/store/.*.drv")
+          nix log $drv
+          echo $drv
+          exit 1
