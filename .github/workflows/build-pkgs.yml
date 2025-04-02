@@ -22,7 +22,7 @@ jobs:
         with:
           extra-conf: |
             extra-substituters = https://pkgs-build.cachix.org https://cache.nixos.org https://nixpkgs-wayland.cachix.org https://nix-gaming.cachix.org
-            extra-trusted-public-keys = cachix.org-1:prebuild-pkgs.cachix.org-1:s/ghpCBw/JYgqD++qyRktRzM3Up9rZaDk904xvfv51E= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=
+            extra-trusted-public-keys = prebuild-pkgs.cachix.org-1:s/ghpCBw/JYgqD++qyRktRzM3Up9rZaDk904xvfv51E= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=
             builders-use-substitutes = true
             keep-outputs = false
             keep-derivations = false
