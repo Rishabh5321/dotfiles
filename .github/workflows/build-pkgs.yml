@@ -30,11 +30,8 @@ jobs:
       - name: Authenticate Cachix
         run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-      - name: Free disk space
-        run: |
-          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/boost /swapfile
-          sudo apt-get clean
-          df -h
+      - name: Disk Space Reclaimer
+        uses: insightsengineering/disk-space-reclaimer@v1.1.0
 
       - name: Build and push redmi configuration
         run: |
