@@ -82,7 +82,7 @@
         };
     in
     {
-      #formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
       # Import overlays defined in the ./overlays directory
       overlays = import ./overlays { inherit inputs self; };
       # Define NixOS configurations for different hosts
