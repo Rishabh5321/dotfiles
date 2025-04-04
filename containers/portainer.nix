@@ -21,7 +21,7 @@ _: {
             PUID = "1000";
             PGID = "1000";
             TZ = "Asia/Kolkata";
-            DOCKER_HOST=tcp://dockerproxy:2375;
+            DOCKER_HOST = "tcp://dockerproxy:2375";
           };
           pull = "newer";
         };
