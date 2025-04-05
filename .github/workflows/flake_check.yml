@@ -21,8 +21,7 @@ jobs:
       - name: Run Flake Check
         id: flake_check
         run: |
-          nix profile install nixpkgs#nix-output-monitor
-          nix flake check |& nom 2>&1 | tee flake_check.log
+          nix flake check 2>&1 | tee flake_check.log
           if grep -E "(warning:|error:)" flake_check.log > flake_check_filtered.log; then
             echo "has_issues=true" >> $GITHUB_OUTPUT
             echo "FLAKE_STATUS=failed" >> $GITHUB_ENV
