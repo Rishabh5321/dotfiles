@@ -55,7 +55,7 @@
       #inputs.alejandra.defaultPackage.${system}
       inputs.grayjay.packages.${system}.grayjay
       inputs.thorium.packages."x86_64-linux".thorium-avx2
-      inputs.zen-browser.packages."${system}".default
+      inputs.zen-browser.packages."${system}".beta
       jellyfin-media-player
       kdePackages.dolphin
       kdePackages.qtstyleplugin-kvantum
