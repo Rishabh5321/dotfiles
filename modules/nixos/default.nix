@@ -29,6 +29,7 @@
 
     ./gaming.nix
     ./dns.nix
+    ./usbguard.nix
     #./seanime.nix
   ];
 
