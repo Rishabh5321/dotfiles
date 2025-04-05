@@ -2,7 +2,7 @@
 
 { pkgs
 , username # Expecting the main username to be passed in (e.g., "rishabh")
-#, config # Pass 'config' if needed for e.g. sops or cross-module references
+  #, config # Pass 'config' if needed for e.g. sops or cross-module references
 , ...
 }:
 
@@ -14,16 +14,25 @@ in
   # ... (users.mutableUsers, users.groups.usbguard, users.users definitions remain the same) ...
 
   users.mutableUsers = true;
-  users.groups.usbguard = {};
+  users.groups.usbguard = { };
   users.users = {
     "${primaryUser}" = {
       isNormalUser = true;
       homeMode = "755";
       description = "Rishabh Singh";
       extraGroups = [
-        "networkmanager" "wheel" "libvirtd" "scanner" "lp"
-        "usbguard" "plugdev" "adbusers" "docker" "kvm"
-        "qemu-libvirtd" "sambashare"
+        "networkmanager"
+        "wheel"
+        "libvirtd"
+        "scanner"
+        "lp"
+        "usbguard"
+        "plugdev"
+        "adbusers"
+        "docker"
+        "kvm"
+        "qemu-libvirtd"
+        "sambashare"
       ];
       shell = pkgs.zsh;
       ignoreShellProgramCheck = true;
@@ -50,7 +59,7 @@ in
     # --- IPC Access Control ---
     # Defines who can talk to the usbguard daemon via D-Bus/IPC.
     # Crucial for tools like 'better-control'.
-    IPCAllowedUsers = [ primaryUser ];   # Correct: Direct attribute
+    IPCAllowedUsers = [ primaryUser ]; # Correct: Direct attribute
     IPCAllowedGroups = [ "usbguard" ]; # Correct: Direct attribute
 
     # --- Default Policy Settings (Examples - Set directly if needed) ---
