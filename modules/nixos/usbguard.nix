@@ -1,4 +1,4 @@
-{...}:
+_:
 {
-    services.usbguard.enable = true;
+  services.usbguard.enable = true;
 }
