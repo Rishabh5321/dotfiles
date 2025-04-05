@@ -27,13 +27,10 @@ jobs:
 
       - name: Setup Cachix
         uses: cachix/cachix-action@v16
-        # Only push to Cachix on pushes to the main branch (or adjust as needed)
-        # Skip pushing for pull requests to avoid potentially polluting the cache
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main' # Example condition
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' 
         with:
-          name: buildcache # Replace with your actual cache name
+          name: pkgss # Replace with your actual cache name
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-          # pushFilter: ".*" # Consider if you want to push anything from a dry-run
 
       - name: Check Dell Configuration
         id: build_dell
