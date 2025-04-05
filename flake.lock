@@ -1322,11 +1322,11 @@
         "nixpkgs": "nixpkgs_9"
       },
       "locked": {
-        "lastModified": 1743798013,
-        "narHash": "sha256-tu1oPYFWY8dPtalV7On0DVrrNqrn4g2pYyR5yBt44NU=",
+        "lastModified": 1743834284,
+        "narHash": "sha256-cSQE7wXSIc8TZmTgPlHjYBZFj4dRq4lHKo+btYxS5fc=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "48684cc5214f41f1e3fd64e41660fc064cf01815",
+        "rev": "05e0ba13f847ab7521fc85664d85727a5c32fdb5",
         "type": "github"
       },
       "original": {
