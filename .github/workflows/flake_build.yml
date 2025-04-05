@@ -1,15 +1,21 @@
+# .github/workflows/flake_build.yml
 name: flake_build
+
 on:
   push:
   pull_request:
   workflow_dispatch:
+
 jobs:
   build-configurations:
     name: Build NixOS Configurations
     runs-on: ubuntu-latest
+    permissions: # Optional: Define minimal permissions
+      contents: read
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
@@ -17,66 +23,167 @@ jobs:
           extra_nix_config: |
             auto-optimise-store = true
             experimental-features = nix-command flakes
-            download-buffer-size = 500000000
+            download-buffer-size = 500000000 # Consider if this large buffer is strictly necessary
+
       - name: Setup Cachix
         uses: cachix/cachix-action@v16
+        # Only push to Cachix on pushes to the main branch (or adjust as needed)
+        # Skip pushing for pull requests to avoid potentially polluting the cache
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' # Example condition
         with:
-          name: buildcache
+          name: buildcache # Replace with your actual cache name
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-          pushFilter: ".*"
+          # pushFilter: ".*" # Consider if you want to push anything from a dry-run
+
       - name: Check Dell Configuration
         id: build_dell
         run: |
-          set -o pipefail
-          if nix build .#nixosConfigurations.dell.config.system.build.toplevel --dry-run 2>&1 | tee build_dell.log; then
-            echo "DELL_STATUS=passed" >> $GITHUB_ENV
-            echo "Dell configuration check completed successfully" > build_dell_filtered.log
+          log_file="build_dell.log"
+          filtered_log_file="build_dell_filtered.log"
+          echo "::group::Running Nix dry-run for Dell"
+          # Run nix build, capture all output, add trace on error
+          if nix build .#nixosConfigurations.dell.config.system.build.toplevel --dry-run --show-trace > "$log_file" 2>&1; then
+            echo "status=passed" >> $GITHUB_OUTPUT
+            echo "log_path=$filtered_log_file" >> $GITHUB_OUTPUT
+            echo "Dell configuration check completed successfully." > "$filtered_log_file" # Keep file for consistency
+            echo "::notice file=$log_file::Dell build dry-run successful."
           else
-            echo "DELL_STATUS=failed" >> $GITHUB_ENV
-            grep -E "(warning:|error:)" build_dell.log > build_dell_filtered.log || cat build_dell.log > build_dell_filtered.log
+            # Build failed
+            echo "status=failed" >> $GITHUB_OUTPUT
+            echo "log_path=$filtered_log_file" >> $GITHUB_OUTPUT
+            # Extract relevant lines: try errors/warnings first, fallback to tail, limit lines
+            {
+              echo "Dell check failed. Relevant log lines:"
+              grep -E '(error:|warning:)' "$log_file" || tail -n 20 "$log_file"
+            } | head -n 30 > "$filtered_log_file" # Limit total output for notification
+            echo "::error file=$log_file::Dell build dry-run failed. Check logs."
           fi
+          echo "::endgroup::"
+          echo "--- Filtered Log Snippet (Dell) ---"
+          cat "$filtered_log_file"
+          echo "--- End Filtered Log Snippet ---"
+
+
       - name: Check Redmi Configuration
         id: build_redmi
+        # Use always() to ensure this runs even if the Dell check fails
         if: always()
         run: |
-          set -o pipefail
-          if nix build .#nixosConfigurations.redmi.config.system.build.toplevel --dry-run 2>&1 | tee build_redmi.log; then
-            echo "REDMI_STATUS=passed" >> $GITHUB_ENV
-            echo "Redmi configuration check completed successfully" > build_redmi_filtered.log
+          log_file="build_redmi.log"
+          filtered_log_file="build_redmi_filtered.log"
+          echo "::group::Running Nix dry-run for Redmi"
+          if nix build .#nixosConfigurations.redmi.config.system.build.toplevel --dry-run --show-trace > "$log_file" 2>&1; then
+            echo "status=passed" >> $GITHUB_OUTPUT
+            echo "log_path=$filtered_log_file" >> $GITHUB_OUTPUT
+            echo "Redmi configuration check completed successfully." > "$filtered_log_file"
+            echo "::notice file=$log_file::Redmi build dry-run successful."
           else
-            echo "REDMI_STATUS=failed" >> $GITHUB_ENV
-            grep -E "(warning:|error:)" build_redmi.log > build_redmi_filtered.log || cat build_redmi.log > build_redmi_filtered.log
+            echo "status=failed" >> $GITHUB_OUTPUT
+            echo "log_path=$filtered_log_file" >> $GITHUB_OUTPUT
+            {
+              echo "Redmi check failed. Relevant log lines:"
+              grep -E '(error:|warning:)' "$log_file" || tail -n 20 "$log_file"
+            } | head -n 30 > "$filtered_log_file"
+            echo "::error file=$log_file::Redmi build dry-run failed. Check logs."
           fi
-      - name: Send Telegram Notification
+          echo "::endgroup::"
+          echo "--- Filtered Log Snippet (Redmi) ---"
+          cat "$filtered_log_file"
+          echo "--- End Filtered Log Snippet ---"
+
+      - name: Generate Job Summary
+        # Use always() to ensure summary is generated even on partial failure
+        if: always()
+        run: |
+          echo "## NixOS Configuration Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Dell Configuration:** ${{ steps.build_dell.outputs.status }}" >> $GITHUB_STEP_SUMMARY
+          if [[ "${{ steps.build_dell.outputs.status }}" == "failed" ]]; then
+            echo "<details><summary>Dell Log Snippet</summary>" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            # Use html escaping for safety inside summary markdown
+            cat "${{ steps.build_dell.outputs.log_path }}" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g;' >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            echo "</details>" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "- **Redmi Configuration:** ${{ steps.build_redmi.outputs.status }}" >> $GITHUB_STEP_SUMMARY
+          if [[ "${{ steps.build_redmi.outputs.status }}" == "failed" ]]; then
+            echo "<details><summary>Redmi Log Snippet</summary>" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            cat "${{ steps.build_redmi.outputs.log_path }}" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g;' >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            echo "</details>" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "*Check workflow run logs for full details.*" >> $GITHUB_STEP_SUMMARY
+
+      # Option 1: Improved Bash Script for Telegram Notification
+      - name: Send Telegram Notification (Bash)
+        # Use always() to ensure notification is sent even on failure
         if: always()
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
+          DELL_STATUS: ${{ steps.build_dell.outputs.status }}
+          REDMI_STATUS: ${{ steps.build_redmi.outputs.status }}
+          DELL_LOG_PATH: ${{ steps.build_dell.outputs.log_path }}
+          REDMI_LOG_PATH: ${{ steps.build_redmi.outputs.log_path }}
+          BRANCH_NAME: ${{ github.ref_name }}
+          REPO_NAME: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          BRANCH_NAME="${{ github.ref_name }}"
-          REPO_NAME="${{ github.repository }}"
-          DELL_STATUS="${{ env.DELL_STATUS }}"
-          REDMI_STATUS="${{ env.REDMI_STATUS }}"
-
+          # Determine overall status and emoji
           if [[ "$DELL_STATUS" == "passed" && "$REDMI_STATUS" == "passed" ]]; then
-            STATUS_MESSAGE="✅ NixOS configurations for $REPO_NAME passed on branch $BRANCH_NAME."
+            STATUS_ICON="✅"
+            STATUS_TEXT="Passed"
           else
-            STATUS_MESSAGE="❌ NixOS configurations for $REPO_NAME failed on branch $BRANCH_NAME.%0ACheck GitHub Actions for details."
+            STATUS_ICON="❌"
+            STATUS_TEXT="Failed"
           fi
 
-          MESSAGE="Dell Config: $DELL_STATUS%0ARedmi Config: $REDMI_STATUS%0A%0A"
+          # Basic Status Line
+          STATUS_LINE="$STATUS_ICON NixOS checks for *$REPO_NAME* ($BRANCH_NAME) *$STATUS_TEXT*"
 
-          if [ -s build_dell_filtered.log ] && [ "$DELL_STATUS" == "failed" ]; then
-            DELL_ERRORS=$(awk '{print NR". "$0}' build_dell_filtered.log | head -10 | perl -pe 's/\n/%0A/g')
-            MESSAGE+="Dell Issues:%0A\`\`\`%0A$DELL_ERRORS%0A\`\`\`%0A%0A"
+          # Detailed Status
+          DETAILS="Dell Config: \`$DELL_STATUS\`%0ARedmi Config: \`$REDMI_STATUS\`"
+
+          # Function to read, format, and URL-encode log snippet
+          format_log() {
+            local log_path="$1"
+            local max_lines=15 # Limit lines further for Telegram
+            # Read file, add line numbers, limit lines, escape Markdown backticks, then URL-encode
+            awk '{print NR". "$0}' "$log_path" | head -n $max_lines | sed 's/`/\\`/g' | perl -MURI::Escape -ne 'chomp; print uri_escape($_), "%0A"'
+          }
+
+          DELL_LOG_SNIPPET=""
+          if [[ "$DELL_STATUS" == "failed" && -s "$DELL_LOG_PATH" ]]; then
+            ENCODED_LOG=$(format_log "$DELL_LOG_PATH")
+            DELL_LOG_SNIPPET="%0A%0ADell Issues:%0A\`\`\`%0A${ENCODED_LOG}\`\`\`"
           fi
 
-          if [ -s build_redmi_filtered.log ] && [ "$REDMI_STATUS" == "failed" ]; then
-            REDMI_ERRORS=$(awk '{print NR". "$0}' build_redmi_filtered.log | head -10 | perl -pe 's/\n/%0A/g')
-            MESSAGE+="Redmi Issues:%0A\`\`\`%0A$REDMI_ERRORS%0A\`\`\`"
+          REDMI_LOG_SNIPPET=""
+          if [[ "$REDMI_STATUS" == "failed" && -s "$REDMI_LOG_PATH" ]]; then
+            ENCODED_LOG=$(format_log "$REDMI_LOG_PATH")
+            REDMI_LOG_SNIPPET="%0A%0ARedmi Issues:%0A\`\`\`%0A${ENCODED_LOG}\`\`\`"
           fi
 
-          curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
-            -d "chat_id=$CHAT_ID" \
-            -d "text=$STATUS_MESSAGE%0A%0A$MESSAGE%0A%0AGenerated on $(TZ='Asia/Kolkata' date)" \
-            -d "parse_mode=Markdown"
+          # Construct final message body (URL encoded)
+          MESSAGE_BODY=$(cat <<EOF | perl -MURI::Escape -ne 'chomp; print uri_escape($_), "%0A"'
+          $STATUS_LINE
+
+          $DETAILS
+
+          [View Workflow Run]($RUN_URL)
+          Generated on $(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S %Z')
+          EOF
+          )
+          # Append non-URL-encoded snippets (they are already encoded)
+          MESSAGE_BODY+="${DELL_LOG_SNIPPET}${REDMI_LOG_SNIPPET}"
+
+
+          # Send notification
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${CHAT_ID}" \
+            --data-urlencode "text=${MESSAGE_BODY}" \
+            -d "parse_mode=Markdown" \
+            -d "disable_web_page_preview=true" # Optional: cleaner look
