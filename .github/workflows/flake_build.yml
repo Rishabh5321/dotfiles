@@ -54,6 +54,7 @@ jobs:
               grep -E '(error:|warning:)' "$log_file" || tail -n 20 "$log_file"
             } | head -n 30 > "$filtered_log_file" # Limit total output for notification
             echo "::error file=$log_file::Dell build dry-run failed. Check logs."
+            exit 1 # <<< --- ADD THIS LINE ---
           fi
           echo "::endgroup::"
           echo "--- Filtered Log Snippet (Dell) ---"
@@ -82,6 +83,7 @@ jobs:
               grep -E '(error:|warning:)' "$log_file" || tail -n 20 "$log_file"
             } | head -n 30 > "$filtered_log_file"
             echo "::error file=$log_file::Redmi build dry-run failed. Check logs."
+            exit 1 # <<< --- ADD THIS LINE ---
           fi
           echo "::endgroup::"
           echo "--- Filtered Log Snippet (Redmi) ---"
