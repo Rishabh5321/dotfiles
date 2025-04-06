@@ -22,6 +22,7 @@
     grayjay.url = "github:rishabh5321/grayjay-flake";
     seanime.url = "github:rishabh5321/seanime-flake";
     thorium.url = "github:Rishabh5321/thorium_flake";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     # miru-flake.url = "github:Rishabh5321/miru-flake";
     #fine-cmdline = {
     #  url = "github:VonHeikemen/fine-cmdline.nvim";
@@ -33,7 +34,7 @@
     #cursor-flake.url = "github:Rishabh5321/cursor-flake";
     #grub2-themes.url = "github:vinceliuice/grub2-themes";
   };
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, spicetify-nix, darkmatter-grub-theme, nix-flatpak, ... } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, spicetify-nix, darkmatter-grub-theme, nix-flatpak, determinate, ... } @ inputs:
     let
       inherit (self) outputs;
       username = "rishabh";
@@ -58,6 +59,7 @@
             inputs.stylix.nixosModules.stylix
             nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
+            determinate.nixosModules.default
           ];
           homeManagerConfig = {
             home-manager.extraSpecialArgs = {
