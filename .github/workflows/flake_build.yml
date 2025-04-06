@@ -137,68 +137,70 @@ jobs:
             STATUS_TEXT="Failed"
           fi
 
-          # --- Build Plain Text Message ---
-          MESSAGE_PLAIN=""
+          # --- Build Plain Text Message using printf for newlines ---
+          MESSAGE_PLAIN="" # Start with empty
 
-          # Basic Status Line
-          MESSAGE_PLAIN+=" $STATUS_ICON NixOS checks for *$REPO_NAME* ($BRANCH_NAME) *$STATUS_TEXT*\n" # Using \n for clarity
-          MESSAGE_PLAIN+="\n"
-          # Detailed Status
-          MESSAGE_PLAIN+="Dell Config: \`$DELL_STATUS\`\n"
-          MESSAGE_PLAIN+="Redmi Config: \`$REDMI_STATUS\`\n"
+          # Basic Status Line (printf handles \n correctly)
+          printf -v MESSAGE_PLAIN " %s NixOS checks for *%s* (%s) *%s*\n" "$STATUS_ICON" "$REPO_NAME" "$BRANCH_NAME" "$STATUS_TEXT"
 
-          # Function to read and format log snippet (plain text)
+          # Add a blank line (printf handles \n)
+          printf -v MESSAGE_PLAIN "%s\n" "$MESSAGE_PLAIN"
+
+          # Detailed Status (printf handles \n)
+          printf -v MESSAGE_PLAIN "%sDell Config: \`%s\`\n" "$MESSAGE_PLAIN" "$DELL_STATUS"
+          printf -v MESSAGE_PLAIN "%sRedmi Config: \`%s\`\n" "$MESSAGE_PLAIN" "$REDMI_STATUS"
+
+          # Function to read and format log snippet (plain text) - remains the same
           format_log_plain() {
             local log_path="$1"
             local max_lines=15 # Limit lines for Telegram
             local output=""
             if [[ -s "$log_path" ]]; then
-              # Read file, add line numbers, limit lines, escape ONLY backticks for Markdown code block
-              output=$(awk '{print NR". "$0}' "$log_path" | head -n $max_lines | sed 's/`/\\`/g')
+              output=$(awk '{print NR". "$0}' "$log_path" | head -n $max_lines | sed 's/`/\\`/g; s/\x0/\\0/g')
             fi
             echo "$output"
           }
 
+          # Dell Issues (printf handles \n)
           if [[ "$DELL_STATUS" == "failed" ]]; then
             LOG_SNIPPET=$(format_log_plain "$DELL_LOG_PATH")
             if [[ -n "$LOG_SNIPPET" ]]; then
-              MESSAGE_PLAIN+="\n*Dell Issues:*\n"
-              MESSAGE_PLAIN+="\`\`\`\n${LOG_SNIPPET}\n\`\`\`\n"
+              printf -v MESSAGE_PLAIN "%s\n*Dell Issues:*\n" "$MESSAGE_PLAIN" # Add section header
+              printf -v MESSAGE_PLAIN "%s\`\`\`\n%s\n\`\`\`\n" "$MESSAGE_PLAIN" "$LOG_SNIPPET" # Add code block
             fi
           fi
 
+          # Redmi Issues (printf handles \n)
           if [[ "$REDMI_STATUS" == "failed" ]]; then
             LOG_SNIPPET=$(format_log_plain "$REDMI_LOG_PATH")
             if [[ -n "$LOG_SNIPPET" ]]; then
-              MESSAGE_PLAIN+="\n*Redmi Issues:*\n"
-              MESSAGE_PLAIN+="\`\`\`\n${LOG_SNIPPET}\n\`\`\`\n"
+              printf -v MESSAGE_PLAIN "%s\n*Redmi Issues:*\n" "$MESSAGE_PLAIN" # Add section header
+              printf -v MESSAGE_PLAIN "%s\`\`\`\n%s\n\`\`\`\n" "$MESSAGE_PLAIN" "$LOG_SNIPPET" # Add code block
             fi
           fi
 
-          # Link and Timestamp
-          MESSAGE_PLAIN+="\n[View Workflow Run]($RUN_URL)\n"
-          # Get current time in IST for the timestamp
+          # Link and Timestamp (printf handles \n)
           CURRENT_TIME_IST=$(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S %Z')
-          MESSAGE_PLAIN+="Generated on $CURRENT_TIME_IST"
+          printf -v MESSAGE_PLAIN "%s\n[View Workflow Run](%s)\n" "$MESSAGE_PLAIN" "$RUN_URL" # Add link
+          printf -v MESSAGE_PLAIN "%sGenerated on %s" "$MESSAGE_PLAIN" "$CURRENT_TIME_IST" # Add timestamp (no final newline needed)
 
           # --- URL-encode the entire message ONCE ---
-          # Use printf to handle potential special characters in the message safely
-          # Use jq for robust URL encoding (requires jq to be installed or added via action)
-          # As an alternative, perl can still be used but jq is often preferred
-          # MESSAGE_BODY_ENCODED=$(echo -n "$MESSAGE_PLAIN" | perl -MURI::Escape -ne 'chomp; print uri_escape($_)')
           MESSAGE_BODY_ENCODED=$(printf "%s" "$MESSAGE_PLAIN" | jq -sRr @uri)
 
 
           # --- Send notification ---
           echo "Sending Telegram Notification..."
-          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
+          curl -s --fail -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
             --data "chat_id=${CHAT_ID}" \
             --data "text=${MESSAGE_BODY_ENCODED}" \
             -d "parse_mode=Markdown" \
             -d "disable_web_page_preview=true"
 
-          if [[ $? -ne 0 ]]; then
-              echo "::error::Failed to send Telegram notification."
+          CURL_EXIT_CODE=$?
+          if [[ $CURL_EXIT_CODE -ne 0 ]]; then
+              echo "::error::Failed to send Telegram notification. Curl exit code: $CURL_EXIT_CODE"
+              # echo "::debug::Plain message before encoding: $MESSAGE_PLAIN" # Uncomment for debugging
+              exit 1
           else
               echo "Telegram notification sent successfully."
           fi
