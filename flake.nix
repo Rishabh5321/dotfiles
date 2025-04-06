@@ -41,7 +41,7 @@
       flakeDir = "/home/${username}/dotfiles";
       pkgs-stable = import nixpkgs-stable {
         system = "x86_64-linux";
-        config = { allowUnfree = true; };
+        config = { allowUnfree = true; }
       };
       pkgs = import nixpkgs {
         system = "x86_64-linux";
