@@ -16,6 +16,13 @@ jobs:
           swap-size-mb: 1024
           remove-dotnet: 'true'
 
+      - uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@v26
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
       - name: Mount /nix to use large volume
         run: |
           sudo mkdir -p /mnt/nix
@@ -26,14 +33,6 @@ jobs:
           sudo mount --bind /mnt/nix/nix /nix
              # Show disk usage for confirmation
           df -hT /nix
-  
-
-      - uses: actions/checkout@v4
-
-      - uses: cachix/install-nix-action@v26
-        with:
-          extra_nix_config: |
-            experimental-features = nix-command flakes
 
       - uses: cachix/cachix-action@v12
         with:
