@@ -12,9 +12,6 @@ jobs:
     steps:
       - name: Maximize build disk space
         uses: easimon/maximize-build-space@v10
-        with:
-          root-reserve-mb: 61440
-          swap-size-mb: 4096
 
       - uses: actions/checkout@v4
 
@@ -35,6 +32,12 @@ jobs:
 
       - name: Build NixOS Configurations
         run: |
+          export TMPDIR=/home/runner/work/dotfiles/dotfiles/tmp
+          mkdir -p "$TMPDIR"
+          sudo mount --bind /home/runner/work/dotfiles/dotfiles /nix
+          sudo mkdir -p /nix/store /nix/var
+          sudo chown -R runner:runner /nix
           nix build .#nixosConfigurations.redmi.config.system.build.toplevel \
             --option keep-going true \
             --max-jobs auto
+        
