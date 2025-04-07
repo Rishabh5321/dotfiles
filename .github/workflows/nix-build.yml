@@ -22,8 +22,11 @@ jobs:
         with:
           name: rishabh5321
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      
+      - name: Maximize build disk space
+        uses: easimon/maximize-build-space@v10
 
       - name: Build NixOS Configurations
         run: |
           nix build .#nixosConfigurations.redmi.config.system.build.toplevel --no-link
-          nix build .#nixosConfigurations.dell.config.system.build.toplevel --no-link
+          #nix build .#nixosConfigurations.dell.config.system.build.toplevel --no-link
