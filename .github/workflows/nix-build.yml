@@ -20,8 +20,13 @@ jobs:
         run: |
           sudo mkdir -p /mnt/nix
           sudo mount --bind /home/runner/work/dotfiles/dotfiles /mnt/nix
+             # Create /nix and bind it to a subdirectory in the large volume
+          sudo mkdir -p /nix
           sudo mkdir -p /mnt/nix/nix
           sudo mount --bind /mnt/nix/nix /nix
+             # Show disk usage for confirmation
+          df -hT /nix
+  
 
       - uses: actions/checkout@v4
 
