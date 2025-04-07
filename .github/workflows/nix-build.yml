@@ -5,6 +5,7 @@ on:
     branches: [ main ]
   pull_request:
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,7 +19,7 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - name: Install Nix
+      - name: Install Nix (Single-User)
         uses: cachix/install-nix-action@v31
         with:
           install_url: https://nixos.org/nix/install
@@ -32,17 +33,6 @@ jobs:
           name: rishabh5321
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
-      - name: Mount /nix to use large volume
-        run: |
-          sudo mkdir -p /mnt/nix
-          sudo mount --bind /home/runner/work/dotfiles/dotfiles /mnt/nix
-             # Create /nix and bind it to a subdirectory in the large volume
-          sudo mkdir -p /nix
-          sudo mkdir -p /mnt/nix/nix
-          sudo mount --bind /mnt/nix/nix /nix
-             # Show disk usage for confirmation
-          df -hT /nix
-          
       - name: Build NixOS Configurations
         run: |
           nix build .#nixosConfigurations.redmi.config.system.build.toplevel --no-link
