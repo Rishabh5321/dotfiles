@@ -29,7 +29,7 @@ jobs:
         uses: cachix/cachix-action@v16
         if: github.event_name == 'push' && github.ref == 'refs/heads/main' 
         with:
-          name: pkgss # Replace with your actual cache name
+          name: rishabh5321 # Replace with your actual cache name
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
       - name: Check Dell Configuration
