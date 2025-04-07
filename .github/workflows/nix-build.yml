@@ -10,40 +10,51 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Maximize build disk space (enhanced)
+      - name: Maximize build disk space
         uses: easimon/maximize-build-space@v10
         with:
-          root-reserve-mb: 512  # Reduced from 1024 to free more space
-          swap-size-mb: 4096   # Increased swap for Nix builds
+          root-reserve-mb: 512
+          swap-size-mb: 4096
           remove-dotnet: 'true'
-          remove-android: 'true'  # Additional space saving
-          remove-haskell: 'true'  # Additional space saving
+          remove-android: 'true'
+          remove-haskell: 'true'
 
       - uses: actions/checkout@v4
 
-      - name: Install Nix (Single-User)
+      - name: Setup Nix with store optimization
         uses: cachix/install-nix-action@v31
         with:
-          install_url: https://nixos.org/nix/install
           extra_nix_config: |
             auto-optimise-store = true
             experimental-features = nix-command flakes
-            download-buffer-size = 500000000 
-            cores = 0  # Use all available cores
+            download-buffer-size = 500000000
+            cores = 0
             max-jobs = auto
+            # Critical: Use the created LVM volume for Nix store
+            store = /home/runner/work/dotfiles/dotfiles/nix-store
+
+      - name: Create and mount Nix store on LVM volume
+        run: |
+          sudo mkdir -p /home/runner/work/dotfiles/dotfiles/nix-store
+          sudo chown -R runner:runner /home/runner/work/dotfiles/dotfiles/nix-store
+          sudo mkdir -p /nix
+          sudo mount --bind /home/runner/work/dotfiles/dotfiles/nix-store /nix
 
       - uses: cachix/cachix-action@v12
         with:
           name: rishabh5321
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
-      - name: Build NixOS Configurations with optimized settings
+      - name: Build with optimized settings
         run: |
-          # Use the build volume created by maximize-build-space
-          export TMPDIR=/home/runner/work/dotfiles/dotfiles
-          
-          # Build with memory optimization flags
+          export NIX_BUILD_CORES=0
           nix build .#nixosConfigurations.redmi.config.system.build.toplevel \
-            --option narinfo-cache-positive-ttl 0 \
-            --option narinfo-cache-negative-ttl 0 \
-            --option keep-going true
+            --option keep-going true \
+            --option sandbox false \
+            --max-jobs auto
+
+      - name: Cleanup
+        if: always()
+        run: |
+          sudo umount /nix || true
+          nix-collect-garbage -d
