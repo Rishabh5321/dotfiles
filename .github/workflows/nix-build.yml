@@ -1,4 +1,4 @@
-name: Build & Push to Cachix
+name: Build NixOS configs and push to Cachix
 
 on:
   push:
@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -22,5 +23,7 @@ jobs:
           name: rishabh5321
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
-      - name: Build all flake outputs
-        run: nix build .# --no-link
+      - name: Build NixOS Configurations
+        run: |
+          nix build .#nixosConfigurations.redmi.config.system.build.toplevel --no-link
+          nix build .#nixosConfigurations.dell.config.system.build.toplevel --no-link
