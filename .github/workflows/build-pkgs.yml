@@ -59,7 +59,7 @@ jobs:
         # Push only on main branch merges
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
-          name: pkgss # Replace with your actual cache name
+          name: rishabh5321 # Replace with your actual cache name
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
           # No CACHIX_SIGNING_KEY needed here
 
