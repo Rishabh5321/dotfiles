@@ -1,79 +1,26 @@
-name: Build NixOS Config Dependencies & Cache
+name: Build & Push to Cachix
 
 on:
   push:
-    branches:
-      - main # Or your default branch
+    branches: [ main ]
   pull_request:
-    branches:
-      - main # Or your default branch
-
-env:
-  # Your public Cachix cache name
-  CACHIX_CACHE_NAME: "rishabh5321"
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Free up disk space (Runner Preparation)
-        run: |
-          echo "Initial disk space:"
-          df -h /
-          # Remove large pre-installed tools to maximize available space
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /opt/ghc
-          sudo rm -rf "/usr/local/share/boost"
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-          echo "Disk space after cleanup:"
-          df -h /
-
-      - name: Install Nix with Flakes enabled
-        # Using v27 as latest stable checked, use newer if available/needed
-        uses: cachix/install-nix-action@v31
+      - uses: cachix/install-nix-action@v26
         with:
           extra_nix_config: |
             experimental-features = nix-command flakes
-            accept-flake-config = true
-          nix_path: nixpkgs=channel:nixos-unstable
 
-      - name: Setup Cachix (Configure Substituter)
-        # Configures Nix to trust and pull from your cache
-        uses: cachix/cachix-action@v14
+      - uses: cachix/cachix-action@v12
         with:
-          name: ${{ env.CACHIX_CACHE_NAME }}
-          # Auth token is needed for trusting the cache and required for the push step.
+          name: <your-cachix>
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
-      - name: Build All Dependencies and Push to Cachix
-        # This step uses cachix-action to run the build commands.
-        # It builds the top-level system derivation for each NixOS configuration found in flake.nix.
-        # This forces Nix to build all dependencies for both systems.
-        # Cachix then pushes any store paths that were built (and not downloaded) to your cache.
-        uses: cachix/cachix-action@v14
-        with:
-          name: ${{ env.CACHIX_CACHE_NAME }}
-          # Auth token IS needed here to authorize the push.
-          # IMPORTANT: Ensure CACHIX_AUTH_TOKEN secret exists in GitHub repo settings.
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-          # Build both NixOS configurations defined in the flake
-          command: |
-            echo "Building dependencies for NixOS configuration: redmi..."
-            nix build .#nixosConfigurations.redmi.config.system.build.toplevel -L --accept-flake-config
-
-            echo "Building dependencies for NixOS configuration: dell..."
-            nix build .#nixosConfigurations.dell.config.system.build.toplevel -L --accept-flake-config
-
-      # Optional: Clean Nix store
-      # - name: Clean Nix Store Garbage
-      #   run: nix-collect-garbage -d
-
-      - name: Final Disk Space Check
-        run: |
-          echo "Final disk space:"
-          df -h /
-          echo "Nix store size:"
-          du -sh /nix/store || echo "/nix/store not found or error reading size"
+      - name: Build all flake outputs
+        run: nix build .# --no-link
