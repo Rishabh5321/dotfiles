@@ -9,9 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-
       - name: Maximize build disk space
         uses: easimon/maximize-build-space@v10
 
