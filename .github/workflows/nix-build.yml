@@ -1,0 +1,82 @@
+name: Nix Flake Build & Cache
+
+on:
+  push:
+    branches:
+      - main # Or your default branch
+  pull_request:
+    branches:
+      - main # Or your default branch
+
+env:
+  # Set your public Cachix cache name here directly
+  # No secret needed for the name!
+  CACHIX_CACHE_NAME: "rishabh5321" # <-- *** REPLACE THIS VALUE ***
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Free up disk space (Runner Preparation)
+        run: |
+          echo "Initial disk space:"
+          df -h /
+          # Remove large pre-installed tools to maximize available space
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          echo "Disk space after cleanup:"
+          df -h /
+
+      - name: Install Nix with Flakes enabled
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            accept-flake-config = true
+          nix_path: nixpkgs=channel:nixos-unstable
+          # The install-nix-action automatically adds cache.nixos.org.
+          # We don't strictly need to add the public cache URL here,
+          # as the cachix-action step will handle configuring it as a substituter.
+
+      - name: Setup Cachix (Configure Substituter)
+        # This step mainly configures Nix to trust and use your cache for pulling artifacts.
+        uses: cachix/cachix-action@v14
+        with:
+          # Use the public cache name defined in the env block
+          name: "rishabh5321"
+          # NO authToken needed here if only configuring substituter
+          # However, providing it here doesn't hurt and makes the next step potentially simpler.
+          # Let's keep it consistent with the next step for clarity.
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}' # Still needed for trusting private caches / push later
+
+      - name: Build Flake and Push to Cachix
+        # This step uses cachix-action to run the build and then push results.
+        uses: cachix/cachix-action@v14
+        with:
+          # Use the public cache name defined in the env block
+          name: "rishabh5321"
+          # Auth token IS needed here to authorize the push
+          # IMPORTANT: Create a secret named CACHIX_AUTH_TOKEN in GitHub repo settings
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          # The command to run. cachix-action will execute this, watch the Nix
+          # store paths it produces, and push any missing ones to your cache.
+          command: |
+            echo "Building flake outputs..."
+            # Replace '.#yourPackageOrApp' with your actual flake output
+            nix build .#yourPackageOrApp -L --accept-flake-config
+
+      # Optional: Clean Nix store
+      # - name: Clean Nix Store Garbage
+      #   run: nix-collect-garbage -d
+
+      - name: Final Disk Space Check
+        run: |
+          echo "Final disk space:"
+          df -h /
+          echo "Nix store size:"
+          du -sh /nix/store || echo "/nix/store not found or error reading size"
