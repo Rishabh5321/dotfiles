@@ -25,6 +25,12 @@ jobs:
             cores = 0
             max-jobs = auto
 
+      - name: Remount /nix to use expanded disk space
+        run: |
+          sudo mount --bind /home/runner/work/dotfiles/dotfiles /nix
+          sudo mkdir -p /nix/store /nix/var
+          sudo chown -R runner:runner /nix
+
       - uses: cachix/cachix-action@v12
         with:
           name: rishabh5321
@@ -34,10 +40,6 @@ jobs:
         run: |
           export TMPDIR=/home/runner/work/dotfiles/dotfiles/tmp
           mkdir -p "$TMPDIR"
-          sudo mount --bind /home/runner/work/dotfiles/dotfiles /nix
-          sudo mkdir -p /nix/store /nix/var
-          sudo chown -R runner:runner /nix
           nix build .#nixosConfigurations.redmi.config.system.build.toplevel \
             --option keep-going true \
             --max-jobs auto
-        
