@@ -1,77 +1,203 @@
-name: ci
+# .github/workflows/flake_build.yml
+name: flake_build
 
 on:
   push:
-    branches:
-      - main
   pull_request:
   workflow_dispatch:
 
-env:
-  flake: github:${{ github.repository }}/${{ github.sha }}
-  nix-conf: |-
-    accept-flake-config = true
-    always-allow-substitutes = true
-    builders-use-substitutes = true
-    max-jobs = 1
-
 jobs:
-  flake-check:
+  check-flake:
+    name: Check Flake Format
     runs-on: ubuntu-latest
     steps:
-      - uses: DeterminateSystems/nix-installer-action@v16
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
         with:
-          extra-conf: ${{ env.nix-conf }}
-      - uses: cachix/cachix-action@v16
-        if: ${{ github.event_name != 'pull_request' }}  # Only run on push/workflow_dispatch
-        with:
-          name: pkgss
-          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
-          extraPullNames: nix-community
-      - name: nix-flake-check
-        run: nix flake check '${{ env.flake }}'
+          install_url: https://nixos.org/nix/install
+          extra_nix_config: |
+            auto-optimise-store = true
+            experimental-features = nix-command flakes
+            # download-buffer-size = 500000000 # Re-evaluate if needed
+      - name: Check Flake Consistency
+        run: nix flake check -L # Verbose output on failure
 
-  flake-show:
+  build-configurations:
+    name: Build ${{ matrix.config-name }} Config
+    needs: [check-flake] # Run after flake check passes
     runs-on: ubuntu-latest
-    steps:
-      - uses: DeterminateSystems/nix-installer-action@v16
-        with:
-          extra-conf: ${{ env.nix-conf }}
-      - uses: cachix/cachix-action@v16
-        if: ${{ github.event_name != 'pull_request' }}  # Only run on push/workflow_dispatch
-        with:
-          name: pkgss
-          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
-          extraPullNames: nix-community
-      - name: nix-flake-show
-        run: nix flake show '${{ env.flake }}' --option allow-import-from-derivation true
-
-  build:
-    name: build ${{ matrix.attr }}
-    runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
+      fail-fast: false # Allow all configurations to finish even if one fails
       matrix:
-        attr:
-          - nixosConfigurations.dell
-          - nixosConfigurations.redmi
-    steps:
-      - uses: DeterminateSystems/nix-installer-action@v16
-        with:
-          extra-conf: ${{ env.nix-conf }}
-      - uses: cachix/cachix-action@v16
-        if: ${{ github.event_name != 'pull_request' }}  # Only run on push/workflow_dispatch
-        with:
-          name: pkgss
-          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
-          extraPullNames: nix-community
-      - name: Build package
-        run: nix build '${{ env.flake }}#${matrix.attr}'
+        config-name: [dell, redmi] # Define the configurations to check
+        # You could add more configurations here
 
-  check:
+    outputs: # Define job outputs to use later
+      config_name: ${{ matrix.config-name }}
+      status: ${{ steps.build_config.outputs.status }}
+      log_snippet: ${{ steps.build_config.outputs.log_snippet }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          install_url: https://nixos.org/nix/install
+          extra_nix_config: |
+            auto-optimise-store = true
+            experimental-features = nix-command flakes
+            # download-buffer-size = 500000000 # Re-evaluate if needed
+
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v16
+        # Push only on main branch merges
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        with:
+          name: pkgss # Replace with your actual cache name
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          # No CACHIX_SIGNING_KEY needed here
+
+      - name: Check ${{ matrix.config-name }} Configuration
+        id: build_config
+        run: |
+          CONFIG_NAME="${{ matrix.config-name }}"
+          LOG_FILE="build_${CONFIG_NAME}.log"
+          FILTERED_LOG_FILE="build_${CONFIG_NAME}_filtered.log"
+          MAX_SNIPPET_LINES=30 # Max lines for the snippet output/summary
+
+          echo "::group::Running Nix dry-run for ${CONFIG_NAME}"
+          # Run nix build, capture all output, add trace on error
+          if nix build ".#nixosConfigurations.${CONFIG_NAME}.config.system.build.toplevel" --dry-run --show-trace > "$LOG_FILE" 2>&1; then
+            echo "status=passed" >> $GITHUB_OUTPUT
+            echo "${CONFIG_NAME} configuration check completed successfully." > "$FILTERED_LOG_FILE"
+            echo "log_snippet=${CONFIG_NAME} configuration check completed successfully." >> $GITHUB_OUTPUT
+            echo "::notice file=$LOG_FILE::${CONFIG_NAME} build dry-run successful."
+          else
+            # Build failed
+            echo "status=failed" >> $GITHUB_OUTPUT
+            # Extract relevant lines: try errors/warnings first, fallback to tail, limit lines
+            {
+              echo "${CONFIG_NAME} check failed. Relevant log lines:"
+              grep -E '(error:|warning:)' "$LOG_FILE" || tail -n $((MAX_SNIPPET_LINES - 1)) "$LOG_FILE" # Leave 1 line for header
+            } | head -n $MAX_SNIPPET_LINES > "$FILTERED_LOG_FILE"
+            # Prepare snippet for output (needs careful escaping/handling for multiline)
+            # Use base64 encoding for safe transport as output, decode later
+            LOG_SNIPPET_B64=$(cat "$FILTERED_LOG_FILE" | base64 -w 0)
+            echo "log_snippet=${LOG_SNIPPET_B64}" >> $GITHUB_OUTPUT
+            echo "::error file=$LOG_FILE::${CONFIG_NAME} build dry-run failed. Check logs."
+          fi
+          echo "::endgroup::"
+          echo "--- Filtered Log Snippet (${CONFIG_NAME}) ---"
+          cat "$FILTERED_LOG_FILE"
+          echo "--- End Filtered Log Snippet ---"
+          # Also output the path for potential artifact upload if needed later
+          echo "log_path=${FILTERED_LOG_FILE}" >> $GITHUB_OUTPUT
+
+
+  summarize-and-notify:
+    name: Summarize and Notify
+    needs: [build-configurations] # Run after all matrix jobs finish
     runs-on: ubuntu-latest
-    needs: [flake-check, flake-show, build]
+    # Use 'if: always()' so this runs even if some matrix jobs fail
     if: always()
     steps:
-      - uses: re-actors/alls-green@release/v1
+      - name: Generate Job Summary
+        id: summary
+        run: |
+          echo "## NixOS Configuration Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          FAILURES=0
+          TOTAL=0
+          declare -A statuses
+          declare -A snippets # Store base64 snippets
+
+          # Extract results from matrix job outputs (passed as JSON)
+          MATRIX_CONTEXT='${{ toJson(needs.build-configurations.outputs) }}'
+          # Use jq to parse the JSON context (ensure jq is available or install it)
+          # sudo apt-get update && sudo apt-get install -y jq # Add this if needed in a previous step or use an action with jq
+
+          echo "$MATRIX_CONTEXT" | jq -c 'to_entries[] | .value' | while IFS= read -r job_output_json; do
+            TOTAL=$((TOTAL + 1))
+            config_name=$(echo "$job_output_json" | jq -r '.config_name')
+            status=$(echo "$job_output_json" | jq -r '.status')
+            snippet_b64=$(echo "$job_output_json" | jq -r '.log_snippet')
+
+            statuses[$config_name]=$status
+            snippets[$config_name]=$snippet_b64 # Store base64 snippet
+
+            echo "- **${config_name} Configuration:** ${status}" >> $GITHUB_STEP_SUMMARY
+            if [[ "$status" == "failed" ]]; then
+              FAILURES=$((FAILURES + 1))
+              # Decode base64 snippet for summary
+              DECODED_SNIPPET=$(echo "$snippet_b64" | base64 -d)
+              # Escape for markdown code block inside HTML details
+              ESCAPED_SNIPPET=$(echo "$DECODED_SNIPPET" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/`/\\`/g') # Added backtick escape
+              echo "<details><summary>${config_name} Log Snippet</summary>" >> $GITHUB_STEP_SUMMARY
+              echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+              echo "$ESCAPED_SNIPPET" >> $GITHUB_STEP_SUMMARY
+              echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+              echo "</details>" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "*Check workflow run logs for full details.*" >> $GITHUB_STEP_SUMMARY
+
+          # Set overall status output for notification
+          if [[ "$FAILURES" -gt 0 ]]; then
+            echo "overall_status=failed" >> $GITHUB_OUTPUT
+            echo "status_icon=❌" >> $GITHUB_OUTPUT
+            echo "status_text=Failed" >> $GITHUB_OUTPUT
+          else
+            echo "overall_status=passed" >> $GITHUB_OUTPUT
+            echo "status_icon=✅" >> $GITHUB_OUTPUT
+            echo "status_text=Passed" >> $GITHUB_OUTPUT
+          fi
+
+          # Prepare details string for Telegram (needs careful formatting)
+          details_str=""
+          for config_name in "${!statuses[@]}"; do
+             details_str+="*${config_name}*: \`${statuses[$config_name]}\`\n"
+          done
+          echo "details_string=${details_str}" >> $GITHUB_OUTPUT
+
+          # Prepare log snippets string for Telegram
+          log_snippets_str=""
+          for config_name in "${!statuses[@]}"; do
+             if [[ "${statuses[$config_name]}" == "failed" ]]; then
+               DECODED_SNIPPET=$(echo "${snippets[$config_name]}" | base64 -d)
+               # Escape for Telegram Markdown (mainly backticks)
+               ESCAPED_SNIPPET=$(echo "$DECODED_SNIPPET" | sed 's/`/\\`/g')
+               log_snippets_str+="\n\n*${config_name} Issues:*\n\`\`\`\n${ESCAPED_SNIPPET}\n\`\`\`\n"
+             fi
+          done
+          # Limit total length if necessary for Telegram
+          max_telegram_log_length=1000 # Example limit
+          if [ ${#log_snippets_str} -gt $max_telegram_log_length ]; then
+             log_snippets_str=$(echo -n "$log_snippets_str" | head -c $max_telegram_log_length)
+             log_snippets_str+="\n...(logs truncated)"
+          fi
+          echo "log_snippets_string=${log_snippets_str}" >> $GITHUB_OUTPUT
+
+
+      - name: Send Telegram Notification
+        # Use appleboy/telegram-action for simplicity
+        uses: appleboy/telegram-action@v1.0.1
         with:
-          jobs: ${{ toJSON(needs) }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          to: ${{ secrets.CHAT_ID }}
+          format: markdown # Use Markdown for formatting
+          message: |
+            ${{ steps.summary.outputs.status_icon }} NixOS Checks for *${{ github.repository }}* (${{ github.ref_name }}) *${{ steps.summary.outputs.status_text }}*
+
+            ${{ steps.summary.outputs.details_string }}
+            [View Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            Generated on $(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S %Z')
+            ${{ steps.summary.outputs.log_snippets_string }}
+          disable_web_page_preview: true
