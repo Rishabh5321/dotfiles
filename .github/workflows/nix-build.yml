@@ -35,4 +35,4 @@ jobs:
 
       - name: Build NixOS Configurations
         run: |
-          nix build .#nixosConfigurations.redmi.config.system.build.toplevel --no-link
+          nix build .#nixosConfigurations.redmi.config.system.build.toplevel
