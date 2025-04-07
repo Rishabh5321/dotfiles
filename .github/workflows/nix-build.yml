@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Maximize build disk space
+        uses: easimon/maximize-build-space@v10
+
       - uses: actions/checkout@v4
 
       - uses: cachix/install-nix-action@v26
@@ -22,9 +26,6 @@ jobs:
         with:
           name: rishabh5321
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      
-      - name: Maximize build disk space
-        uses: easimon/maximize-build-space@v10
 
       - name: Build NixOS Configurations
         run: |
