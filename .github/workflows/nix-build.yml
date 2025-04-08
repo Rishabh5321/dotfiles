@@ -5,24 +5,14 @@ on:
     branches: [ main ]
   pull_request:
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Maximize build disk space
+        uses: easimon/maximize-build-space@v10
 
-      - name: Setup massive build environment
-        run: |
-          # Create a temporary filesystem in memory
-          sudo mkdir -p /mnt/ramdisk
-          sudo mount -t tmpfs -o size=12G tmpfs /mnt/ramdisk
-          
-          # Create and mount Nix store on ramdisk
-          sudo mkdir -p /mnt/ramdisk/nix
-          sudo chown -R runner:runner /mnt/ramdisk/nix
-          sudo mkdir -p /nix
-          sudo mount --bind /mnt/ramdisk/nix /nix
+      - uses: actions/checkout@v4
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
@@ -30,37 +20,25 @@ jobs:
           extra_nix_config: |
             auto-optimise-store = true
             experimental-features = nix-command flakes
+            download-buffer-size = 500000000
             cores = 0
             max-jobs = auto
-            # Use temporary store in memory
-            store = /mnt/ramdisk/nix
 
-      - name: Install Cachix
+      - name: Remount /nix to use expanded disk space
         run: |
-          nix-env -iA cachix -f https://cachix.org/api/v1/install
-          cachix use rishabh5321
-        env:
-          CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          sudo mount --bind /home/runner/work/dotfiles/dotfiles /nix
+          sudo mkdir -p /nix/store /nix/var
+          sudo chown -R runner:runner /nix
 
-      - name: Build with aggressive space management
+      - uses: cachix/cachix-action@v12
+        with:
+          name: rishabh5321
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+
+      - name: Build NixOS Configurations
         run: |
-          # Reduce build memory requirements
-          export NIX_BUILD_CORES=2
-          
-          # Build with minimal space requirements
+          export TMPDIR=/home/runner/work/dotfiles/dotfiles/tmp
+          mkdir -p "$TMPDIR"
           nix build .#nixosConfigurations.redmi.config.system.build.toplevel \
             --option keep-going true \
-            --option sandbox false \
-            --max-jobs 2 \
-            --no-link
-
-      - name: Push to Cachix
-        run: |
-          # Find and push all built derivations
-          nix path-info --all | cachix push rishabh5321
-
-      - name: Cleanup
-        if: always()
-        run: |
-          sudo umount /nix || true
-          sudo umount /mnt/ramdisk || true
+            --max-jobs auto
