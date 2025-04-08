@@ -23,6 +23,7 @@ jobs:
             download-buffer-size = 500000000
             cores = 0
             max-jobs = auto
+            export NIX_IGNORE_SYMLINK_STORE=1
             store = /home/runner/work/dotfiles/dotfiles/nix
     
       - name: Remount /nix to use expanded disk space
