@@ -1,4 +1,4 @@
-name: Build NixOS configs and push to Cachix
+name: Build NixOS configs and push to Cachix (Dell)
 
 on:
   push:
@@ -44,5 +44,5 @@ jobs:
       - name: Build NixOS Configurations
         run: |
           echo "Starting Nix build..."
-          nix build .#nixosConfigurations.redmi.config.system.build.toplevel --json | cachix push rishabh5321
+          nix build .#nixosConfigurations.dell.config.system.build.toplevel --json | cachix push rishabh5321
           echo "Nix build finished."
