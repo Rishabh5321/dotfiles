@@ -3,6 +3,7 @@ name: Build NixOS configs and push to Cachix (Dell)
 on:
   push:
     branches: [ main ]
+  pull_request:
   workflow_dispatch:
 
 concurrency:
@@ -37,7 +38,7 @@ jobs:
             experimental-features = nix-command flakes
             cores = 0
             max-jobs = auto
-            # Add your cache URL first
+            download-buffer-size = 500000000
             substituters = https://rishabh5321.cachix.org https://cache.nixos.org https://nixpkgs-wayland.cachix.org https://nix-gaming.cachix.org
             trusted-public-keys = rishabh5321.cachix.org-1:mxfBIH2XElE6ieFXXYBA9Ame4mVTbAf1TGR843siggk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=
 
