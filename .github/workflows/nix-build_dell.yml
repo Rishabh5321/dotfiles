@@ -1,4 +1,4 @@
-name: Build NixOS configs and push to Cachix (Dell)
+name: Build NixOS Config for Dell
 
 on:
   push:
