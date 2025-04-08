@@ -1,4 +1,4 @@
-# .github/workflows/flake_build.yml
+# .github/workflows/flake_build.yml will change with nix-build_dell and nix_build_redmi
 name: flake_build
 
 on:
