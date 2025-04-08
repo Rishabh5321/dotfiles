@@ -23,7 +23,8 @@ jobs:
             download-buffer-size = 500000000
             cores = 0
             max-jobs = auto
-
+            store = /home/runner/work/dotfiles/dotfiles/nix
+    
       - name: Remount /nix to use expanded disk space
         run: |
           sudo mount --bind /home/runner/work/dotfiles/dotfiles /nix
@@ -42,3 +43,4 @@ jobs:
           nix build .#nixosConfigurations.redmi.config.system.build.toplevel \
             --option keep-going true \
             --max-jobs auto
+        
