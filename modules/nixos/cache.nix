@@ -1,7 +1,6 @@
 {
   nix.settings = {
     substituters = [
-      #"http://192.168.1.100:5500"
       "https://rishabh5321.cachix.org"
       "https://cache.nixos.org"
       "https://nixpkgs-wayland.cachix.org"
@@ -12,7 +11,6 @@
     ];
 
     trusted-substituters = [
-      #"http://192.168.1.100:5500"
       "https://rishabh5321.cachix.org"
       "https://cache.nixos.org"
       "https://nixpkgs-wayland.cachix.org"
