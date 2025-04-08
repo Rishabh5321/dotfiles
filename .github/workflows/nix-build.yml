@@ -10,45 +10,43 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Maximize build disk space
-        uses: easimon/maximize-build-space@v10
+      # Use an action that frees space on the root partition directly
+      - name: Free disk space on runner
+        uses: jlumbroso/free-disk-space@main # Or use a specific tag like @v1.3.1
+        with:
+          # Optional: Customize what to remove (see action docs)
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true # Add this if needed
+          swap-storage: true # Add this if needed
+
 
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Nix
+      - name: Install Nix (to default /nix location)
         uses: cachix/install-nix-action@v31
         with:
+          # No install_path needed, uses default /nix
           extra_nix_config: |
             auto-optimise-store = true
             experimental-features = nix-command flakes
-            # download-buffer-size = 500000000 # Consider if necessary, default might be fine
-            cores = 0 # Let Nix auto-detect
+            cores = 0
             max-jobs = auto
-            # If you need access tokens for private repos:
             # access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
       - name: Configure Cachix
-        uses: cachix/cachix-action@v16 # Use latest stable version
+        uses: cachix/cachix-action@v15
         with:
           name: rishabh5321
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-          # Optional: Only push specific paths if needed
-          # pushFilter: '.#nixosConfigurations.redmi.config.system.build.toplevel'
 
       - name: Build NixOS Configurations
         run: |
-          # TMPDIR setup is likely fine if needed, but ensure the path makes sense
-          # /tmp on the runner might have sufficient space after maximize-build-space
-          export TMPDIR=/home/runner/work/dotfiles/dotfiles/tmp # Or just use default /tmp
-          mkdir -p "$TMPDIR"
-
           echo "Starting Nix build..."
           nix build .#nixosConfigurations.redmi.config.system.build.toplevel \
             --option keep-going true \
-            --show-trace # Add for better debugging info on build failures
-          # max-jobs = auto is usually handled by nix config, specifying here is often redundant
-
+            --show-trace
           echo "Nix build finished."
-        # Optional: Add a timeout if builds are very long
-        # timeout-minutes: 120
