@@ -12,6 +12,12 @@ jobs:
     steps:
       - name: Maximize build disk space
         uses: easimon/maximize-build-space@v10
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 4096
+          remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
 
       - uses: actions/checkout@v4
 
@@ -25,11 +31,10 @@ jobs:
             cores = 0
             max-jobs = auto
 
-      - name: Remount /nix to use expanded disk space
+      - name: Configure Nix environment
         run: |
-          sudo mount --bind /home/runner/work/dotfiles/dotfiles /nix
-          sudo mkdir -p /nix/store /nix/var
-          sudo chown -R runner:runner /nix
+          echo "$HOME/.nix-profile/bin" >> $GITHUB_PATH
+          source $HOME/.nix-profile/etc/profile.d/nix.sh
 
       - uses: cachix/cachix-action@v12
         with:
@@ -38,8 +43,6 @@ jobs:
 
       - name: Build NixOS Configurations
         run: |
-          export TMPDIR=/home/runner/work/dotfiles/dotfiles/tmp
-          mkdir -p "$TMPDIR"
           nix build .#nixosConfigurations.redmi.config.system.build.toplevel \
             --option keep-going true \
             --max-jobs auto
