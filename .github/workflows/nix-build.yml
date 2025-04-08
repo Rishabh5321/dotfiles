@@ -10,48 +10,57 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Maximize build disk space
-        uses: easimon/maximize-build-space@v10
-        with:
-          root-reserve-mb: 512
-          swap-size-mb: 4096
-          remove-dotnet: 'true'
-          remove-android: 'true'
-          remove-haskell: 'true'
-
       - uses: actions/checkout@v4
 
-      - name: Install Nix with proper profile setup
+      - name: Setup massive build environment
+        run: |
+          # Create a temporary filesystem in memory
+          sudo mkdir -p /mnt/ramdisk
+          sudo mount -t tmpfs -o size=12G tmpfs /mnt/ramdisk
+          
+          # Create and mount Nix store on ramdisk
+          sudo mkdir -p /mnt/ramdisk/nix
+          sudo chown -R runner:runner /mnt/ramdisk/nix
+          sudo mkdir -p /nix
+          sudo mount --bind /mnt/ramdisk/nix /nix
+
+      - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
-          install_url: https://nixos.org/nix/install
           extra_nix_config: |
             auto-optimise-store = true
             experimental-features = nix-command flakes
-            download-buffer-size = 500000000
             cores = 0
             max-jobs = auto
+            # Use temporary store in memory
+            store = /mnt/ramdisk/nix
 
-      - name: Verify Nix installation
-        run: |
-          # Add Nix to PATH for subsequent steps
-          echo "$HOME/.nix-profile/bin" >> $GITHUB_PATH
-          echo "/nix/var/nix/profiles/default/bin" >> $GITHUB_PATH
-          
-          # Verify nix commands are available
-          which nix-env
-          which nix-build
-          nix --version
-
-      - name: Install and configure Cachix
+      - name: Install Cachix
         run: |
           nix-env -iA cachix -f https://cachix.org/api/v1/install
           cachix use rishabh5321
         env:
           CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-      - name: Build NixOS Configurations
+      - name: Build with aggressive space management
         run: |
+          # Reduce build memory requirements
+          export NIX_BUILD_CORES=2
+          
+          # Build with minimal space requirements
           nix build .#nixosConfigurations.redmi.config.system.build.toplevel \
             --option keep-going true \
-            --max-jobs auto
+            --option sandbox false \
+            --max-jobs 2 \
+            --no-link
+
+      - name: Push to Cachix
+        run: |
+          # Find and push all built derivations
+          nix path-info --all | cachix push rishabh5321
+
+      - name: Cleanup
+        if: always()
+        run: |
+          sudo umount /nix || true
+          sudo umount /mnt/ramdisk || true
