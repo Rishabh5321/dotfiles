@@ -1,5 +1,4 @@
 { username
-, inputs
 , pkgs
 , host
 , ...

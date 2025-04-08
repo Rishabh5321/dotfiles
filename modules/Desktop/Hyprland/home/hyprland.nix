@@ -2,7 +2,6 @@
 , username
 , pkgs
 , config
-, inputs
 , wallpaper
 , ...
 }:
