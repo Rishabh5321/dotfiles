@@ -2,9 +2,9 @@
 {
   programs.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.default;
+    package = pkgs.hyprland;
     portalPackage =
-      inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+      pkgs.xdg-desktop-portal-hyprland;
   };
   xdg.portal = {
     enable = true;

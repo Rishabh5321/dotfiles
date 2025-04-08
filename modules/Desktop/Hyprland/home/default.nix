@@ -26,7 +26,7 @@
     ./waybar/waybar-curved.nix
     ./wlogout.nix
     ./variable.nix
-    inputs.hyprland.homeManagerModules.default
+    #inputs.hyprland.homeManagerModules.default
   ];
 
   systemd.user.targets.hyprland-session.Unit.Wants = [
