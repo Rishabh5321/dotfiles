@@ -5,6 +5,7 @@ on:
     branches: [ main ]
   pull_request:
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,7 +13,8 @@ jobs:
       - name: Maximize build disk space
         uses: easimon/maximize-build-space@v10
 
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
@@ -20,25 +22,33 @@ jobs:
           extra_nix_config: |
             auto-optimise-store = true
             experimental-features = nix-command flakes
-            download-buffer-size = 500000000
-            cores = 0
+            # download-buffer-size = 500000000 # Consider if necessary, default might be fine
+            cores = 0 # Let Nix auto-detect
             max-jobs = auto
+            # If you need access tokens for private repos:
+            # access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
-      - name: Remount /nix to use expanded disk space
-        run: |
-          sudo mount --bind /home/runner/work/dotfiles/dotfiles /nix
-          sudo mkdir -p /nix/store /nix/var
-          sudo chown -R runner:runner /nix
-
-      - uses: cachix/cachix-action@v12
+      - name: Configure Cachix
+        uses: cachix/cachix-action@v16 # Use latest stable version
         with:
           name: rishabh5321
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          # Optional: Only push specific paths if needed
+          # pushFilter: '.#nixosConfigurations.redmi.config.system.build.toplevel'
 
       - name: Build NixOS Configurations
         run: |
-          export TMPDIR=/home/runner/work/dotfiles/dotfiles/tmp
+          # TMPDIR setup is likely fine if needed, but ensure the path makes sense
+          # /tmp on the runner might have sufficient space after maximize-build-space
+          export TMPDIR=/home/runner/work/dotfiles/dotfiles/tmp # Or just use default /tmp
           mkdir -p "$TMPDIR"
+
+          echo "Starting Nix build..."
           nix build .#nixosConfigurations.redmi.config.system.build.toplevel \
             --option keep-going true \
-            --max-jobs auto
+            --show-trace # Add for better debugging info on build failures
+          # max-jobs = auto is usually handled by nix config, specifying here is often redundant
+
+          echo "Nix build finished."
+        # Optional: Add a timeout if builds are very long
+        # timeout-minutes: 120
