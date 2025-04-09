@@ -1,25 +1,20 @@
-<h1 align="center">
-   <img src="./.github/assets/logo/nixos-logo.png " width="100px" /> 
-   <br>
-      Rishabh's Flakes
-   <br>
-   <div align="center">
-      <p></p>
-      <div align="center">
-         <a href="https://github.com/Rishabh5321/dotfiles">
-            <img src="https://img.shields.io/github/repo-size/Rishabh5321/dotfiles?color=B16286&labelColor=282828&style=for-the-badge&logo=github&logoColor=B16286">
-         </a>
-         <a href="https://nixos.org">
-            <img src="https://img.shields.io/badge/NixOS-unstable-blue.svg?style=for-the-badge&labelColor=282828&logo=NixOS&logoColor=458588&color=458588">
-         </a>
-         <a href="https://github.com/Rishabh5321/dotfiles/blob/main/LICENSE">
-            <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=282828&colorB=98971A&logo=unlicense&logoColor=98971A&"/>
-         </a>
-      </div>
-      <br>
-   </div>
-</h1>
-
+<div align="center">
+  <img src="./.github/assets/logo/nixos-logo.png" width="100px" alt="NixOS Logo" />
+  <br>
+  <h1>Rishabh's Flakes</h1>
+  <p>
+    <a href="https://github.com/Rishabh5321/dotfiles">
+      <img src="https://img.shields.io/github/repo-size/Rishabh5321/dotfiles?color=B16286&labelColor=282828&style=for-the-badge&logo=github&logoColor=B16286" alt="Repo Size">
+    </a>
+    <a href="https://nixos.org">
+      <img src="https://img.shields.io/badge/NixOS-unstable-blue.svg?style=for-the-badge&labelColor=282828&logo=NixOS&logoColor=458588&color=458588" alt="NixOS Unstable">
+    </a>
+    <a href="https://github.com/Rishabh5321/dotfiles/blob/main/LICENSE">
+      <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=282828&colorB=98971A&logo=unlicense&logoColor=98971A&" alt="License: MIT"/>
+    </a>
+  </p>
+  <br>
+</div>
 
 # NixOS Configuration for Laptop and Server
 
@@ -54,6 +49,7 @@ This configuration is designed to be modular and reusable across different machi
 ## Directory Structure
 
 The repository is organized as follows:
+
 ```
 .
 ├── containers/               # Containerized applications (e.g., Jellyfin, Plex, Sonarr)
@@ -102,6 +98,7 @@ The repository is organized as follows:
 - **Theming**: Styling and theming support via `stylix` and custom GRUB themes.
 
 ---
+
 ## Inputs
 
 The following inputs are used in this configuration:
@@ -144,13 +141,13 @@ Each configuration includes system-wide settings, theming, and user-specific con
 
 To use this configuration, clone the repository and navigate to the desired host configuration:
 
-
   ```bash
   git clone https://github.com/Rishabh5321/dotfiles
   cd dotfiles
   ```
 
 Apply the configuration to a specific host:
+
   ```bash
   sudo nixos-rebuild switch --flake .#redmi
   ```
@@ -190,18 +187,21 @@ Here are some screenshots of the system in action:
 ---
 
 ### 🖥️ **Desktop Environment with Custom Theming**
+
 ![Screenshot 1](screenshot/screenshot1.png)  
 *Experience a sleek and modern desktop environment with custom themes, widgets, and layouts tailored for productivity and aesthetics.*
 
 ---
 
 ### 🛠️ **Home-Manager Configuration for User-Specific Settings**
+
 ![Screenshot 2](screenshot/screenshot2.png)  
 *Customize your workflow with user-specific configurations managed by `home-manager`, including Alacritty, and more.*
 
 ---
 
 ### 🖋️ **Terminal Theme**
+
 ![Screenshot 3](screenshot/screenshot3.png)  
 *A beautifully themed setup with stylix to automatically get colors from wallpaper and apply it in gtk and qt themes.*
 
