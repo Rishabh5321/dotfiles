@@ -123,7 +123,7 @@
       youtube-music
       zed-editor
       zsh
-      
+
       #age
       #akuse
       #amdvlk
