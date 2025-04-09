@@ -3,14 +3,6 @@
 , ...
 }: {
   environment.systemPackages =
-    #let                                                                   # deadnix: skip
-    #cursor = pkgs.callPackage ../../pkgs/cursor.nix { };               # deadnix: skip  
-    #grayjay = pkgs.callPackage ../../pkgs/grayjay.nix { };             # deadnix: skip
-    #miru = pkgs.callPackage ../../pkgs/miru.nix { };                   # deadnix: skip
-    #houdoku = pkgs.callPackage ../../pkgs/houdoku.nix { };             # deadnix: skip
-    #grayjay_bye = pkgs.callPackage ../../pkgs/grayjay_bye.nix { };     # deadnix: skip
-    #akuse = pkgs.callPackage ../../pkgs/akuse.nix { };                 # deadnix: skip
-    #in                                                                    # deadnix: skip
     with pkgs; [
       act
       alacritty
@@ -21,6 +13,7 @@
       brave
       btop
       #clinfo
+      cachix
       cliphist
       cloudflare-warp
       code-cursor
@@ -53,6 +46,7 @@
       htop
       inputs.akuse-flake.packages.${system}.akuse
       #inputs.alejandra.defaultPackage.${system}
+      inputs.better-control.packages.${pkgs.system}.better-control
       inputs.grayjay.packages.${system}.grayjay
       inputs.thorium.packages."x86_64-linux".thorium-avx2
       inputs.zen-browser.packages."${system}".default
@@ -74,7 +68,9 @@
       mpv-unwrapped
       nautilus
       networkmanagerapplet
-      nix-serve
+      #nix-serve
+      nix-prefetch-github
+      nixpkgs-review
       nh
       nwg-look
       obsidian
@@ -127,7 +123,7 @@
       youtube-music
       zed-editor
       zsh
-      inputs.better-control.packages.${pkgs.system}.better-control
+      
       #age
       #akuse
       #amdvlk
