@@ -7,14 +7,14 @@
   nix.settings = {
     substituters = [
       "https://rishabh5321.cachix.org"
-      ];
+    ];
     trusted-substituters = [
       "https://rishabh5321.cachix.org"
-      ];
+    ];
     trusted-public-keys = [
       "rishabh5321.cachix.org-1:mxfBIH2XElE6ieFXXYBA9Ame4mVTbAf1TGR843siggk="
-      ];
-    };
+    ];
+  };
   imports = [
     ./auto-upgrade.nix
     ./bluetooth.nix
