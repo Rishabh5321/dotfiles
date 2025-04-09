@@ -1,9 +1,9 @@
-name: Build NixOS Config for Redmi
+name: Build NixOS Config for redmi
 
 on:
   push:
     branches: [ main ]
-  pull_request:  
+  pull_request:
   workflow_dispatch:
 
 concurrency:
@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build NixOS Config for Redmi    
+    name: Build NixOS Config for redmi
     runs-on: ubuntu-latest
     steps:
       - name: Free Disk Space
@@ -28,33 +28,99 @@ jobs:
           testing: false
 
       - name: Checkout repository
-        uses: actions/checkout@v4 # Use latest v4.x.x or specific commit SHA
+        uses: actions/checkout@v4
 
       - name: Install Nix
-        # Check for the latest version: https://github.com/cachix/install-nix-action/releases
-        uses: cachix/install-nix-action@v31
+        uses: cachix/install-nix-action@v31 # Consider checking for the latest version
         with:
           extra_nix_config: |
             auto-optimise-store = true
             experimental-features = nix-command flakes
-            cores = 0
+            # cores = 0 -> Use Nix's default detection or set explicitly if needed
             max-jobs = auto
             download-buffer-size = 500000000
             substituters = https://rishabh5321.cachix.org https://cache.nixos.org https://nixpkgs-wayland.cachix.org https://nix-gaming.cachix.org
             trusted-public-keys = rishabh5321.cachix.org-1:mxfBIH2XElE6ieFXXYBA9Ame4mVTbAf1TGR843siggk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=
 
-      - name: Setup Cachix Push
-        uses: cachix/cachix-action@v16
+      # Setup Cachix auth token for cachix watch-exec and push
+      - name: Setup Cachix Authentication
+        uses: cachix/cachix-action@v16 # Consider checking for the latest version
         with:
           name: rishabh5321
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}' # Ensure this secret is set in your repo
 
       - name: Check Flake
+        id: flake-check # Give the step an ID to reference its outcome
         run: nix flake check -L
 
-      - name: Build NixOS Configuration (redmi)
+      - name: Build NixOS Configuration (redmi) and Push to Cachix
+        id: build # Give the step an ID
+        # Use cachix watch-exec to automatically push derivations as they are built
+        # Redirect stderr and stdout to a file for potential upload on failure
+        # --print-build-logs shows logs even for cached derivations
         run: |
           echo "Starting Nix build for redmi..."
-          # Added -L for better logs on failure
-          nix build .#nixosConfigurations.redmi.config.system.build.toplevel -L --json | cachix push rishabh5321
+          cachix watch-exec rishabh5321 -- \
+            nix build .#nixosConfigurations.redmi.config.system.build.toplevel \
+            -L --print-build-logs --out-link result-redmi &> build_output.log
           echo "Nix build for redmi finished."
+        # Use continue-on-error so subsequent notification steps run even if build fails
+        continue-on-error: true
+
+      # Optional: Upload detailed build logs as an artifact on failure
+      - name: Upload Build Logs on Failure
+        uses: actions/upload-artifact@v4
+        if: steps.build.outcome == 'failure' # Only run if the build step failed
+        with:
+          name: nix-build-log-redmi
+          path: build_output.log
+
+      # --- Telegram Notifications ---
+      # Needs secrets: TELEGRAM_TOKEN (your bot token) and TELEGRAM_TO (your chat ID)
+
+      - name: Send Telegram message on Success
+        uses: appleboy/telegram-action@v1.0.0 # Check for latest version
+        if: steps.build.outcome == 'success' && steps.flake-check.outcome == 'success' # Only run if build AND check succeeded
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: markdown # Optional: Use markdown formatting
+          message: |
+            ✅ *Success:* Build NixOS Config for redmi
+            *Repo:* `${{ github.repository }}`
+            *Branch:* `${{ github.ref_name }}`
+            *Commit:* [${{ github.sha }}](${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }})
+            *Triggered by:* `${{ github.event_name }}` by `${{ github.actor }}`
+            *Workflow Run:* [Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+      - name: Send Telegram message on Failure
+        uses: appleboy/telegram-action@v1.0.0 # Check for latest version
+        # Run if flake check OR build failed
+        if: failure() && (steps.flake-check.outcome == 'failure' || steps.build.outcome == 'failure')
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: markdown # Optional: Use markdown formatting
+          message: |
+            ❌ *Failure:* Build NixOS Config for redmi
+            *Repo:* `${{ github.repository }}`
+            *Branch:* `${{ github.ref_name }}`
+            *Commit:* [${{ github.sha }}](${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }})
+            *Triggered by:* `${{ github.event_name }}` by `${{ github.actor }}`
+            *Status:* Flake Check `${{ steps.flake-check.outcome }}`, Build `${{ steps.build.outcome }}`
+            *Workflow Run:* [Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            ${{ steps.build.outcome == 'failure' && format('Build logs artifact available (if upload succeeded).') || '' }}
+
+      # Fail the overall job if the build step itself failed
+      # This step runs after notifications are sent
+      - name: Check build outcome
+        if: steps.build.outcome == 'failure'
+        run: |
+          echo "Nix build failed. See logs above or the uploaded artifact."
+          exit 1
+
+      - name: Check flake check outcome
+        if: steps.flake-check.outcome == 'failure'
+        run: |
+          echo "Nix flake check failed."
+          exit 1
