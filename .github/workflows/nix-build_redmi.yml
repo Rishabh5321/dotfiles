@@ -1,4 +1,4 @@
-name: Build NixOS Config for redmi
+name: Build NixOS Config for Redmi
 
 on:
   push:
@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build NixOS Config for redmi
+    name: Build NixOS Config for Redmi
     runs-on: ubuntu-latest
     steps:
       - name: Free Disk Space
@@ -76,13 +76,13 @@ jobs:
           path: build_output.log
 
       # --- Telegram Notifications ---
-      # Needs secrets: TELEGRAM_TOKEN (your bot token) and TELEGRAM_TO (your chat ID)
+      # Needs secrets: TELEGRAM_TOKEN (your bot token) and CHAT_ID (your chat ID)
 
       - name: Send Telegram message on Success
         uses: appleboy/telegram-action@v1.0.0 # Check for latest version
         if: steps.build.outcome == 'success' && steps.flake-check.outcome == 'success' # Only run if build AND check succeeded
         with:
-          to: ${{ secrets.TELEGRAM_TO }}
+          to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: markdown # Optional: Use markdown formatting
           message: |
@@ -98,7 +98,7 @@ jobs:
         # Run if flake check OR build failed
         if: failure() && (steps.flake-check.outcome == 'failure' || steps.build.outcome == 'failure')
         with:
-          to: ${{ secrets.TELEGRAM_TO }}
+          to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: markdown # Optional: Use markdown formatting
           message: |
