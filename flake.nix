@@ -36,7 +36,7 @@
   };
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, spicetify-nix, darkmatter-grub-theme, nix-flatpak, determinate, ... } @ inputs:
     let
-      inherit (self) outputs;
+      inherit (self) outputs
       username = "rishabh";
       wallpaper = "wall2.jpg";
       flakeDir = "/home/${username}/dotfiles";
