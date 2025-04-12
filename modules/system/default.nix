@@ -29,6 +29,7 @@
     ./usbguard.nix
     ./security.nix
     #./seanime.nix
+    ./upower.nix
   ];
 }
 
