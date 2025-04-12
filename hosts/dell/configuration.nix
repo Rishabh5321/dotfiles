@@ -5,11 +5,11 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules/nixos
+    ../../modules/system
     ./power.nix
     ./serve.nix
     ../../containers
-    ../../modules/Desktop/Hyprland/main
+    ../../modules/desktop/Hyprland/main
     ./intel-drivers.nix
     ./tailscale.nix
     #./amd-drivers.nix

@@ -6,10 +6,8 @@
 }: {
   # You can import other home-manager modules here
   imports = [
-    # If you want to use modules your own flake exports (from modules/home-manager):
-    # outputs.homeManagerModules.example
-    ../../modules/home-manager
-    ../../modules/Desktop/Hyprland/home
+    ../../modules/user
+    ../../modules/desktop/Hyprland/home
   ];
 
   nixpkgs = {

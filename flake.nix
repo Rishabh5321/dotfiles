@@ -54,7 +54,7 @@
         let
           system = "x86_64-linux";
           configurationModules = [
-            ./nixos/${hostname}/configuration.nix
+            ./hosts/${hostname}/configuration.nix
             darkmatter-grub-theme.nixosModule
             inputs.stylix.nixosModules.stylix
             nix-flatpak.nixosModules.nix-flatpak
@@ -72,7 +72,7 @@
               } ''
               date "+backup_%Y-%m-%d_%H-%M-%S" > $out
             '');
-            home-manager.users.${username} = import ./nixos/${hostname}/home.nix;
+            home-manager.users.${username} = import ./hosts/${hostname}/home.nix;
           };
           specialArgs = {
             inherit inputs outputs username home-manager wallpaper spicetify-nix flakeDir pkgs-stable system;

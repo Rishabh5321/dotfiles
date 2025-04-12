@@ -5,9 +5,9 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules/nixos
+    ../../modules/system
     ./power.nix
-    ../../modules/Desktop/Gnome/main
+    ../../modules/desktop/Gnome/main
     #./aagl.nix
   ];
 

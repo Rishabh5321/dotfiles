@@ -6,11 +6,9 @@
 }: {
   # You can import other home-manager modules here
   imports = [
-    # If you want to use modules your own flake exports (from modules/home-manager):
-    # outputs.homeManagerModules.example
-    ../../modules/home-manager
-    ../../modules/Desktop/Gnome/home
-    #../../modules/Desktop/Gnome/home
+    ../../modules/user
+    ../../modules/desktop/Gnome/home
+    #../../modules/desktop/Gnome/home
     #./gnome.nix
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
