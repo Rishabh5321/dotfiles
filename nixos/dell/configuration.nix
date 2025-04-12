@@ -9,7 +9,7 @@
     ./power.nix
     ./serve.nix
     ../../containers
-    ../../modules/Desktop/Gnome/main
+    ../../modules/Desktop/Hyprland/main
     ./intel-drivers.nix
     ./tailscale.nix
     #./amd-drivers.nix
