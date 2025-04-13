@@ -7,10 +7,10 @@
       package = pkgs.tela-icon-theme;
     };
     theme = {
-        name = "adw-gtk3";
-        #package = pkgs.adw-gtk3;
-      };
+      name = "adw-gtk3";
+      #package = pkgs.adw-gtk3;
     };
+  };
 
   # Qt configuration
   qt = {
