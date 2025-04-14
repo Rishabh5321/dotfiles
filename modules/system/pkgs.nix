@@ -4,6 +4,7 @@
 }: {
   environment.systemPackages =
     with pkgs; [
+      apkeep
       act
       alacritty
       android-tools
