@@ -32,24 +32,24 @@
   #drivers.amdgpu.enable = false;
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  networking.extraHosts = ''
-    127.0.0.1 bazarr.home
-    127.0.0.1 duplicati.home
-    127.0.0.1 file.home
-    127.0.0.1 flaresolverr.home
-    127.0.0.1 games.home
-    127.0.0.1 jackett.home
-    127.0.0.1 jellyfin.home
-    127.0.0.1 jellyseerr.home
-    127.0.0.1 portainer.home
-    127.0.0.1 prowlarr.home
-    127.0.0.1 qbittorrent.home
-    127.0.0.1 radarr.home
-    127.0.0.1 resilio.home
-    127.0.0.1 sonarr.home
-    127.0.0.1 syncify.home
-    127.0.0.1 tachiyomi.home
-  '';
+  # networking.extraHosts = ''
+  #   127.0.0.1 bazarr.home
+  #   127.0.0.1 duplicati.home
+  #   127.0.0.1 file.home
+  #   127.0.0.1 flaresolverr.home
+  #   127.0.0.1 games.home
+  #   127.0.0.1 jackett.home
+  #   127.0.0.1 jellyfin.home
+  #   127.0.0.1 jellyseerr.home
+  #   127.0.0.1 portainer.home
+  #   127.0.0.1 prowlarr.home
+  #   127.0.0.1 qbittorrent.home
+  #   127.0.0.1 radarr.home
+  #   127.0.0.1 resilio.home
+  #   127.0.0.1 sonarr.home
+  #   127.0.0.1 syncify.home
+  #   127.0.0.1 tachiyomi.home
+  # '';
 
   networking.hostName = "dell"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
