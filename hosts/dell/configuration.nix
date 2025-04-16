@@ -15,22 +15,26 @@
     #./amd-drivers.nix
   ];
 
-  services.avahi = {
-    enable = true;
-    publish = {
-      enable = true;
-      addresses = true;
-      domain = true;
-      hinfo = true;
-      userServices = true;
-      workstation = true;
-    };
-    nssmdns4 = true; # Enable mDNS resolution
-  };
+  # services.avahi = {
+  #   enable = true;
+  #   publish = {
+  #     enable = true;
+  #     addresses = true;
+  #     domain = true;
+  #     hinfo = true;
+  #     userServices = true;
+  #     workstation = true;
+  #   };
+  #   nssmdns4 = true; # Enable mDNS resolution
+  # };
 
   drivers.intel.enable = true;
   #drivers.amdgpu.enable = false;
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  networking.extraHosts = ''
+   127.0.0.1 sonarr.home
+  '';
 
   networking.hostName = "dell"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
