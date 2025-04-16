@@ -33,7 +33,7 @@
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.extraHosts = ''
-   127.0.0.1 sonarr.home
+    127.0.0.1 sonarr.home
   '';
 
   networking.hostName = "dell"; # Define your hostname.
