@@ -25,12 +25,11 @@
     #./virtualisation.nix
 
     ./gaming.nix
-    ./dns.nix
     ./usbguard.nix
     ./security.nix
     #./seanime.nix
     ./upower.nix
-    ./dns.nix
+    #./dns.nix
   ];
 }
 
