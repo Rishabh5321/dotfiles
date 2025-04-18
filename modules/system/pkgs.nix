@@ -82,7 +82,7 @@
       podman-tui
       podman-desktop
       #pods
-      popcorntime
+      #popcorntime
       #protonup-qt
       qbittorrent
       qogir-icon-theme
