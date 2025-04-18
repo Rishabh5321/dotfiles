@@ -73,6 +73,7 @@
       nix-prefetch-github
       nixpkgs-review
       nh
+      nload
       nwg-look
       obsidian
       onlyoffice-bin_latest
