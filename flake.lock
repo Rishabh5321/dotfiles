@@ -896,11 +896,11 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1744992674,
-        "narHash": "sha256-6AEr+Ej/f4QmGw2OcpPsoj4Ru3oGmX3rv2tro8ev0ag=",
+        "lastModified": 1745008338,
+        "narHash": "sha256-fm42BFmVRoKQhxtGKY/PjrgHJfDWJA2itA/QcOaVitc=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "805c8f56e8ebac1527176fc9d551f73c4cd886f6",
+        "rev": "787480b8179a8536e25107bf4b3e7edb0bae13a3",
         "type": "github"
       },
       "original": {
