@@ -25,7 +25,10 @@
 This repository contains the NixOS configuration for both a laptop and a server. The configuration is managed using Nix flakes, which allows for reproducible and declarative system setups.
 
 <div align="center">
+
 ## 🖼️ Configuration Showcase
+
+</div>
 
 <div align="center" style="overflow-x: auto; white-space: nowrap;">
   <div style="display: inline-block; width: 80%; margin-right: 20px; vertical-align: top;">
