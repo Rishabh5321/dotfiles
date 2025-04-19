@@ -12,6 +12,10 @@
     <a href="https://github.com/Rishabh5321/dotfiles/blob/main/LICENSE">
       <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=282828&colorB=98971A&logo=unlicense&logoColor=98971A&" alt="License: MIT"/>
     </a>
+    </a>
+     <a href="https://github.com/Rishabh5321/dotfiles/commits/main">
+      <img src="https://img.shields.io/github/last-commit/Rishabh5321/dotfiles?color=D65D0E&labelColor=282828&style=for-the-badge&logo=github&logoColor=D65D0E" alt="Last Commit">
+    </a>
   </p>
   <br>
 </div>
@@ -19,6 +23,42 @@
 # NixOS Configuration for Laptop and Server
 
 This repository contains the NixOS configuration for both a laptop and a server. The configuration is managed using Nix flakes, which allows for reproducible and declarative system setups.
+
+<div align="center">
+## 🖼️ Configuration Showcase
+
+<div align="center" style="overflow-x: auto; white-space: nowrap;">
+  <div style="display: inline-block; width: 80%; margin-right: 20px; vertical-align: top;">
+    <img src="screenshot/screenshot1.png" alt="Desktop Environment" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <h3>🖥️ Desktop Environment with Custom Theming</h3>
+    <p>Sleek and modern desktop with custom themes, widgets, and layouts for productivity and aesthetics.</p>
+  </div>
+
+  <div style="display: inline-block; width: 80%; margin-right: 20px; vertical-align: top;">
+    <img src="screenshot/screenshot2.png" alt="Home Manager Config" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <h3>🛠️ Home-Manager Configuration</h3>
+    <p>User-specific settings managed by home-manager, including terminal and shell customization.</p>
+  </div>
+
+  <div style="display: inline-block; width: 80%; vertical-align: top;">
+    <img src="screenshot/screenshot3.png" alt="Terminal Theme" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <h3>🖋️ Terminal Theme</h3>
+    <p>Beautifully themed terminal using stylix to automatically apply wallpaper colors.</p>
+  </div>
+</div>
+</div>
+
+<style>
+  @media (max-width: 768px) {
+    div[style*="inline-block"] {
+      display: block !important;
+      width: 100% !important;
+      margin-right: 0 !important;
+      margin-bottom: 30px;
+    }
+  }
+</style>
+
 
 ## Table of Contents
 
@@ -36,7 +76,6 @@ This repository contains the NixOS configuration for both a laptop and a server.
   - [Common Configuration](#common-configuration)
   - [Host-Specific Configuration](#host-specific-configuration)
 - [Dependencies](#dependencies)
-- [Screenshots](#screenshots)
 - [License](#license)
 
 ## Overview
@@ -47,24 +86,27 @@ This configuration is designed to be modular and reusable across different machi
 
 The repository is organized as follows:
 
-```
-.
-├── containers/               # Containerized applications (e.g., Jellyfin, Plex, Sonarr)
-├── modules/                  # Modular configurations for desktop environments and tools
-│   ├── Desktop/              # Desktop environment configurations (e.g., Hyprland, GNOME, KDE)
-│   ├── home-manager/         # User-specific configurations (e.g., Neovim, Alacritty, Zsh)
-│   └── nixos/                # System-wide NixOS modules (e.g., Bluetooth, Gaming, Virtualization)
-├── nixos/                    # Host-specific configurations
-│   ├── dell/                 # Configuration for Dell systems
-│   └── redmi/                # Configuration for Redmi systems
-├── overlays/                 # Custom Nixpkgs overlays
-├── pkgs/                     # Custom packages (e.g., Grayjay, cursor themes)
-├── screenshot/               # Screenshots of the system in action
-├── wallpapers/               # Collection of wallpapers
-├── flake.lock                # Nix flake lock file
-├── flake.nix                 # Nix flake configuration
-├── LICENSE                   # License file
-└── README.md                 # This documentation
+```bash
+. ├── containers/           # Containerized applications (e.g., Jellyfin, Plex, Sonarr) 
+  ├── hosts/                # Host-specific configurations 
+  │ ├── dell/               # Configuration for Dell systems 
+  │ │ ├── configuration.nix # System-wide configuration for Dell 
+  │ │ └── home.nix          # User-specific configuration for Dell 
+  │ └── redmi/              # Configuration for Redmi systems 
+  │ ├── configuration.nix   # System-wide configuration for Redmi 
+  │ └── home.nix            # User-specific configuration for Redmi 
+  ├── modules/              # Modular configurations for desktop environments and tools 
+  │ ├── desktop/            # Desktop environment configurations (e.g., GNOME, KDE, Hyprland) 
+  │ ├── user/               # User-specific configurations (e.g., Neovim, Alacritty, Zsh) 
+  │ └── system/             # System-wide NixOS modules (e.g., Bluetooth, Gaming, Virtualization) 
+  ├── overlays/             # Custom Nixpkgs overlays 
+  ├── pkgs/                 # Custom packages 
+  ├── screenshot/           # Screenshots of the system in action 
+  ├── wallpapers/           # Collection of wallpapers 
+  ├── flake.lock            # Nix flake lock file 
+  ├── flake.nix             # Nix flake configuration 
+  ├── LICENSE               # License file 
+  └── README.md             # This documentation
 ```
 
 ## Features
@@ -105,13 +147,12 @@ The following inputs are used in this configuration:
 - `home-manager`: Manages user environments using Nix.
 - `stylix`: Provides theming and styling for NixOS.
 - `spicetify-nix`: Customizes Spotify with themes and extensions.
-- `alejandra`: A Nix code formatter.
+- `better-control`: Custom flake for better control utilities.
 - `zen-browser`: A minimalistic browser configuration.
 - `nix-flatpak`: Integrates Flatpak applications with NixOS.
 - `darkmatter-grub-theme`: A GRUB theme for a dark aesthetic.
 - `nix-gaming`: Optimizations and packages for gaming on NixOS.
-
-## Outputs
+- `grayjay`, `seanime`, `thorium`, `akuse-flake`: Custom flakes for additional functionality.
 
 ### Packages
 
@@ -182,29 +223,6 @@ This configuration relies on several external inputs and modules. Ensure that al
 Here are some screenshots of the system in action:
 
 ---
-
-### 🖥️ **Desktop Environment with Custom Theming**
-
-![Screenshot 1](screenshot/screenshot1.png)  
-*Experience a sleek and modern desktop environment with custom themes, widgets, and layouts tailored for productivity and aesthetics.*
-
----
-
-### 🛠️ **Home-Manager Configuration for User-Specific Settings**
-
-![Screenshot 2](screenshot/screenshot2.png)  
-*Customize your workflow with user-specific configurations managed by `home-manager`, including Alacritty, and more.*
-
----
-
-### 🖋️ **Terminal Theme**
-
-![Screenshot 3](screenshot/screenshot3.png)  
-*A beautifully themed setup with stylix to automatically get colors from wallpaper and apply it in gtk and qt themes.*
-
----
-
-✨ **Explore the full potential of this NixOS configuration!**
 
 ## License
 
