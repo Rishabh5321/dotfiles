@@ -51,18 +51,6 @@ This repository contains the NixOS configuration for both a laptop and a server.
 </div>
 </div>
 
-<style>
-  @media (max-width: 768px) {
-    div[style*="inline-block"] {
-      display: block !important;
-      width: 100% !important;
-      margin-right: 0 !important;
-      margin-bottom: 30px;
-    }
-  }
-</style>
-
-
 ## Table of Contents
 
 - [Overview](#overview)
