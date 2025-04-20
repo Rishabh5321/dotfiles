@@ -100,6 +100,7 @@
       stremio
       swappy
       swww
+      tailscale
       toipe
       tela-icon-theme
       telegram-desktop
