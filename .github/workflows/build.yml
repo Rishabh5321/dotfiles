@@ -1,0 +1,90 @@
+name: Build NixOS Configs
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build NixOS Config - ${{ matrix.hostname }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        hostname: [dell, redmi] 
+        
+    steps:
+      - name: Free Disk Space
+        uses: endersonmenezes/free-disk-space@v2
+        with:
+          remove_android: true
+          remove_dotnet: true
+          remove_haskell: true
+          remove_tool_cache: true
+          remove_packages: "azure-cli google-cloud-cli microsoft-edge-stable google-chrome-stable firefox postgresql* temurin-* *llvm* mysql* dotnet-sdk-*"
+          remove_packages_one_command: true
+          remove_folders: "/usr/share/swift /usr/share/miniconda /usr/share/az* /usr/share/glade* /usr/local/lib/node_modules /usr/local/share/chromium /usr/local/share/powershell"
+          testing: false
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            auto-optimise-store = true
+            experimental-features = nix-command flakes
+            max-jobs = auto
+            download-buffer-size = 500000000
+            substituters = https://rishabh5321.cachix.org https://cache.nixos.org https://nixpkgs-wayland.cachix.org https://nix-gaming.cachix.org
+            trusted-public-keys = rishabh5321.cachix.org-1:mxfBIH2XElE6ieFXXYBA9Ame4mVTbAf1TGR843siggk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=
+
+      - name: Setup Cachix Authentication
+        uses: cachix/cachix-action@v16
+        with:
+          name: rishabh5321
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+
+      - name: Check Flake
+        id: flake-check
+        run: nix flake check -L
+
+      - name: Build NixOS Configuration and Push to Cachix
+        id: build
+        run: |
+          echo "Starting Nix build for ${{ matrix.hostname }}..."
+          cachix watch-exec rishabh5321 -- \
+            nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.toplevel \
+            -L --print-build-logs --out-link result-${{ matrix.hostname }} &> build_output.log
+          echo "Nix build for ${{ matrix.hostname }} finished."
+        continue-on-error: true
+
+      - name: Upload Build Logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log-${{ matrix.hostname }}
+          path: build_output.log
+
+      - name: Send Telegram message with Build Log
+        uses: appleboy/telegram-action@v1.0.1
+        with:
+          to: ${{ secrets.CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            🛠️ *Build:* `${{ matrix.hostname }}`
+            *Date:* `${{ steps.date.outputs.date }}`
+            *Flake Check:* `${{ steps.flake-check.outcome }}`
+            *Build Status:* `${{ steps.build.outcome }}`
+            *Workflow:* [Run Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          document: build_output.log
+
+      - name: Get Date
+        id: date
+        run: echo "date=$(date -u '+%Y-%m-%d %H:%M UTC')" >> "$GITHUB_OUTPUT"
