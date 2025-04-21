@@ -1,4 +1,4 @@
-name: Build All NixOS Hosts
+name: Build_Config
 
 on:
   push:
@@ -32,7 +32,7 @@ jobs:
           echo "matrix={\"hostname\":$HOSTS}" >> "$GITHUB_OUTPUT"
 
   build:
-    name: Build ${{ matrix.hostname }}
+    name: Build_Config ${{ matrix.hostname }}
     needs: generate-matrix
     runs-on: ubuntu-latest
     strategy:
@@ -74,7 +74,7 @@ jobs:
         run: nix flake check -L
 
       - name: Build and push to Cachix
-        id: build
+        id: Build_Config
         run: |
           echo "Starting Nix build for ${{ matrix.hostname }}..."
           cachix watch-exec rishabh5321 -- \
