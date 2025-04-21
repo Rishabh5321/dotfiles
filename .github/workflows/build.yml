@@ -159,6 +159,7 @@ jobs:
             ${{ steps.final-status.outputs.status == 'success' && '✅' || '❌' }} *Build:* `${{ matrix.hostname }}`
             *Date:* `${{ steps.get-date.outputs.date }}`
             *Flake Check:* `${{ steps.flake-check.outcome }}`
+            *Branch:* `${{ github.ref_name }}`
             *Build Status:* `${{ steps.build.outcome }}`
             *Workflow:* [Run Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
           document: combined_logs.txt
