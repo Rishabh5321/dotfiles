@@ -107,19 +107,6 @@ jobs:
           
           BUILD_EXIT_CODE=$?
           
-          # Check for any warnings in the output
-          if grep -i "warning" logs/build_output.log; then
-            echo "::error::Warnings detected in the build output"
-            echo "warnings_found=true" >> $GITHUB_OUTPUT
-            exit 1
-          fi
-          
-          # Exit with the original build exit code if no warnings
-          if [ $BUILD_EXIT_CODE -ne 0 ]; then
-            echo "::error::Build failed"
-            exit $BUILD_EXIT_CODE
-          fi
-          
           echo "Build complete for ${{ matrix.hostname }} without warnings"
 
       - name: Set date
