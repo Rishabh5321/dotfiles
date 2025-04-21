@@ -70,47 +70,95 @@ jobs:
           name: rishabh5321
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
-      - name: Run flake check
+      - name: Run flake check and check for warnings
         id: flake-check
-        run: nix flake check -L
+        run: |
+          mkdir -p logs
+          
+          # Run flake check and capture output
+          set +e
+          nix flake check -L 2>&1 | tee logs/flake_check.log
+          FLAKE_EXIT_CODE=$?
+          
+          # Check for warnings in the flake check output
+          if grep -i "warning" logs/flake_check.log; then
+            echo "::error::Warnings detected in the flake check output"
+            echo "warnings_found=true" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+          
+          # Exit with the original flake check exit code if no warnings
+          exit $FLAKE_EXIT_CODE
 
-      - name: Build and push to Cachix
+      - name: Build and check for warnings
         id: build
         run: |
           echo "Starting Nix build for ${{ matrix.hostname }}..."
+          
+          # Create a temporary file for capturing output
+          mkdir -p logs
+          
+          # Run the build and capture output to both stdout and a file
+          set +e  # Don't exit on error yet
+          
           cachix watch-exec rishabh5321 -- \
             nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.toplevel \
-            -L --print-build-logs --out-link result-${{ matrix.hostname }} &> build_output.log
-          echo "Build complete for ${{ matrix.hostname }}"
-        continue-on-error: true
+            -L --print-build-logs --out-link result-${{ matrix.hostname }} 2>&1 | tee logs/build_output.log
+          
+          BUILD_EXIT_CODE=$?
+          
+          # Check for any warnings in the output
+          if grep -i "warning" logs/build_output.log; then
+            echo "::error::Warnings detected in the build output"
+            echo "warnings_found=true" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+          
+          # Exit with the original build exit code if no warnings
+          if [ $BUILD_EXIT_CODE -ne 0 ]; then
+            echo "::error::Build failed"
+            exit $BUILD_EXIT_CODE
+          fi
+          
+          echo "Build complete for ${{ matrix.hostname }} without warnings"
 
       - name: Set date
         id: get-date
+        if: always()
         run: echo "date=$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_OUTPUT"
 
       - name: Determine final status
         id: final-status
+        if: always()
         run: |
           flake_status="${{ steps.flake-check.outcome }}"
           build_status="${{ steps.build.outcome }}"
           if [[ "$flake_status" == "success" && "$build_status" == "success" ]]; then
             echo "status=success" >> "$GITHUB_OUTPUT"
-          elif [[ "$flake_status" == "failure" && "$build_status" == "failure" ]]; then
-            echo "status=error" >> "$GITHUB_OUTPUT"
           else
-            echo "status=warning" >> "$GITHUB_OUTPUT"
+            echo "status=error" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Send Telegram message with log
+      # Combine logs for Telegram
+      - name: Prepare logs for Telegram
+        if: always()
+        run: |
+          echo "=== FLAKE CHECK LOG ===" > combined_logs.txt
+          cat logs/flake_check.log >> combined_logs.txt
+          echo -e "\n\n=== BUILD OUTPUT LOG ===" >> combined_logs.txt
+          cat logs/build_output.log >> combined_logs.txt
+
+      - name: Send Telegram message with logs
+        if: always()
         uses: appleboy/telegram-action@v1.0.1
         with:
           to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: markdown
           message: |
-            ${{ steps.final-status.outputs.status == 'success' && '✅' || steps.final-status.outputs.status == 'warning' && '⚠️' || '❌' }} *Build:* `${{ matrix.hostname }}`
+            ${{ steps.final-status.outputs.status == 'success' && '✅' || '❌' }} *Build:* `${{ matrix.hostname }}`
             *Date:* `${{ steps.get-date.outputs.date }}`
             *Flake Check:* `${{ steps.flake-check.outcome }}`
             *Build Status:* `${{ steps.build.outcome }}`
             *Workflow:* [Run Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
-          document: build_output.log
+          document: combined_logs.txt
