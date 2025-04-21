@@ -29,7 +29,7 @@
     ./security.nix
     #./seanime.nix
     ./upower.nix
-    #./dns.nix
+    ./dns.nix
   ];
 }
 
