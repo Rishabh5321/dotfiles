@@ -1,15 +1,11 @@
-{pkgs, inputs, ...}{
+{pkgs, inputs, ...}:
+{
   # home.nix
   imports = [
     inputs.zen-browser.homeModules.beta
     # or inputs.zen-browser.homeModules.twilight
     # or inputs.zen-browser.homeModules.twilight-official
   ];
-
-    environment.systemPackages =
-        with pkgs; [
-            inputs.zen-browser.packages."${system}".beta 
-            ];
 
     programs.zen-browser = {
         enable = true;
