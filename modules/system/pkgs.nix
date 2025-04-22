@@ -50,7 +50,6 @@
       inputs.better-control.packages.${pkgs.system}.better-control
       inputs.grayjay.packages.${system}.grayjay
       inputs.thorium.packages."x86_64-linux".thorium-avx2
-      inputs.zen-browser.packages."${system}".default
       jellyfin-media-player
       kdePackages.dolphin
       kdePackages.qtstyleplugin-kvantum

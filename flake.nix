@@ -18,7 +18,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     better-control.url = "github:rishabh5321/better-control-flake";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser = {
+        url = "github:0xc000022070/zen-browser-flake"; 
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
     akuse-flake.url = "github:Rishabh5321/akuse-flake";
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
