@@ -91,11 +91,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1745383949,
-        "narHash": "sha256-C8O3+d6WUb/2NfcQ5rjae9MM6yhLn5BVEu4zR1HDmFA=",
+        "lastModified": 1745415990,
+        "narHash": "sha256-XuFjHcsgUJnihT/lJk2jeiOLthMCYjtY708N05YLrDw=",
         "owner": "rishabh5321",
         "repo": "better-control-flake",
-        "rev": "d73663f07f30e29600f7ad29606a016b722cb7a7",
+        "rev": "1774c76fa17f7774929e0db059dba182136531e0",
         "type": "github"
       },
       "original": {
