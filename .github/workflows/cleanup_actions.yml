@@ -1,5 +1,8 @@
 name: "Cleanup Old Workflow Runs"
 concurrency: "cleanup-workflow"  # Prevents overlapping runs
+permissions:
+  contents: read
+  pull-requests: write
 
 on:
   schedule:

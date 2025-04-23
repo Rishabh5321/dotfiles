@@ -1,4 +1,7 @@
 name: Build ISO and Create Release
+permissions:
+  contents: read
+  pull-requests: write
 
 on:
   workflow_dispatch:  # Allows manual triggering of the workflow
