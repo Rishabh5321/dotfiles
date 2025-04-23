@@ -35,7 +35,7 @@
       uris = [ "qemu:///system" ];
     };
   };
-  
+
   modules.home.services.seanime.enable = true;
 
 }
