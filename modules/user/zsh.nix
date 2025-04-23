@@ -1,5 +1,6 @@
 { username
 , wallpaper
+, lib
 , ...
 }: {
   programs.zsh = {
@@ -13,7 +14,7 @@
       plugins = [ "git" ];
       theme = "intheloop";
     };
-    initExtraFirst = ''
+    initContent = lib.mkBefore ''
       export PATH=$PATH:/run/current-system/sw/bin
       HISTFILE=~/.histfile
       HISTSIZE=1000
@@ -22,9 +23,6 @@
       unsetopt beep extendedglob notify
       autoload -Uz compinit
       compinit
-    '';
-
-    initExtra = ''
       zstyle ":completion:*" menu select
       zstyle ":completion:*" matcher-list "" "m:{a-z0A-Z}={A-Za-z}" "r:|=*" "l:|=* r:|=*"
       if type nproc &>/dev/null; then
