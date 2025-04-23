@@ -129,6 +129,14 @@ jobs:
             echo "status=error" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Get branch name
+        id: get-branch
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "branch=${{ github.event.pull_request.base.ref }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "branch=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+
       # Combine logs for Telegram
       - name: Prepare logs for Telegram
         if: always()
@@ -149,7 +157,7 @@ jobs:
             ${{ steps.final-status.outputs.status == 'success' && '✅' || '❌' }} *Build:* `${{ matrix.hostname }}`
             *Date:* `${{ steps.get-date.outputs.date }}`
             *Flake Check:* `${{ steps.flake-check.outcome }}`
-            *Branch:* `${{ github.ref_name }}`
+            *Branch:* `${{ steps.get-branch.outputs.branch }}`
             *Build Status:* `${{ steps.build.outcome }}`
             *Workflow:* [Run Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
           document: combined_logs.txt
