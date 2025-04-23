@@ -40,6 +40,7 @@
         source $HOME/.zshrc-personal
       fi
     '';
+
     shellAliases = {
       # record = "wf-recorder --audio=alsa_output.pci-0000_08_00.6.analog-stereo.monitor -f $HOME/Videos/$(date +'%Y%m%d%H%M%S_1.mp4')";
 
@@ -60,8 +61,11 @@
 
       # Nixos
       cdnix = "cd ~/dotfiles && code ~/dotfiles";
-      ns = "nix-shell --run zsh";
-      nix-shell = "nix-shell --run zsh";
+      # Remove or comment out the problematic alias:
+      # nix-shell = "nix-shell --run zsh";
+      # You can keep this one if you like, but understand it runs zsh *within* the shell, not enter it interactively:
+      # ns = "nix-shell --run zsh";
+
       nix-switch = "cd ~/dotfiles && nh os switch ~/dotfiles";
       nix-switchg = "cd ~/dotfiles && git pull && nh os switch ~/dotfiles";
       nix-switchu = "cd ~/dotfiles && git pull && nh os switch -u ~/dotfiles";

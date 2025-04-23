@@ -17,7 +17,7 @@
     ./libnotify.nix
     #./mangohud.nix
     #./neovim.nix
-    ./oh-my-posh.nix
+    #./oh-my-posh.nix
     #./plasma.nix
     #./rofi/rofi.nix
     ./spicetify.nix
@@ -35,8 +35,7 @@
       uris = [ "qemu:///system" ];
     };
   };
-
-
+  
   modules.home.services.seanime.enable = true;
 
 }
