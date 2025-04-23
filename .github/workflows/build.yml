@@ -136,6 +136,7 @@ jobs:
             echo "branch=${{ github.event.pull_request.base.ref }}" >> "$GITHUB_OUTPUT"
           else
             echo "branch=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+          fi
 
       # Combine logs for Telegram
       - name: Prepare logs for Telegram
