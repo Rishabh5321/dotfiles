@@ -17,11 +17,11 @@ in
       vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
     };
 
-    
-  environment.sessionVariables = {
-    vblank_mode = "3"; # 3 = triple buffering
-  };
-  
+
+    environment.sessionVariables = {
+      vblank_mode = "3"; # 3 = triple buffering
+    };
+
     # OpenGL
     hardware.graphics = {
       extraPackages = with pkgs; [
