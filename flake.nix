@@ -31,7 +31,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-gaming.url = "github:fufexan/nix-gaming";
-    grayjay.url = "github:rishabh5321/grayjay-flake";
     seanime.url = "github:rishabh5321/seanime-flake";
     thorium.url = "github:Rishabh5321/thorium_flake";
 

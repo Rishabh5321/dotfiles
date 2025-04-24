@@ -143,7 +143,7 @@ The following inputs are used in this configuration:
 - `nix-flatpak`: Integrates Flatpak applications with NixOS.
 - `darkmatter-grub-theme`: A GRUB theme for a dark aesthetic.
 - `nix-gaming`: Optimizations and packages for gaming on NixOS.
-- `grayjay`, `seanime`, `thorium`, `akuse-flake`: Custom flakes for additional functionality.
+- `seanime`, `thorium`, `akuse-flake`: Custom flakes for additional functionality.
 
 ### Packages
 
