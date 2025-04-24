@@ -29,7 +29,7 @@ in
           "middle" = [
             "clock"
             "media"
-           ]; # Add this line
+          ]; # Add this line
           "right" = [
             "volume"
             "network"
