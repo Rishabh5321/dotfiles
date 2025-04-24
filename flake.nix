@@ -17,12 +17,10 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    better-control.url = "github:rishabh5321/better-control-flake";
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    akuse-flake.url = "github:Rishabh5321/akuse-flake";
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
     };
@@ -31,9 +29,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-gaming.url = "github:fufexan/nix-gaming";
+    akuse-flake.url = "github:Rishabh5321/akuse-flake";
+    better-control.url = "github:rishabh5321/better-control-flake";
     seanime.url = "github:rishabh5321/seanime-flake";
     thorium.url = "github:Rishabh5321/thorium_flake";
-
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... } @ inputs:
