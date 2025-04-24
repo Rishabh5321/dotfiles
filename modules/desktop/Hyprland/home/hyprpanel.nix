@@ -26,22 +26,10 @@ in
             "workspaces"
             "windowtitle"
           ];
-          "middle" = [ ]; # Add this line
-          "right" = [
-            "clock"
-          ];
-        };
-
-        "1" = {
-          "left" = [
-            "dashboard"
-            "workspaces"
-            "windowtitle"
-          ];
           "middle" = [
             "clock"
             "media"
-          ];
+           ]; # Add this line
           "right" = [
             "volume"
             "network"
@@ -49,7 +37,8 @@ in
             "notifications"
           ];
         };
-        "2" = {
+
+        "1" = {
           "left" = [
             "dashboard"
             "workspaces"
