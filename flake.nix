@@ -86,8 +86,8 @@
             home-manager.nixosModules.home-manager
             {
               nixpkgs.overlays = [
-                  inputs.hyprpanel.overlay
-                ];
+                inputs.hyprpanel.overlay
+              ];
             }
             # Home Manager configuration integrated into NixOS
             {
