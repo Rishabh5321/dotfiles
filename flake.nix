@@ -60,7 +60,7 @@
           allowUnfree = true;
           allowUnfreePredicate = _: true;
         };
-        overlays = [inputs.hyprpanel.overlay];
+        overlays = [ inputs.hyprpanel.overlay ];
       };
 
       commonArgs = {
