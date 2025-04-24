@@ -13,7 +13,7 @@
 
   environment.systemPackages = with pkgs; [
     #inputs.hyprland-qtutils.packages."${pkgs.system}".default
-    hyprpanel
+    #hyprpanel
     brightnessctl
     dunst
     lazydocker

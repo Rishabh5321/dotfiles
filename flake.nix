@@ -32,6 +32,10 @@
       url = "github:Jas-SinghFSU/HyprPanel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-gaming.url = "github:fufexan/nix-gaming";
     akuse-flake.url = "github:Rishabh5321/akuse-flake";
     better-control.url = "github:rishabh5321/better-control-flake";
@@ -52,8 +56,11 @@
       };
       pkgs = import nixpkgs {
         inherit system;
-        config = { allowUnfree = true; };
-        overlays = builtins.attrValues self.overlays;
+        config = {
+          allowUnfree = true;
+          allowUnfreePredicate = _: true;
+        };
+        overlays = [inputs.hyprpanel.overlay];
       };
 
       commonArgs = {
@@ -84,11 +91,6 @@
             inputs.stylix.nixosModules.stylix
             inputs.nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
-            {
-              nixpkgs.overlays = [
-                inputs.hyprpanel.overlay
-              ];
-            }
             # Home Manager configuration integrated into NixOS
             {
               home-manager = {
