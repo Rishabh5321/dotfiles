@@ -47,7 +47,7 @@
     let
       system = "x86_64-linux";
       username = "rishabh";
-      wallpaper = "wall6.jpg";
+      wallpaper = "wall7.png";
       flakeDir = "/home/${username}/dotfiles";
 
       pkgs-stable = import nixpkgs-stable {
