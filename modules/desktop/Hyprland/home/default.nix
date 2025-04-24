@@ -19,6 +19,7 @@
     ./wlogout.nix
     ./variable.nix
     #inputs.hyprland.homeManagerModules.default
+    ./hyprpanel.nix
   ];
 
   stylix.targets.qt.platform = "qtct";

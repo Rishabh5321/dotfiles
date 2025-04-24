@@ -28,6 +28,10 @@
       url = "gitlab:VandalByte/darkmatter-grub-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-gaming.url = "github:fufexan/nix-gaming";
     akuse-flake.url = "github:Rishabh5321/akuse-flake";
     better-control.url = "github:rishabh5321/better-control-flake";
@@ -80,7 +84,11 @@
             inputs.stylix.nixosModules.stylix
             inputs.nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
-
+            {
+              nixpkgs.overlays = [
+                  inputs.hyprpanel.overlay
+                ];
+            }
             # Home Manager configuration integrated into NixOS
             {
               home-manager = {
