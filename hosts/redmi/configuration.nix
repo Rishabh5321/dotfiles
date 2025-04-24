@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
     ../../modules/system
     ./power.nix
-    ../../modules/desktop/Gnome/main
+    ../../modules/desktop/Hyprland/main
     #./aagl.nix
   ];
 
