@@ -36,6 +36,7 @@
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland.url = "github:hyprwm/Hyprland";
     nix-gaming.url = "github:fufexan/nix-gaming";
     akuse-flake.url = "github:Rishabh5321/akuse-flake";
     better-control.url = "github:rishabh5321/better-control-flake";

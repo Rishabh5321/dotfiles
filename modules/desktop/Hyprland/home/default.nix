@@ -1,6 +1,7 @@
 { username
 , pkgs
 , host
+, inputs
 , ...
 }: {
   imports = [
@@ -18,7 +19,7 @@
     ./waybar/waybar-curved.nix
     ./wlogout.nix
     ./variable.nix
-    #inputs.hyprland.homeManagerModules.default
+    inputs.hyprland.homeManagerModules.default
     ./hyprpanel.nix
   ];
 

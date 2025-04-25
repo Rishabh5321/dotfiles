@@ -3,6 +3,7 @@
 , pkgs
 , config
 , wallpaper
+, inputs
 , ...
 }:
 let
@@ -15,10 +16,10 @@ with lib; {
   ];
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.hyprland;
+    package =  inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     xwayland.enable = true;
     portalPackage =
-      pkgs.xdg-desktop-portal-hyprland;
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     systemd = {
       enable = true;
       extraCommands = [ "systemctl --user start hypridle.service" ];
