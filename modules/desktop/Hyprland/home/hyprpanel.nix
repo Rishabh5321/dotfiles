@@ -116,7 +116,7 @@ in
         bar.menus.tooltip.text = "${foreground}";
         bar.menus.dropdownmenu.background = "${background-alt}";
         bar.menus.dropdownmenu.text = "${foreground}";
-        bar.background = "${background}";
+        bar.background = "rgba(0, 0, 0, 0.3)";
         bar.buttons.text = "${foreground}";
         bar.buttons.radius = "${toString rounding}px";
         bar.buttons.background = "${background-alt}";
