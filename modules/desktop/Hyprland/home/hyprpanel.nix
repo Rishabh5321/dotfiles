@@ -31,6 +31,8 @@ in
             "media"
           ]; # Add this line
           "right" = [
+            "netstat"
+            "battery"
             "volume"
             "network"
             "systray"
