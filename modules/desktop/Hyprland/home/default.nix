@@ -2,6 +2,7 @@
 , pkgs
 , host
 , inputs
+, system
 , ...
 }: {
   imports = [
@@ -83,6 +84,7 @@
     pkgs.wlr-randr
     pkgs.brightnessctl
     pkgs.kdePackages.kdeconnect-kde
+    inputs.hyprpolkitagent.packages.${system}.hyprpolkitagent # password prompt
   ];
 
 }

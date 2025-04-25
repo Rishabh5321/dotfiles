@@ -24,10 +24,11 @@ with lib; {
       enable = true;
       extraCommands = [ "systemctl --user start hypridle.service" ];
     };
-    # plugins = [
-    #   hyprplugins.hyprtrails
-    # ];
-    #settings.exec-once = [ "hypridle" ];
+    settings = {
+      exec-once = [
+        "systemctl --user start hyprpolkitagent"
+      ];
+    };
     extraConfig =
       let
         modifier = "SUPER";
