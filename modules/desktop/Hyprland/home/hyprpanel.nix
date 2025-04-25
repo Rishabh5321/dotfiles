@@ -18,47 +18,50 @@ in
     # systemd.enable = true;
     hyprland.enable = true;
     overwrite.enable = true;
-    settings.layout = {
-      "bar.layouts" = {
-        "0" = {
-          "left" = [
-            "dashboard"
-            "workspaces"
-            "windowtitle"
-            "netstat"
-          ];
-          "middle" = [
-            "clock"
-            "media"
-          ]; # Add this line
-          "right" = [
-            "battery"
-            "volume"
-            "bluetooth"
-            "network"
-            "systray"
-            "notifications"
-          ];
-        };
+    settings = {
+      layout = {
+        "bar.layouts" = {
+          "0" = {
+            "left" = [
+              "dashboard"
+              "workspaces"
+              "windowtitle"
+              "netstat"
+            ];
+            "middle" = [
+              "clock"
+              "media"
+            ]; # Add this line
+            "right" = [
+              "battery"
+              "volume"
+              "bluetooth"
+              "network"
+              "systray"
+              "notifications"
+            ];
+          };
 
-        "1" = {
-          "left" = [
-            "dashboard"
-            "workspaces"
-            "windowtitle"
-          ];
-          "middle" = [
-            "clock"
-            "media"
-          ];
-          "right" = [
-            "volume"
-            "network"
-            "systray"
-            "notifications"
-          ];
+          "1" = {
+            "left" = [
+              "dashboard"
+              "workspaces"
+              "windowtitle"
+            ];
+            "middle" = [
+              "clock"
+              "media"
+            ];
+            "right" = [
+              "volume"
+              "network"
+              "systray"
+              "notifications"
+            ];
+          };
         };
       };
+      bar.network.truncation_size = "30";
     };
 
     override = {
@@ -86,6 +89,7 @@ in
       };
       menus.clock.weather.enable = false;
       wallpaper.enable = true;
+
       theme = {
         font.size = "0.85rem";
         bar.outer_spacing = "1rem";
