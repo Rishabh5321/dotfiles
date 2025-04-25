@@ -25,15 +25,16 @@ in
             "dashboard"
             "workspaces"
             "windowtitle"
+            "netstat"
           ];
           "middle" = [
             "clock"
             "media"
           ]; # Add this line
           "right" = [
-            "netstat"
             "battery"
             "volume"
+            "bluetooth"
             "network"
             "systray"
             "notifications"
@@ -76,7 +77,7 @@ in
           ignored = "98";
         };
         windowtitle.label = false;
-        clock.format = "%a %d-%m-%Y  %H:%M:%S";
+        clock.format = "%I:%M:%S %p";
         clock.showIcon = false;
         volume.label = true;
         bluetooth.label = false;
@@ -94,6 +95,7 @@ in
         bar.buttons.workspaces.hover = "${accent-alt}";
         bar.buttons.workspaces.active = "${accent}";
         bar.buttons.workspaces.available = "${accent-alt}";
+        #bar.network.truncation_size = mkIntOption 7;
         bar.menus.background = "${background}";
         bar.menus.cards = "${background-alt}";
         bar.menus.card_radius = "${toString rounding}px";
