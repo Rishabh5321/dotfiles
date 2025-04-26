@@ -20,8 +20,11 @@
     pavucontrol
     xdg-utils
     xfce.xfce4-pulseaudio-plugin
+    sddm-astronaut
   ];
+
   services.blueman.enable = true;
+  
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
@@ -44,15 +47,29 @@
     sddm = {
       enable = true;
       wayland = {
-        enable = true;
+        enable = false;
       };
-      settings = {
-        Autologin = {
-          Session = "hyprland";
-          User = "rishabh";
-        };
-      };
+      package = pkgs.kdePackages.sddm;
+      extraPackages = with pkgs; [
+        kdePackages.qtsvg
+        kdePackages.qtmultimedia
+        kdePackages.qtvirtualkeyboard
+      ];
+      theme = "sddm-astronaut-theme";
+      # settings = {
+      #   Autologin = {
+      #     Session = "hyprland";
+      #     User = "rishabh";
+      #   };
+      # };
       autoNumlock = true;
     };
   };
+
+  services.xserver.displayManager.setupCommands = ''
+    ${pkgs.xorg.xset}/bin/xset s off
+    ${pkgs.xorg.xset}/bin/xset -dpms
+    ${pkgs.xorg.xset}/bin/xset dpms 0 0 60
+  '';
+
 }

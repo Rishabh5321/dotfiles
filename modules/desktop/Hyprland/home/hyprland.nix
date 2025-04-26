@@ -22,7 +22,6 @@ with lib; {
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     systemd = {
       enable = true;
-      extraCommands = [ "systemctl --user start hypridle.service" ];
     };
     settings = {
       exec-once = [
@@ -54,7 +53,7 @@ with lib; {
           exec-once = killall -q swaync;sleep .5 && swaync
           exec-once = nm-applet --indicator
           #exec-once = lxqt-policykit-agent
-          exec-once = hyprlock --immediate
+          #exec-once = hyprlock --immediate
           #exec-once = sleep 1.5 && startup
           #exec-once = sleep 2 && flatpak run --command=sh tv.kodi.Kodi -c "kodi --debug"
           exec-once = sleep 5 && kdeconnect-settings && kdeconnect-indicator
