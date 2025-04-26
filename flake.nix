@@ -99,7 +99,7 @@
             # Home Manager configuration integrated into NixOS
             {
               home-manager = {
-                extraSpecialArgs = homeManagerSpecialArgs; 
+                extraSpecialArgs = homeManagerSpecialArgs;
                 useUserPackages = true;
                 backupFileExtension = "bak";
                 users.${username} = import ./hosts/${hostname}/home.nix;
