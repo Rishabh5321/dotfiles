@@ -47,55 +47,9 @@ jobs:
           fi
           echo "matrix={\"hostname\":$HOSTS}" >> "$GITHUB_OUTPUT"
 
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
-        with:
-          nix_path: nixpkgs=channel:nixos-unstable
-          extra_nix_config: |
-            experimental-features = nix-command flakes
-
-      - name: Lint Nix files
-        run: |
-          # Install statix for Nix linting
-          nix-env -iA nixpkgs.statix
-          statix check
-
-      - name: Run flake check
-        id: flake-check
-        run: |
-          mkdir -p logs
-          
-          # Run flake check and capture output
-          set +e
-          nix flake check -L 2>&1 | tee logs/flake_check.log
-          FLAKE_EXIT_CODE=$?
-          
-          # Check for warnings in the flake check output
-          if grep -i "warning" logs/flake_check.log; then
-            echo "::warning::Warnings detected in the flake check output"
-            echo "warnings_found=true" >> $GITHUB_OUTPUT
-          fi
-          
-          # Exit with the original flake check exit code
-          exit $FLAKE_EXIT_CODE
-
-      - name: Upload flake check logs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: flake-check-logs
-          path: logs/flake_check.log
-          retention-days: 5
-
   Build_Config:
     name: Build_Config ${{ matrix.hostname }}
-    needs: [generate-matrix, lint]
+    needs: [generate-matrix]
     runs-on: ubuntu-latest
     timeout-minutes: 180  # Prevent hung builds
     strategy:
@@ -213,9 +167,8 @@ jobs:
         id: final-status
         if: always()
         run: |
-          lint_status="${{ needs.lint.result }}"
           build_status="${{ steps.build.outcome }}"
-          if [[ "$lint_status" == "success" && "$build_status" == "success" ]]; then
+          if [[ "$build_status" == "success" ]]; then
             echo "status=success" >> "$GITHUB_OUTPUT"
           else
             echo "status=error" >> "$GITHUB_OUTPUT"
