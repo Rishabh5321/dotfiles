@@ -6,10 +6,10 @@
   #substituters = [ "https://hyprland.cachix.org" ];
   #trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   #};
-  security.pam.services.hyprlock = {
-    enableGnomeKeyring = true;
-    startSession = true; # Ensure a session is started
-  };
+  # security.pam.services.hyprlock = {
+  #   enableGnomeKeyring = true;
+  #   startSession = true; # Ensure a session is started
+  # };
 
   environment.systemPackages = with pkgs; [
     #inputs.hyprland-qtutils.packages."${pkgs.system}".default
