@@ -67,7 +67,7 @@
     allowedTCPPorts = [ 53 80 5353 8080 ];
     allowedUDPPorts = [ 53 80 5353 8080 ];
   };
-
+  networking.firewall.trustedInterfaces = [ "wlp0s20f3" "enp2s0" ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

@@ -17,7 +17,6 @@
     ./rofi/rofi.nix
     ./swaync.nix
     ./swaync.nix
-    ./waybar/waybar-curved.nix
     ./wlogout.nix
     ./variable.nix
     inputs.hyprland.homeManagerModules.default
