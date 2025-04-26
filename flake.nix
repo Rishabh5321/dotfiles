@@ -99,9 +99,9 @@
             # Home Manager configuration integrated into NixOS
             {
               home-manager = {
-                extraSpecialArgs = homeManagerSpecialArgs; # Passes pkgs down now
+                extraSpecialArgs = homeManagerSpecialArgs; 
                 useUserPackages = true;
-                backupFileExtension = "backup";
+                backupFileExtension = "bak";
                 users.${username} = import ./hosts/${hostname}/home.nix;
               };
             }
