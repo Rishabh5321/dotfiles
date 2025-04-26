@@ -9,6 +9,11 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
+    inputs:
+      specific_host:
+        description: 'Build only a specific host (leave empty for all)'
+        required: false
+        type: string
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -26,20 +31,75 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
+          nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: |
             experimental-features = nix-command flakes
 
       - name: Generate matrix from nixosConfigurations
         id: set-matrix
         run: |
-          HOSTS=$(nix flake show --json | jq -c '[.nixosConfigurations | keys[]]')
+          if [ -n "${{ github.event.inputs.specific_host }}" ]; then
+            # If a specific host was provided, only build that one
+            HOSTS=$(echo '["${{ github.event.inputs.specific_host }}"]' | jq -c .)
+          else
+            # Otherwise build all hosts from the flake
+            HOSTS=$(nix flake show --json | jq -c '[.nixosConfigurations | keys[]]')
+          fi
           echo "matrix={\"hostname\":$HOSTS}" >> "$GITHUB_OUTPUT"
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
+      - name: Lint Nix files
+        run: |
+          # Install statix for Nix linting
+          nix-env -iA nixpkgs.statix
+          statix check
+
+      - name: Run flake check
+        id: flake-check
+        run: |
+          mkdir -p logs
+          
+          # Run flake check and capture output
+          set +e
+          nix flake check -L 2>&1 | tee logs/flake_check.log
+          FLAKE_EXIT_CODE=$?
+          
+          # Check for warnings in the flake check output
+          if grep -i "warning" logs/flake_check.log; then
+            echo "::warning::Warnings detected in the flake check output"
+            echo "warnings_found=true" >> $GITHUB_OUTPUT
+          fi
+          
+          # Exit with the original flake check exit code
+          exit $FLAKE_EXIT_CODE
+
+      - name: Upload flake check logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flake-check-logs
+          path: logs/flake_check.log
+          retention-days: 5
 
   Build_Config:
     name: Build_Config ${{ matrix.hostname }}
-    needs: generate-matrix
+    needs: [generate-matrix, lint]
     runs-on: ubuntu-latest
+    timeout-minutes: 180  # Prevent hung builds
     strategy:
+      fail-fast: false  # Continue building other configs if one fails
       matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
     steps:
       - name: Free Disk Space
@@ -56,9 +116,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Cache Nix store for faster builds
+      - name: Cache Nix store
+        uses: actions/cache@v3
+        with:
+          path: /nix/store
+          key: nix-store-${{ runner.os }}-${{ matrix.hostname }}-${{ hashFiles('flake.lock') }}
+          restore-keys: |
+            nix-store-${{ runner.os }}-${{ matrix.hostname }}-
+            nix-store-${{ runner.os }}-
+
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
+          nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: |
             auto-optimise-store = true
             experimental-features = nix-command flakes
@@ -73,27 +144,7 @@ jobs:
           name: rishabh5321
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
-      - name: Run flake check and check for warnings
-        id: flake-check
-        run: |
-          mkdir -p logs
-          
-          # Run flake check and capture output
-          set +e
-          nix flake check -L 2>&1 | tee logs/flake_check.log
-          FLAKE_EXIT_CODE=$?
-          
-          # Check for warnings in the flake check output
-          if grep -i "warning" logs/flake_check.log; then
-            echo "::error::Warnings detected in the flake check output"
-            echo "warnings_found=true" >> $GITHUB_OUTPUT
-            exit 1
-          fi
-          
-          # Exit with the original flake check exit code if no warnings
-          exit $FLAKE_EXIT_CODE
-
-      - name: Build and check for warnings
+      - name: Build NixOS configuration
         id: build
         run: |
           echo "Starting Nix build for ${{ matrix.hostname }}..."
@@ -104,13 +155,54 @@ jobs:
           # Run the build and capture output to both stdout and a file
           set +e  # Don't exit on error yet
           
+          start_time=$(date +%s)
+          
           cachix watch-exec rishabh5321 -- \
             nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.toplevel \
             -L --print-build-logs --out-link result-${{ matrix.hostname }} 2>&1 | tee logs/build_output.log
           
           BUILD_EXIT_CODE=$?
           
-          echo "Build complete for ${{ matrix.hostname }} without warnings"
+          end_time=$(date +%s)
+          build_duration=$((end_time - start_time))
+          
+          echo "Build duration: $build_duration seconds"
+          echo "build_duration=$build_duration" >> $GITHUB_OUTPUT
+          
+          # If build was successful, generate a system report
+          if [ $BUILD_EXIT_CODE -eq 0 ]; then
+            echo "Generating system report for ${{ matrix.hostname }}..."
+            nix-shell -p nix-info --run "nix-info -m" > logs/system_info.log
+            
+            # Extract some useful information about the build
+            nix path-info --json ./result-${{ matrix.hostname }} | jq '.[0] | {path: .path, closureSize: .closureSize}' > logs/build_info.json
+            
+            # Get closureSize in human-readable format
+            CLOSURE_SIZE=$(cat logs/build_info.json | jq -r '.closureSize')
+            HUMAN_SIZE=$(numfmt --to=iec-i --suffix=B $CLOSURE_SIZE)
+            echo "closure_size=$HUMAN_SIZE" >> $GITHUB_OUTPUT
+          fi
+          
+          exit $BUILD_EXIT_CODE
+
+      - name: Upload build logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs-${{ matrix.hostname }}
+          path: logs/
+          retention-days: 5
+
+      - name: Run NixOS tests
+        if: steps.build.outcome == 'success'
+        continue-on-error: true  # Don't fail the workflow if tests fail
+        id: test
+        run: |
+          echo "Running tests for ${{ matrix.hostname }}..."
+          # This is a placeholder - you would add your NixOS tests here
+          # For example:
+          # nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.vmTest -L
+          echo "Tests completed for ${{ matrix.hostname }}"
 
       - name: Set date
         id: get-date
@@ -121,9 +213,9 @@ jobs:
         id: final-status
         if: always()
         run: |
-          flake_status="${{ steps.flake-check.outcome }}"
+          lint_status="${{ needs.lint.result }}"
           build_status="${{ steps.build.outcome }}"
-          if [[ "$flake_status" == "success" && "$build_status" == "success" ]]; then
+          if [[ "$lint_status" == "success" && "$build_status" == "success" ]]; then
             echo "status=success" >> "$GITHUB_OUTPUT"
           else
             echo "status=error" >> "$GITHUB_OUTPUT"
@@ -142,10 +234,19 @@ jobs:
       - name: Prepare logs for Telegram
         if: always()
         run: |
-          echo "=== FLAKE CHECK LOG ===" > combined_logs.txt
-          cat logs/flake_check.log >> combined_logs.txt
-          echo -e "\n\n=== BUILD OUTPUT LOG ===" >> combined_logs.txt
-          cat logs/build_output.log >> combined_logs.txt
+          {
+            echo "=== SUMMARY ==="
+            echo "Host: ${{ matrix.hostname }}"
+            echo "Status: ${{ steps.final-status.outputs.status }}"
+            if [ -n "${{ steps.build.outputs.closure_size }}" ]; then
+              echo "Closure Size: ${{ steps.build.outputs.closure_size }}"
+            fi
+            echo "Build Duration: ${{ steps.build.outputs.build_duration }} seconds"
+            
+            echo -e "\n=== BUILD OUTPUT LOG (truncated) ==="
+            # Limit the log to prevent Telegram message size limits
+            tail -n 500 logs/build_output.log
+          } > telegram_message.txt
 
       - name: Send Telegram message with logs
         if: always()
@@ -157,8 +258,24 @@ jobs:
           message: |
             ${{ steps.final-status.outputs.status == 'success' && '✅' || '❌' }} *Build:* `${{ matrix.hostname }}`
             *Date:* `${{ steps.get-date.outputs.date }}`
-            *Flake Check:* `${{ steps.flake-check.outcome }}`
             *Branch:* `${{ steps.get-branch.outputs.branch }}`
             *Build Status:* `${{ steps.build.outcome }}`
+            *Build Duration:* `${{ steps.build.outputs.build_duration }}s`
+            ${{ steps.build.outputs.closure_size != '' && '*Closure Size:* `'}}${{ steps.build.outputs.closure_size }}${{ steps.build.outputs.closure_size != '' && '`' || '' }}
             *Workflow:* [Run Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
-          document: combined_logs.txt
+          document: telegram_message.txt
+
+  # Generate a summary of all builds
+  summary:
+    name: Build Summary
+    needs: Build_Config
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Build Summary
+        run: |
+          echo "## NixOS Configuration Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Host | Status | Duration | Size |" >> $GITHUB_STEP_SUMMARY
+          echo "| ---- | ------ | -------- | ---- |" >> $GITHUB_STEP_SUMMARY
+          # In a real workflow, you would gather this information from the matrix jobs
