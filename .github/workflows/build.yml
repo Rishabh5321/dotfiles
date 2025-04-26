@@ -75,6 +75,8 @@ jobs:
         with:
           path: /nix/store
           key: nix-store-${{ runner.os }}-${{ matrix.hostname }}
+          restore-keys: |
+                nix-store-${{ runner.os }}-${{ matrix.hostname }}
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
