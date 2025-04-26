@@ -74,10 +74,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: /nix/store
-          key: nix-store-${{ runner.os }}-${{ matrix.hostname }}-${{ hashFiles('flake.lock') }}
-          restore-keys: |
-            nix-store-${{ runner.os }}-${{ matrix.hostname }}-
-            nix-store-${{ runner.os }}-
+          key: nix-store-${{ runner.os }}-${{ matrix.hostname }}
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
