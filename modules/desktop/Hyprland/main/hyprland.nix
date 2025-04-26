@@ -24,7 +24,7 @@
   ];
 
   services.blueman.enable = true;
-  
+
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
