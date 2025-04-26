@@ -3,7 +3,8 @@ concurrency: "cleanup-workflow"  # Prevents overlapping runs
 permissions:
   contents: write
   pull-requests: write
-
+  actions: write # Add this line
+  
 on:
   schedule:
     - cron: "0 0 * * *"  
