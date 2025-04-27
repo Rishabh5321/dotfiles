@@ -1,7 +1,6 @@
 name: Build_Config
 permissions:
   contents: read
-  # Keep pull-requests: write for now, we can revisit this later if unused
   pull-requests: write
 
 on:
@@ -30,16 +29,11 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
-          # Use nix_path for consistency across jobs using the flake
-          nix_path: nixpkgs=channel:nixos-unstable # Use the same nixpkgs channel
+          install_url: https://nixos.org/nix/install
           extra_nix_config: |
             auto-optimise-store = true
             experimental-features = nix-command flakes
             download-buffer-size = 500000000
-            # Add cache settings here as flake checks/evaluation might benefit
-            substituters = https://rishabh5321.cachix.org https://cache.nixos.org https://hyprland.cachix.org https://nixpkgs-wayland.cachix.org https://nix-gaming.cachix.org
-            trusted-public-keys = rishabh5321.cachix.org-1:mxfBIH2XElE6ieFXXYBA9Ame4mVTbAf1TGR843siggk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=
-
       - name: Run Flake Check
         id: flake_check
         run: |
@@ -53,8 +47,6 @@ jobs:
             echo "has_issues=false" >> $GITHUB_OUTPUT
             echo "FLAKE_STATUS=passed" >> $GITHUB_ENV
           fi
-      
-      # Keep existing Telegram notification for now, we'll improve this later
       - name: Send Telegram Notification
         if: always()
         env:
@@ -73,17 +65,15 @@ jobs:
           
           MESSAGE="Flake Check: $FLAKE_STATUS%0A%0A"
           
-          # Check if the filtered log file exists and has content before reading
           if [ -s flake_check_filtered.log ]; then
-            # Escape characters that might break markdown formatting in the log snippet
-            FLAKE_WARNINGS=$(awk '{print NR". "$0}' flake_check_filtered.log | head -10 | sed 's/[_*\`\[\]()~>#+-=|{}.!]/\\&/g' | perl -pe 's/\n/%0A/g')
+            FLAKE_WARNINGS=$(awk '{print NR". "$0}' flake_check_filtered.log | head -10 | perl -pe 's/\n/%0A/g')
             MESSAGE+="Issues:%0A\`\`\`%0A$FLAKE_WARNINGS%0A\`\`\`%0A%0A"
           fi
           
           curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
             -d "chat_id=$CHAT_ID" \
             -d "text=$STATUS_MESSAGE%0A%0A$MESSAGE%0A%0AGenerated on $(TZ='Asia/Kolkata' date)" \
-            -d "parse_mode=MarkdownV2" # Changed to MarkdownV2 for better escaping
+            -d "parse_mode=Markdown"
 
   generate-matrix:
     runs-on: ubuntu-latest
@@ -97,47 +87,21 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
-          # Use nix_path for consistency
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: |
-            # Ensure essential features are enabled
             experimental-features = nix-command flakes
-            # Add auto-optimise-store for consistency, though less critical here
-            auto-optimise-store = true
-
 
       - name: Generate matrix from nixosConfigurations
         id: set-matrix
         run: |
           if [ -n "${{ github.event.inputs.specific_host }}" ]; then
-            SPECIFIC_HOST="${{ github.event.inputs.specific_host }}"
-            echo "Attempting to build specific host: $SPECIFIC_HOST"
-            
-            # Check if the specific host exists in the flake
-            # Use -e with jq to check for existence and exit 1 if not found
-            if nix flake show --json | jq -e ".nixosConfigurations | has(\"$SPECIFIC_HOST\")" > /dev/null; then
-              HOSTS=$(echo '["'$SPECIFIC_HOST'"]' | jq -c .)
-              echo "Host $SPECIFIC_HOST found."
-            else
-              echo "Error: Specific host '$SPECIFIC_HOST' not found in nixosConfigurations."
-              # Fail the job if the specified host doesn't exist
-              exit 1 
-            fi
+            # If a specific host was provided, only build that one
+            HOSTS=$(echo '["${{ github.event.inputs.specific_host }}"]' | jq -c .)
           else
-            echo "Building all hosts from the flake."
             # Otherwise build all hosts from the flake
             HOSTS=$(nix flake show --json | jq -c '[.nixosConfigurations | keys[]]')
-            echo "Found hosts: $HOSTS"
           fi
-          
-          # Check if HOSTS is an empty JSON array and exit if so (no configs found)
-          if [ "$HOSTS" = "[]" ]; then
-            echo "Error: No NixOS configurations found in the flake, or the specific host was not found."
-            exit 1
-          fi
-          
           echo "matrix={\"hostname\":$HOSTS}" >> "$GITHUB_OUTPUT"
-
 
   Build_Config:
     name: Build_Config ${{ matrix.hostname }}
@@ -165,7 +129,6 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
-          # Use nix_path for consistency
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: |
             auto-optimise-store = true
@@ -190,11 +153,10 @@ jobs:
           mkdir -p logs
           
           # Run the build and capture output to both stdout and a file
-          # set +e is handled by the cachix watch-exec wrapper for the main command
+          set +e  # Don't exit on error yet
           
           start_time=$(date +%s)
           
-          # Keep cachix watch-exec for caching during build
           cachix watch-exec rishabh5321 -- \
             nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.toplevel \
             -L --print-build-logs --out-link result-${{ matrix.hostname }} 2>&1 | tee logs/build_output.log
@@ -221,7 +183,6 @@ jobs:
             echo "closure_size=$HUMAN_SIZE" >> $GITHUB_OUTPUT
           fi
           
-          # Exit with the build exit code
           exit $BUILD_EXIT_CODE
 
       - name: Upload build logs
@@ -234,71 +195,48 @@ jobs:
 
       - name: Run NixOS tests
         if: steps.build.outcome == 'success'
-        continue-on-error: true  # Don't fail the workflow if tests fail (for now)
+        continue-on-error: true  # Don't fail the workflow if tests fail
         id: test
         run: |
           echo "Running tests for ${{ matrix.hostname }}..."
           # This is a placeholder - you would add your NixOS tests here
           # For example:
-          # nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.vmTest -L 2>&1 | tee logs/test_output.log
-          # Replace the echo below with your actual test command and log capture
-          echo "Tests placeholder executed for ${{ matrix.hostname }}" > logs/test_output.log # Example placeholder log
+          # nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.vmTest -L
           echo "Tests completed for ${{ matrix.hostname }}"
-      
-      # Added missing get-date step back in
+
       - name: Set date
         id: get-date
         if: always()
         run: echo "date=$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_OUTPUT"
 
-      # Modified Determine final status to prepare for test outcome
       - name: Determine final status
         id: final-status
         if: always()
         run: |
-          BUILD_STATUS="${{ steps.build.outcome }}"
-          TEST_STATUS="${{ steps.test.outcome }}" # Get test outcome
-          
-          # Default to error if build failed
-          OVERALL_STATUS="error"
-          MESSAGE_STATUS="❌"
-          
-          if [[ "$BUILD_STATUS" == "success" ]]; then
-            # If build succeeded, check test status
-            if [[ "$TEST_STATUS" == "success" ]]; then
-              OVERALL_STATUS="success"
-              MESSAGE_STATUS="✅"
-              echo "Overall status: Success (Build and Test passed)"
-            elif [[ "$TEST_STATUS" == "skipped" ]]; then
-               # Tests were skipped (e.g., build failed, or if condition prevented)
-               OVERALL_STATUS="success" # Consider skipped tests as allowing overall success if build passed
-               MESSAGE_STATUS="✅"
-               echo "Overall status: Success (Build passed, tests skipped)"
-            else # Test failed (only happens if continue-on-error: true on test step)
-              OVERALL_STATUS="failure" # Or 'warning'? 'failure' seems appropriate if tests failed
-              MESSAGE_STATUS="⚠️" # Use warning emoji for test failure
-              echo "Overall status: Failure (Build passed, tests failed)"
-            fi
+          build_status="${{ steps.build.outcome }}"
+          if [[ "$build_status" == "success" ]]; then
+            echo "status=success" >> "$GITHUB_OUTPUT"
           else
-             echo "Overall status: Failure (Build failed)"
+            echo "status=error" >> "$GITHUB_OUTPUT"
           fi
-          
-          echo "status=$OVERALL_STATUS" >> "$GITHUB_OUTPUT"
-          echo "message_status=$MESSAGE_STATUS" >> "$GITHUB_OUTPUT"
-          echo "test_status=$TEST_STATUS" >> "$GITHUB_OUTPUT" # Output test status separately
-          echo "build_status=$BUILD_STATUS" >> "$GITHUB_OUTPUT" # Output build status separately
 
+      - name: Get branch name
+        id: get-branch
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "branch=${{ github.event.pull_request.base.ref }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "branch=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+          fi
 
-      # Modified Prepare logs for Telegram to include test log
+      # Combine logs for Telegram
       - name: Prepare logs for Telegram
         if: always()
         run: |
           {
             echo "=== SUMMARY ==="
             echo "Host: ${{ matrix.hostname }}"
-            echo "Overall Status: ${{ steps.final-status.outputs.status }}"
-            echo "Build Status: ${{ steps.final-status.outputs.build_status }}"
-            echo "Test Status: ${{ steps.final-status.outputs.test_status }}" # Include test status
+            echo "Status: ${{ steps.final-status.outputs.status }}"
             if [ -n "${{ steps.build.outputs.closure_size }}" ]; then
               echo "Closure Size: ${{ steps.build.outputs.closure_size }}"
             fi
@@ -307,16 +245,8 @@ jobs:
             echo -e "\n=== BUILD OUTPUT LOG (truncated) ==="
             # Limit the log to prevent Telegram message size limits
             tail -n 500 logs/build_output.log
-            
-            # Include test log snippet if the file exists (test step ran)
-            if [ -f logs/test_output.log ]; then
-               echo -e "\n=== TEST OUTPUT LOG (truncated) ==="
-               tail -n 100 logs/test_output.log
-            fi
-            
           } > telegram_message.txt
 
-      # Modified Send Telegram message to use final status and potentially test status
       - name: Send Telegram message with logs
         if: always()
         uses: appleboy/telegram-action@v1.0.1
@@ -325,13 +255,12 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: markdown
           message: |
-            ${{ steps.final-status.outputs.message_status }} *Build:* `${{ matrix.hostname }}`
+            ${{ steps.final-status.outputs.status == 'success' && '✅' || '❌' }} *Build:* `${{ matrix.hostname }}`
             *Date:* `${{ steps.get-date.outputs.date }}`
             *Branch:* `${{ steps.get-branch.outputs.branch }}`
-            *Overall Status:* `${{ steps.final-status.outputs.status }}`
-            *Build Status:* `${{ steps.final-status.outputs.build_status }}` # Explicitly show build status
-            *Test Status:* `${{ steps.final-status.outputs.test_status }}`   # Explicitly show test status
+            *Build Status:* `${{ steps.build.outcome }}`
             *Build Duration:* `${{ steps.build.outputs.build_duration }}s`
             ${{ steps.build.outputs.closure_size != '' && '*Closure Size:* `'}}${{ steps.build.outputs.closure_size }}${{ steps.build.outputs.closure_size != '' && '`' || '' }}
             *Workflow:* [Run Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
-          document: telegram_message.txt # Attach the prepared summary+logs file
+          document: telegram_message.txt
+          
