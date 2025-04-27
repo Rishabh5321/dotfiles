@@ -208,7 +208,6 @@ jobs:
             *Workflow:* [Run Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
           document: telegram_message.txt
 
-    # Generate a summary of all builds
   summary:
     name: Build Summary
     needs: Build_Config
