@@ -207,7 +207,7 @@ jobs:
             ${{ steps.build.outputs.closure_size != '' && '*Closure Size:* `'}}${{ steps.build.outputs.closure_size }}${{ steps.build.outputs.closure_size != '' && '`' || '' }}
             *Workflow:* [Run Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
           document: telegram_message.txt
-
+          
   summary:
     name: Build Summary
     needs: Build_Config
@@ -224,10 +224,11 @@ jobs:
           
       - name: Create Build Summary
         run: |
-          echo "## NixOS Configuration Build Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Host | Status | Duration | Size |" >> $GITHUB_STEP_SUMMARY
-          echo "| ---- | ------ | -------- | ---- |" >> $GITHUB_STEP_SUMMARY
+          # Create a temporary file for our summary
+          echo "## NixOS Configuration Build Summary" > build_summary.md
+          echo "" >> build_summary.md
+          echo "| Host | Status | Duration | Size |" >> build_summary.md
+          echo "| ---- | ------ | -------- | ---- |" >> build_summary.md
           
           # Process each host's build info
           for host_dir in artifacts/build-logs-*/; do
@@ -263,32 +264,43 @@ jobs:
                 fi
               fi
               
-              echo "| $host | $status | $duration | $size |" >> $GITHUB_STEP_SUMMARY
+              echo "| $host | $status | $duration | $size |" >> build_summary.md
             fi
           done
           
-      - name: Create Detailed Report
-        run: |
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "## Detailed Build Information" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
+          # Create detailed report
+          echo "" >> build_summary.md
+          echo "## Detailed Build Information" >> build_summary.md
           
           for host_dir in artifacts/build-logs-*/; do
             if [ -d "$host_dir" ]; then
               host=$(basename "$host_dir" | sed 's/build-logs-//')
               
-              echo "### $host" >> $GITHUB_STEP_SUMMARY
-              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "" >> build_summary.md
+              echo "### $host" >> build_summary.md
+              echo "" >> build_summary.md
               
               if [ -f "$host_dir/build_output.log" ]; then
-                echo "<details><summary>Build Log (click to expand)</summary>" >> $GITHUB_STEP_SUMMARY
-                echo "" >> $GITHUB_STEP_SUMMARY
-                echo '```' >> $GITHUB_STEP_SUMMARY
-                tail -n 200 "$host_dir/build_output.log" >> $GITHUB_STEP_SUMMARY
-                echo '```' >> $GITHUB_STEP_SUMMARY
-                echo "</details>" >> $GITHUB_STEP_SUMMARY
+                echo "<details><summary>Build Log (click to expand)</summary>" >> build_summary.md
+                echo "" >> build_summary.md
+                echo '```' >> build_summary.md
+                tail -n 200 "$host_dir/build_output.log" >> build_summary.md
+                echo '```' >> build_summary.md
+                echo "</details>" >> build_summary.md
               fi
-              
-              echo "" >> $GITHUB_STEP_SUMMARY
             fi
           done
+          
+          # Output the summary to the workflow summary
+          cat build_summary.md >> $GITHUB_STEP_SUMMARY || true
+          
+          # Also create a summary artifact for backup
+          mkdir -p summary
+          cp build_summary.md summary/
+
+      - name: Upload summary as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-summary
+          path: summary/
+          retention-days: 5
