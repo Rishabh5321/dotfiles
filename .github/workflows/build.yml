@@ -234,22 +234,32 @@ jobs:
             if [ -d "$host_dir" ]; then
               host=$(basename "$host_dir" | sed 's/build-logs-//')
               
-              # Extract build info
+              # Default values
               status="❌ Failed"
               duration="N/A"
               size="N/A"
               
+              # Check if build was successful
               if [ -f "$host_dir/build_info.json" ]; then
                 status="✅ Success"
-                
-                # Get duration
-                if [ -f "$host_dir/system_info.log" ]; then
-                  duration=$(grep "build_duration=" "$host_dir/system_info.log" | cut -d= -f2 | awk '{printf "%dm %ds", $1/60, $1%60}')
-                fi
                 
                 # Get size from build info
                 if [ -s "$host_dir/build_info.json" ]; then
                   size=$(jq -r '.closureSize' "$host_dir/build_info.json" | numfmt --to=iec-i --suffix=B)
+                fi
+              fi
+              
+              # Extract build duration from output log
+              if [ -f "$host_dir/build_output.log" ]; then
+                # Look for the build_duration line in the output log
+                duration_line=$(grep "Build duration:" "$host_dir/build_output.log")
+                if [ -n "$duration_line" ]; then
+                  seconds=$(echo "$duration_line" | sed 's/Build duration: \([0-9]*\) seconds/\1/')
+                  if [ -n "$seconds" ]; then
+                    mins=$((seconds / 60))
+                    secs=$((seconds % 60))
+                    duration="${mins}m ${secs}s"
+                  fi
                 fi
               fi
               
