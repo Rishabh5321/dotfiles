@@ -226,10 +226,12 @@ jobs:
         run: |
           set -e
           # Create a temporary file for our summary
-          echo "## NixOS Configuration Build Summary" > build_summary.md
-          echo "" >> build_summary.md
-          echo "| Host | Status | Duration | Size |" >> build_summary.md
-          echo "| ---- | ------ | -------- | ---- |" >> build_summary.md
+          {
+            echo "## NixOS Configuration Build Summary"
+            echo ""
+            echo "| Host | Status | Duration | Size |"
+            echo "| ---- | ------ | -------- | ---- |"
+          } > build_summary.md
           
           # Process each host's build info
           for host_dir in artifacts/build-logs-*/; do
@@ -270,24 +272,30 @@ jobs:
           done
           
           # Create detailed report
-          echo "" >> build_summary.md
-          echo "## Detailed Build Information" >> build_summary.md
+          {
+            echo ""
+            echo "## Detailed Build Information"
+          } >> build_summary.md
           
           for host_dir in artifacts/build-logs-*/; do
             if [ -d "$host_dir" ]; then
               host=$(basename "$host_dir" | sed 's/build-logs-//')
               
-              echo "" >> build_summary.md
-              echo "### $host" >> build_summary.md
-              echo "" >> build_summary.md
+              {
+                echo ""
+                echo "### $host"
+                echo ""
+              } >> build_summary.md
               
               if [ -f "$host_dir/build_output.log" ]; then
-                echo "<details><summary>Build Log (click to expand)</summary>" >> build_summary.md
-                echo "" >> build_summary.md
-                echo '```' >> build_summary.md
-                tail -n 200 "$host_dir/build_output.log" >> build_summary.md
-                echo '```' >> build_summary.md
-                echo "</details>" >> build_summary.md
+                {
+                  echo "<details><summary>Build Log (click to expand)</summary>"
+                  echo ""
+                  echo '```'
+                  tail -n 200 "$host_dir/build_output.log"
+                  echo '```'
+                  echo "</details>"
+                } >> build_summary.md
               fi
             fi
           done
