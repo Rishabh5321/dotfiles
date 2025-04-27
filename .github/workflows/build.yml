@@ -70,14 +70,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Cache Nix store
-        uses: actions/cache@v3
-        with:
-          path: /nix/store
-          key: nix-store-${{ runner.os }}-${{ matrix.hostname }}
-          restore-keys: |
-                nix-store-${{ runner.os }}-${{ matrix.hostname }}
-
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
@@ -215,12 +207,6 @@ jobs:
             ${{ steps.build.outputs.closure_size != '' && '*Closure Size:* `'}}${{ steps.build.outputs.closure_size }}${{ steps.build.outputs.closure_size != '' && '`' || '' }}
             *Workflow:* [Run Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
           document: telegram_message.txt
-
-      - name: Fix permissions for caching
-        run: |
-          # Make readable all directories that will be cached
-          sudo chmod -R +r /nix/store || true
-        continue-on-error: true
 
   # Generate a summary of all builds
   summary:
