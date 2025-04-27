@@ -224,6 +224,7 @@ jobs:
           
       - name: Create Build Summary
         run: |
+          set -e
           # Create a temporary file for our summary
           echo "## NixOS Configuration Build Summary" > build_summary.md
           echo "" >> build_summary.md
