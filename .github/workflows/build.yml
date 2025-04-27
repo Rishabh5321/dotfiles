@@ -216,6 +216,12 @@ jobs:
             *Workflow:* [Run Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
           document: telegram_message.txt
 
+      - name: Fix permissions for caching
+        run: |
+          # Make readable all directories that will be cached
+          sudo chmod -R +r /nix/store || true
+        continue-on-error: true
+
   # Generate a summary of all builds
   summary:
     name: Build Summary
