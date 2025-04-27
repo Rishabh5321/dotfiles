@@ -208,17 +208,78 @@ jobs:
             *Workflow:* [Run Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
           document: telegram_message.txt
 
-  # Generate a summary of all builds
+    # Generate a summary of all builds
   summary:
     name: Build Summary
     needs: Build_Config
     if: always()
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          
       - name: Create Build Summary
         run: |
           echo "## NixOS Configuration Build Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Host | Status | Duration | Size |" >> $GITHUB_STEP_SUMMARY
           echo "| ---- | ------ | -------- | ---- |" >> $GITHUB_STEP_SUMMARY
-          # In a real workflow, you would gather this information from the matrix jobs
+          
+          # Process each host's build info
+          for host_dir in artifacts/build-logs-*/; do
+            if [ -d "$host_dir" ]; then
+              host=$(basename "$host_dir" | sed 's/build-logs-//')
+              
+              # Extract build info
+              status="❌ Failed"
+              duration="N/A"
+              size="N/A"
+              
+              if [ -f "$host_dir/build_info.json" ]; then
+                status="✅ Success"
+                
+                # Get duration
+                if [ -f "$host_dir/system_info.log" ]; then
+                  duration=$(grep "build_duration=" "$host_dir/system_info.log" | cut -d= -f2 | awk '{printf "%dm %ds", $1/60, $1%60}')
+                fi
+                
+                # Get size from build info
+                if [ -s "$host_dir/build_info.json" ]; then
+                  size=$(jq -r '.closureSize' "$host_dir/build_info.json" | numfmt --to=iec-i --suffix=B)
+                fi
+              fi
+              
+              echo "| $host | $status | $duration | $size |" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+          
+      - name: Create Detailed Report
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Detailed Build Information" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          for host_dir in artifacts/build-logs-*/; do
+            if [ -d "$host_dir" ]; then
+              host=$(basename "$host_dir" | sed 's/build-logs-//')
+              
+              echo "### $host" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              
+              if [ -f "$host_dir/build_output.log" ]; then
+                echo "<details><summary>Build Log (click to expand)</summary>" >> $GITHUB_STEP_SUMMARY
+                echo "" >> $GITHUB_STEP_SUMMARY
+                echo '```' >> $GITHUB_STEP_SUMMARY
+                tail -n 200 "$host_dir/build_output.log" >> $GITHUB_STEP_SUMMARY
+                echo '```' >> $GITHUB_STEP_SUMMARY
+                echo "</details>" >> $GITHUB_STEP_SUMMARY
+              fi
+              
+              echo "" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
