@@ -61,7 +61,6 @@ in
           };
         };
       };
-      bar.network.truncation_size = "30";
     };
 
     override = {
@@ -86,6 +85,7 @@ in
         bluetooth.label = false;
         network.label = true;
         media.show_active_only = true;
+        network.truncation_size = 30;
       };
       menus.clock.weather.enable = false;
       wallpaper.enable = true;
