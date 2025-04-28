@@ -40,10 +40,10 @@
       url = "github:hyprwm/hyprpolkitagent";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  sddm-sugar-candy-nix = {
-    url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
+    sddm-sugar-candy-nix = {
+      url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland.url = "github:hyprwm/Hyprland";
     nix-gaming.url = "github:fufexan/nix-gaming";
     akuse-flake.url = "github:Rishabh5321/akuse-flake";
@@ -69,10 +69,10 @@
           allowUnfree = true;
           allowUnfreePredicate = _: true;
         };
-        overlays = [ 
+        overlays = [
           inputs.hyprpanel.overlay
           sddm-sugar-candy-nix.overlays.default
-          ];
+        ];
       };
 
       commonArgs = {

@@ -63,23 +63,23 @@
       #   };
       # };
       sugarCandyNix = {
-            enable = true;
-            settings = {
-              # General settings
-              Background = lib.cleanSource ../../../../wallpapers/${wallpaper};
-              Font = "JetBrainsMono Nerd Font Mono";
-              # Form settings
-              HeaderText = "Welcome!";
-              FormPosition = "left";
-              HaveFormBackground = true;
-              PartialBlur = true;
-              HourFormat = "h:m:s ap";
-              # Customize colors
-              BackgroundColor = "${config.stylix.base16Scheme.base00}";
-              MainColor = "${config.stylix.base16Scheme.base03}";
-              AccentColor = "${config.stylix.base16Scheme.base04}";
-            };
-          };
+        enable = true;
+        settings = {
+          # General settings
+          Background = lib.cleanSource ../../../../wallpapers/${wallpaper};
+          Font = "JetBrainsMono Nerd Font Mono";
+          # Form settings
+          HeaderText = "Welcome!";
+          FormPosition = "left";
+          HaveFormBackground = true;
+          PartialBlur = true;
+          HourFormat = "h:m:s ap";
+          # Customize colors
+          BackgroundColor = "${config.stylix.base16Scheme.base00}";
+          MainColor = "${config.stylix.base16Scheme.base03}";
+          AccentColor = "${config.stylix.base16Scheme.base04}";
+        };
+      };
       autoNumlock = true;
     };
   };
