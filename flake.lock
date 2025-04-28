@@ -1212,11 +1212,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1745637953,
-        "narHash": "sha256-z58/o3LLuhC6rtlgpDoX5gVPc26wNPWMhQog1cAXokA=",
+        "lastModified": 1745811307,
+        "narHash": "sha256-J7boNhCwIWX9Epquk9N90iPdFiulp5VK8ub4cvBGaa0=",
         "owner": "rishabh5321",
         "repo": "seanime-flake",
-        "rev": "d1fbf26ffa9695055851b90ef21aa2f53d2a2307",
+        "rev": "42d816d814067679911a80d55a20405cdf7583f8",
         "type": "github"
       },
       "original": {
