@@ -120,7 +120,7 @@ jobs:
       fail-fast: false  # Continue building other configs if one fails
       matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
     steps:
-      
+
       - name: Free Disk Space
         uses: endersonmenezes/free-disk-space@v2
         with:
@@ -257,7 +257,7 @@ jobs:
           } > telegram_message.txt
 
       - name: Send Telegram message with logs
-        if: always()
+        if: always() # Keep always() to report status even if previous steps fail
         uses: appleboy/telegram-action@v1.0.1
         with:
           to: ${{ secrets.CHAT_ID }}
@@ -269,7 +269,11 @@ jobs:
             *Branch:* `${{ steps.get-branch.outputs.branch }}`
             *Build Status:* `${{ steps.build.outcome }}`
             *Build Duration:* `${{ steps.build.outputs.build_duration }}s`
-            ${{ steps.build.outputs.closure_size != '' && '*Closure Size:* `'}}${{ steps.build.outputs.closure_size }}${{ steps.build.outputs.closure_size != '' && '`' || '' }}
-            *Workflow:* [Run Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
-          document: telegram_message.txt
-          
+            ${{ steps.build.outputs.closure_size != '' && '*Closure Size:* `'}}<span class="math-inline">\{\{ steps\.build\.outputs\.closure\_size \}\}</span>{{ steps.build.outputs.closure_size != '' && '`' || '' }}
+             *Workflow:* [Run Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            ${{ steps.final-status.outputs.status != 'success' && '\nSee attached log for details.' || '' }} # Add note about log on failure
+  
+            # Attach document ONLY if the build step failed
+            document: telegram_message.txt
+            if: steps.build.outcome != 'success' # Condition to only attach on failure
+  
