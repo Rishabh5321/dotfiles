@@ -1,6 +1,6 @@
 # Gnome Configuration
 #- <https://wiki.nixos.org/wiki/GNOME>
-{ pkgs, wallpaper, lib, username, config, ... }: {
+{ pkgs, wallpaper, lib, config, ... }: {
 
   #nix.settings = {
   #substituters = [ "https://hyprland.cachix.org" ];
