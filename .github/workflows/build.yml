@@ -24,8 +24,10 @@ jobs:
     name: Flake Check
     runs-on: ubuntu-latest
     steps:
+
       - name: Checkout Repository
         uses: actions/checkout@v4
+
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
@@ -51,6 +53,7 @@ jobs:
             echo "has_issues=false" >> $GITHUB_OUTPUT
             echo "FLAKE_STATUS=passed" >> $GITHUB_ENV
           fi
+
       - name: Send Telegram Notification
         if: always()
         env:
@@ -85,6 +88,7 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -116,6 +120,7 @@ jobs:
       fail-fast: false  # Continue building other configs if one fails
       matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
     steps:
+      
       - name: Free Disk Space
         uses: endersonmenezes/free-disk-space@v2
         with:
