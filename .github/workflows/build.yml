@@ -5,13 +5,13 @@ permissions:
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
     inputs:
       specific_host:
-        description: 'Build only a specific host (leave empty for all)'
+        description: "Build only a specific host (leave empty for all)"
         required: false
         type: string
 
@@ -24,7 +24,6 @@ jobs:
     name: Flake Check
     runs-on: ubuntu-latest
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -53,14 +52,13 @@ jobs:
             echo "has_issues=false" >> $GITHUB_OUTPUT
             echo "FLAKE_STATUS=passed" >> $GITHUB_ENV
           fi
-          
+
   generate-matrix:
     runs-on: ubuntu-latest
     needs: [flake-checks]
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -87,12 +85,11 @@ jobs:
     name: Build_Config ${{ matrix.hostname }}
     needs: [generate-matrix]
     runs-on: ubuntu-latest
-    timeout-minutes: 180  # Prevent hung builds
+    timeout-minutes: 180 # Prevent hung builds
     strategy:
-      fail-fast: false  # Continue building other configs if one fails
+      fail-fast: false # Continue building other configs if one fails
       matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
     steps:
-
       - name: Free Disk Space
         uses: endersonmenezes/free-disk-space@v2
         with:
@@ -123,47 +120,47 @@ jobs:
         uses: cachix/cachix-action@v16
         with:
           name: rishabh5321
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
       - name: Build NixOS configuration
         id: build
         run: |
           echo "Starting Nix build for ${{ matrix.hostname }}..."
-          
+
           # Create a temporary file for capturing output
           mkdir -p logs
-          
+
           # Run the build and capture output to both stdout and a file
           set +e  # Don't exit on error yet
-          
+
           start_time=$(date +%s)
-          
+
           cachix watch-exec rishabh5321 -- \
             nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.toplevel \
             -L --print-build-logs --out-link result-${{ matrix.hostname }} 2>&1 | tee logs/build_output.log
-          
+
           BUILD_EXIT_CODE=$?
-          
+
           end_time=$(date +%s)
           build_duration=$((end_time - start_time))
-          
+
           echo "Build duration: $build_duration seconds"
           echo "build_duration=$build_duration" >> $GITHUB_OUTPUT
-          
+
           # If build was successful, generate a system report
           if [ $BUILD_EXIT_CODE -eq 0 ]; then
             echo "Generating system report for ${{ matrix.hostname }}..."
             nix-shell -p nix-info --run "nix-info -m" > logs/system_info.log
-            
+
             # Extract some useful information about the build
             nix path-info --json ./result-${{ matrix.hostname }} | jq '.[0] | {path: .path, closureSize: .closureSize}' > logs/build_info.json
-            
+
             # Get closureSize in human-readable format
             CLOSURE_SIZE=$(cat logs/build_info.json | jq -r '.closureSize')
             HUMAN_SIZE=$(numfmt --to=iec-i --suffix=B $CLOSURE_SIZE)
             echo "closure_size=$HUMAN_SIZE" >> $GITHUB_OUTPUT
           fi
-          
+
           exit $BUILD_EXIT_CODE
 
       - name: Upload build logs
@@ -173,22 +170,6 @@ jobs:
           name: build-logs-${{ matrix.hostname }}
           path: logs/
           retention-days: 5
-
-      - name: Run NixOS tests
-        if: steps.build.outcome == 'success'
-        continue-on-error: true  # Don't fail the workflow if tests fail
-        id: test
-        run: |
-          echo "Running tests for ${{ matrix.hostname }}..."
-          # This is a placeholder - you would add your NixOS tests here
-          # For example:
-          # nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.vmTest -L
-          echo "Tests completed for ${{ matrix.hostname }}"
-
-      - name: Set date
-        id: get-date
-        if: always()
-        run: echo "date=$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_OUTPUT"
 
       - name: Determine final status
         id: final-status
@@ -201,11 +182,66 @@ jobs:
             echo "status=error" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Get branch name
-        id: get-branch
+  notify_telegram:
+    name: Send Telegram Notification
+    runs-on: ubuntu-latest
+    needs: [Build_Config] # This job waits for all matrix jobs of Build_Config
+    if: always() # Run this job even if some matrix builds failed
+    steps:
+      - name: Checkout repository # Needed to access workflow details potentially
+        uses: actions/checkout@v4
+
+      - name: Determine overall status
+        id: determine_status
         run: |
-          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            echo "branch=${{ github.event.pull_request.base.ref }}" >> "$GITHUB_OUTPUT"
+          # Check the outcome of the job it depends on.
+          # needs.Build_Config.result will be 'success' only if ALL matrix jobs succeeded.
+          # If any failed, it will be 'failure'. If skipped, 'skipped'.
+          STATUS="${{ needs.Build_Config.result }}"
+          MESSAGE_STATUS=""
+          if [[ "$STATUS" == "success" ]]; then
+            MESSAGE_STATUS="✅ Build successful!"
+          elif [[ "$STATUS" == "failure" ]]; then
+            MESSAGE_STATUS="❌ Build failed!"
+          elif [[ "$STATUS" == "cancelled" ]]; then
+            MESSAGE_STATUS="🛑 Build cancelled."
           else
-            echo "branch=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+            MESSAGE_STATUS="❓ Build status unknown ($STATUS)."
           fi
+          echo "message_status=$MESSAGE_STATUS" >> "$GITHUB_OUTPUT"
+
+      - name: Get branch/PR info
+        id: get-ref-info
+        run: |
+          REF_INFO=""
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            REF_INFO="PR #${{ github.event.pull_request.number }} (${{ github.event.pull_request.head.ref }} -> ${{ github.event.pull_request.base.ref }})"
+          elif [[ "${{ github.event_name }}" == "push" ]]; then
+            REF_INFO="Branch: ${{ github.ref_name }}"
+          elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            REF_INFO="Manual run on branch: ${{ github.ref_name }}"
+            SPECIFIC_HOST="${{ github.event.inputs.specific_host }}"
+            if [[ -n "$SPECIFIC_HOST" ]]; then
+              REF_INFO="$REF_INFO (Specific host: $SPECIFIC_HOST)"
+            fi
+          else
+            REF_INFO="Event: ${{ github.event_name }}"
+          fi
+          echo "ref_info=$REF_INFO" >> "$GITHUB_OUTPUT"
+
+      - name: Send Telegram Message
+        uses: appleboy/telegram-action@v1.0.1 # Use a Telegram action
+        with:
+          to: ${{ secrets.CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            *GitHub Actions Build Status*
+            Workflow: `${{ github.workflow }}`
+            Repository: `${{ github.repository }}`
+            ${{ steps.get-ref-info.outputs.ref_info }}
+            Commit: `${{ github.sha }}`
+            
+            *Status:* ${{ steps.determine_status.outputs.message_status }}
+            
+            View run details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          format: markdown # Use markdown formatting for the message
