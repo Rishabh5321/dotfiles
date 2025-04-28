@@ -20,7 +20,6 @@
     pavucontrol
     xdg-utils
     xfce.xfce4-pulseaudio-plugin
-    sddm-astronaut
   ];
 
   services.blueman.enable = true;
@@ -74,10 +73,6 @@
           HaveFormBackground = true;
           PartialBlur = true;
           HourFormat = "h:m:s ap";
-          # Customize colors
-          BackgroundColor = "${config.stylix.base16Scheme.base00}";
-          MainColor = "${config.stylix.base16Scheme.base03}";
-          AccentColor = "${config.stylix.base16Scheme.base04}";
         };
       };
       autoNumlock = true;
