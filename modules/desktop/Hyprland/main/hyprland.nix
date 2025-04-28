@@ -1,6 +1,6 @@
 # Gnome Configuration
 #- <https://wiki.nixos.org/wiki/GNOME>
-{ pkgs, ... }: {
+{ pkgs, wallpaper, lib, username, config, ... }: {
 
   #nix.settings = {
   #substituters = [ "https://hyprland.cachix.org" ];
@@ -49,19 +49,37 @@
       wayland = {
         enable = false;
       };
-      package = pkgs.kdePackages.sddm;
-      extraPackages = with pkgs; [
-        kdePackages.qtsvg
-        kdePackages.qtmultimedia
-        kdePackages.qtvirtualkeyboard
-      ];
-      theme = "sddm-astronaut-theme";
+      # package = pkgs.kdePackages.sddm;
+      # extraPackages = with pkgs; [
+      #   kdePackages.qtsvg
+      #   kdePackages.qtmultimedia
+      #   kdePackages.qtvirtualkeyboard
+      # ];
+      # theme = "sddm-astronaut-theme";
       # settings = {
       #   Autologin = {
       #     Session = "hyprland";
       #     User = "rishabh";
       #   };
       # };
+      sugarCandyNix = {
+            enable = true;
+            settings = {
+              # General settings
+              Background = lib.cleanSource ../../../../wallpapers/${wallpaper};
+              Font = "JetBrainsMono Nerd Font Mono";
+              # Form settings
+              HeaderText = "Welcome!";
+              FormPosition = "left";
+              HaveFormBackground = true;
+              PartialBlur = true;
+              HourFormat = "h:m:s ap";
+              # Customize colors
+              BackgroundColor = "${config.stylix.base16Scheme.base00}";
+              MainColor = "${config.stylix.base16Scheme.base03}";
+              AccentColor = "${config.stylix.base16Scheme.base04}";
+            };
+          };
       autoNumlock = true;
     };
   };
@@ -71,5 +89,4 @@
     ${pkgs.xorg.xset}/bin/xset -dpms
     ${pkgs.xorg.xset}/bin/xset dpms 0 0 60
   '';
-
 }

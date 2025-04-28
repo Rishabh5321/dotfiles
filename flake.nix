@@ -40,6 +40,10 @@
       url = "github:hyprwm/hyprpolkitagent";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+  sddm-sugar-candy-nix = {
+    url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
     hyprland.url = "github:hyprwm/Hyprland";
     nix-gaming.url = "github:fufexan/nix-gaming";
     akuse-flake.url = "github:Rishabh5321/akuse-flake";
@@ -48,7 +52,7 @@
     thorium.url = "github:Rishabh5321/thorium_flake";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, sddm-sugar-candy-nix, ... } @ inputs:
     let
       system = "x86_64-linux";
       username = "rishabh";
@@ -65,11 +69,14 @@
           allowUnfree = true;
           allowUnfreePredicate = _: true;
         };
-        overlays = [ inputs.hyprpanel.overlay ];
+        overlays = [ 
+          inputs.hyprpanel.overlay
+          sddm-sugar-candy-nix.overlays.default
+          ];
       };
 
       commonArgs = {
-        inherit inputs system username wallpaper flakeDir pkgs-stable;
+        inherit inputs system username wallpaper flakeDir pkgs-stable sddm-sugar-candy-nix;
         inherit (inputs) spicetify-nix;
       };
 
@@ -96,6 +103,7 @@
             inputs.stylix.nixosModules.stylix
             inputs.nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
+            sddm-sugar-candy-nix.nixosModules.default
             # Home Manager configuration integrated into NixOS
             {
               home-manager = {
