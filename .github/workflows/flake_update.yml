@@ -53,15 +53,22 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-branch-prefix: update-
           automerge: true
-      - run: |
-          echo "PR Number: ${{ steps.update_action.outputs.pull-request-number }}"
+      - name: Get latest PR number
+        id: get_pr
+        run: |
+          pr_number=$(gh pr list --author github[bot] --state open --json number --jq '.[0].number')
+          echo "Found PR #$pr_number"
+          echo "pull-request-number=$pr_number" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # Send Telegram message only if a pull request was created
-      - run: |
+      - name: Send Telegram message
+        if: ${{ steps.get_pr.outputs.pull-request-number != '' }}
+        run: |
           curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage \
           -d chat_id=${{ secrets.CHAT_ID }} \
-          -d text="Flake ${{ matrix.flake }} has been updated and a pull request (#${{ steps.update_action.outputs.pull-request-number }}) has been created."
+          -d text="Flake ${{ matrix.flake }} has been updated and a pull request (#${{ steps.get_pr.outputs.pull-request-number }}) has been created."
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
-        # Add an if condition to check if pull-request-number output exists
-        if: ${{ steps.update_action.outputs.pull-request-number != '' }}
+      
