@@ -1126,11 +1126,11 @@
     },
     "nixpkgs_7": {
       "locked": {
-        "lastModified": 1745526057,
-        "narHash": "sha256-ITSpPDwvLBZBnPRS2bUcHY3gZSwis/uTe255QgMtTLA=",
+        "lastModified": 1745794561,
+        "narHash": "sha256-T36rUZHUART00h3dW4sV5tv4MrXKT7aWjNfHiZz7OHg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f771eb401a46846c1aebd20552521b233dd7e18b",
+        "rev": "5461b7fa65f3ca74cef60be837fd559a8918eaa0",
         "type": "github"
       },
       "original": {
@@ -1384,11 +1384,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1745638658,
-        "narHash": "sha256-1EvzFqUpLlLarqQ+rXbqyIOHdSrpg08b856cJWNJsOY=",
+        "lastModified": 1745896070,
+        "narHash": "sha256-3/wBNa9c1Zt/kcW/56P0wGSZk34TtFJPwGjpo7xE4Wo=",
         "owner": "Rishabh5321",
         "repo": "thorium_flake",
-        "rev": "8a18acd773e46a0d4a8ed473abf8d7d0c2b2c607",
+        "rev": "ed27973064a1e47618f98634c8f79707ea4fe5d5",
         "type": "github"
       },
       "original": {
