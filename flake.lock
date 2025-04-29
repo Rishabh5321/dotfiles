@@ -1291,11 +1291,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1745939601,
-        "narHash": "sha256-Jsgx2FlJ/qPQtL8Yxnxmn0ZwJfFJJgfenbk7Iv7zeHk=",
+        "lastModified": 1745941063,
+        "narHash": "sha256-tVcbAxTv71xWwzlQvZCar5YIODymE94LoI/LxfpU6pY=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "594336f425edb579f11a61d76e3d866412358486",
+        "rev": "de0870f075737eac147c31fcef77df9b9525abfa",
         "type": "github"
       },
       "original": {
