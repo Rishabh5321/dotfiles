@@ -1254,11 +1254,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1745959350,
-        "narHash": "sha256-2R0C7vAIJhLlbB5Qhc9jKzJEOB3Wl0+dH8ZmyqEA9wY=",
+        "lastModified": 1745962170,
+        "narHash": "sha256-5Sh6nFpKsq3quIyx8JzxPpIPGLKndAidcZaz/hX/lFk=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "5b0b21bd6d38b2ccf4fdcb9f082abcb60ca25f7c",
+        "rev": "02c6dcb5395825bc652c3e0897e5382e9befa232",
         "type": "github"
       },
       "original": {
