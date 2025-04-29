@@ -4,10 +4,7 @@ on:
     - cron: "0 * * * *"
   workflow_dispatch:
 
-# Add necessary permissions here
-permissions:
-  contents: write 
-  pull-requests: write 
+permissions: {}
 
 jobs:
   get-flake-inputs:
@@ -21,22 +18,13 @@ jobs:
           sparse-checkout: flake.lock
       - id: get-flake-inputs
         run: |
-          # Extract flake inputs from flake.lock
-          # Note: jq -c ensures it's a single line JSON output suitable for the matrix
           flake_inputs="$(jq -c '.nodes.root.inputs | {flake: keys}' flake.lock)"
 
-          # Output the flake inputs for the matrix job
-          # Replace single quotes with double quotes for valid JSON if jq outputs singles
-          echo "flake-inputs=${flake_inputs | sed 's/'"'"/'"'"'/g'}" >> "$GITHUB_OUTPUT"
-
-
+          echo "flake-inputs=${flake_inputs}" >> "$GITHUB_OUTPUT"
   update-flake:
     name: update-${{ matrix.flake }}
     runs-on: ubuntu-latest
     needs: get-flake-inputs
-    permissions:
-      contents: write
-      pull-requests: write
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.get-flake-inputs.outputs.flake-inputs) }}
@@ -50,25 +38,13 @@ jobs:
           extra-conf: accept-flake-config = true
       - run: git config --global user.email "noreply@github.com"
       - run: git config --global user.name "github[bot]"
-      # Use flake-update-action and give it an ID to reference its outputs
-      - id: update_action # Added ID here
-        uses: cpcloud/flake-update-action@v2.0.1
+      - uses: cpcloud/flake-update-action@v2.0.1
         with:
           dependency: ${{ matrix.flake }}
-          pull-request-token: ${{ secrets.REPO_ACCESS_TOKEN }} # Note: The action's docs mention using GITHUB_TOKEN is often sufficient if permissions are set
+          pull-request-token: ${{ secrets.REPO_ACCESS_TOKEN }}
           pull-request-author: github[bot] <noreply@github.com>
-          pull-request-labels: "dependencies, automated"
+          pull-request-labels: "dependencies, automated" 
           delete-branch: true
-          github-token: ${{ secrets.GITHUB_TOKEN }} # Provide GITHUB_TOKEN as well
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-branch-prefix: update-
           automerge: true
-
-      - name: Send Telegram message
-        if: ${{ steps.update_action.outputs.pull-request-number != '' }}
-        run: |
-          curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage \
-          -d chat_id=${{ secrets.CHAT_ID }} \
-          -d text="Flake ${{ matrix.flake }} has been updated and a pull request (#${{ steps.update_action.outputs.pull-request-number }}) has been created."
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          CHAT_ID: ${{ secrets.CHAT_ID }}
