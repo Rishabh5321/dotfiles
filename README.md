@@ -195,10 +195,6 @@ Each host has its own directory under `./nixos/<hostname>`, containing:
 
 This configuration relies on several external inputs and modules. Ensure that all dependencies are available and properly configured before applying the configuration.
 
-## Screenshots 🖼️
-
-Here are some screenshots of the system in action:
-
 ---
 
 ## License
