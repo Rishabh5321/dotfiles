@@ -6,13 +6,15 @@
     {
       "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
       "logo": {
-        "source": "${./fastfetch/nixos-logo.png}",
-        "type": "kitty-direct",
-        "width": 33,
-        "padding": {
-          "top": 2
-        }
-      },
+        "source": "/fastfetch/nix-svgrepo-com.svg",
+            "type": "kitty-direct",
+            "height": 15,
+            "width": 25,
+            "padding": {
+                "top": 1,
+                "left": 1
+            }
+        },
       "display": {
         "separator": "",
         "size": {
