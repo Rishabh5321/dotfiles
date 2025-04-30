@@ -1,4 +1,4 @@
-name: Build_Config
+name: Check and Build Flake Config
 permissions:
   contents: read
   pull-requests: write
@@ -240,8 +240,8 @@ jobs:
             Repository: `${{ github.repository }}`
             ${{ steps.get-ref-info.outputs.ref_info }}
             Commit: `${{ github.sha }}`
-            
+
             *Status:* ${{ steps.determine_status.outputs.message_status }}
-            
+
             View run details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           format: markdown # Use markdown formatting for the message
