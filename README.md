@@ -28,27 +28,13 @@ This repository contains the NixOS configuration for both a laptop and a server.
 
 ## 🖼️ Configuration Showcase
 
-</div>
-
-<div align="center" style="overflow-x: auto; white-space: nowrap;">
-  <div style="display: inline-block; width: 80%; margin-right: 20px; vertical-align: top;">
-    <img src="screenshot/screenshot1.png" alt="Desktop Environment" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-    <h3>🖥️ Desktop Environment with Custom Theming</h3>
-    <p>Sleek and modern desktop with custom themes, widgets, and layouts for productivity and aesthetics.</p>
-  </div>
-
-  <div style="display: inline-block; width: 80%; margin-right: 20px; vertical-align: top;">
-    <img src="screenshot/screenshot2.png" alt="Home Manager Config" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-    <h3>🛠️ Home-Manager Configuration</h3>
-    <p>User-specific settings managed by home-manager, including terminal and shell customization.</p>
-  </div>
-
-  <div style="display: inline-block; width: 80%; vertical-align: top;">
-    <img src="screenshot/screenshot3.png" alt="Terminal Theme" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-    <h3>🖋️ Terminal Theme</h3>
-    <p>Beautifully themed terminal using stylix to automatically apply wallpaper colors.</p>
-  </div>
-</div>
+<p align="center">
+  <img width="80%" src="screenshot/screenshot1.png" />
+  <img src="screenshot/screenshot2.png" width="40%" />
+  <img src="screenshot/screenshot3.png" width="40%" />
+  <img src="screenshot/screenshot4.png" width="40%" />
+  <img src="screenshot/screenshot5.png" width="40%" />
+</p>
 </div>
 
 ## Table of Contents
@@ -78,25 +64,25 @@ This configuration is designed to be modular and reusable across different machi
 The repository is organized as follows:
 
 ```bash
-. ├── containers/           # Containerized applications (e.g., Jellyfin, Plex, Sonarr) 
-  ├── hosts/                # Host-specific configurations 
-  │ ├── dell/               # Configuration for Dell systems 
-  │ │ ├── configuration.nix # System-wide configuration for Dell 
-  │ │ └── home.nix          # User-specific configuration for Dell 
-  │ └── redmi/              # Configuration for Redmi systems 
-  │ ├── configuration.nix   # System-wide configuration for Redmi 
-  │ └── home.nix            # User-specific configuration for Redmi 
-  ├── modules/              # Modular configurations for desktop environments and tools 
-  │ ├── desktop/            # Desktop environment configurations (e.g., GNOME, KDE, Hyprland) 
-  │ ├── user/               # User-specific configurations (e.g., Neovim, Alacritty, Zsh) 
-  │ └── system/             # System-wide NixOS modules (e.g., Bluetooth, Gaming, Virtualization) 
-  ├── overlays/             # Custom Nixpkgs overlays 
-  ├── pkgs/                 # Custom packages 
-  ├── screenshot/           # Screenshots of the system in action 
-  ├── wallpapers/           # Collection of wallpapers 
-  ├── flake.lock            # Nix flake lock file 
-  ├── flake.nix             # Nix flake configuration 
-  ├── LICENSE               # License file 
+. ├── containers/           # Containerized applications (e.g., Jellyfin, Plex, Sonarr)
+  ├── hosts/                # Host-specific configurations
+  │ ├── dell/               # Configuration for Dell systems
+  │ │ ├── configuration.nix # System-wide configuration for Dell
+  │ │ └── home.nix          # User-specific configuration for Dell
+  │ └── redmi/              # Configuration for Redmi systems
+  │ ├── configuration.nix   # System-wide configuration for Redmi
+  │ └── home.nix            # User-specific configuration for Redmi
+  ├── modules/              # Modular configurations for desktop environments and tools
+  │ ├── desktop/            # Desktop environment configurations (e.g., GNOME, KDE, Hyprland)
+  │ ├── user/               # User-specific configurations (e.g., Neovim, Alacritty, Zsh)
+  │ └── system/             # System-wide NixOS modules (e.g., Bluetooth, Gaming, Virtualization)
+  ├── overlays/             # Custom Nixpkgs overlays
+  ├── pkgs/                 # Custom packages
+  ├── screenshot/           # Screenshots of the system in action
+  ├── wallpapers/           # Collection of wallpapers
+  ├── flake.lock            # Nix flake lock file
+  ├── flake.nix             # Nix flake configuration
+  ├── LICENSE               # License file
   └── README.md             # This documentation
 ```
 
