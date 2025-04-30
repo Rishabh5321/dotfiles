@@ -3,15 +3,6 @@
     enable = true;
 
     settings = {
-      /*logo = {
-                source = "~/nix/home-manager/modules/programs/fastfetch/pngs/hypr.png";
-                type = "kitty";
-                                        	        height = 19;
-                                        	        padding = {
-                                            		        top = 2;
-                                        	        };
-            };*/
-
       display = {
         separator = " ";
       };
