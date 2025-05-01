@@ -81,28 +81,22 @@ with lib; {
 
         animations {
           enabled = yes
-          bezier = wind, 0.25, 0.75, 0.5, 1
-          bezier = winIn, 0.42, 0, 0.58, 1
-          bezier = winOut, 0.33, 1, 0.68, 1
-          bezier = liner, 0.5, 0, 0.5, 1
 
-          animation = windows, 1, 3, wind, slide
-          animation = windowsIn, 1, 2.5, winIn, slide
-          animation = windowsOut, 1, 2.5, winOut, slide
-          animation = windowsMove, 1, 2.5, wind, slide
-          animation = border, 1, 4, liner
-          animation = fadeIn, 1, 3, winIn
-          animation = fadeOut, 1, 3, winOut
-          animation = workspaces, 1, 5, wind
+          # Bezier curves
+          bezier = smooth, 0.25, 0.75, 0.5, 1
 
-          animation = windows, 1, 1.5, wind, slide
-          animation = windowsIn, 1, 1.5, winIn, slide
-          animation = windowsOut, 1, 1.5, winOut, slide
-          animation = windowsMove, 1, 1.5, wind, slide
-          animation = border, 1, 2, liner
-          animation = fade, 1, 2, default
-          animation = workspaces, 1, 2.5, wind
+          # Window animations
+          animation = windows,     1, 0.5, smooth, slide
+          animation = windowsIn,   1, 0.4, smooth, slide
+          animation = windowsOut,  1, 0.4, smooth, slide
+          animation = windowsMove, 1, 0.3, smooth, slide
+
+          # Other animations
+          animation = border,      1, 0.2, smooth
+          animation = fade,        1, 0.2, smooth
+          animation = workspaces,  1, 0.5, smooth
         }
+
 
         decoration {
           rounding = 4
