@@ -47,9 +47,9 @@ with lib; {
         ${extraMonitorSettings}
 
         general {
-          gaps_in = 4
-          gaps_out = 6
-          border_size = 3
+          gaps_in = 1
+          gaps_out = 1
+          border_size = 2
           layout = dwindle
           resize_on_border = true
           allow_tearing = true
@@ -99,7 +99,7 @@ with lib; {
 
 
         decoration {
-          rounding = 4
+          rounding = 0
           blur {
             enabled = true
             size = 2
