@@ -1,6 +1,5 @@
 { pkgs
 , inputs
-, spicetify-nix
 , ...
 }: {
   imports = [ inputs.spicetify-nix.homeManagerModules.default ];
@@ -15,6 +14,7 @@
         hidePodcasts
         shuffle # shuffle+ (special characters are sanitized out of extension names)
       ];
+      theme = spicePkgs.themes.sleek;
       #theme = spicePkgs.themes.ziro;
       #colorScheme = "custom";
       # customColorScheme = {
