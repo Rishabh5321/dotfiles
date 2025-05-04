@@ -70,6 +70,8 @@
       networkmanagerapplet
       #nix-serve
       nix-prefetch-github
+      nil
+      nixd
       nixpkgs-review
       nh
       nload
