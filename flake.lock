@@ -984,11 +984,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1746324126,
-        "narHash": "sha256-Q3NxZYfJhKWe3zHACAjhkT8ojA0zJ66tp1dJnK2hY8U=",
+        "lastModified": 1746381970,
+        "narHash": "sha256-jfXpTC+2sPVetdx0srQf1ggY9+GgE6n1PP8M0z+cOo0=",
         "owner": "fufexan",
         "repo": "nix-gaming",
-        "rev": "a094fde06697aba9c514b627850261810e771495",
+        "rev": "46c04615dadf01102eacc975ecdaecdab5b46fe1",
         "type": "github"
       },
       "original": {
