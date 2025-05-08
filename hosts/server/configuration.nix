@@ -5,7 +5,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules/system
+    #../../modules/system
     ./power.nix
     ./serve.nix
     #../../containers
@@ -13,6 +13,17 @@
     ./intel-drivers.nix
     ./tailscale.nix
     #./amd-drivers.nix
+
+    ../../modules/system/auto-upgrade.nix
+    ../../modules/system/boot.nix
+    ../../modules/system/graphics.nix
+    ../../modules/system/locale.nix
+    ../../modules/system/nh.nix
+    ../../modules/system/nix_settings.nix
+    ../../modules/system/program.nix
+    ../../modules/system/stylix.nix
+    ../../modules/system/swap.nix
+    ../../modules/system/users.nix
   ];
 
   # services.avahi = {
