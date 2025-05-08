@@ -124,6 +124,7 @@
       nixosConfigurations = {
         redmi = mkHost { hostname = "redmi"; };
         dell = mkHost { hostname = "dell"; };
+        server = mkHost { hostname = "server"; };
       };
     };
 }
