@@ -48,7 +48,7 @@
       htop
       inputs.akuse-flake.packages.${system}.akuse
       #inputs.alejandra.defaultPackage.${system}
-      inputs.better-control.packages.${pkgs.system}.better-control
+      #inputs.better-control.packages.${pkgs.system}.better-control
       inputs.thorium.packages."x86_64-linux".thorium-avx2
       jellyfin-media-player
       kdePackages.dolphin
