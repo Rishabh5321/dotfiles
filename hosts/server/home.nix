@@ -7,7 +7,7 @@
   # You can import other home-manager modules here
   imports = [
     ../../modules/user
-    ../../modules/desktop/Hyprland/home
+    #../../modules/desktop/Hyprland/home
   ];
 
   nixpkgs = {
