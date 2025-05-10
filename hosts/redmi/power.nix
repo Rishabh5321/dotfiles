@@ -1,6 +1,6 @@
 _: {
   # Better scheduling for CPU cycles - thanks System76!!!
-  services.system76-scheduler.settings.cfsProfiles.enable = true;
+  # services.system76-scheduler.settings.cfsProfiles.enable = true;
 
   # Disable GNOMEs power management
   services.power-profiles-daemon.enable = true;
