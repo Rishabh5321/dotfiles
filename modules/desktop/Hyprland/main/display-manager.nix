@@ -1,4 +1,4 @@
-{... }: {
+{pkgs ,lib ,wallpaper, ... }: {
   services.displayManager = {
     enable = true;
     sddm = {
