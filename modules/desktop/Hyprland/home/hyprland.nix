@@ -15,10 +15,12 @@ with lib; {
 
     settings.exec-once = [ "systemctl --user start hyprpolkitagent" ];
 
-    extraConfig = let
-      modifier = "SUPER";
-    in concatStrings [
-      ''
+    extraConfig =
+      let
+        modifier = "SUPER";
+      in
+      concatStrings [
+        ''
 
       # ── Environment Variables ─────────────────────────────────────────────
       env = NIXOS_OZONE_WL, 1
@@ -249,6 +251,6 @@ with lib; {
       bind  = ,XF86MonBrightnessDown,exec,brightnessctl set 5%-
       bind  = ,XF86MonBrightnessUp,  exec,brightnessctl set +5%
       ''
-    ];
+      ];
   };
 }
