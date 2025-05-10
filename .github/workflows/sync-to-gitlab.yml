@@ -2,7 +2,11 @@ name: Sync Repository to GitLab
 permissions:
   contents: read
   pull-requests: read
-on: push
+
+on:
+  push:
+    branches:
+      - main # This ensures it only runs on pushes to the main branch
 
 jobs:
   sync:
@@ -14,3 +18,27 @@ jobs:
           gitlab_url: ${{ secrets.GITLAB_URL }}
           username: ${{ secrets.USERNAME }}
           gitlab_pat: ${{ secrets.GITLAB_PAT }}
+        id: sync_step # Add an ID to reference this step later
+
+  notify_telegram:
+    runs-on: ubuntu-latest
+    needs: sync # This job runs after the 'sync' job completes
+    if: always() # This ensures the notification runs even if the sync job fails
+
+    steps:
+      - name: Send Telegram notification
+        uses: appleboy/telegram-action@v0.1.1 # Use a stable version
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            *GitHub Action Notification*
+
+            Repository: ${{ github.repository }}
+            Branch: ${{ github.ref_name }}
+            Workflow: ${{ github.workflow }}
+
+            Sync to GitLab: ${{ needs.sync.result }} # Show the result of the sync job
+
+            View Run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          format: markdown # Use markdown for formatting
