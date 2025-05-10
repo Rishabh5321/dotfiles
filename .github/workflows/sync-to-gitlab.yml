@@ -6,7 +6,7 @@ permissions:
 on:
   push:
     branches:
-      - main # This ensures it only runs on pushes to the main branch
+      - main
 
 jobs:
   sync:
@@ -18,16 +18,16 @@ jobs:
           gitlab_url: ${{ secrets.GITLAB_URL }}
           username: ${{ secrets.USERNAME }}
           gitlab_pat: ${{ secrets.GITLAB_PAT }}
-        id: sync_step # Add an ID to reference this step later
+        id: sync_step
 
   notify_telegram:
     runs-on: ubuntu-latest
-    needs: sync # This job runs after the 'sync' job completes
-    if: always() # This ensures the notification runs even if the sync job fails
+    needs: sync
+    if: always() # Ensure notification runs even on failure
 
     steps:
       - name: Send Telegram notification
-        uses: appleboy/telegram-action@v0.1.1 # Use a stable version
+        uses: appleboy/telegram-action@v0.1.1
         with:
           to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
@@ -38,7 +38,14 @@ jobs:
             Branch: ${{ github.ref_name }}
             Workflow: ${{ github.workflow }}
 
-            Sync to GitLab: ${{ needs.sync.result }} # Show the result of the sync job
+            *Pushed to GitLab Result*:
+            ${{
+              needs.sync.result == 'success' && '✅ Success' ||
+              needs.sync.result == 'failure' && '❌ Failure' ||
+              needs.sync.result == 'cancelled' && '🚫 Cancelled' ||
+              needs.sync.result == 'skipped' && '⏭️ Skipped' ||
+              '❓ Unknown' # Default case
+            }}
 
             View Run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
           format: markdown # Use markdown for formatting
