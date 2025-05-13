@@ -20,6 +20,7 @@
         "adbusers"
         "docker"
         "kvm"
+        "video"
         "qemu-libvirtd"
         "sambashare"
       ];
