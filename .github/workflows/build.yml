@@ -131,7 +131,7 @@ jobs:
           mkdir -p logs
 
           # Run the build and capture output to both stdout and a file
-          # set +e  # Don't exit on error yet
+          set +e  # Don't exit on error yet
 
           start_time=$(date +%s)
 
