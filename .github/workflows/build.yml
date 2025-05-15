@@ -87,7 +87,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 180 # Prevent hung builds
     strategy:
-      #fail-fast: false # Continue building other configs if one fails
+      fail-fast: false # Continue building other configs if one fails
       matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
     steps:
       - name: Free Disk Space
