@@ -50,6 +50,7 @@
     better-control.url = "github:rishabh5321/better-control-flake";
     seanime.url = "github:rishabh5321/seanime-flake";
     thorium.url = "github:Rishabh5321/thorium_flake";
+    grayjay.url = "github:rishabh5321/grayjay-flake";
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, sddm-sugar-candy-nix, ... } @ inputs:
