@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   #environment.systemPackages = [ pkgs.luminance ];
 
