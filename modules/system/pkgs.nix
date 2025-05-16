@@ -3,7 +3,12 @@
 , ...
 }: {
   environment.systemPackages =
+    # let
+    #   luminance = pkgs.callPackage ../../pkgs/luminance.nix { };
+    # in
     with pkgs; [
+      #luminance
+
       apkeep
       act
       alacritty

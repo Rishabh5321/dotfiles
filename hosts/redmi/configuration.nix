@@ -8,6 +8,7 @@
     ../../modules/system
     ./power.nix
     ../../modules/desktop/Hyprland/main
+    #./testing-pkgs.nix
     #./aagl.nix
   ];
 
