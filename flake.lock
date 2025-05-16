@@ -1241,11 +1241,11 @@
         "nvchad-starter": "nvchad-starter"
       },
       "locked": {
-        "lastModified": 1747221079,
-        "narHash": "sha256-bEcc3lQC4Fnm5MQyod7uVJnDpZSYBHTFfc+I4CzEJo8=",
+        "lastModified": 1747401379,
+        "narHash": "sha256-LE3iMq2oXC94Ax2TPec4/Lea9nxVnzZj0NPfd5AapVs=",
         "owner": "nix-community",
         "repo": "nix4nvchad",
-        "rev": "90f125adc5843c7adb48de2aafc52afda327ea25",
+        "rev": "1db34d8a865126798a9052ea25e4200f8781e19b",
         "type": "github"
       },
       "original": {
