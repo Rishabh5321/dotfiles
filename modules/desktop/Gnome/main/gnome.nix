@@ -16,4 +16,8 @@
       gnome-tweaks
       dconf-editor
     ];
+
+    environment.gnome.excludePackages = [
+      pkgs.gnome-text-editor
+    ];
 }
