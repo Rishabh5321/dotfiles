@@ -16,6 +16,9 @@
      <a href="https://github.com/Rishabh5321/dotfiles/commits/main">
       <img src="https://img.shields.io/github/last-commit/Rishabh5321/dotfiles?color=D65D0E&labelColor=282828&style=for-the-badge&logo=github&logoColor=D65D0E" alt="Last Commit">
     </a>
+    <a href="https://github.com/Rishabh5321/dotfiles/actions/workflows/build.yml">
+      <img src="https://img.shields.io/github/actions/workflow/status/Rishabh5321/dotfiles/build.yml?branch=main&label=Check%20and%20Build%20Flake%20Config&logo=github&logoColor=D65D0E&labelColor=282828&style=for-the-badge&color=D65D0E" alt="Check and Build Flake Config Status">
+    </a>
   </p>
   <br>
 </div>
