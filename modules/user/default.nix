@@ -26,7 +26,8 @@
     #./seanime.nix
     #./kodi.nix
     ./zen.nix
-    ./nvchad.nix
+    #./nvchad.nix
+    ./nvf.nix
     inputs.seanime.nixosModules.seanime
   ];
   dconf.settings = {
