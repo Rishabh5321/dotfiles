@@ -25,7 +25,7 @@
     #./virtualisation.nix
 
     ./gaming.nix
-    #./usbguard.nix
+    ./usbguard.nix
     ./security.nix
     #./seanime.nix
     ./upower.nix

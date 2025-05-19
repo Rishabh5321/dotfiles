@@ -44,6 +44,7 @@
         popups = 12;
       };
     };
+    enableReleaseChecks = false; # Will remove after stylix 25.05 is released !!
   };
 
   gtk.iconCache.enable = true;
