@@ -1,9 +1,8 @@
-{
-  inputs,
-  config,
-  ...
+{ inputs
+, config
+, ...
 }: {
-  imports = [inputs.nvf.homeManagerModules.default];
+  imports = [ inputs.nvf.homeManagerModules.default ];
 
   programs.nvf = {
     enable = true;
@@ -50,79 +49,79 @@
       keymaps = [
         {
           key = "jk";
-          mode = ["i"];
+          mode = [ "i" ];
           action = "<ESC>";
           desc = "Exit insert mode";
         }
         {
           key = "<leader>nh";
-          mode = ["n"];
+          mode = [ "n" ];
           action = ":nohl<CR>";
           desc = "Clear search highlights";
         }
         {
           key = "<leader>ff";
-          mode = ["n"];
+          mode = [ "n" ];
           action = "<cmd>Telescope find_files<cr>";
           desc = "Search files by name";
         }
         {
           key = "<leader>lg";
-          mode = ["n"];
+          mode = [ "n" ];
           action = "<cmd>Telescope live_grep<cr>";
           desc = "Search files by contents";
         }
         {
           key = "<leader>fe";
-          mode = ["n"];
+          mode = [ "n" ];
           action = "<cmd>Neotree toggle<cr>";
           desc = "File browser toggle";
         }
         {
           key = "<C-h>";
-          mode = ["i"];
+          mode = [ "i" ];
           action = "<Left>";
           desc = "Move left in insert mode";
         }
         {
           key = "<C-j>";
-          mode = ["i"];
+          mode = [ "i" ];
           action = "<Down>";
           desc = "Move down in insert mode";
         }
         {
           key = "<C-k>";
-          mode = ["i"];
+          mode = [ "i" ];
           action = "<Up>";
           desc = "Move up in insert mode";
         }
         {
           key = "<C-l>";
-          mode = ["i"];
+          mode = [ "i" ];
           action = "<Right>";
           desc = "Move right in insert mode";
         }
         {
           key = "<leader>dj";
-          mode = ["n"];
+          mode = [ "n" ];
           action = "<cmd>Lspsaga diagnostic_jump_next<CR>";
           desc = "Go to next diagnostic";
         }
         {
           key = "<leader>dk";
-          mode = ["n"];
+          mode = [ "n" ];
           action = "<cmd>Lspsaga diagnostic_jump_prev<CR>";
           desc = "Go to previous diagnostic";
         }
         {
           key = "<leader>dl";
-          mode = ["n"];
+          mode = [ "n" ];
           action = "<cmd>Lspsaga show_line_diagnostics<CR>";
           desc = "Show diagnostic details";
         }
         {
           key = "<leader>dt";
-          mode = ["n"];
+          mode = [ "n" ];
           action = "<cmd>Trouble diagnostics toggle<cr>";
           desc = "Toggle diagnostics list";
         }
@@ -132,7 +131,7 @@
 
       spellcheck = {
         enable = true;
-        languages = ["en"];
+        languages = [ "en" ];
         programmingWordlist.enable = true;
       };
 
