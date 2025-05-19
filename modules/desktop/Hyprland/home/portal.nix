@@ -19,17 +19,14 @@
   #   ];
   # };
 
-  xdg = {
-    enable = true;
-    mime.enable = true;
-    mimeApps = {
+  xdg.portal = {
       enable = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-gnome
+      ];
+      config = {
+        common.default = ["gtk" "hyprland"];
+      };
     };
-    portal = {
-      enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
-      configPackages = [pkgs.hyprland];
-    };
-  };
-
 }
