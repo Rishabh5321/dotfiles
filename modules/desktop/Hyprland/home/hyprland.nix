@@ -10,10 +10,12 @@ with lib; {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     xwayland.enable = true;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-    systemd.enable = true;
-
-    settings.exec-once = [ "systemctl --user start hyprpolkitagent" ];
+    #portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    systemd = {
+      enable = true;
+      enableXdgAutostart = true;
+      variables = ["--all"];
+    };
 
     extraConfig =
       let
@@ -37,11 +39,12 @@ with lib; {
       env = MOZ_ENABLE_WAYLAND, 1
 
       # ── Startup Programs ──────────────────────────────────────────────────
-      exec-once = dbus-update-activation-environment --systemd --all
+      exec-once = dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = swww init # Start swww daemon if not running
       exec-once = swaync # Start notification daemon
       exec-once = nm-applet --indicator
+      exec-once = systemctl --user start hyprpolkitagent
       exec-once = kdeconnect-indicator # Start kdeconnect indicator earlier
       exec-once = wl-paste --type text --watch cliphist store
       exec-once = wl-paste --type image --watch cliphist store
@@ -135,9 +138,9 @@ with lib; {
 
       # ── Window Rules (Examples - uncomment and customize as needed)─────
       # Make polkit agent and other utility windows float
-      # windowrulev2 = float,class:^(org.kde.polkit-kde-authentication-agent-1)$
-      # windowrulev2 = float,class:^(xdg-desktop-portal-gtk)$
-      # windowrulev2 = float,class:^(xdg-desktop-portal-hyprland)$
+      windowrulev2 = float,class:^(org.kde.polkit-kde-authentication-agent-1)$
+      windowrulev2 = float,class:^(xdg-desktop-portal-gtk)$
+      windowrulev2 = float,class:^(xdg-desktop-portal-hyprland)$
       # windowrulev2 = float,title:^(Open File)$
       # windowrulev2 = float,title:^(Save File)$
       # windowrulev2 = float,title:^(Select Color)$ # For hyprpicker or similar

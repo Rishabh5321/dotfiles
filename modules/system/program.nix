@@ -14,8 +14,8 @@
     nix-ld.enable = true;
     nix-ld.libraries = with pkgs; [ ];
     seahorse.enable = true;
-    #fuse.userAllowOther = true;
-    #mtr.enable = true;dconf
+    fuse.userAllowOther = true;
+    mtr.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -61,7 +61,7 @@
   services.udisks2.enable = true;
   services.fstrim.enable = true;
   services.cloudflare-warp.enable = true;
-
+  services.libinput.enable = true;
   # slows down boot time
   #systemd.services.NetworkManager-wait-online.enable = false;
 
