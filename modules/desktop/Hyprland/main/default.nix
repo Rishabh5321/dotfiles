@@ -5,7 +5,6 @@
     ./hardware.nix
     ./hyprland.nix
     ./pkgs.nix
-    ./portal.nix
     ./wayland.nix
   ];
 }
