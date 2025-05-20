@@ -51,10 +51,10 @@
     # };
     hyprland.url = "github:hyprwm/Hyprland";
     nix-gaming.url = "github:fufexan/nix-gaming";
-    akuse-flake.url = "github:Rishabh5321/akuse-flake";
+    akuse-flake.url = "github:rishabh5321/akuse-flake";
     better-control.url = "github:rishabh5321/better-control-flake";
     seanime.url = "github:rishabh5321/seanime-flake";
-    thorium.url = "github:Rishabh5321/thorium_flake";
+    thorium.url = "github:rishabh5321/thorium_flake";
     grayjay.url = "github:rishabh5321/grayjay-flake";
   };
 

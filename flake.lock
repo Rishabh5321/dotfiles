@@ -50,13 +50,13 @@
       "locked": {
         "lastModified": 1747599886,
         "narHash": "sha256-UWTteHnIp6USXs2RQoZ8wPpS4O+XggfVst3tSiHVId8=",
-        "owner": "Rishabh5321",
+        "owner": "rishabh5321",
         "repo": "akuse-flake",
         "rev": "1f2d7ee8d935cf161d62560c873f42fa054c957f",
         "type": "github"
       },
       "original": {
-        "owner": "Rishabh5321",
+        "owner": "rishabh5321",
         "repo": "akuse-flake",
         "type": "github"
       }
@@ -1586,13 +1586,13 @@
       "locked": {
         "lastModified": 1747599753,
         "narHash": "sha256-XBMde+1sPR/gN8fc8UbhcoC8XOlFBw8O512UDU7F65U=",
-        "owner": "Rishabh5321",
+        "owner": "rishabh5321",
         "repo": "thorium_flake",
         "rev": "6ac4c94df2abc8d9f7a27eda6c3690468cf681c0",
         "type": "github"
       },
       "original": {
-        "owner": "Rishabh5321",
+        "owner": "rishabh5321",
         "repo": "thorium_flake",
         "type": "github"
       }
