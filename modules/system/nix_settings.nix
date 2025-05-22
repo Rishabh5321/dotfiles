@@ -1,4 +1,4 @@
-{  outputs, ...}: {
+{ outputs, ... }: {
   # Optimization settings and garbage collection automation
   nix = {
     settings = {

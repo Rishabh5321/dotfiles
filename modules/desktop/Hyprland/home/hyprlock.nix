@@ -1,7 +1,6 @@
-{
-  config,
-  wallpaper,
-  ...
+{ config
+, wallpaper
+, ...
 }:
 let
   color0 = "rgb(${config.stylix.base16Scheme.base00})";

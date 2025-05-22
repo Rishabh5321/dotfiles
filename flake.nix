@@ -59,13 +59,12 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      nixpkgs-stable,
-      home-manager,
-      sddm-sugar-candy-nix,
-      ...
+    { self
+    , nixpkgs
+    , nixpkgs-stable
+    , home-manager
+    , sddm-sugar-candy-nix
+    , ...
     }@inputs:
     let
       system = "x86_64-linux";
