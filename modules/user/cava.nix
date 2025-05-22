@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 {
   programs.cava = {
     enable = true;
