@@ -7,7 +7,8 @@
     #   luminance = pkgs.callPackage ../../pkgs/luminance.nix { };
     # in
     with pkgs; [
-      #luminance
+      #luminance # Used for testing
+      #better-control # Used for testing
 
       apkeep
       act
