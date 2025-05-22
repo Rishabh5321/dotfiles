@@ -38,6 +38,8 @@
     #   packages = with pkgs; [];
     # };
   };
+
+  users.groups.libvirtd.members = [ "${username}" ];
   users.extraUsers.kodi.isNormalUser = true;
   nix.settings.allowed-users = [ "${username}" ];
   location.provider = "geoclue2";

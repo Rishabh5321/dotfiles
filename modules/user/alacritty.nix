@@ -21,9 +21,7 @@ _: {
           blinking = "On";
         };
       };
-      env = {
-        term = "xterm-256color ssh";
-      };
+      env.term = "xterm-256color ssh";
       general.live_config_reload = true;
     };
   };

@@ -5,7 +5,7 @@ _:
     packages = [
       #"org.dupot.easyflatpak"
       #"tv.kodi.Kodi"
-      "org.jdownloader.JDownloader"
+      #"org.jdownloader.JDownloader"
       #"com.github.iwalton3.jellyfin-media-player"
       #"io.github.giantpinkrobots.varia"
       #"info.febvre.Komikku"

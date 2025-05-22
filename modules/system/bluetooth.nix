@@ -1,7 +1,3 @@
-#
-#  Bluetooth
-#
-
 { pkgs, ... }:
 
 {

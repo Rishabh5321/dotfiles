@@ -1,4 +1,4 @@
-{ config, pkgs, username, ... }:
+{ pkgs, username, ... }:
 
 {
   # ISO-specific configurations
@@ -81,7 +81,7 @@
   environment.etc."README.md" = {
     text = ''
       # NixOS Installation ISO
-      
+
       Run /etc/install-system.sh for installation instructions.
     '';
     mode = "0644";

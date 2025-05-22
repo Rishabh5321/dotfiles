@@ -70,13 +70,8 @@ in
         customModules.updates.pollingInterval = 1440000;
         launcher.icon = "";
         workspaces = {
-          showAllActive = false;
-          workspaces = 1;
-          monitorSpecific = false;
-          hideUnoccupied = true;
-          showApplicationIcons = true;
-          showWsIcons = true;
-          ignored = "98";
+          show_numbered = true;
+          show_icons = false;
         };
         windowtitle.label = false;
         clock.format = "%I:%M:%S %p";

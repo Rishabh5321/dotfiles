@@ -4,10 +4,9 @@
     ./auto-upgrade.nix
     ./bluetooth.nix
     ./boot.nix
-    #./cache.nix
-    #./desktop_env.nix
-    #./displaymanager.nix
+    #./dns.nix
     ./flatpak.nix
+    ./gaming.nix
     ./graphics.nix
     ./kodi.nix
     ./locale.nix
@@ -17,18 +16,14 @@
     ./pkgs_stable.nix
     ./program.nix
     #./proton.nix
-    ./sound.nix
-    ./stylix.nix
-    #./syncthing.nix
-    ./swap.nix
-    ./users.nix
-    #./virtualisation.nix
-
-    ./gaming.nix
-    ./usbguard.nix
     ./security.nix
     #./seanime.nix
-    ./upower.nix
-    #./dns.nix
+    ./sound.nix
+    ./stylix.nix
+    ./swap.nix
+    #./syncthing.nix
+    ./usbguard.nix
+    ./users.nix
+    ./virtualisation.nix
   ];
 }

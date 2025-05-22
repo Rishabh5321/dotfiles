@@ -58,7 +58,15 @@
     grayjay.url = "github:rishabh5321/grayjay-flake";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, sddm-sugar-candy-nix, ... } @ inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-stable,
+      home-manager,
+      sddm-sugar-candy-nix,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       username = "rishabh";
@@ -67,7 +75,9 @@
 
       pkgs-stable = import nixpkgs-stable {
         inherit system;
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+        };
       };
       pkgs = import nixpkgs {
         inherit system;
@@ -82,11 +92,20 @@
       };
 
       commonArgs = {
-        inherit inputs system username wallpaper flakeDir pkgs-stable sddm-sugar-candy-nix;
+        inherit
+          inputs
+          system
+          username
+          wallpaper
+          flakeDir
+          pkgs-stable
+          sddm-sugar-candy-nix
+          ;
         inherit (inputs) spicetify-nix;
       };
 
-      mkHost = { hostname }:
+      mkHost =
+        { hostname }:
         let
           nixosSpecialArgs = commonArgs // {
             inherit home-manager;
@@ -127,11 +146,18 @@
 
       overlays = import ./overlays { inherit inputs self system; };
 
-      nixosConfigurations = {
-        redmi = mkHost { hostname = "redmi"; };
-        dell = mkHost { hostname = "dell"; };
-        server = mkHost { hostname = "server"; };
-        nixbook = mkHost { hostname = "nixbook"; };
-      };
+      nixosConfigurations = builtins.listToAttrs (
+        map
+          (folder: {
+            name = folder;
+            value = mkHost { hostname = folder; };
+          })
+          (
+            builtins.filter (name: builtins.pathExists (./hosts + "/${name}/configuration.nix")) (
+              builtins.attrNames (builtins.readDir ./hosts)
+            )
+          )
+      );
+
     };
 }

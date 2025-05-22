@@ -1,7 +1,9 @@
-{ pkgs
-, inputs
-, ...
-}: {
+{
+  pkgs,
+  inputs,
+  ...
+}:
+{
   environment.systemPackages =
     # let
     #   luminance = pkgs.callPackage ../../pkgs/luminance.nix { };
@@ -10,7 +12,7 @@
       #luminance # Used for testing
       #better-control # Used for testing
 
-      apkeep
+      #apkeep
       act
       alacritty
       android-tools
@@ -79,6 +81,7 @@
       nix-prefetch-github
       nil
       nixd
+      nixfmt-rfc-style
       nixpkgs-review
       nh
       nload
@@ -188,7 +191,6 @@
       #ncdu
       #neovide
       #ninja
-      #nixfmt-rfc-style
       #nixos-generators
       #nvtopPackages.full
       #oh-my-posh
@@ -233,9 +235,6 @@
       #zoxide
       #zsh-powerlevel10k
     ];
-
-  #services.plex.enable = true;
-  #services.hypridle.enable = true;
 
   fonts = {
     packages = with pkgs; [

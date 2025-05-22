@@ -2,8 +2,8 @@ _: {
   zramSwap = {
     enable = true;
     algorithm = "zstd";
-    memoryPercent = 100;
-    priority = 999;
-    swapDevices = 4; # Create 4 ZRAM devices (one per core)
+    memoryPercent = 50;  # 50% of your 8GB RAM (4GB)
+    priority = 100;      # High priority for swap
+    swapDevices = 4;     # Half the number of cores is a good balance
   };
 }

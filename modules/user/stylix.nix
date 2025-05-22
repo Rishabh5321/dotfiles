@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
   gtk = {
     enable = true;
@@ -18,5 +19,4 @@
   stylix.targets.wofi.enable = false;
   stylix.targets.hyprland.enable = false;
   stylix.targets.spicetify.enable = false;
-  #stylix.enableReleaseChecks = false; # Will have to remove after the stylix 25.05 is released.
 }

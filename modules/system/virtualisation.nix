@@ -29,6 +29,16 @@
       };
     };
     spiceUSBRedirection.enable = true;
+    docker = {
+      enable = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
+    };
+    podman = {
+      enable = true;
+    };
   };
   services.spice-vdagentd.enable = true;
   environment.sessionVariables.LIBVIRT_DEFAULT_URI = [ "qemu:///system" ];

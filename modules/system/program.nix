@@ -1,18 +1,11 @@
 { pkgs
 , options
-, username
 , ...
 }: {
   programs = {
     firefox.enable = true;
-    #hyprland = {
-    #  enable = true;
-    #  package = pkgs.hyprland;
-    #  xwayland.enable = true;
-    #};
     dconf.enable = true;
     nix-ld.enable = true;
-    nix-ld.libraries = with pkgs; [ ];
     seahorse.enable = true;
     fuse.userAllowOther = true;
     mtr.enable = true;
@@ -30,39 +23,22 @@
     };
     gamemode.enable = true;
   };
-  virtualisation.libvirtd.enable = true;
-  users.groups.libvirtd.members = [ "${username}" ];
-  virtualisation.spiceUSBRedirection.enable = true;
-  services.gvfs.enable = true;
-
-  services.gnome.gnome-keyring = {
-    enable = true;
-  };
-
-  # services = {
-  #   nfs.server.enable = true;
-  # };
 
   networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
-  services.openssh.enable = true;
-  services.openssh.settings.PermitRootLogin = "prohibit-password";
-  virtualisation = {
-    docker = {
-      enable = true;
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };
-    };
-    podman = {
-      enable = true;
-    };
-  };
-  services.udisks2.enable = true;
-  services.fstrim.enable = true;
-  services.cloudflare-warp.enable = true;
-  services.libinput.enable = true;
-  # slows down boot time
-  #systemd.services.NetworkManager-wait-online.enable = false;
 
+  services = {
+    openssh = {
+      enable = true;
+      settings.PermitRootLogin = "prohibit-password";
+    };
+    gnome.gnome-keyring = {
+      enable = true;
+    };
+    udisks2.enable = true;
+    fstrim.enable = true;
+    cloudflare-warp.enable = true;
+    libinput.enable = true;
+    gvfs.enable = true;
+    upower.enable = true;
+  };
 }
