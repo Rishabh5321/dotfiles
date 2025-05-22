@@ -146,18 +146,11 @@
 
       overlays = import ./overlays { inherit inputs self system; };
 
-      nixosConfigurations = builtins.listToAttrs (
-        map
-          (folder: {
-            name = folder;
-            value = mkHost { hostname = folder; };
-          })
-          (
-            builtins.filter (name: builtins.pathExists (./hosts + "/${name}/configuration.nix")) (
-              builtins.attrNames (builtins.readDir ./hosts)
-            )
-          )
-      );
-
+      nixosConfigurations = {
+        redmi = mkHost { hostname = "redmi"; };
+        dell = mkHost { hostname = "dell"; };
+        server = mkHost { hostname = "server"; };
+        nixbook = mkHost { hostname = "nixbook"; };
+      };
     };
 }
