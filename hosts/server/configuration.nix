@@ -193,6 +193,8 @@
     };
   };
 
+  services.smartd.enable = true;
+
   environment.systemPackages = with pkgs; [
     docker-compose
     vim
@@ -200,6 +202,7 @@
     gh
     micro
     nano
+    smartmontools
   ];
 
 }
