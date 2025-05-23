@@ -24,8 +24,12 @@
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
     };
-    darkmatter-grub-theme = {
-      url = "gitlab:VandalByte/darkmatter-grub-theme";
+    # darkmatter-grub-theme = {
+    #   url = "gitlab:VandalByte/darkmatter-grub-theme";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    distro-grub-themes = {
+      url = "github:AdisonCavani/distro-grub-themes";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprpanel = {
@@ -69,7 +73,7 @@
     let
       system = "x86_64-linux";
       username = "rishabh";
-      wallpaper = "wall11.jpg";
+      wallpaper = "wall9.png";
       flakeDir = "/home/${username}/dotfiles";
 
       pkgs-stable = import nixpkgs-stable {
@@ -123,7 +127,8 @@
             ./hosts/${hostname}/configuration.nix
 
             # Common NixOS modules
-            inputs.darkmatter-grub-theme.nixosModule
+            #inputs.darkmatter-grub-theme.nixosModule
+            inputs.distro-grub-themes.nixosModules.${system}.default
             inputs.stylix.nixosModules.stylix
             inputs.nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager

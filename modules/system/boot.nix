@@ -11,13 +11,18 @@
       "vm.max_map_count" = 2147483642;
     };
     # Bootloader.
-    loader.grub.enable = true;
-    loader.grub.devices = [ "nodev" ];
-    loader.grub.efiInstallAsRemovable = true;
-    loader.grub.efiSupport = true;
-    loader.grub.useOSProber = true;
-    #loader.grub.version = 2;
-    # Make /tmp a tmpfs
+    # loader.grub.enable = true;
+    # loader.grub.devices = [ "nodev" ];
+    # loader.grub.efiInstallAsRemovable = true;
+    # loader.grub.efiSupport = true;
+    # loader.grub.useOSProber = true;
+    loader = {
+      grub.enable = true;
+      grub.devices = [ "nodev" ];
+      grub.efiInstallAsRemovable = true;
+      grub.efiSupport = true;
+      grub.useOSProber = true;
+    };
     tmp = {
       useTmpfs = false;
       tmpfsSize = "30%";
@@ -36,36 +41,19 @@
       theme = "cuts";
       themePackages = [ pkgs.adi1090x-plymouth-themes ];
     };
-    #plymouth.enable = true;
   };
-  #Uncomment after enabling stylix
-  stylix.targets.grub.enable = false;
-  stylix.targets.plymouth.enable = false;
-  boot.loader.grub = {
-    darkmatter-theme = {
-      enable = true;
-      style = "nixos";
-      icon = "color";
+  distro-grub-themes = {
+    enable = true;
+    theme = "nixos";
+  };
+  stylix = {
+    targets = {
+      grub = {
+        enable = false;
+      };
+      plymouth = {
+        enable = false;
+      };
     };
   };
-  # Theme names can be
-  # 1. tela , 2.vimix , 3.stylish , 4. whitesur
-
-  # boot.loader.grub2-theme = {
-  #   enable = true;
-  #   theme = "tela";
-  #   footer = true;
-  # };
-
-  # boot.loader.grub.theme = pkgs.stdenv.mkDerivation {
-  #   pname = "distro-grub-themes";
-  #   version = "3.1";
-  #   src = pkgs.fetchFromGitHub {
-  #     owner = "AdisonCavani";
-  #     repo = "distro-grub-themes";
-  #     rev = "v3.1";
-  #     hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
-  #   };
-  #   installPhase = "cp -r customize/nixos $out";
-  # };
 }
