@@ -9,7 +9,7 @@
     # in
     with pkgs; [
       #luminance # Used for testing
-      #better-control # Used for testing
+      better-control # Used for testing
 
       #apkeep
       act
@@ -80,7 +80,7 @@
       nix-prefetch-github
       nil
       nixd
-      nixfmt-rfc-style
+      nixpkgs-fmt
       nixpkgs-review
       nh
       nload
