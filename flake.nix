@@ -60,7 +60,7 @@
     seanime.url = "github:rishabh5321/seanime-flake";
     thorium.url = "github:rishabh5321/thorium_flake";
     grayjay.url = "github:rishabh5321/grayjay-flake";
-    zed-editor-flake.url = "github:HPsaucii/zed-editor-flake";
+    zed-editor-flake.url = "github:rishabh5321/zed-editor-flake";
   };
 
   outputs =

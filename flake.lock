@@ -1169,11 +1169,11 @@
     },
     "nixpkgs_10": {
       "locked": {
-        "lastModified": 1747916395,
-        "narHash": "sha256-Orlp9CgY2TMbABL6B/EKCbNAVt3KRbmYrGwuPSE6EKk=",
+        "lastModified": 1748064236,
+        "narHash": "sha256-o090mjLM6VcFSSmGpDEmbwbcdV9K8ExjjPoSW6J+fLE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b72ff2f539d8bded23cbf152ad15189a99306025",
+        "rev": "59dff5cf0a3f25e434505c8b248895701f26f6fc",
         "type": "github"
       },
       "original": {
@@ -1830,15 +1830,15 @@
         "patched-nixpkgs": "patched-nixpkgs"
       },
       "locked": {
-        "lastModified": 1747989907,
-        "narHash": "sha256-91ddFyGUJNgyiJw1GYD04sbENGp9IuqtuUWHwbL/RVU=",
-        "owner": "HPsaucii",
+        "lastModified": 1748074910,
+        "narHash": "sha256-SOTpVswqAtu2rIYbsG8OYTxJeYQtAAtt5l7aABQKKEg=",
+        "owner": "rishabh5321",
         "repo": "zed-editor-flake",
-        "rev": "aa6440225e5aa225f242bb38235fba185665a616",
+        "rev": "3e2406d4610b7dfd60aaa1cd9397e38da0f3e01f",
         "type": "github"
       },
       "original": {
-        "owner": "HPsaucii",
+        "owner": "rishabh5321",
         "repo": "zed-editor-flake",
         "type": "github"
       }
