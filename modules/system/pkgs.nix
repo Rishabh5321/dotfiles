@@ -133,7 +133,8 @@
       winetricks
       wl-clipboard
       youtube-music
-      zed-editor
+      #zed-editor  Will be using flake based version
+      inputs.zed-editor-flake.packages.${system}.zed-editor-bin
       zsh
 
       #age

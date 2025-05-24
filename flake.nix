@@ -60,6 +60,7 @@
     seanime.url = "github:rishabh5321/seanime-flake";
     thorium.url = "github:rishabh5321/thorium_flake";
     grayjay.url = "github:rishabh5321/grayjay-flake";
+    zed-editor-flake.url = "github:HPsaucii/zed-editor-flake";
   };
 
   outputs =
@@ -68,6 +69,7 @@
     , nixpkgs-stable
     , home-manager
     , sddm-sugar-candy-nix
+    , zed-editor-flake
     , ...
     }@inputs:
     let
