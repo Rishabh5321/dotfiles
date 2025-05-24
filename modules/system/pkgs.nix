@@ -58,6 +58,7 @@
       #inputs.better-control.packages.${pkgs.system}.better-control
       inputs.grayjay.packages.${pkgs.system}.grayjay
       inputs.thorium.packages."x86_64-linux".thorium-avx2
+      inputs.zed-editor-flake.packages.${system}.zed-editor-preview
       jellyfin-media-player
       kdePackages.dolphin
       kdePackages.qtstyleplugin-kvantum
@@ -134,7 +135,6 @@
       wl-clipboard
       youtube-music
       #zed-editor  Will be using flake based version
-      inputs.zed-editor-flake.packages.${system}.zed-editor-bin
       zsh
 
       #age
