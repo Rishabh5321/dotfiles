@@ -1830,11 +1830,11 @@
         "patched-nixpkgs": "patched-nixpkgs"
       },
       "locked": {
-        "lastModified": 1748074910,
-        "narHash": "sha256-SOTpVswqAtu2rIYbsG8OYTxJeYQtAAtt5l7aABQKKEg=",
+        "lastModified": 1748083476,
+        "narHash": "sha256-iM2EtXj5uOIkQ6fZnTEXwkyCYPOAoHIJ6IUn66fCals=",
         "owner": "rishabh5321",
         "repo": "zed-editor-flake",
-        "rev": "3e2406d4610b7dfd60aaa1cd9397e38da0f3e01f",
+        "rev": "e88e22ff1826f3c4a681e8a6c5f93c969400c4f1",
         "type": "github"
       },
       "original": {
