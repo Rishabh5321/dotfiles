@@ -69,7 +69,6 @@
     , nixpkgs-stable
     , home-manager
     , sddm-sugar-candy-nix
-    , zed-editor-flake
     , ...
     }@inputs:
     let
