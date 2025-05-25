@@ -17,7 +17,7 @@
     #./libnotify.nix
     #./mangohud.nix
     #./nvchad.nix
-    ./nvf.nix
+    #./nvf.nix
     ./oh-my-posh.nix
     #./plasma.nix
     #./rofi/rofi.nix

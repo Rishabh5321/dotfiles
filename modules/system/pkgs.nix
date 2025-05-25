@@ -9,7 +9,8 @@
     # in
     with pkgs; [
       #luminance # Used for testing
-      better-control # Used for testing
+      inputs.better-control.packages.${pkgs.system}.better-control # Used for testing
+      #helix
 
       #apkeep
       act
