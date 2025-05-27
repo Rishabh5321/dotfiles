@@ -1,6 +1,6 @@
 { ... }: {
   imports = [
-    ./cache.nix
+    #./cache.nix
     ./display-manager.nix
     ./hardware.nix
     ./hyprland.nix

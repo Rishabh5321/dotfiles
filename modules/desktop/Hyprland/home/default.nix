@@ -19,7 +19,7 @@
     ./swaync.nix
     ./wlogout.nix
     #./variable.nix
-    inputs.hyprland.homeManagerModules.default
+    # inputs.hyprland.homeManagerModules.default
     ./hyprpanel.nix
     ./portal.nix
   ];
@@ -84,7 +84,7 @@
     pkgs.wlr-randr
     pkgs.brightnessctl
     pkgs.kdePackages.kdeconnect-kde
-    inputs.hyprpolkitagent.packages.${system}.hyprpolkitagent # password prompt
+    pkgs.hyprpolkitagent # password prompt
   ];
 
 }
