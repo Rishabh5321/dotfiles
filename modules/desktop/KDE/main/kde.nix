@@ -1,4 +1,4 @@
-{ pkgs, config, lib, wallpaper, ... }: {
+{ config, lib, wallpaper, ... }: {
   services = {
     desktopManager.plasma6.enable = true;
     displayManager = {

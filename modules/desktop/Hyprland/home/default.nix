@@ -1,8 +1,6 @@
 { username
 , pkgs
 , host
-, inputs
-, system
 , ...
 }: {
   imports = [
