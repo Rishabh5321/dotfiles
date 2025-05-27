@@ -1,12 +1,13 @@
 { pkgs
 , options
+, lib
 , ...
 }: {
   programs = {
     firefox.enable = true;
     dconf.enable = true;
     nix-ld.enable = true;
-    seahorse.enable = true;
+    #seahorse.enable = lib.mkForce true;
     fuse.userAllowOther = true;
     mtr.enable = true;
     gnupg.agent = {
