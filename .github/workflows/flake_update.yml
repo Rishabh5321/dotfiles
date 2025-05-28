@@ -23,7 +23,7 @@ jobs:
             flake_inputs="$(jq -c '.nodes.root.inputs | {flake: keys}' flake.lock)"
           else
             echo "flake.lock not found. Assuming no inputs for update."
-            flake_inputs='{"flake":[]}' # Provide an empty array if file is missing
+            flake_inputs='{"flake":[]}'
           fi
           echo "flake-inputs=${flake_inputs}" >> "$GITHUB_OUTPUT"
 
@@ -46,20 +46,24 @@ jobs:
         uses: peter-murray/workflow-application-token-action@v2
         with:
           application_id: ${{ secrets.APP_ID }}
-          application_private_key: ${{ secrets.APP_PRIVATE_KEY }} # <--- CHANGE THIS LINE
+          application_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Configure Git for FlakeBuilderApp
+        run: |
+          git config --global user.email "${{ secrets.APP_ID }}+FlakeBuilderApp@users.noreply.github.com"
+          git config --global user.name "FlakeBuilderApp[bot]"
+          echo "Git user configured: $(git config --global user.name) <$(git config --global user.email)>" # For debugging
 
       - uses: DeterminateSystems/nix-installer-action@v17
         with:
           extra-conf: accept-flake-config = true
-
-      - run: git config --global user.email "${{ secrets.APP_ID }}+FlakeBuilderApp@users.noreply.github.com"
-      - run: git config --global user.name "FlakeBuilderApp[bot]"
 
       - name: Update Flake Dependency and Create PR
         uses: cpcloud/flake-update-action@v2.0.1
         with:
           dependency: ${{ matrix.flake }}
           pull-request-token: ${{ steps.generate_token.outputs.token }}
+          # Ensure this author string EXACTLY matches your git config settings
           pull-request-author: "FlakeBuilderApp[bot] <${{ secrets.APP_ID }}+FlakeBuilderApp@users.noreply.github.com>"
           delete-branch: true
           pull-request-branch-prefix: update-
