@@ -43,7 +43,7 @@ jobs:
       # Generate a GitHub App token for creating the PR
       - name: Generate App Token
         id: generate_token
-        uses: peter-murray/workflow-application-token-action@v2
+        uses: peter-murray/workflow-application-token-action@v4
         with:
           application_id: ${{ secrets.APP_ID }}
           application_private_key: ${{ secrets.APP_PRIVATE_KEY }}
