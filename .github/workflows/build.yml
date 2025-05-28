@@ -215,7 +215,9 @@ jobs:
         run: |
           REF_INFO=""
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            REF_INFO="PR #${{ github.event.pull_request.number }} (${{ github.event.pull_request.head.ref }} -> ${{ github.event.pull_request.base.ref }})"
+            PR_HEAD_REF="${{ github.event.pull_request.head.ref }}"
+            PR_BASE_REF="${{ github.event.pull_request.base.ref }}"
+            REF_INFO="PR #${{ github.event.pull_request.number }} ($PR_HEAD_REF -> $PR_BASE_REF)"
           elif [[ "${{ github.event_name }}" == "push" ]]; then
             REF_INFO="Branch: ${{ github.ref_name }}"
           elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
