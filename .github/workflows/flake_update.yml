@@ -4,7 +4,9 @@ on:
     - cron: "0 * * * *"
   workflow_dispatch:
 
-permissions: {}
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   get-flake-inputs:
@@ -12,14 +14,12 @@ jobs:
     outputs:
       flake-inputs: ${{ steps.get-flake-inputs.outputs.flake-inputs }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.2.2
         with:
-          lfs: false
           sparse-checkout: flake.lock
       - id: get-flake-inputs
         run: |
           flake_inputs="$(jq -c '.nodes.root.inputs | {flake: keys}' flake.lock)"
-
           echo "flake-inputs=${flake_inputs}" >> "$GITHUB_OUTPUT"
   update-flake:
     name: update-${{ matrix.flake }}
@@ -29,22 +29,19 @@ jobs:
       fail-fast: false
       matrix: ${{ fromJson(needs.get-flake-inputs.outputs.flake-inputs) }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.2.2
         with:
           lfs: false
       - uses: DeterminateSystems/nix-installer-action@v17
         with:
-          source-branch: main
           extra-conf: accept-flake-config = true
       - run: git config --global user.email "noreply@github.com"
       - run: git config --global user.name "github[bot]"
       - uses: cpcloud/flake-update-action@v2.0.1
         with:
           dependency: ${{ matrix.flake }}
-          pull-request-token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          pull-request-token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-author: github[bot] <noreply@github.com>
-          commit-author: github[bot] <noreply@github.com> # <--- Add this line
-          pull-request-labels: "dependencies, automated" 
           delete-branch: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-branch-prefix: update-
