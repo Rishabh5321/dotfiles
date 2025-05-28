@@ -10,7 +10,7 @@ _:
   # Enable thermald (only necessary if on Intel CPUs)
   services.thermald.enable = true;
 
-  services.tlp.enable = true;
+  # services.tlp.enable = true;
 
   # services.tlp.settings = {
   #   USB_AUTOSUSPEND = 0; # disable too aggressive power-management autosuspend for USB
