@@ -19,8 +19,6 @@ jobs:
           sparse-checkout: flake.lock
       - id: get-flake-inputs
         run: |
-          # The jq command needs the flake.lock to exist to parse it.
-          # Ensure this is robust if flake.lock might sometimes be missing or empty.
           if [ -f flake.lock ]; then
             flake_inputs="$(jq -c '.nodes.root.inputs | {flake: keys}' flake.lock)"
           else
@@ -33,7 +31,6 @@ jobs:
     name: update-${{ matrix.flake }}
     runs-on: ubuntu-latest
     needs: get-flake-inputs
-    # Only run this job if there are actual flakes to update
     if: ${{ fromJson(needs.get-flake-inputs.outputs.flake-inputs).flake != '[]' }}
     strategy:
       fail-fast: false
@@ -49,7 +46,7 @@ jobs:
         uses: peter-murray/workflow-application-token-action@v2
         with:
           application_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          application_private_key: ${{ secrets.APP_PRIVATE_KEY }} # <--- CHANGE THIS LINE
 
       - uses: DeterminateSystems/nix-installer-action@v17
         with:
