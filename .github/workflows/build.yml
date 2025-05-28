@@ -6,7 +6,7 @@ permissions:
 on:
   push:
     branches: [main]
-  pull_request_target: # Change this from pull_request
+  pull_request:
     branches: [main]
   workflow_dispatch:
     inputs:
