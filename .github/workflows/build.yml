@@ -215,9 +215,8 @@ jobs:
         run: |
           REF_INFO=""
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            REF_INFO="PR #${{ github.event.pull_request.number }} ($PR_HEAD_REF -> $PR_BASE_REF)"
+            REF_INFO="PR #${{ github.event.pull_request.number }} (${PR_HEAD_REF} -> ${PR_BASE_REF})"
           env:
-            PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
           env:
             PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
           elif [[ "${{ github.event_name }}" == "push" ]]; then
