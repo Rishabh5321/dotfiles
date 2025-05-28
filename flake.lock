@@ -873,11 +873,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1748439285,
-        "narHash": "sha256-t61hC1naj+ARhW3wB799JZFgdg5kglO6/9mN9i9/Cc8=",
+        "lastModified": 1748441906,
+        "narHash": "sha256-53fHVRmQgtIGhByqTvt+0p+zaJEkWQcvcq3/L7rnloo=",
         "owner": "rishabh5321",
         "repo": "thorium_flake",
-        "rev": "93b396f0ada7d0b4bed2bb8dbed6384a95cdafc1",
+        "rev": "143cda8cd400ae00da0c4498e791aefc39ff2c5a",
         "type": "github"
       },
       "original": {
