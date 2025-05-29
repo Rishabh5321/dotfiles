@@ -1,0 +1,247 @@
+name: Check and Build Flake Config
+permissions:
+  contents: read
+  pull-requests: write
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      specific_host:
+        description: "Build only a specific host (leave empty for all)"
+        required: false
+        type: string
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  flake-checks:
+    name: Flake Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            auto-optimise-store = true
+            experimental-features = nix-command flakes
+            max-jobs = auto
+            download-buffer-size = 500000000
+            substituters = https://rishabh5321.cachix.org https://cache.nixos.org https://hyprland.cachix.org https://nixpkgs-wayland.cachix.org https://nix-gaming.cachix.org
+            trusted-public-keys = rishabh5321.cachix.org-1:mxfBIH2XElE6ieFXXYBA9Ame4mVTbAf1TGR843siggk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=
+
+      - name: Run Flake Check
+        id: flake_check
+        run: |
+          nix flake check 2>&1 | tee flake_check.log
+          if grep -E "(warning:|error:)" flake_check.log > flake_check_filtered.log; then
+            echo "has_issues=true" >> $GITHUB_OUTPUT
+            echo "FLAKE_STATUS=failed" >> $GITHUB_ENV
+            exit 1
+          else
+            echo "No warnings or errors." > flake_check_filtered.log
+            echo "has_issues=false" >> $GITHUB_OUTPUT
+            echo "FLAKE_STATUS=passed" >> $GITHUB_ENV
+          fi
+
+  generate-matrix:
+    runs-on: ubuntu-latest
+    needs: [flake-checks]
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
+      - name: Generate matrix from nixosConfigurations
+        id: set-matrix
+        run: |
+          if [ -n "${{ github.event.inputs.specific_host }}" ]; then
+            # If a specific host was provided, only build that one
+            HOSTS=$(echo '["${{ github.event.inputs.specific_host }}"]' | jq -c .)
+          else
+            # Otherwise build all hosts from the flake
+            HOSTS=$(nix flake show --json | jq -c '[.nixosConfigurations | keys[]]')
+          fi
+          echo "matrix={\"hostname\":$HOSTS}" >> "$GITHUB_OUTPUT"
+
+  Build_Config:
+    name: Build_Config ${{ matrix.hostname }}
+    needs: [generate-matrix]
+    runs-on: ubuntu-latest
+    timeout-minutes: 180 # Prevent hung builds
+    strategy:
+      fail-fast: false # Continue building other configs if one fails
+      matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
+    steps:
+      - name: Free Disk Space
+        uses: endersonmenezes/free-disk-space@v2
+        with:
+          remove_android: true
+          remove_dotnet: true
+          remove_haskell: true
+          remove_tool_cache: true
+          remove_packages: "azure-cli google-cloud-cli microsoft-edge-stable google-chrome-stable firefox postgresql* temurin-* *llvm* mysql* dotnet-sdk-*"
+          remove_packages_one_command: true
+          remove_folders: "/usr/share/swift /usr/share/miniconda /usr/share/az* /usr/share/glade* /usr/local/lib/node_modules /usr/local/share/chromium /usr/local/share/powershell"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            auto-optimise-store = true
+            experimental-features = nix-command flakes
+            max-jobs = auto
+            download-buffer-size = 500000000
+            substituters = https://rishabh5321.cachix.org https://cache.nixos.org https://hyprland.cachix.org https://nixpkgs-wayland.cachix.org https://nix-gaming.cachix.org
+            trusted-public-keys = rishabh5321.cachix.org-1:mxfBIH2XElE6ieFXXYBA9Ame4mVTbAf1TGR843siggk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=
+
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v16
+        with:
+          name: rishabh5321
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+
+      - name: Build NixOS configuration
+        id: build
+        run: |
+          echo "Starting Nix build for ${{ matrix.hostname }}..."
+
+          # Create a temporary file for capturing output
+          mkdir -p logs
+
+          # Run the build and capture output to both stdout and a file
+          set +e  # Don't exit on error yet
+
+          start_time=$(date +%s)
+
+          cachix watch-exec rishabh5321 -- \
+            nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.vm \
+            -L --print-build-logs --out-link result-${{ matrix.hostname }} 2>&1 | tee logs/build_output.log
+
+          BUILD_EXIT_CODE=$?
+
+          end_time=$(date +%s)
+          build_duration=$((end_time - start_time))
+
+          echo "Build duration: $build_duration seconds"
+          echo "build_duration=$build_duration" >> $GITHUB_OUTPUT
+
+          # If build was successful, generate a system report
+          if [ $BUILD_EXIT_CODE -eq 0 ]; then
+            echo "Generating system report for ${{ matrix.hostname }}..."
+            nix-shell -p nix-info --run "nix-info -m" > logs/system_info.log
+
+            # Extract some useful information about the build
+            nix path-info --json ./result-${{ matrix.hostname }} | jq '.[0] | {path: .path, closureSize: .closureSize}' > logs/build_info.json
+
+            # Get closureSize in human-readable format
+            CLOSURE_SIZE=$(cat logs/build_info.json | jq -r '.closureSize')
+            HUMAN_SIZE=$(numfmt --to=iec-i --suffix=B $CLOSURE_SIZE)
+            echo "closure_size=$HUMAN_SIZE" >> $GITHUB_OUTPUT
+          fi
+
+          exit $BUILD_EXIT_CODE
+
+      - name: Upload build logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs-${{ matrix.hostname }}
+          path: logs/
+          retention-days: 5
+
+      - name: Determine final status
+        id: final-status
+        if: always()
+        run: |
+          build_status="${{ steps.build.outcome }}"
+          if [[ "$build_status" == "success" ]]; then
+            echo "status=success" >> "$GITHUB_OUTPUT"
+          else
+            echo "status=error" >> "$GITHUB_OUTPUT"
+          fi
+
+  notify_telegram:
+    name: Send Telegram Notification
+    runs-on: ubuntu-latest
+    needs: [Build_Config] # This job waits for all matrix jobs of Build_Config
+    if: always() # Run this job even if some matrix builds failed
+    steps:
+      - name: Checkout repository # Needed to access workflow details potentially
+        uses: actions/checkout@v4
+
+      - name: Determine overall status
+        id: determine_status
+        run: |
+          # Check the outcome of the job it depends on.
+          # needs.Build_Config.result will be 'success' only if ALL matrix jobs succeeded.
+          # If any failed, it will be 'failure'. If skipped, 'skipped'.
+          STATUS="${{ needs.Build_Config.result }}"
+          MESSAGE_STATUS=""
+          if [[ "$STATUS" == "success" ]]; then
+            MESSAGE_STATUS="✅ Build successful!"
+          elif [[ "$STATUS" == "failure" ]]; then
+            MESSAGE_STATUS="❌ Build failed!"
+          elif [[ "$STATUS" == "cancelled" ]]; then
+            MESSAGE_STATUS="🛑 Build cancelled."
+          else
+            MESSAGE_STATUS="❓ Build status unknown ($STATUS)."
+          fi
+          echo "message_status=$MESSAGE_STATUS" >> "$GITHUB_OUTPUT"
+
+      - name: Get branch/PR info
+        id: get-ref-info
+        run: |
+          REF_INFO=""
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            REF_INFO="PR #${{ github.event.pull_request.number }} (${{ github.event.pull_request.head.ref }} -> ${{ github.event.pull_request.base.ref }})"
+          elif [[ "${{ github.event_name }}" == "push" ]]; then
+            REF_INFO="Branch: ${{ github.ref_name }}"
+          elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            REF_INFO="Manual run on branch: ${{ github.ref_name }}"
+            SPECIFIC_HOST="${{ github.event.inputs.specific_host }}"
+            if [[ -n "$SPECIFIC_HOST" ]]; then
+              REF_INFO="$REF_INFO (Specific host: $SPECIFIC_HOST)"
+            fi
+          else
+            REF_INFO="Event: ${{ github.event_name }}"
+          fi
+          echo "ref_info=$REF_INFO" >> "$GITHUB_OUTPUT"
+
+      - name: Send Telegram Message
+        uses: appleboy/telegram-action@v1.0.1 # Use a Telegram action
+        with:
+          to: ${{ secrets.CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            *GitHub Actions Build Status*
+            Workflow: `${{ github.workflow }}`
+            Repository: `${{ github.repository }}`
+            ${{ steps.get-ref-info.outputs.ref_info }}
+            Commit: `${{ github.sha }}`
+
+            *Status:* ${{ steps.determine_status.outputs.message_status }}
+
+            View run details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          format: markdown # Use markdown formatting for the message
