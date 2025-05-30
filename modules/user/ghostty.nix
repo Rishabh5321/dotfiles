@@ -12,7 +12,7 @@
         window-decoration = false;
         window-padding-x = 10;
         window-padding-y = 10;
-        background-opacity = 0.95;
+        background-opacity = 1.0;
 
         # Font settings - will use system font from Stylix
         font-family = config.stylix.fonts.monospace.name;
@@ -25,6 +25,7 @@
         # Misc settings
         # macos-option-as-alt = true;
         confirm-close-surface = false;
+        term = "xterm-256color";
       };
     };
   };
