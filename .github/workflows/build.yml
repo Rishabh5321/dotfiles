@@ -155,9 +155,15 @@ jobs:
             # Extract some useful information about the build
             nix path-info --json ./result-${{ matrix.hostname }} | jq 'if type == "array" then .[0] else . end | {path: .path, closureSize: .closureSize}' > logs/build_info.json
 
-            # Get closureSize in human-readable format
-            CLOSURE_SIZE=$(cat logs/build_info.json | jq -r '.closureSize')
-            HUMAN_SIZE=$(numfmt --to=iec-i --suffix=B $CLOSURE_SIZE)
+            CLOSURE_SIZE=$(jq -r '.closureSize' logs/build_info.json)
+
+            if [[ "$CLOSURE_SIZE" != "null" && -n "$CLOSURE_SIZE" ]]; then
+              HUMAN_SIZE=$(numfmt --to=iec-i --suffix=B "$CLOSURE_SIZE")
+              echo "closure_size=$HUMAN_SIZE" >> $GITHUB_OUTPUT
+            else
+              echo "closure_size=unknown" >> $GITHUB_OUTPUT
+              echo "Warning: closure size is null or empty"
+            fi
             echo "closure_size=$HUMAN_SIZE" >> $GITHUB_OUTPUT
           fi
 
