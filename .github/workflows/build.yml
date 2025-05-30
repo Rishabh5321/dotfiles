@@ -153,7 +153,7 @@ jobs:
             nix-shell -p nix-info --run "nix-info -m" > logs/system_info.log
 
             # Extract some useful information about the build
-            nix path-info --json ./result-${{ matrix.hostname }} | jq '.[0] | {path: .path, closureSize: .closureSize}' > logs/build_info.json
+            nix path-info --json ./result-${{ matrix.hostname }} | jq 'if type == "array" then .[0] else . end | {path: .path, closureSize: .closureSize}' > logs/build_info.json
 
             # Get closureSize in human-readable format
             CLOSURE_SIZE=$(cat logs/build_info.json | jq -r '.closureSize')
