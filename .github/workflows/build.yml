@@ -87,7 +87,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 180 # Prevent hung builds
     strategy:
-      fail-fast: false # Continue building other configs if one fails
+      fail-fast: true # Stop all matrix jobs if one fails - changed from false to true
       matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
     steps:
       - name: Free Disk Space
@@ -131,7 +131,7 @@ jobs:
           mkdir -p logs
 
           # Run the build and capture output to both stdout and a file
-          # set +e  # Don't exit on error yet
+          # Removed the set +e comment to ensure failures propagate
 
           start_time=$(date +%s)
 
@@ -139,7 +139,7 @@ jobs:
             nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.toplevel \
             -L --print-build-logs --out-link result-${{ matrix.hostname }} 2>&1 | tee logs/build_output.log
 
-          BUILD_EXIT_CODE=$?
+          BUILD_EXIT_CODE=${PIPESTATUS[0]}  # Get the exit code of nix build, not tee
 
           end_time=$(date +%s)
           build_duration=$((end_time - start_time))
