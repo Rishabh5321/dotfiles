@@ -1,5 +1,5 @@
 # common/home-manager/eldios/programs/ghostty.nix
-{ config, lib, pkgs, ... }:
+{ config, ... }:
 
 {
   programs = {
