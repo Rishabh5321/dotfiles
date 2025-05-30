@@ -11,6 +11,7 @@
     ./fastfetch.nix
     ./fzf.nix
     ./git.nix
+    ./ghostty.nix
     ./htop.nix
     ./kitty.nix
     #./kodi.nix

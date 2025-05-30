@@ -45,6 +45,7 @@
       gh
       git
       github-desktop
+      ghostty
       gnome-console
       gnome-disk-utility
       gnome-keyring
@@ -130,6 +131,7 @@
       #vivaldi-ffmpeg-codecs
       vlc
       vscode
+      vulkan-tools
       wgcf
       wget
       winetricks
