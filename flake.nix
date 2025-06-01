@@ -61,6 +61,7 @@
     thorium.url = "github:rishabh5321/thorium_flake";
     grayjay.url = "github:rishabh5321/grayjay-flake";
     zed-editor-flake.url = "github:rishabh5321/zed-editor-flake";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
   };
 
   outputs =
@@ -134,6 +135,7 @@
             inputs.nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
             sddm-sugar-candy-nix.nixosModules.default
+            inputs.determinate.nixosModules.default
             # Home Manager configuration integrated into NixOS
             {
               home-manager = {
