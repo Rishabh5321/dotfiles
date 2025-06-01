@@ -604,11 +604,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1748460289,
-        "narHash": "sha256-7doLyJBzCllvqX4gszYtmZUToxKvMUrg45EUWaUYmBg=",
+        "lastModified": 1748693115,
+        "narHash": "sha256-StSrWhklmDuXT93yc3GrTlb0cKSS0agTAxMGjLKAsY8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "96ec055edbe5ee227f28cdbc3f1ddf1df5965102",
+        "rev": "910796cabe436259a29a72e8d3f5e180fc6dfacc",
         "type": "github"
       },
       "original": {
@@ -737,11 +737,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1748611450,
-        "narHash": "sha256-mE0lO1z8HI1+Muh+hwBzZ6ZGfwkBrfTPqjCYIpxKo/A=",
+        "lastModified": 1748772649,
+        "narHash": "sha256-V+Xa+dVVYJRm0MxiXDekvHSGE1EYZIqjGh083a+DLnI=",
         "owner": "rishabh5321",
         "repo": "seanime-flake",
-        "rev": "b934bfb3d5014b9e523135a4d9c8e7167a3d16e2",
+        "rev": "4e5f5fac53670523005f42a8ed7138a7162f551b",
         "type": "github"
       },
       "original": {
