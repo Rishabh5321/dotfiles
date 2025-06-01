@@ -31,4 +31,7 @@
     ./zen.nix
     ./zsh.nix
   ];
+  home.sessionVariables = {
+    NH_OS_FLAKE = "$HOME/dotfiles";
+  };
 }
