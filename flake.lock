@@ -444,11 +444,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1748829398,
-        "narHash": "sha256-NkwyRU5tjFa0s7+3rjlz/Oug93A9YiNKINHDmAJMfEI=",
+        "lastModified": 1748838256,
+        "narHash": "sha256-MpPR5I9ugN8dJussCI0fhl3/Pi3YJZZSixfIBrVEZ3w=",
         "owner": "Jas-SinghFSU",
         "repo": "HyprPanel",
-        "rev": "5c2bc9bc6d794ae1f71a6e112eba7b1459f949e4",
+        "rev": "7f3e9702cc1f399f3da309bf209bfca5bbe06d2a",
         "type": "github"
       },
       "original": {
