@@ -457,6 +457,21 @@
         "type": "github"
       }
     },
+    "nix-colorizer": {
+      "locked": {
+        "lastModified": 1746480922,
+        "narHash": "sha256-aGs6SLFbuY0nokmr00HoSVXFZpIJWwKT3Ybk5lRkpM4=",
+        "owner": "nutsalhan87",
+        "repo": "nix-colorizer",
+        "rev": "3d2529eacecbb9b3d8e3770d5c760168432de3af",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nutsalhan87",
+        "repo": "nix-colorizer",
+        "type": "github"
+      }
+    },
     "nix-flatpak": {
       "locked": {
         "lastModified": 1739444422,
@@ -699,6 +714,7 @@
         "grayjay": "grayjay",
         "home-manager": "home-manager",
         "hyprpanel": "hyprpanel",
+        "nix-colorizer": "nix-colorizer",
         "nix-flatpak": "nix-flatpak",
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs_4",

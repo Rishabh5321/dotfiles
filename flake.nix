@@ -53,6 +53,7 @@
     #   url = "github:nix-community/nix4nvchad";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    nix-colorizer.url = "github:nutsalhan87/nix-colorizer";
     #hyprland.url = "github:hyprwm/Hyprland";
     nix-gaming.url = "github:fufexan/nix-gaming";
     #akuse-flake.url = "github:rishabh5321/akuse-flake";
@@ -70,6 +71,7 @@
     , nixpkgs-stable
     , home-manager
     , sddm-sugar-candy-nix
+    , nix-colorizer
     , ...
     }@inputs:
     let
@@ -104,6 +106,7 @@
           wallpaper
           flakeDir
           pkgs-stable
+          nix-colorizer
           sddm-sugar-candy-nix
           ;
         inherit (inputs) spicetify-nix;
