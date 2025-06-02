@@ -82,7 +82,7 @@
           clock = "${
             l_arrow {
               fg = color_2.bg;
-              bg = color_1.bg;
+              inherit (color_1) bg;
             }
           }#[${toString color_2}] %H:%M | %d-%m-%Y ";
 
