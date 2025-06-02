@@ -25,6 +25,7 @@
     ./seanime.nix
     ./spicetify.nix
     ./stylix.nix
+    ./tmux.nix
     ./virtualisation.nix
     ./wofi.nix
     #./zed.nix
