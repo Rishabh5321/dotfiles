@@ -47,11 +47,16 @@
 </tr>
 <tr>
 <td align="center" width="300px">
+<img src="./wall16.jpg" width="300px"><br>
+</td>
+<td align="center" width="300px">
 <img src="./wall2.jpg" width="300px"><br>
 </td>
 <td align="center" width="300px">
 <img src="./wall4.jpg" width="300px"><br>
 </td>
+</tr>
+<tr>
 <td align="center" width="300px">
 <img src="./wall6.jpg" width="300px"><br>
 </td>
