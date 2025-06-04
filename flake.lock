@@ -1034,11 +1034,11 @@
         "patched-nixpkgs": "patched-nixpkgs"
       },
       "locked": {
-        "lastModified": 1748981709,
-        "narHash": "sha256-KUZUrvPJid3Ba+HmitXNDYmHVAU/XPnTDS5/+7WC1c4=",
+        "lastModified": 1749060090,
+        "narHash": "sha256-xm9ht3CbiJXh6eOfqb1N8k+PGeMkXCAlmn++rCoKqJ0=",
         "owner": "rishabh5321",
         "repo": "zed-editor-flake",
-        "rev": "b5d21528d912d5fa57692defaaac0e98443ad445",
+        "rev": "2b7a35a0b2eeacd506a220593b6ec0cfd6ef2ab2",
         "type": "github"
       },
       "original": {
