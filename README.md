@@ -60,5 +60,8 @@
     <td align="center" width="300px">
       <img src="wall16.jpg" width="300px"><br>
     </td>
+    <td align="center" width="300px">
+      <img src="wall17.jpg" width="300px"><br>
+    </td>
   </tr>
 </table>
