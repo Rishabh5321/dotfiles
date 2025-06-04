@@ -92,7 +92,6 @@
       onlyoffice-bin_latest
       openssl
       papirus-icon-theme
-      plex-media-player
       podman-tui
       podman-desktop
       #pods
