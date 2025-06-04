@@ -67,12 +67,12 @@
       # ns = "nix-shell --run zsh";
 
       nix-switch = "cd ~/dotfiles && nh os switch ~/dotfiles";
-      nix-switchg = "cd ~/dotfiles && git pull && nh os switch ~/dotfiles";
+      nix-switchg = "cd ~/dotfiles && git fetch wallpaper && git subtree pull --prefix=wallpapers wallpaper main --squash && git pull && nh os switch ~/dotfiles";
       nix-switchu = "cd ~/dotfiles && git pull && nh os switch -u ~/dotfiles";
       #nix-flake-update = "sudo nix flake update ~/dotfiles#";
       wallswitch = "swww img /home/${username}/Pictures/Wallpapers/${wallpaper}";
       nix-clean = "sudo nix-collect-garbage && sudo nix-collect-garbage -d && sudo rm /nix/var/nix/gcroots/auto/* && nix-collect-garbage && nix-collect-garbage -d";
-      wallfetch = "git fetch wallpaper && git subtree pull --prefix=wallpapers wallpaper main --squash && git push";
+      wallfetch = "cd ~/dotfiles && git fetch wallpaper && git subtree pull --prefix=wallpapers wallpaper main --squash && git push";
 
       # python
       piv = "python -m venv .venv";
