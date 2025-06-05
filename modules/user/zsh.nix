@@ -67,7 +67,7 @@
       # ns = "nix-shell --run zsh";
 
       nix-switch = "cd ~/dotfiles && nh os switch ~/dotfiles";
-      nix-switchg = "cd ~/dotfiles && git fetch wallpaper && git subtree pull --prefix=wallpapers wallpaper main --squash && git pull && nh os switch ~/dotfiles";
+      nix-switchg = "cd ~/dotfiles && git pull && nh os switch ~/dotfiles";
       nix-switchu = "cd ~/dotfiles && git pull && nh os switch -u ~/dotfiles";
       #nix-flake-update = "sudo nix flake update ~/dotfiles#";
       wallswitch = "swww img /home/${username}/Pictures/Wallpapers/${wallpaper}";
