@@ -24,6 +24,7 @@ in
     # inputs.hyprland.homeManagerModules.default
     # ./hyprpanel.nix
     waybarChoice
+    #./waybar.nix
     ./portal.nix
   ];
 
