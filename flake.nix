@@ -32,10 +32,10 @@
       url = "github:AdisonCavani/distro-grub-themes";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # hyprpanel = {
+    #   url = "github:Jas-SinghFSU/HyprPanel";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     # ags = {
     #   url = "github:Aylur/ags";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -93,7 +93,7 @@
           allowUnfreePredicate = _: true;
         };
         overlays = [
-          inputs.hyprpanel.overlay
+          #inputs.hyprpanel.overlay
           sddm-sugar-candy-nix.overlays.default
         ];
       };

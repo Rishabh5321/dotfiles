@@ -23,6 +23,8 @@ in
 
   alacritty = true;
 
+  waybarChoice = ./waybar/waybar-curved.nix;
+
   wallpaperDir = "~/Pictures/Wallpapers";
 
   slickbar = if waybarStyle == "slickbar" then true else false;

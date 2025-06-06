@@ -2,7 +2,11 @@
 , pkgs
 , host
 , ...
-}: {
+}:
+let
+  inherit (import ./variables.nix) waybarChoice;
+in
+{
   imports = [
     # ./nvim.nix
     ./emoji.nix
@@ -18,7 +22,8 @@
     ./wlogout.nix
     #./variable.nix
     # inputs.hyprland.homeManagerModules.default
-    ./hyprpanel.nix
+    # ./hyprpanel.nix
+    waybarChoice
     ./portal.nix
   ];
 
@@ -81,6 +86,7 @@
     pkgs.wayland-utils
     pkgs.wlr-randr
     pkgs.brightnessctl
+    pkgs.waybar
     pkgs.kdePackages.kdeconnect-kde
     pkgs.hyprpolkitagent # password prompt
   ];
