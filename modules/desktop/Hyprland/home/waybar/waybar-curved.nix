@@ -174,7 +174,7 @@ with lib; {
             "󰂂"
             "󰁹"
           ];
-          on-click = "";
+          on-click = "better-control -B -m";
           tooltip = false;
         };
       }
