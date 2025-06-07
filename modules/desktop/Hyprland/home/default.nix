@@ -3,9 +3,9 @@
 , host
 , ...
 }:
-let
-  inherit (import ./variables.nix) waybarChoice;
-in
+# let
+#   inherit (import ./variables.nix) waybarChoice;
+# in
 {
   imports = [
     # ./nvim.nix
