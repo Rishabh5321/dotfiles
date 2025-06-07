@@ -22,8 +22,8 @@ in
     ./wlogout.nix
     #./variable.nix
     # inputs.hyprland.homeManagerModules.default
-    # ./hyprpanel.nix
-    waybarChoice
+    ./hyprpanel.nix
+    # waybarChoice
     #./waybar.nix
     ./portal.nix
   ];
