@@ -87,7 +87,7 @@
     pkgs.wayland-utils
     pkgs.wlr-randr
     pkgs.brightnessctl
-    pkgs.waybar
+    # pkgs.waybar
     pkgs.kdePackages.kdeconnect-kde
     pkgs.hyprpolkitagent # password prompt
   ];
