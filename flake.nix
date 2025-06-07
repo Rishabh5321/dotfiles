@@ -1,4 +1,3 @@
-# ./flake.nix
 {
   description = "Laptop and server config";
 
