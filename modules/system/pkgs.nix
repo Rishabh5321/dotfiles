@@ -44,6 +44,7 @@
       gedit
       gh
       git
+      gitnuro
       github-desktop
       ghostty
       gnome-console
@@ -100,6 +101,7 @@
       qbittorrent
       qogir-icon-theme
       ranger
+      resources
       #resilio-sync
       #revanced-cli
       rquickshare
