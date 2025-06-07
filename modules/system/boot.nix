@@ -16,12 +16,18 @@
     # loader.grub.efiInstallAsRemovable = true;
     # loader.grub.efiSupport = true;
     # loader.grub.useOSProber = true;
-    loader = {
-      grub.enable = true;
-      grub.devices = [ "nodev" ];
-      grub.efiInstallAsRemovable = true;
-      grub.efiSupport = true;
-      grub.useOSProber = true;
+    loader.grub = {
+      enable = true;
+      devices = [ "nodev" ];
+      efiInstallAsRemovable = true;
+      efiSupport = true;
+      useOSProber = true;
+      darkmatter-theme = {
+        enable = true;
+        style = "nixos";
+        icon = "color";
+        resolution = "1080p";
+      };
     };
     tmp = {
       useTmpfs = false;
@@ -38,14 +44,14 @@
     };
     plymouth = {
       enable = true;
-      theme = "cuts";
+      theme = "cross_hud";
       themePackages = [ pkgs.adi1090x-plymouth-themes ];
     };
   };
-  distro-grub-themes = {
-    enable = true;
-    theme = "nixos";
-  };
+  # distro-grub-themes = {
+  #   enable = true;
+  #   theme = "nixos";
+  # };
   stylix = {
     targets = {
       grub = {
