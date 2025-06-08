@@ -831,11 +831,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1749236315,
-        "narHash": "sha256-Ndtdvwz8D4WOYHl5mj9d5F5iC8WPH6uPNF7RcU3QzmE=",
+        "lastModified": 1749385866,
+        "narHash": "sha256-VKwEp9apUAu6I21GTJMa6NwFVYbSJX9s67sWWrER2E0=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "29d006198ee05143cca8b4b89f37025823da1bcc",
+        "rev": "b3e8f15fe3b361f753a5f85587fd731d076ce821",
         "type": "github"
       },
       "original": {
