@@ -894,11 +894,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1749396147,
-        "narHash": "sha256-ARdwgNapiGi45qnlsRdm73WRWHWVSLOJYnigGGSk60E=",
+        "lastModified": 1749448651,
+        "narHash": "sha256-w+CH8hra6AuJsZ9QxfRD1TYH4j0ts8/jkHMQtLlojBQ=",
         "owner": "rishabh5321",
         "repo": "thorium_flake",
-        "rev": "04adcf14722b1b8ecbdfb8b9e6c647a0fbc04125",
+        "rev": "c0dc7924536dfb68a8b64080b1e46dd4915bb574",
         "type": "github"
       },
       "original": {
