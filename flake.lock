@@ -1017,11 +1017,11 @@
         "patched-nixpkgs": "patched-nixpkgs"
       },
       "locked": {
-        "lastModified": 1749421075,
-        "narHash": "sha256-+J0x1E0If6U23NY/N5HQa4aSgTNNDtAvQjKJcxqgBvM=",
+        "lastModified": 1749448895,
+        "narHash": "sha256-gh7HNlL+oBa/jarH3/jaAS3xQ3WXE+Fh9tIonjho+is=",
         "owner": "rishabh5321",
         "repo": "zed-editor-flake",
-        "rev": "674535e9ea40cc0642f93d3f05e0cc0542a59288",
+        "rev": "54235ff4329dbb6d043735052d6aad2312493c29",
         "type": "github"
       },
       "original": {
