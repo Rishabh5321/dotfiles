@@ -1,7 +1,7 @@
 _:
 {
   stylix.targets.qt.platform = "qtct";
-  stylix.targets.kde.enable = "false";
+  stylix.targets.kde.enable = false;
   # Qt configuration
   #qt = {
   #enable = true;
