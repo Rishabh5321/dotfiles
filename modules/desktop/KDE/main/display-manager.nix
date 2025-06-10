@@ -4,7 +4,7 @@
     sddm = {
       enable = true;
       wayland = {
-        enable = false;
+        enable = true;
       };
       # package = pkgs.kdePackages.sddm;
       # extraPackages = with pkgs; [
@@ -19,21 +19,21 @@
       #     User = "rishabh";
       #   };
       # };
-      sugarCandyNix = {
-        enable = true;
-        settings = {
-          # General settings
-          AccentColor = "#${config.stylix.base16Scheme.base0B}";
-          Background = lib.cleanSource ../../../../wallpapers/${wallpaper};
-          Font = "JetBrainsMono Nerd Font Mono";
-          # Form settings
-          HeaderText = "Welcome!";
-          FormPosition = "left";
-          HaveFormBackground = true;
-          PartialBlur = true;
-          HourFormat = "h:m:s ap";
-        };
-      };
+      # sugarCandyNix = {
+      #   enable = true;
+      #   settings = {
+      #     # General settings
+      #     AccentColor = "#${config.stylix.base16Scheme.base0B}";
+      #     Background = lib.cleanSource ../../../../wallpapers/${wallpaper};
+      #     Font = "JetBrainsMono Nerd Font Mono";
+      #     # Form settings
+      #     HeaderText = "Welcome!";
+      #     FormPosition = "left";
+      #     HaveFormBackground = true;
+      #     PartialBlur = true;
+      #     HourFormat = "h:m:s ap";
+      #   };
+      # };
       autoNumlock = true;
     };
   };
