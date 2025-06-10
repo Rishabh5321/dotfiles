@@ -47,6 +47,11 @@
       url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # plasma-manager = {
+    #   url = "github:nix-community/plasma-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.home-manager.follows = "home-manager";
+    # };
     # nvf.url = "github:notashelf/nvf";
     # nvchad4nix = {
     #   url = "github:nix-community/nix4nvchad";
@@ -71,6 +76,7 @@
     , home-manager
     , sddm-sugar-candy-nix
     , nix-colorizer
+    #, plasma-manager
     , ...
     }@inputs:
     let
@@ -144,6 +150,7 @@
                 extraSpecialArgs = homeManagerSpecialArgs;
                 useUserPackages = true;
                 backupFileExtension = "bak";
+                # sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
                 users.${username} = import ./hosts/${hostname}/home.nix;
               };
             }
