@@ -1,4 +1,4 @@
-{ pkgs, config, lib, wallpaper, ... }: {
+{ pkgs, ... }: {
   services.displayManager = {
     enable = true;
     sddm = {
@@ -6,6 +6,7 @@
       wayland = {
         enable = true;
       };
+      # config, lib, wallpaper,   Need to be set this in the headers before enabling sddm-nix
       # package = pkgs.kdePackages.sddm;
       # extraPackages = with pkgs; [
       #   kdePackages.qtsvg
