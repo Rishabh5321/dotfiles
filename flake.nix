@@ -76,7 +76,7 @@
     , home-manager
     , sddm-sugar-candy-nix
     , nix-colorizer
-    #, plasma-manager
+      #, plasma-manager
     , ...
     }@inputs:
     let
