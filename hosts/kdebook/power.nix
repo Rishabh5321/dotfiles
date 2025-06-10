@@ -3,7 +3,7 @@ _:
 
   # services.auto-cpufreq.enable = true;
 
-  services.power-profiles-daemon.enable = false;
+  services.power-profiles-daemon.enable = true;
 
   # powerManagement.powertop.enable = true;
 
