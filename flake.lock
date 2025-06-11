@@ -477,21 +477,6 @@
         "type": "github"
       }
     },
-    "nix-colorizer": {
-      "locked": {
-        "lastModified": 1746480922,
-        "narHash": "sha256-aGs6SLFbuY0nokmr00HoSVXFZpIJWwKT3Ybk5lRkpM4=",
-        "owner": "nutsalhan87",
-        "repo": "nix-colorizer",
-        "rev": "3d2529eacecbb9b3d8e3770d5c760168432de3af",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nutsalhan87",
-        "repo": "nix-colorizer",
-        "type": "github"
-      }
-    },
     "nix-flatpak": {
       "locked": {
         "lastModified": 1739444422,
@@ -524,6 +509,22 @@
       "original": {
         "owner": "fufexan",
         "repo": "nix-gaming",
+        "type": "github"
+      }
+    },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1749195551,
+        "narHash": "sha256-W5GKQHgunda/OP9sbKENBZhMBDNu2QahoIPwnsF6CeM=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "4602f7e1d3f197b3cb540d5accf5669121629628",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixos-hardware",
         "type": "github"
       }
     },
@@ -734,9 +735,9 @@
         "grayjay": "grayjay",
         "home-manager": "home-manager",
         "hyprpanel": "hyprpanel",
-        "nix-colorizer": "nix-colorizer",
         "nix-flatpak": "nix-flatpak",
         "nix-gaming": "nix-gaming",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-stable": "nixpkgs-stable",
         "sddm-sugar-candy-nix": "sddm-sugar-candy-nix",
