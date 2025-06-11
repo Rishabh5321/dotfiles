@@ -76,8 +76,8 @@
     , nixpkgs-stable
     , home-manager
     , sddm-sugar-candy-nix
-    #, nix-colorizer
-    #, plasma-manager
+      #, nix-colorizer
+      #, plasma-manager
     , ...
     }@inputs:
     let
