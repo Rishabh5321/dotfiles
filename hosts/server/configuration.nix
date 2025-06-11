@@ -44,7 +44,7 @@
   #   nssmdns4 = true; # Enable mDNS resolution
   # };
 
-  drivers.intel.enable = true;
+  #drivers.intel.enable = true;
   #drivers.amdgpu.enable = false;
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
