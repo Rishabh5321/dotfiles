@@ -11,7 +11,7 @@
     ./serve.nix
     #../../containers
     #../../modules/desktop/Hyprland/main
-    ./intel-drivers.nix
+    #./intel-drivers.nix
     ./tailscale.nix
     #./amd-drivers.nix
     inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only

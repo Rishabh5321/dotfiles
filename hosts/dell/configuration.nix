@@ -13,7 +13,7 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     #../../containers
     ../../modules/desktop/Hyprland/main
-    ./intel-drivers.nix
+    #./intel-drivers.nix
     ./tailscale.nix
     #./amd-drivers.nix
   ];
