@@ -8,8 +8,8 @@
     ../../modules/system
     ./power.nix
     ../../modules/desktop/KDE/main
-    inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
-    inputs.nixos-hardware.nixosModules.common-gpu-intel
+    inputs.nixos-hardware.nixosModules.common-cpu-intel
+    inputs.nixos-hardware.nixosModules.common-pc-laptop
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     #./testing-pkgs.nix
     #./aagl.nix
