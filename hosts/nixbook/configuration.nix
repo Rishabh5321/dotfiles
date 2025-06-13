@@ -8,6 +8,7 @@
     ../../modules/system
     ./power.nix
     ../../modules/desktop/Gnome/main
+    inputs.nixos-hardware.nixosModules.xiaomi-redmibook-15-pro-2021
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-pc-laptop
     inputs.nixos-hardware.nixosModules.common-pc-ssd

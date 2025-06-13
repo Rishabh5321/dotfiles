@@ -8,9 +8,7 @@
     ../../modules/system
     ./power.nix
     ../../modules/desktop/KDE/main
-    inputs.nixos-hardware.nixosModules.common-cpu-intel
-    inputs.nixos-hardware.nixosModules.common-pc-laptop
-    inputs.nixos-hardware.nixosModules.common-pc-ssd
+    inputs.nixos-hardware.nixosModules.xiaomi-redmibook-15-pro-2021
     #./testing-pkgs.nix
     #./aagl.nix
   ];

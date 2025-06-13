@@ -57,7 +57,7 @@
     #   url = "github:nix-community/nix4nvchad";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    nixos-hardware.url = "github:rishabh5321/nixos-hardware/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # nix-colorizer.url = "github:nutsalhan87/nix-colorizer";
     #hyprland.url = "github:hyprwm/Hyprland";
     nix-gaming.url = "github:fufexan/nix-gaming";
