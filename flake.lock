@@ -656,22 +656,6 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1749285348,
-        "narHash": "sha256-frdhQvPbmDYaScPFiCnfdh3B/Vh81Uuoo0w5TkWmmjU=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "3e3afe5174c561dee0df6f2c2b2236990146329f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_7": {
-      "locked": {
         "lastModified": 1749776303,
         "narHash": "sha256-OHibOvVwKqO1qvRg0r3agtd1EagW4THBcoWT7QGgcNo=",
         "owner": "nixos",
@@ -744,7 +728,6 @@
         "seanime": "seanime",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
-        "thorium": "thorium",
         "zed-editor-flake": "zed-editor-flake",
         "zen-browser": "zen-browser"
       }
@@ -911,24 +894,6 @@
         "type": "github"
       }
     },
-    "thorium": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_6"
-      },
-      "locked": {
-        "lastModified": 1749448651,
-        "narHash": "sha256-w+CH8hra6AuJsZ9QxfRD1TYH4j0ts8/jkHMQtLlojBQ=",
-        "owner": "rishabh5321",
-        "repo": "thorium_flake",
-        "rev": "c0dc7924536dfb68a8b64080b1e46dd4915bb574",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rishabh5321",
-        "repo": "thorium_flake",
-        "type": "github"
-      }
-    },
     "tinted-foot": {
       "flake": false,
       "locked": {
@@ -1035,7 +1000,7 @@
     "zed-editor-flake": {
       "inputs": {
         "flake-parts": "flake-parts_3",
-        "nixpkgs": "nixpkgs_7",
+        "nixpkgs": "nixpkgs_6",
         "patched-nixpkgs": "patched-nixpkgs",
         "rust-overlay": "rust-overlay"
       },
