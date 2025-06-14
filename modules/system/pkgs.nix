@@ -52,15 +52,15 @@
       gnome-keyring
       gnome-system-monitor
       google-chrome
-      #grayjay
+      # grayjay
       grim
       heroic
       htop
-      #inputs.akuse-flake.packages.${system}.akuse
-      #inputs.alejandra.defaultPackage.${system}
-      #inputs.better-control.packages.${pkgs.system}.better-control
+      # inputs.akuse-flake.packages.${system}.akuse
+      # inputs.alejandra.defaultPackage.${system}
+      # inputs.better-control.packages.${pkgs.system}.better-control
       inputs.grayjay.packages.${pkgs.system}.grayjay
-      inputs.thorium.packages."x86_64-linux".thorium-avx2
+      # inputs.thorium.packages."x86_64-linux".thorium-avx2
       inputs.zed-editor-flake.packages.${system}.zed-editor
       jellyfin-media-player
       kdePackages.dolphin

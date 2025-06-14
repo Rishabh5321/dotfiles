@@ -64,7 +64,7 @@
     #akuse-flake.url = "github:rishabh5321/akuse-flake";
     better-control.url = "github:rishabh5321/better-control-flake";
     seanime.url = "github:rishabh5321/seanime-flake";
-    thorium.url = "github:rishabh5321/thorium_flake";
+    # thorium.url = "github:rishabh5321/thorium_flake";
     grayjay.url = "github:rishabh5321/grayjay-flake";
     zed-editor-flake.url = "github:rishabh5321/zed-editor-flake";
     #determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
