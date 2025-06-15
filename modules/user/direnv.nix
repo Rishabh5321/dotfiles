@@ -1,4 +1,4 @@
-{ ... }: {
+_: {
   # ...other config, other config...
 
   programs = {
