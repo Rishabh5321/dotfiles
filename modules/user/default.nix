@@ -7,7 +7,7 @@
     ./atuin.nix
     ./btop.nix
     ./cava.nix
-    # ./direnv.nix
+    ./direnv.nix
     ./eza.nix
     ./fastfetch.nix
     ./fzf.nix
