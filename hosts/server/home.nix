@@ -1,6 +1,7 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 { outputs
+, wallpapers
 , ...
 }: {
   # You can import other home-manager modules here
@@ -35,7 +36,7 @@
   };
 
   home.file."Pictures/Wallpapers" = {
-    source = ../../wallpapers;
+    source = wallpapers;
     recursive = true;
   };
 

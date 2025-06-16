@@ -43,6 +43,10 @@
     #   url = "github:hyprwm/hyprpolkitagent";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    wallpapers = {
+      url = "github:Rishabh5321/wallpapers";
+      flake = false;
+    };
     sddm-sugar-candy-nix = {
       url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -76,6 +80,7 @@
     , nixpkgs-stable
     , home-manager
     , sddm-sugar-candy-nix
+    , wallpapers
       #, nix-colorizer
       #, plasma-manager
     , ...
@@ -114,6 +119,7 @@
           pkgs-stable
           # nix-colorizer
           sddm-sugar-candy-nix
+          wallpapers
           ;
         inherit (inputs) spicetify-nix;
       };

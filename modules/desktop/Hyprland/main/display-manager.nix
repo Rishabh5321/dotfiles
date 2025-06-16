@@ -1,4 +1,4 @@
-{ pkgs, config, lib, wallpaper, ... }: {
+{ pkgs, config, lib, wallpaper, wallpapers, ... }: {
   services.displayManager = {
     enable = true;
     sddm = {
@@ -24,7 +24,7 @@
         settings = {
           # General settings
           AccentColor = "#${config.stylix.base16Scheme.base0B}";
-          Background = lib.cleanSource ../../../../wallpapers/${wallpaper};
+          Background = "${lib.cleanSource wallpapers}/${wallpaper}";
           Font = "JetBrainsMono Nerd Font Mono";
           # Form settings
           HeaderText = "Welcome!";

@@ -728,6 +728,7 @@
         "seanime": "seanime",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
+        "wallpapers": "wallpapers",
         "zed-editor-flake": "zed-editor-flake",
         "zen-browser": "zen-browser"
       }
@@ -994,6 +995,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1750052156,
+        "narHash": "sha256-fqPBiTkbBEXV6wcbYYx3WGdXXe+D8jr9bcAwcFsES/4=",
+        "owner": "Rishabh5321",
+        "repo": "wallpapers",
+        "rev": "960bbe2ff4c2aa16431c17d4d426766ed2c3c6ec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Rishabh5321",
+        "repo": "wallpapers",
         "type": "github"
       }
     },

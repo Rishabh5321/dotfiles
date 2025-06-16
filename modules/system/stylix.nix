@@ -1,10 +1,11 @@
 { pkgs
 , wallpaper
+, wallpapers
 , ...
 }: {
   stylix = {
     enable = true;
-    image = ../../wallpapers/${wallpaper}; # Ensure the path resolves correctly
+    image = "${wallpapers}/${wallpaper}";
     polarity = "dark";
     opacity.terminal = 0.9;
 
