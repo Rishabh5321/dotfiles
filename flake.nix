@@ -43,7 +43,7 @@
     #   url = "github:hyprwm/hyprpolkitagent";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    wallpapers = {
+    wallpapers-repo = {
       url = "github:Rishabh5321/wallpapers";
       flake = false;
     };
@@ -80,7 +80,7 @@
     , nixpkgs-stable
     , home-manager
     , sddm-sugar-candy-nix
-    , wallpapers
+    , wallpapers-repo
       #, nix-colorizer
       #, plasma-manager
     , ...
@@ -90,6 +90,7 @@
       username = "rishabh";
       wallpaper = "wall26.png";
       flakeDir = "/home/${username}/dotfiles";
+      wallpapers = "${wallpapers-repo}/src";
 
       pkgs-stable = import nixpkgs-stable {
         inherit system;
