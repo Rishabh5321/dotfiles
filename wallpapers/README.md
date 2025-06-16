@@ -94,7 +94,7 @@
       <img src="wall25.png" width="300px"><br>
     </td>
     <td align="center" width="300px">
-      <img src="wall26.jpg" width="300px"><br>
+      <img src="wall26.png" width="300px"><br>
     </td>
   </tr>
 </table>
