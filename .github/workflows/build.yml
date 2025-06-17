@@ -196,7 +196,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: build-status-${{ github.run_id }}
+          name: build-status-${{ matrix.hostname }}
           path: |
             ${{ runner.temp }}/status.txt
           pre-upload-actions: |
@@ -214,7 +214,7 @@ jobs:
       - name: Download all build status artifacts
         uses: actions/download-artifact@v4
         with:
-          name: build-status-${{ github.run_id }}
+          pattern: build-status-*
           path: /tmp/build-statuses
 
       - name: Determine overall status
