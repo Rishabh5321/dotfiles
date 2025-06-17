@@ -206,6 +206,7 @@
     micro
     nano
     smartmontools
+    github-runner
   ];
 
 }
