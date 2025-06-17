@@ -159,7 +159,7 @@ jobs:
           exit $BUILD_EXIT_CODE
 
       - name: Upload build logs
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: build-logs-${{ matrix.hostname }}
