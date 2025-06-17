@@ -79,7 +79,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 180 # Prevent hung builds
     strategy:
-      fail-fast: true # Stop all matrix jobs if one fails
+      fail-fast: false # Stop all matrix jobs if one fails
       matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
     steps:
       - name: Free Disk Space
@@ -158,14 +158,6 @@ jobs:
 
           exit $BUILD_EXIT_CODE
 
-      - name: Upload build logs
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-logs-${{ matrix.hostname }}
-          path: logs/
-          retention-days: 5
-
       - name: Determine final status
         id: final-status
         if: always()
@@ -176,6 +168,16 @@ jobs:
           else
             echo "status=error" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Upload build status artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-status-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/status.txt
+          pre-upload-actions: |
+            echo "${{ matrix.hostname }}:${{ job.status }}" > ${{ runner.temp }}/status.txt
 
   notify_telegram:
     name: Send Telegram Notification
