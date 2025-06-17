@@ -20,6 +20,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # These two jobs now run in parallel since they're independent
   flake-checks:
     name: Flake Check
     runs-on: ubuntu-latest
@@ -45,8 +46,8 @@ jobs:
           nix flake check
 
   generate-matrix:
+    name: Generate Build Matrix
     runs-on: ubuntu-latest
-    needs: [flake-checks]
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
@@ -73,12 +74,12 @@ jobs:
           echo "matrix={\"hostname\":$HOSTS}" >> "$GITHUB_OUTPUT"
 
   Build_Config:
-    name: Build_Config ${{ matrix.hostname }}
-    needs: [generate-matrix]
+    name: Build ${{ matrix.hostname }}
+    needs: [flake-checks, generate-matrix]
     runs-on: ubuntu-latest
     timeout-minutes: 180 # Prevent hung builds
     strategy:
-      fail-fast: true # Stop all matrix jobs if one fails - changed from false to true
+      fail-fast: true # Stop all matrix jobs if one fails
       matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
     steps:
       - name: Free Disk Space
@@ -122,8 +123,6 @@ jobs:
           mkdir -p logs
 
           # Run the build and capture output to both stdout and a file
-          # Removed the set +e comment to ensure failures propagate
-
           start_time=$(date +%s)
 
           cachix watch-exec rishabh5321 -- \
@@ -155,7 +154,6 @@ jobs:
               echo "closure_size=unknown" >> $GITHUB_OUTPUT
               echo "Warning: closure size is null or empty"
             fi
-            echo "closure_size=$HUMAN_SIZE" >> $GITHUB_OUTPUT
           fi
 
           exit $BUILD_EXIT_CODE
