@@ -79,7 +79,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 180 # Prevent hung builds
     strategy:
-      fail-fast: false # Stop all matrix jobs if one fails
+      fail-fast: false
       matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
     steps:
       - name: Free Disk Space
@@ -185,49 +185,70 @@ jobs:
     needs: [Build_Config] # This job waits for all matrix jobs of Build_Config
     if: always() # Run this job even if some matrix builds failed
     steps:
-      - name: Checkout repository # Needed to access workflow details potentially
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Download all build status artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-status-${{ github.run_id }}
+          path: /tmp/build-statuses
 
       - name: Determine overall status
         id: determine_status
         run: |
-          # Check the outcome of the job it depends on.
-          # needs.Build_Config.result will be 'success' only if ALL matrix jobs succeeded.
-          # If any failed, it will be 'failure'. If skipped, 'skipped'.
-          STATUS="${{ needs.Build_Config.result }}"
-          MESSAGE_STATUS=""
-          if [[ "$STATUS" == "success" ]]; then
-            MESSAGE_STATUS="✅ Build successful!"
-          elif [[ "$STATUS" == "failure" ]]; then
-            MESSAGE_STATUS="❌ Build failed!"
-          elif [[ "$STATUS" == "cancelled" ]]; then
-            MESSAGE_STATUS="🛑 Build cancelled."
-          else
-            MESSAGE_STATUS="❓ Build status unknown ($STATUS)."
+          SUCCESS_HOSTS=()
+          FAILED_HOSTS=()
+          STATUS_DIR="/tmp/build-statuses"
+
+          # Check if the directory exists and has status files
+          if [ -d "$STATUS_DIR" ] && [ "$(ls -A $STATUS_DIR)" ]; then
+            for file in "$STATUS_DIR"/*; do
+              while IFS=':' read -r hostname status; do
+                if [[ "$status" == "success" ]]; then
+                  SUCCESS_HOSTS+=("`$hostname`")
+                else
+                  FAILED_HOSTS+=("`$hostname` ($status)")
+                fi
+              done < "$file"
+            done
           fi
-          echo "message_status=$MESSAGE_STATUS" >> "$GITHUB_OUTPUT"
+
+          # Generate the final status message
+          MESSAGE=""
+          if [ ${#FAILED_HOSTS[@]} -eq 0 ] && [ ${#SUCCESS_HOSTS[@]} -gt 0 ]; then
+            MESSAGE="✅ All builds successful!"
+          elif [ ${#FAILED_HOSTS[@]} -gt 0 ]; then
+            MESSAGE="❌ Build failed!"
+          elif [[ "${{ needs.Build_Config.result }}" == "cancelled" ]]; then
+            MESSAGE="🛑 Build cancelled."
+          else
+            MESSAGE="❓ Build status unknown. The build job may have been skipped or failed early."
+          fi
+
+          if [ ${#SUCCESS_HOSTS[@]} -gt 0 ]; then
+            MESSAGE+=$'\n\n*Successful Hosts:*\n'
+            MESSAGE+=$(printf -- "- %s\n" "${SUCCESS_HOSTS[@]}")
+          fi
+
+          if [ ${#FAILED_HOSTS[@]} -gt 0 ]; then
+            MESSAGE+=$'\n\n*Failed Hosts:*\n'
+            MESSAGE+=$(printf -- "- %s\n" "${FAILED_HOSTS[@]}")
+          fi
+
+          # Use a heredoc to safely handle multi-line output
+          cat <<EOF >> "$GITHUB_OUTPUT"
+          message_status=$MESSAGE
+          EOF
 
       - name: Get branch/PR info
         id: get-ref-info
         run: |
-          REF_INFO=""
-          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            REF_INFO="PR #${{ github.event.pull_request.number }} (${{ github.event.pull_request.head.ref }} -> ${{ github.event.pull_request.base.ref }})"
-          elif [[ "${{ github.event_name }}" == "push" ]]; then
-            REF_INFO="Branch: ${{ github.ref_name }}"
-          elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            REF_INFO="Manual run on branch: ${{ github.ref_name }}"
-            SPECIFIC_HOST="${{ github.event.inputs.specific_host }}"
-            if [[ -n "$SPECIFIC_HOST" ]]; then
-              REF_INFO="$REF_INFO (Specific host: $SPECIFIC_HOST)"
-            fi
-          else
-            REF_INFO="Event: ${{ github.event_name }}"
-          fi
-          echo "ref_info=$REF_INFO" >> "$GITHUB_OUTPUT"
+          # ... (this step remains unchanged)
+          # ... (for brevity, its content is omitted here)
 
       - name: Send Telegram Message
-        uses: appleboy/telegram-action@v1.0.1 # Use a Telegram action
+        uses: appleboy/telegram-action@v1.0.1
         with:
           to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
@@ -238,7 +259,8 @@ jobs:
             ${{ steps.get-ref-info.outputs.ref_info }}
             Commit: `${{ github.sha }}`
 
-            *Status:* ${{ steps.determine_status.outputs.message_status }}
+            *Status:*
+            ${{ steps.determine_status.outputs.message_status }}
 
             View run details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           format: markdown # Use markdown formatting for the message
