@@ -20,7 +20,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # These two jobs now run in parallel since they're independent
   flake-checks:
     name: Flake Check
     runs-on: ubuntu-latest
@@ -35,40 +34,20 @@ jobs:
           extra_nix_config: |
             auto-optimise-store = true
             experimental-features = nix-command flakes
-            max-jobs = auto
-            download-buffer-size = 500000000
-            substituters = https://rishabh5321.cachix.org https://cache.nixos.org https://hyprland.cachix.org https://nixpkgs-wayland.cachix.org https://nix-gaming.cachix.org
-            trusted-public-keys = rishabh5321.cachix.org-1:mxfBIH2XElE6ieFXXYBA9Ame4mVTbAf1TGR843siggk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=
 
       - name: Restore and cache Nix store
         uses: nix-community/cache-nix-action@v5
         with:
-          # restore and save a cache using this key
           primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix') }}
-          # if there's no cache hit, restore a cache by this prefix
           restore-prefixes-first-match: nix-${{ runner.os }}-
-          # collect garbage until Nix store size (in bytes) is at most this number
-          # before trying to save a new cache
           gc-max-store-size-linux: 1073741824
-          # do purge caches
           purge: true
-          # purge all versions of the cache
           purge-prefixes: cache-${{ runner.os }}-
-          # created more than this number of seconds ago relative to the start of the `Post Restore` phase
           purge-created: 0
-          # except the version with the `primary-key`, if it exists
           purge-primary-key: never
 
-      - name: Setup Cachix
-        uses: cachix/cachix-action@v16
-        with:
-          name: rishabh5321
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-
       - name: Run Flake Check
-        id: flake_check
-        run: |
-          nix flake check
+        run: nix flake check
 
   generate-matrix:
     name: Generate Build Matrix
@@ -90,10 +69,8 @@ jobs:
         id: set-matrix
         run: |
           if [ -n "${{ github.event.inputs.specific_host }}" ]; then
-            # If a specific host was provided, only build that one
             HOSTS=$(echo '["${{ github.event.inputs.specific_host }}"]' | jq -c .)
           else
-            # Otherwise build all hosts from the flake
             HOSTS=$(nix flake show --json | jq -c '[.nixosConfigurations | keys[]]')
           fi
           echo "matrix={\"hostname\":$HOSTS}" >> "$GITHUB_OUTPUT"
@@ -102,9 +79,9 @@ jobs:
     name: Build ${{ matrix.hostname }}
     needs: [flake-checks, generate-matrix]
     runs-on: ubuntu-latest
-    timeout-minutes: 180 # Prevent hung builds
+    timeout-minutes: 180
     strategy:
-      fail-fast: true # Stop all matrix jobs if one fails
+      fail-fast: true
       matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
     steps:
       - name: Free Disk Space
@@ -136,20 +113,12 @@ jobs:
       - name: Restore and cache Nix store
         uses: nix-community/cache-nix-action@v5
         with:
-          # restore and save a cache using this key
           primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix') }}
-          # if there's no cache hit, restore a cache by this prefix
-          restore-prefixes-first-match: nix-store
-          # collect garbage until Nix store size (in bytes) is at most this number
-          # before trying to save a new cache
+          restore-prefixes-first-match: nix-${{ runner.os }}-
           gc-max-store-size-linux: 1073741824
-          # do purge caches
           purge: true
-          # purge all versions of the cache
           purge-prefixes: cache-${{ runner.os }}-
-          # created more than this number of seconds ago relative to the start of the `Post Restore` phase
           purge-created: 0
-          # except the version with the `primary-key`, if it exists
           purge-primary-key: never
 
       - name: Setup Cachix
@@ -162,35 +131,22 @@ jobs:
         id: build
         run: |
           echo "Starting Nix build for ${{ matrix.hostname }}..."
-
-          # Create a temporary file for capturing output
           mkdir -p logs
-
-          # Run the build and capture output to both stdout and a file
           start_time=$(date +%s)
-
           cachix watch-exec rishabh5321 -- \
             nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.toplevel \
             -L --print-build-logs --out-link result-${{ matrix.hostname }} 2>&1 | tee logs/build_output.log
-
-          BUILD_EXIT_CODE=${PIPESTATUS[0]}  # Get the exit code of nix build, not tee
-
+          BUILD_EXIT_CODE=${PIPESTATUS[0]}
           end_time=$(date +%s)
           build_duration=$((end_time - start_time))
-
           echo "Build duration: $build_duration seconds"
           echo "build_duration=$build_duration" >> $GITHUB_OUTPUT
 
-          # If build was successful, generate a system report
           if [ $BUILD_EXIT_CODE -eq 0 ]; then
             echo "Generating system report for ${{ matrix.hostname }}..."
             nix-shell -p nix-info --run "nix-info -m" > logs/system_info.log
-
-            # Extract some useful information about the build
             nix path-info --json ./result-${{ matrix.hostname }} | jq 'if type == "array" then .[0] else . end | {path: .path, closureSize: .closureSize}' > logs/build_info.json
-
             CLOSURE_SIZE=$(jq -r '.closureSize' logs/build_info.json)
-
             if [[ "$CLOSURE_SIZE" != "null" && -n "$CLOSURE_SIZE" ]]; then
               HUMAN_SIZE=$(numfmt --to=iec-i --suffix=B "$CLOSURE_SIZE")
               echo "closure_size=$HUMAN_SIZE" >> $GITHUB_OUTPUT
@@ -224,18 +180,15 @@ jobs:
   notify_telegram:
     name: Send Telegram Notification
     runs-on: ubuntu-latest
-    needs: [Build_Config] # This job waits for all matrix jobs of Build_Config
-    if: always() # Run this job even if some matrix builds failed
+    needs: [Build_Config]
+    if: always()
     steps:
-      - name: Checkout repository # Needed to access workflow details potentially
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Determine overall status
         id: determine_status
         run: |
-          # Check the outcome of the job it depends on.
-          # needs.Build_Config.result will be 'success' only if ALL matrix jobs succeeded.
-          # If any failed, it will be 'failure'. If skipped, 'skipped'.
           STATUS="${{ needs.Build_Config.result }}"
           MESSAGE_STATUS=""
           if [[ "$STATUS" == "success" ]]; then
@@ -269,7 +222,7 @@ jobs:
           echo "ref_info=$REF_INFO" >> "$GITHUB_OUTPUT"
 
       - name: Send Telegram Message
-        uses: appleboy/telegram-action@v1.0.1 # Use a Telegram action
+        uses: appleboy/telegram-action@v1.0.1
         with:
           to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
@@ -283,4 +236,4 @@ jobs:
             *Status:* ${{ steps.determine_status.outputs.message_status }}
 
             View run details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          format: markdown # Use markdown formatting for the message
+          format: markdown
