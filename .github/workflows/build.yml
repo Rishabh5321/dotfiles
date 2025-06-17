@@ -119,34 +119,26 @@ jobs:
         run: |
           echo "Starting Nix build for ${{ matrix.hostname }}..."
 
-          # Create a temporary file for capturing output
           mkdir -p logs
-
-          # Run the build and capture output to both stdout and a file
           start_time=$(date +%s)
 
           cachix watch-exec rishabh5321 -- \
             nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.toplevel \
             -L --print-build-logs --out-link result-${{ matrix.hostname }} 2>&1 | tee logs/build_output.log
 
-          BUILD_EXIT_CODE=${PIPESTATUS[0]}  # Get the exit code of nix build, not tee
-
+          BUILD_EXIT_CODE=${PIPESTATUS[0]}
           end_time=$(date +%s)
           build_duration=$((end_time - start_time))
-
           echo "Build duration: $build_duration seconds"
           echo "build_duration=$build_duration" >> $GITHUB_OUTPUT
 
-          # If build was successful, generate a system report
           if [ $BUILD_EXIT_CODE -eq 0 ]; then
             echo "Generating system report for ${{ matrix.hostname }}..."
             nix-shell -p nix-info --run "nix-info -m" > logs/system_info.log
 
-            # Extract some useful information about the build
             nix path-info --json ./result-${{ matrix.hostname }} | jq 'if type == "array" then .[0] else . end | {path: .path, closureSize: .closureSize}' > logs/build_info.json
 
             CLOSURE_SIZE=$(jq -r '.closureSize' logs/build_info.json)
-
             if [[ "$CLOSURE_SIZE" != "null" && -n "$CLOSURE_SIZE" ]]; then
               HUMAN_SIZE=$(numfmt --to=iec-i --suffix=B "$CLOSURE_SIZE")
               echo "closure_size=$HUMAN_SIZE" >> $GITHUB_OUTPUT
@@ -155,6 +147,37 @@ jobs:
               echo "Warning: closure size is null or empty"
             fi
           fi
+
+          # --- [2] Trim log files to 500KB max ---
+          MAX_SIZE=500000
+          for f in logs/*.log; do
+            if [ -f "$f" ]; then
+              size=$(stat -c %s "$f")
+              if [ "$size" -gt "$MAX_SIZE" ]; then
+                echo "Truncating $f to ${MAX_SIZE} bytes..."
+                tail -c "$MAX_SIZE" "$f" > "$f.tmp" && mv "$f.tmp" "$f"
+              fi
+            fi
+          done
+
+          # --- [3] Add metadata.json ---
+          jq -n \
+            --arg hostname "${{ matrix.hostname }}" \
+            --argjson status "$BUILD_EXIT_CODE" \
+            --arg duration "$build_duration" \
+            --arg closure_size "${HUMAN_SIZE:-unknown}" \
+            --arg commit "${{ github.sha }}" \
+            --arg workflow "${{ github.workflow }}" \
+            --arg run_id "${{ github.run_id }}" \
+            '{
+              hostname: $hostname,
+              status: (if $status == 0 then "success" else "failure" end),
+              build_duration_seconds: ($duration | tonumber),
+              closure_size: $closure_size,
+              commit: $commit,
+              workflow: $workflow,
+              run_id: $run_id
+            }' > logs/metadata.json
 
           exit $BUILD_EXIT_CODE
 
