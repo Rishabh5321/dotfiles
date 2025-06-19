@@ -380,11 +380,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1750207601,
-        "narHash": "sha256-Ny2Wye50X/IGu2fQ0eM0j5qiFSLJzfrLX/AJaKOPQaU=",
+        "lastModified": 1750309868,
+        "narHash": "sha256-86pyFCuf7Q+MUT3tecwqZK5Cw7dumallF+fe0uEXrjU=",
         "owner": "rishabh5321",
         "repo": "grayjay-flake",
-        "rev": "48c3438372196bbe25b5e341ec38a54213756996",
+        "rev": "127a4dba5f2960eb70faabdc0b58ad273a46a009",
         "type": "github"
       },
       "original": {
