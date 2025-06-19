@@ -43,7 +43,7 @@ jobs:
       - name: Cache Nix Store
         uses: nix-community/cache-nix-action@v6.1.3
         with:
-          primary-key: nix-${{ runner.os }}-${{ hashFiles('flake.lock') }}
+          primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix', '**/flake.lock') }}
           restore-prefixes-first-match: |
             nix-${{ runner.os }}-
 
@@ -71,7 +71,7 @@ jobs:
       - name: Cache Nix Store
         uses: nix-community/cache-nix-action@v6.1.3
         with:
-          primary-key: nix-${{ runner.os }}-${{ hashFiles('flake.lock') }}
+          primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix', '**/flake.lock') }}
           restore-prefixes-first-match: |
             nix-${{ runner.os }}-
 
@@ -125,7 +125,7 @@ jobs:
       - name: Cache Nix Store
         uses: nix-community/cache-nix-action@v6.1.3
         with:
-          primary-key: nix-${{ runner.os }}-${{ hashFiles('flake.lock') }}
+          primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix', '**/flake.lock') }}
           restore-prefixes-first-match: |
             nix-${{ runner.os }}-
 
