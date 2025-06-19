@@ -30,7 +30,7 @@
     ./virtualisation.nix
     ./wofi.nix
     #./zed.nix
-    ./zen.nix
+    #./zen.nix
     ./zsh.nix
   ];
   home.sessionVariables = {

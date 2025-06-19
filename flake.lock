@@ -434,27 +434,6 @@
         "type": "github"
       }
     },
-    "home-manager_3": {
-      "inputs": {
-        "nixpkgs": [
-          "zen-browser",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1743604125,
-        "narHash": "sha256-ZD61DNbsBt1mQbinAaaEqKaJk2RFo9R/j+eYWeGMx7A=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "180fd43eea296e62ae68e079fcf56aba268b9a1a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
     "hyprpanel": {
       "inputs": {
         "ags": "ags",
@@ -729,8 +708,7 @@
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "wallpapers-repo": "wallpapers-repo",
-        "zed-editor-flake": "zed-editor-flake",
-        "zen-browser": "zen-browser"
+        "zed-editor-flake": "zed-editor-flake"
       }
     },
     "rust-overlay": {
@@ -1032,27 +1010,6 @@
       "original": {
         "owner": "rishabh5321",
         "repo": "zed-editor-flake",
-        "type": "github"
-      }
-    },
-    "zen-browser": {
-      "inputs": {
-        "home-manager": "home-manager_3",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1750152169,
-        "narHash": "sha256-XN5OBCCXKmPBL+UXyyScI5HGgs4U8OFGQTnKuxurBFI=",
-        "owner": "0xc000022070",
-        "repo": "zen-browser-flake",
-        "rev": "ed811ab0d0b407b59cda1023820e9986fd28c8c3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "0xc000022070",
-        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

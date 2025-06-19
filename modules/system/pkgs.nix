@@ -28,7 +28,7 @@
       code-cursor
       discord
       distrobox
-      deja-dup
+      # deja-dup
       docker
       docker-compose
       dracula-icon-theme

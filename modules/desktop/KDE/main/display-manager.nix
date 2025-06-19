@@ -8,12 +8,12 @@
       };
       # config, lib, wallpaper,   Need to be set this in the headers before enabling sddm-nix
       # package = pkgs.kdePackages.sddm;
-      # extraPackages = with pkgs; [
-      #   kdePackages.qtsvg
-      #   kdePackages.qtmultimedia
-      #   kdePackages.qtvirtualkeyboard
-      # ];
-      # theme = "sddm-astronaut-theme";
+      extraPackages = with pkgs; [
+        kdePackages.qtsvg
+        kdePackages.qtmultimedia
+        kdePackages.qtvirtualkeyboard
+      ];
+      # theme = "black_hole";
       # settings = {
       #   Autologin = {
       #     Session = "hyprland";
