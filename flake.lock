@@ -696,22 +696,6 @@
         "type": "github"
       }
     },
-    "patched-nixpkgs": {
-      "locked": {
-        "lastModified": 1750323031,
-        "narHash": "sha256-UBervAoXyQgWMLqN684fD5FMW4NsYdy5rqlJwMC1hd4=",
-        "owner": "TomaSajt",
-        "repo": "nixpkgs",
-        "rev": "76ef3a6c51ed221a7ac29b50c94bb48589979be5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "TomaSajt",
-        "ref": "fetch-cargo-vendor-dup",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "better-control": "better-control",
@@ -1018,15 +1002,14 @@
       "inputs": {
         "flake-parts": "flake-parts_3",
         "nixpkgs": "nixpkgs_6",
-        "patched-nixpkgs": "patched-nixpkgs",
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1750389402,
-        "narHash": "sha256-B5DokNMjMIT9OfetE4Xt/FVli9pWbHlVcPr18Goy8LY=",
+        "lastModified": 1750396688,
+        "narHash": "sha256-6kiLVvnKnyA425RU49cWiwS3An75gLQodZ8chDO7XrQ=",
         "owner": "rishabh5321",
         "repo": "zed-editor-flake",
-        "rev": "e9e2ed998f43b2db1bd615def7589b169da1742f",
+        "rev": "3aa07e8f14ba5c07aa92bf77afd8ed1357fb5e39",
         "type": "github"
       },
       "original": {
