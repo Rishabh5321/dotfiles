@@ -985,11 +985,11 @@
     "wallpapers-repo": {
       "flake": false,
       "locked": {
-        "lastModified": 1750218879,
-        "narHash": "sha256-OwZgHl9P1Yo4OjLCadoDPYDW/B67Wjq3YYnPdHnl4sU=",
+        "lastModified": 1750481611,
+        "narHash": "sha256-dQEd2MTElCtrqVENf/Ep+p26MDikJ5yOn3GnFt/5VBU=",
         "owner": "Rishabh5321",
         "repo": "wallpapers",
-        "rev": "b424f15c806f019cc1835ce889a294c0f2d88fc6",
+        "rev": "f58ba38b47e5f5dcb387b1c9f072502804d60eab",
         "type": "github"
       },
       "original": {
