@@ -14,7 +14,7 @@
 
       #apkeep
       act
-      alacritty
+      alacritty_git
       android-tools
       atuin
       bat
@@ -118,7 +118,7 @@
       tailscale
       toipe
       tela-icon-theme
-      telegram-desktop
+      telegram-desktop_git
       thunderbird-latest
       tldr
       #tmux

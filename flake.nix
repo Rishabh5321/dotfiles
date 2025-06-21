@@ -27,6 +27,7 @@
       url = "gitlab:VandalByte/darkmatter-grub-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     # distro-grub-themes = {
     #   url = "github:AdisonCavani/distro-grub-themes";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -80,6 +81,7 @@
     , nixpkgs-stable
     , home-manager
     , sddm-sugar-candy-nix
+    , chaotic
     , wallpapers-repo
       #, nix-colorizer
       #, plasma-manager
@@ -151,6 +153,7 @@
             inputs.nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
             sddm-sugar-candy-nix.nixosModules.default
+            chaotic.nixosModules.default
             #inputs.determinate.nixosModules.default
             # Home Manager configuration integrated into NixOS
             {
