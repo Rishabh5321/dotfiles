@@ -14,7 +14,7 @@
 
       #apkeep
       act
-      alacritty_git
+      alacritty
       android-tools
       atuin
       bat
