@@ -26,4 +26,6 @@
     ./users.nix
     ./virtualisation.nix
   ];
+
+  chaotic.nyx.cache.enable = true;
 }

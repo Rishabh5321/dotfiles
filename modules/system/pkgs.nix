@@ -27,7 +27,7 @@
       cloudflare-warp
       code-cursor
       discord
-      distrobox
+      distrobox_git
       # deja-dup
       docker
       docker-compose
