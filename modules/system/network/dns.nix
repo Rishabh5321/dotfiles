@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
   # Enable Encrypted DNS
