@@ -90,7 +90,7 @@
     let
       system = "x86_64-linux";
       username = "rishabh";
-      wallpaper = "wall53.jpg";
+      wallpaper = "wall112.png";
       flakeDir = "/home/${username}/dotfiles";
       wallpapers = "${wallpapers-repo}/src";
 
