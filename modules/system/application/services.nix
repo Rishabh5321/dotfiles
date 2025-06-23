@@ -1,5 +1,4 @@
-{ ...
-}: {
+_: {
   services = {
     # ===== NETWORK & CONNECTIVITY =====
     # SSH daemon for remote access
