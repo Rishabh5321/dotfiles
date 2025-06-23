@@ -1,15 +1,18 @@
 { outputs, ... }: {
-  # Optimization settings and garbage collection automation
+  # ===== NIX DAEMON CONFIGURATION =====
   nix = {
     settings = {
+      # ===== BINARY CACHE CONFIGURATION =====
+      # Primary and community binary caches for faster builds
       substituters = [
-        "https://rishabh5321.cachix.org"
-        "https://cache.nixos.org"
-        "https://nixpkgs-wayland.cachix.org"
-        "https://cosmic.cachix.org/"
-        "https://nix-config.cachix.org"
-        "https://nix-community.cachix.org"
+        "https://rishabh5321.cachix.org" # Personal cache
+        "https://cache.nixos.org" # Official NixOS cache
+        "https://nixpkgs-wayland.cachix.org" # Wayland packages
+        "https://cosmic.cachix.org/" # COSMIC desktop environment
+        "https://nix-config.cachix.org" # Community configurations
+        "https://nix-community.cachix.org" # Nix community packages
       ];
+
       trusted-substituters = [
         "https://rishabh5321.cachix.org"
         "https://cache.nixos.org"
@@ -18,6 +21,8 @@
         "https://nix-config.cachix.org"
         "https://nix-community.cachix.org"
       ];
+
+      # Public keys for verifying cache authenticity
       trusted-public-keys = [
         "rishabh5321.cachix.org-1:mxfBIH2XElE6ieFXXYBA9Ame4mVTbAf1TGR843siggk="
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -26,13 +31,24 @@
         "nix-config.cachix.org-1:Vd6raEuldeIZpttVQfrUbLvXJHzzzkS0pezXCVVjDG4="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
+
+      # ===== PERFORMANCE OPTIMIZATIONS =====
+      # Automatically optimize store by hard-linking identical files
       auto-optimise-store = true;
+
+      # Large download buffer for better network performance (500 MB)
+      download-buffer-size = 500000000;
+
+      # ===== EXPERIMENTAL FEATURES =====
+      # Enable modern Nix features
       experimental-features = [
-        "nix-command"
-        "flakes"
+        "nix-command" # New nix CLI interface
+        "flakes" # Flake system for reproducible configurations
       ];
-      download-buffer-size = 500000000; # 500 MB
     };
+
+    # ===== GARBAGE COLLECTION (DISABLED) =====
+    # Automatic cleanup handled by nh instead
     # gc = {
     #   automatic = true;
     #   dates = "weekly";
@@ -40,26 +56,29 @@
     # };
   };
 
+  # ===== NIXPKGS CONFIGURATION =====
   nixpkgs = {
-    # You can add overlays here
+    # Package overlays for modifications and additions
     overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-      # You can also add overlays exported from other flakes:
+      # Custom overlays from flake outputs
+      outputs.overlays.additions # Additional packages
+      outputs.overlays.modifications # Package modifications
+      outputs.overlays.unstable-packages # Bleeding-edge packages
+
+      # External overlays can be added here:
       # neovim-nightly-overlay.overlays.default
 
-      # Or define it inline, for example:
+      # Inline overlay example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
     ];
-    # Configure your nixpkgs instance
+
+    # Global nixpkgs configuration
     config = {
-      # Disable if you don't want unfree packages
+      # Allow proprietary software packages
       allowUnfree = true;
     };
   };

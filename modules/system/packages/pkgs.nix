@@ -1,267 +1,208 @@
 { pkgs
 , inputs
 , ...
-}:
-{
-  environment.systemPackages =
-    # let
-    #   luminance = pkgs.callPackage ../../pkgs/luminance.nix { };
-    # in
-    with pkgs; [
-      #luminance # Used for testing
-      # inputs.better-control.packages.${pkgs.system}.better-control # Used for testing
-      #helix
+}: {
+  # ===== SYSTEM PACKAGES =====
+  environment.systemPackages = with pkgs; [
+    # ===== DEVELOPMENT TOOLS =====
+    act # GitHub Actions local runner
+    android-tools # ADB and fastboot
+    cachix # Binary cache management
+    docker # Container runtime
+    docker-compose # Multi-container orchestration
+    git # Version control
+    gh # GitHub CLI
+    github-desktop # GitHub GUI client
+    gitnuro # Git GUI client
+    nil # Nix LSP server
+    nixd # Nix language server
+    nixpkgs-fmt # Nix code formatter
+    nixpkgs-review # Nixpkgs PR review tool
+    nix-prefetch-github # Fetch GitHub repos for Nix
+    nh # Nix helper
+    openssl # Cryptography toolkit
 
-      #apkeep
-      act
-      alacritty
-      android-tools
-      atuin
-      bat
-      beeper
-      brave
-      btop
-      #clinfo
-      cachix
-      cliphist
-      cloudflare-warp
-      code-cursor
-      discord
-      distrobox_git
-      # deja-dup
-      docker
-      docker-compose
-      dracula-icon-theme
-      eza
-      fastfetch
-      fast-cli
-      ferdium
-      file-roller
-      filezilla
-      firefox
-      #flatpak-builder
-      fzf
-      gamescope
-      gedit
-      gh
-      git
-      gitnuro
-      github-desktop
-      ghostty
-      gnome-console
-      gnome-disk-utility
-      gnome-keyring
-      gnome-system-monitor
-      google-chrome
-      # grayjay
-      grim
-      heroic
-      htop
-      # inputs.akuse-flake.packages.${system}.akuse
-      # inputs.alejandra.defaultPackage.${system}
-      # inputs.better-control.packages.${pkgs.system}.better-control
-      inputs.grayjay.packages.${pkgs.system}.grayjay
-      # inputs.thorium.packages."x86_64-linux".thorium-avx2
-      inputs.zed-editor-flake.packages.${system}.zed-editor
-      jellyfin-media-player
-      kdePackages.dolphin
-      kdePackages.qtstyleplugin-kvantum
-      libsForQt5.qtstyleplugin-kvantum
-      libreoffice
-      librewolf
-      libsForQt5.qt5.qtbase
-      libsForQt5.qt5.qtsvg
-      lutris
-      mangayomi
-      mangohud
-      mesa
-      micro
-      miru
-      mission-center
-      mpv-unwrapped
-      nautilus
-      networkmanagerapplet
-      #nix-serve
-      nix-prefetch-github
-      nil
-      nixd
-      nixpkgs-fmt
-      nixpkgs-review
-      nh
-      nload
-      nwg-look
-      obsidian
-      onlyoffice-bin_latest
-      openssl
-      papirus-icon-theme
-      podman-tui
-      podman-desktop
-      #pods
-      #popcorntime
-      #protonup-qt
-      qbittorrent
-      qogir-icon-theme
-      ranger
-      resources
-      #resilio-sync
-      #revanced-cli
-      rquickshare
-      samba
-      slurp
-      speedtest-cli
-      #spotdl
-      spotify
-      steam
-      stremio
-      swappy
-      swww
-      tailscale
-      toipe
-      tela-icon-theme
-      telegram-desktop_git
-      thunderbird-latest
-      tldr
-      #tmux
-      tree
-      typer
-      unrar
-      unzip
-      varia
-      vim
-      virt-viewer
-      #vivaldi
-      #vivaldi-ffmpeg-codecs
-      vlc
-      vscode
-      vulkan-tools
-      wgcf
-      wget
-      winetricks
-      wl-clipboard
-      youtube-music
-      #zed-editor  Will be using flake based version
-      zsh
+    # ===== EDITORS & IDEs =====
+    code-cursor # AI-powered VS Code fork
+    micro # Simple terminal editor
+    obsidian # Knowledge management
+    vim # Classic text editor
+    vscode # VS Code editor
 
-      #age
-      #akuse
-      #amdvlk
-      #appimage-run
-      #authenticator
-      #bitwarden-desktop
-      #bottles
-      #brightnessctl
-      #cava
-      #cmatrix
-      #cowsay
-      #cursor
-      #distrobox
-      #duf
-      #ffmpeg
-      #figlet
-      #file-roller
-      #floorp
-      #gamescope
-      #glxinfo
-      #grayjay
-      #grayjay_bye
-      #houdoku
-      #hyprlock
-      #hyprpicker
-      #hyprshot
-      #imv
-      #inputs.wfetch.packages.${pkgs.system}.default
-      #intel-gpu-tools
-      #inxi
-      #jellyfin-media-player
-      #kdePackages.kdeconnect-kde
-      #kdePackages.sddm-kcm
-      #killall
-      #kodi
-      #kodiPackages.inputstream-adaptive
-      #lazycli
-      #lazygit
-      #libnotify
-      #libsForQt5.krohnkite
-      #libsForQt5.sddm-kcm
-      #libvirt
-      #lm_sensors
-      #lolcat
-      #lshw
-      #lsof
-      #lxqt.lxqt-policykit
-      #marwaita-icons
-      #meson
-      #miru
-      #mpv
-      #ncdu
-      #neovide
-      #ninja
-      #nixos-generators
-      #nvtopPackages.full
-      #oh-my-posh
-      #pavucontrol
-      #pciutils
-      #peaclock
-      #pfetch-rs
-      #pkg-config
-      #playerctl
-      #polkit_gnome
-      #qemu
-      #quickemu
-      #radeontop
-      #resilio-sync
-      #ripgrep
-      #rose-pine-icon-theme
-      #rtkit
-      #sddm-astronaut
-      #socat
-      #sops
-      #spicetify-cli
-      #steam
-      #swaynotificationcenter
-      #swtpm
-      #tela-icon-theme
-      #unetbootin
-      #uwufetch
-      #v4l-utils
-      #ventoy
-      #vivaldi
-      #vivaldi-ffmpeg-codecs
-      #vulkan-tools
-      #wayland-pipewire-idle-inhibit
-      #wezterm
-      #wlroots
-      #xfce.xfce4-pulseaudio-plugin
-      #yad
-      #ydotool
-      #yubioath-flutter
-      #zed-editor
-      #zinit
-      #zoxide
-      #zsh-powerlevel10k
-    ];
+    # ===== TERMINAL APPLICATIONS =====
+    alacritty # GPU-accelerated terminal
+    atuin # Shell history with sync
+    bat # Enhanced cat with syntax highlighting
+    btop # Resource monitor
+    eza # Modern ls replacement
+    fastfetch # System information tool
+    fzf # Fuzzy finder
+    ghostty # Terminal emulator
+    gnome-console # GNOME terminal
+    htop # Process monitor
+    ranger # File manager
+    tldr # Simplified man pages
+    tree # Directory tree viewer
+    typer # Interactive typing test
+    toipe # Terminal typing test
+    zsh # Advanced shell
 
+    # ===== WEB BROWSERS =====
+    brave # Privacy-focused browser
+    firefox # Mozilla Firefox
+    google-chrome # Google Chrome
+    librewolf # Privacy-hardened Firefox
+
+    # ===== COMMUNICATION & SOCIAL =====
+    beeper # Universal chat client
+    discord # Gaming communication
+    ferdium # Multi-service messaging
+    telegram-desktop_git # Telegram client
+    thunderbird-latest # Email client
+
+    # ===== MEDIA & ENTERTAINMENT =====
+    jellyfin-media-player # Media center client
+    mangayomi # Manga reader
+    miru # Video streaming client
+    mpv-unwrapped # Video player
+    spotify # Music streaming
+    stremio # Media streaming
+    vlc # Multimedia player
+    youtube-music # YouTube Music client
+
+    # ===== GAMING =====
+    gamescope # Gaming compositor
+    heroic # Epic Games launcher
+    lutris # Gaming platform manager
+    mangohud # Gaming overlay
+    steam # Steam gaming platform
+
+    # ===== FILE MANAGEMENT =====
+    file-roller # Archive manager
+    filezilla # FTP client
+    kdePackages.dolphin # KDE file manager
+    nautilus # GNOME file manager
+    qbittorrent # BitTorrent client
+    unrar # RAR extraction
+    unzip # ZIP extraction
+
+    # ===== SYSTEM UTILITIES =====
+    cliphist # Clipboard manager
+    cloudflare-warp # VPN client
+    distrobox_git # Container-based environments
+    fast-cli # Internet speed test
+    gnome-disk-utility # Disk management
+    gnome-keyring # Credential management
+    gnome-system-monitor # System monitoring
+    grim # Screenshot tool
+    mesa # Graphics drivers
+    mission-center # System information
+    networkmanagerapplet # Network management
+    nload # Network monitoring
+    nwg-look # GTK theme manager
+    podman-desktop # Container management GUI
+    podman-tui # Container management TUI
+    resources # System monitor
+    rquickshare # File sharing
+    samba # SMB/CIFS support
+    slurp # Screen area selection
+    speedtest-cli # Network speed test
+    swappy # Screenshot annotation
+    swww # Wallpaper manager
+    tailscale # VPN mesh network
+    virt-viewer # Virtual machine viewer
+    vulkan-tools # Vulkan utilities
+    wgcf # Cloudflare WARP config
+    wget # File downloader
+    winetricks # Windows compatibility
+    wl-clipboard # Wayland clipboard
+
+    # ===== OFFICE & PRODUCTIVITY =====
+    libreoffice # Office suite
+    onlyoffice-bin_latest # Alternative office suite
+    varia # Various utilities
+
+    # ===== THEMES & ICONS =====
+    dracula-icon-theme # Dracula icons
+    papirus-icon-theme # Papirus icons
+    qogir-icon-theme # Qogir icons
+    tela-icon-theme # Tela icons
+
+    # ===== QT THEMING =====
+    kdePackages.qtstyleplugin-kvantum # Qt5/6 Kvantum plugin
+    libsForQt5.qtstyleplugin-kvantum # Qt5 Kvantum plugin
+    libsForQt5.qt5.qtbase # Qt5 base
+    libsForQt5.qt5.qtsvg # Qt5 SVG support
+
+    # ===== TEXT EDITORS (COMMENTED) =====
+    #helix                 # Modern text editor
+
+    # ===== DEVELOPMENT TOOLS (COMMENTED) =====
+    #apkeep                # APK downloader
+    #clinfo                # OpenCL info
+    #flatpak-builder       # Flatpak development
+    #nix-serve             # Nix binary cache server
+    #tmux                  # Terminal multiplexer
+
+    # ===== MEDIA TOOLS (COMMENTED) =====
+    #spotdl                # Spotify downloader
+    #revanced-cli          # YouTube Vanced patcher
+
+    # ===== APPLICATIONS (COMMENTED) =====
+    #deja-dup              # Backup tool
+    #grayjay               # Video platform client
+    #pods                  # Podcast client
+    #popcorntime           # Movie streaming
+    #protonup-qt           # Proton version manager
+    #resilio-sync          # File synchronization
+    #vivaldi               # Vivaldi browser
+    #vivaldi-ffmpeg-codecs # Vivaldi media codecs
+
+    # ===== CUSTOM PACKAGES (COMMENTED) =====
+    #luminance             # Custom lighting tool
+
+    # ===== FLAKE INPUTS =====
+    inputs.grayjay.packages.${pkgs.system}.grayjay # Video platform client
+    inputs.zed-editor-flake.packages.${system}.zed-editor # Zed editor from flake
+
+    # ===== FLAKE INPUTS (COMMENTED) =====
+    # inputs.akuse-flake.packages.${system}.akuse                 # Custom package
+    # inputs.alejandra.defaultPackage.${system}                   # Nix formatter
+    # inputs.better-control.packages.${pkgs.system}.better-control # Device control
+    # inputs.thorium.packages."x86_64-linux".thorium-avx2         # Thorium browser
+  ];
+
+  # ===== FONTS CONFIGURATION =====
   fonts = {
     packages = with pkgs; [
-      #maple-mono
-      noto-fonts
-      noto-fonts-emoji
-      noto-fonts-cjk-sans
-      font-awesome
-      symbola
-      powerline
-      fira-code
-      fira-code-symbols
-      material-icons
-      nerd-fonts.ubuntu-sans
-      nerd-fonts.ubuntu-mono
-      nerd-fonts.ubuntu
-      nerd-fonts.roboto-mono
-      nerd-fonts.profont
-      nerd-fonts.noto
-      nerd-fonts.monaspace
-      nerd-fonts.meslo-lg
-      nerd-fonts.jetbrains-mono
+      # ===== SYSTEM FONTS =====
+      noto-fonts # Google Noto fonts
+      noto-fonts-emoji # Emoji support
+      noto-fonts-cjk-sans # CJK language support
+      font-awesome # Icon font
+      symbola # Unicode symbols
+      powerline # Powerline symbols
+
+      # ===== PROGRAMMING FONTS =====
+      fira-code # Ligature programming font
+      fira-code-symbols # Fira Code symbols
+
+      # ===== ICON FONTS =====
+      material-icons # Material Design icons
+
+      # ===== NERD FONTS =====
+      nerd-fonts.ubuntu-sans # Ubuntu Sans with icons
+      nerd-fonts.ubuntu-mono # Ubuntu Mono with icons
+      nerd-fonts.ubuntu # Ubuntu with icons
+      nerd-fonts.roboto-mono # Roboto Mono with icons
+      nerd-fonts.profont # ProFont with icons
+      nerd-fonts.noto # Noto with icons
+      nerd-fonts.monaspace # Monaspace with icons
+      nerd-fonts.meslo-lg # Meslo LG with icons
+      nerd-fonts.jetbrains-mono # JetBrains Mono with icons
+
+      # ===== CUSTOM FONTS (COMMENTED) =====
+      #maple-mono              # Maple Mono font
     ];
   };
 }

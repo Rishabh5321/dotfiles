@@ -6,5 +6,6 @@
     ./kodi.nix
     ./program.nix
     #./proton.nix
+    ./services.nix
   ];
 }

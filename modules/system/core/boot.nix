@@ -1,27 +1,28 @@
 { pkgs, ... }: {
   boot = {
-    # Kernel
+    # ===== KERNEL CONFIGURATION =====
     kernelPackages = pkgs.linuxPackages;
     consoleLogLevel = 0;
-    # This is for OBS Virtual Cam Support
-    # kernelModules = [ "v4l2loopback" ];
-    # extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
-    # Needed For Some Steam Games
+
+    # Kernel modules and system controls
     kernel.sysctl = {
+      # Needed for some Steam games
       "vm.max_map_count" = 2147483642;
     };
-    # Bootloader.
-    # loader.grub.enable = true;
-    # loader.grub.devices = [ "nodev" ];
-    # loader.grub.efiInstallAsRemovable = true;
-    # loader.grub.efiSupport = true;
-    # loader.grub.useOSProber = true;
+
+    # Virtual camera support (commented out)
+    # kernelModules = [ "v4l2loopback" ];
+    # extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+
+    # ===== BOOTLOADER CONFIGURATION =====
     loader.grub = {
       enable = true;
       devices = [ "nodev" ];
-      efiInstallAsRemovable = true;
       efiSupport = true;
+      efiInstallAsRemovable = true;
       useOSProber = true;
+
+      # GRUB theme configuration
       darkmatter-theme = {
         enable = true;
         style = "nixos";
@@ -29,11 +30,22 @@
         resolution = "1080p";
       };
     };
+
+    # ===== BOOT SPLASH SCREEN =====
+    plymouth = {
+      enable = true;
+      theme = "cross_hud";
+      themePackages = [ pkgs.adi1090x-plymouth-themes ];
+    };
+
+    # ===== TEMPORARY FILESYSTEM =====
     tmp = {
       useTmpfs = false;
       tmpfsSize = "30%";
     };
-    # Appimage Support
+
+    # ===== APPLICATION SUPPORT =====
+    # AppImage support
     binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
       interpreter = "${pkgs.appimage-run}/bin/appimage-run";
@@ -42,24 +54,19 @@
       mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
-    plymouth = {
-      enable = true;
-      theme = "cross_hud";
-      themePackages = [ pkgs.adi1090x-plymouth-themes ];
+  };
+
+  # ===== THEME OVERRIDES =====
+  stylix = {
+    targets = {
+      grub.enable = false;
+      plymouth.enable = false;
     };
   };
+
+  # ===== ALTERNATIVE GRUB THEMES (DISABLED) =====
   # distro-grub-themes = {
   #   enable = true;
   #   theme = "nixos";
   # };
-  stylix = {
-    targets = {
-      grub = {
-        enable = false;
-      };
-      plymouth = {
-        enable = false;
-      };
-    };
-  };
 }
