@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }: {
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -9,9 +7,7 @@
     userEmail = "rishabh98818@outlook.com";
 
     extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
+      init.defaultBranch = "main";
     };
   };
 

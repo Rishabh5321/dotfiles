@@ -3,7 +3,7 @@
   programs.oh-my-posh = {
     enable = true;
     package = pkgs.oh-my-posh;
-    useTheme = "onehalf.minimal";
+    useTheme = "ys";
     enableBashIntegration = true;
     enableZshIntegration = true;
   };

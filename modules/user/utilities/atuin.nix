@@ -13,6 +13,7 @@ _: {
         records = true;
       };
       auto_sync = true;
+      sync_frequency = "1h";
     };
   };
 }

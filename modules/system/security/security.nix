@@ -15,7 +15,7 @@ _: {
         })
       '';
     };
-    pam.services.swaylock = {
+    pam.services.sddm = {
       text = ''auth include login '';
     };
   };

@@ -1,7 +1,5 @@
 { ... }: {
-  # List your module files here
   imports = [
-
     # System Core & Boot
     ./core
 

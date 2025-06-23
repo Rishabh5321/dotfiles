@@ -1,12 +1,6 @@
-{ pkgs
-, username
-, ...
-}:
-{
-  # Add user to libvirtd group
+{ pkgs, username, ... }: {
   users.users.${username}.extraGroups = [ "libvirtd" ];
 
-  # Install necessary packages
   environment.systemPackages = with pkgs; [
     virt-manager
     virt-viewer
@@ -18,14 +12,15 @@
     adwaita-icon-theme
   ];
 
-  # Manage the virtualisation services
   virtualisation = {
     libvirtd = {
       enable = true;
       qemu = {
         swtpm.enable = true;
-        ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
+        ovmf = {
+          enable = true;
+          packages = [ pkgs.OVMFFull.fd ];
+        };
       };
     };
     spiceUSBRedirection.enable = true;
@@ -36,10 +31,10 @@
         setSocketVariable = true;
       };
     };
-    podman = {
-      enable = true;
-    };
+    podman.enable = true;
   };
+
   services.spice-vdagentd.enable = true;
+
   environment.sessionVariables.LIBVIRT_DEFAULT_URI = [ "qemu:///system" ];
 }
