@@ -18,17 +18,22 @@
     inputs.nixos-hardware.nixosModules.common-gpu-intel
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
-    ../../modules/system/auto-upgrade.nix
-    ../../modules/system/boot.nix
-    ../../modules/system/graphics.nix
-    ../../modules/system/locale.nix
-    ../../modules/system/nh.nix
-    ../../modules/system/nix_settings.nix
-    ../../modules/system/program.nix
-    ../../modules/system/stylix.nix
-    ../../modules/system/swap.nix
-    ../../modules/system/users.nix
-    ../../modules/system/virtualisation.nix
+    ../../modules/system/core
+
+    ../../modules/system/virtualization
+
+    ../../modules/system/theme
+
+    ../../modules/system/packages/auto-upgrade.nix
+    ../../modules/system/packages/nh.nix
+    ../../modules/system/packages/nix_settings.nix
+
+    ../../modules/system/hardware/graphics.nix
+
+    ../../modules/system/application/program.nix
+
+    ../../modules/system/security/users.nix
+
   ];
 
   # services.avahi = {

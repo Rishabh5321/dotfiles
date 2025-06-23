@@ -3,37 +3,43 @@
 { ... }:
 {
   imports = [
-    ./alacritty.nix
-    ./atuin.nix
-    ./btop.nix
-    ./cava.nix
-    ./direnv.nix
-    ./eza.nix
-    ./fastfetch.nix
-    ./fzf.nix
-    ./git.nix
-    ./ghostty.nix
-    ./htop.nix
-    ./kitty.nix
-    #./kodi.nix
-    #./libnotify.nix
-    #./mangohud.nix
-    #./nvchad.nix
-    #./nvf.nix
-    ./oh-my-posh.nix
-    #./plasma.nix
-    #./rofi/rofi.nix
-    ./seanime.nix
-    ./spicetify.nix
-    ./stylix.nix
-    ./tmux.nix
-    ./virtualisation.nix
-    ./wofi.nix
-    #./zed.nix
-    ./zen.nix
-    ./zsh.nix
+
+    # Terminal Emulators
+    ./terminal
+
+    # Shells
+    ./shells
+
+    # System Monitoring
+    ./monitor
+
+    # File Management & Navigation
+    ./files
+
+    # Development Tools
+    ./development
+
+    # Entertainment & Media
+    ./media
+
+    # Gaming & Performance
+    ./gaming
+
+    # System & Utilities
+    ./utilities
+
+    # Theming & UI
+    ./theme
+
+    # Virtualization
+    ./virtualization
+
+    # Browsers
+    ./browsers
   ];
+
   home.sessionVariables = {
     NH_OS_FLAKE = "$HOME/dotfiles";
   };
+
 }
