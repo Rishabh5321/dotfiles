@@ -28,6 +28,11 @@
     ./portal.nix
   ];
 
+  services.gnome-keyring = {
+    enable = true;
+    components = [ "pkcs11" "secrets" "ssh" ];
+  };
+
   stylix.targets.qt.platform = "qtct";
   # Qt configuration
   qt = {

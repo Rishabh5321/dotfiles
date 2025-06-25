@@ -160,7 +160,7 @@ with lib; {
 
       # ── Keybindings ────────────────────────────────────────────────────────
       bind = ${modifier},Return,exec,${terminal}
-      bind = ${modifier}SHIFT,Return,exec,rofi -show drun
+      bind = ALT,SPACE,exec,rofi -show drun
       bind = ${modifier},V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy
       bind = ${modifier}ALT,W,exec,wallSelector
       bind = ${modifier}SHIFT,N,exec,swaync-client -rs

@@ -38,6 +38,9 @@
     };
   };
 
+  security.pam.services.sddm.enableGnomeKeyring = true;
+  security.pam.services.hyprlock.enableGnomeKeyring = true;
+
   services.xserver.displayManager.setupCommands = ''
     ${pkgs.xorg.xset}/bin/xset s off
     ${pkgs.xorg.xset}/bin/xset -dpms
