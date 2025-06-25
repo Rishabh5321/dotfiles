@@ -1124,11 +1124,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1750855911,
-        "narHash": "sha256-LffTfmLL9joHnFLE4Co+E+VflBNt+hpLBXaDk6Q+C9s=",
+        "lastModified": 1750878813,
+        "narHash": "sha256-zb3d8pGWhIEsw6IATFVRsY3f4YJyFIm03m+IjjtDLwI=",
         "owner": "rishabh5321",
         "repo": "zed-editor-flake",
-        "rev": "d0048beeef01ae2edbd2387f72d07e0efae30f93",
+        "rev": "93cc74d493fd913309fbe5283667a3224d96f77a",
         "type": "github"
       },
       "original": {
