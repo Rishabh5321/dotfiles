@@ -4,6 +4,7 @@
     #inputs.hyprland-qtutils.packages."${pkgs.system}".default
     brightnessctl
     # dunst
+    hyprpanel
     lazydocker
     pavucontrol
     libsecret

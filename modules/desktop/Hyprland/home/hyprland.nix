@@ -172,15 +172,15 @@ with lib; {
       bind = ALT,SPACE,exec,rofi -show drun
       bind = ${modifier},V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy
       bind = ${modifier}ALT,W,exec,wallSelector
-      bind = ${modifier}SHIFT,N,exec,swaync-client -rs
+      # bind = ${modifier}SHIFT,N,exec,swaync-client -rs
       bind = ${modifier},W,exec,${browser}
       bind = ${modifier}SHIFT,L,exec,wlogout
       bind = ${modifier},E,exec,emopicker9000
       bind = ${modifier},S,exec,screenshootin
       bind = ${modifier},D,exec,discord
       bind = ${modifier},C,exec,hyprpicker -a
-      bind = ${modifier},K,exec,tv.kodi.Kodi
-      bind = ${modifier}SHIFT,G,exec,godot4
+      # bind = ${modifier},K,exec,tv.kodi.Kodi
+      # bind = ${modifier}SHIFT,G,exec,godot4
       bind = ${modifier},T,exec,thunar
       bind = ${modifier},M,exec,spotify
 

@@ -1,34 +1,31 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   accent = "#${config.lib.stylix.colors.base0D}";
   accent-alt = "#${config.lib.stylix.colors.base03}";
   background = "#${config.lib.stylix.colors.base00}";
   background-alt = "#${config.lib.stylix.colors.base01}";
   foreground = "#${config.lib.stylix.colors.base05}";
-  rounding = 18;
+  rounding = 0;
 in
 {
   programs.hyprpanel = {
-    # overlay.enable = false;
+    package = pkgs.hyprpanel;
     enable = true;
-    # systemd.enable = true;
-    # hyprland.enable = true;
-    # overwrite.enable = true;
     settings = {
       layout = {
         "bar.layouts" = {
           "0" = {
-            "left" = [
+            left = [
               "dashboard"
               "workspaces"
               "windowtitle"
               "netstat"
             ];
-            "middle" = [
+            middle = [
               "clock"
               "media"
-            ]; # Add this line
-            "right" = [
+            ];
+            right = [
               "battery"
               "volume"
               "bluetooth"
@@ -39,16 +36,16 @@ in
           };
 
           "1" = {
-            "left" = [
+            left = [
               "dashboard"
               "workspaces"
               "windowtitle"
             ];
-            "middle" = [
+            middle = [
               "clock"
               "media"
             ];
-            "right" = [
+            right = [
               "volume"
               "network"
               "systray"
@@ -57,7 +54,7 @@ in
           };
         };
       };
-      tear = true; # Screen Tearing
+      tear = true;
       bar.outer_spacing = "1rem";
       scalingPriority = "hyprland";
       bar = {
@@ -87,7 +84,6 @@ in
         bar.buttons.workspaces.hover = "${accent-alt}";
         bar.buttons.workspaces.active = "${accent}";
         bar.buttons.workspaces.available = "${accent-alt}";
-        #bar.network.truncation_size = mkIntOption 7;
         bar.menus.background = "${background}";
         bar.menus.cards = "${background-alt}";
         bar.menus.card_radius = "${toString rounding}px";
