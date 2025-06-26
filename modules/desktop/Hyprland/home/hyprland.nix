@@ -37,6 +37,7 @@ with lib; {
       env = QT_AUTO_SCREEN_SCALE_FACTOR, 1
       env = SDL_VIDEODRIVER, wayland
       env = MOZ_ENABLE_WAYLAND, 1
+      env = WLR_RENDERER,vulkan
 
       # ── Startup Programs ──────────────────────────────────────────────────
       exec-once = dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -125,7 +126,7 @@ with lib; {
         blur {
           enabled           = true
           size              = 2 # Lower for less blur, higher for more
-          passes            = 3 # More passes for smoother blur, can impact performance
+          passes            = 2 # More passes for smoother blur, can impact performance
           new_optimizations = on
           ignore_opacity    = off
           # xray = true # Consider if you want to see through blurred windows slightly
@@ -142,6 +143,7 @@ with lib; {
       windowrulev2 = float,class:^(org.kde.polkit-kde-authentication-agent-1)$
       windowrulev2 = float,class:^(xdg-desktop-portal-gtk)$
       windowrulev2 = float,class:^(xdg-desktop-portal-hyprland)$
+      windowrulev2 = animation none,class:^(popup-class)$
       # windowrulev2 = float,title:^(Open File)$
       # windowrulev2 = float,title:^(Save File)$
       # windowrulev2 = float,title:^(Select Color)$ # For hyprpicker or similar
