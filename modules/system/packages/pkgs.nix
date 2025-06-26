@@ -21,6 +21,7 @@
     nix-prefetch-github # Fetch GitHub repos for Nix
     nh # Nix helper
     openssl # Cryptography toolkit
+    # nix-fast-build # Building flakes
 
     # ===== EDITORS & IDEs =====
     code-cursor # AI-powered VS Code fork
@@ -69,6 +70,7 @@
     stremio # Media streaming
     vlc # Multimedia player
     youtube-music # YouTube Music client
+    qimgv #image viewer
 
     # ===== GAMING =====
     gamescope # Gaming compositor
@@ -116,6 +118,7 @@
     wget # File downloader
     winetricks # Windows compatibility
     wl-clipboard # Wayland clipboard
+    dig # network stuff
 
     # ===== OFFICE & PRODUCTIVITY =====
     libreoffice # Office suite
