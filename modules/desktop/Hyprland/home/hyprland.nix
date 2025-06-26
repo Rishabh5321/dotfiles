@@ -160,6 +160,13 @@ with lib; {
       # windowrulev2 = idleinhibit focus,class:^(mpv|vlc|kodi|.+exe)$ # For media players and games
       # windowrulev2 = idleinhibit fullscreen,class:^(firefox|${browser})$ # For browser in fullscreen video
 
+      # Remove gaps when only one window is present on workspace
+      workspace = w[t1], gapsout:0, gapsin:0
+      workspace = w[tg1], gapsout:0, gapsin:0
+      workspace = f[1], gapsout:0, gapsin:0
+      windowrulev2 = bordersize 0, onworkspace:w[t1] # Remove border when only 1 window
+      windowrulev2 = rounding 0, onworkspace:w[t1]   # Remove rounding when only 1 window
+
       # ── Keybindings ────────────────────────────────────────────────────────
       bind = ${modifier},Return,exec,${terminal}
       bind = ALT,SPACE,exec,rofi -show drun
