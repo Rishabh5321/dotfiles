@@ -1017,11 +1017,11 @@
     "wallpapers-repo": {
       "flake": false,
       "locked": {
-        "lastModified": 1750914442,
-        "narHash": "sha256-XfKrvjwu2Bh4X3a+vkyFg3b1I8nAR60u7xSZ3g+taas=",
+        "lastModified": 1750935529,
+        "narHash": "sha256-RJB7ZmSSDJoWDg4jxDPVsMsJP+JNdgemb5Kql7Xm1xE=",
         "owner": "Rishabh5321",
         "repo": "wallpapers",
-        "rev": "c797c1f73576b83b6019e72b699c5572a6cdbd60",
+        "rev": "88dd84b9626ef105384f1a3155a136feb3ce7603",
         "type": "github"
       },
       "original": {
