@@ -22,6 +22,7 @@
     nh # Nix helper
     openssl # Cryptography toolkit
     # nix-fast-build # Building flakes
+    gemini-cli # AI
 
     # ===== EDITORS & IDEs =====
     code-cursor # AI-powered VS Code fork

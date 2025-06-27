@@ -2,6 +2,7 @@
   <img src="./.github/assets/logo/nixos-logo.png" width="100px" alt="NixOS Logo" />
   <br>
   <h1>Rishabh's Flakes</h1>
+  <p>My personal NixOS configurations, managed with Nix Flakes for reproducibility and modularity.</p>
   <p>
     <a href="https://github.com/Rishabh5321/dotfiles">
       <img src="https://img.shields.io/github/repo-size/Rishabh5321/dotfiles?color=B16286&labelColor=282828&style=for-the-badge&logo=github&logoColor=B16286" alt="Repo Size">
@@ -23,13 +24,7 @@
   <br>
 </div>
 
-# NixOS Configuration for Laptop and Server
-
-This repository contains the NixOS configuration for both a laptop and a server. The configuration is managed using Nix flakes, which allows for reproducible and declarative system setups.
-
-<div align="center">
-
-## 🖼️ Configuration Showcase
+## 🖼️ Showcase
 
 <p align="center">
   <img width="80%" src="screenshot/screenshot1.png" />
@@ -38,175 +33,95 @@ This repository contains the NixOS configuration for both a laptop and a server.
   <img src="screenshot/screenshot4.png" width="40%" />
   <img src="screenshot/screenshot5.png" width="40%" />
 </p>
-</div>
 
-## Table of Contents
+## ✨ Philosophy
 
-- [Overview](#overview)
-- [Directory Structure](#directory-structure)
-- [Features](#features)
-- [Inputs](#inputs)
-- [Outputs](#outputs)
-  - [Packages](#packages)
-  - [Formatter](#formatter)
-  - [Overlays](#overlays)
-  - [NixOS Configurations](#nixos-configurations)
-- [Usage](#usage)
-- [Configuration Details](#configuration-details)
-  - [Common Configuration](#common-configuration)
-  - [Host-Specific Configuration](#host-specific-configuration)
-- [Dependencies](#dependencies)
-- [License](#license)
+This project aims to create a highly modular and reusable NixOS setup for all my machines. The core principles are:
 
-## Overview
+- **Reproducibility:** Nix Flakes ensure that every machine has the exact same configuration, defined declaratively.
+- **Modularity:** Configurations are broken down into small, reusable modules (`./modules`) that can be mixed and matched for different hosts.
+- **Simplicity:** The structure is designed to be easy to understand and manage, with a clear separation between system-level (`configuration.nix`) and user-level (`home.nix`) settings.
+- **Automation:** GitHub Actions are used to automatically check, build, and format the code, ensuring quality and consistency.
 
-This configuration is designed to be modular and reusable across different machines. It includes settings for both system-wide configurations and user-specific home-manager configurations. The setup leverages various NixOS modules and community contributions to enhance functionality and aesthetics.
+## 📂 Directory Structure
 
-## Directory Structure
+The repository is organized to separate concerns, making it easy to manage configurations for different machines and purposes.
 
-The repository is organized as follows:
-
-```bash
-. ├── containers/           # Containerized applications (e.g., Jellyfin, Plex, Sonarr)
-  ├── hosts/                # Host-specific configurations
-  │ ├── dell/               # Configuration for Dell systems
-  │ │ ├── configuration.nix # System-wide configuration for Dell
-  │ │ └── home.nix          # User-specific configuration for Dell
-  │ └── redmi/              # Configuration for Redmi systems
-  │ ├── configuration.nix   # System-wide configuration for Redmi
-  │ └── home.nix            # User-specific configuration for Redmi
-  ├── modules/              # Modular configurations for desktop environments and tools
-  │ ├── desktop/            # Desktop environment configurations (e.g., GNOME, KDE, Hyprland)
-  │ ├── user/               # User-specific configurations (e.g., Neovim, Alacritty, Zsh)
-  │ └── system/             # System-wide NixOS modules (e.g., Bluetooth, Gaming, Virtualization)
-  ├── overlays/             # Custom Nixpkgs overlays
-  ├── pkgs/                 # Custom packages
-  ├── screenshot/           # Screenshots of the system in action
-  ├── wallpapers/           # Collection of wallpapers
-  ├── flake.lock            # Nix flake lock file
-  ├── flake.nix             # Nix flake configuration
-  ├── LICENSE               # License file
-  └── README.md             # This documentation
+```
+.
+├── containers/   # Nix definitions for containerized services (Plex, Sonarr, etc.)
+├── hosts/        # Host-specific configurations. Each subdirectory is a unique machine.
+│   └── dell/     # Example host configuration for a machine named 'dell'
+│       ├── configuration.nix  # Main NixOS configuration for this host
+│       ├── home.nix           # Home Manager configuration for the user on this host
+│       └── ...                # Other host-specific files (e.g., hardware-configuration.nix)
+├── modules/      # Reusable modules for system and user configurations
+│   ├── system/   # System-level modules (boot, networking, security, etc.)
+│   └── user/     # Home Manager modules (shell, editors, browsers, etc.)
+├── overlays/     # Custom Nixpkgs overlays to modify or add packages
+├── pkgs/         # Custom packages built with Nix
+├── flake.nix     # The heart of the project, defining inputs and outputs
+└── README.md     # This file
 ```
 
-## Features
+## 🚀 Usage
 
-- **Desktop Environments**: Supports multiple desktop environments, including:
-  - Hyprland
-  - GNOME
-  - KDE
-  - XFCE
-  - Budgie
-  - Cinnamon
-  - Pantheon
-  - Cosmic (WIP)
-- **Containerized Applications**: Pre-configured containers for media servers and download managers:
-  - Jellyfin
-  - Plex
-  - Sonarr
-  - Radarr
-  - qBittorrent
-  - Portainer
-- **Home Manager**: User-specific configurations for tools like:
-  - Neovim
-  - Alacritty
-  - Zsh
-  - Fastfetch
-  - Spicetify
-- **Custom Packages**: Includes custom packages and overlays for additional functionality.
-- **Theming**: Styling and theming support via `stylix` and custom GRUB themes.
+### Prerequisites
+- A machine with Nix installed, with support for Flakes enabled.
+- Git to clone the repository.
 
----
+### Installation
+1.  Clone this repository to your local machine:
+    ```bash
+    git clone https://github.com/Rishabh5321/dotfiles
+    cd dotfiles
+    ```
 
-## Inputs
+2.  **IMPORTANT**: Before deploying, you **must** create a new host directory under `./hosts/` that matches your machine's hostname. You will also need to generate a `hardware-configuration.nix` specific to your hardware.
+    ```bash
+    # 1. Get your machine's hostname
+    hostname
 
-The following inputs are used in this configuration:
+    # 2. Create a directory for your host
+    mkdir -p hosts/$(hostname)
 
-- `nixpkgs`: The main NixOS package repository (unstable branch).
-- `nixpkgs-stable`: The stable branch of the NixOS package repository.
-- `home-manager`: Manages user environments using Nix.
-- `stylix`: Provides theming and styling for NixOS.
-- `spicetify-nix`: Customizes Spotify with themes and extensions.
-- `better-control`: Custom flake for better control utilities.
-- `zen-browser`: A minimalistic browser configuration.
-- `nix-flatpak`: Integrates Flatpak applications with NixOS.
-- `darkmatter-grub-theme`: A GRUB theme for a dark aesthetic.
-- `nix-gaming`: Optimizations and packages for gaming on NixOS.
-- `seanime`, `thorium`, `akuse-flake`: Custom flakes for additional functionality.
+    # 3. Generate a hardware configuration for your new machine
+    sudo nixos-generate-config --show-hardware-config > hosts/$(hostname)/hardware-configuration.nix
 
-### Packages
+    # 4. Create your main configuration.nix and home.nix.
+    #    You can copy from an existing host to get started.
+    cp hosts/dell/configuration.nix hosts/$(hostname)/
+    cp hosts/dell/home.nix hosts/$(hostname)/
+    ```
 
-Packages are defined for all supported systems (`x86_64-linux`). These packages can be imported and used within the NixOS configurations.
+3.  Apply the configuration. The flake is set up to automatically detect any directory in `./hosts` as a valid `nixosConfiguration`.
+    ```bash
+    # Replace <hostname> with your machine's actual hostname
+    sudo nixos-rebuild switch --flake .#<hostname>
+    ```
+    For example, to deploy the `dell` configuration:
+    ```bash
+    sudo nixos-rebuild switch --flake .#dell
+    ```
 
-### Formatter
+## flake.nix Details
 
-The formatter used in this configuration is `alejandra`, which ensures consistent code style across the Nix expressions.
+### Inputs
+This flake pulls in several external dependencies to build the system. Key inputs include:
+- **nixpkgs**: The primary Nix package set, tracking `nixos-unstable-small`.
+- **home-manager**: Manages user-level dotfiles and packages.
+- **stylix**: For system-wide theming and styling.
+- **sops-nix / agenix**: (Future goal) For managing secrets securely.
+- And various other flakes for specific applications and themes.
 
-### Overlays
-
-Custom overlays are defined to extend or modify the NixOS package set. These overlays are imported from the `./overlays` directory.
-
-### NixOS Configurations
-
-Two NixOS configurations are defined:
-
-- **redmi**: Configuration for a Redmi laptop.
-- **dell**: Configuration for a Dell server.
-
-Each configuration includes system-wide settings, theming, and user-specific configurations managed by `home-manager`.
-
-## Usage
-
-To use this configuration, clone the repository and navigate to the desired host configuration:
-
-  ```bash
-  git clone https://github.com/Rishabh5321/dotfiles
-  cd dotfiles
-  ```
-
-Apply the configuration to a specific host:
-
-  ```bash
-  sudo nixos-rebuild switch --flake .#redmi
-  ```
-
-Replace redmi with dell for the server configuration.
-
-Important Warning:
-Ensure that you modify the hardware configuration according to your computer's specifications. The provided configurations are tailored for specific devices (e.g., redmi or dell), and using them without adjustments may lead to compatibility issues or improper system behavior. Always review and customize the hardware settings (e.g., storage, GPU, etc.) to match your system.
-
-For example, check and update files like hardware-configuration.nix or any device-specific settings in the nixos directory before applying the configuration.
-
-## Configuration Details
-
-### Common Configuration
-
-The `commonConfig` function generates a common set of configurations for all hosts. It includes:
-
-- Special arguments passed to modules.
-- System-wide modules like `stylix`, `nix-flatpak`, and `home-manager`.
-- User-specific configurations managed by `home-manager`.
-
-## Host-Specific Configuration
-
-Each host has its own directory under `./nixos/<hostname>`, containing:
-
-- `configuration.nix`: System-wide configuration.
-- `home.nix`: User-specific configuration managed by `home-manager`.
-
-## Dependencies
-
-This configuration relies on several external inputs and modules. Ensure that all dependencies are available and properly configured before applying the configuration.
+### Outputs
+The flake provides the following outputs:
+- **`nixosConfigurations`**: The main output. It dynamically generates a NixOS configuration for every host defined in the `hosts/` directory.
+- **`formatter`**: Provides a consistent code formatter (`nixpkgs-fmt`) for the entire project. You can run it with `nix fmt`.
+- **`overlays`**: Custom overlays defined in the `overlays/` directory.
 
 ---
 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-For more information on NixOS and home-manager, refer to the official documentation:
-
-- [NixOS Manual](https://nixos.org/manual/nixos/stable/)
-- [Home Manager Manual](https://nix-community.github.io/home-manager/)
