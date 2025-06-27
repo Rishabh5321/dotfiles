@@ -1,7 +1,7 @@
 { ... }: {
   # List your module files here
   imports = [
-    ./dns.nix
+    # ./dns.nix
     # ./syncthing.nix
   ];
 }
