@@ -73,7 +73,7 @@ The repository is organized to separate concerns, making it easy to manage confi
 ### Installation
 1.  Clone this repository to your local machine:
     ```bash
-    git clone https://github.com/Rishabh5321/dotfiles
+    git clone --depth 1 https://github.com/Rishabh5321/dotfiles
     cd dotfiles
     ```
 
