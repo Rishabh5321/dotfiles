@@ -1036,11 +1036,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1751037715,
-        "narHash": "sha256-ZVNgxxC+FKwpR+A/h5McKIO4pALKkyhf3laF0u8F4Qk=",
+        "lastModified": 1751055660,
+        "narHash": "sha256-d43OkiUU930pb6Hx06Hwnxr0uVlSrvJerBRX8yIIyco=",
         "owner": "rishabh5321",
         "repo": "zed-editor-flake",
-        "rev": "a1380807bb2c325bf6109388615f4a09a53bdcd7",
+        "rev": "1597bd8cbd55622d8d25ec446497d444c4666bb8",
         "type": "github"
       },
       "original": {
