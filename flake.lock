@@ -75,13 +75,13 @@
       "locked": {
         "lastModified": 1750918668,
         "narHash": "sha256-xxzvlPexSJsGZFmj6WK3lkn0EtQzVCSVS2pEp8O3zt8=",
-        "owner": "rishabh5321",
+        "owner": "Rishabh5321",
         "repo": "better-control-flake",
         "rev": "e9e0f9ddf09cb06a399424499f54e89903578abc",
         "type": "github"
       },
       "original": {
-        "owner": "rishabh5321",
+        "owner": "Rishabh5321",
         "repo": "better-control-flake",
         "type": "github"
       }
@@ -354,13 +354,13 @@
       "locked": {
         "lastModified": 1750918833,
         "narHash": "sha256-c87JpXIPSJP+Yyax+BydEKI5D8asFPR90BRQEp4DCgw=",
-        "owner": "rishabh5321",
+        "owner": "Rishabh5321",
         "repo": "grayjay-flake",
         "rev": "986c42094f9be9bcc18d09da9e2ee89b706f7801",
         "type": "github"
       },
       "original": {
-        "owner": "rishabh5321",
+        "owner": "Rishabh5321",
         "repo": "grayjay-flake",
         "type": "github"
       }
@@ -492,11 +492,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1750960128,
-        "narHash": "sha256-Or2VEGOQojQBtt6csiFjbza/2Zwyr+ZiNuvlhsh/+kc=",
+        "lastModified": 1751075759,
+        "narHash": "sha256-MNAlH/IlSkg5ODfLEgYuDvs4XrM8n3Ukmh6OqQxoJ6s=",
         "owner": "fufexan",
         "repo": "nix-gaming",
-        "rev": "a4bc2115b466e92ab83a773f73f7f1d0d3fa83f0",
+        "rev": "622e26d86942642483e1a49d4f0dea2cbb80e6c1",
         "type": "github"
       },
       "original": {
@@ -797,13 +797,13 @@
       "locked": {
         "lastModified": 1750918558,
         "narHash": "sha256-5F3e/Q+hCTMIdxJrW9/CYVpes4u1vyDi00pQL5YctfE=",
-        "owner": "rishabh5321",
+        "owner": "Rishabh5321",
         "repo": "seanime-flake",
         "rev": "7c57828a688f962039ba312b2419ad29e9dd6fd2",
         "type": "github"
       },
       "original": {
-        "owner": "rishabh5321",
+        "owner": "Rishabh5321",
         "repo": "seanime-flake",
         "type": "github"
       }
@@ -1036,15 +1036,15 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1751055660,
-        "narHash": "sha256-d43OkiUU930pb6Hx06Hwnxr0uVlSrvJerBRX8yIIyco=",
-        "owner": "rishabh5321",
+        "lastModified": 1751080477,
+        "narHash": "sha256-urxBqjeyQQpZi9WmGeKXLOt7L7ad7VWIwnJJERF7tsE=",
+        "owner": "Rishabh5321",
         "repo": "zed-editor-flake",
-        "rev": "1597bd8cbd55622d8d25ec446497d444c4666bb8",
+        "rev": "704c590cb9569befe5d4f30c64b2b5edeb87c255",
         "type": "github"
       },
       "original": {
-        "owner": "rishabh5321",
+        "owner": "Rishabh5321",
         "repo": "zed-editor-flake",
         "type": "github"
       }
