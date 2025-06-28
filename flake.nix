@@ -2,8 +2,12 @@
   description = "Laptop and server config";
 
   inputs = {
+    # Core NixOS/Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # Home Manager/Desktop Environment
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,6 +16,30 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sddm-sugar-candy-nix = {
+      url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # plasma-manager = {
+    #   url = "github:nix-community/plasma-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.home-manager.follows = "home-manager";
+    # };
+    # hyprland.url = "github:hyprwm/Hyprland";
+    # hyprpanel = {
+    #   url = "github:Jas-SinghFSU/HyprPanel";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # ags = {
+    #   url = "github:Aylur/ags";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # hyprpolkitagent = {
+    #   url = "github:hyprwm/hyprpolkitagent";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    # Applications/Utilities
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,47 +60,26 @@
     #   url = "github:AdisonCavani/distro-grub-themes";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    # hyprpanel = {
-    #   url = "github:Jas-SinghFSU/HyprPanel";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # ags = {
-    #   url = "github:Aylur/ags";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # hyprpolkitagent = {
-    #   url = "github:hyprwm/hyprpolkitagent";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    wallpapers-repo = {
-      url = "github:Rishabh5321/wallpapers";
-      flake = false;
-    };
-    sddm-sugar-candy-nix = {
-      url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # plasma-manager = {
-    #   url = "github:nix-community/plasma-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.home-manager.follows = "home-manager";
-    # };
-    # nvf.url = "github:notashelf/nvf";
+    nix-gaming.url = "github:fufexan/nix-gaming";
+    #akuse-flake.url = "github:rishabh5321/akuse-flake";
+    better-control.url = "github:Rishabh5321/better-control-flake";
+    seanime.url = "github:Rishabh5321/seanime-flake";
+    # thorium.url = "github:rishabh5321/thorium_flake";
+    grayjay.url = "github:Rishabh5321/grayjay-flake";
+    zed-editor-flake.url = "github:Rishabh5321/zed-editor-flake";
+    #determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     # nvchad4nix = {
     #   url = "github:nix-community/nix4nvchad";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    # nvf.url = "github:notashelf/nvf";
     # nix-colorizer.url = "github:nutsalhan87/nix-colorizer";
-    #hyprland.url = "github:hyprwm/Hyprland";
-    nix-gaming.url = "github:fufexan/nix-gaming";
-    #akuse-flake.url = "github:rishabh5321/akuse-flake";
-    better-control.url = "github:rishabh5321/better-control-flake";
-    seanime.url = "github:rishabh5321/seanime-flake";
-    # thorium.url = "github:rishabh5321/thorium_flake";
-    grayjay.url = "github:rishabh5321/grayjay-flake";
-    zed-editor-flake.url = "github:rishabh5321/zed-editor-flake";
-    #determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+
+    # Assets/Other
+    wallpapers-repo = {
+      url = "github:Rishabh5321/wallpapers";
+      flake = false;
+    };
   };
 
   outputs =
