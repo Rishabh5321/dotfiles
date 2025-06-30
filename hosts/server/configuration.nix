@@ -36,12 +36,6 @@
 
   ];
 
-  # Enable cockpit
-  services.cockpit = {
-    enable = true;
-    openFirewall = true;
-  };
-
   # services.avahi = {
   #   enable = true;
   #   publish = {
