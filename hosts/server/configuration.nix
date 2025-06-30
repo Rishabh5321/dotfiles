@@ -36,6 +36,18 @@
 
   ];
 
+
+  services.cockpit = {
+    enable = true;
+    port = 9090;
+    settings = {
+      WebService = {
+        ProtocolHeader = "X-Forwarded-Proto";
+        LoginTitle = "dashboard for the nas";
+      };
+    };
+  };
+
   # services.avahi = {
   #   enable = true;
   #   publish = {
