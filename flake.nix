@@ -6,7 +6,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Home Manager/Desktop Environment
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -89,6 +92,7 @@
     , home-manager
     , sddm-sugar-candy-nix
     , chaotic
+    , nur
     , wallpapers-repo
       #, nix-colorizer
       #, plasma-manager
@@ -127,6 +131,7 @@
           wallpaper
           flakeDir
           pkgs-stable
+          nur
           # nix-colorizer
           sddm-sugar-candy-nix
           wallpapers
@@ -161,6 +166,7 @@
             home-manager.nixosModules.home-manager
             sddm-sugar-candy-nix.nixosModules.default
             chaotic.nixosModules.default
+            nur.modules.nixos.default
             #inputs.determinate.nixosModules.default
             # Home Manager configuration integrated into NixOS
             {

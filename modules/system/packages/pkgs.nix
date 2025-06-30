@@ -4,6 +4,9 @@
 }: {
   # ===== SYSTEM PACKAGES =====
   environment.systemPackages = with pkgs; [
+    # NUR{ Nix User Repository
+    nur.repos.colorman.speed-cloudflare-cli
+
     # ===== DEVELOPMENT TOOLS =====
     act # GitHub Actions local runner
     android-tools # ADB and fastboot
