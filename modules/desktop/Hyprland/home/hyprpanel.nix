@@ -9,129 +9,146 @@ let
 in
 {
   programs.hyprpanel = {
-    package = pkgs.hyprpanel;
     enable = true;
+    package = pkgs.hyprpanel;
     settings = {
-      layout = {
-        "bar.layouts" = {
-          "0" = {
-            left = [
-              "dashboard"
-              "workspaces"
-              "windowtitle"
-              "netstat"
-            ];
-            middle = [
-              "clock"
-              "media"
-            ];
-            right = [
-              "battery"
-              "volume"
-              "bluetooth"
-              "network"
-              "systray"
-              "notifications"
-            ];
-          };
+      # General settings
+      tear = true;
+      scalingPriority = "hyprland";
+      wallpaper.enable = true;
 
+      # Bar settings
+      bar = {
+        layouts = {
+          "0" = {
+            left = [ "dashboard" "workspaces" "windowtitle" "netstat" "hypridle" ];
+            middle = [ "clock" "media" ];
+            right = [ "battery" "volume" "bluetooth" "network" "systray" "notifications" ];
+          };
           "1" = {
-            left = [
-              "dashboard"
-              "workspaces"
-              "windowtitle"
-            ];
-            middle = [
-              "clock"
-              "media"
-            ];
-            right = [
-              "volume"
-              "network"
-              "systray"
-              "notifications"
-            ];
+            left = [ "dashboard" "workspaces" "windowtitle" ];
+            middle = [ "clock" "media" ];
+            right = [ "volume" "network" "systray" "notifications" ];
           };
         };
-      };
-      tear = true;
-      bar.outer_spacing = "1rem";
-      scalingPriority = "hyprland";
-      bar = {
-        customModules.updates.pollingInterval = 1440000;
+        outer_spacing = "1rem";
         launcher.icon = "";
         workspaces = {
           show_numbered = true;
           show_icons = false;
         };
         windowtitle.label = false;
-        clock.format = "%I:%M:%S %p";
-        clock.showIcon = false;
+        clock = {
+          format = "%I:%M:%S %p";
+          showIcon = false;
+        };
         volume.label = true;
         bluetooth.label = false;
-        network.label = true;
+        network = {
+          label = true;
+          truncation_size = 30;
+        };
         media.show_active_only = true;
-        network.truncation_size = 30;
+        customModules.updates.pollingInterval = 1440000;
       };
+
+      # Menus settings
       menus.clock.weather.enable = false;
-      wallpaper.enable = true;
+
+      # Theme settings
       theme = {
         font.size = "0.85rem";
-        bar.outer_spacing = "1rem";
-        bar.dropdownGap = "2.3em";
-        bar.menus.monochrome = true;
-        bar.buttons.monochrome = true;
-        bar.buttons.workspaces.hover = "${accent-alt}";
-        bar.buttons.workspaces.active = "${accent}";
-        bar.buttons.workspaces.available = "${accent-alt}";
-        bar.menus.background = "${background}";
-        bar.menus.cards = "${background-alt}";
-        bar.menus.card_radius = "${toString rounding}px";
-        bar.menus.label = "${foreground}";
-        bar.menus.text = "${foreground}";
-        bar.menus.border.color = "${accent}";
-        bar.menus.border.radius = "${toString rounding}px";
-        bar.menus.popover.text = "${foreground}";
-        bar.menus.popover.background = "${background-alt}";
-        bar.menus.listitems.active = "${accent}";
-        bar.menus.icons.active = "${accent}";
-        bar.menus.switch.enabled = "${accent}";
-        bar.menus.buttons.default = "${accent}";
-        bar.menus.buttons.active = "${accent}";
-        notification.border_radius = "${toString rounding}px";
-        bar.menus.iconbuttons.active = "${accent}";
-        bar.menus.progressbar.foreground = "${accent}";
-        bar.menus.slider.primary = "${accent}";
-        bar.menus.tooltip.background = "${background-alt}";
-        bar.menus.tooltip.text = "${foreground}";
-        bar.menus.dropdownmenu.background = "${background-alt}";
-        bar.menus.dropdownmenu.text = "${foreground}";
-        bar.background = "rgba(0, 0, 0, 0.3)";
-        bar.buttons.text = "${foreground}";
-        bar.buttons.radius = "${toString rounding}px";
-        bar.buttons.background = "${background-alt}";
-        bar.buttons.icon = "${accent}";
-        bar.buttons.notifications.background = "${background-alt}";
-        bar.buttons.hover = "${background}";
-        bar.buttons.notifications.hover = "${background}";
-        bar.buttons.notifications.total = "${accent}";
-        bar.buttons.notifications.icon = "${accent}";
-        notification.background = "${background-alt}";
-        notification.actions.background = "${accent}";
-        notification.actions.text = "${foreground}";
-        notification.label = "${accent}";
-        notification.border = "${background-alt}";
-        notification.text = "${foreground}";
-        notification.labelicon = "${accent}";
-        osd.bar_color = "${accent}";
-        osd.bar_overflow_color = "${accent-alt}";
-        osd.icon = "${background}";
-        osd.icon_container = "${accent}";
-        osd.label = "${accent}";
-        osd.bar_container = "${background-alt}";
-        bar.menus.menu.media.background.color = "${background-alt}";
-        bar.menus.menu.media.card.color = "${background-alt}";
-        bar.menus.menu.media.card.tint = 90;
+
+        # Bar theme
+        bar = {
+          background = "rgba(0, 0, 0, 0.3)";
+          outer_spacing = "1rem";
+          dropdownGap = "2.3em";
+
+          buttons = {
+            monochrome = true;
+            text = "${foreground}";
+            radius = "${toString rounding}px";
+            background = "${background-alt}";
+            icon = "${accent}";
+            hover = "${background}";
+            workspaces = {
+              hover = "${accent-alt}";
+              active = "${accent}";
+              available = "${accent-alt}";
+            };
+            notifications = {
+              background = "${background-alt}";
+              hover = "${background}";
+              total = "${accent}";
+              icon = "${accent}";
+            };
+          };
+
+          menus = {
+            monochrome = true;
+            background = "${background}";
+            cards = "${background-alt}";
+            card_radius = "${toString rounding}px";
+            label = "${foreground}";
+            text = "${foreground}";
+            border = {
+              color = "${accent}";
+              radius = "${toString rounding}px";
+            };
+            popover = {
+              text = "${foreground}";
+              background = "${background-alt}";
+            };
+            listitems.active = "${accent}";
+            icons.active = "${accent}";
+            switch.enabled = "${accent}";
+            buttons = {
+              default = "${accent}";
+              active = "${accent}";
+            };
+            iconbuttons.active = "${accent}";
+            progressbar.foreground = "${accent}";
+            slider.primary = "${accent}";
+            tooltip = {
+              background = "${background-alt}";
+              text = "${foreground}";
+            };
+            dropdownmenu = {
+              background = "${background-alt}";
+              text = "${foreground}";
+            };
+            menu.media = {
+              background.color = "${background-alt}";
+              card.color = "${background-alt}";
+              card.tint = 90;
+            };
+          };
+        };
+
+        # Notification theme
+        notification = {
+          border_radius = "${toString rounding}px";
+          background = "${background-alt}";
+          actions = {
+            background = "${accent}";
+            text = "${foreground}";
+          };
+          label = "${accent}";
+          border = "${background-alt}";
+          text = "${foreground}";
+          labelicon = "${accent}";
+        };
+
+        # OSD theme
+        osd = {
+          bar_color = "${accent}";
+          bar_overflow_color = "${accent-alt}";
+          icon = "${background}";
+          icon_container = "${accent}";
+          label = "${accent}";
+          bar_container = "${background-alt}";
+        };
       };
     };
   };
