@@ -127,7 +127,7 @@ jobs:
 
           cachix watch-exec rishabh5321 -- \
             nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.toplevel \
-            -L --print-build-logs --out-link result-${{ matrix.hostname }} 2>&1 | tee logs/build_output.log
+            -v --show-trace --out-link result-${{ matrix.hostname }} 2>&1 | tee logs/build_output.log
 
           BUILD_EXIT_CODE=${PIPESTATUS[0]}  # Get the exit code of nix build, not tee
 
