@@ -24,6 +24,7 @@
     nix-prefetch-github # Fetch GitHub repos for Nix
     nh # Nix helper
     openssl # Cryptography toolkit
+    zed-editor # Editor
     # nix-fast-build # Building flakes
     gemini-cli # AI
 
@@ -170,7 +171,7 @@
 
     # ===== FLAKE INPUTS =====
     inputs.grayjay.packages.${pkgs.system}.grayjay # Video platform client
-    inputs.zed-editor-flake.packages.${system}.zed-editor # Zed editor from flake
+    # inputs.zed-editor-flake.packages.${system}.zed-editor # Zed editor from flake
 
     # ===== FLAKE INPUTS (COMMENTED) =====
     # inputs.akuse-flake.packages.${system}.akuse                 # Custom package

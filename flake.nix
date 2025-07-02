@@ -69,8 +69,8 @@
     seanime.url = "github:Rishabh5321/seanime-flake";
     # thorium.url = "github:rishabh5321/thorium_flake";
     grayjay.url = "github:Rishabh5321/grayjay-flake";
-    zed-editor-flake.url = "github:Rishabh5321/zed-editor-flake";
-    #determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    # zed-editor-flake.url = "github:Rishabh5321/zed-editor-flake";
+    # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     # nvchad4nix = {
     #   url = "github:nix-community/nix4nvchad";
     #   inputs.nixpkgs.follows = "nixpkgs";
