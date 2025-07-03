@@ -285,6 +285,24 @@
         "type": "github"
       }
     },
+    "gemini-cli": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1751525927,
+        "narHash": "sha256-/49Gd6x76Hy3lTjIQuCaCQMQ1LqN7b2S5VWSnrNVLJo=",
+        "owner": "rishabh5321",
+        "repo": "gemini-cli-flake",
+        "rev": "cbaf320dd54ac6614fcfb9a6760be25fe06b63f7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rishabh5321",
+        "repo": "gemini-cli-flake",
+        "type": "github"
+      }
+    },
     "git-hooks": {
       "inputs": {
         "flake-compat": [
@@ -352,7 +370,7 @@
     },
     "grayjay": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1751340352,
@@ -492,7 +510,7 @@
     "nix-gaming": {
       "inputs": {
         "flake-parts": "flake-parts",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1751508010,
@@ -628,6 +646,22 @@
     },
     "nixpkgs_4": {
       "locked": {
+        "lastModified": 1751271578,
+        "narHash": "sha256-P/SQmKDu06x8yv7i0s8bvnnuJYkxVGBWLWHaU+tt4YY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3016b4b15d13f3089db8a41ef937b13a9e33a8df",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
         "lastModified": 1750994206,
         "narHash": "sha256-3u6rEbIX9CN/5A5/mc3u0wIO1geZ0EhjvPBXmRDHqWM=",
         "owner": "NixOS",
@@ -642,7 +676,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_6": {
       "locked": {
         "lastModified": 1751271578,
         "narHash": "sha256-P/SQmKDu06x8yv7i0s8bvnnuJYkxVGBWLWHaU+tt4YY=",
@@ -658,7 +692,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_6": {
+    "nixpkgs_7": {
       "locked": {
         "lastModified": 1751271578,
         "narHash": "sha256-P/SQmKDu06x8yv7i0s8bvnnuJYkxVGBWLWHaU+tt4YY=",
@@ -727,12 +761,13 @@
         "better-control": "better-control",
         "chaotic": "chaotic",
         "darkmatter-grub-theme": "darkmatter-grub-theme",
+        "gemini-cli": "gemini-cli",
         "grayjay": "grayjay",
         "home-manager": "home-manager_2",
         "nix-flatpak": "nix-flatpak",
         "nix-gaming": "nix-gaming",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_6",
         "nixpkgs-stable": "nixpkgs-stable",
         "nur": "nur",
         "sddm-sugar-candy-nix": "sddm-sugar-candy-nix",
@@ -786,7 +821,7 @@
     },
     "seanime": {
       "inputs": {
-        "nixpkgs": "nixpkgs_6"
+        "nixpkgs": "nixpkgs_7"
       },
       "locked": {
         "lastModified": 1751338542,

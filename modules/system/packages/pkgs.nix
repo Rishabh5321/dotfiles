@@ -26,7 +26,7 @@
     openssl # Cryptography toolkit
     zed-editor # Editor
     # nix-fast-build # Building flakes
-    gemini-cli # AI
+    # gemini-cli # AI
 
     # ===== EDITORS & IDEs =====
     code-cursor # AI-powered VS Code fork
@@ -171,6 +171,7 @@
 
     # ===== FLAKE INPUTS =====
     inputs.grayjay.packages.${pkgs.system}.grayjay # Video platform client
+    inputs.gemini-cli.packages.${pkgs.system}.gemini-cli-dev
     # inputs.zed-editor-flake.packages.${system}.zed-editor # Zed editor from flake
 
     # ===== FLAKE INPUTS (COMMENTED) =====
