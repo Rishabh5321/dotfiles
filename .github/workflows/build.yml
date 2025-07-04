@@ -44,6 +44,9 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: ${{ env.EXTRA_NIX_CONFIG }}
 
+      - name: Cache Nix Store
+        uses: nix-community/cache-nix-action@v6
+
       - name: Run Flake Check
         id: flake_check
         run: |
@@ -105,6 +108,9 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: ${{ env.EXTRA_NIX_CONFIG }}
+
+      - name: Cache Nix Store
+        uses: nix-community/cache-nix-action@v6
 
       - name: Setup Cachix
         uses: cachix/cachix-action@v16
@@ -227,4 +233,3 @@ jobs:
 
             View run details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           format: markdown # Use markdown formatting for the message
-
