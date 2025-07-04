@@ -27,7 +27,7 @@ on:
       cache-version:
         description: "A version number to manually invalidate the cache"
         required: false
-        default: '1'
+        default: "1"
         type: string
 
 concurrency:
@@ -56,7 +56,7 @@ jobs:
           restore-prefixes-first-match: |
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-flake-check-
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-
-          gc-max-store-size: 8192
+          gc-max-store-size: 2048
 
       - name: Run Flake Check
         id: flake_check
@@ -132,7 +132,7 @@ jobs:
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-${{ matrix.hostname }}-
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-flake-check-
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-
-          gc-max-store-size: 8192
+          gc-max-store-size: 2048
 
       - name: Setup Cachix
         uses: cachix/cachix-action@v16
