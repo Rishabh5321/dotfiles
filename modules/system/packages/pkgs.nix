@@ -24,7 +24,7 @@
     nix-prefetch-github # Fetch GitHub repos for Nix
     nh # Nix helper
     openssl # Cryptography toolkit
-    zed-editor-fhs_git # Editor
+    zed-editor # Editor
     # nix-fast-build # Building flakes
     # gemini-cli # AI
 
