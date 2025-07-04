@@ -52,8 +52,9 @@ jobs:
       - name: Cache Nix Store
         uses: nix-community/cache-nix-action@v6
         with:
-          primary-key: nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-${{ hashFiles('flake.lock') }}
+          primary-key: nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-flake-check-${{ hashFiles('flake.lock') }}
           restore-prefixes-first-match: |
+            nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-flake-check-
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-
 
       - name: Run Flake Check
@@ -121,8 +122,10 @@ jobs:
       - name: Cache Nix Store
         uses: nix-community/cache-nix-action@v6
         with:
-          primary-key: nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-${{ hashFiles('flake.lock') }}
+          primary-key: nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-${{ matrix.hostname }}-${{ hashFiles('flake.lock') }}
           restore-prefixes-first-match: |
+            nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-${{ matrix.hostname }}-
+            nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-flake-check-
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-
 
       - name: Setup Cachix
