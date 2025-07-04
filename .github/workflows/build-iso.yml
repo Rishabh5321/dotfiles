@@ -57,10 +57,4 @@ jobs:
           name: "Daily ISO Build ${{ steps.date.outputs.date }}"
           body: "Daily ISO build."
           files: result/iso/nixos-*.iso
-          prerelease: true
-
-      - uses: Nats-ji/delete-old-releases@v1.0.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          keep-count: 10
-          keep-old-minor-releases: false
+          prerelease: false
