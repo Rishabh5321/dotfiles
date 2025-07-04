@@ -48,7 +48,7 @@ jobs:
         uses: nix-community/cache-nix-action@v6
         with:
           primary-key: nix-store-${{ runner.os }}-${{ hashFiles('flake.lock') }}
-          restore-keys: |
+          restore-prefixes-first-match: |
             nix-store-${{ runner.os }}-
 
       - name: Run Flake Check
@@ -117,7 +117,7 @@ jobs:
         uses: nix-community/cache-nix-action@v6
         with:
           primary-key: nix-store-${{ runner.os }}-${{ hashFiles('flake.lock') }}
-          restore-keys: |
+          restore-prefixes-first-match: |
             nix-store-${{ runner.os }}-
 
       - name: Setup Cachix
