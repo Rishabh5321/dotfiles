@@ -1,12 +1,22 @@
 name: "Build ISO"
 
+env:
+  EXTRA_NIX_CONFIG: |
+    auto-optimise-store = true
+    experimental-features = nix-command flakes
+    max-jobs = auto
+    download-buffer-size = 500000000
+    substituters = https://rishabh5321.cachix.org https://cache.nixos.org https://hyprland.cachix.org https://nixpkgs-wayland.cachix.org https://nix-gaming.cachix.org https://chaotic-nyx.cachix.org
+    trusted-public-keys = rishabh5321.cachix.org-1:mxfBIH2XElE6ieFXXYBA9Ame4mVTbAf1TGR843siggk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4= chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8=
+
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    paths:
-      - "hosts/iso/**"
+  # push:
+  #   branches:
+  #     - main
+  # pull_request:
+  #   paths:
+  #     - "hosts/iso/**"
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,12 +24,16 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
-      - name: "Install Nix"
-        uses: cachix/install-nix-action@v22
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
         with:
           nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: ${{ env.EXTRA_NIX_CONFIG }}
+
       - name: "Build ISO"
         run: nix build .#nixosConfigurations.iso.config.system.build.isoImage
+
       - name: "Upload ISO"
         uses: actions/upload-artifact@v4
         with:

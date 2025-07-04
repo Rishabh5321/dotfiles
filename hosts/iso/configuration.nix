@@ -1,27 +1,32 @@
-{ pkgs, lib, ... }:
-
+# hosts/iso/configuration.nix - Alternative approach
+{ config, pkgs, lib, inputs, username, ... }:
 {
   imports = [
-    ../../modules/system/core
-    ../../modules/system/network
-    ../../modules/system/security/users.nix
+    # Use a different base that doesn't have wireless pre-configured
+    "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-base.nix"
+    # Or try this one:
+    # "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares.nix"
   ];
 
   # Set the state version for compatibility
   system.stateVersion = "24.11";
 
-  # Configure the bootloader
-  boot.loader.grub.enable = lib.mkForce false;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = false;
+  # ISO-specific configuration
+  isoImage.makeEfiBootable = true;
+  isoImage.makeUsbBootable = true;
+  isoImage.volumeID = "NIXOS_ISO";
 
-  # Specify the root filesystem
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/NIXOS_ISO";
-    fsType = "iso9660";
-  };
+  # Network configuration
+  networking.hostName = "nixos-iso";
+  networking.networkmanager.enable = true;
+  networking.wireless.enable = false;
+  # Don't set wireless at all, let NetworkManager handle it
 
-  # Minimal set of packages for a bootable ISO
+  # Essential services
+  services.openssh.enable = true;
+  services.openssh.settings.PermitRootLogin = "yes";
+
+  # Packages for the ISO
   environment.systemPackages = with pkgs; [
     micro
     wget
@@ -30,15 +35,28 @@
     htop
     pciutils
     usbutils
+    curl
+    firefox
+    gparted
+    # Add any other tools you need for installation
   ];
 
-  # Add a default user
-  users.users.nixos = {
+  # User configuration
+  users.users.${username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # For sudo access
+    extraGroups = [ "wheel" "networkmanager" ];
     password = ""; # No password for the live user
   };
 
-  # Enable the OpenSSH server
-  services.openssh.enable = true;
+  # Allow the user to use sudo without password
+  security.sudo.wheelNeedsPassword = false;
+
+  # Enable flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Optional: Add your dotfiles to the ISO
+  system.activationScripts.dotfiles = ''
+    mkdir -p /home/${username}/dotfiles
+    chown ${username}:users /home/${username}/dotfiles
+  '';
 }

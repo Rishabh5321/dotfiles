@@ -7,7 +7,7 @@ This directory contains the configuration for a bootable NixOS ISO.
 To build the ISO, run the following command from the root of your dotfiles repository:
 
 ```bash
-nix build .#nixosConfigurations.iso.config.system.build.isoImage
+nix build .#iso
 ```
 
 The resulting ISO image will be in the `result/iso/` directory.
