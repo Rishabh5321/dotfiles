@@ -187,7 +187,7 @@
 
       overlays = import ./overlays { inherit inputs self system; };
 
-      nixosConfigurations = builtins.listToAttrs (
+      nixosConfigurations = (builtins.listToAttrs (
         map
           (folder: {
             name = folder;
@@ -198,6 +198,16 @@
               builtins.attrNames (builtins.readDir ./hosts)
             )
           )
-      );
+      )) // {
+        iso = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; username = "nixos"; };
+          modules = [
+            ./hosts/iso/configuration.nix
+            inputs.stylix.nixosModules.stylix
+            inputs.darkmatter-grub-theme.nixosModule
+          ];
+        };
+      };
     };
 }
