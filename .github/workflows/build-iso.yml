@@ -1,80 +1,69 @@
-name: Build ISO and Create Release
+name: "Build ISO"
+
+env:
+  EXTRA_NIX_CONFIG: |
+    auto-optimise-store = true
+    experimental-features = nix-command flakes
+    max-jobs = auto
+    download-buffer-size = 500000000
+    substituters = https://rishabh5321.cachix.org https://cache.nixos.org https://hyprland.cachix.org https://nixpkgs-wayland.cachix.org https://nix-gaming.cachix.org https://chaotic-nyx.cachix.org
+    trusted-public-keys = rishabh5321.cachix.org-1:mxfBIH2XElE6ieFXXYBA9Ame4mVTbAf1TGR843siggk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4= chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8=
+
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 on:
-  workflow_dispatch:  # Allows manual triggering of the workflow
+  schedule:
+    - cron: "0 2 * * *"
+  # push:
+  #   branches:
+  #     - main
+  # pull_request:
+  #   paths:
+  #     - "hosts/iso/**"
+  workflow_dispatch:
 
 jobs:
-  build-iso:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: "Checkout"
         uses: actions/checkout@v4
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
-          install_url: https://nixos.org/nix/install
-          extra_nix_config: |
-            auto-optimise-store = true
-            experimental-features = nix-command flakes
-            download-buffer-size = 500000000
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: ${{ env.EXTRA_NIX_CONFIG }}
 
-      - name: Set up Cachix
-        uses: cachix/cachix-action@v16
-        with:
-          name: buildcache  # Replace with your Cachix cache name
-          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: "Build ISO"
+        run: nix build .#nixosConfigurations.iso.config.system.build.isoImage
 
-      - name: Build ISO
-        run: nix build .#iso --print-build-logs
-
-      - name: Upload ISO as artifact
+      - name: "Upload ISO artifact"
         uses: actions/upload-artifact@v4
         with:
-          name: iso-image
-          path: ./result/iso/*.iso  # Adjust the path to where the ISO is generated
+          name: nixos-iso
+          path: result/iso/nixos-*.iso
 
-  create-release:
-    runs-on: ubuntu-latest
-    needs: build-iso
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
-    steps:
-      - name: Install GitHub CLI
-        run: |
-          sudo apt update && sudo apt install -y gh
-
-      - name: Authenticate GitHub CLI
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh auth status
-
-      - name: Download ISO artifact
-        uses: actions/download-artifact@v4
+      - name: "Create Release"
+        uses: softprops/action-gh-release@v2
         with:
-          name: iso-image
-          path: ./iso
+          tag_name: daily-iso-${{ steps.date.outputs.date }}
+          name: "Daily ISO Build ${{ steps.date.outputs.date }}"
+          body: "Daily ISO build."
+          files: result/iso/nixos-*.iso
+          prerelease: true
 
-      - name: Create GitHub Release
+      - name: "Delete Older Releases"
+        uses: dev-drpr/delete-older-releases@v0.3.0
+        with:
+          keep_latest: 10
+          delete_tag_name_pattern: "daily-iso-.*"
+          delete_tags: true
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          RELEASE_TAG="manual-iso-${{ github.run_id }}"
-          gh release create "$RELEASE_TAG" ./iso/*.iso \
-            --title "Manual ISO Release ${{ github.run_id }}" \
-            --notes "ISO built from manual workflow trigger" \
-            --repo "${{ github.repository }}" \
-            --draft=false \
-            --prerelease=false || echo "Release creation failed"
-
-      - name: Upload ISO to Release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          RELEASE_TAG="manual-iso-${{ github.run_id }}"
-          gh release upload "$RELEASE_TAG" ./iso/*.iso \
-            --repo "${{ github.repository }}" \
-            --clobber || echo "ISO upload failed"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
