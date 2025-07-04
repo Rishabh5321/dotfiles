@@ -56,11 +56,16 @@ jobs:
           restore-prefixes-first-match: |
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-flake-check-
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-
+          gc-max-store-size: 8192
 
       - name: Run Flake Check
         id: flake_check
         run: |
           nix flake check
+
+      - name: Cleanup Nix Store Locks
+        if: always()
+        run: sudo rm -f /nix/store/*.lock
 
   generate-matrix:
     name: Generate Build Matrix
@@ -127,6 +132,7 @@ jobs:
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-${{ matrix.hostname }}-
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-flake-check-
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-
+          gc-max-store-size: 8192
 
       - name: Setup Cachix
         uses: cachix/cachix-action@v16
@@ -185,6 +191,10 @@ jobs:
           name: build-logs-${{ matrix.hostname }}
           path: logs/
           retention-days: 5
+
+      - name: Cleanup Nix Store Locks
+        if: always()
+        run: sudo rm -f /nix/store/*.lock
 
   notify_telegram:
     name: Send Telegram Notification
