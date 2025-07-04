@@ -46,6 +46,10 @@ jobs:
 
       - name: Cache Nix Store
         uses: nix-community/cache-nix-action@v6
+        with:
+          primary-key: nix-store-${{ runner.os }}-${{ hashFiles('flake.lock') }}
+          restore-keys: |
+            nix-store-${{ runner.os }}-
 
       - name: Run Flake Check
         id: flake_check
@@ -111,6 +115,10 @@ jobs:
 
       - name: Cache Nix Store
         uses: nix-community/cache-nix-action@v6
+        with:
+          primary-key: nix-store-${{ runner.os }}-${{ hashFiles('flake.lock') }}
+          restore-keys: |
+            nix-store-${{ runner.os }}-
 
       - name: Setup Cachix
         uses: cachix/cachix-action@v16
