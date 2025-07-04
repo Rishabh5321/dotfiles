@@ -24,6 +24,11 @@ on:
         description: "Build only a specific host (leave empty for all)"
         required: false
         type: string
+      cache-version:
+        description: "A version number to manually invalidate the cache"
+        required: false
+        default: '1'
+        type: string
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -47,9 +52,9 @@ jobs:
       - name: Cache Nix Store
         uses: nix-community/cache-nix-action@v6
         with:
-          primary-key: nix-store-${{ runner.os }}-${{ hashFiles('flake.lock') }}
+          primary-key: nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-${{ hashFiles('flake.lock') }}
           restore-prefixes-first-match: |
-            nix-store-${{ runner.os }}-
+            nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-
 
       - name: Run Flake Check
         id: flake_check
@@ -116,9 +121,9 @@ jobs:
       - name: Cache Nix Store
         uses: nix-community/cache-nix-action@v6
         with:
-          primary-key: nix-store-${{ runner.os }}-${{ hashFiles('flake.lock') }}
+          primary-key: nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-${{ hashFiles('flake.lock') }}
           restore-prefixes-first-match: |
-            nix-store-${{ runner.os }}-
+            nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-
 
       - name: Setup Cachix
         uses: cachix/cachix-action@v16
