@@ -127,7 +127,7 @@ jobs:
 
           cachix watch-exec rishabh5321 -- \
             nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.toplevel \
-            -v --show-trace --out-link result-${{ matrix.hostname }} 2>&1 | tee logs/build_output.log
+            -v --show-trace --out-link result-${{ matrix.hostname }} 2>&1 | tee logs/build_${{ matrix.hostname }}.log
 
           BUILD_EXIT_CODE=${PIPESTATUS[0]}  # Get the exit code of nix build, not tee
 
@@ -140,12 +140,12 @@ jobs:
           # If build was successful, generate a system report
           if [ $BUILD_EXIT_CODE -eq 0 ]; then
             echo "Generating system report for ${{ matrix.hostname }}..."
-            nix-shell -p nix-info --run "nix-info -m" > logs/system_info.log
+            nix-shell -p nix-info --run "nix-info -m" > logs/system_info_${{ matrix.hostname }}.log
 
             # Extract some useful information about the build
-            nix path-info --json ./result-${{ matrix.hostname }} | jq 'if type == "array" then .[0] else . end | {path: .path, closureSize: .closureSize}' > logs/build_info.json
+            nix path-info --json ./result-${{ matrix.hostname }} | jq 'if type == "array" then .[0] else . end | {path: .path, closureSize: .closureSize}' > logs/build_info_${{ matrix.hostname }}.json
 
-            CLOSURE_SIZE=$(jq -r '.closureSize' logs/build_info.json)
+            CLOSURE_SIZE=$(jq -r '.closureSize' logs/build_info_${{ matrix.hostname }}.json)
 
             if [[ "$CLOSURE_SIZE" != "null" && -n "$CLOSURE_SIZE" ]]; then
               HUMAN_SIZE=$(numfmt --to=iec-i --suffix=B "$CLOSURE_SIZE")
@@ -159,23 +159,12 @@ jobs:
           exit $BUILD_EXIT_CODE
 
       - name: Upload build logs
-        if: failure()
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: build-logs-${{ matrix.hostname }}
           path: logs/
           retention-days: 5
-
-      - name: Determine final status
-        id: final-status
-        if: always()
-        run: |
-          build_status="${{ steps.build.outcome }}"
-          if [[ "$build_status" == "success" ]]; then
-            echo "status=success" >> "$GITHUB_OUTPUT"
-          else
-            echo "status=error" >> "$GITHUB_OUTPUT"
-          fi
 
   notify_telegram:
     name: Send Telegram Notification
