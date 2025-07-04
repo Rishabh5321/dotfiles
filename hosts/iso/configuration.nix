@@ -1,5 +1,5 @@
 # hosts/iso/configuration.nix - Alternative approach
-{ config, pkgs, lib, inputs, username, ... }:
+{ pkgs, inputs, username, ... }:
 {
   imports = [
     # Use a different base that doesn't have wireless pre-configured
