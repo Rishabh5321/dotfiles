@@ -56,7 +56,7 @@ jobs:
           restore-prefixes-first-match: |
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-flake-check-
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-
-          gc-max-store-size: 2048
+          gc-max-store-size: 1024
 
       - name: Run Flake Check
         id: flake_check
@@ -132,7 +132,7 @@ jobs:
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-${{ matrix.hostname }}-
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-flake-check-
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-
-          gc-max-store-size: 2048
+          gc-max-store-size: 1024
 
       - name: Setup Cachix
         uses: cachix/cachix-action@v16
