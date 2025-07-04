@@ -237,6 +237,24 @@
         "type": "github"
       }
     },
+    "flake-parts_4": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib_2"
+      },
+      "locked": {
+        "lastModified": 1751413152,
+        "narHash": "sha256-Tyw1RjYEsp5scoigs1384gIg6e0GoBVjms4aXFfRssQ=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "77826244401ea9de6e3bac47c2db46005e1f30b5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "flake-schemas": {
       "locked": {
         "lastModified": 1721999734,
@@ -290,11 +308,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1751591795,
-        "narHash": "sha256-Wd60M9A8PHXH2mGwF2rGiZOyudkAG2E5S55LZjHL/IA=",
+        "lastModified": 1751605070,
+        "narHash": "sha256-IB2fBiGWKbUzbvcmcFw8pSjbYLcxjiBxu151rEbHsBA=",
         "owner": "rishabh5321",
         "repo": "gemini-cli-flake",
-        "rev": "eb32c024d07ab5e9a57141654b79c559831ac351",
+        "rev": "b12ed4c54ec1fac2a7bb9baa4aa6190d187c65f2",
         "type": "github"
       },
       "original": {
@@ -596,6 +614,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-lib_2": {
+      "locked": {
+        "lastModified": 1751159883,
+        "narHash": "sha256-urW/Ylk9FIfvXfliA1ywh75yszAbiTEVgpPeinFyVZo=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "14a40a1d7fb9afa4739275ac642ed7301a9ba1ab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1751211869,
@@ -708,6 +741,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_8": {
+      "locked": {
+        "lastModified": 1751498133,
+        "narHash": "sha256-QWJ+NQbMU+NcU2xiyo7SNox1fAuwksGlQhpzBl76g1I=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d55716bb59b91ae9d1ced4b1ccdea7a442ecbfdb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -717,11 +766,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1751601846,
-        "narHash": "sha256-YJ0DkBBjP7K7kkJeiJFzlXWifMg2H4x/nmiRvKAq8sI=",
+        "lastModified": 1751608931,
+        "narHash": "sha256-0cyvTJh7dZhodPL4Z8u8a3llZJSU2teyrb8+YpdABM8=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "9344bdb9b0f8c85acd9e295a3e61ed818d5208c7",
+        "rev": "0fff905e9fee7522c6d53016e8122a4859e258a7",
         "type": "github"
       },
       "original": {
@@ -775,6 +824,7 @@
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "wallpapers-repo": "wallpapers-repo",
+        "zed-editor-flake": "zed-editor-flake",
         "zen-browser": "zen-browser"
       }
     },
@@ -791,6 +841,27 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "rev": "7f415261f298656f8164bd636c0dc05af4e95b6b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
+      "inputs": {
+        "nixpkgs": [
+          "zed-editor-flake",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1751596734,
+        "narHash": "sha256-1tQOwmn3jEUQjH0WDJyklC+hR7Bj+iqx6ChtRX2QiPA=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "e28ba067a9368286a8bc88b68dc2ca92181a09f0",
         "type": "github"
       },
       "original": {
@@ -1077,6 +1148,26 @@
       "original": {
         "owner": "Rishabh5321",
         "repo": "wallpapers",
+        "type": "github"
+      }
+    },
+    "zed-editor-flake": {
+      "inputs": {
+        "flake-parts": "flake-parts_4",
+        "nixpkgs": "nixpkgs_8",
+        "rust-overlay": "rust-overlay_2"
+      },
+      "locked": {
+        "lastModified": 1751608786,
+        "narHash": "sha256-yg3GCzzkIQBIgS/g9QFH84OrPDR58l1T5pP6FsLiyAk=",
+        "owner": "Rishabh5321",
+        "repo": "zed-editor-flake",
+        "rev": "e3e1d6e276b73dbde8c690d6ec855eaa744420de",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Rishabh5321",
+        "repo": "zed-editor-flake",
         "type": "github"
       }
     },
