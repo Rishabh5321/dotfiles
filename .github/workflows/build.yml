@@ -24,6 +24,11 @@ on:
         description: "Build only a specific host (leave empty for all)"
         required: false
         type: string
+      cache-version:
+        description: "A version number to manually invalidate the cache"
+        required: false
+        default: "1"
+        type: string
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -44,10 +49,23 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: ${{ env.EXTRA_NIX_CONFIG }}
 
+      - name: Cache Nix Store
+        uses: nix-community/cache-nix-action@v6
+        with:
+          primary-key: nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-flake-check-${{ hashFiles('flake.lock') }}
+          restore-prefixes-first-match: |
+            nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-flake-check-
+            nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-
+          gc-max-store-size: 1024
+
       - name: Run Flake Check
         id: flake_check
         run: |
           nix flake check
+
+      - name: Cleanup Nix Store Locks
+        if: always()
+        run: sudo rm -f /nix/store/*.lock
 
   generate-matrix:
     name: Generate Build Matrix
@@ -106,6 +124,14 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: ${{ env.EXTRA_NIX_CONFIG }}
 
+      - name: Cache Nix Store
+        uses: nix-community/cache-nix-action@v6
+        with:
+          primary-key: nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-${{ matrix.hostname }}-${{ hashFiles('flake.lock') }}
+          restore-keys: |
+            nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-${{ matrix.hostname }}-
+          gc-max-store-size: 1024
+
       - name: Setup Cachix
         uses: cachix/cachix-action@v16
         with:
@@ -163,6 +189,10 @@ jobs:
           name: build-logs-${{ matrix.hostname }}
           path: logs/
           retention-days: 5
+
+      - name: Cleanup Nix Store Locks
+        if: always()
+        run: sudo rm -f /nix/store/*.lock
 
   notify_telegram:
     name: Send Telegram Notification
@@ -227,4 +257,3 @@ jobs:
 
             View run details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           format: markdown # Use markdown formatting for the message
-
