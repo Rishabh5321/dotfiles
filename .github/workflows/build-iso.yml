@@ -59,8 +59,8 @@ jobs:
           files: result/iso/nixos-*.iso
           prerelease: false
 
-      - uses: wow-actions/delete-stale-releases@v1
+      - uses: Nats-ji/delete-old-releases@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          keep_latest_count: 1
-          delete_tags: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          keep-count: 1
+          keep-old-minor-releases: false
