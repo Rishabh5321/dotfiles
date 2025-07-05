@@ -124,15 +124,13 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: ${{ env.EXTRA_NIX_CONFIG }}
 
-      - name: Cache Nix Store
+      - name: Restore Nix Store from flake-check job
         uses: nix-community/cache-nix-action@v6
         with:
           primary-key: nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-${{ matrix.hostname }}-${{ hashFiles('flake.lock') }}
           restore-prefixes-first-match: |
-            nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-${{ matrix.hostname }}-
             nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-flake-check-
-            nix-store-${{ runner.os }}-v${{ github.event.inputs.cache-version || '1' }}-
-          gc-max-store-size: 1024
+          save: false
 
       - name: Setup Cachix
         uses: cachix/cachix-action@v16
