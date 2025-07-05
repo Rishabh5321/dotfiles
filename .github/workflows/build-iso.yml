@@ -58,3 +58,9 @@ jobs:
           body: "Daily ISO build."
           files: result/iso/nixos-*.iso
           prerelease: false
+
+      - uses: wow-actions/delete-stale-releases@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          keep_latest_count: 1
+          delete_tags: true
