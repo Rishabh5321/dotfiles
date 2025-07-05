@@ -59,8 +59,8 @@ jobs:
           files: result/iso/nixos-*.iso
           prerelease: false
 
-      - uses: Nats-ji/delete-old-releases@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          keep-count: 1
-          keep-old-minor-releases: false
+      # - uses: Nats-ji/delete-old-releases@v1
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     keep-count: 1
+      #     keep-old-minor-releases: false
