@@ -171,7 +171,7 @@
 
     # ===== FLAKE INPUTS =====
     inputs.grayjay.packages.${pkgs.system}.grayjay # Video platform client
-    inputs.gemini-cli.packages.${pkgs.system}.gemini-cli-dev
+    inputs.gemini-cli.packages.${pkgs.system}.default # Dev version with `nightly` tag
     inputs.zed-editor-flake.packages.${system}.zed-editor # Zed editor from flake
 
     # ===== FLAKE INPUTS (COMMENTED) =====
