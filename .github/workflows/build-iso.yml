@@ -54,7 +54,7 @@ jobs:
       - name: Upload Build Artifact
         uses: ncipollo/release-action@main
         with:
-          # artifacts: "*.iso"
+          artifacts: "result/iso/nixos-*.iso"
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: Build-${{ steps.get-date.outputs.date }}
           artifactErrorsFailBuild: true
