@@ -59,10 +59,10 @@ jobs:
           files: result/iso/nixos-*.iso
           prerelease: false
 
-      - uses: s00d/delete-older-releases0.2.1
+      - name: Delete releases and workflows runs
+        uses: ophub/delete-releases-workflows@main
         with:
-          keep_latest: 1
-          delete_type: "release"
-          delete_branch: "main"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          delete_releases: true
+          releases_keep_latest: 1
+          delete_workflows: false
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
