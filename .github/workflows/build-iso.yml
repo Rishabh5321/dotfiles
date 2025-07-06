@@ -63,6 +63,6 @@ jobs:
         with:
           keep_latest: 1
           delete_type: "release"
-          delete_branch: "master"
+          delete_branch: "main"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
