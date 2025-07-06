@@ -46,18 +46,18 @@ jobs:
           name: nixos-iso
           path: result/iso/nixos-*.iso
 
-      - name: Get current date
-        id: date
-        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+      - name: Get Date
+        id: get-date
+        run: |
+          echo "date=$(TZ='Asia/Kolkata' date +"%Y.%m.%d-%H.%M.%S")" >> $GITHUB_OUTPUT
 
-      - name: "Create Release"
-        uses: softprops/action-gh-release@v2
+      - name: Upload Build Artifact
+        uses: ncipollo/release-action@main
         with:
-          tag_name: daily-iso-${{ steps.date.outputs.date }}
-          name: "Daily ISO Build ${{ steps.date.outputs.date }}"
-          body: "Daily ISO build."
-          files: result/iso/nixos-*.iso
-          prerelease: false
+          artifacts: "apks/*-output.apk,updates.json,changelog.json,changelog.md"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: Build-${{ steps.get-date.outputs.date }}
+          artifactErrorsFailBuild: true
 
       - name: Delete releases and workflows runs
         uses: ophub/delete-releases-workflows@main
