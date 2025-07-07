@@ -681,11 +681,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751899958,
-        "narHash": "sha256-+mZwEJRJr+CpegeBqPBCeVJBx900gO1d7afUtxpsPn0=",
+        "lastModified": 1751906969,
+        "narHash": "sha256-BSQAOdPnzdpOuCdAGSJmefSDlqmStFNScEnrWzSqKPw=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "177ebdccf8f83b98461b202b42f1a0d72c3d2c9f",
+        "rev": "ddb679f4131e819efe3bbc6457ba19d7ad116f25",
         "type": "github"
       },
       "original": {
@@ -865,11 +865,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1751840923,
-        "narHash": "sha256-4HZxn+PrWytrWVg5c5SEetv3m9/k7rngJq27zKuRIfo=",
+        "lastModified": 1751906932,
+        "narHash": "sha256-vRZH3bq24I/heef0AIFnaBmDGdQSpTmyjT4vtpa7qqk=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "5259682ce58d935f248297bf1c9793a5cee0787e",
+        "rev": "c538d1a3571386eaaca31aef7bb5fd5c155327b0",
         "type": "github"
       },
       "original": {
@@ -1032,13 +1032,13 @@
         "lastModified": 1751893417,
         "narHash": "sha256-Y3pncIQffDs/uH9ipUuoZyI7Zu7B4Mp+tqw59u3tA5c=",
         "owner": "Rishabh5321",
-        "repo": "wallpapers",
+        "repo": "wallsite",
         "rev": "95295c3356a8c835fb367de714afaaeb74f2c1fc",
         "type": "github"
       },
       "original": {
         "owner": "Rishabh5321",
-        "repo": "wallpapers",
+        "repo": "wallsite",
         "type": "github"
       }
     },

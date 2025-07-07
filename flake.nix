@@ -81,7 +81,7 @@
 
     # Assets/Other
     wallpapers-repo = {
-      url = "github:Rishabh5321/wallpapers";
+      url = "github:Rishabh5321/wallsite";
       flake = false;
     };
   };
@@ -102,7 +102,7 @@
     let
       system = "x86_64-linux";
       username = "rishabh";
-      wallpaper = "wall14.png";
+      wallpaper = "Nature/wall14.jpg";
       flakeDir = "/home/${username}/dotfiles";
       wallpapers = "${wallpapers-repo}/src";
 
