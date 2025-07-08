@@ -1029,11 +1029,11 @@
     "wallpapers-repo": {
       "flake": false,
       "locked": {
-        "lastModified": 1751893417,
-        "narHash": "sha256-Y3pncIQffDs/uH9ipUuoZyI7Zu7B4Mp+tqw59u3tA5c=",
+        "lastModified": 1751977425,
+        "narHash": "sha256-1FIKyjyB30ceNuIrFpi/JzaT8v9c+eRQJ29wenMKzWc=",
         "owner": "Rishabh5321",
         "repo": "wallsite",
-        "rev": "95295c3356a8c835fb367de714afaaeb74f2c1fc",
+        "rev": "67678c7416ad55cbb79a39e63f074e0a4201e12e",
         "type": "github"
       },
       "original": {
