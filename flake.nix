@@ -102,7 +102,7 @@
     let
       system = "x86_64-linux";
       username = "rishabh";
-      wallpaper = "Art/wall1.png";
+      wallpaper = "Abstract/wall37.png";
       flakeDir = "/home/${username}/dotfiles";
       wallpapers = "${wallpapers-repo}/src";
 
