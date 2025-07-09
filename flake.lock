@@ -1006,11 +1006,11 @@
     "wallpapers-repo": {
       "flake": false,
       "locked": {
-        "lastModified": 1752047759,
-        "narHash": "sha256-vTbe+gSKmnJu6B+/3T+7ZydiiKqAEKGNIqH6lZtZHPw=",
+        "lastModified": 1752062514,
+        "narHash": "sha256-kx4N7OfWtgBZVDTkrbSPdaoEiYKwgSxCCv3SAE6qTqQ=",
         "owner": "Rishabh5321",
         "repo": "wallsite",
-        "rev": "02aa3c0cf97dc76b26f662c730ba79c78fc98316",
+        "rev": "ff1e5156ea98115f0e66793c16ad21f542767c0a",
         "type": "github"
       },
       "original": {
