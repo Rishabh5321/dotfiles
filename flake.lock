@@ -1026,11 +1026,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1752033483,
-        "narHash": "sha256-t1uo7q6pKI/oWwegXN6DpD5AIxeewvoGS5fDQ+P3pbA=",
+        "lastModified": 1752100998,
+        "narHash": "sha256-0dcydRiNl9ZFr2zq6WuI/mthe5ipbzbTfmT1FixivWY=",
         "owner": "Rishabh5321",
         "repo": "zed-editor-flake",
-        "rev": "366427cc2d17240402829bf7f7aea7452cc3fb42",
+        "rev": "e80035ee8e5c42d7e5fcd8cebfc0ae475324bd89",
         "type": "github"
       },
       "original": {
