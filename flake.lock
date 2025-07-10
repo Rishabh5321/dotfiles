@@ -809,11 +809,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1752111679,
-        "narHash": "sha256-yBOZ7ilO9V8BPxkt9ezCsHA8fKn5seqpjfNjzSYxHh8=",
+        "lastModified": 1752122883,
+        "narHash": "sha256-8wEt8MskqT19BVftk/Z9o7vpgklwOuWAu/KWZD2pQhc=",
         "owner": "Rishabh5321",
         "repo": "seanime-flake",
-        "rev": "e5565faf89e79ab41e66d815624ac83ed1a492bf",
+        "rev": "dbe579ccf67f0a1e6e919dd5214796887b7ac17a",
         "type": "github"
       },
       "original": {
