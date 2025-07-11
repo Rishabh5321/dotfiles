@@ -41,7 +41,7 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v1
         with:
-          extra_nix_config: ${{ env.EXTRA_NIX_CONFIG }}
+          extra-conf: ${{ env.EXTRA_NIX_CONFIG }}
 
       - name: Configure Nix Caches
         run: |
@@ -65,7 +65,7 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v1
         with:
-          extra_nix_config: |
+          extra-conf: |
             experimental-features = nix-command flakes
 
       - name: Generate matrix from nixosConfigurations
@@ -106,7 +106,7 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v1
         with:
-          extra_nix_config: ${{ env.EXTRA_NIX_CONFIG }}
+          extra-conf: ${{ env.EXTRA_NIX_CONFIG }}
 
       - name: Configure Nix Caches
         run: |
