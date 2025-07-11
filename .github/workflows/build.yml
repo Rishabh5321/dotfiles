@@ -39,9 +39,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v1
+        uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: ${{ env.EXTRA_NIX_CONFIG }}
+
+      - name: Nix Store Cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
 
       - name: Configure Nix Caches
         run: |
@@ -63,7 +66,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v1
+        uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: |
             experimental-features = nix-command flakes
@@ -104,9 +107,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v1
+        uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: ${{ env.EXTRA_NIX_CONFIG }}
+
+      - name: Nix Store Cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
 
       - name: Configure Nix Caches
         run: |
