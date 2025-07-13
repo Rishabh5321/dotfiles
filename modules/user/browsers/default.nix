@@ -3,6 +3,6 @@
 { ... }:
 {
   imports = [
-    ./zen.nix
+    # ./zen.nix
   ];
 }
