@@ -4,7 +4,8 @@
 }: {
   # ===== SYSTEM PACKAGES =====
   environment.systemPackages = with pkgs; [
-    # NUR{ Nix User Repository
+
+    # ===== NUR =====
     nur.repos.colorman.speed-cloudflare-cli
 
     # ===== DEVELOPMENT TOOLS =====
@@ -177,7 +178,7 @@
 
     # ===== FLAKE INPUTS =====
     inputs.grayjay.packages.${pkgs.system}.grayjay # Video platform client
-    inputs.gemini-cli.packages.${pkgs.system}.gemini-cli-stable # stable version
+    inputs.gemini-cli.packages.${pkgs.system}.default # stable version
     inputs.zed-editor-flake.packages.${system}.zed-editor # Zed editor from flake
     inputs.better-control.packages.${pkgs.system}.better-control # Device control
 
