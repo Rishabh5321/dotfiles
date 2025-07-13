@@ -28,6 +28,7 @@
     # zed-editor # Editor
     # nix-fast-build # Building flakes
     # gemini-cli # AI
+    lazydocker # Docker container management
 
     # ===== EDITORS & IDEs =====
     code-cursor # AI-powered VS Code fork
@@ -77,6 +78,7 @@
     vlc # Multimedia player
     youtube-music # YouTube Music client
     qimgv #image viewer
+    yazi # File manager
 
     # ===== GAMING =====
     gamescope # Gaming compositor
@@ -143,6 +145,9 @@
     libsForQt5.qt5.qtbase # Qt5 base
     libsForQt5.qt5.qtsvg # Qt5 SVG support
 
+    # ===== IMAGE PROCESSING =====
+    imagemagick # Image prossessing for wallsite project
+
     # ===== TEXT EDITORS (COMMENTED) =====
     #helix                 # Modern text editor
 
@@ -174,11 +179,11 @@
     inputs.grayjay.packages.${pkgs.system}.grayjay # Video platform client
     inputs.gemini-cli.packages.${pkgs.system}.gemini-cli-stable # stable version
     inputs.zed-editor-flake.packages.${system}.zed-editor # Zed editor from flake
+    inputs.better-control.packages.${pkgs.system}.better-control # Device control
 
     # ===== FLAKE INPUTS (COMMENTED) =====
     # inputs.akuse-flake.packages.${system}.akuse                 # Custom package
     # inputs.alejandra.defaultPackage.${system}                   # Nix formatter
-    # inputs.better-control.packages.${pkgs.system}.better-control # Device control
     # inputs.thorium.packages."x86_64-linux".thorium-avx2         # Thorium browser
   ];
 
