@@ -6,7 +6,12 @@
 }: {
   # You can import other home-manager modules here
   imports = [
-    ../../modules/user
+    ../../modules/user/development
+    ../../modules/user/files
+    ../../modules/user/monitor
+    ../../modules/user/shells
+    ../../modules/user/theme
+    ../../modules/user/utilities
     #../../modules/desktop/Hyprland/home
   ];
 
