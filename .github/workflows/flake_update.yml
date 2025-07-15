@@ -55,7 +55,7 @@ jobs:
           git config --global user.name "flakebuilderapp[bot]"
           echo "Git user configured: $(git config --global user.name) <$(git config --global user.email)>"
 
-      - uses: DeterminateSystems/nix-installer-action@v18
+      - uses: DeterminateSystems/nix-installer-action@v19
         with:
           extra-conf: accept-flake-config = true
 
