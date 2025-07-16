@@ -125,7 +125,8 @@ jobs:
 
           cachix watch-exec rishabh5321 -- \
             nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.toplevel \
-            -v --show-trace --out-link result-${{ matrix.hostname }} 2>&1 | tee logs/build_${{ matrix.hostname }}.log
+            -v --show-trace --print-build-logs --out-link result-${{ matrix.hostname }} 2>&1 | tee logs/build_${{ matrix.hostname }}.log
+
 
           BUILD_EXIT_CODE=${PIPESTATUS[0]}  # Get the exit code of nix build, not tee
 
@@ -227,4 +228,3 @@ jobs:
 
             View run details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           format: markdown # Use markdown formatting for the message
-
