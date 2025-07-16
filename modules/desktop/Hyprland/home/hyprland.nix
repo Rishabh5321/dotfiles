@@ -1,4 +1,4 @@
-{ lib, username, pkgs, config, wallpaper, ... }:
+{ lib, username, pkgs, config, wallpaper, inputs, ... }:
 
 let
   inherit (import ./variables.nix) browser terminal extraMonitorSettings;
@@ -8,9 +8,9 @@ with lib; {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.hyprland;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     xwayland.enable = true;
-    #portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     systemd = {
       enable = true;
       enableXdgAutostart = true;

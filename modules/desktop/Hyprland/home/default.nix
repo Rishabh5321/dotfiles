@@ -1,6 +1,7 @@
 { username
 , pkgs
 , host
+, inputs
 , ...
 }:
 # let
@@ -21,7 +22,7 @@
     ./swaync.nix
     ./wlogout.nix
     #./variable.nix
-    # inputs.hyprland.homeManagerModules.default
+    inputs.hyprland.homeManagerModules.default
     ./hyprpanel.nix
     # waybarChoice
     #./waybar.nix

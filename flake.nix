@@ -28,7 +28,7 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     #   inputs.home-manager.follows = "home-manager";
     # };
-    # hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland";
     # hyprpanel = {
     #   url = "github:Jas-SinghFSU/HyprPanel";
     #   inputs.nixpkgs.follows = "nixpkgs";
