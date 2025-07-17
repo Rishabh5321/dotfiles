@@ -198,7 +198,7 @@
       noto-fonts-emoji # Emoji support
       noto-fonts-cjk-sans # CJK language support
       font-awesome # Icon font
-      symbola # Unicode symbols
+      # symbola # Unicode symbols
       powerline # Powerline symbols
 
       # ===== PROGRAMMING FONTS =====
