@@ -40,10 +40,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v31
+        uses: DeterminateSystems/nix-installer-action@v19
         with:
-          nix_path: nixpkgs=channel:nixos-unstable
-          extra_nix_config: ${{ env.EXTRA_NIX_CONFIG }}
+          nix-conf: ${{ env.EXTRA_NIX_CONFIG }}
 
       - name: Run Flake Check
         run: |
@@ -85,10 +84,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v31
+        uses: DeterminateSystems/nix-installer-action@v19
         with:
-          nix_path: nixpkgs=channel:nixos-unstable
-          extra_nix_config: ${{ env.EXTRA_NIX_CONFIG }}
+          nix-conf: ${{ env.EXTRA_NIX_CONFIG }}
 
       - name: Setup Cachix
         uses: cachix/cachix-action@v16
@@ -99,46 +97,34 @@ jobs:
       - name: Build NixOS configuration
         id: build
         run: |
+          set -o pipefail
           echo "Starting Nix build for ${{ matrix.hostname }}..."
-
-          # Create a temporary file for capturing output
           mkdir -p logs
-
-          # Run the build and capture output to both stdout and a file
           start_time=$(date +%s)
-
           cachix watch-exec rishabh5321 -- \
             nix build .#nixosConfigurations.${{ matrix.hostname }}.config.system.build.toplevel \
             -L --print-build-logs --out-link result-${{ matrix.hostname }} 2>&1 | tee logs/build_output.log
-
-          BUILD_EXIT_CODE=${PIPESTATUS[0]}  # Get the exit code of nix build, not tee
-
           end_time=$(date +%s)
           build_duration=$((end_time - start_time))
-
           echo "Build duration: $build_duration seconds"
           echo "build_duration=$build_duration" >> $GITHUB_OUTPUT
 
-          # If build was successful, generate a system report
-          if [ $BUILD_EXIT_CODE -eq 0 ]; then
-            echo "Generating system report for ${{ matrix.hostname }}..."
-            nix-shell -p nix-info --run "nix-info -m" > logs/system_info_${{ matrix.hostname }}.log
-
-            # Extract some useful information about the build
-            nix path-info --json ./result-${{ matrix.hostname }} | jq 'if type == "array" then .[0] else . end | {path: .path, closureSize: .closureSize}' > logs/build_info_${{ matrix.hostname }}.json
-
-            CLOSURE_SIZE=$(jq -r '.closureSize' logs/build_info_${{ matrix.hostname }}.json)
-
-            if [[ "$CLOSURE_SIZE" != "null" && -n "$CLOSURE_SIZE" ]]; then
-              HUMAN_SIZE=$(numfmt --to=iec-i --suffix=B "$CLOSURE_SIZE")
-              echo "closure_size=$HUMAN_SIZE" >> $GITHUB_OUTPUT
-            else
-              echo "closure_size=unknown" >> $GITHUB_OUTPUT
-              echo "Warning: closure size is null or empty"
-            fi
+      - name: Generate build report
+        if: success()
+        id: report
+        run: |
+          echo "Generating system report for ${{ matrix.hostname }}..."
+          nix-shell -p nix-info --run "nix-info -m" > logs/system_info_${{ matrix.hostname }}.log
+          # Extract some useful information about the build
+          nix path-info --json ./result-${{ matrix.hostname }} | jq 'if type == "array" then .[0] else . end | {path: .path, closureSize: .closureSize}' > logs/build_info_${{ matrix.hostname }}.json
+          CLOSURE_SIZE=$(jq -r '.closureSize' logs/build_info_${{ matrix.hostname }}.json)
+          if [[ "$CLOSURE_SIZE" != "null" && -n "$CLOSURE_SIZE" ]]; then
+            HUMAN_SIZE=$(numfmt --to=iec-i --suffix=B "$CLOSURE_SIZE")
+            echo "closure_size=$HUMAN_SIZE" >> $GITHUB_OUTPUT
+          else
+            echo "closure_size=unknown" >> $GITHUB_OUTPUT
+            echo "Warning: closure size is null or empty"
           fi
-
-          exit $BUILD_EXIT_CODE
 
       - name: Upload build logs
         if: always()
@@ -200,7 +186,7 @@ jobs:
         with:
           to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
+          message: |-
             *GitHub Actions Build Status*
             Workflow: `${{ github.workflow }}`
             Repository: `${{ github.repository }}`
