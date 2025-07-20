@@ -47,6 +47,10 @@ jobs:
       - name: Run Flake Check
         uses: DeterminateSystems/flake-checker-action@main
 
+      - name: Flake check
+        run: |
+          nix flake check
+
       - name: Generate matrix from nixosConfigurations
         id: set-matrix
         run: |
