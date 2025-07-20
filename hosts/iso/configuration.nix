@@ -1,5 +1,5 @@
 # hosts/iso/configuration.nix - Alternative approach
-{ pkgs, inputs, username, ... }:
+{ pkgs, inputs, username, lib, ... }:
 {
   imports = [
     # Use a different base that doesn't have wireless pre-configured
@@ -48,6 +48,7 @@
   users.users.${username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
+    initialHashedPassword = lib.mkForce null;
     initialPassword = "nixos"; # Default password for live user
   };
 

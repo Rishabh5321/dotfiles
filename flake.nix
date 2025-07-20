@@ -201,7 +201,7 @@
       )) // {
         iso = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; username = "nixos"; };
+          specialArgs = { inherit inputs; username = "nixos"; lib = nixpkgs.lib; };
           modules = [
             ./hosts/iso/configuration.nix
             inputs.stylix.nixosModules.stylix
