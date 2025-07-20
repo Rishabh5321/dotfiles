@@ -1,7 +1,6 @@
-name: flake_format
+name: Lint, Format and Clean Nix Code
 
 on:
-  #pull_request:
   workflow_dispatch:
   push:
     branches:
@@ -12,7 +11,7 @@ on:
     - cron: '0 */12 * * *'
 
 jobs:
-  nix-format-lint:
+  lint-format-clean:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -27,15 +26,18 @@ jobs:
       with:
         nix_path: nixpkgs=channel:nixos-unstable
 
-    - name: Install Nix Linting and Formatting Tools
+    - name: Install Nix Tools
       run: |
         nix-channel --update
-        nix-env -i statix nixpkgs-fmt -f '<nixpkgs>'
+        nix-env -iA nixpkgs.deadnix nixpkgs.statix nixpkgs.nixpkgs-fmt
       env:
         NIX_PATH: nixpkgs=channel:nixos-unstable
 
+    - name: Run deadnix
+      run: deadnix --edit .
+
     - name: Run Statix Lint
-      run: statix fix
+      run: statix fix .
 
     - name: Run Nix Format
       run: nixpkgs-fmt .
@@ -43,10 +45,10 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v7
       with:
-        commit-message: 'chore: auto lint and format'
-        title: 'Auto Lint and Format'
-        body: 'This is an auto-generated PR with linting and formatting changes.'
-        branch: auto-lint-format
+        commit-message: 'chore: auto format, lint and clean nix code'
+        title: 'Auto Lint, Format and Clean'
+        body: 'This is an auto-generated PR with linting, formatting and code cleaning changes.'
+        branch: auto-lint-format-clean
         delete-branch: true
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
         labels: automated chore
