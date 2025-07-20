@@ -30,10 +30,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # These two jobs now run in parallel since they're independent
-  flake-checks:
-    name: Flake Check
+  prepare:
+    name: Prepare Build
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -45,25 +46,8 @@ jobs:
           extra_nix_config: ${{ env.EXTRA_NIX_CONFIG }}
 
       - name: Run Flake Check
-        id: flake_check
         run: |
           nix flake check
-
-  generate-matrix:
-    name: Generate Build Matrix
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
-        with:
-          nix_path: nixpkgs=channel:nixos-unstable
-          extra_nix_config: |
-            experimental-features = nix-command flakes
 
       - name: Generate matrix from nixosConfigurations
         id: set-matrix
@@ -79,12 +63,12 @@ jobs:
 
   Build_Config:
     name: Build ${{ matrix.hostname }}
-    needs: [flake-checks, generate-matrix]
+    needs: [prepare]
     runs-on: ubuntu-latest
     timeout-minutes: 180 # Prevent hung builds
     strategy:
       fail-fast: true # Stop all matrix jobs if one fails
-      matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
+      matrix: ${{fromJson(needs.prepare.outputs.matrix)}}
     steps:
       - name: Free Disk Space
         uses: endersonmenezes/free-disk-space@v2
