@@ -45,8 +45,7 @@ jobs:
           extra-conf: ${{ env.EXTRA_NIX_CONFIG }}
 
       - name: Run Flake Check
-        run: |
-          nix flake check
+        uses: DeterminateSystems/flake-checker-action@main
 
       - name: Generate matrix from nixosConfigurations
         id: set-matrix
@@ -108,29 +107,6 @@ jobs:
           build_duration=$((end_time - start_time))
           echo "Build duration: $build_duration seconds"
           echo "build_duration=$build_duration" >> $GITHUB_OUTPUT
-
-      - name: Generate build report
-        if: success()
-        id: report
-        run: |
-          echo "Generating system report for ${{ matrix.hostname }}..."
-          nix-shell -p nix-info --run "nix-info -m" > logs/system_info_${{ matrix.hostname }}.log
-          # Extract some useful information about the build
-          BUILD_INFO=$(nix path-info --json ./result-${{ matrix.hostname }} 2>/dev/null)
-          if [[ -z "$BUILD_INFO" ]]; then
-            echo "closure_size=N/A" >> $GITHUB_OUTPUT
-            echo "Warning: Could not get build info for ${{ matrix.hostname }}"
-            exit 0
-          fi
-          echo "$BUILD_INFO" | jq 'if type == "array" then .[0] else . end | {path: .path, closureSize: .closureSize}' > logs/build_info_${{ matrix.hostname }}.json
-          CLOSURE_SIZE=$(jq -r '.closureSize' logs/build_info_${{ matrix.hostname }}.json)
-          if [[ "$CLOSURE_SIZE" != "null" && -n "$CLOSURE_SIZE" ]]; then
-            HUMAN_SIZE=$(numfmt --to=iec-i --suffix=B "$CLOSURE_SIZE")
-            echo "closure_size=$HUMAN_SIZE" >> $GITHUB_OUTPUT
-          else
-            echo "closure_size=unknown" >> $GITHUB_OUTPUT
-            echo "Warning: closure size is null or empty"
-          fi
 
       - name: Upload build logs
         if: always()
