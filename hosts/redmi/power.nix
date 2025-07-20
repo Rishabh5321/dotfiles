@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 let
   # Define the power event script using writeShellScriptBin
