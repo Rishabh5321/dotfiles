@@ -104,7 +104,7 @@
       username = "rishabh";
       wallpaper = "Cars/wall3.png";
       flakeDir = "/home/${username}/dotfiles";
-      wallpapers = "${wallpapers-repo}/src";
+      wallpapers = "${wallpapers-repo}/wallpapers";
 
       pkgs-stable = import nixpkgs-stable {
         inherit system;
