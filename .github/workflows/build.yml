@@ -116,7 +116,13 @@ jobs:
           echo "Generating system report for ${{ matrix.hostname }}..."
           nix-shell -p nix-info --run "nix-info -m" > logs/system_info_${{ matrix.hostname }}.log
           # Extract some useful information about the build
-          nix path-info --json ./result-${{ matrix.hostname }} | jq 'if type == "array" then .[0] else . end | {path: .path, closureSize: .closureSize}' > logs/build_info_${{ matrix.hostname }}.json
+          BUILD_INFO=$(nix path-info --json ./result-${{ matrix.hostname }} 2>/dev/null)
+          if [[ -z "$BUILD_INFO" ]]; then
+            echo "closure_size=N/A" >> $GITHUB_OUTPUT
+            echo "Warning: Could not get build info for ${{ matrix.hostname }}"
+            exit 0
+          fi
+          echo "$BUILD_INFO" | jq 'if type == "array" then .[0] else . end | {path: .path, closureSize: .closureSize}' > logs/build_info_${{ matrix.hostname }}.json
           CLOSURE_SIZE=$(jq -r '.closureSize' logs/build_info_${{ matrix.hostname }}.json)
           if [[ "$CLOSURE_SIZE" != "null" && -n "$CLOSURE_SIZE" ]]; then
             HUMAN_SIZE=$(numfmt --to=iec-i --suffix=B "$CLOSURE_SIZE")
