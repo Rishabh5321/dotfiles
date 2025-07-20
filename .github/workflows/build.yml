@@ -42,7 +42,7 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v19
         with:
-          nix-conf: ${{ env.EXTRA_NIX_CONFIG }}
+          extra-conf: ${{ env.EXTRA_NIX_CONFIG }}
 
       - name: Run Flake Check
         run: |
@@ -86,7 +86,7 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v19
         with:
-          nix-conf: ${{ env.EXTRA_NIX_CONFIG }}
+          extra-conf: ${{ env.EXTRA_NIX_CONFIG }}
 
       - name: Setup Cachix
         uses: cachix/cachix-action@v16
