@@ -44,6 +44,11 @@ jobs:
         with:
           extra-conf: ${{ env.EXTRA_NIX_CONFIG }}
 
+      - uses: DeterminateSystems/determinate-nix-action@v3
+        with:
+          extra-conf: |
+            lazy-trees = true
+
       - name: Run Flake Check
         uses: DeterminateSystems/flake-checker-action@main
 
@@ -96,6 +101,11 @@ jobs:
         with:
           name: rishabh5321
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+
+      - uses: DeterminateSystems/determinate-nix-action@v3
+        with:
+          extra-conf: |
+            lazy-trees = true
 
       - name: Build NixOS configuration
         id: build
