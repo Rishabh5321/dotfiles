@@ -80,6 +80,7 @@
     config = {
       # Allow proprietary software packages
       allowUnfree = true;
+      android_sdk.accept_license = true;
     };
   };
 }
