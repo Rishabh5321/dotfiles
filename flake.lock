@@ -1027,11 +1027,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1753206707,
-        "narHash": "sha256-hIfWMOLTTPqikXt5H/xLMWw2NIePdmwe5siqg5L3QO0=",
+        "lastModified": 1753235546,
+        "narHash": "sha256-HsA8UXqTK2+4dttgTRL/TbCFYGpY74aOsJk915kRknc=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "99f6c6ee1b264b0b15f9b4c35d7e246d694a66b3",
+        "rev": "8ff785d047173ed3523b554620c9240700c62536",
         "type": "github"
       },
       "original": {
