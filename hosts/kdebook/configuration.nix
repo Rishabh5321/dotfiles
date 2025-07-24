@@ -6,7 +6,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/system
-    ./power.nix
+    ../common/workstation.nix
     ../../modules/desktop/KDE/main
     inputs.nixos-hardware.nixosModules.xiaomi-redmibook-15-pro-2021
     #./testing-pkgs.nix

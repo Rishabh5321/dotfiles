@@ -6,15 +6,9 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/system
-    ./power.nix
-    ./serve.nix
-    inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
-    inputs.nixos-hardware.nixosModules.common-gpu-intel
-    inputs.nixos-hardware.nixosModules.common-pc-ssd
-    #../../containers
-    ../../modules/desktop/Hyprland/main
-    #./intel-drivers.nix
-    ./tailscale.nix
+    ../common/serve.nix
+    ../common/tailscale-client.nix
+    ../common/power-server.nix
     #./amd-drivers.nix
   ];
 

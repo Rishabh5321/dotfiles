@@ -6,7 +6,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/system
-    ./power.nix
+    ../common/power-laptop-tlp.nix
     ../../modules/desktop/Gnome/main
     inputs.nixos-hardware.nixosModules.xiaomi-redmibook-15-pro-2021
     inputs.nixos-hardware.nixosModules.common-cpu-intel
