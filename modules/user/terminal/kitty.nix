@@ -16,6 +16,8 @@
       tab_fade 1
       active_tab_font_style bold
       inactive_tab_font_style bold
+      cursor_trail 3
+      cursor_trail_decay 0.1 0.4
     '';
   };
 }

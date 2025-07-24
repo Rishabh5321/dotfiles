@@ -1,4 +1,3 @@
-# common/home-manager/eldios/programs/ghostty.nix
 { config, ... }:
 
 {
