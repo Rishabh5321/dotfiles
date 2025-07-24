@@ -4,7 +4,7 @@
 , ...
 }:
 let
-  inherit (import ../variables.nix) clock24h;
+  inherit (import ../../misc/variables.nix) clock24h;
 in
 with lib; {
   # Configure & Theme Waybar

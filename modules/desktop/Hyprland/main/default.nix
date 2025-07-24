@@ -1,13 +1,11 @@
 { ... }: {
   imports = [
     #./cache.nix
-    ./display-manager.nix
+    ./sddm.nix
     #./hardware.nix
-    ./hyprland.nix
-    ./pkgs.nix
+    ./services.nix
+    ./packages.nix
     ./wayland.nix
+    ./security.nix
   ];
-  security.rtkit.enable = true;
-  security.sudo.enable = true;
-  security.pam.services.sddm = { };
 }

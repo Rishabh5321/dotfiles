@@ -23,7 +23,7 @@ in
 
   alacritty = true;
 
-  waybarChoice = ./waybar/waybar-curved.nix;
+  waybarChoice = ../ui/waybar/waybar-curved.nix;
 
   wallpaperDir = "~/Pictures/Wallpapers";
 

@@ -5,7 +5,7 @@
 }:
 let
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
-  inherit (import ../variables.nix) clock24h;
+  inherit (import ../../misc/variables.nix) clock24h;
 in
 with lib; {
   # Configure & Theme Waybar
@@ -23,10 +23,10 @@ with lib; {
           "pulseaudio"
           "cpu"
           "memory"
-          "idle_inhibitor"
         ];
         modules-right = [
-          "custom/hyprbindings"
+          "idle_inhibitor"
+          #"custom/hyprbindings"
           "custom/notification"
           "custom/exit"
           "battery"
@@ -120,8 +120,7 @@ with lib; {
           tooltip = false;
           format = "";
           # exec = "rofi -show drun";
-          #on-click = "sleep 0.1 && rofi-launcher";
-          on-click = "sleep 0.1 && nwg-drawer -mb 200 -mt 200 -mr 200 -ml 200";
+          on-click = "sleep 0.1 && rofi-launcher";
         };
         "custom/hyprbindings" = {
           tooltip = false;
@@ -175,7 +174,7 @@ with lib; {
             "󰂂"
             "󰁹"
           ];
-          on-click = "";
+          on-click = "better-control -B -m";
           tooltip = false;
         };
       }
@@ -195,15 +194,15 @@ with lib; {
         #workspaces {
           color: #${config.lib.stylix.colors.base00};
           background: #${config.lib.stylix.colors.base01};
-          margin: 4px 0px;
+          margin: 4px 4px;
           padding: 5px 5px;
-          border-radius: 8px 8px 8px 8px;
+          border-radius: 16px;
         }
         #workspaces button {
           font-weight: bold;
           padding: 0px 5px;
           margin: 0px 3px;
-          border-radius: 8px 8px 8px 8px;
+          border-radius: 16px;
           color: #${config.lib.stylix.colors.base00};
           background: linear-gradient(45deg, #${config.lib.stylix.colors.base08}, #${config.lib.stylix.colors.base0D});
           opacity: 0.5;
@@ -236,40 +235,40 @@ with lib; {
         tooltip label {
           color: #${config.lib.stylix.colors.base08};
         }
-        #window, #pulseaudio, #cpu, #memory, #idle_inhibitor {
+        #window, #pulseaudio, #cpu, #memory {
           font-weight: bold;
           margin: 4px 0px;
           margin-left: 7px;
           padding: 0px 18px;
-          background: #${config.lib.stylix.colors.base00};
-          color: #${config.lib.stylix.colors.base08};
-          border-radius: 8px 8px 8px 8px;
+          background: #${config.lib.stylix.colors.base04};
+          color: #${config.lib.stylix.colors.base00};
+          border-radius: 24px 10px 24px 10px;
         }
         #custom-startmenu {
           color: #${config.lib.stylix.colors.base0B};
           background: #${config.lib.stylix.colors.base02};
-          font-size: 30px;
+          font-size: 28px;
           margin: 0px;
-          padding: 0px 15px 0px 15px;
-          border-radius: 16px 16px 16px 16px;
+          padding: 0px 30px 0px 15px;
+          border-radius: 0px 0px 40px 0px;
         }
         #custom-hyprbindings, #network, #battery,
-        #custom-notification, #tray, #custom-exit {
+        #custom-notification, #tray, #custom-exit , #idle_inhibitor {
           font-weight: bold;
-          background: #${config.lib.stylix.colors.base00};
-          color: #${config.lib.stylix.colors.base08};
+          background: #${config.lib.stylix.colors.base0F};
+          color: #${config.lib.stylix.colors.base00};
           margin: 4px 0px;
           margin-right: 7px;
-          border-radius: 8px 8px 8px 8px;
+          border-radius: 10px 24px 10px 24px;
           padding: 0px 18px;
         }
         #clock {
           font-weight: bold;
           color: #0D0E15;
-          background: linear-gradient(90deg, #${config.lib.stylix.colors.base0B}, #${config.lib.stylix.colors.base02});
+          background: linear-gradient(90deg, #${config.lib.stylix.colors.base0E}, #${config.lib.stylix.colors.base0C});
           margin: 0px;
-          padding: 0px 15px 0px 15px;
-          border-radius: 16px 16px 16px 16px;
+          padding: 0px 15px 0px 30px;
+          border-radius: 0px 0px 0px 40px;
         }
       ''
     ];

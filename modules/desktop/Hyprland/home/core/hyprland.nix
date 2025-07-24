@@ -1,7 +1,7 @@
 { lib, username, pkgs, config, wallpaper, inputs, ... }:
 
 let
-  inherit (import ./variables.nix) browser terminal extraMonitorSettings;
+  inherit (import ../misc/variables.nix) browser terminal extraMonitorSettings;
 in
 with lib; {
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];

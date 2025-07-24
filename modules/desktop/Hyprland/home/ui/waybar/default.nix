@@ -7,7 +7,7 @@ let
   palette = config.stylix.base16Scheme;
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
   inherit
-    (import ./variables.nix)
+    (import ../../misc/variables.nix)
     slickbar
     bar-number
     simplebar
