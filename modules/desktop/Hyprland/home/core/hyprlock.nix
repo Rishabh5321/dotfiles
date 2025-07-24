@@ -25,82 +25,58 @@ in
         #color = ${color0}
 
         # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
-        blur_size = 5
-        blur_passes = 1 # 0 disables blurring
+        blur_size = 8
+        blur_passes = 4 # 0 disables blurring
         noise = 0.0117
-        contrast = 1.3000 # Vibrant!!!
+        contrast = 1.1 # Vibrant!!!
         brightness = 0.8000
-        vibrancy = 0.2100
+        vibrancy = 0.16
         vibrancy_darkness = 0.0
     }
 
-    #input-field {
-    #    monitor =
-    #    size = 250, 50
-    #    outline_thickness = 3
-    #    dots_size = 0.33 # Scale of input-field height, 0.2 - 0.8
-    #    dots_spacing = 0.15 # Scale of dots' absolute size, 0.0 - 1.0
-    #    dots_center = true
-    #    outer_color = ${color5}
-    #    inner_color = ${color0}
-    #    font_color = ${color14}
-    #    fade_on_empty = true
-    #    placeholder_text = <i>Password...</i> # Text rendered in the input box when it's empty.
-    #    hide_input = false
+    input-field {
+        monitor =
+        size = 250, 50
+        outline_thickness = 2
+        dots_size = 0.2 # Scale of input-field height, 0.2 - 0.8
+        dots_spacing = 0.2 # Scale of dots' absolute size, 0.0 - 1.0
+        dots_center = true
+        outer_color = ${color14}
+        inner_color = ${color0}
+        font_color = ${color5}
+        fade_on_empty = true
+        placeholder_text = <i>Password...</i> # Text rendered in the input box when it's empty.
+        hide_input = false
+        rounding = 12
 
-    #    position = 0, 200
-    #    halign = center
-    #    valign = bottom
-    #}
+        position = 0, -80
+        halign = center
+        valign = center
+    }
 
     # Date
     label {
         monitor =
         text = cmd[update:18000000] echo "<b> "$(date +'%A, %-d %B %Y')" </b>"
         color = ${color14}
-        font_size = 34
+        font_size = 24
         font_family = JetBrains Mono Nerd Font Mono ExtraBold
-        position = 0, -100
+        position = 0, 80
         halign = center
-        valign = top
+        valign = center
     }
 
     # Hour-Time
     label {
         monitor =
     #     text = cmd[update:1000] echo -e "$(date +"%H")"
-        text = cmd[update:1000] echo -e "$(date +"%I")" #AM/PM
-        color = rgba(255, 185, 0, .6)
-        font_size = 200
-        font_family = JetBrains Mono Nerd Font Mono ExtraBold
-        position = 0, -200
-        halign = center
-        valign = top
-    }
-
-    # Minute-Time
-    label {
-        monitor =
-        text = cmd[update:1000] echo -e "$(date +"%M")"
+        text = cmd[update:1000] echo -e "$(date +"%I:%M")" #AM/PM
         color = rgba(255, 255, 255, .6)
-        font_size = 200
+        font_size = 90
         font_family = JetBrains Mono Nerd Font Mono ExtraBold
-        position = 0, -500
+        position = 0, 120
         halign = center
-        valign = top
-    }
-
-    # Seconds-Time
-    label {
-        monitor =
-    #     text = cmd[update:1000] echo -e "$(date +"%S")"
-        text = cmd[update:1000] echo -e "$(date +"%S %p")" #AM/PM
-        color = ${color14}
-        font_size = 40
-        font_family = JetBrains Mono Nerd Font Mono ExtraBold
-        position = 0, -500
-        halign = center
-        valign = top
+        valign = center
     }
 
     # User
@@ -121,9 +97,9 @@ in
         monitor =
         text = cmd[update:60000] echo "<b> "$(uptime -p || $Scripts/UptimeNixOS.sh)" </b>"
         color = ${color14}
-        font_size = 24
+        font_size = 16
         font_family = JetBrains Mono Nerd Font Mono ExtraBold
-        position = 0, 0
+        position = 20, 20
         halign = right
         valign = bottom
     }
@@ -135,9 +111,9 @@ in
         monitor =
         text = cmd[update:3600000] [ -f ~/.cache/.weather_cache ] && cat  ~/.cache/.weather_cache
         color = ${color14}
-        font_size = 24
+        font_size = 16
         font_family = JetBrains Mono Nerd Font Mono ExtraBold
-        position = 50, 0
+        position = 20, 20
         halign = left
         valign = bottom
     }

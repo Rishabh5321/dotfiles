@@ -237,12 +237,11 @@ with lib; {
         }
         #window, #pulseaudio, #cpu, #memory {
           font-weight: bold;
-          margin: 4px 0px;
-          margin-left: 7px;
+          margin: 4px 4px;
           padding: 0px 18px;
           background: #${config.lib.stylix.colors.base04};
           color: #${config.lib.stylix.colors.base00};
-          border-radius: 24px 10px 24px 10px;
+          border-radius: 16px;
         }
         #custom-startmenu {
           color: #${config.lib.stylix.colors.base0B};
@@ -257,9 +256,8 @@ with lib; {
           font-weight: bold;
           background: #${config.lib.stylix.colors.base0F};
           color: #${config.lib.stylix.colors.base00};
-          margin: 4px 0px;
-          margin-right: 7px;
-          border-radius: 10px 24px 10px 24px;
+          margin: 4px 4px;
+          border-radius: 16px;
           padding: 0px 18px;
         }
         #clock {

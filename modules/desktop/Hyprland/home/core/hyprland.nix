@@ -58,8 +58,8 @@ with lib; {
 
       # ── General Settings ──────────────────────────────────────────────────
       general {
-        gaps_in           = 5 # Increased for a bit more spacing
-        gaps_out          = 10 # Increased for a bit more spacing
+        gaps_in           = 8
+        gaps_out          = 20
         border_size       = 2
         layout            = dwindle
         resize_on_border  = true
@@ -99,37 +99,26 @@ with lib; {
       animations {
         enabled = yes
 
-        bezier = smooth, 0.25, 0.75, 0.5, 1 # Your custom bezier curve
-
-        # Faster animation speeds
-        animation = windows,     1, 0.3, smooth, slide   # Was 0.5
-        animation = windowsIn,   1, 0.25, smooth, slide  # Was 0.4
-        animation = windowsOut,  1, 0.25, smooth, slide  # Was 0.4
-        animation = windowsMove, 1, 0.2, smooth, slide   # Was 0.3
-
-        animation = border,      1, 0.15, smooth         # Was 0.2
-        animation = fade,        1, 0.15, smooth         # Was 0.2
-        animation = workspaces,  1, 0.3, smooth          # Was 0.5
+        bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+        animation = windows, 1, 7, myBezier
+        animation = windowsOut, 1, 7, default, popin 80%
+        animation = border, 1, 10, default
+        animation = borderangle, 1, 8, default
+        animation = fade, 1, 7, default
+        animation = workspaces, 1, 6, default
       }
 
       # ── Decoration ─────────────────────────────────────────────────────────
       decoration {
-        rounding = 10 # Added rounded corners
-
-        # Optional: Drop shadow for a nicer look (can affect performance slightly)
-        # drop_shadow = yes
-        # shadow_range = 10
-        # shadow_render_power = 2
-        # col.shadow = rgba(00000055)
-        # col.shadow_inactive = rgba(00000033)
+        rounding = 15 # Added rounded corners
 
         blur {
           enabled           = true
-          size              = 2 # Lower for less blur, higher for more
-          passes            = 2 # More passes for smoother blur, can impact performance
+          size              = 7
+          passes            = 4
           new_optimizations = on
-          ignore_opacity    = off
-          # xray = true # Consider if you want to see through blurred windows slightly
+          ignore_opacity    = on
+          xray = true
         }
       }
 
