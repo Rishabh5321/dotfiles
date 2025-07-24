@@ -5,7 +5,7 @@ let
   background = "#${config.lib.stylix.colors.base00}";
   background-alt = "#${config.lib.stylix.colors.base01}";
   foreground = "#${config.lib.stylix.colors.base05}";
-  rounding = 0;
+  rounding = 16;
 in
 {
   programs.hyprpanel = {
