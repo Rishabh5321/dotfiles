@@ -777,11 +777,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1753409309,
-        "narHash": "sha256-c5YPQ1460yNp1Qx7pJ7tG0/1dzoYElHhpP2+RZJB6Fg=",
+        "lastModified": 1753435745,
+        "narHash": "sha256-DcwYM03dorV47ILK9WNF7tmOPQxbEOvPUFPL44yS+SE=",
         "owner": "fufexan",
         "repo": "nix-gaming",
-        "rev": "55b69a9db0adaa9034c14c35fd9c92478c8784c0",
+        "rev": "a73e77822e6e21c9275b484ae4c00e56cb689aec",
         "type": "github"
       },
       "original": {
