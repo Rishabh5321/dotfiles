@@ -33,7 +33,7 @@
     lazydocker # Docker container management
 
     # ===== EDITORS & IDEs =====
-    android-studio # Android IDE
+    # android-studio # Android IDE
     code-cursor # AI-powered VS Code fork
     micro # Simple terminal editor
     obsidian # Knowledge management
