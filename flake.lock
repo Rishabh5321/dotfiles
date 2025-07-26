@@ -106,11 +106,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1753337754,
-        "narHash": "sha256-7hzU/TBK8AvRea0Qs97eJtdaJoxlwb3K0pzEcpH1UYU=",
+        "lastModified": 1753532198,
+        "narHash": "sha256-rNHLvtWfZIAQTxZSnr8hqbrxZ/o2aWpMXtiSpCd3ZC0=",
         "owner": "Rishabh5321",
         "repo": "better-control-flake",
-        "rev": "391a837c6d0d3b3edbb5938e7c7c90f7360f6773",
+        "rev": "b156bf97e84ec2264ef12c02c49b0637f7328cd9",
         "type": "github"
       },
       "original": {
@@ -813,11 +813,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1753250450,
-        "narHash": "sha256-i+CQV2rPmP8wHxj0aq4siYyohHwVlsh40kV89f3nw1s=",
+        "lastModified": 1753429684,
+        "narHash": "sha256-9h7+4/53cSfQ/uA3pSvCaBepmZaz/dLlLVJnbQ+SJjk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fc02ee70efb805d3b2865908a13ddd4474557ecf",
+        "rev": "7fd36ee82c0275fb545775cc5e4d30542899511d",
         "type": "github"
       },
       "original": {
