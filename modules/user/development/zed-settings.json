@@ -7,6 +7,23 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "edit_predictions": {
+    "mode": "eager",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null,
+      "enterprise_uri": null
+    },
+    "enabled_in_text_threads": false
+  },
+  "agent": {
+    "model_parameters": [],
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  "icon_theme": "Catppuccin Latte",
   "git_panel": {
     "dock": "right"
   },
@@ -58,7 +75,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Carbonfox"
+    "dark": "Catppuccin Mocha"
   },
   "languages": {
     "Python": {
@@ -113,6 +130,7 @@
     "metrics": false
   },
   "project_panel": {
+    "hide_gitignore": false,
     "button": true,
     "dock": "left",
     "git_status": true
