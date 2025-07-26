@@ -18,7 +18,7 @@
     git # Version control
     gh # GitHub CLI
     github-desktop # GitHub GUI client
-    gitnuro # Git GUI client
+    # gitnuro # Git GUI client
     nil # Nix LSP server
     nixd # Nix language server
     nixpkgs-fmt # Nix code formatter
@@ -48,33 +48,33 @@
     eza # Modern ls replacement
     fastfetch # System information tool
     fzf # Fuzzy finder
-    ghostty # Terminal emulator
-    gnome-console # GNOME terminal
+    # ghostty # Terminal emulator
+    # gnome-console # GNOME terminal
     htop # Process monitor
     ranger # File manager
     tldr # Simplified man pages
     tree # Directory tree viewer
-    typer # Interactive typing test
-    toipe # Terminal typing test
+    # typer # Interactive typing test
+    # toipe # Terminal typing test
     zsh # Advanced shell
 
     # ===== WEB BROWSERS =====
     brave # Privacy-focused browser
     firefox # Mozilla Firefox
     google-chrome # Google Chrome
-    librewolf # Privacy-hardened Firefox
+    # librewolf # Privacy-hardened Firefox
 
     # ===== COMMUNICATION & SOCIAL =====
-    beeper # Universal chat client
+    # beeper # Universal chat client
     discord # Gaming communication
-    ferdium # Multi-service messaging
+    # ferdium # Multi-service messaging
     telegram-desktop_git # Telegram client
     thunderbird-latest # Email client
 
     # ===== MEDIA & ENTERTAINMENT =====
     jellyfin-media-player # Media center client
     mangayomi # Manga reader
-    miru # Video streaming client
+    # miru # Video streaming client
     mpv-unwrapped # Video player
     spotify # Music streaming
     stremio # Media streaming
@@ -129,12 +129,12 @@
     wget # File downloader
     winetricks # Windows compatibility
     wl-clipboard # Wayland clipboard
-    dig # network stuff
+    dig # DNS lookup
 
     # ===== OFFICE & PRODUCTIVITY =====
     libreoffice # Office suite
     onlyoffice-bin_latest # Alternative office suite
-    varia # Various utilities
+    # varia # Various utilities
 
     # ===== THEMES & ICONS =====
     dracula-icon-theme # Dracula icons
