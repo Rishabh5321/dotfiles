@@ -1,19 +1,10 @@
 { config, pkgs, ... }:
 let
-  inherit (config.lib.stylix) colors;
-  mkColor = color: "#${color}";
-
-  background = mkColor colors.base00;
-  background-alt = mkColor colors.base01;
-  foreground = mkColor colors.base05;
-
-  red = mkColor colors.base08;
-  yellow = mkColor colors.base0A;
-  green = mkColor colors.base0B;
-  cyan = mkColor colors.base0C;
-  blue = mkColor colors.base0D;
-  magenta = mkColor colors.base0E;
-
+  accent = "#${config.lib.stylix.colors.base0D}";
+  accent-alt = "#${config.lib.stylix.colors.base03}";
+  background = "#${config.lib.stylix.colors.base00}";
+  background-alt = "#${config.lib.stylix.colors.base01}";
+  foreground = "#${config.lib.stylix.colors.base05}";
   rounding = 16;
 in
 {
@@ -75,50 +66,50 @@ in
           dropdownGap = "2.3em";
 
           buttons = {
-            monochrome = false;
+            monochrome = true;
             text = "${foreground}";
             radius = "${toString rounding}px";
             background = "${background-alt}";
-            icon = "${yellow}";
+            icon = "${accent}";
             hover = "${background}";
             workspaces = {
-              hover = "${yellow}";
-              active = "${green}";
-              available = "${cyan}";
+              hover = "${accent-alt}";
+              active = "${accent}";
+              available = "${accent-alt}";
             };
             notifications = {
               background = "${background-alt}";
               hover = "${background}";
-              total = "${red}";
-              icon = "${red}";
+              total = "${accent}";
+              icon = "${accent}";
             };
           };
 
           menus = {
-            monochrome = false;
+            monochrome = true;
             background = "${background}";
             cards = "${background-alt}";
             card_radius = "${toString rounding}px";
             label = "${foreground}";
             text = "${foreground}";
             border = {
-              color = "${magenta}";
+              color = "${accent}";
               radius = "${toString rounding}px";
             };
             popover = {
               text = "${foreground}";
               background = "${background-alt}";
             };
-            listitems.active = "${green}";
-            icons.active = "${green}";
-            switch.enabled = "${green}";
+            listitems.active = "${accent}";
+            icons.active = "${accent}";
+            switch.enabled = "${accent}";
             buttons = {
-              default = "${blue}";
-              active = "${green}";
+              default = "${accent}";
+              active = "${accent}";
             };
-            iconbuttons.active = "${green}";
-            progressbar.foreground = "${green}";
-            slider.primary = "${blue}";
+            iconbuttons.active = "${accent}";
+            progressbar.foreground = "${accent}";
+            slider.primary = "${accent}";
             tooltip = {
               background = "${background-alt}";
               text = "${foreground}";
@@ -140,22 +131,22 @@ in
           border_radius = "${toString rounding}px";
           background = "${background-alt}";
           actions = {
-            background = "${blue}";
+            background = "${accent}";
             text = "${foreground}";
           };
-          label = "${cyan}";
+          label = "${accent}";
           border = "${background-alt}";
           text = "${foreground}";
-          labelicon = "${cyan}";
+          labelicon = "${accent}";
         };
 
         # OSD theme
         osd = {
-          bar_color = "${green}";
-          bar_overflow_color = "${red}";
+          bar_color = "${accent}";
+          bar_overflow_color = "${accent-alt}";
           icon = "${background}";
-          icon_container = "${green}";
-          label = "${green}";
+          icon_container = "${accent}";
+          label = "${accent}";
           bar_container = "${background-alt}";
         };
       };
