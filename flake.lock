@@ -971,11 +971,11 @@
     },
     "nixpkgs_8": {
       "locked": {
-        "lastModified": 1753399495,
-        "narHash": "sha256-7XG/QBqhrYOyA2houjRTL2NMa7IKZZ/somBqr+Q/6Wo=",
+        "lastModified": 1753432016,
+        "narHash": "sha256-cnL5WWn/xkZoyH/03NNUS7QgW5vI7D1i74g48qplCvg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "0d00f23f023b7215b3f1035adb5247c8ec180dbc",
+        "rev": "6027c30c8e9810896b92429f0092f624f7b1aace",
         "type": "github"
       },
       "original": {
@@ -1417,11 +1417,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1753510487,
-        "narHash": "sha256-t3ZTdd1n0bgihGa2VXA0IrrbKRREY2+ZuU82FOe718w=",
+        "lastModified": 1753553656,
+        "narHash": "sha256-r1UHKkE1WdMw3rpdAWCaizF5tn9JIQ+DRsrBCGGzJjs=",
         "owner": "Rishabh5321",
         "repo": "zed-editor-flake",
-        "rev": "5fccf62deac5ddbe70f55198c08d758e3ccf5399",
+        "rev": "155305ac13d211b4b3dca7c47fbdef011354314e",
         "type": "github"
       },
       "original": {
