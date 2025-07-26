@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  colors = config.lib.stylix.colors;
+  inherit (config.lib.stylix) colors;
   mkColor = color: "#${color}";
 
   background = mkColor colors.base00;
@@ -8,7 +8,6 @@ let
   foreground = mkColor colors.base05;
 
   red = mkColor colors.base08;
-  orange = mkColor colors.base09;
   yellow = mkColor colors.base0A;
   green = mkColor colors.base0B;
   cyan = mkColor colors.base0C;
