@@ -30,10 +30,11 @@
     # zed-editor # Editor
     # nix-fast-build # Building flakes
     # gemini-cli # AI
+    lazygit # Git TUI client
     lazydocker # Docker container management
 
     # ===== EDITORS & IDEs =====
-    # android-studio # Android IDE
+    android-studio # Android IDE
     code-cursor # AI-powered VS Code fork
     micro # Simple terminal editor
     obsidian # Knowledge management
