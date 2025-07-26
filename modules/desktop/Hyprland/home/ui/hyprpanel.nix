@@ -1,10 +1,20 @@
 { config, pkgs, ... }:
 let
-  accent = "#${config.lib.stylix.colors.base0D}";
-  accent-alt = "#${config.lib.stylix.colors.base03}";
-  background = "#${config.lib.stylix.colors.base00}";
-  background-alt = "#${config.lib.stylix.colors.base01}";
-  foreground = "#${config.lib.stylix.colors.base05}";
+  colors = config.lib.stylix.colors;
+  mkColor = color: "#${color}";
+
+  background = mkColor colors.base00;
+  background-alt = mkColor colors.base01;
+  foreground = mkColor colors.base05;
+
+  red = mkColor colors.base08;
+  orange = mkColor colors.base09;
+  yellow = mkColor colors.base0A;
+  green = mkColor colors.base0B;
+  cyan = mkColor colors.base0C;
+  blue = mkColor colors.base0D;
+  magenta = mkColor colors.base0E;
+
   rounding = 16;
 in
 {
@@ -66,50 +76,50 @@ in
           dropdownGap = "2.3em";
 
           buttons = {
-            monochrome = true;
+            monochrome = false;
             text = "${foreground}";
             radius = "${toString rounding}px";
             background = "${background-alt}";
-            icon = "${accent}";
+            icon = "${yellow}";
             hover = "${background}";
             workspaces = {
-              hover = "${accent-alt}";
-              active = "${accent}";
-              available = "${accent-alt}";
+              hover = "${yellow}";
+              active = "${green}";
+              available = "${cyan}";
             };
             notifications = {
               background = "${background-alt}";
               hover = "${background}";
-              total = "${accent}";
-              icon = "${accent}";
+              total = "${red}";
+              icon = "${red}";
             };
           };
 
           menus = {
-            monochrome = true;
+            monochrome = false;
             background = "${background}";
             cards = "${background-alt}";
             card_radius = "${toString rounding}px";
             label = "${foreground}";
             text = "${foreground}";
             border = {
-              color = "${accent}";
+              color = "${magenta}";
               radius = "${toString rounding}px";
             };
             popover = {
               text = "${foreground}";
               background = "${background-alt}";
             };
-            listitems.active = "${accent}";
-            icons.active = "${accent}";
-            switch.enabled = "${accent}";
+            listitems.active = "${green}";
+            icons.active = "${green}";
+            switch.enabled = "${green}";
             buttons = {
-              default = "${accent}";
-              active = "${accent}";
+              default = "${blue}";
+              active = "${green}";
             };
-            iconbuttons.active = "${accent}";
-            progressbar.foreground = "${accent}";
-            slider.primary = "${accent}";
+            iconbuttons.active = "${green}";
+            progressbar.foreground = "${green}";
+            slider.primary = "${blue}";
             tooltip = {
               background = "${background-alt}";
               text = "${foreground}";
@@ -131,22 +141,22 @@ in
           border_radius = "${toString rounding}px";
           background = "${background-alt}";
           actions = {
-            background = "${accent}";
+            background = "${blue}";
             text = "${foreground}";
           };
-          label = "${accent}";
+          label = "${cyan}";
           border = "${background-alt}";
           text = "${foreground}";
-          labelicon = "${accent}";
+          labelicon = "${cyan}";
         };
 
         # OSD theme
         osd = {
-          bar_color = "${accent}";
-          bar_overflow_color = "${accent-alt}";
+          bar_color = "${green}";
+          bar_overflow_color = "${red}";
           icon = "${background}";
-          icon_container = "${accent}";
-          label = "${accent}";
+          icon_container = "${green}";
+          label = "${green}";
           bar_container = "${background-alt}";
         };
       };
