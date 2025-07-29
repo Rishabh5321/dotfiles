@@ -9,6 +9,7 @@
       window_padding_width = 4;
       confirm_os_window_close = 0;
       background_opacity = lib.mkForce "1"; # Opacity (1 = opaque, 0 = fully transparent)
+      term = "xterm-256color";
     };
 
     extraConfig = ''
