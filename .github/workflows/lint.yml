@@ -53,6 +53,7 @@ jobs:
         run: nixpkgs-fmt .
 
       - name: Create Pull Request
+        id: create_pr
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ steps.generate_token.outputs.token }}
