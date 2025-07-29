@@ -19,19 +19,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Generate App Token
-        id: generate_token
-        uses: peter-murray/workflow-application-token-action@v4
-        with:
-          application_id: ${{ secrets.APP_ID }}
-          application_private_key: ${{ secrets.APP_PRIVATE_KEY }}
-
-      - name: Configure Git for FlakeBuilderApp
-        run: |
-          git config --global user.email "flakebuilderapp[bot]@users.noreply.github.com"
-          git config --global user.name "flakebuilderapp[bot]"
-          echo "Git user configured: $(git config --global user.name) <$(git config --global user.email)>"
-
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
@@ -53,22 +40,12 @@ jobs:
         run: nixpkgs-fmt .
 
       - name: Create Pull Request
-        id: create_pr
         uses: peter-evans/create-pull-request@v7
         with:
-          token: ${{ steps.generate_token.outputs.token }}
           commit-message: "chore: auto format, lint and clean nix code"
           title: "Auto Lint, Format and Clean"
           body: "This is an auto-generated PR with linting, formatting and code cleaning changes."
           branch: auto-lint-format-clean
           delete-branch: true
-          author: "flakebuilderapp[bot] <flakebuilderapp[bot]@users.noreply.github.com>"
-          committer: "flakebuilderapp[bot] <flakebuilderapp[bot]@users.noreply.github.com>"
-          labels: automated, lint
-
-      - name: Set the PR to automerge
-        uses: peter-evans/enable-pull-request-automerge@v3
-        with:
-          token: ${{ steps.generate_token.outputs.token }}
-          pull-request-number: ${{ steps.create_pr.outputs.pull-request-number }}
-          merge-method: "squash"
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          labels: automated chore
