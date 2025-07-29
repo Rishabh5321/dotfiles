@@ -24,13 +24,18 @@ on:
         description: "Build only a specific host (leave empty for all)"
         required: false
         type: string
+      timeout_minutes:
+        description: "Timeout for build jobs in minutes"
+        required: false
+        type: number
+        default: 180
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  prepare:
+  prepare_build:
     name: Prepare Build
     runs-on: ubuntu-latest
     outputs:
@@ -63,14 +68,14 @@ jobs:
           fi
           echo "matrix={\"hostname\":$HOSTS}" >> "$GITHUB_OUTPUT"
 
-  Build_Config:
+  build_config:
     name: Build ${{ matrix.hostname }}
-    needs: [prepare]
+    needs: [prepare_build]
     runs-on: ubuntu-latest
-    timeout-minutes: 180 # Prevent hung builds
+    timeout-minutes: ${{ github.event.inputs.timeout_minutes || 180 }} # Use input parameter or default to 180 minutes
     strategy:
       fail-fast: true # Stop all matrix jobs if one fails
-      matrix: ${{fromJson(needs.prepare.outputs.matrix)}}
+      matrix: ${{fromJson(needs.prepare_build.outputs.matrix)}}
     steps:
       - name: Free Disk Space
         uses: endersonmenezes/free-disk-space@v2
@@ -123,7 +128,7 @@ jobs:
   notify_telegram:
     name: Send Telegram Notification
     runs-on: ubuntu-latest
-    needs: [Build_Config] # This job waits for all matrix jobs of Build_Config
+    needs: [build_config] # This job waits for all matrix jobs of build_config
     if: always() # Run this job even if some matrix builds failed
     steps:
       - name: Checkout repository # Needed to access workflow details potentially
@@ -133,9 +138,9 @@ jobs:
         id: determine_status
         run: |
           # Check the outcome of the job it depends on.
-          # needs.Build_Config.result will be 'success' only if ALL matrix jobs succeeded.
+          # needs.build_config.result will be 'success' only if ALL matrix jobs succeeded.
           # If any failed, it will be 'failure'. If skipped, 'skipped'.
-          STATUS="${{ needs.Build_Config.result }}"
+          STATUS="${{ needs.build_config.result }}"
           MESSAGE_STATUS=""
           if [[ "$STATUS" == "success" ]]; then
             MESSAGE_STATUS="✅ Build successful!"
