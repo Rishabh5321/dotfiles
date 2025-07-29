@@ -3,7 +3,7 @@
   imports = [
     ./flatpak.nix
     ./gaming.nix
-    ./kodi.nix
+    #./kodi.nix
     ./program.nix
     #./proton.nix
     ./services.nix
