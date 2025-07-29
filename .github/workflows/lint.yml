@@ -55,6 +55,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
+          token: ${{ steps.generate_token.outputs.token }}
           commit-message: "chore: auto format, lint and clean nix code"
           title: "Auto Lint, Format and Clean"
           body: "This is an auto-generated PR with linting, formatting and code cleaning changes."
