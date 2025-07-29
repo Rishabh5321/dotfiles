@@ -1,4 +1,4 @@
-{ inputs, ... }:
+_:
 {
   # imports = [
   #   inputs.nix-gaming.nixosModules.pipewireLowLatency
