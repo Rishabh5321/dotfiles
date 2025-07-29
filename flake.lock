@@ -342,11 +342,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1753750644,
-        "narHash": "sha256-/VgjXGHH6lUHWBRsQ51M9y7TVPbAyx8AtZA6+7xGX2s=",
+        "lastModified": 1753770604,
+        "narHash": "sha256-Bsn6v2ly7oPUXdshdOiya/kFvhUpzP+BupVPR7i44Ns=",
         "owner": "Rishabh5321",
         "repo": "gemini-cli-flake",
-        "rev": "664f54cb1c0a65e2b3960d1c2d1ce6df5d9cb760",
+        "rev": "bff2db45c769c0f765218f8bebca4aa4f46deae4",
         "type": "github"
       },
       "original": {
@@ -891,11 +891,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1753549186,
-        "narHash": "sha256-Znl7rzuxKg/Mdm6AhimcKynM7V3YeNDIcLjBuoBcmNs=",
+        "lastModified": 1753694789,
+        "narHash": "sha256-cKgvtz6fKuK1Xr5LQW/zOUiAC0oSQoA9nOISB0pJZqM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "17f6bd177404d6d43017595c5264756764444ab8",
+        "rev": "dc9637876d0dcc8c9e5e22986b857632effeb727",
         "type": "github"
       },
       "original": {
