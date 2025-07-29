@@ -1,8 +1,9 @@
 { inputs, ... }:
 {
-  imports = [
-    inputs.nix-gaming.nixosModules.pipewireLowLatency
-  ];
+  # imports = [
+  #   inputs.nix-gaming.nixosModules.pipewireLowLatency
+  # ];
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -13,8 +14,8 @@
       # enable this module
       enable = true;
       # defaults (no need to be set unless modified)
-      # quantum = 64;
-      # rate = 48000;
+      quantum = 64;
+      rate = 48000;
     };
   };
 
