@@ -60,8 +60,9 @@ jobs:
           body: "This is an auto-generated PR with linting, formatting and code cleaning changes."
           branch: auto-lint-format-clean
           delete-branch: true
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          labels: automated chore
+          author: "flakebuilderapp[bot] <flakebuilderapp[bot]@users.noreply.github.com>"
+          committer: "flakebuilderapp[bot] <flakebuilderapp[bot]@users.noreply.github.com>"
+          labels: automated, lint
 
       - name: Set the PR to automerge
         if: ${{ steps.create_pr.outputs.pull-request-operation == 'created' }}
