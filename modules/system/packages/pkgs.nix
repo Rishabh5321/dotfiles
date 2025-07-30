@@ -150,7 +150,7 @@
     libsForQt5.qt5.qtsvg # Qt5 SVG support
 
     # ===== IMAGE PROCESSING =====
-    imagemagick # Image prossessing for wallsite project
+    # imagemagick # Image prossessing for wallsite project
 
     # ===== TEXT EDITORS (COMMENTED) =====
     #helix                 # Modern text editor
