@@ -40,7 +40,7 @@
       bindkey '^[[H' beginning-of-line                # Home
       bindkey '^[[F' end-of-line                      # End
 
-      fastfetch
+      # fastfetch
 
       # Auto-start tmux if not already inside one
       # if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -n "$PS1" ]; then
