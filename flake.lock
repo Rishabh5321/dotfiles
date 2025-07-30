@@ -342,11 +342,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1753836792,
-        "narHash": "sha256-i6qcICPgcHyHofZ7HtkX9I9PvbwsT3IJUnmexakAfRY=",
+        "lastModified": 1753856325,
+        "narHash": "sha256-GikVU8IgKIUUuF5UvUp4/ZU9qjyTSiOQMEUkZthnblQ=",
         "owner": "Rishabh5321",
         "repo": "gemini-cli-flake",
-        "rev": "36b2b78d1c014c42ea7191e43c915e6c477bf159",
+        "rev": "a295e269694bd43dc309cee16cbfb61d6efd62c9",
         "type": "github"
       },
       "original": {
