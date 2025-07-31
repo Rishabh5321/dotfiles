@@ -1,24 +1,53 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   programs.kitty = {
     enable = true;
-    package = pkgs.kitty;
-
     settings = {
-      scrollback_lines = 2000;
-      wheel_scroll_min_lines = 1;
-      window_padding_width = 4;
+      # Disable popup confirmation window when closing Kitty terminal
       confirm_os_window_close = 0;
-      background_opacity = lib.mkForce "1"; # Opacity (1 = opaque, 0 = fully transparent)
-      term = "xterm-256color";
-    };
 
-    extraConfig = ''
-      tab_bar_style fade
-      tab_fade 1
-      active_tab_font_style bold
-      inactive_tab_font_style bold
-      cursor_trail 3
-      cursor_trail_decay 0.1 0.4
-    '';
+      # Cursor
+      cursor_shape = "beam";
+      cursor_beam_thickness = "1.0";
+      cursor_blink_interval = "0";
+      cursor_trail = "3";
+      cursor_trail_decay = "0.1 0.4";
+      cursor_trail_start_threshold = "1";
+
+      # Performance tuning
+      sync_to_monitor = true;
+
+      # Number of lines of history to keep in memory for scrolling back
+      scrollback_lines = 1000;
+
+      # Tab bar position, style and alignment
+      tab_bar_edge = "top";
+      tab_bar_min_tabs = "1";
+      tab_bar_style = "powerline";
+      tab_powerline_style = "slanted";
+      tab_bar_align = "left";
+
+      # When the current tab is closed, go back to the previous tab
+      tab_switch_strategy = "previous";
+
+      # Tab bar title
+      tab_title_max_length = "0";
+      tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{title}";
+
+      # Active/Inactive tab style
+      active_tab_font_style = "bold";
+      inactive_tab_font_style = "normal";
+
+      # Terminal bell
+      enable_audio_bell = false;
+      window_alert_on_bell = true;
+
+      # URLs
+      detect_urls = true;
+      url_prefixes = "file ftp ftps gemini git gopher http https irc ircs kitty mailto news sftp ssh";
+      underline_hyperlinks = "always";
+      url_style = "curly";
+      open_url_with = "default";
+    };
   };
 }
