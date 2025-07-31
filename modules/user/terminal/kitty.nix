@@ -21,11 +21,11 @@ _:
       scrollback_lines = 1000;
 
       # Tab bar position, style and alignment
-      tab_bar_edge = "top";
-      tab_bar_min_tabs = "1";
-      tab_bar_style = "powerline";
-      tab_powerline_style = "slanted";
-      tab_bar_align = "left";
+      # tab_bar_edge = "top";
+      # tab_bar_min_tabs = "1";
+      # tab_bar_style = "powerline";
+      # tab_powerline_style = "slanted";
+      # tab_bar_align = "left";
 
       # When the current tab is closed, go back to the previous tab
       tab_switch_strategy = "previous";
