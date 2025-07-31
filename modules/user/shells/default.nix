@@ -3,7 +3,8 @@
 { ... }:
 {
   imports = [
-    ./oh-my-posh.nix
+    # ./oh-my-posh.nix
+    ./starship.nix
     ./tmux.nix
     ./zsh.nix
   ];
