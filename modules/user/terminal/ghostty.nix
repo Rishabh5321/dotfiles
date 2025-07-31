@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
   programs = {
@@ -20,6 +20,7 @@
 
         # Cursor settings
         cursor-style = "block";
+        custom-shader = toString ./ghostty/shaders/cursor_blaze.glsl;
 
         # Misc settings
         # macos-option-as-alt = true;
