@@ -11,7 +11,7 @@ _:
       cursor_beam_thickness = "1.0";
       cursor_blink_interval = "0";
       cursor_trail = "3";
-      cursor_trail_decay = "0.1 0.4";
+      cursor_trail_decay = "0.1 0.6";
       cursor_trail_start_threshold = "1";
 
       # Performance tuning
@@ -50,7 +50,7 @@ _:
       open_url_with = "default";
 
       # Terminal Colors
-      term = "kitty";
+      term = "xterm-256color";
     };
   };
 }

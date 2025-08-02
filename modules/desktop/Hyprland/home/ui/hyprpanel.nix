@@ -22,12 +22,12 @@ in
         layouts = {
           "0" = {
             left = [ "dashboard" "workspaces" "windowtitle" "netstat" "hypridle" ];
-            middle = [ "clock" "media" ];
+            middle = [ "clock" ];
             right = [ "battery" "volume" "bluetooth" "network" "systray" "notifications" ];
           };
           "1" = {
             left = [ "dashboard" "workspaces" "windowtitle" ];
-            middle = [ "clock" "media" ];
+            middle = [ "clock" ];
             right = [ "volume" "network" "systray" "notifications" ];
           };
         };
