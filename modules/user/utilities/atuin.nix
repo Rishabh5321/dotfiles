@@ -10,7 +10,7 @@ _: {
       update_check = false;
       show_help = true;
       style = "compact";
-      inline_height = 10;
+      inline_height = 20;
       sync = {
         records = true;
       };
