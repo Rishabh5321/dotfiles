@@ -185,7 +185,7 @@
     inputs.zed-editor-flake.packages.${system}.zed-editor # Zed editor from flake
     inputs.better-control.packages.${pkgs.system}.better-control # Device control
     inputs.zen-browser.packages."${system}".default # zen
-    inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # ===== FLAKE INPUTS (COMMENTED) =====
     # inputs.akuse-flake.packages.${system}.akuse                 # Custom package

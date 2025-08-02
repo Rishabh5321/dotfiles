@@ -15,7 +15,7 @@
         background-opacity = 1.0;
 
         # Font settings - will use system font from Stylix
-        font-family = config.stylix.fonts.monospace.name;
+        font-family = config.stylix.fonts.serif.name;
         font-size = builtins.toString config.stylix.fonts.sizes.terminal;
         # font-feature = "calt liga";
 
