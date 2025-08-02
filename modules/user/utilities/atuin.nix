@@ -8,7 +8,9 @@ _: {
       #inline_height = 10;
       show_preview = true;
       update_check = false;
-      style = "full";
+      show_help = true;
+      style = "compact";
+      inline_height = 10;
       sync = {
         records = true;
       };
