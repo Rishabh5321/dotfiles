@@ -48,6 +48,9 @@ _:
       underline_hyperlinks = "always";
       url_style = "curly";
       open_url_with = "default";
+
+      # Terminal Colors
+      term = "kitty";
     };
   };
 }
