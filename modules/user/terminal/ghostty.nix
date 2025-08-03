@@ -15,8 +15,9 @@
         background-opacity = 1.0;
 
         # Font settings - will use system font from Stylix
-        font-family = config.stylix.fonts.serif.name;
-        font-size = builtins.toString config.stylix.fonts.sizes.terminal;
+        font-family = "PragmataPro Liga";
+        font-thicken = true;
+        # font-size = "16";
         # font-feature = "calt liga";
 
         # Cursor settings
