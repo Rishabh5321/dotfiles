@@ -8,6 +8,7 @@
 
     # ===== NUR =====
     nur.repos.colorman.speed-cloudflare-cli
+    nur.repos.charmbracelet.crush
 
     # ===== DEVELOPMENT TOOLS =====
     act # GitHub Actions local runner
