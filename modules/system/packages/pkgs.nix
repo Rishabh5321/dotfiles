@@ -23,7 +23,9 @@
     nixd # Nix language server
     nixpkgs-fmt # Nix code formatter
     nixpkgs-review # Nixpkgs PR review tool
+    nix-prefetch # Nix package prefetcher
     nix-prefetch-github # Fetch GitHub repos for Nix
+    nix-update # Nix package update tool
     nh # Nix helper
     openssl # Cryptography toolkit
     geminicommit # Gemini commit message generator
