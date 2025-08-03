@@ -183,7 +183,7 @@
 
     # ===== FLAKE INPUTS =====
     # inputs.grayjay.packages.${pkgs.system}.grayjay # Video platform client
-    inputs.gemini-cli.packages.${pkgs.system}.gemini-cli-stable # stable version
+    inputs.gemini-cli.packages.${pkgs.system}.gemini-cli-nightly # stable version
     inputs.zed-editor-flake.packages.${system}.zed-editor # Zed editor from flake
     inputs.better-control.packages.${pkgs.system}.better-control # Device control
     inputs.zen-browser.packages."${system}".default # zen
