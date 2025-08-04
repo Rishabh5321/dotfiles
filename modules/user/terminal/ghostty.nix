@@ -15,8 +15,8 @@
         background-opacity = 1.0;
 
         # Font settings - will use system font from Stylix
-        font-family = "PragmataPro Liga";
-        font-thicken = true;
+        font-family = "JetBrainsMono Nerd Font";
+        # font-thicken = true;
         # font-size = "16";
         # font-feature = "calt liga";
 
