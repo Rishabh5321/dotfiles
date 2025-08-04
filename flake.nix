@@ -48,6 +48,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lsfg-vk-flake = {
+      url = "github:pabloaul/lsfg-vk-flake/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # plasma-manager = {
     #   url = "github:nix-community/plasma-manager";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -141,6 +146,7 @@
     , nur
     , wallpapers-repo
     , ghostty
+    , lsfg-vk-flake
       #, nix-colorizer
       #, plasma-manager
     , ...
@@ -214,6 +220,7 @@
             sddm-sugar-candy-nix.nixosModules.default
             chaotic.nixosModules.default
             nur.modules.nixos.default
+            lsfg-vk-flake.nixosModules.default
             #inputs.determinate.nixosModules.default
             # Home Manager configuration integrated into NixOS
             {
