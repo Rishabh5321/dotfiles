@@ -7,5 +7,7 @@
     ./packages.nix
     ./wayland.nix
     ./security.nix
+
+    ./quickshell.nix
   ];
 }
