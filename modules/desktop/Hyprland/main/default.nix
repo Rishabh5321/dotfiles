@@ -8,6 +8,6 @@
     ./wayland.nix
     ./security.nix
 
-    ./quickshell.nix
+    # ./quickshell.nix
   ];
 }
