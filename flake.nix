@@ -145,7 +145,6 @@
     , chaotic
     , nur
     , wallpapers-repo
-    , ghostty
     , lsfg-vk-flake
       #, nix-colorizer
       #, plasma-manager
