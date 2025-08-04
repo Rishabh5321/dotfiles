@@ -59,12 +59,13 @@
       	border: 3px solid #${config.stylix.base16Scheme.base05};
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         border-radius: 90px;
+        margin: 20px;
       }
       button:focus,
       button:active,
       button:hover {
-        color: #${config.stylix.base16Scheme.base0B};
-        background-color: rgba(12, 12, 12, 0.5);
+        color: #${config.stylix.base16Scheme.base00};
+        background-color: #${config.stylix.base16Scheme.base0B};
         border: 3px solid #${config.stylix.base16Scheme.base0B};
       }
       #logout {

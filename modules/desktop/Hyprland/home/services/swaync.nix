@@ -70,7 +70,7 @@
     }
     .notification-row {
       outline: none;
-      margin: 10px;
+      margin: 12px;
       padding: 0;
     }
     .notification {
@@ -80,22 +80,22 @@
     }
     .notification-content {
       background: #${config.stylix.base16Scheme.base00};
-      padding: 10px;
-      border-radius: 12px;
-      border: 2px solid #${config.stylix.base16Scheme.base0D};
+      padding: 15px;
+      border-radius: 16px;
+      border: 2px solid #${config.stylix.base16Scheme.base0B};
       margin: 0;
     }
     .notification-default-action {
       margin: 0;
       padding: 0;
-      border-radius: 12px;
+      border-radius: 16px;
     }
     .close-button {
       background: #${config.stylix.base16Scheme.base08};
       color: #${config.stylix.base16Scheme.base00};
       text-shadow: none;
       padding: 0;
-      border-radius: 12px;
+      border-radius: 16px;
       margin-top: 5px;
       margin-right: 5px;
     }
@@ -106,9 +106,9 @@
       border: none
     }
     .notification-action {
-      border: 2px solid #${config.stylix.base16Scheme.base0D};
+      border: 2px solid #${config.stylix.base16Scheme.base0B};
       border-top: none;
-      border-radius: 12px;
+      border-radius: 16px;
     }
     .notification-default-action:hover,
     .notification-action:hover {
@@ -116,19 +116,19 @@
       background: #${config.stylix.base16Scheme.base0B}
     }
     .notification-default-action {
-      border-radius: 12px;
+      border-radius: 16px;
       margin: 0px;
     }
     .notification-default-action:not(:only-child) {
-      border-bottom-left-radius: 12px;
-      border-bottom-right-radius: 12px
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px
     }
     .notification-action:first-child {
-      border-bottom-left-radius: 12px;
+      border-bottom-left-radius: 16px;
       background: #${config.stylix.base16Scheme.base00}
     }
     .notification-action:last-child {
-      border-bottom-right-radius: 12px;
+      border-bottom-right-radius: 16px;
       background: #${config.stylix.base16Scheme.base00}
     }
     .inline-reply {
@@ -139,13 +139,13 @@
       color: #${config.stylix.base16Scheme.base05};
       caret-color: #${config.stylix.base16Scheme.base05};
       border: 1px solid #${config.stylix.base16Scheme.base09};
-      border-radius: 12px
+      border-radius: 16px
     }
     .inline-reply-button {
       margin-left: 4px;
       background: #${config.stylix.base16Scheme.base00};
       border: 1px solid #${config.stylix.base16Scheme.base09};
-      border-radius: 12px;
+      border-radius: 16px;
       color: #${config.stylix.base16Scheme.base05}
     }
     .inline-reply-button:disabled {
@@ -159,7 +159,7 @@
     .body-image {
       margin-top: 6px;
       background-color: #${config.stylix.base16Scheme.base05};
-      border-radius: 12px
+      border-radius: 16px
     }
     .summary {
       font-size: 16px;
@@ -186,7 +186,7 @@
     .control-center {
       background: #${config.stylix.base16Scheme.base00};
       border: 2px solid #${config.stylix.base16Scheme.base0C};
-      border-radius: 12px;
+      border-radius: 16px;
     }
     .control-center-list {
       background: transparent
@@ -203,10 +203,10 @@
     .widget-title {
       color: #${config.stylix.base16Scheme.base0B};
       background: #${config.stylix.base16Scheme.base00};
-      padding: 5px 10px;
-      margin: 10px 10px 5px 10px;
+      padding: 10px;
+      margin: 10px;
       font-size: 1.5rem;
-      border-radius: 12px;
+      border-radius: 16px;
     }
     .widget-title>button {
       font-size: 1rem;
@@ -214,7 +214,7 @@
       text-shadow: none;
       background: #${config.stylix.base16Scheme.base00};
       box-shadow: none;
-      border-radius: 12px;
+      border-radius: 16px;
     }
     .widget-title>button:hover {
       background: #${config.stylix.base16Scheme.base08};
@@ -222,15 +222,14 @@
     }
     .widget-dnd {
       background: #${config.stylix.base16Scheme.base00};
-      padding: 5px 10px;
-      margin: 10px 10px 5px 10px;
-      border-radius: 12px;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 16px;
       font-size: large;
       color: #${config.stylix.base16Scheme.base0B};
     }
     .widget-dnd>switch {
-      border-radius: 12px;
-      /* border: 1px solid #${config.stylix.base16Scheme.base0B}; */
+      border-radius: 16px;
       background: #${config.stylix.base16Scheme.base0B};
     }
     .widget-dnd>switch:checked {
@@ -239,14 +238,14 @@
     }
     .widget-dnd>switch slider {
       background: #${config.stylix.base16Scheme.base00};
-      border-radius: 12px
+      border-radius: 16px
     }
     .widget-dnd>switch:checked slider {
       background: #${config.stylix.base16Scheme.base00};
-      border-radius: 12px
+      border-radius: 16px
     }
     .widget-label {
-        margin: 10px 10px 5px 10px;
+        margin: 10px;
     }
     .widget-label>label {
       font-size: 1rem;
@@ -254,15 +253,15 @@
     }
     .widget-mpris {
       color: #${config.stylix.base16Scheme.base05};
-      padding: 5px 10px;
-      margin: 10px 10px 5px 10px;
-      border-radius: 12px;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 16px;
     }
     .widget-mpris > box > button {
-      border-radius: 12px;
+      border-radius: 16px;
     }
     .widget-mpris-player {
-      padding: 5px 10px;
+      padding: 10px;
       margin: 10px
     }
     .widget-mpris-title {
@@ -282,9 +281,9 @@
     }
     .widget-volume {
       background: #${config.stylix.base16Scheme.base01};
-      padding: 5px;
-      margin: 10px 10px 5px 10px;
-      border-radius: 12px;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 16px;
       font-size: x-large;
       color: #${config.stylix.base16Scheme.base05};
     }
@@ -296,13 +295,13 @@
       background-color: #${config.stylix.base16Scheme.base00};
       padding: 4px 8px 8px;
       margin: 0 8px 8px;
-      border-radius: 12px;
+      border-radius: 16px;
     }
     .widget-backlight {
       background: #${config.stylix.base16Scheme.base01};
-      padding: 5px;
-      margin: 10px 10px 5px 10px;
-      border-radius: 12px;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 16px;
       font-size: x-large;
       color: #${config.stylix.base16Scheme.base05}
     }

@@ -43,7 +43,7 @@
             y-offset = mkLiteral "0px";
             cursor = "default";
             enabled = true;
-            border-radius = mkLiteral "15px";
+            border-radius = mkLiteral "20px";
             background-color = mkLiteral "@bg";
           };
           "mainbox" = {
@@ -57,7 +57,7 @@
             background-color = mkLiteral "transparent";
           };
           "imagebox" = {
-            padding = mkLiteral "20px";
+            padding = mkLiteral "30px";
             background-color = mkLiteral "transparent";
             background-image = mkLiteral ''url("~/Pictures/Wallpapers/${wallpaper}",height)'';
             orientation = mkLiteral "vertical";
@@ -69,7 +69,7 @@
           };
           "listbox" = {
             spacing = mkLiteral "20px";
-            padding = mkLiteral "20px";
+            padding = mkLiteral "30px";
             background-color = mkLiteral "transparent";
             orientation = mkLiteral "vertical";
             children = map mkLiteral [
@@ -83,8 +83,8 @@
           "inputbar" = {
             enabled = true;
             spacing = mkLiteral "10px";
-            padding = mkLiteral "10px";
-            border-radius = mkLiteral "10px";
+            padding = mkLiteral "15px";
+            border-radius = mkLiteral "15px";
             background-color = mkLiteral "@bg-alt";
             text-color = mkLiteral "@foreground";
             children = map mkLiteral [
@@ -114,8 +114,8 @@
             text-color = mkLiteral "@foreground";
           };
           "button" = {
-            padding = mkLiteral "15px";
-            border-radius = mkLiteral "10px";
+            padding = mkLiteral "20px";
+            border-radius = mkLiteral "15px";
             background-color = mkLiteral "@bg-alt";
             text-color = mkLiteral "inherit";
             cursor = mkLiteral "pointer";
@@ -135,7 +135,7 @@
             reverse = false;
             fixed-height = true;
             fixed-columns = true;
-            spacing = mkLiteral "10px";
+            spacing = mkLiteral "15px";
             background-color = mkLiteral "transparent";
             text-color = mkLiteral "@foreground";
             cursor = "default";
@@ -143,8 +143,8 @@
           "element" = {
             enabled = true;
             spacing = mkLiteral "15px";
-            padding = mkLiteral "8px";
-            border-radius = mkLiteral "10px";
+            padding = mkLiteral "15px";
+            border-radius = mkLiteral "15px";
             background-color = mkLiteral "transparent";
             text-color = mkLiteral "@text-color";
             cursor = mkLiteral "pointer";
@@ -191,7 +191,7 @@
           };
           "textbox" = {
             padding = mkLiteral "15px";
-            border-radius = mkLiteral "10px";
+            border-radius = mkLiteral "15px";
             background-color = mkLiteral "@bg-alt";
             text-color = mkLiteral "@foreground";
             vertical-align = mkLiteral "0.5";

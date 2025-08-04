@@ -45,7 +45,7 @@ with lib; {
       exec-once = swww-daemon # Start swww daemon if not running
       exec-once = swaync # Start notification daemon
       exec-once = nm-applet --indicator
-      # exec-once = killall -q waybar;sleep .5 && waybar
+      exec-once = killall -q waybar;sleep .5 && waybar
       exec-once = systemctl --user start hyprpolkitagent
       exec-once = kdeconnect-indicator # Start kdeconnect indicator earlier
       exec-once = wl-paste --type text --watch cliphist store
@@ -64,8 +64,8 @@ with lib; {
         layout            = dwindle
         resize_on_border  = true
         allow_tearing     = false # Recommended for smoother visuals
-        col.active_border   = rgb(${config.stylix.base16Scheme.base08}) rgb(${config.stylix.base16Scheme.base0C}) 45deg
-        col.inactive_border = rgb(${config.stylix.base16Scheme.base01})
+        col.active_border   = rgb(${config.stylix.base16Scheme.base0D}) rgb(${config.stylix.base16Scheme.base0B}) 45deg
+        col.inactive_border = rgb(${config.stylix.base16Scheme.base00})
       }
 
       # ── Input Settings ─────────────────────────────────────────────────────
@@ -99,13 +99,17 @@ with lib; {
       animations {
         enabled = yes
 
-        bezier = myBezier, 0.05, 0.9, 0.1, 1.05
-        animation = windows, 1, 7, myBezier
-        animation = windowsOut, 1, 7, default, popin 80%
+        bezier = gentle, 0.3, 1, 0.5, 1
+        bezier = aggressive, 0.1, 1, 0.3, 1
+        bezier = overshot, 0.2, 1, 0.5, 1.2
+
+        animation = windows, 1, 4, gentle, slide
+        animation = windowsIn, 1, 5, overshot, slide
+        animation = windowsOut, 1, 4, aggressive, slide
         animation = border, 1, 10, default
-        animation = borderangle, 1, 8, default
-        animation = fade, 1, 7, default
-        animation = workspaces, 1, 6, default
+        animation = fade, 1, 4, gentle
+        animation = workspaces, 1, 5, gentle, slide
+        animation = specialWorkspace, 1, 5, gentle, slide
       }
 
       # ── Decoration ─────────────────────────────────────────────────────────

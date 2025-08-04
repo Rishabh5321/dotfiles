@@ -20,7 +20,7 @@ in
     ./ui/rofi/config-long.nix
     ./ui/rofi/config-wallpaper.nix
     ./ui/wlogout.nix
-    ./ui/hyprpanel.nix
+    # ./ui/hyprpanel.nix
     vars.waybarChoice
 
     # Misc
