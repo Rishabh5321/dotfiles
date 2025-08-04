@@ -14,12 +14,6 @@
         window-padding-y = 10;
         background-opacity = 1.0;
 
-        # Font settings - will use system font from Stylix
-        font-family = "JetBrainsMono Nerd Font";
-        # font-thicken = true;
-        # font-size = "16";
-        # font-feature = "calt liga";
-
         # Cursor settings
         # cursor-style = "block";
         custom-shader = toString (pkgs.fetchurl {
