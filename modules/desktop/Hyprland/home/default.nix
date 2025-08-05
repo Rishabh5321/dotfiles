@@ -1,7 +1,7 @@
 { pkgs, username, host, inputs, ... }:
-let
-  vars = import ./misc/variables.nix;
-in
+# let
+#   vars = import ./misc/variables.nix;
+# in
 {
   imports = [
     # Core components
