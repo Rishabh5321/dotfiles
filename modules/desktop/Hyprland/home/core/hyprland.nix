@@ -1,4 +1,4 @@
-{ lib, username, pkgs, config, wallpaper, inputs, ... }:
+{ lib, username, pkgs, config, wallpaper, wallpapers, inputs, ... }:
 
 let
   inherit (import ../misc/variables.nix) browser terminal extraMonitorSettings;
@@ -50,7 +50,7 @@ with lib; {
       exec-once = kdeconnect-indicator # Start kdeconnect indicator earlier
       exec-once = wl-paste --type text --watch cliphist store
       exec-once = wl-paste --type image --watch cliphist store
-      exec-once = sleep 1 && swww img /home/${username}/Pictures/Wallpapers/${wallpaper} # Set wallpaper after swww is ready
+      exec-once = sleep 10 && swww img ${wallpapers}/${wallpaper} # Set wallpaper after swww is ready
 
       # ── Monitor Setup ─────────────────────────────────────────────────────
       monitor = eDP-1,1920x1080@60,0x0,1

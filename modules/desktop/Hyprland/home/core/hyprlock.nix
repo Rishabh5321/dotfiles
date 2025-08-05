@@ -1,6 +1,7 @@
 { config
 , lib
 , wallpaper
+, wallpapers
 , ...
 }:
 let
@@ -16,7 +17,7 @@ in
         grace = 1;
       };
       background = {
-        path = lib.mkForce "~/Pictures/Wallpapers/${wallpaper}";
+        path = lib.mkForce "${wallpapers}/${wallpaper}";
         blur_size = 5;
         blur_passes = 1;
         noise = 0.0117;

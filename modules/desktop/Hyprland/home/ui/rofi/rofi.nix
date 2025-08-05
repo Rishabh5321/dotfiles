@@ -1,6 +1,7 @@
 { pkgs
 , config
 , wallpaper
+, wallpapers
 , ...
 }: {
   programs = {
@@ -59,7 +60,7 @@
           "imagebox" = {
             padding = mkLiteral "30px";
             background-color = mkLiteral "transparent";
-            background-image = mkLiteral ''url("~/Pictures/Wallpapers/${wallpaper}",height)'';
+            background-image = mkLiteral ''url("${wallpapers}/${wallpaper}",height)'';
             orientation = mkLiteral "vertical";
             children = map mkLiteral [
               "inputbar"
