@@ -26,7 +26,7 @@ in
             right = [ "battery" "volume" "bluetooth" "network" "systray" "notifications" ];
           };
           "1" = {
-            left = [ "dashboard" "workspaces" "windowtitle" ];
+            left = [ "dashboard" "workspaces" "windowtitle" "netstat" ];
             middle = [ "clock" ];
             right = [ "volume" "network" "systray" "notifications" ];
           };
