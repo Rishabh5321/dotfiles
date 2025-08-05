@@ -21,7 +21,6 @@ with lib; {
         modules-left = [
           "custom/dashboard"
           "hyprland/window"
-          "network"
         ];
         modules-right = [
           "idle_inhibitor"
