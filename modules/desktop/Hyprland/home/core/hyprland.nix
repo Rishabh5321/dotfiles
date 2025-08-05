@@ -45,7 +45,7 @@ with lib; {
       exec-once = swww-daemon # Start swww daemon if not running
       exec-once = swaync # Start notification daemon
       exec-once = nm-applet --indicator
-      exec-once = killall -q waybar;sleep .5 && waybar
+      # exec-once = killall -q waybar;sleep .5 && waybar
       exec-once = systemctl --user start hyprpolkitagent
       exec-once = kdeconnect-indicator # Start kdeconnect indicator earlier
       exec-once = wl-paste --type text --watch cliphist store
