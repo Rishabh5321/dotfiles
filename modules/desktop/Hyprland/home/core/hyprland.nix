@@ -1,4 +1,4 @@
-{ lib, username, pkgs, config, wallpaper, wallpapers, inputs, ... }:
+{ lib, pkgs, config, wallpaper, wallpapers, inputs, ... }:
 
 let
   inherit (import ../misc/variables.nix) browser terminal extraMonitorSettings;
