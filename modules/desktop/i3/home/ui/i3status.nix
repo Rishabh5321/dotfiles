@@ -4,11 +4,16 @@ _: {
     bars = {
       laptop = {
         theme = "solarized-dark";
-        icons = "awesome4";
+        icons = "awesome6";
         blocks = [
           {
             block = "focused_window";
             format = "$title.str(max_w:25) |";
+          }
+
+          {
+            block = "battery";
+            format = " $icon $percentage ";
           }
 
           {
