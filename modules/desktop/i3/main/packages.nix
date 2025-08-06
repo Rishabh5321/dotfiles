@@ -13,7 +13,7 @@
     i3
     # i3status
     i3lock
-    polybar
+    # i3blocks
     rofi
     feh
     picom

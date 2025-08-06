@@ -15,14 +15,14 @@ in
     config = {
       modifier = modifier;
       gaps = {
-        inner = 4;
-        outer = 8;
+        inner = 2;
+        outer = 4;
       };
       window = {
         border = 2;
         titlebar = false; # Hyprland doesn't have titlebars by default
       };
-      bars = [];
+      bars = [ ];
       # colors = {
       #   background = "#${config.stylix.base16Scheme.base00}";
       #   focused = {

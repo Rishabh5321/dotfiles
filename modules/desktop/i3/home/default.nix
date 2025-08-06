@@ -12,7 +12,8 @@
     ./services/gnome-keyring.nix
 
     # UI elements
-    ./ui/polybar.nix
+    # ./ui/i3blocks.nix
+    # ./ui/polybar
     ./ui/rofi/rofi.nix
     ./ui/rofi/config-emoji.nix
     ./ui/rofi/config-long.nix
