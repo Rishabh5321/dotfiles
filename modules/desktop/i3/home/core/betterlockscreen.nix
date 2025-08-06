@@ -1,4 +1,4 @@
-{ pkgs, config, wallpaper, wallpapers, ... }:
+{ pkgs, wallpaper, wallpapers, ... }:
 
 {
   home.file.".config/betterlockscreenrc".text = ''

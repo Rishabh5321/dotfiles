@@ -1,4 +1,4 @@
-{ config, wallpaper, wallpapers, ... }:
+{ wallpaper, wallpapers, ... }:
 
 {
   home.file.".fehbg".text = ''

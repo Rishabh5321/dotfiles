@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+_:
 
 {
   home.file.".config/picom/picom.conf".text = ''
