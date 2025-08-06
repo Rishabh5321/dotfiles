@@ -11,7 +11,7 @@
     xdg-desktop-portal-gtk
     xfce.xfce4-pulseaudio-plugin
     i3
-    i3status
+    # i3status
     i3lock
     polybar
     rofi
@@ -23,7 +23,7 @@
     slop
     xclip
     gpick
-    clipmenu
+    copyq
     xdotool
   ];
 }

@@ -33,6 +33,5 @@
     (import ./scripts/rofi-powermenu.nix { inherit pkgs; })
     (import ./scripts/emopicker9000.nix { inherit pkgs; })
     (import ./scripts/wall-selector.nix { inherit pkgs; })
-    (import ./scripts/clipmenu.nix { inherit pkgs; })
   ];
 }

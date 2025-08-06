@@ -22,6 +22,7 @@ in
         border = 2;
         titlebar = false; # Hyprland doesn't have titlebars by default
       };
+      bars = [];
       # colors = {
       #   background = "#${config.stylix.base16Scheme.base00}";
       #   focused = {
@@ -43,7 +44,7 @@ in
       keybindings = {
         "${modifier}+Return" = "exec ${terminal}";
         "Mod1+space" = "exec rofi -show drun";
-        "${modifier}+v" = "exec clipmenu"; # Using clipmenu as a replacement for cliphist/rofi
+        "${modifier}+v" = "exec copyq toggle";
         "${modifier}+Alt+w" = "exec wallSelector";
         "${modifier}+w" = "exec ${browser}";
         "${modifier}+Shift+l" = "exec rofi-powermenu";
@@ -106,11 +107,11 @@ in
         { command = "nm-applet --indicator"; always = true; }
         { command = "kdeconnect-indicator"; always = true; }
         { command = "dunst"; always = true; }
-        { command = "picom --config ~/.config/picom/picom.conf"; always = true; }
         { command = "feh --bg-fill ${wallpapers}/${wallpaper}"; always = true; }
         { command = "xsetroot -cursor_name left_ptr"; always = true; }
         { command = "systemctl --user start polkit-gnome-authentication-agent-1"; always = true; }
-	{ command = "/usr/lib/xdg-desktop-portal-gtk"; always = true; }
+        { command = "/usr/lib/xdg-desktop-portal-gtk"; always = true; }
+        { command = "copyq"; always = true; }
       ];
     };
     extraConfig = ''

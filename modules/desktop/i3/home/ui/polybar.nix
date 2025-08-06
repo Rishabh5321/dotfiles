@@ -7,23 +7,21 @@
     script = "polybar main &";
     config = {
       "bar/main" = {
-        width = "100%";
-        height = "30px";
-        radius = "0.0";
+        width = "99%";
+        height = "35px";
+        radius = "16.0";
         fixed-center = true;
-        background = "#${config.stylix.base16Scheme.base00}";
+        background = "#D9${config.stylix.base16Scheme.base00}";
         foreground = "#${config.stylix.base16Scheme.base05}";
         line-size = "2px";
-        border-bottom-size = "2px";
-        border-bottom-color = "#${config.stylix.base16Scheme.base0D}";
-        padding-left = "1";
-        padding-right = "1";
+        padding-left = "2";
+        padding-right = "2";
         module-margin-left = "1";
         module-margin-right = "1";
         font-0 = "JetBrainsMono Nerd Font Mono:size=10;2";
-        modules-left = "i3";
+        modules-left = "i3 xwindow";
         modules-center = "date";
-        modules-right = "pulseaudio cpu memory";
+        modules-right = "pulseaudio battery network cpu memory";
         tray-position = "right";
         tray-padding = "2";
         cursor-click = "pointer";
@@ -45,6 +43,11 @@
         label-urgent-padding = "2";
       };
 
+      "module/xwindow" = {
+        type = "internal/xwindow";
+        label = "%title:0:30:...%";
+      };
+
       "module/date" = {
         type = "internal/date";
         interval = "1.0";
@@ -62,6 +65,42 @@
         ramp-volume-0 = "";
         ramp-volume-1 = "";
         ramp-volume-2 = "";
+      };
+
+      "module/battery" = {
+        type = "internal/battery";
+        battery = "BAT0"; # or BAT1, etc.
+        adapter = "ADP1"; # or ACAD, etc.
+        full-at = 98;
+        format-charging = "<animation-charging> <label-charging>";
+        format-discharging = "<ramp-capacity> <label-discharging>";
+        format-full = "<ramp-capacity> <label-full>";
+        label-charging = "%percentage%%";
+        label-discharging = "%percentage%%";
+        label-full = "Full";
+        ramp-capacity-0 = "";
+        ramp-capacity-1 = "";
+        ramp-capacity-2 = "";
+        ramp-capacity-3 = "";
+        ramp-capacity-4 = "";
+        animation-charging-0 = "";
+        animation-charging-1 = "";
+        animation-charging-2 = "";
+        animation-charging-3 = "";
+        animation-charging-4 = "";
+        animation-charging-framerate = 750;
+      };
+
+      "module/network" = {
+        type = "internal/network";
+        # You may need to change the interface name.
+        # Use `ip addr` to find your network interface.
+        interface = "wlp0s20f3"; # Example: wlan0, eth0, etc.
+        interval = 3;
+        format-connected = "<label-connected>";
+        label-connected = " %essid% (%downspeed%)";
+        format-disconnected = "<label-disconnected>";
+        label-disconnected = " Disconnected";
       };
 
       "module/cpu" = {
