@@ -13,7 +13,7 @@ in
     package = pkgs.i3;
 
     config = {
-      modifier = modifier;
+      inherit modifier;
       gaps = {
         inner = 2;
         outer = 4;
