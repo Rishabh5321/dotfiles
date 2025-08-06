@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 {
   services.picom = {
     enable = true;
