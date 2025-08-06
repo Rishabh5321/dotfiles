@@ -13,7 +13,7 @@ in
     package = pkgs.i3;
 
     config = {
-      modifier = modifier;
+      inherit modifier;
       gaps = {
         inner = 4;
         outer = 8;
@@ -110,7 +110,7 @@ in
         { command = "feh --bg-fill ${wallpapers}/${wallpaper}"; always = true; }
         { command = "xsetroot -cursor_name left_ptr"; always = true; }
         { command = "systemctl --user start polkit-gnome-authentication-agent-1"; always = true; }
-	{ command = "/usr/lib/xdg-desktop-portal-gtk"; always = true; }
+        { command = "/usr/lib/xdg-desktop-portal-gtk"; always = true; }
       ];
     };
     extraConfig = ''
