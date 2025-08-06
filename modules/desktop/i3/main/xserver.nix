@@ -9,4 +9,8 @@ _:
       # options = "grp:alt_shift_toggle";
     };
   };
+  services.libinput = {
+    enable = true;
+    touchpad.naturalScrolling = true;
+  };
 }
