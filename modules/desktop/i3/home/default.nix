@@ -5,7 +5,7 @@
     # Core components
     ./core/i3.nix
     ./core/betterlockscreen.nix
-    ./core/xautolock.nix
+    ./core/xidlehook.nix
 
     # Services
     ./services/dunst.nix

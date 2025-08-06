@@ -17,7 +17,7 @@
     rofi
     feh
     picom
-    xautolock
+    xidlehook
     betterlockscreen
     maim
     slop
