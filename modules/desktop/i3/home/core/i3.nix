@@ -22,7 +22,15 @@ in
         border = 2;
         titlebar = false; # Hyprland doesn't have titlebars by default
       };
-      bars = [ ];
+      bars = [
+        {
+          position = "bottom";
+          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs  ~/.config/i3status-rust/config-laptop.toml";
+          fonts = {
+            size = 10.0;
+          };
+        }
+      ];
       # colors = {
       #   background = "#${config.stylix.base16Scheme.base00}";
       #   focused = {

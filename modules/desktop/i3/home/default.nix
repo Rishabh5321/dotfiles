@@ -14,6 +14,7 @@
     # UI elements
     # ./ui/i3blocks.nix
     # ./ui/polybar
+    ./ui/i3status.nix
     ./ui/rofi/rofi.nix
     ./ui/rofi/config-emoji.nix
     ./ui/rofi/config-long.nix
