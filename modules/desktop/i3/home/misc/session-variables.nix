@@ -1,0 +1,18 @@
+{
+  home.sessionVariables = {
+    _JAVA_AWT_WM_NONEREPARENTING = 1;
+    DISABLE_QT5_COMPAT = 0;
+    GDK_BACKEND = "x11";
+    DIRENV_LOG_FORMAT = "";
+    QT_AUTO_SCREEN_SCALE_FACTOR = 1;
+    QT_QPA_PLATFORM = "xcb";
+    #QT_QPA_PLATFORMTHEME = "qt5ct";
+    #QT_STYLE_OVERRIDE = "kvantum";
+    MOZ_ENABLE_WAYLAND = 0;
+    XDG_CURRENT_DESKTOP = "i3";
+    XDG_SESSION_TYPE = "x11";
+    XDG_SESSION_DESKTOP = "i3";
+    SDL_VIDEODRIVER = "x11";
+    CLUTTER_BACKEND = "x11";
+  };
+}
