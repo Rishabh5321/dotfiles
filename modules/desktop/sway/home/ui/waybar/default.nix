@@ -39,7 +39,7 @@ with lib;
           format = "{name}";
           format-icons = {
             default = " ";
-            active = " ";
+            focused = " ";
             urgent = " ";
           };
         };
@@ -206,7 +206,7 @@ with lib;
           opacity: 0.5;
           transition: ${betterTransition};
         }
-        #workspaces button.active {
+        #workspaces button.focused {
           font-weight: bold;
           padding: 0px 5px;
           margin: 0px 3px;
