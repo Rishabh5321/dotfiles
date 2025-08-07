@@ -1,0 +1,27 @@
+let
+  waybarStyle = "slickbar"; # simplebar, slickbar, or default
+in
+{
+  # Git Configuration ( For Pulling Software Repos )
+  gitUsername = "Rishabh5321";
+  gitEmail = "rishabh98818@outlook.com";
+
+  # Sway Settings
+  extraMonitorSettings = "";
+
+  flakeDir = "/home/rishabh/dotfiles";
+
+  # Waybar Settings
+  clock24h = false;
+
+  # Program Options
+  browser = "firefox"; # Set Default Browser (google-chrome-stable for google-chrome)
+  terminal = "ghostty +new-window"; # Set Default System Terminal
+
+  theShell = "zsh";
+  host = "dell";
+
+  alacritty = true;
+
+  wallpaperDir = "~/Pictures/Wallpapers";
+}
