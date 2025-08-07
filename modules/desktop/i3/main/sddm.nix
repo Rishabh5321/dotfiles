@@ -1,4 +1,4 @@
-{ pkgs, config, lib, wallpaper, wallpapers, ... }: {
+{ config, lib, wallpaper, wallpapers, ... }: {
   services.displayManager = {
     enable = true;
     sddm = {
