@@ -1,8 +1,4 @@
-{ pkgs
-, lib
-, config
-, ...
-}:
+{ pkgs, lib, config, ... }:
 let
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
   inherit (import ../../misc/variables.nix) clock24h;
@@ -22,19 +18,17 @@ with lib;
           "custom/startmenu"
           "sway/window"
           "pulseaudio"
-          "cpu"
-          "memory"
           "idle_inhibitor"
         ];
         modules-right = [
-          "custom/swaybindings"
+          "network" # Add network module here
+          # "custom/swaybindings"
           "custom/notification"
           "custom/exit"
           "battery"
           "tray"
           "clock"
         ];
-
         "sway/workspaces" = {
           format = "{name}";
           format-icons = {
@@ -58,32 +52,13 @@ with lib;
             "" = " 🙈 No Windows? ";
           };
         };
-        "memory" = {
-          interval = 5;
-          format = " {}%";
-          tooltip = true;
-        };
-        "cpu" = {
-          interval = 5;
-          format = " {usage:2}%";
-          tooltip = true;
-        };
-        "disk" = {
-          format = " {free}";
-          tooltip = true;
-        };
         "network" = {
-          format-icons = [
-            "󰤯"
-            "󰤟"
-            "󰤢"
-            "󰤥"
-            "󰤨"
-          ];
-          format-ethernet = " {bandwidthDownOctets}";
-          format-wifi = "{icon} {signalStrength}%";
+          interval = 5;
+          format = " {bandwidthDownBits}  {bandwidthUpBits}";
+          format-ethernet = " {bandwidthDownBits}  {bandwidthUpBits}";
+          format-wifi = "  {bandwidthDownBits}  {bandwidthUpBits}";
           format-disconnected = "󰤮";
-          tooltip = false;
+          tooltip = true;
         };
         "tray" = {
           spacing = 12;
@@ -233,7 +208,7 @@ with lib;
         tooltip label {
           color: #${config.lib.stylix.colors.base08};
         }
-        #window, #pulseaudio, #cpu, #memory, #idle_inhibitor {
+        #window, #pulseaudio, #idle_inhibitor {
           font-weight: bold;
           margin: 4px 0px;
           margin-left: 7px;
