@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+_:
 {
   programs.swaylock = {
     enable = true;

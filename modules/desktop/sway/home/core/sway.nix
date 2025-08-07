@@ -1,8 +1,7 @@
 { lib, pkgs, config, wallpaper, wallpapers, ... }:
 
 let
-  swayVars = import ../misc/variables.nix;
-  modifier = "Mod4"; # Super key
+  swayVars = import ../misc/variables.nix; # Super key
 in
 with lib; {
   wayland.windowManager.sway = {
@@ -11,7 +10,7 @@ with lib; {
     systemd.enable = true;
     config = rec {
       modifier = "Mod4";
-      terminal = swayVars.terminal;
+      inherit (swayVars) terminal;
       menu = "rofi -show drun";
 
       bars = [ ]; # Use waybar instead

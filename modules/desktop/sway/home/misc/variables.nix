@@ -1,6 +1,3 @@
-let
-  waybarStyle = "slickbar"; # simplebar, slickbar, or default
-in
 {
   # Git Configuration ( For Pulling Software Repos )
   gitUsername = "Rishabh5321";
