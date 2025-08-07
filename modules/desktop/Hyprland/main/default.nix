@@ -2,7 +2,7 @@
   imports = [
     #./cache.nix
     ./sddm.nix
-    #./hardware.nix
+    ./hardware.nix
     ./services.nix
     ./packages.nix
     ./wayland.nix
