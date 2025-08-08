@@ -1,104 +1,108 @@
 {
   programs.fastfetch = {
     enable = true;
-
     settings = {
       display = {
-        separator = " ";
+        separator = " : ";
       };
-
       modules = [
-        #"break"
-        #"break"
-        #"break"
         {
-          type = "custom";
-          format = "  {#90}  {#31}  {#33}  {#33}  {#34}  {#35}  {#36}  {#37} ";
+          type = "command";
+          key = "  ";
+          keyColor = "blue";
+          text = ''splash="I use NixOS BTW";echo $splash'';
         }
-        "break"
         {
           type = "custom";
-          format = " {#36}   I use NixOs BTW";
+          format = "┌──────────────────────────────────────────┐";
+        }
+        {
+          type = "chassis";
+          key = "  󰇺 Chassis";
+          format = "{1} {2} {3}";
         }
         {
           type = "os";
-          key = "    OS";
-          keyColor = "34";
+          key = "   OS";
+          format = "{2}";
+          keyColor = "red";
         }
         {
           type = "kernel";
-          key = "    Kernel";
-          keyColor = "34";
-        }
-        {
-          type = "packages";
-          key = "    Packages";
-          keyColor = "34";
+          key = "   Kernel";
+          format = "{2}";
+          keyColor = "red";
         }
         {
           type = "display";
-          key = "  󰍹  Display";
-          keyColor = "34";
-        }
-        {
-          type = "wm";
-          key = "    WM";
-          keyColor = "34";
+          key = "  󰍹 Display";
+          format = "{1}x{2} @ {3}Hz [{7}]";
+          keyColor = "green";
         }
         {
           type = "terminal";
-          key = "    Terminal";
-          keyColor = "34";
+          key = "   Terminal";
+          keyColor = "yellow";
         }
         {
-          type = "cpu";
-          format = "{1}";
-          key = "    CPU";
-          keyColor = "34";
+          type = "command";
+          key = "   Shell";
+          KeyColor = "yellow";
+          text = ''checkshell.sh'';
         }
         {
-          type = "memory";
-          key = "    Memory";
-          keyColor = "34";
+          type = "WM";
+          key = "  󱗃 WM";
+          format = "{2}";
+          keyColor = "yellow";
         }
         {
-          type = "cursor";
-          key = "   ";
-          keyColor = "34";
-        }
-        {
-          type = "terminalfont";
-          key = "   ";
-          keyColor = "34";
-        }
-        {
-          type = "uptime";
-          key = "   ";
-          keyColor = "34";
-        }
-        {
-          type = "datetime";
-          format = "{1}-{3}-{11}";
-          key = "   ";
-          keyColor = "34";
-        }
-        {
-          type = "media";
-          key = "  󰝚 ";
-          keyColor = "34";
-        }
-        {
-          type = "player";
-          key = "   ";
-          keyColor = "34";
+          type = "custom";
+          format = "└──────────────────────────────────────────┘";
         }
         "break"
         {
           type = "custom";
-          format = "  {#90}  {#31}  {#33}  {#33}  {#34}  {#35}  {#36}  {#37} ";
+          format = "┌──────────────────────────────────────────┐";
         }
-        "break"
-        "break"
+        {
+          type = "cpu";
+          format = "{1} @ {7}";
+          key = "   CPU";
+          keyColor = "blue";
+        }
+        {
+          type = "gpu";
+          format = "{1} {2}";
+          key = "  󰊴 GPU";
+          keyColor = "blue";
+        }
+        {
+          type = "memory";
+          key = "   Memory ";
+          keyColor = "magenta";
+        }
+        {
+          type = "command";
+          key = "  󱦟 OS Age ";
+          keyColor = "red";
+          text = "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days";
+        }
+        {
+          type = "uptime";
+          key = "  󱫐 Uptime ";
+          keyColor = "red";
+        }
+        {
+          type = "custom";
+          format = "└──────────────────────────────────────────┘";
+        }
+        {
+          type = "colors";
+          paddingLeft = "2";
+          symbol = "circle";
+        }
+
         "break"
       ];
     };
