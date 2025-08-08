@@ -10,8 +10,6 @@ let
   success = "#${config.lib.stylix.colors.base0B}";
   warning = "#${config.lib.stylix.colors.base0A}";
   muted = "#${config.lib.stylix.colors.base03}";
-  text = "#${config.lib.stylix.colors.base05}";
-  surface = "#${config.lib.stylix.colors.base01}";
 in
 {
   programs.starship = {
