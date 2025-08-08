@@ -128,6 +128,7 @@ with lib; {
 
       input = {
         "type:touchpad" = {
+          tap = "enabled";
           natural_scroll = "enabled";
           dwt = "enabled"; # disable while typing
         };
