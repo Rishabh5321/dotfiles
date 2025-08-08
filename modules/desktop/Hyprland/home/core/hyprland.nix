@@ -164,28 +164,28 @@ with lib; {
       decoration {
         rounding = 12
 
-        active_opacity = 1.0
-        inactive_opacity = 0.95
-        fullscreen_opacity = 1.0
+        # active_opacity = 1.0
+        # inactive_opacity = 0.95
+        # fullscreen_opacity = 1.0
 
         dim_inactive = false
         dim_strength = 0.1
         dim_special = 0.8
 
-        blur {
-          enabled = true
-          size = 6
-          passes = 3
-          ignore_opacity = true
-          new_optimizations = true
-          xray = false
-          noise = 0.0117
-          contrast = 1.5000
-          brightness = 1.0
-          vibrancy = 0.2
-          vibrancy_darkness = 0.5
-          special = false
-        }
+        # blur {
+        #   enabled = true
+        #   size = 6
+        #   passes = 3
+        #   ignore_opacity = true
+        #   new_optimizations = true
+        #   xray = false
+        #   noise = 0.0117
+        #   contrast = 1.5000
+        #   brightness = 1.0
+        #   vibrancy = 0.2
+        #   vibrancy_darkness = 0.5
+        #   special = false
+        # }
       }
 
       # ── Layout Settings ────────────────────────────────────────────────────
@@ -239,8 +239,8 @@ with lib; {
       windowrulev2 = animation slide,class:^(rofi)$
 
       # Opacity rules
-      windowrulev2 = opacity 0.95 0.95,class:^(${terminal})$
-      windowrulev2 = opacity 0.90 0.90,class:^(thunar)$
+      # windowrulev2 = opacity 0.95 0.95,class:^(${terminal})$
+      # windowrulev2 = opacity 0.90 0.90,class:^(thunar)$
 
       # Workspace assignments
       # windowrulev2 = workspace 2,class:^(${browser})$
