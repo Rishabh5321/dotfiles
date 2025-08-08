@@ -5,19 +5,18 @@ let
   background = "#${config.lib.stylix.colors.base00}";
   background-alt = "#${config.lib.stylix.colors.base01}";
   foreground = "#${config.lib.stylix.colors.base05}";
-  rounding = 16;
+  rounding = 6; # More square look
 in
 {
   programs.hyprpanel = {
     enable = true;
     package = pkgs.hyprpanel;
+
     settings = {
-      # General settings
       tear = true;
       scalingPriority = "hyprland";
       wallpaper.enable = true;
 
-      # Bar settings
       bar = {
         layouts = {
           "0" = {
@@ -31,7 +30,7 @@ in
             right = [ "volume" "network" "systray" "notifications" ];
           };
         };
-        outer_spacing = "1rem";
+        outer_spacing = "1.1rem";
         launcher.icon = "";
         workspaces = {
           show_numbered = true;
@@ -39,7 +38,7 @@ in
         };
         windowtitle.label = false;
         clock = {
-          format = "%I:%M:%S %p";
+          format = "%I:%M %p";
           showIcon = false;
         };
         volume.label = true;
@@ -52,34 +51,33 @@ in
         customModules.updates.pollingInterval = 1440000;
       };
 
-      # Menus settings
       menus.clock.weather.enable = false;
 
-      # Theme settings
       theme = {
-        font.size = "0.85rem";
+        font.size = "0.9rem";
+        font.weight = "500";
 
-        # Bar theme
         bar = {
-          background = "rgba(0, 0, 0, 0.3)";
-          outer_spacing = "1rem";
+          background = "rgba(0, 0, 0, 0.4)"; # Slight glass for bar
+          blur = true; # Only bar is glassy
+          outer_spacing = "1.1rem";
           dropdownGap = "2.3em";
 
           buttons = {
             monochrome = true;
             text = "${foreground}";
             radius = "${toString rounding}px";
-            background = "${background-alt}";
+            background = "${background-alt}cc";
             icon = "${accent}";
-            hover = "${background}";
+            hover = "${accent}22"; # Soft hover
             workspaces = {
-              hover = "${accent-alt}";
+              hover = "${accent}33";
               active = "${accent}";
-              available = "${accent-alt}";
+              available = "${accent-alt}aa";
             };
             notifications = {
-              background = "${background-alt}";
-              hover = "${background}";
+              background = "${background-alt}cc";
+              hover = "${accent}22";
               total = "${accent}";
               icon = "${accent}";
             };
@@ -87,7 +85,8 @@ in
 
           menus = {
             monochrome = true;
-            background = "${background}";
+            background = "${background}"; # Fully opaque menu
+            blur = false; # No transparency for menus
             cards = "${background-alt}";
             card_radius = "${toString rounding}px";
             label = "${foreground}";
@@ -126,10 +125,10 @@ in
           };
         };
 
-        # Notification theme
         notification = {
           border_radius = "${toString rounding}px";
           background = "${background-alt}";
+          blur = false;
           actions = {
             background = "${accent}";
             text = "${foreground}";
@@ -140,7 +139,6 @@ in
           labelicon = "${accent}";
         };
 
-        # OSD theme
         osd = {
           bar_color = "${accent}";
           bar_overflow_color = "${accent-alt}";
