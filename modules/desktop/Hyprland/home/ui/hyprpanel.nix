@@ -21,7 +21,7 @@ in
       bar = {
         layouts = {
           "0" = {
-            left = [ "dashboard" "workspaces" "windowtitle" "netstat" "hypridle" ];
+            left = [ "dashboard" "workspaces" "netstat" "hypridle" ];
             middle = [ "clock" ];
             right = [ "battery" "volume" "bluetooth" "network" "systray" "notifications" ];
           };

@@ -45,12 +45,11 @@ with lib; {
       exec-once = swww-daemon # Start swww daemon if not running
       exec-once = swaync # Start notification daemon
       exec-once = nm-applet --indicator
-      # exec-once = killall -q waybar;sleep .5 && waybar
       exec-once = systemctl --user start hyprpolkitagent
       exec-once = kdeconnect-indicator # Start kdeconnect indicator earlier
       exec-once = wl-paste --type text --watch cliphist store
       exec-once = wl-paste --type image --watch cliphist store
-      exec-once = sleep 10 && swww img ${wallpapers}/${wallpaper} # Set wallpaper after swww is ready
+      exec-once = sleep 5 && swww img ${wallpapers}/${wallpaper} # Reduced sleep time
 
       # ── Monitor Setup ─────────────────────────────────────────────────────
       monitor = eDP-1,1920x1080@60,0x0,1
@@ -63,130 +62,234 @@ with lib; {
         border_size       = 2
         layout            = dwindle
         resize_on_border  = true
-        allow_tearing     = false # Recommended for smoother visuals
+        extend_border_grab_area = 15
+        hover_icon_on_border = true
+        allow_tearing     = false
         col.active_border   = rgb(${config.stylix.base16Scheme.base0D}) rgb(${config.stylix.base16Scheme.base0B}) 45deg
         col.inactive_border = rgb(${config.stylix.base16Scheme.base00})
       }
 
       # ── Input Settings ─────────────────────────────────────────────────────
       input {
-        kb_layout  = us # Add other layouts if needed, e.g., us,ru
-        kb_options = grp:alt_shift_toggle
-        kb_options = caps:super
+        kb_layout  = us
+        kb_options = grp:alt_shift_toggle,caps:super
         follow_mouse = 1
-        sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+        mouse_refocus = false
+        sensitivity = 0
         accel_profile = flat
+        force_no_accel = true
 
         touchpad {
           natural_scroll = true
-          disable_while_typing = true # Nice to have: disable touchpad while typing
+          disable_while_typing = true
+          tap-to-click = true
+          tap-and-drag = true
+          drag_lock = false
+          scroll_factor = 1.0
         }
       }
 
       gestures {
         workspace_swipe = true
+        workspace_swipe_fingers = 3
+        workspace_swipe_distance = 300
+        workspace_swipe_cancel_ratio = 0.5
+        workspace_swipe_min_speed_to_force = 30
+        workspace_swipe_create_new = true
       }
 
       misc {
         initial_workspace_tracking = 0
         mouse_move_enables_dpms    = true
-        key_press_enables_dpms     = false # User preference
-        # enable_swallow = true # Optional: consider if you use terminal extensively for media
-        # swallow_regex = ^(kitty|alacritty)$ # Example for swallow
+        key_press_enables_dpms     = true
+        always_follow_on_dnd       = true
+        layers_hog_keyboard_focus  = true
+        animate_manual_resizes     = false
+        animate_mouse_windowdragging = false
+        disable_hyprland_logo      = false
+        disable_splash_rendering   = false
+        force_default_wallpaper    = 0
+        vfr = true
+        vrr = 0
+        # render_ahead_of_time = false
+        # render_ahead_safezone = 1
+        enable_swallow = true
+        swallow_regex = ^(kitty|alacritty|foot|ghostty)$
+        swallow_exception_regex = ^(wev)$
       }
 
-      # ── Animations ─────────────────────────────────────────────────────────
+      # ── Snappier Animations ───────────────────────────────────────────────
       animations {
         enabled = yes
+        first_launch_animation = false
 
-        bezier = gentle, 0.3, 1, 0.5, 1
-        bezier = aggressive, 0.1, 1, 0.3, 1
-        bezier = overshot, 0.2, 1, 0.5, 1.2
+        bezier = snap, 0.1, 0, 0.2, 1
+        bezier = linear, 0, 0, 1, 1
+        bezier = md3_standard, 0.2, 0, 0, 1
+        bezier = md3_decel, 0.05, 0.7, 0.1, 1
+        bezier = md3_accel, 0.3, 0, 0.8, 0.15
+        bezier = overshot, 0.05, 0.9, 0.1, 1.1
+        bezier = crazyshot, 0.1, 1.5, 0.76, 0.92
+        bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
+        bezier = fluent_decel, 0.1, 1, 0, 1
+        bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+        bezier = easeOutCirc, 0, 0.55, 0.45, 1
+        bezier = easeOutExpo, 0.16, 1, 0.3, 1
 
-        animation = windows, 1, 4, gentle, slide
-        animation = windowsIn, 1, 5, overshot, slide
-        animation = windowsOut, 1, 4, aggressive, slide
-        animation = border, 1, 10, default
-        animation = fade, 1, 4, gentle
-        animation = workspaces, 1, 5, gentle, slide
-        animation = specialWorkspace, 1, 5, gentle, slide
+        # Snappy window animations
+        animation = windows, 1, 3, md3_decel, slide
+        animation = windowsIn, 1, 3, md3_decel, slide
+        animation = windowsOut, 1, 3, md3_accel, slide
+        animation = windowsMove, 1, 2, linear, slide
+
+        animation = fade, 1, 2, md3_decel
+        animation = fadeIn, 1, 2, md3_decel
+        animation = fadeOut, 1, 2, md3_accel
+        animation = fadeSwitch, 0, 1, linear
+        animation = fadeShadow, 1, 2, md3_decel
+        animation = fadeDim, 1, 2, fluent_decel
+
+        animation = border, 1, 2.7, md3_decel
+        animation = borderangle, 1, 2.7, fluent_decel, once
+
+        animation = workspaces, 1, 2, md3_decel, slide
+        animation = specialWorkspace, 1, 2, md3_decel, slidevert
+
+        animation = layers, 1, 2, md3_decel, slide
+        animation = layersIn, 1, 2, md3_decel, slide
+        animation = layersOut, 1, 2, md3_accel, slide
       }
 
       # ── Decoration ─────────────────────────────────────────────────────────
       decoration {
-        rounding = 15 # Added rounded corners
+        rounding = 12
+
+        active_opacity = 1.0
+        inactive_opacity = 0.95
+        fullscreen_opacity = 1.0
+
+        dim_inactive = false
+        dim_strength = 0.1
+        dim_special = 0.8
 
         blur {
-          enabled           = true
-          size              = 7
-          passes            = 4
-          new_optimizations = on
-          ignore_opacity    = on
-          xray = true
+          enabled = true
+          size = 6
+          passes = 3
+          ignore_opacity = true
+          new_optimizations = true
+          xray = false
+          noise = 0.0117
+          contrast = 1.5000
+          brightness = 1.0
+          vibrancy = 0.2
+          vibrancy_darkness = 0.5
+          special = false
         }
       }
 
+      # ── Layout Settings ────────────────────────────────────────────────────
       dwindle {
-        pseudotile   = true
+        pseudotile = true
         preserve_split = true
+        smart_split = false
+        smart_resizing = true
+        permanent_direction_override = false
+        special_scale_factor = 1.0
+        split_width_multiplier = 1.0
+        # no_gaps_when_only = 0
+        use_active_for_splits = true
+        default_split_ratio = 1.0
       }
 
-      # ── Window Rules (Examples - uncomment and customize as needed)─────
-      # Make polkit agent and other utility windows float
+      master {
+        allow_small_split = false
+        special_scale_factor = 1.0
+        mfact = 0.55
+        # new_is_master = true
+        # new_on_top = false
+        # no_gaps_when_only = 0
+        orientation = left
+        inherit_fullscreen = true
+        # always_center_master = false
+        smart_resizing = true
+        drop_at_cursor = true
+      }
+
+      # ── Window Rules ───────────────────────────────────────────────────────
+      # Float utility windows
       windowrulev2 = float,class:^(org.kde.polkit-kde-authentication-agent-1)$
       windowrulev2 = float,class:^(xdg-desktop-portal-gtk)$
       windowrulev2 = float,class:^(xdg-desktop-portal-hyprland)$
+      windowrulev2 = float,title:^(Picture-in-Picture)$
+      windowrulev2 = float,title:^(Open File)$
+      windowrulev2 = float,title:^(Save File)$
+      windowrulev2 = float,title:^(Select Color)$
+      windowrulev2 = float,class:^(pavucontrol)$
+      windowrulev2 = float,class:^(blueman-manager)$
+      windowrulev2 = float,class:^(nm-connection-editor)$
+      windowrulev2 = float,class:^(emote-picker)$
+
+      # Size constraints for floating windows
+      windowrulev2 = size 800 600,floating:1
+      windowrulev2 = center,floating:1
+
+      # Disable animations for specific windows
       windowrulev2 = animation none,class:^(popup-class)$
-      # windowrulev2 = float,title:^(Open File)$
-      # windowrulev2 = float,title:^(Save File)$
-      # windowrulev2 = float,title:^(Select Color)$ # For hyprpicker or similar
-      # windowrulev2 = float,class:^(pavucontrol)$
-      # windowrulev2 = float,class:^(blueman-manager)$
-      # windowrulev2 = float,class:^(nm-connection-editor)$
-      # windowrulev2 = float,class:^(emote-picker)$ # If emopicker9000 is a GTK app with this class
+      windowrulev2 = animation slide,class:^(rofi)$
 
-      # Assign applications to specific workspaces
-      # windowrulev2 = workspace 2,class:^(${browser})$ # Example: Open browser on workspace 2
-      # windowrulev2 = workspace 3,class:^(discord)$   # Example: Open Discord on workspace 3
+      # Opacity rules
+      windowrulev2 = opacity 0.95 0.95,class:^(${terminal})$
+      windowrulev2 = opacity 0.90 0.90,class:^(thunar)$
 
-      # Idle inhibition rules (prevent screen sleep for certain apps)
-      # windowrulev2 = idleinhibit focus,class:^(mpv|vlc|kodi|.+exe)$ # For media players and games
-      # windowrulev2 = idleinhibit fullscreen,class:^(firefox|${browser})$ # For browser in fullscreen video
+      # Workspace assignments
+      # windowrulev2 = workspace 2,class:^(${browser})$
+      # windowrulev2 = workspace 3,class:^(discord)$
+      # windowrulev2 = workspace 4,class:^(spotify)$
 
-      # Remove gaps when only one window is present on workspace
+      # Idle inhibition for media
+      windowrulev2 = idleinhibit focus,class:^(mpv|vlc|kodi|.+exe)$
+      windowrulev2 = idleinhibit fullscreen,class:^(firefox|${browser})$
+
+      # No gaps when only one window
       workspace = w[t1], gapsout:0, gapsin:0
       workspace = w[tg1], gapsout:0, gapsin:0
       workspace = f[1], gapsout:0, gapsin:0
-      windowrulev2 = bordersize 0, onworkspace:w[t1] # Remove border when only 1 window
-      windowrulev2 = rounding 0, onworkspace:w[t1]   # Remove rounding when only 1 window
+      windowrulev2 = bordersize 0, onworkspace:w[t1]
+      windowrulev2 = rounding 0, onworkspace:w[t1]
 
       # ── Keybindings ────────────────────────────────────────────────────────
+      # Application launchers
       bind = ${modifier},Return,exec,${terminal}
       bind = ALT,SPACE,exec,rofi -show drun
+      bind = ${modifier},R,exec,rofi -show run
       bind = ${modifier},V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy
       bind = ${modifier}ALT,W,exec,wallSelector
-      # bind = ${modifier}SHIFT,N,exec,swaync-client -rs
       bind = ${modifier},W,exec,${browser}
       bind = ${modifier}SHIFT,L,exec,wlogout
       bind = ${modifier},E,exec,emopicker9000
       bind = ${modifier},S,exec,screenshootin
+      bind = ${modifier}SHIFT,S,exec,grim -g "$(slurp)" - | swappy -f -
       bind = ${modifier},D,exec,discord
       bind = ${modifier},C,exec,hyprpicker -a
-      # bind = ${modifier},K,exec,tv.kodi.Kodi
-      # bind = ${modifier}SHIFT,G,exec,godot4
       bind = ${modifier},T,exec,thunar
       bind = ${modifier},M,exec,spotify
+      bind = ${modifier},N,exec,swaync-client -t -sw
 
+      # Window management
       bind = ${modifier},Q,killactive,
       bind = ${modifier},P,pseudo,
       bind = ${modifier}SHIFT,I,togglesplit,
       bind = ${modifier},F,fullscreen,
       bind = ${modifier}SHIFT,F,togglefloating,
       bind = ${modifier}SHIFT,C,exit,
+      bind = ${modifier}SHIFT,P,pin,
+      # bind = ${modifier}SHIFT,O,toggleopaque,
 
+      # Better control integration
       bind = ${modifier}SHIFT,W,exec,better-control -w
 
-      # ── Window Movement ────────────────────────────────────────────────────
+      # ── Enhanced Window Movement ───────────────────────────────────────────
       bind = ${modifier}SHIFT,left, movewindow,l
       bind = ${modifier}SHIFT,right,movewindow,r
       bind = ${modifier}SHIFT,up,   movewindow,u
@@ -196,15 +299,25 @@ with lib; {
       bind = ${modifier}SHIFT,k,    movewindow,u
       bind = ${modifier}SHIFT,j,    movewindow,d
 
+      # Resize windows
+      bind = ${modifier}CONTROL,left, resizeactive,-50 0
+      bind = ${modifier}CONTROL,right,resizeactive,50 0
+      bind = ${modifier}CONTROL,up,   resizeactive,0 -50
+      bind = ${modifier}CONTROL,down, resizeactive,0 50
+      bind = ${modifier}CONTROL,h,    resizeactive,-50 0
+      bind = ${modifier}CONTROL,l,    resizeactive,50 0
+      bind = ${modifier}CONTROL,k,    resizeactive,0 -50
+      bind = ${modifier}CONTROL,j,    resizeactive,0 50
+
       # ── Focus Movement ─────────────────────────────────────────────────────
       bind = ${modifier},left, movefocus,l
       bind = ${modifier},right,movefocus,r
       bind = ${modifier},up,   movefocus,u
       bind = ${modifier},down, movefocus,d
       bind = ${modifier},h,    movefocus,l
-      bind = ${modifier},k,    movefocus,u # Added for consistency
+      bind = ${modifier},k,    movefocus,u
       bind = ${modifier},j,    movefocus,d
-      bind = ${modifier},l,    movefocus,r # Added for consistency
+      bind = ${modifier},l,    movefocus,r
 
       # ── Workspaces ─────────────────────────────────────────────────────────
       bind = ${modifier},1,workspace,1
@@ -229,8 +342,11 @@ with lib; {
       bind = ${modifier}SHIFT,9,movetoworkspace,9
       bind = ${modifier}SHIFT,0,movetoworkspace,10
 
+      # Special workspace (scratchpad)
       bind = ${modifier}SHIFT,SPACE,movetoworkspace,special
       bind = ${modifier},SPACE,togglespecialworkspace
+
+      # Workspace navigation
       bind = ${modifier}CONTROL,right,workspace,e+1
       bind = ${modifier}CONTROL,left, workspace,e-1
       bind = ${modifier},mouse_down,workspace,e+1
@@ -239,23 +355,29 @@ with lib; {
       # ── Mouse Bindings ─────────────────────────────────────────────────────
       bindm = ${modifier},mouse:272,movewindow
       bindm = ${modifier},mouse:273,resizewindow
+      bind = ${modifier},mouse:274,togglefloating
 
       # ── Grouping ───────────────────────────────────────────────────────────
-      # bind = ALT,Tab,cyclenext
       bind = ${modifier},G,togglegroup
-      # bind = ${modifier}CTRL,tab,changegroupactive # Consider if this conflicts with browser tab switching
-      bind = ALT,Tab,changegroupactive # This will likely override the cyclenext above for ALT,Tab
+      bind = ALT,Tab,changegroupactive
+      bind = ${modifier}ALT,Tab,cyclenext,prev
 
       # ── Media Keys ─────────────────────────────────────────────────────────
-      bind  = ,XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-      bind  = ,XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-      binde = ,XF86AudioMute,        exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-      bind  = ,XF86AudioPlay,        exec,playerctl play-pause
-      bind  = ,XF86AudioPause,       exec,playerctl play-pause
-      bind  = ,XF86AudioNext,        exec,playerctl next
-      bind  = ,XF86AudioPrev,        exec,playerctl previous
-      bind  = ,XF86MonBrightnessDown,exec,brightnessctl set 5%-
-      bind  = ,XF86MonBrightnessUp,  exec,brightnessctl set +5%
+      bindel = ,XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+      bindel = ,XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+      bindl  = ,XF86AudioMute,        exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+      bindl  = ,XF86AudioPlay,        exec,playerctl play-pause
+      bindl  = ,XF86AudioPause,       exec,playerctl play-pause
+      bindl  = ,XF86AudioNext,        exec,playerctl next
+      bindl  = ,XF86AudioPrev,        exec,playerctl previous
+      bindel = ,XF86MonBrightnessDown,exec,brightnessctl set 5%-
+      bindel = ,XF86MonBrightnessUp,  exec,brightnessctl set +5%
+
+      # ── Quick Actions ──────────────────────────────────────────────────────
+      bind = ${modifier}ALT,L,exec,swaylock
+      bind = ${modifier}ALT,R,exec,hyprctl reload
+      bind = ${modifier}ALT,K,exec,hyprctl kill
+      bind = CTRLALT,Delete,exec,wlogout
       ''
       ];
   };
