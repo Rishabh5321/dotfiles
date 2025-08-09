@@ -231,8 +231,8 @@ with lib; {
       windowrulev2 = float,class:^(emote-picker)$
 
       # Size constraints for floating windows
-      windowrulev2 = size 800 600,floating:1
-      windowrulev2 = center,floating:1
+      # windowrulev2 = size 800 600,floating:1
+      # windowrulev2 = center,floating:1
 
       # Disable animations for specific windows
       windowrulev2 = animation none,class:^(popup-class)$
