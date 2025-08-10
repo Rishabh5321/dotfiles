@@ -1,7 +1,8 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
 
   environment.systemPackages = with pkgs; [
     #inputs.hyprland-qtutils.packages."${pkgs.system}".default
+    inputs.quickshell.packages."${system}".default
     brightnessctl
     # dunst
     # hyprpanel
