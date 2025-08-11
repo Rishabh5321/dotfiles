@@ -81,6 +81,10 @@
     # Applications/Tools
     ######################
 
+    # Ags, a customizable and extensible shell
+    ags.url = "github:Aylur/ags";
+    ags.inputs.nixpkgs.follows = "nixpkgs";
+
     darkmatter-grub-theme = {
       url = "gitlab:VandalByte/darkmatter-grub-theme";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -111,6 +115,11 @@
       url = "github:pabloaul/lsfg-vk-flake/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    caelestia-cli.url = "github:caelestia-dots/cli";
+
+    caelestia.url = "github:caelestia-dots/shell";
+    caelestia.inputs.quickshell.follows = "quickshell";
 
     # nvchad4nix = {
     #   url = "github:nix-community/nix4nvchad";

@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    # sinputs.quickshell.packages.${pkgs.system}.default
+    inputs.quickshell.packages.${pkgs.system}.default
 
     # Qt6 related kits（for slove Qt5Compat problem）
     qt6.qt5compat
