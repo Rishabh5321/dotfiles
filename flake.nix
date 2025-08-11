@@ -111,19 +111,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    quickshell-custom = {
-      url = "github:caelestia-dots/shell";
-    };
-
-    app2unit = {
-      url = "github:soramanew/app2unit";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     caelestia-cli = {
       url = "github:caelestia-dots/cli";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.app2unit.follows = "app2unit";
+    };
+
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        quickshell.follows = "quickshell";
+        caelestia-cli.follows = "caelestia-cli";
+      };
+    };
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # nvchad4nix = {
