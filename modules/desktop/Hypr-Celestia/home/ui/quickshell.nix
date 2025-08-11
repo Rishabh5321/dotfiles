@@ -43,9 +43,9 @@ in
       rounding.scale = 1;
       spacing.scale = 1;
       transparency = {
-        enabled = true;
-        base = 0.5;
-        layers = 0.4;
+        enabled = false;
+        base = 1;
+        layers = 1;
       };
     };
     general = {
