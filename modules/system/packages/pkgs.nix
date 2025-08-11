@@ -213,6 +213,7 @@
 
       # ===== ICON FONTS =====
       material-icons # Material Design icons
+      material-symbols # Material Symbols icons
 
       # ===== NERD FONTS =====
       nerd-fonts.ubuntu-sans # Ubuntu Sans with icons

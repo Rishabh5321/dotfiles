@@ -131,7 +131,7 @@ in
     services = {
       weatherLocation = "51.24,6.95";
       useFahrenheit = false;
-      useTwelveHourClock = false;
+      useTwelveHourClock = true;
       audioIncrement = 0.05;
     };
     session = {
