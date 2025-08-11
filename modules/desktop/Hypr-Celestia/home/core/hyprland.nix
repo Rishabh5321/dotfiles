@@ -267,7 +267,8 @@ with lib; {
       # bind = ${modifier},V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy
       bind = ${modifier}ALT,W,exec,wallSelector
       bind = ${modifier},W,exec,${browser}
-      bind = ${modifier}SHIFT,L,exec,wlogout
+      bind = CTRL,L,global,caelestia:session
+      # bind = ${modifier},A,global,caelestia:session
       bind = ${modifier},E,exec,emopicker9000
       bind = ${modifier},S,exec,screenshootin
       bind = ${modifier}SHIFT,S,exec,grim -g "$(slurp)" - | swappy -f -
