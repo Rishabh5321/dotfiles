@@ -15,13 +15,13 @@
     ./services/swaync.nix
 
     # UI elements
-    ./ui/rofi/rofi.nix
-    ./ui/rofi/config-emoji.nix
-    ./ui/rofi/config-long.nix
-    ./ui/rofi/config-wallpaper.nix
+    # ./ui/rofi/rofi.nix
+    # ./ui/rofi/config-emoji.nix
+    # ./ui/rofi/config-long.nix
+    # ./ui/rofi/config-wallpaper.nix
     ./ui/wlogout.nix
     ./ui/quickshell.nix
-    ./ui/hyprpanel.nix
+    # ./ui/hyprpanel.nix
     # vars.waybarChoice
 
     # Misc

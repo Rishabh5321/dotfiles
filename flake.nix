@@ -28,11 +28,6 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -116,10 +111,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    caelestia-cli.url = "github:caelestia-dots/cli";
+    quickshell-custom = {
+      url = "github:caelestia-dots/shell";
+    };
 
-    caelestia.url = "github:caelestia-dots/shell";
-    caelestia.inputs.quickshell.follows = "quickshell";
+    app2unit = {
+      url = "github:soramanew/app2unit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    caelestia-cli = {
+      url = "github:caelestia-dots/cli";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.app2unit.follows = "app2unit";
+    };
 
     # nvchad4nix = {
     #   url = "github:nix-community/nix4nvchad";

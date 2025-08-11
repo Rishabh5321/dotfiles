@@ -1,5 +1,6 @@
 { inputs
 , pkgs
+, system
 , ...
 }: {
   # programs.quickshell = {
@@ -7,12 +8,11 @@
   # };
 
   home.packages = [
-    inputs.quickshell.packages."${pkgs.system}".quickshell
+    inputs.quickshell-custom.packages.${system}.default
+    inputs.app2unit.packages.${system}.default
+    inputs.caelestia-cli.packages.${system}.default
 
     pkgs.kdePackages.qt5compat
     pkgs.kdePackages.qtmultimedia
-
-    inputs.caelestia-cli.packages."${pkgs.system}".default
-    inputs.caelestia.packages."${pkgs.system}".default
   ];
 }

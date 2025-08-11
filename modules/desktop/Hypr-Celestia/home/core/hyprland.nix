@@ -44,6 +44,7 @@ with lib; {
       exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = swww-daemon # Start swww daemon if not running
       exec-once = swaync # Start notification daemon
+      exec-once = caelestia shell -d
       exec-once = nm-applet --indicator
       exec-once = systemctl --user start hyprpolkitagent
       exec-once = kdeconnect-indicator # Start kdeconnect indicator earlier
@@ -261,9 +262,9 @@ with lib; {
       # ── Keybindings ────────────────────────────────────────────────────────
       # Application launchers
       bind = ${modifier},Return,exec,${terminal}
-      bind = ALT,SPACE,exec,rofi -show drun
-      bind = ${modifier},R,exec,rofi -show run
-      bind = ${modifier},V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy
+      bind = ALT,SPACE,exec,caelestia shell drawers toggle launcher
+      # bind = ${modifier},R,exec,rofi -show run
+      # bind = ${modifier},V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy
       bind = ${modifier}ALT,W,exec,wallSelector
       bind = ${modifier},W,exec,${browser}
       bind = ${modifier}SHIFT,L,exec,wlogout
