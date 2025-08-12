@@ -7,6 +7,7 @@
     libsecret
     xdg-utils
     xfce.xfce4-pulseaudio-plugin
+    kdePackages.kdeconnect-kde
     swaylock
     swayidle
     wlogout
