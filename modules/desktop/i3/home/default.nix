@@ -24,7 +24,6 @@
     ./misc/emoji.nix
     ./misc/feh.nix
     ./misc/picom.nix
-    ./misc/qt.nix
     ./misc/session-variables.nix
     ./misc/xdg.nix
   ];

@@ -21,7 +21,6 @@
 
     # Misc
     ./misc/emoji.nix
-    ./misc/qt.nix
     ./misc/swappy.nix
     ./misc/xdg.nix
     ./misc/session-variables.nix

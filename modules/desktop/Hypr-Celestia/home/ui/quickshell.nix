@@ -81,8 +81,8 @@ in
       };
     };
     border = {
-      rounding = 25;
-      thickness = 10;
+      rounding = 0;
+      thickness = 0;
     };
     dashboard = {
       mediaUpdateInterval = 500;

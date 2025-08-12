@@ -23,6 +23,4 @@ _:
       };
     };
   };
-
-  stylix.targets.zed.enable = false;
 }
