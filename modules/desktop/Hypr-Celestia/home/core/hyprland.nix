@@ -44,7 +44,7 @@ with lib; {
       exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = swww-daemon # Start swww daemon if not running
       exec-once = swaync # Start notification daemon
-      exec-once = caelestia shell -d
+      # exec-once = caelestia shell -d
       exec-once = nm-applet --indicator
       exec-once = systemctl --user start hyprpolkitagent
       exec-once = kdeconnect-indicator # Start kdeconnect indicator earlier
