@@ -1,8 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.swaylock = {
-    enable = config.wayland.windowManager.sway.enable;
+    inherit (config.wayland.windowManager.sway) enable;
     package = pkgs.swaylock-effects;
     settings = {
       font = "SauceCodePro Nerd Font";
