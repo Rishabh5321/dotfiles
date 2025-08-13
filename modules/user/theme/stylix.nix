@@ -26,7 +26,7 @@
       qt.enable = true;
       # qt.platform = "qtct";
       hyprland.enable = false;
-      # swaylock.enable = false;
+      swaylock.enable = false;
       zed.enable = false;
       # spicetify.enable = false;
     };
