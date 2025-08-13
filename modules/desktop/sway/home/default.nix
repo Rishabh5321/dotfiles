@@ -1,4 +1,4 @@
-{ pkgs, username, host, wallpaper, wallpapers, ... }:
+{ pkgs, username, host, ... }:
 {
   imports = [
     # Core components
