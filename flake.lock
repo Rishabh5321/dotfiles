@@ -1385,11 +1385,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1754807290,
-        "narHash": "sha256-G7QElqp+b+/ee2Odri+5gxHm89OItgs6OgqeU/vGNfo=",
+        "lastModified": 1755048846,
+        "narHash": "sha256-OQSzOblT0YhS6uPqmAMLuolNkqTiVXhUmyRMdMbMqpc=",
         "owner": "Rishabh5321",
         "repo": "seanime-flake",
-        "rev": "27bc3e5d9d915cd65fbc112e0af79c4ceb982f45",
+        "rev": "04ed7979440bef03690be38f472ceabbd6b28c34",
         "type": "github"
       },
       "original": {
