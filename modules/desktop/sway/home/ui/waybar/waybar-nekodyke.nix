@@ -37,7 +37,6 @@ with lib; {
           "clock"
           "tray"
         ];
-
         "sway/workspaces" = {
           format = "{name}";
           format-icons = {
@@ -191,16 +190,13 @@ with lib; {
       ''
         * {
           font-family: JetBrainsMono Nerd Font;
-          font-size: 18px;
+          font-size: 16px;
           border-radius: 0px;
           border: none;
           min-height: 0px;
-          margin: 0px;
         }
         window#waybar {
-          background: #${config.lib.stylix.colors.base00};
-          padding: 2px;
-          border-radius: 4px;
+          background: rgba(0,0,0,0);
         }
         #workspaces {
           color: #${config.lib.stylix.colors.base00};
@@ -217,9 +213,8 @@ with lib; {
           border-radius: 16px;
           color: #${config.lib.stylix.colors.base0B};
           background: #${config.lib.stylix.colors.base00};
-
         }
-        #workspaces button.active {
+        #workspaces button.focused {
           font-weight: bold;
           padding: 0px 5px;
           margin: 0px 3px;
