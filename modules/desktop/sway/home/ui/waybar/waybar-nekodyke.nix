@@ -16,10 +16,6 @@ with lib; {
       {
         layer = "top";
         position = "top";
-        # margin-top = 6;
-        # margin-left = 6;
-        # margin-right = 6;
-        # margin-bottom = 6;
         modules-center = [ "sway/window" ];
         modules-left = [
           # "custom/startmenu"
@@ -62,7 +58,7 @@ with lib; {
           tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
         };
         "sway/window" = {
-          max-length = 22;
+          max-length = 30; # Increased slightly for smaller font
           separate-outputs = false;
           rewrite = {
             "" = " 🙈 No Windows? ";
@@ -92,7 +88,7 @@ with lib; {
           tooltip = true;
         };
         "tray" = {
-          spacing = 12;
+          spacing = 8; # Reduced spacing
         };
         "pulseaudio" = {
           format = "{icon} {volume}% {format_source}";
@@ -190,7 +186,7 @@ with lib; {
       ''
         * {
           font-family: JetBrainsMono Nerd Font;
-          font-size: 16px;
+          font-size: 13px; /* Reduced font size */
           border-radius: 0px;
           border: none;
           min-height: 0px;
@@ -201,33 +197,26 @@ with lib; {
         #workspaces {
           color: #${config.lib.stylix.colors.base00};
           background: #${config.lib.stylix.colors.base00};
-          border: 2px solid #${config.lib.stylix.colors.base0B};
-          margin: 2px 4px;
-          padding: 5px 5px;
+          border: 1px solid #${config.lib.stylix.colors.base0B}; /* Reduced border */
+          margin: 3px;
+          padding: 2px;
           border-radius: 4px;
         }
         #workspaces button {
           font-weight: bold;
           padding: 0px 5px;
           margin: 0px 3px;
-          border-radius: 16px;
+          border-radius: 4px; /* Made consistent */
           color: #${config.lib.stylix.colors.base0B};
           background: #${config.lib.stylix.colors.base00};
         }
         #workspaces button.focused {
-          font-weight: bold;
-          padding: 0px 5px;
-          margin: 0px 3px;
-          border-radius: 4px;
           color: #${config.lib.stylix.colors.base00};
           background: #${config.lib.stylix.colors.base0B};
           transition: ${betterTransition};
-          opacity: 1.0;
-          min-width: 40px;
         }
         #workspaces button:hover {
           font-weight: bold;
-          border-radius: 4px;
           color: #${config.lib.stylix.colors.base00};
           background: #${config.lib.stylix.colors.base0B};
           opacity: 0.8;
@@ -240,30 +229,18 @@ with lib; {
         tooltip label {
           color: #${config.lib.stylix.colors.base08};
         }
-        #window, #pulseaudio, #temperature, #cpu, #memory, #idle_inhibitor, #disk {
+
+        /* --- UNIFIED MODULE STYLE --- */
+        #window, #pulseaudio, #temperature, #cpu, #memory, #idle_inhibitor, #disk,
+        #custom-hyprbindings, #network, #battery, #custom-notification, #clock,
+        #custom-exit, #custom-startmenu, #tray {
           font-weight: bold;
-          margin: 2px 0px;
-          margin-right: 7px;
-          padding: 0px 18px;
+          margin: 3px 0px 3px 6px; /* Reduced margin */
+          padding: 0px 10px;        /* Reduced padding */
           background: #${config.lib.stylix.colors.base00};
           color: #${config.lib.stylix.colors.base0B};
-          border: 2px solid #${config.lib.stylix.colors.base0B};
+          border: 1px solid #${config.lib.stylix.colors.base0B}; /* Reduced border */
           border-radius: 4px;
-        }
-        #idle_inhibitor {
-        font-size: 28px;
-        }
-        #custom-hyprbindings, #network, #battery,
-        #custom-notification, #clock, #custom-exit, #custom-startmenu, #tray {
-          /* font-weight: bold; */
-          font-size: 20px;
-          background: #${config.lib.stylix.colors.base00};
-          color: #${config.lib.stylix.colors.base0B};
-          margin: 2px 0px;
-          margin-right: 7px;
-          border: 2px solid #${config.lib.stylix.colors.base0B};
-          border-radius: 4px;
-          padding: 0px 12px;
         }
       ''
     ];
