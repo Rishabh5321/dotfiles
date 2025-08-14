@@ -16,9 +16,9 @@ with lib; {
       {
         layer = "top";
         position = "top";
-        margin-top = 6;
-        margin-left = 6;
-        margin-right = 6;
+        # margin-top = 6;
+        # margin-left = 6;
+        # margin-right = 6;
         modules-center = [ "sway/window" ];
         modules-left = [
           # "custom/startmenu"
@@ -189,7 +189,7 @@ with lib; {
       ''
         * {
           font-family: JetBrainsMono Nerd Font;
-          font-size: 16px;
+          font-size: 13px; /* reduced from 16px */
           border-radius: 0px;
           border: none;
           min-height: 0px;
@@ -198,71 +198,36 @@ with lib; {
           background: rgba(0,0,0,0);
         }
         #workspaces {
-          color: #${config.lib.stylix.colors.base00};
-          background: #${config.lib.stylix.colors.base00};
-          border: 2px solid #${config.lib.stylix.colors.base0B};
-          margin: 2px 4px;
-          padding: 5px 5px;
+          margin: 1px 3px;
+          padding: 2px 4px;
           border-radius: 4px;
         }
         #workspaces button {
-          font-weight: bold;
-          padding: 0px 5px;
-          margin: 0px 3px;
-          border-radius: 16px;
-          color: #${config.lib.stylix.colors.base0B};
-          background: #${config.lib.stylix.colors.base00};
+          padding: 0px 4px;
+          margin: 0px 2px;
         }
         #workspaces button.focused {
-          font-weight: bold;
-          padding: 0px 5px;
-          margin: 0px 3px;
-          border-radius: 4px;
-          color: #${config.lib.stylix.colors.base00};
-          background: #${config.lib.stylix.colors.base0B};
-          transition: ${betterTransition};
-          opacity: 1.0;
-          min-width: 40px;
-        }
-        #workspaces button:hover {
-          font-weight: bold;
-          border-radius: 4px;
-          color: #${config.lib.stylix.colors.base00};
-          background: #${config.lib.stylix.colors.base0B};
-          opacity: 0.8;
-        }
-        tooltip {
-          background: #${config.lib.stylix.colors.base00};
-          border: 1px solid #${config.lib.stylix.colors.base08};
-          border-radius: 12px;
-        }
-        tooltip label {
-          color: #${config.lib.stylix.colors.base08};
+          min-width: 30px;
         }
         #window, #pulseaudio, #temperature, #cpu, #memory, #idle_inhibitor, #disk {
-          font-weight: bold;
-          margin: 2px 0px;
-          margin-right: 7px;
-          padding: 0px 18px;
-          background: #${config.lib.stylix.colors.base00};
-          color: #${config.lib.stylix.colors.base0B};
-          border: 2px solid #${config.lib.stylix.colors.base0B};
+          margin: 1px 0px;
+          margin-right: 5px;
+          padding: 0px 8px; /* reduced from 18px */
           border-radius: 4px;
         }
         #idle_inhibitor {
-        font-size: 28px;
+          font-size: 18px; /* reduced from 28px */
         }
         #custom-hyprbindings, #network, #battery,
         #custom-notification, #clock, #custom-exit, #custom-startmenu, #tray {
-          /* font-weight: bold; */
-          font-size: 20px;
-          background: #${config.lib.stylix.colors.base00};
-          color: #${config.lib.stylix.colors.base0B};
-          margin: 2px 0px;
-          margin-right: 7px;
-          border: 2px solid #${config.lib.stylix.colors.base0B};
+          font-size: 16px; /* reduced from 20px */
+          margin: 1px 0px;
+          margin-right: 5px;
+          padding: 0px 6px; /* reduced */
           border-radius: 4px;
-          padding: 0px 12px;
+        }
+        tooltip {
+          border-radius: 8px; /* slightly smaller */
         }
       ''
     ];
