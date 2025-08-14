@@ -1612,11 +1612,11 @@
     "wallpapers-repo": {
       "flake": false,
       "locked": {
-        "lastModified": 1755047062,
-        "narHash": "sha256-yFd7vYjCHgL1hrYrD+H9zG+xgUG7loeynLLm/LonorM=",
+        "lastModified": 1755168281,
+        "narHash": "sha256-czu1DEczGF/01fo67dsC15JiuMnaUB5mcHBqZj6vsSQ=",
         "owner": "Rishabh5321",
         "repo": "wallsite",
-        "rev": "8408fa1511584c8cef35c9f5a4489a55175e9d2c",
+        "rev": "83bba785a4739de0f848e5b7717576b82fd3096f",
         "type": "github"
       },
       "original": {
