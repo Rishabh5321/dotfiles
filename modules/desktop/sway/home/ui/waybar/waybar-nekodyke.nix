@@ -16,9 +16,10 @@ with lib; {
       {
         layer = "top";
         position = "top";
-        margin-top = 6;
-        margin-left = 6;
-        margin-right = 6;
+        # margin-top = 6;
+        # margin-left = 6;
+        # margin-right = 6;
+        # margin-bottom = 6;
         modules-center = [ "sway/window" ];
         modules-left = [
           # "custom/startmenu"
