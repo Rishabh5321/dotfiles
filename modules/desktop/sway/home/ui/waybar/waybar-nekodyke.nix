@@ -200,7 +200,6 @@ with lib; {
           /* A solid background color from your stylix theme for a clean, bold look. */
           background: #${config.lib.stylix.colors.base00};
           border: 1px solid #${config.lib.stylix.colors.base03}; /* A subtle border for definition */
-          border-radius: 12px; /* A more pronounced rounding for a modern look */
           color: #${config.lib.stylix.colors.base05}; /* Default text color */
           transition: ${betterTransition};
         }
@@ -216,13 +215,11 @@ with lib; {
         /* --- Hover Effects for Interactivity --- */
         #clock:hover, #battery:hover, #pulseaudio:hover, #network:hover, #cpu:hover, #memory:hover, #idle_inhibitor:hover, #custom-notification:hover {
           background-color: #${config.lib.stylix.colors.base01};
-          border-radius: 8px; /* Give a rounded background on hover */
         }
 
         /* --- Workspaces --- */
         #workspaces {
           background-color: #${config.lib.stylix.colors.base01};
-          border-radius: 8px;
           margin-left: 6px; /* Add some space at the beginning of the bar */
           padding: 0 5px;
         }
@@ -230,7 +227,6 @@ with lib; {
         #workspaces button {
           color: #${config.lib.stylix.colors.base04}; /* Inactive workspace color */
           padding: 0px 5px;
-          border-radius: 8px;
           transition: ${betterTransition};
         }
 
@@ -286,7 +282,6 @@ with lib; {
         tooltip {
           background: #${config.lib.stylix.colors.base00};
           border: 1px solid #${config.lib.stylix.colors.base0B};
-          border-radius: 12px;
         }
 
         tooltip label {
