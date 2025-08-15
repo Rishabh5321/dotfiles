@@ -242,11 +242,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1755169038,
-        "narHash": "sha256-lIAE8ou7ukvoOE0nZ2lNcl/n8mnj6m2cGsx9U7Xhew4=",
+        "lastModified": 1755253941,
+        "narHash": "sha256-i+6vg7ED41jEaZC7BydJKVwM1sfFzpMhHMPlGObpJ6k=",
         "owner": "chaotic-cx",
         "repo": "nyx",
-        "rev": "5efc0389eaca14046e1ee2068bcba6fe64cf6e2e",
+        "rev": "e5e35ed4e5a6433f3d90dcabf3dd2cd8ba36a9eb",
         "type": "github"
       },
       "original": {
