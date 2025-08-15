@@ -186,61 +186,111 @@ with lib; {
       ''
         * {
           font-family: JetBrainsMono Nerd Font;
-          font-size: 13px; /* Reduced font size */
-          border-radius: 0px;
+          font-size: 14px; /* Slightly increased for readability, adjust as needed */
           border: none;
-          min-height: 0px;
+          border-radius: 0;
+          min-height: 0;
+          /* Reset all margins and padding for clean slate */
+          margin: 0;
+          padding: 0;
         }
+
+        /* --- The Main Bar --- */
         window#waybar {
-          background: rgba(0,0,0,0);
-        }
-        #workspaces {
-          color: #${config.lib.stylix.colors.base00};
+          /* A solid background color from your stylix theme for a clean, bold look. */
           background: #${config.lib.stylix.colors.base00};
-          border: 1px solid #${config.lib.stylix.colors.base0B}; /* Reduced border */
-          margin: 3px;
-          padding: 2px;
-          border-radius: 4px;
-        }
-        #workspaces button {
-          font-weight: bold;
-          padding: 0px 5px;
-          margin: 0px 3px;
-          border-radius: 4px; /* Made consistent */
-          color: #${config.lib.stylix.colors.base0B};
-          background: #${config.lib.stylix.colors.base00};
-        }
-        #workspaces button.focused {
-          color: #${config.lib.stylix.colors.base00};
-          background: #${config.lib.stylix.colors.base0B};
+          border: 1px solid #${config.lib.stylix.colors.base03}; /* A subtle border for definition */
+          border-radius: 12px; /* A more pronounced rounding for a modern look */
+          color: #${config.lib.stylix.colors.base05}; /* Default text color */
           transition: ${betterTransition};
         }
-        #workspaces button:hover {
+
+        /* --- Base Module Style --- */
+        /* Applies to all modules for consistency */
+        #workspaces, #window, #clock, #battery, #pulseaudio, #network, #cpu, #memory, #idle_inhibitor, #tray, #custom-notification, #custom-exit, #custom-startmenu, #custom-hyprbindings {
+          padding: 0px 12px; /* Horizontal padding for spacing inside the bar */
+          margin: 4px 0px;   /* Vertical margin to center modules in the bar */
           font-weight: bold;
+        }
+
+        /* --- Hover Effects for Interactivity --- */
+        #clock:hover, #battery:hover, #pulseaudio:hover, #network:hover, #cpu:hover, #memory:hover, #idle_inhibitor:hover, #custom-notification:hover {
+          background-color: #${config.lib.stylix.colors.base01};
+          border-radius: 8px; /* Give a rounded background on hover */
+        }
+
+        /* --- Workspaces --- */
+        #workspaces {
+          background-color: #${config.lib.stylix.colors.base01};
+          border-radius: 8px;
+          margin-left: 6px; /* Add some space at the beginning of the bar */
+          padding: 0 5px;
+        }
+
+        #workspaces button {
+          color: #${config.lib.stylix.colors.base04}; /* Inactive workspace color */
+          padding: 0px 5px;
+          border-radius: 8px;
+          transition: ${betterTransition};
+        }
+
+        #workspaces button:hover {
+          background-color: #${config.lib.stylix.colors.base02};
+          color: #${config.lib.stylix.colors.base06};
+        }
+
+        #workspaces button.focused {
+          background-color: #${config.lib.stylix.colors.base0D}; /* Use a bright accent for focus */
           color: #${config.lib.stylix.colors.base00};
-          background: #${config.lib.stylix.colors.base0B};
-          opacity: 0.8;
         }
-        tooltip {
-          background: #${config.lib.stylix.colors.base00};
-          border: 1px solid #${config.lib.stylix.colors.base08};
-          border-radius: 12px;
+
+        #workspaces button.urgent {
+          background-color: #${config.lib.stylix.colors.base08}; /* Use red for urgent workspaces */
+          color: #${config.lib.stylix.colors.base00};
         }
-        tooltip label {
+
+        /* --- Right Aligned Modules --- */
+        #tray {
+            margin-right: 6px; /* Add some space at the end of the bar */
+        }
+
+        /* --- State-Based Coloring for Glanceable Info --- */
+        #memory.warning, #cpu.warning, #battery.warning {
+          color: #${config.lib.stylix.colors.base0A}; /* Yellow for warning */
+        }
+
+        #memory.critical, #cpu.critical, #battery.critical {
+          color: #${config.lib.stylix.colors.base08}; /* Red for critical */
+        }
+
+        #battery.charging, #battery.plugged {
+          color: #${config.lib.stylix.colors.base0B}; /* Green/Blue for charging */
+        }
+
+        #network.disconnected {
           color: #${config.lib.stylix.colors.base08};
         }
 
-        /* --- UNIFIED MODULE STYLE --- */
-        #window, #pulseaudio, #temperature, #cpu, #memory, #idle_inhibitor, #disk,
-        #custom-hyprbindings, #network, #battery, #custom-notification, #clock,
-        #custom-exit, #custom-startmenu, #tray {
-          font-weight: bold;
-          margin: 3px 0px 3px 6px; /* Reduced margin */
-          padding: 0px 10px;        /* Reduced padding */
+        /* --- Specific Module Tweaks --- */
+        #clock {
+          color: #${config.lib.stylix.colors.base0E}; /* A distinct color for the clock */
+        }
+
+        #window {
+          /* The window title can be less prominent */
+          color: #${config.lib.stylix.colors.base04};
+          font-weight: normal;
+        }
+
+        /* --- Tooltips --- */
+        tooltip {
           background: #${config.lib.stylix.colors.base00};
-          color: #${config.lib.stylix.colors.base0B};
-          border: 1px solid #${config.lib.stylix.colors.base0B}; /* Reduced border */
-          border-radius: 4px;
+          border: 1px solid #${config.lib.stylix.colors.base0B};
+          border-radius: 12px;
+        }
+
+        tooltip label {
+          color: #${config.lib.stylix.colors.base05};
         }
       ''
     ];
