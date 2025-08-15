@@ -225,9 +225,16 @@
       nerd-fonts.monaspace # Monaspace with icons
       nerd-fonts.meslo-lg # Meslo LG with icons
       nerd-fonts.jetbrains-mono # JetBrains Mono with icons
+      nerd-fonts.caskaydia-cove
+      nerd-fonts.meslo-lg
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.symbols-only
 
-      # ===== CUSTOM FONTS (COMMENTED) =====
-      #maple-mono              # Maple Mono font
+      roboto
+      (google-fonts.override { fonts = [ "Inter" ]; })
+
+      # Monospace
+      jetbrains-mono
     ];
   };
 }
