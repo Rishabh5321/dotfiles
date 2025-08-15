@@ -7,7 +7,7 @@
     enable = true;
     image = "${wallpapers}/${wallpaper}";
     polarity = "dark";
-    opacity.terminal = 0.9;
+    opacity.terminal = 1.0;
 
     cursor = {
       package = pkgs.afterglow-cursors-recolored;

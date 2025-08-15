@@ -9,7 +9,7 @@ _: {
         startup_mode = "Windowed";
         dynamic_title = true;
         blur = true;
-        opacity = 0.9;
+        # opacity = 0.9;
       };
       window.dimensions = {
         columns = 160;
