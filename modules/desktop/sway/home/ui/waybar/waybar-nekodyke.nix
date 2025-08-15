@@ -186,7 +186,7 @@ with lib; {
       ''
         * {
           font-family: JetBrainsMono Nerd Font;
-          font-size: 14px; /* Slightly increased for readability, adjust as needed */
+          font-size: 14px;
           border: none;
           border-radius: 0;
           min-height: 0;
@@ -208,6 +208,7 @@ with lib; {
         /* Applies to all modules for consistency */
         #workspaces, #window, #clock, #battery, #pulseaudio, #network, #cpu, #memory, #idle_inhibitor, #tray, #custom-notification, #custom-exit, #custom-startmenu, #custom-hyprbindings {
           padding: 0px 12px; /* Horizontal padding for spacing inside the bar */
+          background-color: #${config.lib.stylix.colors.base01};
           margin: 4px 0px;   /* Vertical margin to center modules in the bar */
           font-weight: bold;
         }
@@ -220,7 +221,7 @@ with lib; {
         /* --- Workspaces --- */
         #workspaces {
           background-color: #${config.lib.stylix.colors.base01};
-          margin-left: 6px; /* Add some space at the beginning of the bar */
+          margin-left: 6px;
           padding: 0 5px;
         }
 
