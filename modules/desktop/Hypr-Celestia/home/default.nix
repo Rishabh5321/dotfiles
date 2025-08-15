@@ -31,7 +31,7 @@
     ./misc/session-variables.nix
 
     # Hyprland input module
-    inputs.hyprland.homeManagerModules.default
+    # inputs.hyprland.homeManagerModules.default
   ];
 
   # Packages

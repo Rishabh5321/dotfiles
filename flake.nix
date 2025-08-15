@@ -26,7 +26,7 @@
     # Desktop/WM
     ######################
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland.url = "github:hyprwm/Hyprland";
 
     stylix = {
       url = "github:danth/stylix";
