@@ -253,11 +253,11 @@ with lib; {
       windowrulev2 = idleinhibit fullscreen,class:^(firefox|${browser})$
 
       # No gaps when only one window
-      workspace = w[t1], gapsout:0, gapsin:0
-      workspace = w[tg1], gapsout:0, gapsin:0
-      workspace = f[1], gapsout:0, gapsin:0
-      windowrulev2 = bordersize 0, onworkspace:w[t1]
-      windowrulev2 = rounding 0, onworkspace:w[t1]
+      # workspace = w[t1], gapsout:0, gapsin:0
+      # workspace = w[tg1], gapsout:0, gapsin:0
+      # workspace = f[1], gapsout:0, gapsin:0
+      # windowrulev2 = bordersize 0, onworkspace:w[t1]
+      # windowrulev2 = rounding 0, onworkspace:w[t1]
 
       # ── Keybindings ────────────────────────────────────────────────────────
       # Application launchers

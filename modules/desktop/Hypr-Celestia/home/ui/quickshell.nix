@@ -70,7 +70,7 @@ in
         occupiedLabel = "󰮯 ";
         rounded = true;
         showWindows = true;
-        shown = 5;
+        # shown = 5;
       };
       status = {
         showAudio = true;
@@ -81,8 +81,8 @@ in
       };
     };
     border = {
-      rounding = 0;
-      thickness = 0;
+      rounding = 10;
+      thickness = 10;
     };
     dashboard = {
       mediaUpdateInterval = 500;

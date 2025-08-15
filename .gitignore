@@ -1,3 +1,4 @@
 .crush
 result
 tmp/*
+.env
