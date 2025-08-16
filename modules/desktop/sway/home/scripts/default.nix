@@ -1,7 +1,4 @@
 { pkgs, username, host }:
-let
-  vars = import ../misc/variables.nix;
-in
 [
   (import ./rofi-launcher.nix { inherit pkgs; })
   (import ./emopicker9000.nix { inherit pkgs; })
