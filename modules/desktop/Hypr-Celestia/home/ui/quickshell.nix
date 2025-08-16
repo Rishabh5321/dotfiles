@@ -25,6 +25,8 @@ in
     shellPkg
     quickshellPkg
     cliPkg
+    pkgs.kdePackages.qt5compat
+    pkgs.kdePackages.qtmultimedia
   ];
 
   home.file.".config/caelestia/shell.json".text = builtins.toJSON {
