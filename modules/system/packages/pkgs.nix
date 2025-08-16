@@ -72,7 +72,7 @@
     # beeper # Universal chat client
     discord # Gaming communication
     # ferdium # Multi-service messaging
-    telegram-desktop_git # Telegram client
+    telegram-desktop # Telegram client
     thunderbird-latest # Email client
 
     # ===== MEDIA & ENTERTAINMENT =====
