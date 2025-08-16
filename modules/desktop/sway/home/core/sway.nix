@@ -20,24 +20,6 @@ with lib; {
         outer = 8;
       };
 
-      # colors = {
-      #   background = "#${config.stylix.base16Scheme.base00}";
-      #   focused = {
-      #     border = "#${config.stylix.base16Scheme.base0D}";
-      #     background = "#${config.stylix.base16Scheme.base01}";
-      #     text = "#${config.stylix.base16Scheme.base05}";
-      #     indicator = "#${config.stylix.base16Scheme.base0D}";
-      #     childBorder = "#${config.stylix.base16Scheme.base0D}";
-      #   };
-      #   unfocused = {
-      #     border = "#${config.stylix.base16Scheme.base03}";
-      #     background = "#${config.stylix.base16Scheme.base00}";
-      #     text = "#${config.stylix.base16Scheme.base04}";
-      #     indicator = "#${config.stylix.base16Scheme.base03}";
-      #     childBorder = "#${config.stylix.base16Scheme.base03}";
-      #   };
-      # };
-
       startup = [
         { command = "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
         { command = "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }

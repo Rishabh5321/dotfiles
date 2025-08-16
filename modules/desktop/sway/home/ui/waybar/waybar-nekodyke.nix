@@ -23,9 +23,9 @@ with lib; {
           "cpu"
           "memory"
           "network"
-          "idle_inhibitor"
         ];
         modules-right = [
+          "idle_inhibitor"
           "pulseaudio"
           "battery"
           # "custom/hyprbindings"
