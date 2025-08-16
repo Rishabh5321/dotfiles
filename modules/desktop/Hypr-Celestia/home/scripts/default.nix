@@ -18,4 +18,7 @@
   # pkgs.waybar
   pkgs.kdePackages.kdeconnect-kde
   pkgs.hyprpolkitagent # password prompt
+  pkgs.libsForQt5.qt5ct
+  pkgs.qt6ct
+  pkgs.kdePackages.qtstyleplugin-kvantum
 ]
