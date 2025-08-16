@@ -20,5 +20,5 @@
 
   alacritty = true;
 
-  wallpaperDir = "~/Pictures/Wallpapers";
+  wallpaperDir = "$HOME/Pictures/Wallpapers";
 }

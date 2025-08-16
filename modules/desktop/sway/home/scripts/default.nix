@@ -1,4 +1,7 @@
 { pkgs, username, host }:
+let
+  vars = import ../misc/variables.nix;
+in
 [
   (import ./rofi-launcher.nix { inherit pkgs; })
   (import ./emopicker9000.nix { inherit pkgs; })
@@ -7,6 +10,7 @@
   (import ./web-search.nix { inherit pkgs; })
   (import ./screenshootin.nix { inherit pkgs; })
   (import ./list-sway-bindings.nix { inherit pkgs; inherit host; })
+  (import ./wall-selector.nix { inherit pkgs; })
   pkgs.wayland-protocols
   pkgs.wayland-utils
 ]

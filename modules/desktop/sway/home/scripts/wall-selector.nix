@@ -1,16 +1,24 @@
-{ pkgs
-, wallpaperDir
-, ...
-}:
+{ pkgs, ... }:
 pkgs.writeShellScriptBin "wallSelector" ''
-  # Find all wallpapers in the directory that match the pattern "wall*"
-  chosen=$(find ${wallpaperDir} -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) -print0 | \
-           xargs -0 -I{} basename "{}" | \
-           ${pkgs.rofi-wayland}/bin/rofi -dmenu -p "Select a wallpaper" -config ~/.config/rofi/config-wallpaper.rasi)
+  #!/usr/bin/env bash
+  set -o pipefail
 
-  # Exit if no wallpaper was selected
-  [ -z "$chosen" ] && exit;
+  WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
 
-  # Set the selected wallpaper using swww
-  ${pkgs.swww}/bin/swww img ${wallpaperDir}/"$chosen"
+  if [ ! -d "$WALLPAPER_DIR" ]; then
+    ${pkgs.libnotify}/bin/notify-send "Wallpaper Script Error" "Directory not found: $WALLPAPER_DIR"
+    exit 1
+  fi
+
+  chosen_wallpaper=$( \
+    find -L "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) \
+    -printf "%p\0icon\x1f%p\n" | \
+    ${pkgs.rofi-wayland}/bin/rofi -dmenu -p "Select a wallpaper" -config "$HOME/.config/rofi/config-wallpaper.rasi"
+  )
+
+  if [[ -z "$chosen_wallpaper" ]]; then
+    exit 0
+  fi
+
+  exec ${pkgs.swww}/bin/swww img "$chosen_wallpaper"
 ''
