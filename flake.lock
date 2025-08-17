@@ -1862,11 +1862,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1755324862,
-        "narHash": "sha256-CawaiYJr7gAz1f6CZR9jYNB/we6SzGBO0uq2Zb+2hoE=",
+        "lastModified": 1755374292,
+        "narHash": "sha256-Vf7r1IvYgIQe8TSk6lVn/kZKzjBR2bcSEZIOaTDsoWk=",
         "owner": "Rishabh5321",
         "repo": "zed-editor-flake",
-        "rev": "8260eabf30e0e8b5cde652ba790d3c8097542b79",
+        "rev": "41e09e6f0d4a55b2bfb9585c4311754106e11ed3",
         "type": "github"
       },
       "original": {
