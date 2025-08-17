@@ -1,7 +1,5 @@
 { pkgs
 , config
-, wallpaper
-, wallpapers
 , ...
 }: {
   programs = {
@@ -25,17 +23,14 @@
         {
           "*" = {
             bg = mkLiteral "#${config.stylix.base16Scheme.base00}";
-            bg-alt = mkLiteral "#${config.stylix.base16Scheme.base09}";
-            foreground = mkLiteral "#${config.stylix.base16Scheme.base01}";
-            selected = mkLiteral "#${config.stylix.base16Scheme.base08}";
-            active = mkLiteral "#${config.stylix.base16Scheme.base0B}";
+            bg-alt = mkLiteral "#${config.stylix.base16Scheme.base01}";
+            foreground = mkLiteral "#${config.stylix.base16Scheme.base07}"; # Kept as base07 for bright white
             text-selected = mkLiteral "#${config.stylix.base16Scheme.base00}";
-            text-color = mkLiteral "#${config.stylix.base16Scheme.base05}";
-            border-color = mkLiteral "#${config.stylix.base16Scheme.base0F}";
-            urgent = mkLiteral "#${config.stylix.base16Scheme.base0E}";
+            selected = mkLiteral "#${config.stylix.base16Scheme.base0D}";
+            active = mkLiteral "#${config.stylix.base16Scheme.base0B}";
+            urgent = mkLiteral "#${config.stylix.base16Scheme.base08}";
           };
           "window" = {
-            transparency = "real";
             width = mkLiteral "1000px";
             location = mkLiteral "center";
             anchor = mkLiteral "center";
@@ -51,35 +46,15 @@
             enabled = true;
             spacing = mkLiteral "0px";
             orientation = mkLiteral "horizontal";
-            children = map mkLiteral [
-              "imagebox"
-              "listbox"
-            ];
+            children = map mkLiteral [ "listbox" ];
             background-color = mkLiteral "transparent";
-          };
-          "imagebox" = {
-            padding = mkLiteral "30px";
-            background-color = mkLiteral "transparent";
-            background-image = mkLiteral ''url("${wallpapers}/${wallpaper}",height)'';
-            orientation = mkLiteral "vertical";
-            children = map mkLiteral [
-              "inputbar"
-              "dummy"
-              "mode-switcher"
-            ];
           };
           "listbox" = {
             spacing = mkLiteral "20px";
             padding = mkLiteral "30px";
             background-color = mkLiteral "transparent";
             orientation = mkLiteral "vertical";
-            children = map mkLiteral [
-              "message"
-              "listview"
-            ];
-          };
-          "dummy" = {
-            background-color = mkLiteral "transparent";
+            children = map mkLiteral [ "inputbar" "mode-switcher" "listview" ];
           };
           "inputbar" = {
             enabled = true;
@@ -88,10 +63,7 @@
             border-radius = mkLiteral "15px";
             background-color = mkLiteral "@bg-alt";
             text-color = mkLiteral "@foreground";
-            children = map mkLiteral [
-              "textbox-prompt-colon"
-              "entry"
-            ];
+            children = map mkLiteral [ "textbox-prompt-colon" "entry" ];
           };
           "textbox-prompt-colon" = {
             enabled = true;
@@ -123,7 +95,7 @@
           };
           "button selected" = {
             background-color = mkLiteral "@selected";
-            text-color = mkLiteral "@foreground";
+            text-color = mkLiteral "@text-selected";
           };
           "listview" = {
             enabled = true;
@@ -138,7 +110,6 @@
             fixed-columns = true;
             spacing = mkLiteral "15px";
             background-color = mkLiteral "transparent";
-            text-color = mkLiteral "@foreground";
             cursor = "default";
           };
           "element" = {
@@ -147,31 +118,47 @@
             padding = mkLiteral "15px";
             border-radius = mkLiteral "15px";
             background-color = mkLiteral "transparent";
-            text-color = mkLiteral "@text-color";
+            text-color = mkLiteral "@foreground"; # This sets the base text color to white
             cursor = mkLiteral "pointer";
           };
+
+          # --- KEY CHANGES ARE HERE ---
           "element normal.normal" = {
             background-color = mkLiteral "inherit";
-            text-color = mkLiteral "@text-color";
+            text-color = mkLiteral "@foreground"; # Explicitly set to white, instead of 'inherit'
           };
           "element normal.urgent" = {
             background-color = mkLiteral "@urgent";
-            text-color = mkLiteral "@text-color";
+            text-color = mkLiteral "@text-selected";
           };
           "element normal.active" = {
-            background-color = mkLiteral "inherit";
-            text-color = mkLiteral "@text-color";
+            background-color = mkLiteral "@active";
+            text-color = mkLiteral "@text-selected";
           };
+          "element alternate.normal" = {
+            background-color = mkLiteral "inherit";
+            text-color = mkLiteral "@foreground"; # Explicitly set to white, instead of 'inherit'
+          };
+          "element alternate.urgent" = {
+            background-color = mkLiteral "@urgent";
+            text-color = mkLiteral "@text-selected";
+          };
+          "element alternate.active" = {
+            background-color = mkLiteral "@active";
+            text-color = mkLiteral "@text-selected";
+          };
+          # --- END OF KEY CHANGES ---
+
           "element selected.normal" = {
             background-color = mkLiteral "@selected";
-            text-color = mkLiteral "@foreground";
+            text-color = mkLiteral "@text-selected";
           };
           "element selected.urgent" = {
             background-color = mkLiteral "@urgent";
             text-color = mkLiteral "@text-selected";
           };
           "element selected.active" = {
-            background-color = mkLiteral "@urgent";
+            background-color = mkLiteral "@active";
             text-color = mkLiteral "@text-selected";
           };
           "element-icon" = {
@@ -186,23 +173,6 @@
             cursor = mkLiteral "inherit";
             vertical-align = mkLiteral "0.5";
             horizontal-align = mkLiteral "0.0";
-          };
-          "message" = {
-            background-color = mkLiteral "transparent";
-          };
-          "textbox" = {
-            padding = mkLiteral "15px";
-            border-radius = mkLiteral "15px";
-            background-color = mkLiteral "@bg-alt";
-            text-color = mkLiteral "@foreground";
-            vertical-align = mkLiteral "0.5";
-            horizontal-align = mkLiteral "0.0";
-          };
-          "error-message" = {
-            padding = mkLiteral "15px";
-            border-radius = mkLiteral "20px";
-            background-color = mkLiteral "@bg";
-            text-color = mkLiteral "@foreground";
           };
         };
     };
