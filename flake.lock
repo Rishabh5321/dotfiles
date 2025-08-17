@@ -1801,16 +1801,16 @@
     "wallpapers-repo": {
       "flake": false,
       "locked": {
-        "lastModified": 1755168281,
-        "narHash": "sha256-czu1DEczGF/01fo67dsC15JiuMnaUB5mcHBqZj6vsSQ=",
+        "lastModified": 1755431776,
+        "narHash": "sha256-6YYj/cFufUWd230jPqUwg/AHTxtfun/LtcGR2ny8bLE=",
         "owner": "Rishabh5321",
-        "repo": "wallsite",
-        "rev": "83bba785a4739de0f848e5b7717576b82fd3096f",
+        "repo": "wallpapers",
+        "rev": "b3d0299d88ee75d809ecddb0d106dcabffdf0dbe",
         "type": "github"
       },
       "original": {
         "owner": "Rishabh5321",
-        "repo": "wallsite",
+        "repo": "wallpapers",
         "type": "github"
       }
     },

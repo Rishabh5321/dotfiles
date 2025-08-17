@@ -186,7 +186,7 @@
     ######################
 
     wallpapers-repo = {
-      url = "github:Rishabh5321/wallsite";
+      url = "github:Rishabh5321/wallpapers";
       flake = false;
     };
   };
@@ -208,7 +208,7 @@
     let
       system = "x86_64-linux";
       username = "rishabh";
-      wallpaper = "wall4.jpg";
+      wallpaper = "black-whole2.png";
       flakeDir = "/home/${username}/dotfiles";
       wallpapers = "${wallpapers-repo}/wallpapers";
 
