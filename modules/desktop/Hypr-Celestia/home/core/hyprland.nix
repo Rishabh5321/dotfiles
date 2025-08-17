@@ -122,7 +122,6 @@ with lib; {
       # ── Snappier Animations ───────────────────────────────────────────────
       animations {
         enabled = yes
-        first_launch_animation = false
 
         bezier = snap, 0.1, 0, 0.2, 1
         bezier = linear, 0, 0, 1, 1
