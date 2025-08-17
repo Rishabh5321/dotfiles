@@ -1595,11 +1595,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1755213943,
-        "narHash": "sha256-ssLRCiwcdkioOg9swgU2+PIhTR5SABnJxjTtaqbzPLo=",
+        "lastModified": 1755352474,
+        "narHash": "sha256-1BIcmlXJhG8cm8cBY9RAWBTzuxKrbmWF7jh2H/xswcc=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "7d103eb173df0937a0a02f40692c018297cfb241",
+        "rev": "c916a1119ea2cfd9905c852998a7d41322bdbcc9",
         "type": "github"
       },
       "original": {
