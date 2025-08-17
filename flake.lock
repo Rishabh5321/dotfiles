@@ -169,11 +169,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755361059,
-        "narHash": "sha256-cmLq7Vrui0MNqe+wn6VLhIcv2GMWka+9nahx9QVzPM8=",
+        "lastModified": 1755408312,
+        "narHash": "sha256-JKyJZjOvdLR/gQLoq2xHKWfJwUZCBxv1nsXuIHXMC6A=",
         "owner": "caelestia-dots",
         "repo": "cli",
-        "rev": "63e213283008d95832443a717e23cead25f0a7d6",
+        "rev": "f280b9cbb604d1ec50fbd0d8337787394d1556e4",
         "type": "github"
       },
       "original": {
@@ -194,11 +194,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1755178159,
-        "narHash": "sha256-ZmsQ3ZRa6U/5Axw+foMJwZpmsVdjHhat8wnY85UKQ+g=",
+        "lastModified": 1755393984,
+        "narHash": "sha256-ACh1ZbRvPhLxm/RkLCAkpYOphieRmzQt0auffPOxWD8=",
         "owner": "caelestia-dots",
         "repo": "shell",
-        "rev": "fa39593ca497c27ca8631091a75d883e4e3c46f2",
+        "rev": "c98a0fb2673a8a6e68dbab66750ec09204e0ce4d",
         "type": "github"
       },
       "original": {
