@@ -30,7 +30,7 @@ with lib; {
         { command = "kdeconnect-indicator"; always = true; }
         { command = "wl-paste --type text --watch cliphist store"; always = true; }
         { command = "wl-paste --type image --watch cliphist store"; always = true; }
-        { command = "sleep 10 && swww img ${wallpapers}/${wallpaper}"; always = true; }
+        # { command = "sleep 10 && swww img ${wallpapers}/${wallpaper}"; always = true; }
       ];
 
       keybindings = mkOptionDefault {

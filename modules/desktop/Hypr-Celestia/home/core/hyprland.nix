@@ -42,7 +42,7 @@ with lib; {
       # ── Startup Programs ──────────────────────────────────────────────────
       exec-once = dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      exec-once = swww-daemon # Start swww daemon if not running
+      exec-once = swww-daemon && swww img ${wallpapers}/${wallpaper}
       exec-once = swaync # Start notification daemon
       # exec-once = caelestia shell -d
       exec-once = nm-applet --indicator
@@ -50,7 +50,7 @@ with lib; {
       exec-once = kdeconnect-indicator # Start kdeconnect indicator earlier
       exec-once = wl-paste --type text --watch cliphist store
       exec-once = wl-paste --type image --watch cliphist store
-      exec-once = sleep 5 && swww img ${wallpapers}/${wallpaper} # Reduced sleep time
+      # exec-once = sleep 5 &&
 
       # ── Monitor Setup ─────────────────────────────────────────────────────
       monitor = eDP-1,1920x1080@60,0x0,1
