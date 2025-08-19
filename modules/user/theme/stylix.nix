@@ -20,7 +20,7 @@
 
   stylix = {
     targets = {
-      waybar.enable = false;
+      # waybar.enable = false;
       rofi.enable = false;
       wofi.enable = false;
       qt.enable = true;
