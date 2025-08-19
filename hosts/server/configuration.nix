@@ -212,4 +212,6 @@
     cloudflare-warp
   ];
 
+  cloudflare-warp.enable = true;
+
 }
