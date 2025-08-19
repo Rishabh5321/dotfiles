@@ -1,27 +1,16 @@
 <div align="center">
   <img src="./.github/assets/logo/nixos-logo.png" width="100px" alt="NixOS Logo" />
-  <br>
-  <h1>Rishabh's Flakes</h1>
-  <p>My personal NixOS configurations, managed with Nix Flakes for reproducibility and modularity.</p>
-  <p>
-    <a href="https://github.com/Rishabh5321/dotfiles">
-      <img src="https://img.shields.io/github/repo-size/Rishabh5321/dotfiles?color=B16286&labelColor=282828&style=for-the-badge&logo=github&logoColor=B16286" alt="Repo Size">
-    </a>
-    <a href="https://nixos.org">
-      <img src="https://img.shields.io/badge/NixOS-unstable-blue.svg?style=for-the-badge&labelColor=282828&logo=NixOS&logoColor=458588&color=458588" alt="NixOS Unstable">
-    </a>
-    <a href="https://github.com/Rishabh5321/dotfiles/blob/main/LICENSE">
-      <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=282828&colorB=98971A&logo=unlicense&logoColor=98971A&" alt="License: MIT"/>
-    </a>
-    </a>
-     <a href="https://github.com/Rishabh5321/dotfiles/commits/main">
-      <img src="https://img.shields.io/github/last-commit/Rishabh5321/dotfiles?color=D65D0E&labelColor=282828&style=for-the-badge&logo=github&logoColor=D65D0E" alt="Last Commit">
-    </a>
-    <a href="https://github.com/Rishabh5321/dotfiles/actions/workflows/build.yml">
-      <img src="https://img.shields.io/github/actions/workflow/status/Rishabh5321/dotfiles/build.yml?branch=main&label=Check%20and%20Build%20Flake%20Config&logo=github&logoColor=98971A&labelColor=282828&style=for-the-badge&color=98971A" alt="Check and Build Flake Config Status">
-    </a>
-  </p>
-  <br>
+
+  # Rishabh's Flakes
+
+  My personal NixOS configurations, managed with Nix Flakes for reproducibility and modularity.
+
+  [![Repo Size](https://img.shields.io/github/repo-size/Rishabh5321/dotfiles?color=B16286&labelColor=282828&style=for-the-badge&logo=github&logoColor=B16286)](https://github.com/Rishabh5321/dotfiles)
+  [![NixOS Unstable](https://img.shields.io/badge/NixOS-unstable-blue.svg?style=for-the-badge&labelColor=282828&logo=NixOS&logoColor=458588&color=458588)](https://nixos.org)
+  [![License: MIT](https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=282828&colorB=98971A&logo=unlicense&logoColor=98971A)](https://github.com/Rishabh5321/dotfiles/blob/main/LICENSE)
+  [![Last Commit](https://img.shields.io/github/last-commit/Rishabh5321/dotfiles?color=D65D0E&labelColor=282828&style=for-the-badge&logo=github&logoColor=D65D0E)](https://github.com/Rishabh5321/dotfiles/commits/main)
+  [![Check and Build Flake Config Status](https://img.shields.io/github/actions/workflow/status/Rishabh5321/dotfiles/build.yml?branch=main&label=Check%20and%20Build%20Flake%20Config&logo=github&logoColor=98971A&labelColor=282828&style=for-the-badge&color=98971A)](https://github.com/Rishabh5321/dotfiles/actions/workflows/build.yml)
+
 </div>
 
 ## 🖼️ Showcase
