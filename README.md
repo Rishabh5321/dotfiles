@@ -45,8 +45,9 @@ The repository is organized to separate concerns, making it easy to manage confi
 │       ├── home.nix           # Home Manager configuration for the user on this host
 │       └── ...                # Other host-specific files (e.g., hardware-configuration.nix)
 ├── modules/      # Reusable modules for system and user configurations
-│   ├── system/   # System-level modules (boot, networking, security, etc.)
-│   └── user/     # Home Manager modules (shell, editors, browsers, etc.)
+│       ├── desktop/  # Desktop Enviornments/ Window manager
+│       ├── system/   # System-level modules (boot, networking, security, etc.)
+│       └── user/     # Home Manager modules (shell, editors, browsers, etc.)
 ├── overlays/     # Custom Nixpkgs overlays to modify or add packages
 ├── pkgs/         # Custom packages built with Nix
 ├── flake.nix     # The heart of the project, defining inputs and outputs
