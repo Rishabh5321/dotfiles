@@ -209,6 +209,7 @@
     nano
     smartmontools
     github-runner
+    cloudflare-warp
   ];
 
 }
