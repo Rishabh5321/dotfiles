@@ -15,18 +15,27 @@
         layer = "top";
         position = "left";
         width = 40;
-        # margin = "5 0 5 5";
         spacing = 4;
 
-        modules-left = [ "custom/launcher" ];
-        modules-center = [ "hyprland/workspaces" ];
+        modules-left = [ "hyprland/workspaces" ];
+        modules-center = [ ];
         modules-right = [
+          "idle_inhibitor"
           "pulseaudio"
           "battery"
           "tray"
           "clock"
           "custom/power"
         ];
+
+        "idle_inhibitor" = {
+          "format" = "{icon}";
+          "format-icons" = {
+            "activated" = "";
+            "deactivated" = "";
+          };
+          "tooltip" = "true";
+        };
 
         "custom/launcher" = {
           "format" = "󱄅";
@@ -82,7 +91,7 @@
 
         "battery" = {
           "states" = {
-            "warning" = 30;
+            "warning" = 50;
             "critical" = 15;
           };
           "format" = "{icon}";
@@ -90,6 +99,7 @@
           "format-plugged" = "󰂄";
           "format-icons" = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
           "tooltip-format" = "Battery: {capacity}%";
+          "on-click" = "better-control -m -B";
         };
 
         "tray" = {
@@ -120,7 +130,6 @@
 
       window#waybar {
         background: rgba(40, 44, 52, 0.9);
-        # border-radius: 15px;
         color: #f8f8f2;
         transition-property: background-color;
         transition-duration: 0.3s;
