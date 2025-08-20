@@ -1,5 +1,5 @@
 # waybar.nix - Nix Declarative Configuration File For Waybar Status-Bar
-{ inputs, config, lib, pkgs, scripts, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   programs.waybar = {
