@@ -4,6 +4,8 @@
     #inputs.hyprland-qtutils.packages."${pkgs.system}".default
     # inputs.quickshell.packages."${system}".default
     brightnessctl
+    blueman
+    pamixer
     # dunst
     # hyprpanel
     lazydocker

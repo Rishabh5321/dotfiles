@@ -1,7 +1,7 @@
 { pkgs, username, host, ... }:
-# let
-#   vars = import ./misc/variables.nix;
-# in
+let
+  vars = import ./misc/variables.nix;
+in
 {
   imports = [
     # Core components
@@ -20,8 +20,8 @@
     ./ui/rofi/config-long.nix
     ./ui/rofi/config-wallpaper.nix
     ./ui/wlogout.nix
-    ./ui/hyprpanel.nix
-    # vars.waybarChoice
+    # ./ui/hyprpanel.nix
+    vars.waybarChoice
 
     # Misc
     ./misc/emoji.nix

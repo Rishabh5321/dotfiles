@@ -42,7 +42,7 @@ with lib; {
       # ── Startup Programs ──────────────────────────────────────────────────
       exec-once = dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      # exec-once = swww-daemon
+      exec-once = swww-daemon
       exec-once = swaync # Start notification daemon
       exec-once = nm-applet --indicator
       exec-once = systemctl --user start hyprpolkitagent
