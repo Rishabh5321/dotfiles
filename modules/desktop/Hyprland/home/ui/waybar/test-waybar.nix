@@ -1,8 +1,4 @@
-{ hyprland
-, hyprland-plugins
-, config
-, pkgs
-, pc
+{ config
 , lib
 , ...
 }: with lib; {
