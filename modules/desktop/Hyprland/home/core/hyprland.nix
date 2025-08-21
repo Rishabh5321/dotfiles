@@ -42,14 +42,12 @@ with lib; {
       # ── Startup Programs ──────────────────────────────────────────────────
       exec-once = dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      exec-once = swww-daemon
       exec-once = swaync # Start notification daemon
       exec-once = nm-applet --indicator
       exec-once = systemctl --user start hyprpolkitagent
       exec-once = kdeconnect-indicator # Start kdeconnect indicator earlier
       exec-once = wl-paste --type text --watch cliphist store
       exec-once = wl-paste --type image --watch cliphist store
-      exec-once = sleep 5 && swww img ${wallpapers}/${wallpaper} # Reduced sleep time
 
       # ── Monitor Setup ─────────────────────────────────────────────────────
       monitor = eDP-1,1920x1080@60,0x0,1
@@ -228,6 +226,7 @@ with lib; {
       windowrulev2 = float,class:^(blueman-manager)$
       windowrulev2 = float,class:^(nm-connection-editor)$
       windowrulev2 = float,class:^(emote-picker)$
+      windowrulev2 = float,class:^(waypaper)$
 
       # Size constraints for floating windows
       # windowrulev2 = size 800 600,floating:1
@@ -236,6 +235,7 @@ with lib; {
       # Disable animations for specific windows
       windowrulev2 = animation none,class:^(popup-class)$
       windowrulev2 = animation slide,class:^(rofi)$
+      windowrulev2 = animation slide,class:^(waypaper)$
 
       # Opacity rules
       # windowrulev2 = opacity 0.95 0.95,class:^(${terminal})$
@@ -263,7 +263,7 @@ with lib; {
       bind = ALT,SPACE,exec,rofi -show drun
       bind = ${modifier},R,exec,rofi -show run
       bind = ${modifier},V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy
-      bind = ${modifier}ALT,W,exec,wallSelector
+      bind = ${modifier}CTRL,W,exec,waypaper
       bind = ${modifier},W,exec,${browser}
       bind = ${modifier}SHIFT,L,exec,wlogout
       bind = ${modifier},E,exec,emopicker9000

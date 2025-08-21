@@ -30,7 +30,7 @@
     nh # Nix helper
     openssl # Cryptography toolkit
     geminicommit # Gemini commit message generator
-    # zed-editor # Editor
+    zed-editor # Editor
     # nix-fast-build # Building flakes
     # gemini-cli # AI
     lazygit # Git TUI client
@@ -184,8 +184,7 @@
 
     # ===== FLAKE INPUTS =====
     # inputs.grayjay.packages.${pkgs.system}.grayjay # Video platform client
-    inputs.gemini-cli.packages.${pkgs.system}.gemini-cli-nightly # stable version
-    inputs.zed-editor-flake.packages.${system}.zed-editor # Zed editor from flake
+    inputs.gemini-cli.packages.${pkgs.system}.gemini-cli-nightly # stable versions
     inputs.better-control.packages.${pkgs.system}.better-control # Device control
     inputs.zen-browser.packages."${system}".default # zen
     # inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default

@@ -42,7 +42,6 @@ with lib; {
       # ── Startup Programs ──────────────────────────────────────────────────
       exec-once = dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      exec-once = swww-daemon && swww img ${wallpapers}/${wallpaper}
       exec-once = swaync # Start notification daemon
       # exec-once = caelestia shell -d
       exec-once = nm-applet --indicator

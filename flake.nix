@@ -77,7 +77,6 @@
     better-control.url = "github:Rishabh5321/better-control-flake";
     gemini-cli.url = "github:Rishabh5321/gemini-cli-flake";
     seanime.url = "github:Rishabh5321/seanime-flake";
-    zed-editor-flake.url = "github:Rishabh5321/zed-editor-flake";
 
     ######################
     # Applications/Tools
@@ -143,7 +142,7 @@
     ######################
 
     wallpapers-repo = {
-      url = "github:Rishabh5321/wallpapers";
+      url = "github:Rishabh5321/wallsite";
       flake = false;
     };
   };
@@ -165,8 +164,8 @@
     let
       system = "x86_64-linux";
       username = "rishabh";
-      wallpaper = "black-whole2.png";
-      flakeDir = "/home/${username}/dotfiles";
+      wallpaper = "Art/wall1.png";
+      flakeDir = "/home/${username}/dotfiles ";
       wallpapers = "${wallpapers-repo}/wallpapers";
 
       pkgs-stable = import nixpkgs-stable {

@@ -11,6 +11,7 @@
     lazydocker
     pavucontrol
     libsecret
+    waypaper
     xdg-utils
     xfce.xfce4-pulseaudio-plugin
   ];
