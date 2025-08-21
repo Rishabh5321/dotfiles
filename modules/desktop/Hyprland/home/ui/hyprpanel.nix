@@ -15,7 +15,7 @@ in
     settings = {
       tear = true;
       scalingPriority = "hyprland";
-      # wallpaper.enable = true;
+      wallpaper.enable = false;
 
       bar = {
         layouts = {
@@ -58,8 +58,8 @@ in
         font.weight = "500";
 
         bar = {
-          background = "rgba(0, 0, 0, 0.4)"; # Slight glass for bar
-          blur = true; # Only bar is glassy
+          background = "rgba(0, 0, 0, 0)";
+          # blur = true;
           outer_spacing = "1.1rem";
           dropdownGap = "2.3em";
 
