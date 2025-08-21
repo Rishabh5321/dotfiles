@@ -15,19 +15,19 @@ in
     settings = {
       tear = true;
       scalingPriority = "hyprland";
-      wallpaper.enable = true;
+      # wallpaper.enable = true;
 
       bar = {
         layouts = {
           "0" = {
-            left = [ "dashboard" "workspaces" "netstat" "hypridle" ];
-            middle = [ "clock" ];
-            right = [ "battery" "volume" "bluetooth" "network" "systray" "notifications" ];
+            left = [ "workspaces" ];
+            middle = [ ];
+            right = [ "netstat" "hypridle" "battery" "volume" "bluetooth" "network" "systray" "notifications" "clock" ];
           };
           "1" = {
-            left = [ "dashboard" "workspaces" "windowtitle" "netstat" ];
-            middle = [ "clock" ];
-            right = [ "volume" "network" "systray" "notifications" ];
+            left = [ "workspaces" ];
+            middle = [ ];
+            right = [ "netstat" "hypridle" "battery" "volume" "bluetooth" "network" "systray" "notifications" "clock" ];
           };
         };
         outer_spacing = "1.1rem";

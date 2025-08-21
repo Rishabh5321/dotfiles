@@ -16,10 +16,10 @@
 
         # Cursor settings
         # cursor-style = "block";
-        # custom-shader = toString (pkgs.fetchurl {
-        #   url = "https://raw.githubusercontent.com/KroneCorylus/ghostty-shader-playground/refs/heads/main/shaders/cursor_smear_fade.glsl";
-        #   sha256 = "sha256-2XGq3qIGT7LGsHiFZbGmci/M8CkTGNBDHGImGkKnoCk=";
-        # });
+        custom-shader = toString (pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/KroneCorylus/ghostty-shader-playground/refs/heads/main/shaders/cursor_smear_fade.glsl";
+          sha256 = "sha256-2XGq3qIGT7LGsHiFZbGmci/M8CkTGNBDHGImGkKnoCk=";
+        });
 
         # Misc settings
         # macos-option-as-alt = true;
