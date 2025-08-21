@@ -138,7 +138,7 @@
     # ===== OFFICE & PRODUCTIVITY =====
     libreoffice # Office suite
     onlyoffice-bin_latest # Alternative office suite
-    # varia # Various utilities
+    varia # Various utilities
 
     # ===== THEMES & ICONS =====
     dracula-icon-theme # Dracula icons
