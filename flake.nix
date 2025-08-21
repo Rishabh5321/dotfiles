@@ -70,27 +70,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # plasma-manager = {
-    #   url = "github:nix-community/plasma-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.home-manager.follows = "home-manager";
-    # };
-
-    # hyprpanel = {
-    #   url = "github:Jas-SinghFSU/HyprPanel";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # ags = {
-    #   url = "github:Aylur/ags";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # hyprpolkitagent = {
-    #   url = "github:hyprwm/hyprpolkitagent";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     ######################
     # Personal Projects
     ######################
@@ -100,17 +79,9 @@
     seanime.url = "github:Rishabh5321/seanime-flake";
     zed-editor-flake.url = "github:Rishabh5321/zed-editor-flake";
 
-    # akuse-flake.url = "github:rishabh5321/akuse-flake";
-    # grayjay.url = "github:Rishabh5321/grayjay-flake";
-    # thorium.url = "github:rishabh5321/thorium_flake";
-
     ######################
     # Applications/Tools
     ######################
-
-    # Ags, a customizable and extensible shell
-    ags.url = "github:Aylur/ags";
-    ags.inputs.nixpkgs.follows = "nixpkgs";
 
     darkmatter-grub-theme = {
       url = "gitlab:VandalByte/darkmatter-grub-theme";
@@ -166,20 +137,6 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # nvchad4nix = {
-    #   url = "github:nix-community/nix4nvchad";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # nvf.url = "github:notashelf/nvf";
-    # nix-colorizer.url = "github:nutsalhan87/nix-colorizer";
-    # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-
-    # distro-grub-themes = {
-    #   url = "github:AdisonCavani/distro-grub-themes";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
 
     ######################
     # Assets/Others
