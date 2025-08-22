@@ -81,8 +81,8 @@ in
               total = "${accent}";
               icon = "${accent}";
             };
+            enableBorders = true;
           };
-
           menus = {
             monochrome = true;
             background = "${background}"; # Fully opaque menu
