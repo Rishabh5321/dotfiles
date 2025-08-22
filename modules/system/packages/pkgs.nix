@@ -32,7 +32,7 @@
     geminicommit # Gemini commit message generator
     zed-editor # Editor
     # nix-fast-build # Building flakes
-    # gemini-cli # AI
+    gemini-cli # AI
     lazygit # Git TUI client
     lazydocker # Docker container management
 
@@ -184,7 +184,7 @@
 
     # ===== FLAKE INPUTS =====
     # inputs.grayjay.packages.${pkgs.system}.grayjay # Video platform client
-    inputs.gemini-cli.packages.${pkgs.system}.gemini-cli-nightly # stable versions
+    # inputs.gemini-cli.packages.${pkgs.system}.gemini-cli-stable # stable versions
     inputs.better-control.packages.${pkgs.system}.better-control # Device control
     inputs.zen-browser.packages."${system}".default # zen
     # inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default

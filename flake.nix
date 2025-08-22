@@ -75,7 +75,6 @@
     ######################
 
     better-control.url = "github:Rishabh5321/better-control-flake";
-    gemini-cli.url = "github:Rishabh5321/gemini-cli-flake";
     seanime.url = "github:Rishabh5321/seanime-flake";
 
     ######################
