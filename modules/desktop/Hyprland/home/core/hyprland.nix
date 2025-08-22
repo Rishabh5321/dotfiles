@@ -56,7 +56,7 @@ with lib; {
       # ── General Settings ──────────────────────────────────────────────────
       general {
         gaps_in           = 4
-        gaps_out          = 8
+        gaps_out          = 4
         border_size       = 2
         layout            = dwindle
         resize_on_border  = true
@@ -159,7 +159,7 @@ with lib; {
 
       # ── Decoration ─────────────────────────────────────────────────────────
       decoration {
-        rounding = 12
+        rounding = 6
 
         # active_opacity = 1.0
         # inactive_opacity = 0.95
@@ -251,11 +251,11 @@ with lib; {
       windowrulev2 = idleinhibit fullscreen,class:^(firefox|${browser})$
 
       # No gaps when only one window
-      workspace = w[t1], gapsout:0, gapsin:0
-      workspace = w[tg1], gapsout:0, gapsin:0
-      workspace = f[1], gapsout:0, gapsin:0
-      windowrulev2 = bordersize 0, onworkspace:w[t1]
-      windowrulev2 = rounding 0, onworkspace:w[t1]
+      # workspace = w[t1], gapsout:0, gapsin:0
+      # workspace = w[tg1], gapsout:0, gapsin:0
+      # workspace = f[1], gapsout:0, gapsin:0
+      # windowrulev2 = bordersize 0, onworkspace:w[t1]
+      # windowrulev2 = rounding 0, onworkspace:w[t1]
 
       # ── Keybindings ────────────────────────────────────────────────────────
       # Application launchers
