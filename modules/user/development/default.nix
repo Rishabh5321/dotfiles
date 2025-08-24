@@ -4,6 +4,7 @@
 {
   imports = [
     ./git.nix
+    ./lazygit.nix
     #./nvchad.nix
     #./nvf.nix
     #./zed.nix

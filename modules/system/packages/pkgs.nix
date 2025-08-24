@@ -48,6 +48,7 @@
     alacritty # GPU-accelerated terminal
     atuin # Shell history with sync
     bat # Enhanced cat with syntax highlighting
+    bottom
     btop # Resource monitor
     eza # Modern ls replacement
     fastfetch # System information tool
