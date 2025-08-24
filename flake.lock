@@ -1075,11 +1075,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755913811,
-        "narHash": "sha256-FhpVdDLW2uNXloJni6DkXMKATMxvAQ2HfbOu23QwLOE=",
+        "lastModified": 1756000679,
+        "narHash": "sha256-6O6f5T4cKadVXg3DlDetxEy57b5g4szei6WetmZF134=",
         "owner": "fufexan",
         "repo": "nix-gaming",
-        "rev": "b44f0ddc0912702662ae36ab265633d6cef3ea26",
+        "rev": "dfae17cadcb0df45329b3feccd62224849b42370",
         "type": "github"
       },
       "original": {
