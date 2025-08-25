@@ -1,4 +1,4 @@
-{ pkgs, username, host, ... }:
+{ ... }:
 # let
 #   vars = import ./misc/variables.nix;
 # in
