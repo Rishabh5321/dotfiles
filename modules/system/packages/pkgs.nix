@@ -67,7 +67,7 @@
     brave # Privacy-focused browser
     firefox # Mozilla Firefox
     google-chrome # Google Chrome
-    # librewolf # Privacy-hardened Firefox
+    librewolf # Privacy-hardened Firefox
 
     # ===== COMMUNICATION & SOCIAL =====
     # beeper # Universal chat client
