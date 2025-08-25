@@ -34,7 +34,7 @@
     # ===== BOOT SPLASH SCREEN =====
     plymouth = {
       enable = true;
-      theme = "cross_hud";
+      theme = "black_hud";
       themePackages = [ pkgs.adi1090x-plymouth-themes ];
     };
 
