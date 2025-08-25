@@ -6,7 +6,7 @@
     pavucontrol
     libsecret
     xdg-utils
-    xfce.xfce4-pulseaudio-plugin
+    pwvucontrol
     kdePackages.kdeconnect-kde
     swaylock
     swayidle

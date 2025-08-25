@@ -9,7 +9,7 @@
     xdg-utils
     xdg-desktop-portal
     xdg-desktop-portal-gtk
-    xfce.xfce4-pulseaudio-plugin
+    pwvucontrol
     i3
     # i3status
     i3lock

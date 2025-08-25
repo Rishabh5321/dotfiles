@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     inputs.caelestia-shell.packages.${pkgs.system}.default
     # inputs.quickshell.packages."${system}".default
+    blueman
     brightnessctl
     # dunst
     # hyprpanel
@@ -10,6 +11,6 @@
     pavucontrol
     libsecret
     xdg-utils
-    xfce.xfce4-pulseaudio-plugin
+    pwvucontrol
   ];
 }
