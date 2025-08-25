@@ -36,10 +36,10 @@
   ];
 
   # Packages
-  home.packages = import ./scripts/default.nix { inherit pkgs username host; };
+  # home.packages = import ./scripts/default.nix { inherit pkgs username host; };
 
   # Icons for wlogout
-  home.file.".config/wlogout/icons" = {
-    source = ./wlogout;
-  };
+  # home.file.".config/wlogout/icons" = {
+  #   source = ./wlogout;
+  # };
 }
