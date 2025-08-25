@@ -262,13 +262,13 @@ with lib; {
       bind = ${modifier},Return,exec,${terminal}
       bind = ALT,SPACE,exec,caelestia shell drawers toggle launcher
       # bind = ${modifier},R,exec,rofi -show run
-      # bind = ${modifier},V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy
+      bind = ${modifier},V,exec,caelestia clipboard -d
       bind = ${modifier}ALT,W,exec,wallSelector
       bind = ${modifier},W,exec,${browser}
       bind = CTRL,L,global,caelestia:session
       # bind = ${modifier},A,global,caelestia:session
-      bind = ${modifier},E,exec,emopicker9000
-      bind = ${modifier},S,exec,screenshootin
+      bind = ${modifier},E,exec,caelestia emoji -p
+      bind = ${modifier},S,global,caelestia:screenshot
       bind = ${modifier}SHIFT,S,exec,grim -g "$(slurp)" - | swappy -f -
       bind = ${modifier},D,exec,discord
       bind = ${modifier},C,exec,hyprpicker -a

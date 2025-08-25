@@ -12,5 +12,6 @@
     libsecret
     xdg-utils
     pwvucontrol
+    fuzzel
   ];
 }

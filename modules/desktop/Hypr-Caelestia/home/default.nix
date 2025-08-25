@@ -7,7 +7,7 @@
     # Core components
     ./core/hyprland.nix
     ./core/hypridle.nix
-    ./core/hyprlock.nix
+    # ./core/hyprlock.nix
     ./core/portal.nix
 
     # Services
@@ -20,7 +20,7 @@
     # ./ui/rofi/config-emoji.nix
     # ./ui/rofi/config-long.nix
     # ./ui/rofi/config-wallpaper.nix
-    ./ui/wlogout.nix
+    # ./ui/wlogout.nix
     ./ui/quickshell.nix
     # ./ui/hyprpanel.nix
     # vars.waybarChoice
