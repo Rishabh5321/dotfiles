@@ -87,11 +87,11 @@ in
           enabled = true;
         }
         {
-          id = "clock";
+          id = "statusIcons";
           enabled = true;
         }
         {
-          id = "statusIcons";
+          id = "clock";
           enabled = true;
         }
         {
@@ -108,11 +108,11 @@ in
       showOnHover = true;
       workspaces = {
         activeIndicator = true;
-        activeLabel = "󰮯 ";
+        activeLabel = "";
         activeTrail = true;
-        label = "  ";
+        label = "";
         occupiedBg = false;
-        occupiedLabel = "󰮯 ";
+        occupiedLabel = "";
         perMonitorWorkspaces = true;
         rounded = true;
         showWindows = true;
@@ -174,8 +174,8 @@ in
       hideDelay = 2000;
     };
     paths = {
-      mediaGif = "root:/assets/bongocat.gif";
-      sessionGif = "root:/assets/kurukuru.gif";
+      # mediaGif = "root:/assets/bongocat.gif";
+      # sessionGif = "root:/assets/kurukuru.gif";
       wallpaperDir = config.home.homeDirectory + "/Pictures/Wallpapers";
     };
     services = {

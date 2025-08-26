@@ -3,7 +3,7 @@
   environment.systemPackages = with pkgs; [
     inputs.caelestia-shell.packages.${pkgs.system}.default
     # inputs.quickshell.packages."${system}".default
-    blueman
+    # blueman
     brightnessctl
     # dunst
     # hyprpanel
