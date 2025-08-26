@@ -95,6 +95,10 @@ in
           enabled = true;
         }
         {
+          id = "idleInhibitor";
+          enabled = true;
+        }
+        {
           id = "power";
           enabled = true;
         }
