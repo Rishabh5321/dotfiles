@@ -39,7 +39,7 @@ let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
           background = true;
         };
         entries = [
-          { id = "logo"; enabled = true; }
+          { id = "logo"; enabled = false; }
           { id = "workspaces"; enabled = true; }
           { id = "spacer"; enabled = true; }
           { id = "activeWindow"; enabled = true; }
