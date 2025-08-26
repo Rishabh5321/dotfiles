@@ -265,7 +265,7 @@ with lib; {
       bind = ${modifier},V,exec,caelestia clipboard -d
       bind = ${modifier}ALT,W,exec,wallSelector
       bind = ${modifier},W,exec,${browser}
-      bind = CTRL,L,global,caelestia:session
+      bind = CTRL,L,exec,caelestia shell lock lock
       # bind = ${modifier},A,global,caelestia:session
       bind = ${modifier},E,exec,caelestia emoji -p
       bind = ${modifier},S,global,caelestia:screenshot
