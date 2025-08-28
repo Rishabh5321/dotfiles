@@ -262,7 +262,7 @@ with lib; {
       bind = ${modifier},Return,exec,${terminal}
       bind = ALT,SPACE,exec,caelestia shell drawers toggle launcher
       # bind = ${modifier},R,exec,rofi -show run
-      bind = ${modifier},V,exec,caelestia clipboard -d
+      bind = ${modifier},V,exec,caelestia clipboard
       bind = ${modifier}ALT,W,exec,wallSelector
       bind = ${modifier},W,exec,${browser}
       bind = CTRL,L,exec,caelestia shell lock lock
