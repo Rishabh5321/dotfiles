@@ -163,7 +163,7 @@
     let
       system = "x86_64-linux";
       username = "rishabh";
-      wallpaper = "Minimal/VorgBardo-midjourney-1960s-sci-fi-planet.jpg";
+      wallpaper = "Minimal/acoolrocket-dalle2-hokusai-non-prompt-landscape.png";
       flakeDir = "/home/${username}/dotfiles ";
       wallpapers = "${wallpapers-repo}/wallpapers";
 
