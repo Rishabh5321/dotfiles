@@ -7,6 +7,7 @@
     brightnessctl
     # dunst
     # hyprpanel
+    kdePackages.kdeconnect-kde
     lazydocker
     pavucontrol
     libsecret
