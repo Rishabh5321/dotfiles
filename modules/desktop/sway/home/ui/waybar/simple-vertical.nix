@@ -102,7 +102,7 @@
         };
 
         "clock" = {
-          "format" = "{:%H
+          "format" = "{:%I
 %M}";
           "tooltip-format" = "{:%A %d %B %Y}";
           "on-click" = "gnome-calendar";
