@@ -24,6 +24,7 @@
           "battery"
           "tray"
           "clock"
+          "custom/swaync"
           "custom/power"
         ];
 
@@ -115,6 +116,12 @@
           "tooltip" = "Power menu";
           "on-click" = "wlogout";
         };
+
+        "custom/swaync" = {
+          "format" = "󰂚";
+          "tooltip" = "Notification Center";
+          "on-click" = "swaync-client -t";
+        };
       };
     };
 
@@ -142,6 +149,7 @@
       #clock,
       #custom-power,
       #custom-launcher,
+      #custom-swaync,
       #idle_inhibitor {
         padding: 8px 0;
         margin: 2px 0;
