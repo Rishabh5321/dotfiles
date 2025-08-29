@@ -56,6 +56,7 @@
     # ghostty # Terminal emulator
     # gnome-console # GNOME terminal
     htop # Process monitor
+    jq # JSON processor
     ranger # File manager
     tealdeer # Simplified man pages
     tree # Directory tree viewer
