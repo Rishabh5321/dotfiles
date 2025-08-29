@@ -44,11 +44,6 @@
 
         "sway/workspaces" = {
           "format" = "{name}";
-          "format-icons" = {
-            "default" = " ";
-            "focused" = " ";
-            "urgent" = " ";
-          };
         };
 
         "pulseaudio" = {
@@ -155,14 +150,11 @@
         color: #${base05};
       }
 
-      window#waybar #workspaces button.active,
-      window#waybar #workspaces button.focused,
-      window#waybar #workspaces button.persistent,
-      window#waybar #workspaces button.current_output {
-        background: transparent;
-        color: #${base05};
-        border: 2px solid #${base0D};
-        font-weight: bold;
+      #workspaces button.focused {
+        background: #${base0D};
+        color: #${base00};
+        border: 2px solid #${base0E};
+        border-radius: 8px;
       }
 
       #workspaces button.urgent {
