@@ -57,7 +57,7 @@
     # gnome-console # GNOME terminal
     htop # Process monitor
     ranger # File manager
-    tldr # Simplified man pages
+    tealdeer # Simplified man pages
     tree # Directory tree viewer
     # typer # Interactive typing test
     # toipe # Terminal typing test

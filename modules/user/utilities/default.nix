@@ -5,6 +5,8 @@
   imports = [
     ./atuin.nix
     #./libnotify.nix
+    ./tealdeer.nix
     ./wofi.nix
+    ./zoxide.nix
   ];
 }
