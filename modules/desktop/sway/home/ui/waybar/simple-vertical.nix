@@ -121,7 +121,7 @@
     style = with config.lib.stylix.colors; ''
       * {
         font-family: JetBrainsMono Nerd Font Mono;
-        font-size: 12px;
+        font-size: 16px;
         min-height: 0;
       }
 
@@ -132,20 +132,40 @@
         transition-duration: 0.3s;
       }
 
-      #workspaces button {
-        all: unset;
-        padding: 12px 0;
+      #workspaces button,
+      #pulseaudio,
+      #cpu,
+      #memory,
+      #temperature,
+      #battery,
+      #tray,
+      #clock,
+      #custom-power,
+      #custom-launcher,
+      #idle_inhibitor {
+        padding: 8px 0;
         margin: 2px 0;
-        border-radius: 8px;
         background: transparent;
         color: #${base05};
-        border: 2px solid transparent;
-        font-size: 20px;
-        font-weight: bold;
         transition: all 0.3s ease;
+        border-radius: 8px;
       }
 
-      #workspaces button:hover {
+      #workspaces button {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      #workspaces button:hover,
+      #pulseaudio:hover,
+      #cpu:hover,
+      #memory:hover,
+      #temperature:hover,
+      #battery:hover,
+      #clock:hover,
+      #custom-power:hover,
+      #custom-launcher:hover,
+      #idle_inhibitor:hover {
         background: #${base01};
         color: #${base05};
       }
@@ -153,8 +173,6 @@
       #workspaces button.focused {
         background: #${base0D};
         color: #${base00};
-        border: 2px solid #${base0E};
-        border-radius: 8px;
       }
 
       #workspaces button.urgent {
@@ -169,48 +187,9 @@
         }
       }
 
-      #custom-launcher:hover {
-        background: #${base02};
-        border-radius: 8px;
-      }
-
-      #custom-power:hover {
-        background: #${base02};
-        border-radius: 8px;
-      }
-
-      #pulseaudio,
-      #cpu,
-      #memory,
-      #temperature,
-      #battery,
-      #tray,
-      #clock,
-      #custom-power {
-        padding: 8px 0;
-        margin: 1px 0;
-        background: transparent;
-        color: #${base05};
-        font-size: 16px;
-        transition: all 0.3s ease;
-      }
-
-      #custom-launcher:hover,
-      #pulseaudio:hover,
-      #cpu:hover,
-      #memory:hover,
-      #temperature:hover,
-      #battery:hover,
-      #clock:hover,
-      #custom-power:hover {
-        background: #${base02};
-      }
-
       #custom-launcher {
-        background: transparent;
         color: #${base0E};
-        font-size: 24px;
-        padding: 12px 0;
+        font-size: 20px;
       }
 
       #pulseaudio.muted {
@@ -237,14 +216,11 @@
 
       #clock {
         font-weight: bold;
-        font-size: 14px;
       }
 
       #custom-power {
-        background: transparent;
         color: #${base08};
         font-size: 20px;
-        padding: 10px 0;
       }
 
       #tray menu {
