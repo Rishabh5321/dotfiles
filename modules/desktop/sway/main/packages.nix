@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     brightnessctl
     lazydocker
+    pamixer
     pavucontrol
     libsecret
     xdg-utils
