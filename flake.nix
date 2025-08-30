@@ -62,7 +62,7 @@
 
     stylix = {
       url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs"; Temporary fix until upstream is merged.
     };
 
     sddm-sugar-candy-nix = {
