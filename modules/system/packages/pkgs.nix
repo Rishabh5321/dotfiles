@@ -173,7 +173,7 @@
 
     # ===== APPLICATIONS (COMMENTED) =====
     #deja-dup              # Backup tool
-    grayjay # Video platform client
+    # grayjay # Video platform client
     #pods                  # Podcast client
     #popcorntime           # Movie streaming
     #protonup-qt           # Proton version manager
