@@ -78,12 +78,12 @@
     thunderbird-latest # Email client
 
     # ===== MEDIA & ENTERTAINMENT =====
-    jellyfin-media-player # Media center client
+    # jellyfin-media-player # Media center client
     mangayomi # Manga reader
     # miru # Video streaming client
     mpv-unwrapped # Video player
     spotify # Music streaming
-    stremio # Media streaming
+    # stremio # Media streaming
     vlc # Multimedia player
     youtube-music # YouTube Music client
     qimgv #image viewer
