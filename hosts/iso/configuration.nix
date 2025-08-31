@@ -9,7 +9,7 @@
   ];
 
   # Set the state version for compatibility
-  system.stateVersion = "25.11";
+  system.stateVersion = "25.05";
 
   # ISO-specific configuration
   isoImage.makeEfiBootable = true;
@@ -55,9 +55,6 @@
   # Allow the user to use sudo without password
   security.sudo.wheelNeedsPassword = false;
 
-  # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   # Optional: Add your dotfiles to the ISO
   system.activationScripts.dotfiles = ''
     mkdir -p /home/${username}/dotfiles
@@ -94,6 +91,7 @@
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
 
+      experimental-features = [ "nix-command" "flakes" ];
 
       # ===== PERFORMANCE OPTIMIZATIONS =====
       # Automatically optimize store by hard-linking identical files

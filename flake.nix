@@ -6,8 +6,8 @@
     # Core Nix/Nixpkgs
     ######################
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -18,7 +18,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -61,7 +61,7 @@
     };
 
     stylix = {
-      url = "github:danth/stylix";
+      url = "github:nix-community/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -119,13 +119,13 @@
 
     caelestia-cli = {
       url = "github:caelestia-dots/cli";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     caelestia-shell = {
       url = "github:caelestia-dots/shell";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-unstable";
         quickshell.follows = "quickshell";
         caelestia-cli.follows = "caelestia-cli";
       };
@@ -133,7 +133,7 @@
 
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     ######################
@@ -149,7 +149,7 @@
   outputs =
     { self
     , nixpkgs
-    , nixpkgs-stable
+    , nixpkgs-unstable
     , home-manager
     , sddm-sugar-candy-nix
     , chaotic
@@ -167,7 +167,7 @@
       flakeDir = "/home/${username}/dotfiles ";
       wallpapers = "${wallpapers-repo}/wallpapers";
 
-      pkgs-stable = import nixpkgs-stable {
+      pkgs-unstable = import nixpkgs-unstable {
         inherit system;
         config = {
           allowUnfree = true;
@@ -192,7 +192,7 @@
           username
           wallpaper
           flakeDir
-          pkgs-stable
+          pkgs-unstable
           nur
           # nix-colorizer
           sddm-sugar-candy-nix

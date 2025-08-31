@@ -29,10 +29,10 @@
     nix-update # Nix package update tool
     nh # Nix helper
     openssl # Cryptography toolkit
-    geminicommit # Gemini commit message generator
-    zed-editor # Editor
+    # geminicommit # Gemini commit message generator
+    # zed-editor # Editor
     # nix-fast-build # Building flakes
-    gemini-cli # AI
+    # gemini-cli # AI
     lazygit # Git TUI client
     lazydocker # Docker container management
 
