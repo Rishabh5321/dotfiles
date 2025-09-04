@@ -30,7 +30,7 @@
     nh # Nix helper
     openssl # Cryptography toolkit
     geminicommit # Gemini commit message generator
-    zed-editor # Editor
+    # zed-editor # Editor
     # nix-fast-build # Building flakes
     gemini-cli # AI
     lazygit # Git TUI client
@@ -78,12 +78,12 @@
     thunderbird-latest # Email client
 
     # ===== MEDIA & ENTERTAINMENT =====
-    jellyfin-media-player # Media center client
+    # jellyfin-media-player # Media center client
     mangayomi # Manga reader
     # miru # Video streaming client
     mpv-unwrapped # Video player
     spotify # Music streaming
-    stremio # Media streaming
+    # stremio # Media streaming
     vlc # Multimedia player
     youtube-music # YouTube Music client
     qimgv #image viewer
