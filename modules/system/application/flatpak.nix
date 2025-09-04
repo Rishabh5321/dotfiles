@@ -3,17 +3,13 @@ _:
   services.flatpak = {
     enable = true;
     packages = [
-      #"org.dupot.easyflatpak"
-      #"tv.kodi.Kodi"
-      #"org.jdownloader.JDownloader"
-      #"com.github.iwalton3.jellyfin-media-player"
-      #"io.github.giantpinkrobots.varia"
-      #"info.febvre.Komikku"
+      "com.github.iwalton3.jellyfin-media-player"
+      "com.stremio.Stremio"
     ];
     update = {
       auto = {
         enable = true;
-        onCalendar = "weekly"; # Default value
+        onCalendar = "daily";
       };
     };
   };
