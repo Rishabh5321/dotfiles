@@ -8,6 +8,7 @@
     ];
     config = {
       common.default = [
+        "wlr"
         "gtk"
       ];
     };
