@@ -82,6 +82,7 @@
     # mangayomi # Manga reader
     # miru # Video streaming client
     mpv-unwrapped # Video player
+    kodi-wayland # Media center client
     spotify # Music streaming
     # stremio # Media streaming
     vlc # Multimedia player
