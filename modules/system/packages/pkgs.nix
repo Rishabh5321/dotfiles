@@ -79,7 +79,7 @@
 
     # ===== MEDIA & ENTERTAINMENT =====
     # jellyfin-media-player # Media center client
-    mangayomi # Manga reader
+    # mangayomi # Manga reader
     # miru # Video streaming client
     mpv-unwrapped # Video player
     spotify # Music streaming

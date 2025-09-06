@@ -3,8 +3,8 @@ _:
   services.flatpak = {
     enable = true;
     packages = [
-      "com.github.iwalton3.jellyfin-media-player"
-      "com.stremio.Stremio"
+      # "com.github.iwalton3.jellyfin-media-player"
+      # "com.stremio.Stremio"
     ];
     update = {
       auto = {
