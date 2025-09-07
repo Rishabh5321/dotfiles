@@ -33,42 +33,6 @@
 
   ];
 
-  # services.avahi = {
-  #   enable = true;
-  #   publish = {
-  #     enable = true;
-  #     addresses = true;
-  #     domain = true;
-  #     hinfo = true;
-  #     userServices = true;
-  #     workstation = true;
-  #   };
-  #   nssmdns4 = true; # Enable mDNS resolution
-  # };
-
-  #drivers.intel.enable = true;
-  #drivers.amdgpu.enable = false;
-  #nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # networking.extraHosts = ''
-  #   127.0.0.1 bazarr.home
-  #   127.0.0.1 duplicati.home
-  #   127.0.0.1 file.home
-  #   127.0.0.1 flaresolverr.home
-  #   127.0.0.1 games.home
-  #   127.0.0.1 jackett.home
-  #   127.0.0.1 jellyfin.home
-  #   127.0.0.1 jellyseerr.home
-  #   127.0.0.1 portainer.home
-  #   127.0.0.1 prowlarr.home
-  #   127.0.0.1 qbittorrent.home
-  #   127.0.0.1 radarr.home
-  #   127.0.0.1 resilio.home
-  #   127.0.0.1 sonarr.home
-  #   127.0.0.1 syncify.home
-  #   127.0.0.1 tachiyomi.home
-  # '';
-
   networking.hostName = "server"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -101,47 +65,31 @@
     #displayManager.defaultSession = "hyprland";
   };
 
-  #services.displayManager = {
-  #  enable = true;
-  #  sddm = {
-  #    enable = true;
-  #    wayland = {
-  #      enable = true;
-  #    };
-  #    settings = {
-  #      Autologin = {
-  #        Session = "hyprland";
-  #        User = "rishabh";
-  #      };
-  #    };
-  #    autoNumlock = true;
-  #  };
-  #};
-  #services.desktopManager.cosmic.enable = true;
+    users.users.beszel = {
+      isSystemUser = true;
+      group = "beszel";
+      description = "Beszel Agent service user";
+    };
+    users.groups.beszel = {};
 
-  #services.displayManager.sddm.theme = "sddm-astronaut-theme";
-  #services.desktopManager.plasma6.enable = true;
-  #services.displayManager.sddm.enable = true;
+    systemd.services.beszel-agent = {
+      description = "Beszel Agent Service";
+      after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
 
-  #services.xserver = {
-  #  enable = true;
-  #  desktopManager = {
-  #    xterm.enable = false;
-  #    xfce = {
-  #      enable = true;
-  #      #noDesktop = true;
-  #      enableXfwm = false;
-  #    };
-  #  };
-  #  xkb = {
-  #    layout = "us";
-  #    variant = "";
-  #  };
-  #  windowManager.i3.enable = true;
-  #};
-  #services.displayManager.defaultSession = "xfce";
+      serviceConfig = {
+        Environment = [
+          "PORT=45876"
+          ''KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB+5reoHczT8BitLVL5W79/v0CvNZX5K8JQ+HmWLYXue"''
+          # "EXTRA_FILESYSTEMS=/mnt/rust,/rpool,/flash,/mnt/pve/local-ext4,/mnt/pve/nvme"
+        ];
+        ExecStart = "/run/current-system/sw/bin/beszel-agent";
+        User = "beszel";
+        Restart = "always";
+        RestartSec = 5;
+      };
+    };
 
-  # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -209,6 +157,8 @@
     nano
     smartmontools
     github-runner
+    beszel
+    geminicommit
     cloudflare-warp
   ];
 
