@@ -81,7 +81,7 @@ in
               total = "${accent}";
               icon = "${accent}";
             };
-            enableBorders = true;
+            enableBorders = false;
           };
           menus = {
             monochrome = true;
