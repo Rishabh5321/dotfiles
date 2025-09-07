@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, ... }:
 
 let
   swayVars = import ../misc/variables.nix; # Super key
