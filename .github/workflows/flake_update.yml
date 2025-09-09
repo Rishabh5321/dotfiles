@@ -60,7 +60,7 @@ jobs:
           extra-conf: accept-flake-config = true
 
       - name: Update Flake Dependency and Create PR
-        uses: cpcloud/flake-update-action@v2.0.1
+        uses: cpcloud/flake-update-action@main
         with:
           dependency: ${{ matrix.flake }}
           pull-request-token: ${{ steps.generate_token.outputs.token }}
