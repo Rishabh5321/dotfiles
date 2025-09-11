@@ -16,8 +16,8 @@ with lib; {
       bars = [ ]; # Use waybar instead
 
       gaps = {
-        inner = 4;
-        outer = 8;
+        inner = 0;
+        outer = 0;
       };
 
       startup = [
