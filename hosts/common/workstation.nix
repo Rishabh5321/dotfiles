@@ -2,6 +2,6 @@
 { ... }: {
   imports = [
     ./power-laptop.nix
-    ./tailscale-client.nix
+    # ./tailscale-client.nix
   ];
 }
