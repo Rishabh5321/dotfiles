@@ -23,17 +23,12 @@
   ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/8efa0408-b693-4389-8565-59f9b2e25d2f";
-    fsType = "ext4";
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/fdcf188c-7880-45f5-838a-bcab67d49a4b";
+    device = "/dev/disk/by-uuid/9c45b5d1-2bb2-48d0-87c7-287a323c13ca";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/B990-5B06";
+    device = "/dev/disk/by-uuid/5216-6D1A";
     fsType = "vfat";
     options = [ "fmask=0022" "dmask=0022" ];
   };
