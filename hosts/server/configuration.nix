@@ -9,7 +9,7 @@
     #../../modules/system
     ../common/power-server.nix
     ../common/serve.nix
-    ../common/tailscale-server.nix
+    # ../common/tailscale-server.nix
     #./amd-drivers.nix
     inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
     inputs.nixos-hardware.nixosModules.common-gpu-intel
