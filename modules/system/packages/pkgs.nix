@@ -82,6 +82,7 @@
     # jellyfin-media-player # Media center client
     # mangayomi # Manga reader
     # miru # Video streaming client
+    delfin #jellyfin media player
     mpv-unwrapped # Video player
     kodi-wayland # Media center client
     spotify # Music streaming
