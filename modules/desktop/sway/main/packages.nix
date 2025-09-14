@@ -16,6 +16,6 @@
     slurp
     wl-clipboard
     swaynotificationcenter
-    rofi-wayland
+    rofi
   ];
 }

@@ -13,7 +13,7 @@ pkgs.writeShellScriptBin "wallSelector" ''
   chosen_wallpaper=$( \
     find -L "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) \
     -printf "%p\0icon\x1f%p\n" | \
-    ${pkgs.rofi-wayland}/bin/rofi -dmenu -p "Select a wallpaper" -config "$HOME/.config/rofi/config-wallpaper.rasi"
+    ${pkgs.rofi}/bin/rofi -dmenu -p "Select a wallpaper" -config "$HOME/.config/rofi/config-wallpaper.rasi"
   )
 
   if [[ -z "$chosen_wallpaper" ]]; then
