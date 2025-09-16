@@ -18,7 +18,7 @@ let
   # Copied from https://github.com/NixOS/nixpkgs/pull/428206 because im lazy
   cef-path = stdenv.mkDerivation {
     pname = "cef-path";
-    version = libcef.version;
+    inherit (libcef) version;
     dontUnpack = true;
     installPhase = ''
       mkdir -p "$out"
