@@ -160,7 +160,7 @@
     let
       system = "x86_64-linux";
       username = "rishabh";
-      wallpaper = "Minimal/acoolrocket-dalle2-hokusai-non-prompt-landscape.png";
+      wallpaper = "wall2.png";
       flakeDir = "/home/${username}/dotfiles ";
       wallpapers = "${wallpapers-repo}/wallpapers";
 
