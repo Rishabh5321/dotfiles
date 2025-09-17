@@ -17,7 +17,7 @@
     ./ui/rofi/config-long.nix
     ./ui/rofi/config-wallpaper.nix
     ./ui/wlogout.nix
-    ./ui/waybar/simple-vertical.nix
+    ./ui/waybar/default.nix
 
     # Misc
     ./misc/emoji.nix
