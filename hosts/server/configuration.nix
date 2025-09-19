@@ -8,7 +8,7 @@
     ./hardware-configuration.nix
     #../../modules/system
     ../common/power-server.nix
-    ../common/serve.nix
+    # ../common/serve.nix
     # ../common/tailscale-server.nix
     #./amd-drivers.nix
     inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
