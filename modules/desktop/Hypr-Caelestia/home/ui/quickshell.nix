@@ -7,11 +7,12 @@ let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
 
   qt = {
     enable = true;
-    platformTheme.name = lib.mkForce "gtk3";
+    # platformTheme.name = lib.mkForce "gtk3";
   };
 
   programs.caelestia = {
     enable = true;
+    systemd.enable = true;
     settings = {
       general = {
         apps = {
@@ -36,7 +37,9 @@ let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
           shown = 5;
         };
         tray = {
-          background = true;
+          background = false;
+          desktopClock.enabled = false;
+          visualiser.enabled = true;
         };
         entries = [
           { id = "logo"; enabled = false; }
@@ -71,7 +74,20 @@ let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
         # mediaGif = "${self}/assets/.gif";
       };
     };
-    cli.enable = true;
+    cli = {
+      enable = true;
+      # package = pkgs.caelestia-cli;
+      settings.theme = {
+        enableTerm = true;
+        enableHypr = true;
+        enableDiscord = true;
+        enableSpicetify = true;
+        enableFuzzel = true;
+        enableBtop = false;
+        enableGtk = true;
+        enableQt = true;
+      };
+    };
   };
 
   wayland.windowManager.hyprland.settings.env = [
