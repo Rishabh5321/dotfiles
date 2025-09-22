@@ -1,4 +1,4 @@
-{ self, lib, pkgs, inputs, ... }:
+{ self, pkgs, inputs, ... }:
 let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
 {
   imports = [
