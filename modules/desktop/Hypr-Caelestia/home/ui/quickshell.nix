@@ -12,7 +12,7 @@ let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
 
   programs.caelestia = {
     enable = true;
-    systemd.enable = true;
+    # systemd.enable = true;
     settings = {
       general = {
         apps = {
