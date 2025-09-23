@@ -50,6 +50,11 @@ with lib; {
       exec-once = wl-paste --type text --watch cliphist store
       exec-once = wl-paste --type image --watch cliphist store
       # exec-once = sleep 5 &&
+      exec-once = zen
+      exec-once = obsidian
+      exec-once = brave
+      exec-once = discord
+      exec-once = telegram-desktop
 
       # ── Monitor Setup ─────────────────────────────────────────────────────
       monitor = eDP-1,1920x1080@60,0x0,1
@@ -242,6 +247,11 @@ with lib; {
       # windowrulev2 = opacity 0.90 0.90,class:^(thunar)$
 
       # Workspace assignments
+      windowrulev2 = workspace 1,class:^(zen)$
+      windowrulev2 = workspace 2,class:^(obsidian)$
+      windowrulev2 = workspace 3,class:^(brave-browser)$
+      windowrulev2 = workspace 4,class:^(discord)$
+      windowrulev2 = workspace 4,class:^(telegram-desktop)$
       # windowrulev2 = workspace 2,class:^(${browser})$
       # windowrulev2 = workspace 3,class:^(discord)$
       # windowrulev2 = workspace 4,class:^(spotify)$
