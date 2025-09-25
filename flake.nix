@@ -116,13 +116,13 @@
 
     caelestia-cli = {
       url = "github:caelestia-dots/cli";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     caelestia-shell = {
       url = "github:caelestia-dots/shell";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        # nixpkgs.follows = "nixpkgs";
         # quickshell.follows = "quickshell";
         caelestia-cli.follows = "caelestia-cli";
       };

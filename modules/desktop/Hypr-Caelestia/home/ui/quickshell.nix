@@ -1,4 +1,4 @@
-{ self, pkgs, inputs, ... }:
+{ self, pkgs, inputs, lib, ... }:
 let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
 {
   imports = [
@@ -7,7 +7,7 @@ let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
 
   qt = {
     enable = true;
-    # platformTheme.name = lib.mkForce "gtk3";
+    platformTheme.name = lib.mkForce "gtk3";
   };
 
   programs.caelestia = {
@@ -16,7 +16,7 @@ let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
     settings = {
       general = {
         apps = {
-          terminal = "ghostty";
+          terminal = "kitty";
           audio = "${pkgs.pwvucontrol}/bin/pwvucontrol";
         };
       };
@@ -39,7 +39,7 @@ let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
         tray = {
           background = false;
           desktopClock.enabled = false;
-          visualiser.enabled = true;
+          visualiser.enabled = false;
         };
         entries = [
           { id = "logo"; enabled = false; }
@@ -77,16 +77,16 @@ let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
     cli = {
       enable = true;
       # package = pkgs.caelestia-cli;
-      settings.theme = {
-        enableTerm = true;
-        enableHypr = true;
-        enableDiscord = true;
-        enableSpicetify = true;
-        enableFuzzel = true;
-        enableBtop = false;
-        enableGtk = true;
-        enableQt = true;
-      };
+      # settings.theme = {
+      #   enableTerm = true;
+      #   enableHypr = true;
+      #   enableDiscord = true;
+      #   enableSpicetify = true;
+      #   enableFuzzel = true;
+      #   enableBtop = false;
+      #   enableGtk = true;
+      #   enableQt = true;
+      # };
     };
   };
 
