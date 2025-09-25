@@ -123,15 +123,15 @@
       url = "github:caelestia-dots/shell";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        quickshell.follows = "quickshell";
+        # quickshell.follows = "quickshell";
         caelestia-cli.follows = "caelestia-cli";
       };
     };
 
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # quickshell = {
+    #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     ######################
     # Assets/Others
