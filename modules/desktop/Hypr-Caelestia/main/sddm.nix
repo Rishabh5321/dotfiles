@@ -7,7 +7,6 @@
 , ...
 }:
 let
-  foreground = config.stylix.base16Scheme.base00;
   textColor = config.stylix.base16Scheme.base05;
   sddm-astronaut = pkgs.sddm-astronaut.override {
     embeddedTheme = "pixel_sakura";
