@@ -13,6 +13,7 @@ let
     themeConfig = {
       FormPosition = "left";
       Blur = "4.0";
+      HourFormat = "h:mm:ss AP";
       Background = "${lib.cleanSource wallpapers}/${wallpaper}";
       HeaderTextColor = "#${textColor}";
       DateTextColor = "#${textColor}";
