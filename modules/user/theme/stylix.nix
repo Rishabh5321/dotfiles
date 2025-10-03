@@ -27,6 +27,7 @@
       # qt.platform = "qtct";
       hyprland.enable = false;
       swaylock.enable = false;
+      hyprpanel.enable = false;
       zed.enable = false;
       zen-browser.enable = false;
       # spicetify.enable = false;
