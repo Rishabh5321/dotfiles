@@ -1499,11 +1499,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1759444170,
-        "narHash": "sha256-b5ShONncU4Gf39QtaL5OySC9G2o612rTE/TCwx3kMeM=",
+        "lastModified": 1759638324,
+        "narHash": "sha256-bj0L3n2UWE/DjqFjsydWsSzO74+dqUA4tiOX4At6LbM=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "e13267e8f3eb1664329fcb78a43b38b985f96f6f",
+        "rev": "c39a58510e55c4970e57176ab14b722a978e5f01",
         "type": "github"
       },
       "original": {
