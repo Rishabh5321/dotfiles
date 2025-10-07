@@ -138,7 +138,7 @@
       speedtest-cli # Network speed test
       swappy # Screenshot annotation
       swww # Wallpaper manager
-      # tailscale # VPN mesh network
+      tailscale # VPN mesh network
       virt-viewer # Virtual machine viewer
       vulkan-tools # Vulkan utilities
       wgcf # Cloudflare WARP config
