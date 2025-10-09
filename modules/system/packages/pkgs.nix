@@ -117,7 +117,7 @@
 
       # ===== SYSTEM UTILITIES =====
       cliphist # Clipboard manager
-      cloudflare-warp # VPN client
+      # cloudflare-warp # VPN client
       distrobox_git # Container-based environments
       fast-cli # Internet speed test
       gnome-disk-utility # Disk management
