@@ -8,21 +8,21 @@ Switch to Next Keyboard Layout=Meta+Alt+K
 [StandardShortcuts]
 AboutApp=
 AboutKDE=
-Activate Next Tab=Ctrl+PgDown; Ctrl+]
-Activate Previous Tab=Ctrl+[; Ctrl+PgUp
+Activate Next Tab=Ctrl+]; Ctrl+PgDown
+Activate Previous Tab=Ctrl+PgUp; Ctrl+[
 ActualSize=Ctrl+0
 AddBookmark=Ctrl+B
-Back=Back; Alt+Left
+Back=Alt+Left; Back
 BackwardWord=Ctrl+Left
 Begin=Ctrl+Home
 BeginningOfLine=Home
 Clear=
-Close=Ctrl+W; Ctrl+Esc
+Close=Ctrl+Esc; Ctrl+W
 ConfigureNotifications=
 ConfigureToolbars=
 Copy=Ctrl+C; Ctrl+Ins
 CreateFolder=Ctrl+Shift+N
-Cut=Ctrl+X; Shift+Del
+Cut=Shift+Del; Ctrl+X
 DeleteFile=Shift+Del
 DeleteWordBack=Ctrl+Backspace
 DeleteWordForward=Ctrl+Del
@@ -46,7 +46,7 @@ Goto=
 GotoLine=Ctrl+G
 GotoPage=
 Help=F1
-Home=Alt+Home; Home Page
+Home=Home Page; Alt+Home
 KeyBindings=Ctrl+Alt+,
 Mail=
 MoveToTrash=Del
@@ -66,7 +66,7 @@ PrintPreview=
 Prior=PgUp
 Quit=Ctrl+Q
 Redo=Ctrl+Shift+Z
-Reload=Refresh; F5
+Reload=F5; Refresh
 RenameFile=F2
 Replace=Ctrl+R
 ReportBug=
@@ -91,16 +91,12 @@ Zoom=
 ZoomIn=Ctrl+=; Ctrl++
 ZoomOut=Ctrl+-
 
+[com.mitchellh.ghostty.desktop][Global Shortcuts]
+_launch=Meta+Return
+new-window=
+
 [kaccess][Global Shortcuts]
 Toggle Screen Reader On and Off=Meta+Alt+S
-
-[kcm_touchpad][Global Shortcuts]
-Disable Touchpad=Touchpad Off
-Enable Touchpad=Touchpad On
-Toggle Touchpad=Meta+Ctrl+Touchpad Toggle; Touchpad Toggle; Meta+Ctrl+Zenkaku Hankaku
-
-[kitty.desktop][Global Shortcuts]
-_launch=Meta+Return
 
 [kmix][Global Shortcuts]
 decrease_microphone_volume=Microphone Volume Down
@@ -114,7 +110,7 @@ mute=Volume Mute
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=
-Lock Session=Meta+L; Screensaver
+Lock Session=Screensaver; Meta+L
 Log Out=Ctrl+Alt+Del
 Log Out Without Confirmation=
 LogOut=
@@ -132,10 +128,10 @@ Expose=Ctrl+F9
 ExposeAll=Ctrl+F10; Launch (C)
 ExposeClass=Ctrl+F7
 ExposeClassCurrentDesktop=
-Grid View=Meta+G
+Grid View=
 Increase Opacity=
 Kill Window=Meta+Ctrl+Esc
-KrohnkiteBTreeLayout=
+KrohnkiteBTreeLayout=Meta+Shift+G
 KrohnkiteColumnsLayout=
 KrohnkiteDecrease=
 KrohnkiteFloatAll=Meta+Shift+F
@@ -163,7 +159,7 @@ KrohnkiteShrinkHeight=Meta+Ctrl+K
 KrohnkiteShrinkWidth=Meta+Ctrl+H
 KrohnkiteSpiralLayout=
 KrohnkiteSpreadLayout=
-KrohnkiteStackedLayout=
+KrohnkiteStackedLayout=Meta+G
 KrohnkiteStairLayout=
 KrohnkiteTileLayout=
 KrohnkiteToggleFloat=Meta+F
@@ -178,6 +174,26 @@ MoveZoomLeft=
 MoveZoomRight=
 MoveZoomUp=
 Overview=Meta+W
+PoloniumCycleEngine=
+PoloniumFocusAbove=
+PoloniumFocusBelow=
+PoloniumFocusLeft=
+PoloniumFocusRight=
+PoloniumInsertAbove=
+PoloniumInsertBelow=
+PoloniumInsertLeft=
+PoloniumInsertRight=
+PoloniumOpenSettings=
+PoloniumResizeAbove=
+PoloniumResizeBelow=
+PoloniumResizeLeft=
+PoloniumResizeRight=
+PoloniumRetileWindow=Meta+Shift+Space
+PoloniumSwitchBTree=
+PoloniumSwitchHalf=
+PoloniumSwitchKwin=
+PoloniumSwitchMonocle=
+PoloniumSwitchThreeColumn=
 Setup Window Shortcut=
 Show Desktop=Meta+D
 Switch One Desktop Down=Meta+Ctrl+Down
@@ -188,7 +204,7 @@ Switch Window Down=Meta+Alt+Down
 Switch Window Left=Meta+Alt+Left
 Switch Window Right=Meta+Alt+Right
 Switch Window Up=Meta+Alt+Up
-Switch to Desktop 1=Ctrl+F1; Meta+1
+Switch to Desktop 1=Meta+1; Ctrl+F1
 Switch to Desktop 10=
 Switch to Desktop 11=
 Switch to Desktop 12=
@@ -199,10 +215,10 @@ Switch to Desktop 16=
 Switch to Desktop 17=
 Switch to Desktop 18=
 Switch to Desktop 19=
-Switch to Desktop 2=Ctrl+F2; Meta+2
+Switch to Desktop 2=Meta+2; Ctrl+F2
 Switch to Desktop 20=
-Switch to Desktop 3=Ctrl+F3; Meta+3
-Switch to Desktop 4=Ctrl+F4; Meta+4
+Switch to Desktop 3=Meta+3; Ctrl+F3
+Switch to Desktop 4=Meta+4; Ctrl+F4
 Switch to Desktop 5=Meta+5
 Switch to Desktop 6=Meta+6
 Switch to Desktop 7=Meta+7
@@ -248,7 +264,7 @@ Window Lower=
 Window Maximize=Meta+PgUp
 Window Maximize Horizontal=
 Window Maximize Vertical=
-Window Minimize=Meta+PgDown
+Window Minimize=Meta+PgDown; Alt+F
 Window Move=
 Window Move Center=
 Window No Border=
@@ -326,6 +342,64 @@ playpausemedia=Media Play
 previousmedia=Media Previous
 stopmedia=Media Stop
 
+[org.chromium.Chromium][Global Shortcuts]
+818AFFB6593657D3E78D5712F35D53EE-autofill_card=
+818AFFB6593657D3E78D5712F35D53EE-autofill_identity=
+818AFFB6593657D3E78D5712F35D53EE-autofill_login=
+818AFFB6593657D3E78D5712F35D53EE-generate_password=
+818AFFB6593657D3E78D5712F35D53EE-lock_vault=
+B58A6295150A99C1509E4E7BCE1CAA9E-open-dashboard=
+B58A6295150A99C1509E4E7BCE1CAA9E-open-dashboard-with-running-scripts=
+B58A6295150A99C1509E4E7BCE1CAA9E-open-new-script=
+B58A6295150A99C1509E4E7BCE1CAA9E-toggle-enable=
+F2FA41F17FD210DBF87316BC688BCA93-launch-element-picker=
+F2FA41F17FD210DBF87316BC688BCA93-launch-element-zapper=
+F2FA41F17FD210DBF87316BC688BCA93-launch-logger=
+F2FA41F17FD210DBF87316BC688BCA93-open-dashboard=
+F2FA41F17FD210DBF87316BC688BCA93-relax-blocking-mode=
+F2FA41F17FD210DBF87316BC688BCA93-toggle-cosmetic-filtering=
+F2FA41F17FD210DBF87316BC688BCA93-toggle-javascript=
+F86ABD9426F610278471B5D28562AA1B-c000-options-page=
+F86ABD9426F610278471B5D28562AA1B-c020-theme-youtube-dark=
+F86ABD9426F610278471B5D28562AA1B-c025-theme-enhanced-dark=
+F86ABD9426F610278471B5D28562AA1B-c030-theme-youtube-deep-dark=
+F86ABD9426F610278471B5D28562AA1B-c040-theme-youtube-deep-dark-custom=
+F86ABD9426F610278471B5D28562AA1B-c050-theme-custom-theme=
+F86ABD9426F610278471B5D28562AA1B-c060-focus-video-player=
+F86ABD9426F610278471B5D28562AA1B-c070-toggle-loop=
+F86ABD9426F610278471B5D28562AA1B-c080-stop-video=
+F86ABD9426F610278471B5D28562AA1B-c090-reverse-playlist=
+F86ABD9426F610278471B5D28562AA1B-c100-toggle-volume-booster=
+F86ABD9426F610278471B5D28562AA1B-c130-toggle-annotations=
+F86ABD9426F610278471B5D28562AA1B-c140-toggle-cinema-mode=
+F86ABD9426F610278471B5D28562AA1B-c150-toggle-player-size=
+F86ABD9426F610278471B5D28562AA1B-c160-center-video-player=
+F86ABD9426F610278471B5D28562AA1B-c170-pop-up-player=
+F86ABD9426F610278471B5D28562AA1B-c180-decrease-speed=
+F86ABD9426F610278471B5D28562AA1B-c190-increase-speed=
+F86ABD9426F610278471B5D28562AA1B-c200-default-speed=
+F86ABD9426F610278471B5D28562AA1B-c210-normal-speed=
+F86ABD9426F610278471B5D28562AA1B-c220-toggle-video-filters=
+F86ABD9426F610278471B5D28562AA1B-c230-flip-horizontally=
+F86ABD9426F610278471B5D28562AA1B-c240-flip-vertically=
+F86ABD9426F610278471B5D28562AA1B-c250-take-screenshot=
+F86ABD9426F610278471B5D28562AA1B-c260-keyboard-shortcuts=
+F86ABD9426F610278471B5D28562AA1B-c270-custom-script=
+F86ABD9426F610278471B5D28562AA1B-c280-picture-in-picture=
+F86ABD9426F610278471B5D28562AA1B-c290-quality-highres=
+F86ABD9426F610278471B5D28562AA1B-c300-quality-hd2880=
+F86ABD9426F610278471B5D28562AA1B-c310-quality-hd2160=
+F86ABD9426F610278471B5D28562AA1B-c320-quality-hd1440=
+F86ABD9426F610278471B5D28562AA1B-c330-quality-hd1080=
+F86ABD9426F610278471B5D28562AA1B-c340-quality-hd720=
+F86ABD9426F610278471B5D28562AA1B-c350-quality-large=
+F86ABD9426F610278471B5D28562AA1B-c360-quality-medium=
+F86ABD9426F610278471B5D28562AA1B-c370-quality-small=
+F86ABD9426F610278471B5D28562AA1B-c380-quality-tiny=
+F86ABD9426F610278471B5D28562AA1B-c390-quality-auto=
+F86ABD9426F610278471B5D28562AA1B-c400-comments-visibility=
+F86ABD9426F610278471B5D28562AA1B-c410-related-videos-visibility=
+
 [org.kde.dolphin.desktop][Global Shortcuts]
 _launch=Meta+E
 
@@ -336,7 +410,7 @@ _launch=Ctrl+Alt+T
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=Alt+Shift+F2
-_launch=Search; Alt+F2; Alt+Space
+_launch=Alt+Space; Alt+F2; Search
 
 [org.kde.kscreen.desktop][Global Shortcuts]
 ShowOSD=Meta+P; Display
@@ -352,12 +426,17 @@ ActiveWindowScreenShot=Meta+Print
 CurrentMonitorScreenShot=
 FullScreenScreenShot=Shift+Print
 OpenWithoutScreenshot=
-RecordRegion=Meta+R; Meta+Shift+R
+RecordRegion=Meta+Shift+R; Meta+R
 RecordScreen=Meta+Alt+R
 RecordWindow=Meta+Ctrl+R
 RectangularRegionScreenShot=Meta+Shift+Print
 WindowUnderCursorScreenShot=Meta+Ctrl+Print
 _launch=Print; Meta+Shift+S
+
+[org.kde.touchpadshortcuts.desktop][Global Shortcuts]
+DisableTouchpad=Touchpad Off
+EnableTouchpad=Touchpad On
+ToggleTouchpad=Meta+Ctrl+Zenkaku Hankaku; Touchpad Toggle; Meta+Ctrl+Touchpad Toggle
 
 [org_kde_powerdevil][Global Shortcuts]
 Decrease Keyboard Brightness=Keyboard Brightness Down
@@ -391,6 +470,7 @@ clipboard_action=Meta+Ctrl+X
 cycle-panels=Meta+Alt+P
 cycleNextAction=
 cyclePrevAction=
+edit_clipboard=
 manage activities=
 next activity=Meta+A
 previous activity=Meta+Shift+A
