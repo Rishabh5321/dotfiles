@@ -8,7 +8,7 @@ _: {
     };
 
     # Cloudflare WARP VPN client
-    cloudflare-warp.enable = true;
+    # cloudflare-warp.enable = true;
 
     # ===== STORAGE & FILESYSTEM =====
     # Automatic disk management and mounting

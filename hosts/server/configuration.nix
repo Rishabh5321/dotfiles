@@ -157,9 +157,9 @@
     nano
     smartmontools
     geminicommit
-    cloudflare-warp
+    # cloudflare-warp
   ];
 
-  services.cloudflare-warp.enable = true;
+  # services.cloudflare-warp.enable = true;
 
 }
