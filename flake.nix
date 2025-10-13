@@ -268,5 +268,15 @@
           ];
         };
       };
+
+      homeConfigurations = {
+        "${username}" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = commonArgs;
+          modules = [
+            ./home/${username}.nix
+          ];
+        };
+      };
     };
 }
