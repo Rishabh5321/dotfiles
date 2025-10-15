@@ -1706,11 +1706,11 @@
     "wallpapers-repo": {
       "flake": false,
       "locked": {
-        "lastModified": 1758099007,
-        "narHash": "sha256-8GCxUohdQQaN5Oflj+sdTy4clLXj/ATSK0UTh985mtg=",
+        "lastModified": 1760524750,
+        "narHash": "sha256-LOH6OUHd4QCAzCyJ3xHJzKqalk0Avh0n5u7vY4OtAfo=",
         "owner": "Rishabh5321",
         "repo": "wallsite",
-        "rev": "383193cfa9f992309cd37c003b323f4375c59b33",
+        "rev": "832f656c9f3bd5cc6e8d08b9a220e3a34f92e4e4",
         "type": "github"
       },
       "original": {
