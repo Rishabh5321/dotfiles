@@ -21,6 +21,9 @@
     "modprobe.blacklist=amdgpu"
     "modprobe.blacklist=radeon"
   ];
+  boot.kernel.sysctl = {
+    "vm.overcommit_memory" = 1;
+  };
 
   fileSystems."/" =
     {
