@@ -3,11 +3,10 @@
     enable = true;
     lfs.enable = true;
 
-    userName = "Rishabh5321";
-    userEmail = "rishabh98818@outlook.com";
-
-    extraConfig = {
+    settings = {
       init.defaultBranch = "main";
+      user.email = "Rishabh5321";
+      user.name = "rishabh98818@outlook.com";
     };
   };
 
