@@ -1,14 +1,17 @@
-{ pkgs
-, inputs
-, ...
-}: {
+{
+  pkgs,
+  inputs,
+  ...
+}:
+{
 
   # ===== SYSTEM PACKAGES =====
   environment.systemPackages =
     let
       stremio = pkgs.callPackage ../../../pkgs/stremio-linux-shell.nix { };
     in
-    with pkgs; [
+    with pkgs;
+    [
 
       # ===== Custom Packages =====
       stremio
@@ -89,14 +92,14 @@
       # jellyfin-media-player # Media center client
       # mangayomi # Manga reader
       # miru # Video streaming client
-      delfin #jellyfin media player
+      delfin # jellyfin media player
       mpv-unwrapped # Video player
       # kodi-wayland # Media center client
       spotify # Music streaming
       # stremio # Media streaming
       vlc # Multimedia player
       youtube-music # YouTube Music client
-      qimgv #image viewer
+      qimgv # image viewer
       yazi # File manager
 
       # ===== GAMING =====
@@ -149,7 +152,7 @@
 
       # ===== OFFICE & PRODUCTIVITY =====
       libreoffice # Office suite
-      onlyoffice-bin_latest # Alternative office suite
+      onlyoffice-desktopeditors # Alternative office suite
       varia # Download Manager
 
       # ===== THEMES & ICONS =====
@@ -212,7 +215,7 @@
     packages = with pkgs; [
       # ===== SYSTEM FONTS =====
       noto-fonts # Google Noto fonts
-      noto-fonts-emoji # Emoji support
+      noto-fonts-color-emoji # Emoji support
       noto-fonts-cjk-sans # CJK language support
       font-awesome # Icon font
       # symbola # Unicode symbols

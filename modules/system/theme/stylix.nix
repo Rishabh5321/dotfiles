@@ -1,8 +1,10 @@
-{ pkgs
-, wallpaper
-, wallpapers
-, ...
-}: {
+{
+  pkgs,
+  wallpaper,
+  wallpapers,
+  ...
+}:
+{
   stylix = {
     enable = true;
     image = "${wallpapers}/${wallpaper}";
@@ -32,7 +34,7 @@
       };
 
       emoji = {
-        package = pkgs.noto-fonts-emoji;
+        package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
       };
 
