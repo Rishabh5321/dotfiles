@@ -1,8 +1,7 @@
-{
-  pkgs,
-  wallpaper,
-  wallpapers,
-  ...
+{ pkgs
+, wallpaper
+, wallpapers
+, ...
 }:
 {
   stylix = {
