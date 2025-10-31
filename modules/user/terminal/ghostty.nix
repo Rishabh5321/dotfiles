@@ -17,8 +17,8 @@
         # Cursor settings
         # cursor-style = "block";
         custom-shader = toString (pkgs.fetchurl {
-          url = "https://raw.githubusercontent.com/KroneCorylus/ghostty-shader-playground/refs/heads/main/shaders/cursor_smear_fade.glsl";
-          sha256 = "sha256-2XGq3qIGT7LGsHiFZbGmci/M8CkTGNBDHGImGkKnoCk=";
+          url = "https://raw.githubusercontent.com/KroneCorylus/ghostty-shader-playground/refs/heads/main/public/shaders/cursor_smear_fade.glsl";
+          sha256 = "sha256-qBB4k2xSneLkMHjW3IG2A8jZnXtZDwDWXFAdzGakpBE=";
         });
 
         # Misc settings
