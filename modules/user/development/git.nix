@@ -5,8 +5,6 @@
 
     settings = {
       init.defaultBranch = "main";
-      user.email = "Rishabh5321";
-      user.name = "rishabh98818@outlook.com";
     };
   };
 
