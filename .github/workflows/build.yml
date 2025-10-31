@@ -78,7 +78,7 @@ jobs:
       matrix: ${{fromJson(needs.prepare_build.outputs.matrix)}}
     steps:
       - name: Free Disk Space
-        uses: endersonmenezes/free-disk-space@v2
+        uses: endersonmenezes/free-disk-space@v3
         with:
           remove_android: true
           remove_dotnet: true
