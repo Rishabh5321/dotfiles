@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./../modules/user/development/git.nix
+    # ./../modules/user/development/git.nix
     ./../modules/user/development/lazygit.nix
     ./../modules/user/files
     ./../modules/user/monitor
