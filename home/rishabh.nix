@@ -8,7 +8,6 @@
     ./../modules/user/monitor
     ./../modules/user/shells
     ./../modules/user/shells/oh-my-posh.nix
-    ./../modules/user/terminal/ghostty.nix
     ./../modules/user/utilities/atuin.nix
     ./../modules/user/utilities/tealdeer.nix
     ./../modules/user/utilities/zoxide.nix
