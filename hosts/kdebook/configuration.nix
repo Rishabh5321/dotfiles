@@ -13,8 +13,6 @@
     #./aagl.nix
   ];
 
-  boot.loader.grub.default = 2; #Starting first with Windows because this is family computer.
-
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.hostName = "kdebook"; # Define your hostname.
