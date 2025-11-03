@@ -8,12 +8,14 @@
   environment.systemPackages =
     let
       stremio = pkgs.callPackage ../../../pkgs/stremio-linux-shell.nix { };
+      fladder = pkgs.callPackage ../../../pkgs/fladder.nix { };
     in
     with pkgs;
     [
 
       # ===== Custom Packages =====
       stremio
+      fladder
 
       # ===== NUR =====
       nur.repos.colorman.speed-cloudflare-cli
