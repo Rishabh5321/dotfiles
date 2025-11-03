@@ -24,7 +24,7 @@ let
   build = appimageTools.wrapType2 {
     inherit pname version src;
 
-    extraPkgs = (_: with pkgs; [ mpv libepoxy ]);
+    extraPkgs = _: with pkgs; [ mpv libepoxy ];
   };
 
   desktopEntry = pkgs.makeDesktopItem {
