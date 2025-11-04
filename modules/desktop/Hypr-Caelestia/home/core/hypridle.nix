@@ -11,12 +11,12 @@
       listener = [
         {
           timeout = 300;
-          on-timeout = "if ! pactl list sink-inputs | grep -q 'State: RUNNING'; then hyprctl dispatch dpms off; fi";
+          on-timeout = "if ! pactl list sink-inputs | grep -q 'Corked: no'; then hyprctl dispatch dpms off; fi";
           on-resume = "hyprctl dispatch dpms on";
         }
         {
           timeout = 320;
-          on-timeout = "if ! pactl list sink-inputs | grep -q 'State: RUNNING'; then loginctl lock-session; fi";
+          on-timeout = "if ! pactl list sink-inputs | grep -q 'Corked: no'; then loginctl lock-session; fi";
         }
       ];
     };
