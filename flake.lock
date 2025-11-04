@@ -1085,11 +1085,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1762088055,
-        "narHash": "sha256-zh7fDPmhmoXVTtODiDhOLlutwNLJmwOlLphVKuCCiZA=",
+        "lastModified": 1762200991,
+        "narHash": "sha256-KMElE8LC4JCByw273al7k8HhHXxT2RnNh2dSNn43A3c=",
         "owner": "fufexan",
         "repo": "nix-gaming",
-        "rev": "d74c3702fdc737276baccab80c2053e8cde5dba5",
+        "rev": "39d9d1d33c93cb9591c29cf771cba93b9cfacb4a",
         "type": "github"
       },
       "original": {
