@@ -11,12 +11,12 @@
       listener = [
         {
           timeout = 300;
-          on-timeout = "hyprctl dispatch dpms off";
+          on-timeout = "if ! pactl list sink-inputs | grep -q 'State: RUNNING'; then hyprctl dispatch dpms off; fi";
           on-resume = "hyprctl dispatch dpms on";
         }
         {
           timeout = 320;
-          on-timeout = "loginctl lock-session";
+          on-timeout = "if ! pactl list sink-inputs | grep -q 'State: RUNNING'; then loginctl lock-session; fi";
         }
       ];
     };
