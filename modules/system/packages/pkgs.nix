@@ -19,6 +19,7 @@
 
       # ===== NUR =====
       nur.repos.colorman.speed-cloudflare-cli
+      nur.repos.mio.jellyfin-media-player
       # nur.repos.charmbracelet.crush
 
       # ===== DEVELOPMENT TOOLS =====
