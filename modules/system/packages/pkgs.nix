@@ -126,6 +126,7 @@
       distrobox_git # Container-based environments
       fast-cli # Internet speed test
       gnome-disk-utility # Disk management
+      gparted # Partition manager
       gnome-keyring # Credential management
       gnome-system-monitor # System monitoring
       grim # Screenshot tool
