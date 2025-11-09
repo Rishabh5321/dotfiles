@@ -24,6 +24,9 @@
   home.packages = with pkgs; [
     fastfetch
     geminicommit
+    nil
+    nixd
+    nixpkgs-fmt
     gemini-cli
   ];
 
