@@ -7,14 +7,14 @@
   # ===== SYSTEM PACKAGES =====
   environment.systemPackages =
     let
-      stremio = pkgs.callPackage ../../../pkgs/stremio-linux-shell.nix { };
+      # stremio = pkgs.callPackage ../../../pkgs/stremio-linux-shell.nix { };
       fladder = pkgs.callPackage ../../../pkgs/fladder.nix { };
     in
     with pkgs;
     [
 
       # ===== Custom Packages =====
-      stremio
+      # stremio
       fladder
 
       # ===== NUR =====
