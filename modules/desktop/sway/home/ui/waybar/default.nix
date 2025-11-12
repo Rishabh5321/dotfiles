@@ -110,7 +110,7 @@ with lib;
         };
         "custom/notification" = {
           tooltip = false;
-          format = "{icon} {}";
+          format = "{icon} {text}";
           format-icons = {
             notification = "<span foreground='red'><sup></sup></span>";
             none = "";
@@ -120,6 +120,7 @@ with lib;
             inhibited-none = "";
             dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
             dnd-inhibited-none = "";
+            default = "";
           };
           return-type = "json";
           exec-if = "which swaync-client";

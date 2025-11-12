@@ -56,7 +56,7 @@
     };
   };
 
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # ===== THEME OVERRIDES =====
   stylix = {
     targets = {
