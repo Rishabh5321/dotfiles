@@ -27,6 +27,8 @@
   # Basic packages
   home.packages = with pkgs; [
     (config.lib.nixGL.wrap alacritty)
+    (config.lib.nixGL.wrap kitty)
+    (config.lib.nixGL.wrap delfin)
     fastfetch
     geminicommit
     nil
