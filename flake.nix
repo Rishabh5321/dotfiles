@@ -128,6 +128,8 @@
       };
     };
 
+    nixgl.url = "github:nix-community/nixGL";
+
     # quickshell = {
     #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -151,6 +153,7 @@
     , sddm-sugar-candy-nix
     , chaotic
     , nur
+    , nixgl
     , wallpapers-repo
     , lsfg-vk-flake
       #, nix-colorizer
@@ -272,7 +275,7 @@
       homeConfigurations = {
         "${username}" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = commonArgs;
+          extraSpecialArgs = commonArgs // { nixgl = nixgl; };
           modules = [
             {
               lib.stylix.colors = {

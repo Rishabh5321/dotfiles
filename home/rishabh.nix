@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nixgl, config, ... }:
 
 {
   imports = [
@@ -13,6 +13,10 @@
     ./../modules/user/utilities/zoxide.nix
   ];
 
+  targets.genericLinux.nixGL.packages = import nixgl { inherit pkgs; };
+  targets.genericLinux.nixGL.defaultWrapper = "mesa"; # or the driver you need
+  targets.genericLinux.nixGL.installScripts = [ "mesa" ];
+
   # Set your username
   home.username = "rishabh";
   home.homeDirectory = "/home/rishabh";
@@ -22,6 +26,7 @@
 
   # Basic packages
   home.packages = with pkgs; [
+    (config.lib.nixGL.wrap alacritty)
     fastfetch
     geminicommit
     nil
