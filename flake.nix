@@ -275,7 +275,7 @@
       homeConfigurations = {
         "${username}" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = commonArgs // { nixgl = nixgl; };
+          extraSpecialArgs = commonArgs // { inherit nixgl; };
           modules = [
             {
               lib.stylix.colors = {
