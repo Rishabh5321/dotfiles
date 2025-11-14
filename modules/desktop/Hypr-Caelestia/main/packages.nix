@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }: {
 
   environment.systemPackages = with pkgs; [
-    inputs.caelestia-shell.packages.${pkgs.system}.default
+    inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
     # inputs.quickshell.packages."${system}".default
     # blueman
     brightnessctl

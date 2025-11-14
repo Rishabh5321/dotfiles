@@ -201,9 +201,9 @@
       #luminance             # Custom lighting tool
 
       # ===== FLAKE INPUTS =====
-      # inputs.grayjay.packages.${pkgs.system}.grayjay # Video platform client
-      # inputs.gemini-cli.packages.${pkgs.system}.gemini-cli-stable # stable versions
-      inputs.better-control.packages.${pkgs.system}.better-control # Device control
+      # inputs.grayjay.packages.${pkgs.stdenv.hostPlatform.system}.grayjay # Video platform client
+      # inputs.gemini-cli.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli-stable # stable versions
+      inputs.better-control.packages.${pkgs.stdenv.hostPlatform.system}.better-control # Device control
       # inputs.zen-browser.packages."${system}".default # zen
       # inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
 

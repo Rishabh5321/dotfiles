@@ -5,9 +5,9 @@
   };
 
   environment.systemPackages = [
-    inputs.nix-gaming.packages.${pkgs.system}.wine-ge
-    # inputs.nix-gaming.packages.${pkgs.system}.wine-osu
-    # inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
+    inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.wine-ge
+    # inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.wine-osu
+    # inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.wine-tkg
   ];
 
   programs = {
