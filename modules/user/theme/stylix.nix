@@ -1,11 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   gtk = {
     enable = true;
 
-    iconTheme = {
-      name = "Tela";
-      package = pkgs.tela-icon-theme;
-    };
+    # iconTheme = {
+    #   enable = true;
+    #   package = pkgs.papirus-icon-theme;
+    # };
 
     theme = {
       name = "adw-gtk3";
