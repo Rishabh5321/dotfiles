@@ -115,7 +115,7 @@
       file-roller # Archive manager
       filezilla # FTP client
       # kdePackages.dolphin # KDE file manager
-      nautilus # GNOME file manager
+      # nautilus # GNOME file manager
       qbittorrent # BitTorrent client
       unrar # RAR extraction
       unzip # ZIP extraction
