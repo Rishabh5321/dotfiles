@@ -6,20 +6,21 @@
 
   # ===== SYSTEM PACKAGES =====
   environment.systemPackages =
-    let
-      # stremio = pkgs.callPackage ../../../pkgs/stremio-linux-shell.nix { };
-      fladder = pkgs.callPackage ../../../pkgs/fladder.nix { };
-    in
+    # let
+    #   # stremio = pkgs.callPackage ../../../pkgs/stremio-linux-shell.nix { };
+    #   fladder = pkgs.callPackage ../../../pkgs/fladder.nix { };
+    # in
     with pkgs;
     [
 
       # ===== Custom Packages =====
       # stremio
-      fladder
+      # fladder
 
       # ===== NUR =====
       nur.repos.colorman.speed-cloudflare-cli
       nur.repos.mio.jellyfin-media-player
+      nur.repos.zerozawa.Fladder
       # nur.repos.charmbracelet.crush
 
       # ===== DEVELOPMENT TOOLS =====
