@@ -86,9 +86,9 @@
 
       # ===== COMMUNICATION & SOCIAL =====
       # beeper # Universal chat client
-      # discord # Gaming communication
-      ferdium # Multi-service messaging
-      # telegram-desktop # Telegram client
+      discord # Gaming communication
+      # ferdium # Multi-service messaging
+      telegram-desktop # Telegram client
       thunderbird-latest # Email client
 
       # ===== MEDIA & ENTERTAINMENT =====
