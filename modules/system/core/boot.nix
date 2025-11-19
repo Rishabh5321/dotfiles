@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   boot = {
     # ===== KERNEL CONFIGURATION =====
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.linuxPackages_latest;
     consoleLogLevel = 0;
 
     # Kernel modules and system controls
