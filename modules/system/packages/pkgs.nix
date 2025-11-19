@@ -97,7 +97,7 @@
       # miru # Video streaming client
       delfin # jellyfin media player
       mpv-unwrapped # Video player
-      # kodi-wayland # Media center client
+      kodi # Media center client
       spotify # Music streaming
       # stremio # Media streaming
       vlc # Multimedia player
@@ -115,7 +115,7 @@
       # ===== FILE MANAGEMENT =====
       file-roller # Archive manager
       filezilla # FTP client
-      # kdePackages.dolphin # KDE file manager
+      kdePackages.dolphin # KDE file manager
       # nautilus # GNOME file manager
       qbittorrent # BitTorrent client
       unrar # RAR extraction
