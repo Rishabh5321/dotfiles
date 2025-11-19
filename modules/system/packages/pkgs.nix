@@ -97,7 +97,7 @@
       # miru # Video streaming client
       delfin # jellyfin media player
       mpv-unwrapped # Video player
-      kodi # Media center client
+      # kodi # Media center client
       spotify # Music streaming
       # stremio # Media streaming
       vlc # Multimedia player
