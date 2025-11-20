@@ -15,19 +15,22 @@
     # extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
 
     # ===== BOOTLOADER CONFIGURATION =====
-    loader.grub = {
-      enable = true;
-      devices = [ "nodev" ];
-      efiSupport = true;
-      efiInstallAsRemovable = true;
-      useOSProber = true;
-
-      # GRUB theme configuration
-      darkmatter-theme = {
+    loader = {
+      efi.canTouchEfiVariables = true;
+      grub = {
         enable = true;
-        style = "nixos";
-        icon = "color";
-        resolution = "1080p";
+        devices = [ "nodev" ];
+        efiSupport = true;
+        efiInstallAsRemovable = false;
+        useOSProber = true;
+
+        # GRUB theme configuration
+        darkmatter-theme = {
+          enable = true;
+          style = "nixos";
+          icon = "color";
+          resolution = "1080p";
+        };
       };
     };
 
