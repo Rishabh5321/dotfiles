@@ -23,7 +23,7 @@
       "model": "gemini-2.5-flash"
     }
   },
-  "icon_theme": "Catppuccin Latte",
+  "icon_theme": "Material Icon Theme",
   "git_panel": {
     "dock": "right"
   },
@@ -75,7 +75,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Catppuccin Mocha"
+    "dark": "Ayu Dark"
   },
   "languages": {
     "Python": {

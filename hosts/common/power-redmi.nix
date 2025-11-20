@@ -107,22 +107,25 @@ in
     SUBSYSTEM=="power_supply", ATTR{online}=="0", TAG+="systemd", ENV{SYSTEMD_WANTS}="power-unplugged-event.service"
   '';
 
-  boot.loader.grub.default = 2;
+  boot.loader.grub.default = 4;
 
-  # boot.loader.grub.extraEntries = ''
-  #   menuentry "EndeavourOS (on /dev/nvme0n1p9)" {
-  #       insmod ext2
-  #       insmod btrfs
-  #       insmod part_gpt
-  #       insmod fat
+  boot.loader.grub.extraEntries = ''
+    menuentry "CachyOS" {
+      insmod btrfs
+      search --set=root --fs-uuid ce2e463d-ef9d-4c37-9d7c-a7fa1f0252c9
 
-  #       # Boot partition (contains kernel/initramfs)
-  #       search --no-floppy --fs-uuid --set=boot 849599ff-1f14-453c-965b-8fc3d0066bb1
-  #       # Root partition (btrfs root)
-  #       search --no-floppy --fs-uuid --set=root 2dbbbf95-60ba-4a9e-a5ff-37c17c78b6f2
+      linux /@/boot/vmlinuz-linux-cachyos root=UUID=ce2e463d-ef9d-4c37-9d7c-a7fa1f0252c9 rw quiet rootflags=subvol=@
 
-  #       linux ($boot)/vmlinuz-linux root=UUID=2dbbbf95-60ba-4a9e-a5ff-37c17c78b6f2 rw rootflags=subvol=@
-  #       initrd ($boot)/intel-ucode.img ($boot)/initramfs-linux.img
-  #   }
-  # '';
+      # Load Intel microcode first, then the OS image
+      initrd /@/boot/intel-ucode.img /@/boot/initramfs-linux-cachyos.img
+    }
+
+    # Optional: A fallback entry for the LTS kernel you also have installed
+    menuentry "CachyOS (LTS)" {
+      insmod btrfs
+      search --set=root --fs-uuid ce2e463d-ef9d-4c37-9d7c-a7fa1f0252c9
+      linux /@/boot/vmlinuz-linux-cachyos-lts root=UUID=ce2e463d-ef9d-4c37-9d7c-a7fa1f0252c9 rw quiet rootflags=subvol=@
+      initrd /@/boot/intel-ucode.img /@/boot/initramfs-linux-cachyos-lts.img
+    }
+  '';
 }
