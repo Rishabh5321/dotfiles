@@ -8,10 +8,15 @@
     ./../modules/user/monitor
     ./../modules/user/shells
     ./../modules/user/shells/oh-my-posh.nix
+    ./../modules/user/terminal/alacritty.nix
+    ./../modules/user/terminal/kitty.nix
     ./../modules/user/utilities/atuin.nix
     ./../modules/user/utilities/tealdeer.nix
     ./../modules/user/utilities/zoxide.nix
   ];
+
+  programs.alacritty.package = config.lib.nixGL.wrap pkgs.alacritty;
+  programs.kitty.package = config.lib.nixGL.wrap pkgs.kitty;
 
   targets.genericLinux.nixGL.packages = import nixgl { inherit pkgs; };
   targets.genericLinux.nixGL.defaultWrapper = "mesa"; # or the driver you need
@@ -26,8 +31,6 @@
 
   # Basic packages
   home.packages = with pkgs; [
-    (config.lib.nixGL.wrap alacritty)
-    (config.lib.nixGL.wrap kitty)
     (config.lib.nixGL.wrap delfin)
     fastfetch
     geminicommit
