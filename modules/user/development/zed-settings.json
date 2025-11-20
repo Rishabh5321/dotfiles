@@ -38,7 +38,7 @@
   "vim": {
     "enable_vim_sneak": true
   },
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "tab_bar": {
     "show": true
   },
