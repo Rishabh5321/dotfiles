@@ -213,50 +213,6 @@ with lib; {
         drop_at_cursor = true
       }
 
-      # ── Window Rules ───────────────────────────────────────────────────────
-      # Float utility windows
-      windowrulev2 = float,class:^(org.kde.polkit-kde-authentication-agent-1)$
-      windowrulev2 = float,class:^(xdg-desktop-portal-gtk)$
-      windowrulev2 = float,class:^(xdg-desktop-portal-hyprland)$
-      windowrulev2 = float,title:^(Picture-in-Picture)$
-      windowrulev2 = float,title:^(Open File)$
-      windowrulev2 = float,title:^(Save File)$
-      windowrulev2 = float,title:^(Select Color)$
-      windowrulev2 = float,class:^(pavucontrol)$
-      windowrulev2 = float,class:^(blueman-manager)$
-      windowrulev2 = float,class:^(nm-connection-editor)$
-      windowrulev2 = float,class:^(emote-picker)$
-      windowrulev2 = float,class:^(waypaper)$
-
-      # Size constraints for floating windows
-      # windowrulev2 = size 800 600,floating:1
-      # windowrulev2 = center,floating:1
-
-      # Disable animations for specific windows
-      windowrulev2 = animation none,class:^(popup-class)$
-      windowrulev2 = animation slide,class:^(rofi)$
-      windowrulev2 = animation slide,class:^(waypaper)$
-
-      # Opacity rules
-      # windowrulev2 = opacity 0.95 0.95,class:^(${terminal})$
-      # windowrulev2 = opacity 0.90 0.90,class:^(thunar)$
-
-      # Workspace assignments
-      # windowrulev2 = workspace 2,class:^(${browser})$
-      # windowrulev2 = workspace 3,class:^(discord)$
-      # windowrulev2 = workspace 4,class:^(spotify)$
-
-      # Idle inhibition for media
-      windowrulev2 = idleinhibit focus,class:^(mpv|vlc|kodi|.+exe)$
-      windowrulev2 = idleinhibit fullscreen,class:^(firefox|${browser})$
-
-      # No gaps when only one window
-      # workspace = w[t1], gapsout:0, gapsin:0
-      # workspace = w[tg1], gapsout:0, gapsin:0
-      # workspace = f[1], gapsout:0, gapsin:0
-      # windowrulev2 = bordersize 0, onworkspace:w[t1]
-      # windowrulev2 = rounding 0, onworkspace:w[t1]
-
       # ── Keybindings ────────────────────────────────────────────────────────
       # Application launchers
       bind = ${modifier},Return,exec,${terminal}
