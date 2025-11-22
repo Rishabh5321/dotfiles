@@ -198,6 +198,9 @@
       #vivaldi               # Vivaldi browser
       #vivaldi-ffmpeg-codecs # Vivaldi media codecs
 
+      #VPN
+      protonvpn-gui
+
       # ===== CUSTOM PACKAGES (COMMENTED) =====
       #luminance             # Custom lighting tool
 
