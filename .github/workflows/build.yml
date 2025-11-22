@@ -42,7 +42,7 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v21
@@ -89,7 +89,7 @@ jobs:
           remove_folders: "/usr/share/swift /usr/share/miniconda /usr/share/az* /usr/share/glade* /usr/local/lib/node_modules /usr/local/share/chromium /usr/local/share/powershell"
 
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v21
@@ -132,7 +132,7 @@ jobs:
     if: always() # Run this job even if some matrix builds failed
     steps:
       - name: Checkout repository # Needed to access workflow details potentially
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Determine overall status
         id: determine_status
