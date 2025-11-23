@@ -1618,11 +1618,11 @@
         "systems": "systems_5"
       },
       "locked": {
-        "lastModified": 1763267524,
-        "narHash": "sha256-CywB4iCpGr4CYZAD+WboFwBQ7Wnc7LdfSemFWuH/1Ro=",
+        "lastModified": 1763831750,
+        "narHash": "sha256-84LFvgGQSJJ12FPNSiuHjlHSwcEp9enkGh5tGRtw9w8=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "cf33e39bd1a21993a28ffee8be433e212ecf346a",
+        "rev": "ca2ce884882a9a96fa996823b99247a55efb9567",
         "type": "github"
       },
       "original": {
