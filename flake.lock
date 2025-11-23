@@ -1839,11 +1839,11 @@
     "wallpapers-repo": {
       "flake": false,
       "locked": {
-        "lastModified": 1760524750,
-        "narHash": "sha256-LOH6OUHd4QCAzCyJ3xHJzKqalk0Avh0n5u7vY4OtAfo=",
+        "lastModified": 1763898118,
+        "narHash": "sha256-+3gZY5aVqqZ81EdohDY2fI6a8ju1PPB9+e5numwmcRY=",
         "owner": "Rishabh5321",
         "repo": "wallsite",
-        "rev": "832f656c9f3bd5cc6e8d08b9a220e3a34f92e4e4",
+        "rev": "f7948c14bab998da48b928e2358f56fa2dc0aa2a",
         "type": "github"
       },
       "original": {
