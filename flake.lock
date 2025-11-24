@@ -1839,16 +1839,16 @@
     "wallpapers-repo": {
       "flake": false,
       "locked": {
-        "lastModified": 1763898118,
-        "narHash": "sha256-+3gZY5aVqqZ81EdohDY2fI6a8ju1PPB9+e5numwmcRY=",
+        "lastModified": 1763967626,
+        "narHash": "sha256-V7uE6ZFvkqHOI1GuzeURLF5vhvhROvpp3J15LxSszg4=",
         "owner": "Rishabh5321",
-        "repo": "wallsite",
-        "rev": "f7948c14bab998da48b928e2358f56fa2dc0aa2a",
+        "repo": "walls",
+        "rev": "9e5ae92db533693543c922e314e4797472080a4b",
         "type": "github"
       },
       "original": {
         "owner": "Rishabh5321",
-        "repo": "wallsite",
+        "repo": "walls",
         "type": "github"
       }
     },

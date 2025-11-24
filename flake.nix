@@ -140,7 +140,7 @@
     ######################
 
     wallpapers-repo = {
-      url = "github:Rishabh5321/wallsite";
+      url = "github:Rishabh5321/walls";
       flake = false;
     };
   };
@@ -163,9 +163,9 @@
     let
       system = "x86_64-linux";
       username = "rishabh";
-      wallpaper = "Linux/wall5.png";
+      wallpaper = "wall5.png";
       flakeDir = "/home/${username}/dotfiles ";
-      wallpapers = "${wallpapers-repo}/wallpapers";
+      wallpapers = "${wallpapers-repo}/src";
 
       pkgs-stable = import nixpkgs-stable {
         inherit system;
