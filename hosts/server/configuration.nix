@@ -157,6 +157,7 @@
     nano
     smartmontools
     geminicommit
+    smartmontools
     # cloudflare-warp
   ];
 
