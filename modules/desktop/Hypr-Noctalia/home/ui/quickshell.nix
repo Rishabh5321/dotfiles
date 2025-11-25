@@ -1,4 +1,6 @@
 { inputs
+, username
+, wallpaper
 , ...
 }:
 {
@@ -14,7 +16,7 @@
         backgroundOpacity = 1;
         customLaunchPrefix = "";
         customLaunchPrefixEnabled = false;
-        enableClipboardHistory = false;
+        enableClipboardHistory = true;
         pinnedExecs = [ ];
         position = "center";
         sortByMostUsed = true;
@@ -33,12 +35,12 @@
 
       bar = {
         backgroundOpacity = 1;
-        density = "compact";
+        density = "default";
         floating = false;
         marginHorizontal = 0.25;
         marginVertical = 0.25;
         monitors = [ ];
-        position = "bottom";
+        position = "top";
         showCapsule = true;
         outerCorners = false;
         widgets = {
@@ -59,7 +61,7 @@
               showDiskUsage = false;
               showMemoryAsPercent = false;
               showMemoryUsage = true;
-              showNetworkStats = false;
+              showNetworkStats = true;
             }
             {
               colorizeIcons = false;
@@ -84,6 +86,12 @@
 
           right = [
             { id = "ScreenRecorder"; }
+            {
+              id = "WiFi";
+            }
+            {
+              id = "Bluetooth";
+            }
             {
               blacklist = [ ];
               colorizeIcons = false;
@@ -137,12 +145,12 @@
       colorSchemes = {
         darkMode = true;
         generateTemplatesForPredefined = true;
-        manualSunrise = "06:30";
-        manualSunset = "18:30";
+        # manualSunrise = "06:30";
+        # manualSunset = "18:30";
         matugenSchemeType = "scheme-fruit-salad";
-        predefinedScheme = "Tokyo Night";
+        # predefinedScheme = "Tokyo Night";
         schedulingMode = "off";
-        useWallpaperColors = false;
+        useWallpaperColors = true;
       };
 
       controlCenter = {
@@ -169,7 +177,7 @@
           }
         ];
 
-        position = "close_to_bar_button";
+        # position = "close_to_bar_button";
 
         shortcuts = {
           left = [
@@ -221,7 +229,7 @@
       location = {
         analogClockInCalendar = false;
         firstDayOfWeek = -1;
-        name = "Salvador, Bahia";
+        name = "Nashik, India";
         showCalendarEvents = true;
         showCalendarWeather = true;
         showWeekNumberInCalendar = false;
@@ -312,6 +320,7 @@
       };
 
       wallpaper = {
+        defaultWallpaper = "/home/${username}/Pictures/Wallpapers/${wallpaper}";
         enableMultiMonitorDirectories = false;
         enabled = true;
         fillColor = "#000000";
