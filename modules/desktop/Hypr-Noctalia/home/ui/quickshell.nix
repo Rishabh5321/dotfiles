@@ -35,7 +35,7 @@
 
       bar = {
         backgroundOpacity = 1;
-        density = "default";
+        density = "comfortable";
         floating = false;
         marginHorizontal = 0.25;
         marginVertical = 0.25;
@@ -120,8 +120,8 @@
             }
             {
               customFont = "";
-              formatHorizontal = "HH:mm ddd, MMM dd";
-              formatVertical = "HH mm - dd MM";
+              formatHorizontal = "h:mm AP ddd, MMM dd";
+              formatVertical = "h mm AP - dd MM";
               id = "Clock";
               useCustomFont = false;
               usePrimaryColor = true;
@@ -146,14 +146,11 @@
       };
 
       colorSchemes = {
-        darkMode = true;
-        generateTemplatesForPredefined = true;
-        # manualSunrise = "06:30";
-        # manualSunset = "18:30";
-        matugenSchemeType = "scheme-fruit-salad";
-        # predefinedScheme = "Tokyo Night";
-        schedulingMode = "off";
         useWallpaperColors = true;
+        predefinedScheme = "Noctalia (default)";
+        darkMode = true;
+        matugenSchemeType = "scheme-expressive";
+        generateTemplatesForPredefined = true;
       };
 
       controlCenter = {
