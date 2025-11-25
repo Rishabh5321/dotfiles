@@ -93,6 +93,9 @@
               id = "Bluetooth";
             }
             {
+              id = "KeepAwake";
+            }
+            {
               blacklist = [ ];
               colorizeIcons = false;
               id = "Tray";
