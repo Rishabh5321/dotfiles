@@ -234,7 +234,7 @@ with lib;
         "${modifier},W,exec,${browser}"
         "CTRL,L,exec,noctalia-shell ipc call lockScreen lock"
         # "${modifier},A,global,caelestia:session"
-        # "${modifier},E,exec,caelestia emoji -p"
+        "${modifier},E,exec,wofi-emoji"
         # "${modifier},S,global,caelestia:screenshot"
         "${modifier}SHIFT,S,exec,grim -g \"$(slurp)\" - | swappy -f -"
         "${modifier},D,exec,discord"

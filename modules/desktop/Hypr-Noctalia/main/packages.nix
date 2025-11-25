@@ -8,6 +8,7 @@
     # dunst
     # hyprpanel
     kdePackages.kdeconnect-kde
+    wofi-emoji
     lazydocker
     pavucontrol
     libsecret

@@ -328,7 +328,7 @@
         enabled = true;
         fillColor = "#000000";
         fillMode = "crop";
-        randomEnabled = true;
+        randomEnabled = false;
         randomIntervalSec = 1800;
         recursiveSearch = true;
         setWallpaperOnAllMonitors = true;
