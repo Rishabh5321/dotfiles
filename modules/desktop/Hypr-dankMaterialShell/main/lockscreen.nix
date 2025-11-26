@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 {
   imports = [
     inputs.dankMaterialShell.nixosModules.greeter
