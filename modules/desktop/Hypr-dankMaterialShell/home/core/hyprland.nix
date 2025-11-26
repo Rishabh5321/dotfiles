@@ -232,7 +232,7 @@ with lib;
         "${modifier},V,exec,dms ipc call clipboard toggle"
         "${modifier}ALT,W,exec,wallSelector"
         "${modifier},W,exec,${browser}"
-        "CTRL,L,exec,dms ipc call clipboard toggle"
+        "CTRL,L,exec,dms ipc call lock lock"
         # "${modifier},A,global,caelestia:session"
         "${modifier},E,exec,wofi-emoji"
         # "${modifier},S,global,caelestia:screenshot"
