@@ -26,7 +26,7 @@
       # ===== DEVELOPMENT TOOLS =====
       act # GitHub Actions local runner
       android-tools # ADB and fastboot
-      cachix # Binary cache management
+      # cachix # Binary cache management
       docker # Container runtime
       docker-compose # Multi-container orchestration
       git # Version control
@@ -53,7 +53,7 @@
       # android-studio # Android IDE
       code-cursor # AI-powered VS Code fork
       micro # Simple terminal editor
-      kiro # AI-powered text editor
+      # kiro # AI-powered text editor
       obsidian # Knowledge management
       vim # Classic text editor
       vscode # VS Code editor
@@ -71,7 +71,7 @@
       # gnome-console # GNOME terminal
       htop # Process monitor
       jq # JSON processor
-      ranger # File manager
+      # ranger # File manager
       tealdeer # Simplified man pages
       tree # Directory tree viewer
       # typer # Interactive typing test
@@ -82,14 +82,14 @@
       brave # Privacy-focused browser
       firefox # Mozilla Firefox
       google-chrome # Google Chrome
-      librewolf # Privacy-hardened Firefox
+      # librewolf # Privacy-hardened Firefox
 
       # ===== COMMUNICATION & SOCIAL =====
       # beeper # Universal chat client
       discord # Gaming communication
       # ferdium # Multi-service messaging
       telegram-desktop # Telegram client
-      thunderbird-latest # Email client
+      # thunderbird-latest # Email client
 
       # ===== MEDIA & ENTERTAINMENT =====
       # jellyfin-media-player # Media center client
@@ -103,7 +103,7 @@
       vlc # Multimedia player
       youtube-music # YouTube Music client
       qimgv # image viewer
-      yazi # File manager
+      # yazi # File manager
 
       # ===== GAMING =====
       gamescope # Gaming compositor
