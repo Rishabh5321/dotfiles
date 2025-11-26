@@ -4,7 +4,7 @@
     package = inputs.hypridle.packages.${pkgs.stdenv.hostPlatform.system}.hypridle;
     settings = {
       general = {
-        lock_cmd = "noctalia-shell ipc call lockScreen lock";
+        lock_cmd = "dms ipc call clipboard toggle";
         before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "hyprctl dispatch dpms on";
       };

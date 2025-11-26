@@ -1,0 +1,18 @@
+{ pkgs, ... }: {
+
+  environment.systemPackages = with pkgs; [
+    # inputs.quickshell.packages."${system}".default
+    # blueman
+    brightnessctl
+    # dunst
+    # hyprpanel
+    kdePackages.kdeconnect-kde
+    wofi-emoji
+    lazydocker
+    pavucontrol
+    libsecret
+    xdg-utils
+    pwvucontrol
+    fuzzel
+  ];
+}
