@@ -9,7 +9,7 @@
   ];
 
   # Set the state version for compatibility
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 
   # ISO-specific configuration
   isoImage.makeEfiBootable = true;
