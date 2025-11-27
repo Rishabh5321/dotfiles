@@ -17,6 +17,7 @@
         customLaunchPrefix = "";
         customLaunchPrefixEnabled = false;
         enableClipboardHistory = true;
+        enableClipPreview = false;
         pinnedExecs = [ ];
         position = "center";
         sortByMostUsed = true;
@@ -25,24 +26,28 @@
       };
 
       audio = {
-        cavaFrameRate = 60;
+        volumeStep = 5;
+        volumeOverdrive = false;
+        cavaFrameRate = 30;
+        visualizerType = "linear";
+        visualizerQuality = "high";
         mprisBlacklist = [ ];
         preferredPlayer = "";
-        visualizerType = "linear";
-        volumeOverdrive = false;
-        volumeStep = 5;
+        externalMixer = "pwvucontrol || pavucontrol";
       };
 
       bar = {
-        backgroundOpacity = 1;
-        density = "comfortable";
-        floating = false;
-        marginHorizontal = 0.25;
-        marginVertical = 0.25;
-        monitors = [ ];
         position = "top";
+        backgroundOpacity = 1;
+        monitors = [ ];
+        density = "default";
         showCapsule = true;
-        outerCorners = false;
+        capsuleOpacity = 1;
+        floating = false;
+        marginVertical = 0.25;
+        marginHorizontal = 0.25;
+        outerCorners = true;
+        exclusive = true;
         widgets = {
           center = [
             {
@@ -96,11 +101,6 @@
               id = "KeepAwake";
             }
             {
-              blacklist = [ ];
-              colorizeIcons = false;
-              id = "Tray";
-            }
-            {
               hideWhenZero = true;
               id = "NotificationHistory";
               showUnreadBadge = true;
@@ -117,6 +117,11 @@
             {
               displayMode = "onhover";
               id = "Brightness";
+            }
+            {
+              blacklist = [ ];
+              colorizeIcons = false;
+              id = "Tray";
             }
             {
               customFont = "";
@@ -149,7 +154,10 @@
         useWallpaperColors = true;
         predefinedScheme = "Noctalia (default)";
         darkMode = true;
-        matugenSchemeType = "scheme-expressive";
+        schedulingMode = "off";
+        manualSunrise = "06:30";
+        manualSunset = "18:30";
+        matugenSchemeType = "scheme-fruit-salad";
         generateTemplatesForPredefined = true;
       };
 
@@ -182,6 +190,7 @@
         shortcuts = {
           left = [
             { id = "WiFi"; }
+            { id = "Bluetooth"; }
             { id = "ScreenRecorder"; }
             { id = "WallpaperSelector"; }
           ];
@@ -207,17 +216,58 @@
         size = 1;
       };
 
+      systemMonitor = {
+        cpuWarningThreshold = 80;
+        cpuCriticalThreshold = 90;
+        tempWarningThreshold = 80;
+        tempCriticalThreshold = 90;
+        memWarningThreshold = 80;
+        memCriticalThreshold = 90;
+        diskWarningThreshold = 80;
+        diskCriticalThreshold = 90;
+        useCustomColors = false;
+      };
+
       general = {
-        animationDisabled = false;
-        animationSpeed = 1;
-        compactLockScreen = false;
-        forceBlackScreenCorners = false;
-        language = "";
-        lockOnSuspend = true;
-        radiusRatio = 1;
-        scaleRatio = 1;
-        screenRadiusRatio = 1;
+        avatarImage = "";
+        dimmerOpacity = 0.6;
         showScreenCorners = false;
+        forceBlackScreenCorners = false;
+        scaleRatio = 1;
+        radiusRatio = 1;
+        screenRadiusRatio = 1;
+        animationSpeed = 1;
+        animationDisabled = false;
+        compactLockScreen = false;
+        lockOnSuspend = true;
+        showHibernateOnLockScreen = false;
+        enableShadows = true;
+        shadowDirection = "bottom_right";
+        shadowOffsetX = 2;
+        shadowOffsetY = 3;
+        language = "";
+        allowPanelsOnScreenWithoutBar = true;
+      };
+
+      calendar = {
+        cards = [
+          {
+            id = "banner-card";
+            enabled = true;
+          }
+          {
+            id = "calendar-card";
+            enabled = true;
+          }
+          {
+            id = "timer-card";
+            enabled = true;
+          }
+          {
+            id = "weather-card";
+            enabled = true;
+          }
+        ];
       };
 
       hooks = {
@@ -227,15 +277,16 @@
       };
 
       location = {
-        analogClockInCalendar = false;
-        firstDayOfWeek = -1;
         name = "Nashik, India";
+        weatherEnabled = true;
+        weatherShowEffects = true;
+        useFahrenheit = false;
+        use12hourFormat = false;
+        showWeekNumberInCalendar = false;
         showCalendarEvents = true;
         showCalendarWeather = true;
-        showWeekNumberInCalendar = false;
-        use12hourFormat = true;
-        useFahrenheit = false;
-        weatherEnabled = true;
+        analogClockInCalendar = false;
+        firstDayOfWeek = -1;
       };
 
       network = {
@@ -253,33 +304,37 @@
       };
 
       notifications = {
-        backgroundOpacity = 1;
-        criticalUrgencyDuration = 15;
-        doNotDisturb = false;
-        location = "top_right";
-        lowUrgencyDuration = 3;
+        enabled = true;
         monitors = [ ];
-        normalUrgencyDuration = 8;
+        location = "top_right";
         overlayLayer = true;
+        backgroundOpacity = 1;
         respectExpireTimeout = false;
+        lowUrgencyDuration = 3;
+        normalUrgencyDuration = 8;
+        criticalUrgencyDuration = 15;
+        enableKeyboardLayoutToast = true;
       };
 
       osd = {
-        autoHideMs = 2000;
         enabled = true;
         location = "top_right";
-        monitors = [ ];
+        autoHideMs = 2000;
         overlayLayer = true;
+        backgroundOpacity = 1;
+        enabledTypes = [ ];
+        monitors = [ ];
       };
 
       screenRecorder = {
-        audioCodec = "opus";
-        audioSource = "default_output";
-        colorRange = "limited";
+        directory = "/home/${username}/Videos";
         frameRate = 60;
-        quality = "very_high";
-        showCursor = true;
+        audioCodec = "opus";
         videoCodec = "h264";
+        quality = "very_high";
+        colorRange = "limited";
+        showCursor = true;
+        audioSource = "default_output";
         videoSource = "portal";
       };
 
@@ -310,13 +365,14 @@
       };
 
       ui = {
-        fontDefault = "JetBrainsMono Nerd Font";
+        fontDefault = "Roboto";
+        fontFixed = "DejaVu Sans Mono";
         fontDefaultScale = 1;
-        fontFixed = "Maple Mono NF";
         fontFixedScale = 1;
-        panelsAttachedToBar = true;
-        panelsOverlayLayer = true;
         tooltipsEnabled = true;
+        panelBackgroundOpacity = 1;
+        panelsAttachedToBar = true;
+        settingsPanelAttachToBar = false;
       };
 
       wallpaper = {

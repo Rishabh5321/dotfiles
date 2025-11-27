@@ -7,6 +7,7 @@
     brightnessctl
     # dunst
     # hyprpanel
+    matugen
     kdePackages.kdeconnect-kde
     wofi-emoji
     lazydocker
