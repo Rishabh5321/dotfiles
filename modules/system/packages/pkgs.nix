@@ -208,6 +208,7 @@
       # inputs.grayjay.packages.${pkgs.stdenv.hostPlatform.system}.grayjay # Video platform client
       # inputs.gemini-cli.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli-stable # stable versions
       inputs.better-control.packages.${pkgs.stdenv.hostPlatform.system}.better-control # Device control
+      inputs.nixohess.packages.${pkgs.stdenv.hostPlatform.system}.stremio-linux-shell
       # inputs.zen-browser.packages."${system}".default # zen
       # inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
 

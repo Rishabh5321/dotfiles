@@ -76,6 +76,7 @@
 
     better-control.url = "github:Rishabh5321/better-control-flake";
     seanime.url = "github:Rishabh5321/seanime-flake";
+    nixohess.url = "gitlab:fazzi/nixohess";
 
     ######################
     # Applications/Tools
