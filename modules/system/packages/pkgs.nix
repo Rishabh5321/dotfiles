@@ -19,7 +19,7 @@
 
       # ===== NUR =====
       nur.repos.colorman.speed-cloudflare-cli
-      nur.repos.mio.jellyfin-media-player
+      # nur.repos.mio.jellyfin-media-player
       nur.repos.zerozawa.Fladder
       # nur.repos.charmbracelet.crush
 
@@ -157,7 +157,7 @@
       # ===== OFFICE & PRODUCTIVITY =====
       libreoffice # Office suite
       onlyoffice-desktopeditors # Alternative office suite
-      varia # Download Manager
+      # varia # Download Manager
 
       # ===== THEMES & ICONS =====
       dracula-icon-theme # Dracula icons
