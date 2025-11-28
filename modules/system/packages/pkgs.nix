@@ -125,7 +125,7 @@
       cliphist # Clipboard manager
       # cloudflare-warp # VPN client
       distrobox_git # Container-based environments
-      fast-cli # Internet speed test
+      # fast-cli # Internet speed test
       gnome-disk-utility # Disk management
       gparted # Partition manager
       gnome-keyring # Credential management
