@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, userSettings, stylix, config, ... }:
+{ pkgs, config, ... }:
 
 
 {
