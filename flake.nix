@@ -65,10 +65,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sddm-sugar-candy-nix = {
-      url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # sddm-sugar-candy-nix = {
+    #   url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     ######################
     # Personal Projects
@@ -166,7 +166,7 @@
     , nixpkgs
     , nixpkgs-stable
     , home-manager
-    , sddm-sugar-candy-nix
+      # , sddm-sugar-candy-nix
     , chaotic
     , nur
     , nixgl
@@ -197,7 +197,7 @@
         };
         overlays = [
           # inputs.hyprpanel.overlay
-          sddm-sugar-candy-nix.overlays.default
+          # sddm-sugar-candy-nix.overlays.default
         ];
       };
 
@@ -211,7 +211,7 @@
           pkgs-stable
           nur
           # nix-colorizer
-          sddm-sugar-candy-nix
+          # sddm-sugar-candy-nix
           wallpapers
           ;
         inherit (inputs) spicetify-nix;
@@ -242,7 +242,7 @@
             inputs.stylix.nixosModules.stylix
             inputs.nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
-            sddm-sugar-candy-nix.nixosModules.default
+            # sddm-sugar-candy-nix.nixosModules.default
             chaotic.nixosModules.default
             nur.modules.nixos.default
             lsfg-vk-flake.nixosModules.default
