@@ -219,11 +219,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764561720,
-        "narHash": "sha256-QOeUx+gacbziKlfuLUDDmiv7GwltUBp/S8rcGXqrKMg=",
+        "lastModified": 1764595575,
+        "narHash": "sha256-WH2Fnpkv0rYdXYHINgbvqVJ5gAwumJTYZTKyJB51grQ=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "4e66d3532e7324ad0c3ae744fa67d2eb0ccc702e",
+        "rev": "18bf3b75481dc5b0862f38551f418f28ddcf29f1",
         "type": "github"
       },
       "original": {
