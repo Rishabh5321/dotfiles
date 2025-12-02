@@ -1704,11 +1704,11 @@
         "systems": "systems_5"
       },
       "locked": {
-        "lastModified": 1764635384,
-        "narHash": "sha256-483Z872Xb2Yt/+4nr4nZuFCRREJ/xxWvFkvpHA3XBj8=",
+        "lastModified": 1764646743,
+        "narHash": "sha256-/5yRp+FegTtzImqQhZQActnGD0NtKPOPJ6dXTQxGIq8=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "9b865462a7d4565f4c50e5cd36428d4d6573ffe2",
+        "rev": "e33278c5f9a18180c88e0aee037f99d2d6ce069c",
         "type": "github"
       },
       "original": {
