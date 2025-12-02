@@ -61,8 +61,6 @@ _: {
       favorite-apps = [
         "kitty.desktop"
         "Alacritty.desktop"
-        "thorium-browser.desktop"
-        "thunderbird.desktop"
         "zen.desktop"
         "org.gnome.Nautilus.desktop"
         "grayjay.desktop"
@@ -71,7 +69,6 @@ _: {
         "spotify.desktop"
         "cursor.desktop"
         "com.github.iwalton3.jellyfin-media-player.desktop"
-        "smartcode-stremio.desktop"
         "github-desktop.desktop"
         "obsidian.desktop"
         "ca.desrt.dconf-editor.desktop"

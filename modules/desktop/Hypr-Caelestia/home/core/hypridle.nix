@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }: {
   services.hypridle = {
     enable = true;
-    package = inputs.hypridle.packages.${pkgs.stdenv.hostPlatform.system}.hypridle;
+    package = pkgs.hypridle;
     settings = {
       general = {
         lock_cmd = "caelestia shell lock lock";
