@@ -72,7 +72,7 @@
           BlurMax = "35";
           Blur = "2.0";
 
-          HourFormat = "h:mm:ss AP";
+          HourFormat = "h:mm AP";
 
           HaveFormBackground = "false";
           FormPosition = "left";
