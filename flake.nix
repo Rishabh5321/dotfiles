@@ -146,6 +146,11 @@
       url = "github:Rishabh5321/walls";
       flake = false;
     };
+
+    determinate = {
+      url = "github:DeterminateSystems/determinate";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -166,7 +171,7 @@
     let
       system = "x86_64-linux";
       username = "rishabh";
-      wallpaper = "wall13.jpg";
+      wallpaper = "wall16.jpg";
       flakeDir = "/home/${username}/dotfiles ";
       wallpapers = "${wallpapers-repo}/src";
 
@@ -233,7 +238,7 @@
             chaotic.nixosModules.default
             nur.modules.nixos.default
             lsfg-vk-flake.nixosModules.default
-            #inputs.determinate.nixosModules.default
+            inputs.determinate.nixosModules.default
             # Home Manager configuration integrated into NixOS
             {
               home-manager = {
