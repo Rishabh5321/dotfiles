@@ -1818,11 +1818,11 @@
         "nixpkgs": "nixpkgs_11"
       },
       "locked": {
-        "lastModified": 1765024578,
-        "narHash": "sha256-w0dD55k/H8Y3BL7klQj8AbWif1daR/mbIi6RjTFhLG8=",
+        "lastModified": 1765045956,
+        "narHash": "sha256-0R4GKcvKa6vJ84gdKbSpFgp8AwWWJM0onCv3ecSozGk=",
         "owner": "Rishabh5321",
         "repo": "seanime-flake",
-        "rev": "46094584deb63dce0ec9a98d6af4a1260bd4a955",
+        "rev": "5c860ac798a99a3c9380ec17c9a544f2011f564b",
         "type": "github"
       },
       "original": {
