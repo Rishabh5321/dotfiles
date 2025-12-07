@@ -139,7 +139,7 @@
       podman-desktop # Container management GUI
       podman-tui # Container management TUI
       resources # System monitor
-      rquickshare # File sharing
+      # rquickshare # File sharing
       samba # SMB/CIFS support
       slurp # Screen area selection
       speedtest-cli # Network speed test
