@@ -216,14 +216,15 @@
         ],
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "quickshell": "quickshell_3"
       },
       "locked": {
-        "lastModified": 1765156867,
-        "narHash": "sha256-8h7saKlQ7GyQd+3vClGS7WZ0GGXG7GjdLQytpGnlOzY=",
+        "lastModified": 1765175849,
+        "narHash": "sha256-AHuE4CihI1gGmeCZ+Q9be2IeV3hFbAd5OaVbJoehZl8=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "76e7755496d4a85fee1d11cfcdc48c2857f7f3ef",
+        "rev": "c570e20308ef4714a6c591a2da2f7989455da021",
         "type": "github"
       },
       "original": {
@@ -1758,6 +1759,28 @@
       "original": {
         "type": "git",
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
+      }
+    },
+    "quickshell_3": {
+      "inputs": {
+        "nixpkgs": [
+          "dankMaterialShell",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764663772,
+        "narHash": "sha256-sHqLmm0wAt3PC4vczJeBozI1/f4rv9yp3IjkClHDXDs=",
+        "ref": "refs/heads/master",
+        "rev": "26531fc46ef17e9365b03770edd3fb9206fcb460",
+        "revCount": 713,
+        "type": "git",
+        "url": "https://git.outfoxxed.me/quickshell/quickshell"
+      },
+      "original": {
+        "rev": "26531fc46ef17e9365b03770edd3fb9206fcb460",
+        "type": "git",
+        "url": "https://git.outfoxxed.me/quickshell/quickshell"
       }
     },
     "root": {
