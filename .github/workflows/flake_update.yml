@@ -39,6 +39,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           lfs: false
+          persist-credentials: false
 
       # Generate a GitHub App token for creating the PR
       - name: Generate App Token
