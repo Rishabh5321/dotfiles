@@ -13,7 +13,7 @@
     systemd.enable = true;
     settings = {
       appLauncher = {
-        backgroundOpacity = 1;
+        # backgroundOpacity = 1;
         customLaunchPrefix = "";
         customLaunchPrefixEnabled = false;
         enableClipboardHistory = true;
@@ -38,11 +38,11 @@
 
       bar = {
         position = "top";
-        backgroundOpacity = 1;
+        # backgroundOpacity = 1;
         monitors = [ ];
         density = "default";
         showCapsule = true;
-        capsuleOpacity = 1;
+        # capsuleOpacity = 1;
         floating = false;
         marginVertical = 0.25;
         marginHorizontal = 0.25;
@@ -205,7 +205,7 @@
       };
 
       dock = {
-        backgroundOpacity = 1;
+        # backgroundOpacity = 1;
         colorizeIcons = false;
         displayMode = "always_visible";
         enabled = false;
@@ -308,7 +308,7 @@
         monitors = [ ];
         location = "top_right";
         overlayLayer = true;
-        backgroundOpacity = 1;
+        # backgroundOpacity = 1;
         respectExpireTimeout = false;
         lowUrgencyDuration = 3;
         normalUrgencyDuration = 8;
@@ -321,7 +321,7 @@
         location = "top_right";
         autoHideMs = 2000;
         overlayLayer = true;
-        backgroundOpacity = 1;
+        # backgroundOpacity = 1;
         enabledTypes = [ ];
         monitors = [ ];
       };
@@ -365,12 +365,12 @@
       };
 
       ui = {
-        fontDefault = "Roboto";
-        fontFixed = "DejaVu Sans Mono";
+        # fontDefault = "Roboto";
+        # fontFixed = "DejaVu Sans Mono";
         fontDefaultScale = 1;
         fontFixedScale = 1;
         tooltipsEnabled = true;
-        panelBackgroundOpacity = 1;
+        # panelBackgroundOpacity = 1;
         panelsAttachedToBar = true;
         settingsPanelAttachToBar = false;
       };
