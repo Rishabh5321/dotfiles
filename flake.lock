@@ -220,11 +220,11 @@
         "quickshell": "quickshell_3"
       },
       "locked": {
-        "lastModified": 1765607445,
-        "narHash": "sha256-/ty30zTBloFx69WQcI0BgH5kIDwIcUe4pX0Xf+QyeOU=",
+        "lastModified": 1765609201,
+        "narHash": "sha256-fL4A0ZD1IDAKEavIHB/yWVzxHD6dysAKd84j7jpZgc0=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "f011ea6ccece6cf704bab0ba992e2b757622afc6",
+        "rev": "ca39196f132a86eef58c3f5365c7c1058f081a8a",
         "type": "github"
       },
       "original": {
