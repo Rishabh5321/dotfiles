@@ -10,8 +10,6 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -159,7 +157,6 @@
     , nixpkgs-stable
     , home-manager
       # , sddm-sugar-candy-nix
-    , chaotic
     , nur
     , nixgl
     , wallpapers-repo
@@ -235,7 +232,6 @@
             inputs.nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
             # sddm-sugar-candy-nix.nixosModules.default
-            chaotic.nixosModules.default
             nur.modules.nixos.default
             lsfg-vk-flake.nixosModules.default
             inputs.determinate.nixosModules.default
