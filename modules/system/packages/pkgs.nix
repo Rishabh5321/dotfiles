@@ -6,15 +6,15 @@
 
   # ===== SYSTEM PACKAGES =====
   environment.systemPackages =
-    let
-      stremio = pkgs.callPackage ../../../pkgs/stremio-linux-shell.nix { };
-      # fladder = pkgs.callPackage ../../../pkgs/fladder.nix { };
-    in
+    # let
+    #   stremio = pkgs.callPackage ../../../pkgs/stremio-linux-shell.nix { };
+    #   # fladder = pkgs.callPackage ../../../pkgs/fladder.nix { };
+    # in
     with pkgs;
     [
 
       # ===== Custom Packages =====
-      stremio
+      # stremio
       # fladder
 
       # ===== NUR =====
@@ -48,6 +48,7 @@
       gemini-cli-bin # AI
       lazygit # Git TUI client
       lazydocker # Docker container management
+      winboat # Windows
 
       # ===== EDITORS & IDEs =====
       # android-studio # Android IDE
@@ -85,10 +86,11 @@
       # librewolf # Privacy-hardened Firefox
 
       # ===== COMMUNICATION & SOCIAL =====
+      ayugram-desktop
       # beeper # Universal chat client
       discord # Gaming communication
       # ferdium # Multi-service messaging
-      telegram-desktop # Telegram client
+      # telegram-desktop # Telegram client
       # thunderbird-latest # Email client
 
       # ===== MEDIA & ENTERTAINMENT =====
@@ -106,6 +108,8 @@
       # yazi # File manager
 
       # ===== GAMING =====
+      aisleriot # Card Game
+      pysolfc # Solitaire Game
       gamescope # Gaming compositor
       heroic # Epic Games launcher
       lutris # Gaming platform manager
@@ -130,6 +134,7 @@
       gnome-keyring # Credential management
       gnome-system-monitor # System monitoring
       grim # Screenshot tool
+      localsend # File sharing
       mesa # Graphics drivers
       mission-center # System information
       networkmanagerapplet # Network management
