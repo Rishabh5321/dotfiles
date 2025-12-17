@@ -6,7 +6,7 @@
   imports = [
     # Core components
     ./core/hyprland.nix
-    ./core/hypridle.nix
+    # ./core/hypridle.nix
     # ./core/hyprlock.nix
     ./core/portal.nix
 
