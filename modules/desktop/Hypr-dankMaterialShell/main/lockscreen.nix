@@ -1,11 +1,13 @@
-{ inputs, ... }:
+{ inputs, username, ... }:
 {
   imports = [
     inputs.dankMaterialShell.nixosModules.greeter
   ];
 
-  programs.dankMaterialShell.greeter = {
+  services.displayManager.dms-greeter = {
     enable = true;
-    compositor.name = "hyprland";
+    compositor.name = "hyprland"; # Or "hyprland" or "sway"
+
+    configHome = "/home/${username}";
   };
 }
