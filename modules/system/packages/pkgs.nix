@@ -83,7 +83,7 @@
       brave # Privacy-focused browser
       firefox # Mozilla Firefox
       google-chrome # Google Chrome
-      # librewolf # Privacy-hardened Firefox
+      librewolf # Privacy-hardened Firefox
 
       # ===== COMMUNICATION & SOCIAL =====
       ayugram-desktop
@@ -94,7 +94,7 @@
       # thunderbird-latest # Email client
 
       # ===== MEDIA & ENTERTAINMENT =====
-      # jellyfin-media-player # Media center client
+      jellyfin-media-player # Media center client
       # mangayomi # Manga reader
       # miru # Video streaming client
       delfin # jellyfin media player
