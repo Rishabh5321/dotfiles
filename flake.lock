@@ -1952,11 +1952,11 @@
     "wallpapers-repo": {
       "flake": false,
       "locked": {
-        "lastModified": 1766410902,
-        "narHash": "sha256-vT3euzv+dIVtfs8vASZahxCy2LTsVFfQuid656qTt0o=",
+        "lastModified": 1766462962,
+        "narHash": "sha256-DqtIksuLJ23IBZrZxO9Vc7GTtmqh2e4alN5PwFO0dpw=",
         "owner": "Rishabh5321",
         "repo": "walls",
-        "rev": "781827f6a7bb4abcfdfeae6f8bf750f554673707",
+        "rev": "e7167661250799fe6115ab86f543040c1db88398",
         "type": "github"
       },
       "original": {
