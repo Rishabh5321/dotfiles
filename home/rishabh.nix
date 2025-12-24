@@ -1,8 +1,7 @@
-{
-  pkgs,
-  nixgl,
-  config,
-  ...
+{ pkgs
+, nixgl
+, config
+, ...
 }:
 
 {
