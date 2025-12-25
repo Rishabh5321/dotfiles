@@ -4,6 +4,9 @@
 {
   imports = [
 
+    # APPS
+    ./apps
+
     # Terminal Emulators
     ./terminal
 
