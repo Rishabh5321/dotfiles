@@ -148,23 +148,12 @@ with lib;
         ];
 
         animation = [
-          "windows, 1, 3, md3_decel, slide"
-          "windowsIn, 1, 3, md3_decel, slide"
-          "windowsOut, 1, 3, md3_accel, slide"
-          "windowsMove, 1, 2, linear, slide"
-          "fade, 1, 2, md3_decel"
-          "fadeIn, 1, 2, md3_decel"
-          "fadeOut, 1, 2, md3_accel"
-          "fadeSwitch, 0, 1, linear"
-          "fadeShadow, 1, 2, md3_decel"
-          "fadeDim, 1, 2, fluent_decel"
-          "border, 1, 2.7, md3_decel"
-          "borderangle, 1, 2.7, fluent_decel, once"
-          "workspaces, 1, 2, md3_decel, slide"
-          "specialWorkspace, 1, 2, md3_decel, slidevert"
-          "layers, 1, 2, md3_decel, slide"
-          "layersIn, 1, 2, md3_decel, slide"
-          "layersOut, 1, 2, md3_accel, slide"
+          "windowsIn, 1, 3, default"
+          "windowsOut, 1, 3, default"
+          "workspaces, 1, 5, default"
+          "windowsMove, 1, 4, default"
+          "fade, 1, 3, default"
+          "border, 1, 3, default"
         ];
       };
 
