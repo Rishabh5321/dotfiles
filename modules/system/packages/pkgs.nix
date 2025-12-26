@@ -100,7 +100,7 @@
       delfin # jellyfin media player
       mpv-unwrapped # Video player
       # kodi # Media center client
-      spotify # Music streaming
+      # spotify # Music streaming
       # stremio # Media streaming
       vlc # Multimedia player
       youtube-music # YouTube Music client
@@ -120,7 +120,7 @@
       file-roller # Archive manager
       filezilla # FTP client
       kdePackages.dolphin # KDE file manager
-      # nautilus # GNOME file manager
+      nautilus # GNOME file manager
       qbittorrent # BitTorrent client
       unrar # RAR extraction
       unzip # ZIP extraction
