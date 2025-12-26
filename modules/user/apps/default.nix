@@ -3,6 +3,6 @@
 { ... }:
 {
   imports = [
-    ./obsidian.nix
+    # ./obsidian.nix
   ];
 }
