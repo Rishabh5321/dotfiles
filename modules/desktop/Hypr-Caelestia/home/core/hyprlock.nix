@@ -2,7 +2,6 @@
 , lib
 , wallpaper
 , wallpapers
-, inputs
 , pkgs
 , ...
 }:
