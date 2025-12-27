@@ -3,6 +3,7 @@
 { ... }:
 {
   imports = [
+    ./lutris.nix
     # ./obsidian.nix
   ];
 }
