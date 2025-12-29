@@ -255,26 +255,6 @@
         "url": "https://install.determinate.systems/determinate-nixd/tag/v3.15.1/x86_64-linux"
       }
     },
-    "dgop": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1765838956,
-        "narHash": "sha256-A3a2ZfvjirX8VIdIPI+nAyukWs6vx4vet3fU0mpr7lU=",
-        "owner": "AvengeMedia",
-        "repo": "dgop",
-        "rev": "0ff697a4e3418966caa714c838fc73f1ef6ba59b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AvengeMedia",
-        "repo": "dgop",
-        "type": "github"
-      }
-    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -1062,7 +1042,6 @@
         "dankMaterialShell": "dankMaterialShell",
         "darkmatter-grub-theme": "darkmatter-grub-theme",
         "determinate": "determinate",
-        "dgop": "dgop",
         "ghostty": "ghostty",
         "home-manager": "home-manager_2",
         "lsfg-vk-flake": "lsfg-vk-flake",

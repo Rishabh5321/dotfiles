@@ -19,7 +19,7 @@
   # Network configuration
   networking.hostName = "nixos-iso";
   networking.networkmanager.enable = true;
-  networking.wireless.enable = false;
+  # networking.wireless.enable = false;
   # Don't set wireless at all, let NetworkManager handle it
 
   # Essential services
