@@ -118,7 +118,7 @@ with lib;
         disable_hyprland_logo = false;
         disable_splash_rendering = false;
         force_default_wallpaper = 0;
-        vfr = true;
+        vfr = false;
         vrr = 0;
         # render_ahead_of_time = false
         # render_ahead_safezone = 1
