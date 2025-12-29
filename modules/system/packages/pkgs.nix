@@ -52,6 +52,7 @@
 
       # ===== EDITORS & IDEs =====
       # android-studio # Android IDE
+      antigravity # AI-powered text editor by Google
       code-cursor # AI-powered VS Code fork
       micro # Simple terminal editor
       # kiro # AI-powered text editor
@@ -103,7 +104,7 @@
       # spotify # Music streaming
       # stremio # Media streaming
       vlc # Multimedia player
-      youtube-music # YouTube Music client
+      pear-desktop # YouTube Music client
       qimgv # image viewer
       # yazi # File manager
 
