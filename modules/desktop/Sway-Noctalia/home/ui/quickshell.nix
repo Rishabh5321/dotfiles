@@ -10,7 +10,7 @@
 
   programs.noctalia-shell = {
     enable = true;
-    systemd.enable = true;
+    # systemd.enable = true;
     settings = {
       appLauncher = {
         # backgroundOpacity = 1;
@@ -67,7 +67,7 @@
               showMemoryAsPercent = false;
               showMemoryUsage = true;
               showNetworkStats = true;
-              CompactMode = false;
+              compactMode = false;
             }
             {
               colorizeIcons = false;
