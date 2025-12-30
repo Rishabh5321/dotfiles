@@ -12,7 +12,7 @@
 
     # Services
     ./services/gnome-keyring.nix
-    
+
     # UI elements
     # ./ui/rofi/rofi.nix
     # ./ui/rofi/config-emoji.nix
