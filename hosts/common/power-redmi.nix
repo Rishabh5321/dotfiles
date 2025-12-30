@@ -42,13 +42,13 @@ let
       echo "Return code for brightnessctl: $?" >> "$LOG_FILE"
 
     elif [ "$ACTION" = "unplugged" ]; then
-      echo "Action: UNPLUGGED. Setting balanced and brightness 40%" >> "$LOG_FILE"
+      echo "Action: UNPLUGGED. Setting balanced and brightness 30%" >> "$LOG_FILE"
       echo "Executing: $POWERPROFILESCTL_CMD set balanced" >> "$LOG_FILE"
       "$POWERPROFILESCTL_CMD" set balanced >> "$LOG_FILE" 2>&1
       echo "Return code for powerprofilesctl: $?" >> "$LOG_FILE"
 
-      echo "Executing: $BRIGHTNESSCTL_CMD set 40%" >> "$LOG_FILE"
-      "$BRIGHTNESSCTL_CMD" set 40% >> "$LOG_FILE" 2>&1
+      echo "Executing: $BRIGHTNESSCTL_CMD set 30%" >> "$LOG_FILE"
+      "$BRIGHTNESSCTL_CMD" set 30% >> "$LOG_FILE" 2>&1
       echo "Return code for brightnessctl: $?" >> "$LOG_FILE"
     else
       echo "Unknown action: $1" >> "$LOG_FILE"
