@@ -9,7 +9,6 @@
 
     # Services
     ./services/gnome-keyring.nix
-    ./services/swaync.nix
 
     # UI elements
     ./ui/quickshell.nix

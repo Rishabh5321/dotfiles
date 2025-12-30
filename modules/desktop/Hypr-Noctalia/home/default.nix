@@ -12,8 +12,6 @@
 
     # Services
     ./services/gnome-keyring.nix
-    ./services/swaync.nix
-    ./services/swww.nix
 
     # UI elements
     # ./ui/rofi/rofi.nix
