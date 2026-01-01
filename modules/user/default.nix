@@ -45,4 +45,8 @@
     NH_OS_FLAKE = "$HOME/dotfiles";
   };
 
+  manual = {
+    json.enable = false;
+    manpages.enable = false;
+  };
 }

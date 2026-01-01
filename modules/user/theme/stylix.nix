@@ -25,7 +25,7 @@ _:
       rofi.enable = false;
       wofi.enable = false;
       qt.enable = true;
-      # qt.platform = "qtct";
+      qt.platform = "qtct";
       hyprland.enable = false;
       swaylock.enable = false;
       hyprpanel.enable = false;
