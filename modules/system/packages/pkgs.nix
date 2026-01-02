@@ -21,6 +21,7 @@
       nur.repos.colorman.speed-cloudflare-cli
       # nur.repos.mio.jellyfin-media-player
       nur.repos.zerozawa.Fladder
+      nur.repos.lonerOrz.abdm
       # nur.repos.charmbracelet.crush
 
       # ===== DEVELOPMENT TOOLS =====
@@ -215,7 +216,6 @@
       inputs.better-control.packages.${pkgs.stdenv.hostPlatform.system}.better-control # Device control
       # inputs.zen-browser.packages."${system}".default # zen
       # inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
-      inputs.abdownloadmanager.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.playtorrio.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # ===== FLAKE INPUTS (COMMENTED) =====

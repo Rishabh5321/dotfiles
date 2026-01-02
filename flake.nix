@@ -61,7 +61,6 @@
 
     better-control.url = "github:Rishabh5321/better-control-flake";
     seanime.url = "github:Rishabh5321/seanime-flake";
-    abdownloadmanager.url = "github:Rishabh5321/abdownloadmanager-flake";
     playtorrio.url = "github:Rishabh5321/playtorrio-flake";
 
     ######################
