@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1767342982,
-        "narHash": "sha256-A0U1eoa4qA9jpAkcW3rZs2aMCBagUeNiCk7LAfLwEMY=",
+        "lastModified": 1767344368,
+        "narHash": "sha256-lz5OdyzWp2MXPoiExX7iH0t5xuiJxAR3IBRH4s17YsE=",
         "owner": "Rishabh5321",
         "repo": "abdownloadmanager-flake",
-        "rev": "47ee94ae42344c5585acd30def5dd6fe50176fd5",
+        "rev": "eb8f68821edc92790ba52605b0cf7749ca734115",
         "type": "github"
       },
       "original": {
