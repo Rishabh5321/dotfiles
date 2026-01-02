@@ -24,4 +24,6 @@
     # Theming & UI
     ./theme
   ];
+
+  documentation.nixos.enable = false;
 }
