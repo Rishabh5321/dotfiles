@@ -24,21 +24,21 @@
       # Note: For Windows dual-boot with systemd-boot, the Windows Boot Manager
       # files (EFI/Microsoft) must be present in the ESP (/boot).
       # You may need to copy them from the Windows EFI partition.
-       grub = {
-         enable = false;
-      #   devices = [ "nodev" ];
-      #   efiSupport = true;
-      #   efiInstallAsRemovable = false;
-      #   useOSProber = true;
-      #
-      #   # GRUB theme configuration
-      #   darkmatter-theme = {
-      #     enable = true;
-      #     style = "nixos";
-      #     icon = "color";
-      #     resolution = "1080p";
-      #   };
-       };
+      grub = {
+        enable = false;
+        #   devices = [ "nodev" ];
+        #   efiSupport = true;
+        #   efiInstallAsRemovable = false;
+        #   useOSProber = true;
+        #
+        #   # GRUB theme configuration
+        #   darkmatter-theme = {
+        #     enable = true;
+        #     style = "nixos";
+        #     icon = "color";
+        #     resolution = "1080p";
+        #   };
+      };
     };
 
     # ===== BOOT SPLASH SCREEN =====
