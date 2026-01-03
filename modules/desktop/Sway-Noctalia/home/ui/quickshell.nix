@@ -1,6 +1,7 @@
 { inputs
 , username
 , wallpaper
+, lib
 , ...
 }:
 {
@@ -38,7 +39,8 @@
 
       bar = {
         position = "top";
-        # backgroundOpacity = 1;
+        backgroundOpacity = lib.mkForce "0.0";
+        useSeparateOpacity = true;
         monitors = [ ];
         density = "default";
         showCapsule = true;
