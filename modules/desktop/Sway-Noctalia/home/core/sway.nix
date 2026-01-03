@@ -48,7 +48,8 @@ with lib; {
         "${modifier}+Alt+w" = "exec wallSelector";
         "${modifier}+w" = "exec ${swayVars.browser}";
         "Ctrl+l" = "exec noctalia-shell ipc call lockScreen lock";
-        "${modifier}+e" = "exec emopicker9000";
+        "Ctrl+Alt+l" = "exec noctalia-shell ipc call sessionMenu toggle";
+        "${modifier}+e" = "exec noctalia-shell ipc call launcher emoji";
         "${modifier}+s" = "exec screenshootin";
         "${modifier}+d" = "exec discord";
         "${modifier}+c" = "exec hyprpicker -a"; # hyprpicker works on sway too
