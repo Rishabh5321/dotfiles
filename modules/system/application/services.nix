@@ -20,6 +20,8 @@ _: {
     # Virtual filesystem support for file managers
     gvfs.enable = true;
 
+    davfs2.enable = true;
+
     # ===== INPUT & HARDWARE =====
     # Touchpad and input device configuration
     libinput.enable = true;
