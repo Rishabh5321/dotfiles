@@ -13,7 +13,7 @@
       }
       {
         timeout = 310;
-        command = "${pkgs.systemd}/bin/loginctl lock-session";
+        command = "noctalia-shell ipc call lockScreen lock";
       }
     ];
   };
