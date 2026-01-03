@@ -17,7 +17,10 @@
     # ===== BOOTLOADER CONFIGURATION =====
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+      };
+      timeout = 5;
       # Note: For Windows dual-boot with systemd-boot, the Windows Boot Manager
       # files (EFI/Microsoft) must be present in the ESP (/boot).
       # You may need to copy them from the Windows EFI partition.
