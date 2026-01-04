@@ -2,6 +2,7 @@
 , username
 , wallpaper
 , lib
+, pkgs
 , ...
 }:
 {
@@ -9,9 +10,27 @@
     inputs.noctalia.homeModules.default
   ];
 
+  systemd.user.services.noctalia-shell = {
+    Unit = {
+      # Ensure it only starts after your Wayland compositor (Sway/Hyprland) is ready
+      After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+
+    Service = {
+      # This adds the necessary binaries to the service's PATH
+      Environment = "PATH=${lib.makeBinPath [
+          pkgs.bash
+          pkgs.coreutils
+          pkgs.gnugrep
+          pkgs.procps
+        ]}";
+    };
+  };
+
   programs.noctalia-shell = {
     enable = true;
-    # systemd.enable = true;
+    systemd.enable = true;
     settings = {
       appLauncher = {
         # backgroundOpacity = 1;
