@@ -48,7 +48,7 @@ with lib; {
         "${modifier}+Alt+w" = "exec wallSelector";
         "${modifier}+w" = "exec ${swayVars.browser}";
         "Ctrl+l" = "exec dms ipc call lock lock";
-        "${modifier}+e" = "exec emopicker9000";
+        "${modifier}+e" = "exec dms ipc call spotlight toggleQuery ':' ";
         "${modifier}+s" = "exec screenshootin";
         "${modifier}+d" = "exec discord";
         "${modifier}+c" = "exec hyprpicker -a"; # hyprpicker works on sway too
