@@ -23,7 +23,7 @@ with lib; {
       startup = [
         { command = "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
         { command = "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
-        # { command = "dms run"; always = true; }
+        { command = "dms run"; always = true; }
         # { command = "swww-daemon"; always = true; }
         { command = "swaync"; always = true; }
         { command = "nm-applet --indicator"; always = true; }
