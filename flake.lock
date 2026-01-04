@@ -990,11 +990,11 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1767450251,
-        "narHash": "sha256-5vqbXIViqLYnUL7rJSarGDTVJcAwhE6Ia1A15UP6FjY=",
+        "lastModified": 1767550680,
+        "narHash": "sha256-liZogcywgyVt5mGmWsJ0yQg0NpI3sjtH5emPLNLIhmw=",
         "owner": "Rishabh5321",
         "repo": "playtorrio-flake",
-        "rev": "80ef668ae5c198618f986797745ce7b0111124cf",
+        "rev": "50f1bf0db3d69ea329d4d7aba4dbc121de450bf6",
         "type": "github"
       },
       "original": {
