@@ -11,6 +11,10 @@
   programs.dank-material-shell = {
     enable = true;
     systemd.enable = true;
+    settings = {
+      theme = "dark";
+      dynamicTheming = true;
+    };
   };
 
   # Fix for missing environment variables in systemd service
