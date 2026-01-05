@@ -20,6 +20,7 @@
   boot.kernelParams = [
     "modprobe.blacklist=amdgpu"
     "modprobe.blacklist=radeon"
+    "usb-storage.quirks=0bc2:2312:u" # Required for Beszel S.M.A.R.T Monitoring.
   ];
   boot.kernel.sysctl = {
     "vm.overcommit_memory" = 1;
