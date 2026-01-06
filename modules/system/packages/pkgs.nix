@@ -217,6 +217,7 @@
       # inputs.zen-browser.packages."${system}".default # zen
       # inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.playtorrio.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.fladder.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # ===== FLAKE INPUTS (COMMENTED) =====
       # inputs.akuse-flake.packages.${system}.akuse                 # Custom package

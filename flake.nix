@@ -62,6 +62,7 @@
     better-control.url = "github:Rishabh5321/better-control-flake";
     seanime.url = "github:Rishabh5321/seanime-flake";
     playtorrio.url = "github:Rishabh5321/playtorrio-flake";
+    fladder.url = "github:Rishabh5321/fladder-flake";
 
     ######################
     # Applications/Tools
