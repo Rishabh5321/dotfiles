@@ -20,7 +20,7 @@
       # ===== NUR =====
       nur.repos.colorman.speed-cloudflare-cli
       # nur.repos.mio.jellyfin-media-player
-      nur.repos.zerozawa.Fladder
+      # nur.repos.zerozawa.Fladder
       nur.repos.lonerOrz.abdm
       # nur.repos.charmbracelet.crush
 
