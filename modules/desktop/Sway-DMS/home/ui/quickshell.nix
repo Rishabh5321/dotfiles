@@ -124,7 +124,7 @@
       matugenTemplateVscode = true;
 
       # Power Management & Time
-      use24HourClock = true;
+      use24HourClock = false;
       powerActionConfirm = true;
       powerMenuActions = [ "reboot" "logout" "poweroff" "lock" "suspend" "restart" ];
       powerMenuDefaultAction = "logout";
