@@ -10,7 +10,7 @@
     enable = true;
     systemd.enable = true;
 
-    default.settings = {
+    settings = {
       theme = "dark";
       dynamicTheming = true;
       # Add any other settings here
