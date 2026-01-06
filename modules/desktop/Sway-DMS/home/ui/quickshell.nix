@@ -42,6 +42,7 @@
       showWorkspaceSwitcher = true;
       showFocusedWindow = true;
       showWeather = true;
+      useAutoLocation = true;
       showMusic = true;
       showClipboard = true;
       showCpuUsage = true;
