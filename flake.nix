@@ -3,88 +3,82 @@
 
   inputs = {
     ######################
-    # Core Nix/Nixpkgs
+    # Core Infrastructure
     ######################
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    nur = {
-      url = "github:nix-community/NUR";
+    determinate = {
+      url = "github:DeterminateSystems/determinate";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ######################
+    # System Modules & Frameworks
+    ######################
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+
+    nixgl.url = "github:nix-community/nixGL";
+
     ######################
-    # Desktop/WM
+    # Desktop & Theming
     ######################
-
-    # hyprwm
-    # hyprland.url = "github:hyprwm/hyprland";
-
-    # hyprland-contrib = {
-    #   url = "github:hyprwm/contrib";
-    #   inputs.nixpkgs.follows = "hyprland/nixpkgs";
-    # };
-
-    # hyprland-plugins = {
-    #   url = "github:hyprwm/hyprland-plugins";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
-
-    # hyprlock = {
-    #   url = "github:hyprwm/hyprlock";
-    #   inputs = {
-    #     nixpkgs.follows = "hyprland/nixpkgs";
-    #     systems.follows = "hyprland/systems";
-    #   };
-    # };
 
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # sddm-sugar-candy-nix = {
-    #   url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    ######################
-    # Personal Projects
-    ######################
-
-    better-control.url = "github:Rishabh5321/better-control-flake";
-    seanime.url = "github:Rishabh5321/seanime-flake";
-    playtorrio.url = "github:Rishabh5321/playtorrio-flake";
-    fladder.url = "github:Rishabh5321/fladder-flake";
-
-    ######################
-    # Applications/Tools
-    ######################
-
     darkmatter-grub-theme = {
       url = "gitlab:VandalByte/darkmatter-grub-theme";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-flatpak = {
-      url = "github:gmodena/nix-flatpak/?ref=latest";
-    };
-
-    nix-gaming = {
-      url = "github:fufexan/nix-gaming";
     };
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Shells / Desktop Components
+    caelestia-cli.url = "github:caelestia-dots/cli";
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
+      inputs.caelestia-cli.follows = "caelestia-cli";
+    };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dankMaterialShell = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    quickshell = {
+      url = "github:quickshell-mirror/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+
+    ######################
+    # Applications & Gaming
+    ######################
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -96,61 +90,57 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
     lsfg-vk-flake = {
       url = "github:pabloaul/lsfg-vk-flake/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    caelestia-cli = {
-      url = "github:caelestia-dots/cli";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
-      inputs = {
-        # nixpkgs.follows = "nixpkgs";
-        # quickshell.follows = "quickshell";
-        caelestia-cli.follows = "caelestia-cli";
-      };
-    };
-
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # dgop = {
-    #   url = "github:AvengeMedia/dgop";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    dankMaterialShell = {
-      url = "github:AvengeMedia/DankMaterialShell";
-      inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.dgop.follows = "dgop";
-    };
-
-    nixgl.url = "github:nix-community/nixGL";
-
-    # quickshell = {
-    #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     ######################
-    # Assets/Others
+    # Personal Projects
     ######################
+
+    better-control.url = "github:Rishabh5321/better-control-flake";
+    seanime.url = "github:Rishabh5321/seanime-flake";
+    playtorrio.url = "github:Rishabh5321/playtorrio-flake";
+    fladder.url = "github:Rishabh5321/fladder-flake";
 
     wallpapers-repo = {
       url = "github:Rishabh5321/walls";
       flake = false;
     };
 
-    determinate = {
-      url = "github:DeterminateSystems/determinate";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    ######################
+    # Inactive/Commented
+    ######################
+
+    /*
+      hyprland.url = "github:hyprwm/hyprland";
+      hyprland-contrib = {
+         url = "github:hyprwm/contrib";
+         inputs.nixpkgs.follows = "hyprland/nixpkgs";
+      };
+      hyprland-plugins = {
+         url = "github:hyprwm/hyprland-plugins";
+         inputs.hyprland.follows = "hyprland";
+      };
+      hyprlock = {
+         url = "github:hyprwm/hyprlock";
+         inputs = {
+           nixpkgs.follows = "hyprland/nixpkgs";
+           systems.follows = "hyprland/systems";
+         };
+      };
+      sddm-sugar-candy-nix = {
+         url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
+         inputs.nixpkgs.follows = "nixpkgs";
+      };
+      dgop = {
+         url = "github:AvengeMedia/dgop";
+         inputs.nixpkgs.follows = "nixpkgs";
+      };
+      */
   };
 
   outputs =

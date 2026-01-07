@@ -1,6 +1,7 @@
 { inputs
 , config
 , lib
+, pkgs
 , ...
 }:
 {
@@ -11,6 +12,7 @@
   programs.dank-material-shell = {
     enable = true;
     systemd.enable = true;
+    quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
     settings = {
       # Core Theme & Appearance
       currentThemeName = "dynamic";

@@ -1102,6 +1102,26 @@
         "url": "https://git.outfoxxed.me/quickshell/quickshell"
       }
     },
+    "quickshell_4": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1767693058,
+        "narHash": "sha256-rnLX8IA4yMbKHjYmJPcYCcWrqJ50B8WApQW62l+V9LE=",
+        "owner": "quickshell-mirror",
+        "repo": "quickshell",
+        "rev": "6742148cf4a8415a9c51fdeb11d8c3ea716c2e14",
+        "type": "github"
+      },
+      "original": {
+        "owner": "quickshell-mirror",
+        "repo": "quickshell",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "better-control": "better-control",
@@ -1123,6 +1143,7 @@
         "noctalia": "noctalia",
         "nur": "nur",
         "playtorrio": "playtorrio",
+        "quickshell": "quickshell_4",
         "seanime": "seanime",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
