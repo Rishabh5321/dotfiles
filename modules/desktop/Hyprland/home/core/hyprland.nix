@@ -9,12 +9,14 @@ with lib; {
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
-    xwayland.enable = true;
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
     systemd = {
       enable = true;
       enableXdgAutostart = true;
       variables = [ "--all" ];
+    };
+    settings = {
+      xwayland.enable = true;
     };
 
     extraConfig =

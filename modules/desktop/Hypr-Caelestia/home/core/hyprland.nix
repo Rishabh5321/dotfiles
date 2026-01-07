@@ -15,7 +15,6 @@ with lib;
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
-    xwayland.enable = true;
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
     systemd = {
       enable = true;
@@ -23,6 +22,7 @@ with lib;
       variables = [ "--all" ];
     };
     settings = {
+      xwayland.enable = true;
       env = [
         "NIXOS_OZONE_WL,1"
         "NIXPKGS_ALLOW_UNFREE,1"
