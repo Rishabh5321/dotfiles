@@ -12,10 +12,10 @@
     enable = true;
     systemd.enable = true;
     settings = {
-      # Theme & Core Appearance
+      # Core Theme & Appearance
       currentThemeName = "dynamic";
       currentThemeCategory = "dynamic";
-      matugenScheme = "scheme-content"; # Updated
+      matugenScheme = "scheme-content";
       runUserMatugenTemplates = true;
       widgetBackgroundColor = "sch";
       widgetColorMode = "colorful";
@@ -23,21 +23,27 @@
       popupTransparency = 1;
       dockTransparency = 1;
 
-      # Fonts & Icons
-      fontFamily = "Inter Variable";
-      monoFontFamily = "Fira Code";
-      iconTheme = "System Default";
-      launcherLogoMode = "os";
+      # Cursor Settings (New)
+      cursorSettings = {
+        theme = "System Default";
+        size = 24;
+        niri = {
+          hideWhenTyping = false;
+          hideAfterInactiveMs = 0;
+        };
+        hyprland = {
+          hideOnKeyPress = false;
+          hideOnTouch = false;
+          inactiveTimeout = 0;
+        };
+        dwl = {
+          cursorHideTimeout = 0;
+        };
+      };
 
-      # Workspace Settings
-      showWorkspaceIndex = true; # Updated
+      # Layout & WM Visibility
+      showWorkspaceIndex = true;
       showWorkspaceName = false;
-      showWorkspacePadding = false;
-      maxWorkspaceIcons = 3;
-      groupWorkspaceApps = true;
-      workspacesPerMonitor = true;
-
-      # Global Widget Visibility
       showLauncherButton = true;
       showWorkspaceSwitcher = true;
       showFocusedWindow = true;
@@ -65,11 +71,11 @@
           position = 0;
           screenPreferences = [ "all" ];
           showOnLastDisplay = true;
-          spacing = 0; # Updated
+          spacing = 0;
           innerPadding = 4;
           transparency = 0;
           widgetTransparency = 1;
-          shadowOpacity = 56; # Updated
+          shadowOpacity = 56;
           leftWidgets = [
             { enabled = true; id = "launcherButton"; }
             "workspaceSwitcher"
@@ -89,7 +95,7 @@
         }
       ];
 
-      # Control Center
+      # Control Center Widgets
       controlCenterWidgets = [
         { enabled = true; id = "volumeSlider"; width = 50; }
         { enabled = true; id = "brightnessSlider"; width = 50; }
@@ -101,7 +107,7 @@
         { enabled = true; id = "darkMode"; width = 50; }
       ];
 
-      # Systemd/Matugen Template Toggles
+      # Matugen Template Configuration
       runDmsMatugenTemplates = true;
       matugenTemplateGtk = true;
       matugenTemplateNiri = true;
@@ -124,21 +130,24 @@
       matugenTemplateKcolorscheme = true;
       matugenTemplateVscode = true;
 
-      # Power Management & Time
-      use24HourClock = false;
+      # Power & Locale
+      use24HourClock = false; # Updated from JSON
+      batteryMonitorTimeout = 600; # Updated from JSON
+      batteryLockTimeout = 300;
+      batterySuspendTimeout = 600;
       powerActionConfirm = true;
       powerMenuActions = [ "reboot" "logout" "poweroff" "lock" "suspend" "restart" ];
-      powerMenuDefaultAction = "logout";
 
-      # Disabled Modules
+      # Feature Toggles
       systemMonitorEnabled = false;
       desktopClockEnabled = false;
+      showDock = false;
 
       configVersion = 5;
     };
   };
 
-  # Environment fix for DMS services
+  # Environment fix for DMS executable paths
   systemd.user.services.dms = {
     Service = {
       Environment = lib.mkForce "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/${config.home.username}/bin:${config.home.profileDirectory}/bin:$PATH";
