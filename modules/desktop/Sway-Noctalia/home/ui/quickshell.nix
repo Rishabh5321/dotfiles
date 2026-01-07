@@ -3,6 +3,7 @@
 , wallpaper
 , lib
 , pkgs
+, config
 , ...
 }:
 {
@@ -11,20 +12,8 @@
   ];
 
   systemd.user.services.noctalia-shell = {
-    Unit = {
-      # Ensure it only starts after your Wayland compositor (Sway/Hyprland) is ready
-      After = [ "graphical-session.target" ];
-      PartOf = [ "graphical-session.target" ];
-    };
-
     Service = {
-      # This adds the necessary binaries to the service's PATH
-      Environment = "PATH=${lib.makeBinPath [
-          pkgs.bash
-          pkgs.coreutils
-          pkgs.gnugrep
-          pkgs.procps
-        ]}";
+      Environment = lib.mkForce "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/${config.home.username}/bin:${config.home.profileDirectory}/bin:$PATH";
     };
   };
 
