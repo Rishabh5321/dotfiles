@@ -136,7 +136,6 @@
       gnome-keyring # Credential management
       gnome-system-monitor # System monitoring
       grim # Screenshot tool
-      localsend # File sharing
       mesa # Graphics drivers
       mission-center # System information
       networkmanagerapplet # Network management
@@ -177,26 +176,10 @@
       libsForQt5.qt5.qtbase # Qt5 base
       libsForQt5.qt5.qtsvg # Qt5 SVG support
 
-      # ===== IMAGE PROCESSING =====
-      # imagemagick # Image prossessing for wallsite project
-
-      # ===== TEXT EDITORS (COMMENTED) =====
-      #helix                 # Modern text editor
-
-      # ===== DEVELOPMENT TOOLS (COMMENTED) =====
-      #apkeep                # APK downloader
-      #clinfo                # OpenCL info
-      #flatpak-builder       # Flatpak development
-      #nix-serve             # Nix binary cache server
-      #tmux                  # Terminal multiplexer
-
-      # ===== MEDIA TOOLS (COMMENTED) =====
-      #spotdl                # Spotify downloader
-      #revanced-cli          # YouTube Vanced patcher
-
-      # ===== APPLICATIONS (COMMENTED) =====
+      # ===== APPLICATIONS =====
       #deja-dup              # Backup tool
       grayjay # Video platform client
+      localsend # File sharing
       #pods                  # Podcast client
       #popcorntime           # Movie streaming
       #protonup-qt           # Proton version manager
@@ -207,9 +190,6 @@
       #VPN
       protonvpn-gui
 
-      # ===== CUSTOM PACKAGES (COMMENTED) =====
-      #luminance             # Custom lighting tool
-
       # ===== FLAKE INPUTS =====
       # inputs.grayjay.packages.${pkgs.stdenv.hostPlatform.system}.grayjay # Video platform client
       # inputs.gemini-cli.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli-stable # stable versions
@@ -218,11 +198,6 @@
       # inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.playtorrio.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.fladder.packages.${pkgs.stdenv.hostPlatform.system}.default
-
-      # ===== FLAKE INPUTS (COMMENTED) =====
-      # inputs.akuse-flake.packages.${system}.akuse                 # Custom package
-      # inputs.alejandra.defaultPackage.${system}                   # Nix formatter
-      # inputs.thorium.packages."x86_64-linux".thorium-avx2         # Thorium browser
     ];
 
   # ===== FONTS CONFIGURATION =====
