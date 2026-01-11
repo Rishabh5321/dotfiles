@@ -44,7 +44,7 @@
       nh # Nix helper
       openssl # Cryptography toolkit
       geminicommit # Gemini commit message generator
-      zed-editor # Editor
+      # zed-editor # Editor
       # nix-fast-build # Building flakes
       gemini-cli-bin # AI
       lazygit # Git TUI client
