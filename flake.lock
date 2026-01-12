@@ -1073,11 +1073,11 @@
         "nixpkgs": "nixpkgs_9"
       },
       "locked": {
-        "lastModified": 1768179008,
-        "narHash": "sha256-PAtfKSdrIjFuW4eVx8wkNoon4/aKSbySUntB5wKcJR8=",
+        "lastModified": 1768242036,
+        "narHash": "sha256-ac5QTn9ggJORUKbdFtAXJPBOaf4FjHFwm6T0RtjlgXg=",
         "owner": "Rishabh5321",
         "repo": "playtorrio-flake",
-        "rev": "22a28a434e9b24d1e32a736b5c06d79a87cbf7ba",
+        "rev": "2f4c019a53c1307641ce1b3a0c5234c946dfe763",
         "type": "github"
       },
       "original": {
