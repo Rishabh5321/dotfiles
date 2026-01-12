@@ -105,6 +105,7 @@
     seanime.url = "github:Rishabh5321/seanime-flake";
     playtorrio.url = "github:Rishabh5321/playtorrio-flake";
     fladder.url = "github:Rishabh5321/fladder-flake";
+    zed-editor.url = "github:Rishabh5321/zed-editor-flake";
 
     wallpapers-repo = {
       url = "github:Rishabh5321/walls";

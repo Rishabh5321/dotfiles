@@ -198,6 +198,7 @@
       # inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.playtorrio.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.fladder.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.zed-editor.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
     ];
 
   # ===== FONTS CONFIGURATION =====
