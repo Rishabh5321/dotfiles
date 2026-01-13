@@ -158,6 +158,7 @@
       winetricks # Windows compatibility
       wl-clipboard # Wayland clipboard
       dig # DNS lookup
+      powertop # Power management
 
       # ===== OFFICE & PRODUCTIVITY =====
       libreoffice # Office suite

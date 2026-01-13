@@ -59,7 +59,7 @@ let
 in
 {
   services.power-profiles-daemon.enable = true;
-  #powerManagement.powertop.enable = true; # Uncomment if you want to enable powertop
+  powerManagement.powertop.enable = true;
 
   environment.systemPackages = with pkgs; [
     power-profiles-daemon
