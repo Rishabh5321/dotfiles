@@ -702,11 +702,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1768269856,
-        "narHash": "sha256-O7Qy+w2fK4kBq2I70haCDJYpzbpPW58FscHpRzw9lfA=",
+        "lastModified": 1768356708,
+        "narHash": "sha256-0nVcY5ZEKc/PaijHtfkUlpQT1eGZgEwUqAO6SJM8Dgg=",
         "owner": "fufexan",
         "repo": "nix-gaming",
-        "rev": "c104472764fc9e8926e40ccc7e0e6d540d718458",
+        "rev": "4389aec6037bf2f31174e5afe550ee378eb6a276",
         "type": "github"
       },
       "original": {
