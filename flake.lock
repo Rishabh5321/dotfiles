@@ -174,27 +174,6 @@
         "type": "github"
       }
     },
-    "darkmatter-grub-theme": {
-      "inputs": {
-        "flake-compat": "flake-compat",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1683347392,
-        "narHash": "sha256-snW+8pJvBQ1B11FmUf6kSgARZW5OvW9uXgxA2VrlzcQ=",
-        "owner": "VandalByte",
-        "repo": "darkmatter-grub-theme",
-        "rev": "efe1abbde0aa9410217247d415ff734583af9711",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "VandalByte",
-        "repo": "darkmatter-grub-theme",
-        "type": "gitlab"
-      }
-    },
     "determinate": {
       "inputs": {
         "determinate-nixd-aarch64-darwin": "determinate-nixd-aarch64-darwin",
@@ -292,22 +271,6 @@
     "flake-compat": {
       "flake": false,
       "locked": {
-        "lastModified": 1673956053,
-        "narHash": "sha256-4gtG9iQuiKITOjNQQeQIpoIB6b16fm+504Ch3sNKLd8=",
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "rev": "35bb57c0c8d8b62bbfd284272c928ceb64ddbde9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
-    "flake-compat_2": {
-      "flake": false,
-      "locked": {
         "lastModified": 1696426674,
         "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
         "owner": "edolstra",
@@ -321,7 +284,7 @@
         "type": "github"
       }
     },
-    "flake-compat_3": {
+    "flake-compat_2": {
       "flake": false,
       "locked": {
         "lastModified": 1761588595,
@@ -508,7 +471,7 @@
     },
     "ghostty": {
       "inputs": {
-        "flake-compat": "flake-compat_3",
+        "flake-compat": "flake-compat_2",
         "flake-utils": "flake-utils_2",
         "home-manager": "home-manager",
         "nixpkgs": [
@@ -533,7 +496,7 @@
     },
     "git-hooks-nix": {
       "inputs": {
-        "flake-compat": "flake-compat_2",
+        "flake-compat": "flake-compat",
         "gitignore": [
           "determinate",
           "nix"
@@ -1176,7 +1139,6 @@
         "caelestia-cli": "caelestia-cli",
         "caelestia-shell": "caelestia-shell_2",
         "dankMaterialShell": "dankMaterialShell",
-        "darkmatter-grub-theme": "darkmatter-grub-theme",
         "determinate": "determinate",
         "fladder": "fladder",
         "ghostty": "ghostty",
@@ -1453,11 +1415,11 @@
     "wallpapers-repo": {
       "flake": false,
       "locked": {
-        "lastModified": 1766462962,
-        "narHash": "sha256-DqtIksuLJ23IBZrZxO9Vc7GTtmqh2e4alN5PwFO0dpw=",
+        "lastModified": 1768409803,
+        "narHash": "sha256-+vwbjP8jgvNtAlrMWKfwFfEs+AvTIyt5X0/eV8FEN2c=",
         "owner": "Rishabh5321",
         "repo": "walls",
-        "rev": "e7167661250799fe6115ab86f543040c1db88398",
+        "rev": "4d73d8d692ad747d5dff75a9f14bf713cd119977",
         "type": "github"
       },
       "original": {

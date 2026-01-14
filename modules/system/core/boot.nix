@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   boot = {
     # ===== KERNEL CONFIGURATION =====
     kernelPackages = pkgs.linuxPackages_latest;
@@ -23,14 +23,15 @@
         efiSupport = true;
         efiInstallAsRemovable = false;
         useOSProber = true;
+        theme = pkgs.minimal-grub-theme;
 
-        # GRUB theme configuration
-        darkmatter-theme = {
-          enable = true;
-          style = "nixos";
-          icon = "color";
-          resolution = "1080p";
-        };
+        # Darkmatter GRUB theme configuration
+        # darkmatter-theme = {
+        #   enable = true;
+        #   style = "nixos";
+        #   icon = "color";
+        #   resolution = "1080p";
+        # };
       };
     };
 

@@ -43,10 +43,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    darkmatter-grub-theme = {
-      url = "gitlab:VandalByte/darkmatter-grub-theme";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # darkmatter-grub-theme = {
+    #   url = "gitlab:VandalByte/darkmatter-grub-theme";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
@@ -161,7 +161,7 @@
     let
       system = "x86_64-linux";
       username = "rishabh";
-      wallpaper = "wall10.jpg";
+      wallpaper = "wall46.jpg";
       flakeDir = "/home/${username}/dotfiles ";
       wallpapers = "${wallpapers-repo}/src";
 
@@ -219,7 +219,7 @@
             ./hosts/${hostname}/configuration.nix
 
             # Common NixOS modules
-            inputs.darkmatter-grub-theme.nixosModule
+            # inputs.darkmatter-grub-theme.nixosModule
             #inputs.distro-grub-themes.nixosModules.${system}.default
             inputs.stylix.nixosModules.stylix
             inputs.nix-flatpak.nixosModules.nix-flatpak
