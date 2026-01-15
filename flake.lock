@@ -950,11 +950,11 @@
     },
     "nixpkgs_9": {
       "locked": {
-        "lastModified": 1768127708,
-        "narHash": "sha256-1Sm77VfZh3mU0F5OqKABNLWxOuDeHIlcFjsXeeiPazs=",
+        "lastModified": 1768305791,
+        "narHash": "sha256-AIdl6WAn9aymeaH/NvBj0H9qM+XuAuYbGMZaP0zcXAQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ffbc9f8cbaacfb331b6017d5a5abb21a492c9a38",
+        "rev": "1412caf7bf9e660f2f962917c14b1ea1c3bc695e",
         "type": "github"
       },
       "original": {
@@ -1035,11 +1035,11 @@
         "nixpkgs": "nixpkgs_9"
       },
       "locked": {
-        "lastModified": 1768242036,
-        "narHash": "sha256-ac5QTn9ggJORUKbdFtAXJPBOaf4FjHFwm6T0RtjlgXg=",
+        "lastModified": 1768457832,
+        "narHash": "sha256-WRwVMYB957eNpMczasxLP++jAPf9HHvSRKlUB0uCMNk=",
         "owner": "Rishabh5321",
         "repo": "playtorrio-flake",
-        "rev": "2f4c019a53c1307641ce1b3a0c5234c946dfe763",
+        "rev": "5168e7ac4e07d31bf744e210ade527ff8beec967",
         "type": "github"
       },
       "original": {
