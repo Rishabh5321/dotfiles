@@ -264,7 +264,6 @@
           modules = [
             ./hosts/iso/configuration.nix
             inputs.stylix.nixosModules.stylix
-            inputs.darkmatter-grub-theme.nixosModule
           ];
         };
       };
