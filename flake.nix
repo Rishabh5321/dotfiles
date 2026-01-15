@@ -220,7 +220,7 @@
 
             # Common NixOS modules
             # inputs.darkmatter-grub-theme.nixosModule
-            #inputs.distro-grub-themes.nixosModules.${system}.default
+            # inputs.distro-grub-themes.nixosModules.${system}.default
             inputs.stylix.nixosModules.stylix
             inputs.nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
