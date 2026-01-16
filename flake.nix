@@ -101,11 +101,13 @@
     # Personal Projects
     ######################
 
-    better-control.url = "github:Rishabh5321/better-control-flake";
-    seanime.url = "github:Rishabh5321/seanime-flake";
-    playtorrio.url = "github:Rishabh5321/playtorrio-flake";
-    fladder.url = "github:Rishabh5321/fladder-flake";
+    # better-control.url = "github:Rishabh5321/better-control-flake";
+    # seanime.url = "github:Rishabh5321/seanime-flake";
+    # playtorrio.url = "github:Rishabh5321/playtorrio-flake";
+    # fladder.url = "github:Rishabh5321/fladder-flake";
     zed-editor.url = "github:Rishabh5321/zed-editor-flake";
+
+    custom-packages.url = "github:Rishabh5321/custom-packages-flake";
 
     wallpapers-repo = {
       url = "github:Rishabh5321/walls";

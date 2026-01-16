@@ -194,11 +194,11 @@
       # ===== FLAKE INPUTS =====
       # inputs.grayjay.packages.${pkgs.stdenv.hostPlatform.system}.grayjay # Video platform client
       # inputs.gemini-cli.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli-stable # stable versions
-      inputs.better-control.packages.${pkgs.stdenv.hostPlatform.system}.better-control # Device control
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.better-control # Device control
       # inputs.zen-browser.packages."${system}".default # zen
       # inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
-      inputs.playtorrio.packages.${pkgs.stdenv.hostPlatform.system}.default
-      inputs.fladder.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
       inputs.zed-editor.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
     ];
 

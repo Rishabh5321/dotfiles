@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.seanime.nixosModules.seanime
+    inputs.custom-packages.nixosModules.seanime
   ];
 
   modules.home.services.seanime.enable = true;
