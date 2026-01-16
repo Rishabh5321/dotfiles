@@ -200,7 +200,7 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
-      inputs.zed-editor.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
     ];
 
   # ===== FONTS CONFIGURATION =====
