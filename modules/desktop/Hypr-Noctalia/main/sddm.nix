@@ -75,7 +75,7 @@
           HourFormat = "h:mm AP";
 
           HaveFormBackground = "false";
-          FormPosition = "left";
+          FormPosition = "right";
 
         };
       }
