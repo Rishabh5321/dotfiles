@@ -61,6 +61,12 @@ in
   services.power-profiles-daemon.enable = true;
   powerManagement.powertop.enable = true;
 
+  # 2. Tell PowerTop to re-apply the udev rule after it finishes auto-tuning
+  # This ensures PowerTop doesn't overwrite our 'on' setting.
+  powerManagement.powertop.postStart = ''
+    ${pkgs.systemd}/bin/udevadm trigger -c add -s usb -a idVendor=258a -a idProduct=1007
+  '';
+
   environment.systemPackages = with pkgs; [
     power-profiles-daemon
     brightnessctl
@@ -100,6 +106,8 @@ in
 
   # Udev rules to trigger the systemd services based on power supply status
   services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="258a", ATTR{idProduct}=="1007", ATTR{power/control}="on"
+
     # Rule for power plugged in: When online attribute becomes '1' (plugged in)
     SUBSYSTEM=="power_supply", ATTR{online}=="1", TAG+="systemd", ENV{SYSTEMD_WANTS}="power-plugged-event.service"
 
