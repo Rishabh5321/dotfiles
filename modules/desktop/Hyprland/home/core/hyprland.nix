@@ -15,9 +15,9 @@ with lib; {
       enableXdgAutostart = true;
       variables = [ "--all" ];
     };
-    settings = {
-      xwayland.enable = true;
-    };
+    # settings = {
+    #   xwayland.enable = true;
+    # };
 
     extraConfig =
       let
@@ -211,7 +211,7 @@ with lib; {
         # new_on_top = false
         # no_gaps_when_only = 0
         orientation = left
-        inherit_fullscreen = true
+        # inherit_fullscreen = true
         # always_center_master = false
         smart_resizing = true
         drop_at_cursor = true
