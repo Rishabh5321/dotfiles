@@ -1036,11 +1036,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1768649703,
-        "narHash": "sha256-Dhi+RTxisGijWQscMs6nxcMWghHqVV1FQN5bqci8bcc=",
+        "lastModified": 1768656845,
+        "narHash": "sha256-xNlXMyn7yc3Z/NOsz4NchO7gWFwsoCvtJ26pys4s2/M=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "20f6d2a0ad78a1a3211876c34d110c710892e281",
+        "rev": "8bd7e49d5ac62756bee6e4b02221fb96bfc3c99a",
         "type": "github"
       },
       "original": {
