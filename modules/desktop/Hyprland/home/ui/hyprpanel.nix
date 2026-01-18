@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username, wallpaper, ... }:
 let
   accent = "#${config.lib.stylix.colors.base0D}";
   accent-alt = "#${config.lib.stylix.colors.base03}";
@@ -15,7 +15,10 @@ in
     settings = {
       tear = true;
       scalingPriority = "hyprland";
-      wallpaper.enable = false;
+      theme.matugen = true;
+      wallpaper.pywal = true;
+      wallpaper.enable = true;
+      wallpaper.image = "/home/${username}/Pictures/Wallpapers/${wallpaper}";
 
       bar = {
         layouts = {
