@@ -1,4 +1,4 @@
-{ self, pkgs, inputs, lib, ... }:
+{ self, pkgs, inputs, lib, username, wallpaper, ... }:
 let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
 {
   imports = [
@@ -69,7 +69,7 @@ let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
         vimKeybinds = true;
       };
       paths = {
-        wallpaperDir = wallpapersDir;
+        wallpaperDir = "/home/${username}/Pictures/Wallpapers/${wallpaper}";
         sessionGif = "${self}/assets/bird.gif";
         # mediaGif = "${self}/assets/.gif";
       };
