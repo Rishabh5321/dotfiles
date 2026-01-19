@@ -5,10 +5,10 @@ let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
     inputs.caelestia-shell.homeManagerModules.default
   ];
 
-  qt = {
-    enable = true;
-    platformTheme.name = lib.mkForce "gtk3";
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme.name = lib.mkForce "gtk3";
+  # };
 
   programs.caelestia = {
     enable = true;
