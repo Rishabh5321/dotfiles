@@ -22,7 +22,7 @@ with lib;
       variables = [ "--all" ];
     };
     settings = {
-      xwayland.enable = true;
+      # xwayland.enable = true;
       env = [
         "NIXOS_OZONE_WL,1"
         "NIXPKGS_ALLOW_UNFREE,1"
@@ -217,7 +217,7 @@ with lib;
         # new_on_top = false
         # no_gaps_when_only = 0
         orientation = "left";
-        inherit_fullscreen = true;
+        # inherit_fullscreen = true;
         # always_center_master = false
         smart_resizing = true;
         drop_at_cursor = true;
