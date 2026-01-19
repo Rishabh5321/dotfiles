@@ -140,11 +140,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1768750854,
-        "narHash": "sha256-n9Sel34DCie1hEmbzAD3oepOcBPCyILaDrm5Ivbx7II=",
+        "lastModified": 1768794711,
+        "narHash": "sha256-9nkAaxGD8jacYnO4sfhW67kLkpaBEtti6ihIOpR7r9g=",
         "owner": "Rishabh5321",
         "repo": "custom-packages-flake",
-        "rev": "ce6b5b2154f8a06913a981eeab221a5a278ee0f7",
+        "rev": "d3b3c8113e5ef2f827dc375c00dd2c915314a614",
         "type": "github"
       },
       "original": {
