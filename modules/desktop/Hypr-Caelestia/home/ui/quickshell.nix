@@ -1,5 +1,4 @@
 { self, pkgs, inputs, username, wallpaper, ... }:
-let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
 {
   imports = [
     inputs.caelestia-shell.homeManagerModules.default
@@ -89,8 +88,4 @@ let wallpapersDir = "/home/rishabh/Pictures/Wallpapers"; in
       # };
     };
   };
-
-  wayland.windowManager.hyprland.settings.env = [
-    "CAELESTIA_WALLPAPERS_DIR, ${wallpapersDir}"
-  ];
 }
