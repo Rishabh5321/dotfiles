@@ -21,7 +21,7 @@
       nur.repos.colorman.speed-cloudflare-cli
       # nur.repos.mio.jellyfin-media-player
       # nur.repos.zerozawa.Fladder
-      nur.repos.lonerOrz.abdm
+      # nur.repos.lonerOrz.abdm
       # nur.repos.charmbracelet.crush
 
       # ===== DEVELOPMENT TOOLS =====
@@ -194,12 +194,12 @@
       # ===== FLAKE INPUTS =====
       # inputs.grayjay.packages.${pkgs.stdenv.hostPlatform.system}.grayjay # Video platform client
       # inputs.gemini-cli.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli-stable # stable versions
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.ab-download-manager
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.anymex
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.better-control # Device control
-      # inputs.zen-browser.packages."${system}".default # zen
-      # inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.grayjay
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
     ];
