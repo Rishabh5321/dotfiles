@@ -7,6 +7,8 @@
     # or inputs.zen-browser.homeModules.twilight-official
   ];
 
+  # stylix.targets.zen-browser.profileNames = ["main"];
+
   programs.zen-browser = {
     enable = true;
     policies = {

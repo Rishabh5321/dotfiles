@@ -7,6 +7,6 @@
     ./lazygit.nix
     #./nvchad.nix
     #./nvf.nix
-    #./zed.nix
+    ./zed.nix
   ];
 }

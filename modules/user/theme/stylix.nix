@@ -29,7 +29,7 @@ _:
       hyprland.enable = false;
       swaylock.enable = false;
       hyprpanel.enable = false;
-      zed.enable = false;
+      # zed.enable = true;
       zen-browser.enable = false;
       # spicetify.enable = false;
     };
