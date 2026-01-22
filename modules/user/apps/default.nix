@@ -5,6 +5,6 @@
   imports = [
     ./discord.nix
     ./lutris.nix
-    # ./obsidian.nix
+    ./obsidian.nix
   ];
 }
