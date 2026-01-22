@@ -23,7 +23,7 @@
         efiSupport = true;
         efiInstallAsRemovable = false;
         useOSProber = true;
-        theme = pkgs.minimal-grub-theme;
+        # theme = pkgs.minimal-grub-theme;
 
         # Darkmatter GRUB theme configuration
         # darkmatter-theme = {
@@ -64,7 +64,10 @@
   # ===== THEME OVERRIDES =====
   stylix = {
     targets = {
-      grub.enable = false;
+      grub = {
+        enable = true;
+        useWallpaper = true;
+      };
       plymouth.enable = false;
     };
   };
