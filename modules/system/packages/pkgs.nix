@@ -90,7 +90,7 @@
       # ===== COMMUNICATION & SOCIAL =====
       ayugram-desktop
       # beeper # Universal chat client
-      discord # Gaming communication
+      # discord # Gaming communication
       # ferdium # Multi-service messaging
       # telegram-desktop # Telegram client
       # thunderbird-latest # Email client

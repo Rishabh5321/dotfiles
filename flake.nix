@@ -80,6 +80,8 @@
     # Applications & Gaming
     ######################
 
+    nixcord.url = "github:FlameFlag/nixcord";
+
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -163,7 +165,7 @@
     let
       system = "x86_64-linux";
       username = "rishabh";
-      wallpaper = "wall46.jpg";
+      wallpaper = "wall12.jpg";
       flakeDir = "/home/${username}/dotfiles ";
       wallpapers = "${wallpapers-repo}/src";
 
