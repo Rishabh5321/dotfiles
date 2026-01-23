@@ -5,6 +5,6 @@
     enable = true;
     user = "${username}";
 
-    discord.vencord.enable = true;      # Standard Vencord
+    discord.vencord.enable = true; # Standard Vencord
   };
 }
