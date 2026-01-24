@@ -87,6 +87,14 @@ jobs:
           remove_packages_one_command: true
           remove_folders: "/usr/share/swift /usr/share/miniconda /usr/share/az* /usr/share/glade* /usr/local/lib/node_modules /usr/local/share/chromium /usr/local/share/powershell"
 
+      - name: Enable Swap
+        if: startsWith(matrix.package, 'zed-editor')
+        uses: thejerrybao/setup-swap-space@v1
+        with:
+          swap-space-path: /swapfile
+          swap-size-gb: 10
+          remove-existing-swap-files: true
+
       - name: Checkout repository
         uses: actions/checkout@v6
 
