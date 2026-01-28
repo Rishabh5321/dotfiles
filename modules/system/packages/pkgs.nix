@@ -107,6 +107,7 @@
       vlc # Multimedia player
       pear-desktop # YouTube Music client
       qimgv # image viewer
+      xnviewmp # image viewer
       # yazi # File manager
 
       # ===== GAMING =====

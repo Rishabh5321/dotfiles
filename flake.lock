@@ -1311,11 +1311,11 @@
     "wallpapers-repo": {
       "flake": false,
       "locked": {
-        "lastModified": 1768409803,
-        "narHash": "sha256-+vwbjP8jgvNtAlrMWKfwFfEs+AvTIyt5X0/eV8FEN2c=",
+        "lastModified": 1769583037,
+        "narHash": "sha256-AIuRmd/Y0+hNg2zgtCUYvHhyNMMPyQd0RGsbOWAz+Dg=",
         "owner": "Rishabh5321",
         "repo": "walls",
-        "rev": "4d73d8d692ad747d5dff75a9f14bf713cd119977",
+        "rev": "8d358a00f1b12ed1523f29c65d4b38caab5859fb",
         "type": "github"
       },
       "original": {
