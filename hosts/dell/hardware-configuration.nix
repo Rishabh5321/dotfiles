@@ -20,18 +20,24 @@
   boot.kernelParams = [
     "modprobe.blacklist=amdgpu"
     "modprobe.blacklist=radeon"
+    "usb-storage.quirks=0bc2:2312:u" # Required for Beszel S.M.A.R.T Monitoring.
   ];
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/9c45b5d1-2bb2-48d0-87c7-287a323c13ca";
-    fsType = "ext4";
+  boot.kernel.sysctl = {
+    "vm.overcommit_memory" = 1;
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/5216-6D1A";
-    fsType = "vfat";
-    options = [ "fmask=0022" "dmask=0022" ];
-  };
+  fileSystems."/" =
+    {
+      device = "/dev/disk/by-uuid/2c0c51e9-cb70-4ffa-9ea2-0ec4a9f51747";
+      fsType = "ext4";
+    };
+
+  fileSystems."/boot" =
+    {
+      device = "/dev/disk/by-uuid/33DC-F985";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
+    };
 
   # swapDevices = [
   #   {

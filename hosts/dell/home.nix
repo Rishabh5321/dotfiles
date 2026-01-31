@@ -7,7 +7,14 @@
   # You can import other home-manager modules here
   imports = [
     ../../modules/user
-    ../../modules/desktop/sway/home
+    ../../modules/desktop/Sway-Noctalia/home
+    #../../modules/desktop/Gnome/home
+    #./gnome.nix
+    # Or modules exported from other flakes (such as nix-colors):
+    # inputs.nix-colors.homeManagerModules.default
+
+    # You can also split up your configuration and import pieces of it here:
+    # ./nvim.nix
   ];
 
   nixpkgs = {

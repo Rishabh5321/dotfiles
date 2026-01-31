@@ -6,49 +6,12 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/system
-    ../common/serve.nix
-    ../common/tailscale-client.nix
     ../common/power-server.nix
-    ../../modules/desktop/sway/main
-    #./amd-drivers.nix
+    ../../modules/desktop/Sway-Noctalia/main
     inputs.nixos-hardware.nixosModules.xiaomi-redmibook-15-pro-2021
   ];
 
-  # services.avahi = {
-  #   enable = true;
-  #   publish = {
-  #     enable = true;
-  #     addresses = true;
-  #     domain = true;
-  #     hinfo = true;
-  #     userServices = true;
-  #     workstation = true;
-  #   };
-  #   nssmdns4 = true; # Enable mDNS resolution
-  # };
-
-  #drivers.intel.enable = true;
-  #drivers.amdgpu.enable = false;
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # networking.extraHosts = ''
-  #   127.0.0.1 bazarr.home
-  #   127.0.0.1 duplicati.home
-  #   127.0.0.1 file.home
-  #   127.0.0.1 flaresolverr.home
-  #   127.0.0.1 games.home
-  #   127.0.0.1 jackett.home
-  #   127.0.0.1 jellyfin.home
-  #   127.0.0.1 jellyseerr.home
-  #   127.0.0.1 portainer.home
-  #   127.0.0.1 prowlarr.home
-  #   127.0.0.1 qbittorrent.home
-  #   127.0.0.1 radarr.home
-  #   127.0.0.1 resilio.home
-  #   127.0.0.1 sonarr.home
-  #   127.0.0.1 syncify.home
-  #   127.0.0.1 tachiyomi.home
-  # '';
 
   networking.hostName = "dell"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -63,64 +26,24 @@
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
 
+  # Configure keymap in X11
+  # Enable the KDE Plasma Desktop Environment.
+  #services.desktopManager.plasma6.enable = true;
+  #services.displayManager.sddm.enable = true;
+
   services = {
     xserver = {
       enable = true;
-      #displayManager.lightdm.enable = true;
-      #desktopManager.xfce = {
-      #  enable = true;
-      #enableXfwm = false;
-      #};
       #displayManager.gdm.enable = true;
       #desktopManager.gnome.enable = true;
       xkb = {
         layout = "us";
         variant = "";
       };
-      #windowManager.i3.enable = true;
+      #videoDrivers = [ "intel" ];
     };
-    #displayManager.defaultSession = "hyprland";
+    #displayManager.sddm.enable = true;
   };
-
-  #services.displayManager = {
-  #  enable = true;
-  #  sddm = {
-  #    enable = true;
-  #    wayland = {
-  #      enable = true;
-  #    };
-  #    settings = {
-  #      Autologin = {
-  #        Session = "hyprland";
-  #        User = "rishabh";
-  #      };
-  #    };
-  #    autoNumlock = true;
-  #  };
-  #};
-  #services.desktopManager.cosmic.enable = true;
-
-  #services.displayManager.sddm.theme = "sddm-astronaut-theme";
-  #services.desktopManager.plasma6.enable = true;
-  #services.displayManager.sddm.enable = true;
-
-  #services.xserver = {
-  #  enable = true;
-  #  desktopManager = {
-  #    xterm.enable = false;
-  #    xfce = {
-  #      enable = true;
-  #      #noDesktop = true;
-  #      enableXfwm = false;
-  #    };
-  #  };
-  #  xkb = {
-  #    layout = "us";
-  #    variant = "";
-  #  };
-  #  windowManager.i3.enable = true;
-  #};
-  #services.displayManager.defaultSession = "xfce";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -128,7 +51,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
@@ -141,11 +63,13 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  # networking.firewall = {
+  #   allowedTCPPorts = [ 53 80 5353 8080 ];
+  #   allowedUDPPorts = [ 53 80 5353 8080 ];
+  # };
+  # networking.firewall.trustedInterfaces = [ "wlp0s20f3" "enp2s0" ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = false;
+  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -154,29 +78,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "26.05"; # Did you read the comment?
-
-  services.samba = {
-    enable = true;
-    settings = {
-      "root" = {
-        path = "/"; # Replace with the directory you want to share
-        browseable = true; # Allow it to be seen in the network browser
-        readOnly = false; # Enable write access
-        validUsers = [ "rishabh" ]; # Use 'rishabh' as the username
-      };
-      "mnt" = {
-        path = "/mnt"; # Replace with the directory you want to share
-        browseable = true; # Allow it to be seen in the network browser
-        readOnly = false; # Enable write access
-        validUsers = [ "rishabh" ]; # Use 'rishabh' as the username
-      };
-      "home" = {
-        path = "/home/rishabh"; # Replace with the directory you want to share
-        browseable = true; # Allow it to be seen in the network browser
-        readOnly = false; # Enable write access
-        validUsers = [ "rishabh" ]; # Use 'rishabh' as the username
-      };
-    };
-  };
-
 }
