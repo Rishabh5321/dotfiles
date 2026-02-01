@@ -201,7 +201,7 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.grayjay
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
+      # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
     ];
