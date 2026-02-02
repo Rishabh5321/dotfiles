@@ -900,11 +900,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770039807,
-        "narHash": "sha256-1/MBdrRIj0G8cNpVNAlbMQQpyW5MyfqfnfCRM6Yg2GY=",
+        "lastModified": 1770057245,
+        "narHash": "sha256-pU6iv7GBpW/fF80T85xj4f3HCui9xDSdB8sOvJTaebc=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "a8853b78f5816a19d3f2d9f4621627dce851dd50",
+        "rev": "33205d4ddf394b5f3599bbf469b0878911379c1e",
         "type": "github"
       },
       "original": {
