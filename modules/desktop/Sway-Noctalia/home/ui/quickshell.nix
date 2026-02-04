@@ -2,8 +2,6 @@
 , username
 , wallpaper
 , lib
-, config
-, pkgs
 , ...
 }:
 {
