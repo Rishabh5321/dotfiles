@@ -10,11 +10,11 @@
     inputs.noctalia.homeModules.default
   ];
 
-  systemd.user.services.noctalia-shell = {
-    Service = {
-      Environment = lib.mkForce "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/${config.home.username}/bin:${config.home.profileDirectory}/bin:$PATH";
-    };
-  };
+  # systemd.user.services.noctalia-shell = {
+  #   Service = {
+  #     Environment = lib.mkForce "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/${config.home.username}/bin:${config.home.profileDirectory}/bin:$PATH";
+  #   };
+  # };
 
   programs.noctalia-shell = {
     enable = true;
@@ -29,7 +29,7 @@
         pinnedExecs = [ ];
         position = "center";
         sortByMostUsed = true;
-        terminalCommand = "xterm -e";
+        terminalCommand = "kitty -e";
         useApp2Unit = false;
       };
 
