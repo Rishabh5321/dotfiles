@@ -76,7 +76,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     ######################
     # Applications & Gaming
     ######################
@@ -149,22 +148,23 @@
          url = "github:AvengeMedia/dgop";
          inputs.nixpkgs.follows = "nixpkgs";
       };
-      */
+    */
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , nixpkgs-stable
-    , home-manager
+    {
+      self,
+      nixpkgs,
+      nixpkgs-stable,
+      home-manager,
       # , sddm-sugar-candy-nix
-    , nur
-    , nixgl
-    , wallpapers-repo
-    , lsfg-vk-flake
+      nur,
+      nixgl,
+      wallpapers-repo,
+      lsfg-vk-flake,
       #, nix-colorizer
       #, plasma-manager
-    , ...
+      ...
     }@inputs:
     let
       system = "x86_64-linux";
@@ -254,53 +254,45 @@
 
       overlays = import ./overlays { inherit inputs self system; };
 
-      nixosConfigurations = (builtins.listToAttrs (
-        map
-          (folder: {
-            name = folder;
-            value = mkHost { hostname = folder; };
-          })
-          (
-            builtins.filter (name: builtins.pathExists (./hosts + "/${name}/configuration.nix")) (
-              builtins.attrNames (builtins.readDir ./hosts)
+      nixosConfigurations =
+        (builtins.listToAttrs (
+          map
+            (folder: {
+              name = folder;
+              value = mkHost { hostname = folder; };
+            })
+            (
+              builtins.filter (name: builtins.pathExists (./hosts + "/${name}/configuration.nix")) (
+                builtins.attrNames (builtins.readDir ./hosts)
+              )
             )
-          )
-      )) // {
-        iso = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; username = "nixos"; inherit (nixpkgs) lib; };
-          modules = [
-            ./hosts/iso/configuration.nix
-            inputs.stylix.nixosModules.stylix
-          ];
+        ))
+        // {
+          iso = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit inputs;
+              username = "nixos";
+              inherit (nixpkgs) lib;
+            };
+            modules = [
+              ./hosts/iso/configuration.nix
+              inputs.stylix.nixosModules.stylix
+            ];
+          };
         };
-      };
 
       homeConfigurations = {
         "${username}" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = commonArgs // { inherit nixgl; };
+          extraSpecialArgs = commonArgs // {
+            # inherit nixgl;
+          };
           modules = [
             {
-              lib.stylix.colors = {
-                base00 = "1d2021";
-                base01 = "32302f";
-                base02 = "504945";
-                base03 = "665c54";
-                base04 = "bdae93";
-                base05 = "d5c4a1";
-                base06 = "ebdbb2";
-                base07 = "fbf1c7";
-                base08 = "fb4934";
-                base09 = "fe8019";
-                base0A = "fabd2f";
-                base0B = "b8bb26";
-                base0C = "8ec07c";
-                base0D = "83a598";
-                base0E = "d3869b";
-                base0F = "d65d0e";
-              };
+              programs.home-manager.enable = true;
             }
+            inputs.stylix.homeManagerModules.stylix
             ./home/${username}.nix
           ];
         };
