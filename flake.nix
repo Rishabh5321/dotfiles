@@ -152,17 +152,15 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      nixpkgs-stable,
-      home-manager,
-      # , sddm-sugar-candy-nix
-      nur,
-      nixgl,
-      wallpapers-repo,
-      lsfg-vk-flake,
-      #, nix-colorizer
+    { self
+    , nixpkgs
+    , nixpkgs-stable
+    , home-manager
+    , # , sddm-sugar-candy-nix
+      nur
+    , wallpapers-repo
+    , lsfg-vk-flake
+    , #, nix-colorizer
       #, plasma-manager
       ...
     }@inputs:
