@@ -36,7 +36,7 @@ with lib; {
         # { command = "sleep 10 && swww img ${wallpapers}/${wallpaper}"; always = true; }
 
         # Open apps on specific workspaces
-        { command = "swaymsg 'workspace number 1; exec zen'"; always = true; }
+        { command = "swaymsg 'workspace number 1; exec firefox'"; always = true; }
         { command = "swaymsg 'workspace number 2; exec obsidian'"; always = true; }
         { command = "swaymsg 'workspace number 3; exec brave'"; always = true; }
         { command = "swaymsg 'workspace number 4; exec blueman-manager'"; always = true; }

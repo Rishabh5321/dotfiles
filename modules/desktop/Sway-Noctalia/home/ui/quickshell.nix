@@ -2,18 +2,14 @@
 , username
 , wallpaper
 , lib
+, config
+, pkgs
 , ...
 }:
 {
   imports = [
     inputs.noctalia.homeModules.default
   ];
-
-  # systemd.user.services.noctalia-shell = {
-  #   Service = {
-  #     Environment = lib.mkForce "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/${config.home.username}/bin:${config.home.profileDirectory}/bin:$PATH";
-  #   };
-  # };
 
   programs.noctalia-shell = {
     enable = true;

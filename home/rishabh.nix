@@ -1,7 +1,10 @@
 { pkgs
 , wallpapers
 , wallpaper
+, inputs
 , flakeDir
+, lib
+, config
 , ...
 }:
 
@@ -50,7 +53,29 @@
     nixd
     nixpkgs-fmt
     gemini-cli
+    xdg-utils
+    brightnessctl
+    slurp
+    grim
+    swappy
+    kdePackages.qtsvg
+    adwaita-icon-theme
+    hicolor-icon-theme
+    wl-clipboard
+    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
   ];
+
+  systemd.user.services.noctalia-shell = {
+    Service = {
+      Environment = lib.mkForce (
+        "PATH=$PATH:/usr/bin:/bin:/run/current-system/sw/bin:/etc/profiles/per-user/${config.home.username}/bin:${config.home.profileDirectory}/bin " +
+        "XDG_DATA_DIRS=$XDG_DATA_DIRS:/home/${config.home.username}/.nix-profile/share:/home/${config.home.username}/.local/share:/usr/local/share:/usr/share " +
+        "QT_PLUGIN_PATH=${pkgs.kdePackages.qtsvg}/lib/qt-6/plugins:${pkgs.qt6.qtbase}/lib/qt-6/plugins " +
+        "QT_QPA_PLATFORMTHEME=kde " +
+        "XCURSOR_PATH=~/.icons:~/.local/share/icons:/usr/share/icons:/usr/share/pixmaps"
+      );
+    };
+  };
 
   # Set the state version
   home.stateVersion = "26.05";
