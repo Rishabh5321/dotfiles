@@ -1,9 +1,8 @@
-{
-  pkgs,
-  wallpapers,
-  wallpaper,
-  flakeDir,
-  ...
+{ pkgs
+, wallpapers
+, wallpaper
+, flakeDir
+, ...
 }:
 
 {
