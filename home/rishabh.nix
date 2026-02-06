@@ -34,14 +34,12 @@
 
   home.sessionVariables = {
     XDG_DATA_DIRS = lib.mkForce "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
-    GTK_THEME = "Papirus-Dark";
-    XCURSOR_THEME = "Afterglow-Recolored-Catppuccin-Flamingo";
-    QS_ICON_THEME = "Papirus-Dark";
     QT_QPA_PLATFORMTHEME = "gtk3";
+    QS_ICON_THEME = "Papirus-Dark";
   };
 
   stylix = {
-    enable = false;
+    enable = true;
     image = "${wallpapers}/${wallpaper}";
     polarity = "dark";
 
@@ -136,7 +134,6 @@
     librsvg
     libsForQt5.qtsvg
     shared-mime-info
-    gtk3
     # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
   ];
 
@@ -145,10 +142,10 @@
     Service = {
       Environment = lib.mkForce [
         "PATH=$PATH:/usr/bin:/bin:/run/current-system/sw/bin:/etc/profiles/per-user/${config.home.username}/bin:${config.home.profileDirectory}/bin"
-        "XDG_DATA_DIRS=${config.home.homeDirectory}/.nix-profile/share:${config.home.homeDirectory}/.local/share:/usr/local/share:/usr/share"
-        "GDK_PIXBUF_MODULE_FILE=${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache"
-        "QT_PLUGIN_PATH=${pkgs.kdePackages.qtsvg}/lib/qt-6/plugins:${pkgs.libsForQt5.qtsvg}/lib/qt-5/plugins"
-        "XCURSOR_PATH=${config.home.homeDirectory}/.icons:${config.home.homeDirectory}/.local/share/icons:/usr/share/icons:/usr/share/pixmaps"
+        # "XDG_DATA_DIRS=${config.home.homeDirectory}/.nix-profile/share:${config.home.homeDirectory}/.local/share:/usr/local/share:/usr/share"
+        # "GDK_PIXBUF_MODULE_FILE=${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache"
+        # "QT_PLUGIN_PATH=${pkgs.kdePackages.qtsvg}/lib/qt-6/plugins:${pkgs.libsForQt5.qtsvg}/lib/qt-5/plugins"
+        # "XCURSOR_PATH=${config.home.homeDirectory}/.icons:${config.home.homeDirectory}/.local/share/icons:/usr/share/icons:/usr/share/pixmaps"
 
         # FORCE NOCTALIA TO USE PAPIRUS
         "QS_ICON_THEME=Papirus-Dark"
