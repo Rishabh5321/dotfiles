@@ -35,7 +35,7 @@
 
   home.sessionVariables = {
     XDG_DATA_DIRS = lib.mkForce "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
-    QS_ICON_THEME = "Papirus-Dark";
+    # QS_ICON_THEME = "Papirus-Dark";
   };
 
   stylix = {
@@ -43,11 +43,13 @@
     image = "${wallpapers}/${wallpaper}";
     polarity = "dark";
 
-    cursor = {
+    /*
+      cursor = {
       package = pkgs.afterglow-cursors-recolored;
       name = "Afterglow-Recolored-Catppuccin-Flamingo";
       size = 24;
-    };
+      };
+    */
 
     fonts = {
 
@@ -95,6 +97,7 @@
 
     targets = {
       font-packages.enable = true;
+      gtk.enable = false;
       waybar.enable = false;
       rofi.enable = false;
       wofi.enable = false;
@@ -110,7 +113,7 @@
   };
 
   gtk = {
-    enable = true;
+    enable = false;
 
     # iconTheme = {
     #   enable = true;
@@ -158,6 +161,8 @@
     librsvg
     libsForQt5.qtsvg
     shared-mime-info
+    antigravity
+    nwg-look
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
     # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
   ];
@@ -173,7 +178,7 @@
         # "XCURSOR_PATH=${config.home.homeDirectory}/.icons:${config.home.homeDirectory}/.local/share/icons:/usr/share/icons:/usr/share/pixmaps"
 
         # FORCE NOCTALIA TO USE PAPIRUS
-        "QS_ICON_THEME=Papirus-Dark"
+        # "QS_ICON_THEME=Papirus-Dark"
       ];
     };
   };
@@ -238,26 +243,40 @@
       SUDO="/usr/bin/sudo"
 
       if [ -d "$NIX_SESSIONS_DIR" ]; then
+          # 1. Ensure the system directory exists
+          $SUDO mkdir -p "$TARGET_DIR"
+
           for session_file in "$NIX_SESSIONS_DIR"/*.desktop; do
               filename=$(basename "$session_file")
-              # We create a modified version in a temp spot that uses the FULL PATH to the binary
-              # This ensures GDM/SDDM can always find the executable.
+              wm_name=''${filename%.desktop} # Extracts 'sway' or 'hyprland'
               TEMP_FILE="/tmp/$filename"
               cp "$session_file" "$TEMP_FILE"
 
-              # Find the actual binary path (e.g., /nix/store/.../bin/sway)
-              # We assume the binary name matches the desktop file name or is defined in Exec
-              BIN_NAME=$(grep -Po '^Exec=\K[^ ]+' "$session_file")
-              FULL_PATH=$(which $BIN_NAME 2>/dev/null || echo "${pkgs.sway}/bin/sway")
+              # 2. Dynamically find the binary path in the Nix store
+              BIN_NAME=$(grep -Po '^Exec=\K[^ ]+' "$session_file" | head -n 1)
+              FULL_PATH=$(${pkgs.coreutils}/bin/readlink -f $(${pkgs.which}/bin/which "$BIN_NAME" 2>/dev/null) || echo "$BIN_NAME")
 
-              sed -i "s|^Exec=.*|Exec=$FULL_PATH|" "$TEMP_FILE"
+              # 3. Apply the Environment Wrapper
+              # This works for any WM by sourcing your profile and setting the correct XDG variables
+              sed -i "s|^Exec=.*|Exec=bash -c 'source /etc/profile; source \$HOME/.profile; export XDG_CURRENT_DESKTOP=$wm_name; export XDG_SESSION_DESKTOP=$wm_name; export WLR_NO_HARDWARE_CURSORS=1; exec $FULL_PATH'|" "$TEMP_FILE"
 
-              echo "Syncing $filename with absolute path ($FULL_PATH)..."
-              $SUDO mkdir -p "$TARGET_DIR"
+              echo "Syncing $filename with dynamic environment wrapper to GDM..."
               $SUDO cp "$TEMP_FILE" "$TARGET_DIR/$filename"
               $SUDO chmod 644 "$TARGET_DIR/$filename"
           done
       fi
+
+      # 4. Cleanup orphaned links (optional but recommended)
+      # Removes links in /usr/share/wayland-sessions that no longer exist in your Nix profile
+      for link in "$TARGET_DIR"/*.desktop; do
+          if [ -L "$link" ] || [ -f "$link" ]; then
+              base=$(basename "$link")
+              if [ ! -f "$NIX_SESSIONS_DIR/$base" ] && [[ "$(grep "Nix" "$link")" ]]; then
+                   echo "Cleaning up old session: $base"
+                   $SUDO rm "$link"
+              fi
+          fi
+      done
     '';
   };
 }
