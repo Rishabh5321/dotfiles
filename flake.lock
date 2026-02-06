@@ -185,11 +185,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768964099,
-        "narHash": "sha256-sV1OJYyktJRl7I3HxeBvWTWXjqm2uCTS3gS1p+DLn7c=",
+        "lastModified": 1770325739,
+        "narHash": "sha256-TPDWnhzKW/1+FPMiagZ9mZiQN0aKcGC09yYSUBuv8Mo=",
         "owner": "DeterminateSystems",
         "repo": "determinate",
-        "rev": "a5469e9aa3870941320cb92d899b66e141c5a3cd",
+        "rev": "1b3259b71c81508ffd409114525df6a55c0f337f",
         "type": "github"
       },
       "original": {
