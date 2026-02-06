@@ -27,6 +27,11 @@
     hms = "home-manager switch --flake ${flakeDir} -b bak";
   };
 
+  home.file."Pictures/Wallpapers" = {
+    source = wallpapers;
+    recursive = true;
+  };
+
   home.sessionVariables = {
     XDG_DATA_DIRS = lib.mkForce "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
     GTK_THEME = "Papirus-Dark";
