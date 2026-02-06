@@ -4,6 +4,7 @@
 , flakeDir
 , lib
 , config
+, inputs
 , ...
 }:
 
@@ -34,7 +35,6 @@
 
   home.sessionVariables = {
     XDG_DATA_DIRS = lib.mkForce "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
-    QT_QPA_PLATFORMTHEME = "gtk3";
     QS_ICON_THEME = "Papirus-Dark";
   };
 
@@ -95,6 +95,30 @@
 
     targets = {
       font-packages.enable = true;
+      waybar.enable = false;
+      rofi.enable = false;
+      wofi.enable = false;
+      qt.enable = true;
+      qt.platform = "qtct";
+      hyprland.enable = false;
+      swaylock.enable = false;
+      hyprpanel.enable = false;
+      # zed.enable = true;
+      zen-browser.enable = false;
+      # spicetify.enable = false;
+    };
+  };
+
+  gtk = {
+    enable = true;
+
+    # iconTheme = {
+    #   enable = true;
+    #   package = pkgs.papirus-icon-theme;
+    # };
+
+    theme = {
+      name = "adw-gtk3";
     };
   };
 
@@ -134,6 +158,7 @@
     librsvg
     libsForQt5.qtsvg
     shared-mime-info
+    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
     # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
   ];
 
