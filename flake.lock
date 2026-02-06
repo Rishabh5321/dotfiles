@@ -1313,11 +1313,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770353257,
+        "lastModified": 1770382887,
         "narHash": "sha256-on4vg7ctpMPzKWcvXPtV095aal6KUPDSKV9+I8HhQtY=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "6242228ddf448e775b3dd8f2b7a78c3856e70d52",
+        "rev": "58aa8fb418e2853382d52453a6a7739125f2b8e0",
         "type": "github"
       },
       "original": {
