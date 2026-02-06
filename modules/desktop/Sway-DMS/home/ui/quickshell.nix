@@ -15,7 +15,7 @@
     quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
     settings = {
       # Core Theme & Appearance
-      currentThemeName = "dynamic";
+      # currentThemeName = "dynamic";
       currentThemeCategory = "dynamic";
       matugenScheme = "scheme-content";
       runUserMatugenTemplates = true;
