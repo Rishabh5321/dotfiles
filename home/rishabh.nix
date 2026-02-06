@@ -106,6 +106,11 @@
 
   # Basic packages
   home.packages = with pkgs; [
+    afterglow-cursors-recolored
+    noto-fonts
+    nerd-fonts.hack
+    noto-fonts-color-emoji
+    papirus-icon-theme
     fastfetch
     obsidian
     discord
