@@ -35,11 +35,11 @@
 
   home.sessionVariables = {
     XDG_DATA_DIRS = lib.mkForce "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
-    # QS_ICON_THEME = "Papirus-Dark";
+    QS_ICON_THEME = "Papirus-Dark";
   };
 
   stylix = {
-    enable = true;
+    enable = false;
     image = "${wallpapers}/${wallpaper}";
     polarity = "dark";
 
@@ -162,6 +162,7 @@
     libsForQt5.qtsvg
     shared-mime-info
     antigravity
+    mangohud
     nwg-look
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
     # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
@@ -234,6 +235,31 @@
     #   dates = "weekly";
     #   options = "--delete-older-than 3d";
     # };
+  };
+
+  programs.noctalia-shell.settings = {
+    templates = lib.mapAttrs (_: _: lib.mkForce true) {
+      alacritty = false;
+      code = false;
+      discord = false;
+      discord_armcord = false;
+      discord_dorion = false;
+      discord_equibop = false;
+      discord_lightcord = false;
+      discord_vesktop = false;
+      discord_webcord = false;
+      enableUserTemplates = false;
+      foot = false;
+      fuzzel = false;
+      ghostty = false;
+      gtk = false;
+      kcolorscheme = false;
+      kitty = false;
+      pywalfox = false;
+      qt = false;
+      vicinae = false;
+      walker = false;
+    };
   };
 
   home.activation = {
