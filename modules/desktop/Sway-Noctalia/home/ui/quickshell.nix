@@ -1,9 +1,8 @@
-{
-  inputs,
-  username,
-  wallpaper,
-  lib,
-  ...
+{ inputs
+, username
+, wallpaper
+, lib
+, ...
 }:
 {
   imports = [
