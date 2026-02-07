@@ -1,10 +1,7 @@
 { pkgs
 , wallpapers
-, wallpaper
 , flakeDir
 , lib
-, config
-, inputs
 , ...
 }:
 

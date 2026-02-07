@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, ... }:
 
 let
   # The script that actually does the work
