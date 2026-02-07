@@ -11,7 +11,6 @@
 {
   imports = [
     # ./../modules/user/development/git.nix
-    ./../modules/desktop/Sway-Noctalia/home
 
     ./../modules/user/development/lazygit.nix
     ./../modules/user/files
@@ -24,10 +23,14 @@
     ./../modules/user/utilities/zoxide.nix
 
     ./nix-settings.nix
-    ./noctalia.nix
     ./packages.nix
     ./power.nix
     ./theme.nix
+
+    # ./../modules/desktop/Sway-Noctalia/home
+    # ./noctalia.nix
+
+    ./../modules/desktop/Sway-DMS/home
   ];
 
   home.shellAliases = {

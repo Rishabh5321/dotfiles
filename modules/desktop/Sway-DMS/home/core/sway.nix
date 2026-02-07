@@ -31,6 +31,8 @@ with lib; {
         { command = "kdeconnect-indicator"; always = true; }
         { command = "wl-paste --type text --watch cliphist store"; always = true; }
         { command = "wl-paste --type image --watch cliphist store"; always = true; }
+        { command = "systemctl --user import-environment SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
+        { command = "dbus-update-activation-environment --systemd --all"; always = true; }
         # { command = "sleep 10 && swww img ${wallpapers}/${wallpaper}"; always = true; }
 
         # Open apps on specific workspaces

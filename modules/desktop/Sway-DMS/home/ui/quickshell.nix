@@ -150,9 +150,9 @@
   };
 
   # Environment fix for DMS executable paths
-  systemd.user.services.dms = {
-    Service = {
-      Environment = lib.mkForce "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/${config.home.username}/bin:${config.home.profileDirectory}/bin:$PATH";
-    };
-  };
+  # systemd.user.services.dms = {
+  #   Service = {
+  #     Environment = lib.mkForce "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/${config.home.username}/bin:${config.home.profileDirectory}/bin:$PATH";
+  #   };
+  # };
 }
