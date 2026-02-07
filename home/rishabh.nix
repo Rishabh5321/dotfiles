@@ -1,14 +1,27 @@
-{ pkgs
-, wallpapers
-, flakeDir
-, lib
-, ...
+{
+  pkgs,
+  wallpapers,
+  flakeDir,
+  lib,
+  ...
 }:
 
+let
+  # 1. Define the wrapper here so it's accessible to the activation script below
+  waylandWrapper = pkgs.writeShellScriptBin "nix-session-wrapper" ''
+    # Source profiles to ensure Nix binaries are in PATH
+    [ -f /etc/profile ] && . /etc/profile
+    [ -f "$HOME/.profile" ] && . "$HOME/.profile"
+    [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ] && . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+
+    export WLR_NO_HARDWARE_CURSORS=1
+
+    # Run the session
+    exec "$@"
+  '';
+in
 {
   imports = [
-    # ./../modules/user/development/git.nix
-
     ./../modules/user/development/lazygit.nix
     ./../modules/user/files
     ./../modules/user/monitor
@@ -23,9 +36,6 @@
     ./packages.nix
     ./power.nix
     ./theme.nix
-
-    # ./../modules/desktop/Sway-Noctalia/home
-    # ./noctalia.nix
 
     ./../modules/desktop/Sway-DMS/home
   ];
@@ -46,57 +56,54 @@
 
   targets.genericLinux.enable = true;
 
-  # Set your username
   home.username = "rishabh";
   home.homeDirectory = "/home/rishabh";
 
-  # Nicely reload system units
   systemd.user.startServices = "sd-switch";
 
-  # Set the state version
   home.stateVersion = "26.05";
 
   home.activation = {
     syncWaylandSessions = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       TARGET_DIR="/usr/share/wayland-sessions"
       NIX_SESSIONS_DIR="$HOME/.nix-profile/share/wayland-sessions"
-      SUDO="/usr/bin/sudo"
+      SUDO_BIN="/usr/bin/sudo"
 
       if [ -d "$NIX_SESSIONS_DIR" ]; then
-          # 1. Ensure the system directory exists
-          $SUDO mkdir -p "$TARGET_DIR"
+        echo "Syncing Wayland sessions to $TARGET_DIR..."
+        $DRY_RUN_CMD $SUDO_BIN mkdir -p "$TARGET_DIR"
 
-          for session_file in "$NIX_SESSIONS_DIR"/*.desktop; do
-              filename=$(basename "$session_file")
-              wm_name=''${filename%.desktop} # Extracts 'sway' or 'hyprland'
-              TEMP_FILE="/tmp/$filename"
-              cp "$session_file" "$TEMP_FILE"
+        for session_file in "$NIX_SESSIONS_DIR"/*.desktop; do
+          filename=$(basename "$session_file")
+          temp_file=$(mktemp)
+          cp "$session_file" "$temp_file"
 
-              # 2. Dynamically find the binary path in the Nix store
-              BIN_NAME=$(grep -Po '^Exec=\K[^ ]+' "$session_file" | head -n 1)
-              FULL_PATH=$(${pkgs.coreutils}/bin/readlink -f $(${pkgs.which}/bin/which "$BIN_NAME" 2>/dev/null) || echo "$BIN_NAME")
+          ORIG_EXEC=$(grep -Po '^Exec=\K[^ ]+' "$session_file" | head -n 1)
+          sed -i "s|^Exec=.*|Exec=${waylandWrapper}/bin/nix-session-wrapper $ORIG_EXEC|" "$temp_file"
 
-              # 3. Apply the Environment Wrapper
-              # This works for any WM by sourcing your profile and setting the correct XDG variables
-              sed -i "s|^Exec=.*|Exec=bash -c 'source /etc/profile; source \$HOME/.profile; export XDG_CURRENT_DESKTOP=$wm_name; export XDG_SESSION_DESKTOP=$wm_name; export WLR_NO_HARDWARE_CURSORS=1; exec $FULL_PATH'|" "$TEMP_FILE"
+          $DRY_RUN_CMD $SUDO_BIN cp "$temp_file" "$TARGET_DIR/$filename"
+          $DRY_RUN_CMD $SUDO_BIN chmod 644 "$TARGET_DIR/$filename"
+          rm "$temp_file"
+        done
 
-              echo "Syncing $filename with dynamic environment wrapper to GDM..."
-              $SUDO cp "$TEMP_FILE" "$TARGET_DIR/$filename"
-              $SUDO chmod 644 "$TARGET_DIR/$filename"
-          done
-      fi
+        # --- NEW CLEANUP LOGIC ---
+        echo "Cleaning up orphaned Nix sessions from $TARGET_DIR..."
+        for installed_session in "$TARGET_DIR"/*.desktop; do
+          [ -e "$installed_session" ] || continue
 
-      # 4. Cleanup orphaned links (optional but recommended)
-      # Removes links in /usr/share/wayland-sessions that no longer exist in your Nix profile
-      for link in "$TARGET_DIR"/*.desktop; do
-          if [ -L "$link" ] || [ -f "$link" ]; then
-              base=$(basename "$link")
-              if [ ! -f "$NIX_SESSIONS_DIR/$base" ] && [[ "$(grep "Nix" "$link")" ]]; then
-                   echo "Cleaning up old session: $base"
-                   $SUDO rm "$link"
-              fi
+          base_name=$(basename "$installed_session")
+
+          # Only delete if:
+          # 1. The file does NOT exist in our current Nix profile
+          # 2. The file contains our specific wrapper (safety check)
+          if [ ! -f "$NIX_SESSIONS_DIR/$base_name" ]; then
+            if grep -q "nix-session-wrapper" "$installed_session"; then
+              echo "Removing old Nix session: $base_name"
+              $DRY_RUN_CMD $SUDO_BIN rm "$installed_session"
+            fi
           fi
-      done
+        done
+      fi
     '';
   };
 }
