@@ -26,6 +26,7 @@
     ./nix-settings.nix
     ./noctalia.nix
     ./packages.nix
+    ./power.nix
     ./theme.nix
   ];
 
