@@ -22,6 +22,11 @@
     ./../modules/user/utilities/atuin.nix
     ./../modules/user/utilities/tealdeer.nix
     ./../modules/user/utilities/zoxide.nix
+
+    ./nix-settings.nix
+    ./noctalia.nix
+    ./packages.nix
+    ./theme.nix
   ];
 
   home.shellAliases = {
@@ -38,93 +43,6 @@
     QS_ICON_THEME = "Papirus-Dark";
   };
 
-  stylix = {
-    enable = false;
-    image = "${wallpapers}/${wallpaper}";
-    polarity = "dark";
-
-    /*
-      cursor = {
-      package = pkgs.afterglow-cursors-recolored;
-      name = "Afterglow-Recolored-Catppuccin-Flamingo";
-      size = 24;
-      };
-    */
-
-    fonts = {
-
-      sansSerif = {
-        name = "Noto Sans";
-        package = pkgs.noto-fonts;
-      };
-
-      serif = {
-        name = "Noto Serif";
-        package = pkgs.noto-fonts;
-      };
-
-      monospace = {
-        package = pkgs.nerd-fonts.hack;
-        name = "Hack Nerd Font Mono";
-      };
-
-      emoji = {
-        package = pkgs.noto-fonts-color-emoji;
-        name = "Noto Color Emoji";
-      };
-
-      sizes = {
-        applications = 12;
-        terminal = 15;
-        desktop = 11;
-        popups = 12;
-      };
-    };
-
-    icons = {
-      enable = true;
-      package = pkgs.papirus-icon-theme;
-      dark = "Papirus-Dark";
-      light = "Papirus-Light";
-    };
-
-    opacity = {
-      applications = 1.0;
-      popups = 1.0;
-      terminal = 1.0;
-      desktop = 1.0;
-    };
-
-    targets = {
-      font-packages.enable = true;
-      gtk.enable = false;
-      waybar.enable = false;
-      rofi.enable = false;
-      wofi.enable = false;
-      qt.enable = true;
-      qt.platform = "qtct";
-      hyprland.enable = false;
-      swaylock.enable = false;
-      hyprpanel.enable = false;
-      # zed.enable = true;
-      zen-browser.enable = false;
-      # spicetify.enable = false;
-    };
-  };
-
-  gtk = {
-    enable = false;
-
-    # iconTheme = {
-    #   enable = true;
-    #   package = pkgs.papirus-icon-theme;
-    # };
-
-    theme = {
-      name = "adw-gtk3";
-    };
-  };
-
   targets.genericLinux.enable = true;
 
   # Set your username
@@ -134,135 +52,8 @@
   # Nicely reload system units
   systemd.user.startServices = "sd-switch";
 
-  # Basic packages
-  home.packages = with pkgs; [
-    afterglow-cursors-recolored
-    noto-fonts
-    nerd-fonts.hack
-    noto-fonts-color-emoji
-    papirus-icon-theme
-    fastfetch
-    obsidian
-    discord
-    geminicommit
-    nil
-    nixd
-    nixpkgs-fmt
-    gemini-cli
-    xdg-utils
-    brightnessctl
-    slurp
-    grim
-    swappy
-    kdePackages.qtsvg
-    adwaita-icon-theme
-    hicolor-icon-theme
-    wl-clipboard
-    librsvg
-    libsForQt5.qtsvg
-    shared-mime-info
-    antigravity
-    mangohud
-    nwg-look
-    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.anymex
-    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
-    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
-    # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
-  ];
-
-  systemd.user.services.noctalia-shell = {
-    Unit.After = [ "graphical-session.target" ];
-    Service = {
-      Environment = lib.mkForce [
-        "PATH=$PATH:/usr/bin:/bin:/run/current-system/sw/bin:/etc/profiles/per-user/${config.home.username}/bin:${config.home.profileDirectory}/bin"
-        # "XDG_DATA_DIRS=${config.home.homeDirectory}/.nix-profile/share:${config.home.homeDirectory}/.local/share:/usr/local/share:/usr/share"
-        # "GDK_PIXBUF_MODULE_FILE=${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache"
-        # "QT_PLUGIN_PATH=${pkgs.kdePackages.qtsvg}/lib/qt-6/plugins:${pkgs.libsForQt5.qtsvg}/lib/qt-5/plugins"
-        # "XCURSOR_PATH=${config.home.homeDirectory}/.icons:${config.home.homeDirectory}/.local/share/icons:/usr/share/icons:/usr/share/pixmaps"
-
-        # FORCE NOCTALIA TO USE PAPIRUS
-        # "QS_ICON_THEME=Papirus-Dark"
-      ];
-    };
-  };
-
   # Set the state version
   home.stateVersion = "26.05";
-
-  nix = {
-    package = pkgs.nix;
-    settings = {
-      # ===== BINARY CACHE CONFIGURATION =====
-      # Primary and community binary caches for faster builds
-      substituters = [
-        "https://cache.nixos.org?priority=10" # official
-
-        "https://rishabh5321.cachix.org" # Personal cache
-        "https://nixpkgs-wayland.cachix.org" # Wayland packages
-        "https://cosmic.cachix.org/" # COSMIC desktop environment
-        "https://nix-config.cachix.org" # Community configurations
-        "https://nix-community.cachix.org" # Nix community packages
-      ];
-
-      # Public keys for verifying cache authenticity
-      trusted-public-keys = [
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-
-        "rishabh5321.cachix.org-1:mxfBIH2XElE6ieFXXYBA9Ame4mVTbAf1TGR843siggk="
-        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-        "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-        "nix-config.cachix.org-1:Vd6raEuldeIZpttVQfrUbLvXJHzzzkS0pezXCVVjDG4="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-
-      # ===== PERFORMANCE OPTIMIZATIONS =====
-      # Automatically optimize store by hard-linking identical files
-      auto-optimise-store = true;
-
-      # Large download buffer for better network performance (500 MB)
-      download-buffer-size = 500000000;
-
-      # ===== EXPERIMENTAL FEATURES =====
-      # Enable modern Nix features
-      experimental-features = [
-        "nix-command" # New nix CLI interface
-        "flakes" # Flake system for reproducible configurations
-      ];
-    };
-
-    # ===== GARBAGE COLLECTION (DISABLED) =====
-    # Automatic cleanup handled by nh instead
-    # gc = {
-    #   automatic = true;
-    #   dates = "weekly";
-    #   options = "--delete-older-than 3d";
-    # };
-  };
-
-  programs.noctalia-shell.settings = {
-    templates = lib.mapAttrs (_: _: lib.mkForce true) {
-      alacritty = false;
-      code = false;
-      discord = false;
-      discord_armcord = false;
-      discord_dorion = false;
-      discord_equibop = false;
-      discord_lightcord = false;
-      discord_vesktop = false;
-      discord_webcord = false;
-      enableUserTemplates = false;
-      foot = false;
-      fuzzel = false;
-      ghostty = false;
-      gtk = false;
-      kcolorscheme = false;
-      kitty = false;
-      pywalfox = false;
-      qt = false;
-      vicinae = false;
-      walker = false;
-    };
-  };
 
   home.activation = {
     syncWaylandSessions = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
