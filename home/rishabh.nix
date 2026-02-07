@@ -164,7 +164,9 @@
     antigravity
     mangohud
     nwg-look
+    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.anymex
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
+    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
     # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
   ];
 

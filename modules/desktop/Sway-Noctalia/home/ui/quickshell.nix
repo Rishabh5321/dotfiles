@@ -122,9 +122,9 @@
               id = "Brightness";
             }
             {
-              blacklist = [ ];
-              colorizeIcons = false;
               id = "Tray";
+              # blacklist = [ ];
+              colorizeIcons = false;
             }
             {
               customFont = "";
