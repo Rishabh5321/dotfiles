@@ -1,36 +1,53 @@
 { pkgs, inputs, ... }:
 {
-  # Basic packages
   home.packages = with pkgs; [
+    # --- Desktop & UI Customization ---
+    nwg-look
     afterglow-cursors-recolored
-    ayugram-desktop
-    noto-fonts
-    nerd-fonts.hack
-    noto-fonts-color-emoji
     papirus-icon-theme
-    fastfetch
-    obsidian
+    adwaita-icon-theme
+    hicolor-icon-theme
+
+    # --- GTK Themes ---
+    orchis-theme
+    material-black-colors
+    nordic
+
+    # --- Fonts ---
+    noto-fonts
+    noto-fonts-color-emoji
+    nerd-fonts.hack
+
+    # --- Communication & Productivity ---
+    ayugram-desktop
     discord
-    geminicommit
+    obsidian
+
+    # --- Development & Nix Tooling ---
+    antigravity
     nil
     nixd
     nixpkgs-fmt
     gemini-cli
+    geminicommit
+
+    # --- System Utilities & Wayland ---
+    fastfetch
     xdg-utils
     brightnessctl
-    slurp
-    grim
-    swappy
-    kdePackages.qtsvg
-    adwaita-icon-theme
-    hicolor-icon-theme
     wl-clipboard
-    librsvg
-    libsForQt5.qtsvg
     shared-mime-info
-    antigravity
     mangohud
-    nwg-look
+
+    # --- Screenshots & Graphics ---
+    grim
+    slurp
+    swappy
+    librsvg
+    kdePackages.qtsvg
+    libsForQt5.qtsvg
+
+    # --- Custom / Flake Inputs ---
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.anymex
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
