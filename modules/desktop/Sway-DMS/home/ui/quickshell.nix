@@ -13,12 +13,14 @@
     quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
     settings = {
       # Core Theme & Appearance
-      # currentThemeName = "dynamic";
+      currentThemeName = "dynamic";
       currentThemeCategory = "dynamic";
       matugenScheme = "scheme-content";
       runUserMatugenTemplates = true;
       widgetBackgroundColor = "sch";
       widgetColorMode = "colorful";
+      controlCenterTileColorMode = "primary";
+      buttonColorMode = "primary";
       cornerRadius = 12;
       popupTransparency = 1;
       dockTransparency = 1;
@@ -132,10 +134,16 @@
 
       # Power & Locale
       use24HourClock = false; # Updated from JSON
-      batteryMonitorTimeout = 600; # Updated from JSON
-      batteryLockTimeout = 300;
-      batterySuspendTimeout = 600;
+      # Power Management
+      acMonitorTimeout = 120;
+      acLockTimeout = 60;
+      acSuspendTimeout = 300;
+      batteryMonitorTimeout = 120;
+      batteryLockTimeout = 60;
+      batterySuspendTimeout = 300;
+      batteryChargeLimit = 100;
       powerActionConfirm = true;
+      powerMenuDefaultAction = "logout";
       powerMenuActions = [ "reboot" "logout" "poweroff" "lock" "suspend" "restart" ];
 
       # Feature Toggles

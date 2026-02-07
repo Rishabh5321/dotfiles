@@ -30,6 +30,7 @@ _:
       swaylock.enable = false;
       hyprpanel.enable = false;
       # zed.enable = true;
+      dank-material-shell.enable = false;
       zen-browser.enable = false;
       # spicetify.enable = false;
     };
