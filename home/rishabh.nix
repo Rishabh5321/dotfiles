@@ -37,7 +37,7 @@ in
     ./power.nix
     ./theme.nix
 
-    ./../modules/desktop/Sway-DMS/home
+    ./../modules/desktop/Hypr-dankMaterialShell/home
   ];
 
   home.shellAliases = {
