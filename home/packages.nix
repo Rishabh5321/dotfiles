@@ -3,6 +3,7 @@
   # Basic packages
   home.packages = with pkgs; [
     afterglow-cursors-recolored
+    ayugram-desktop
     noto-fonts
     nerd-fonts.hack
     noto-fonts-color-emoji
