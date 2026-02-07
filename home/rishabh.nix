@@ -1,9 +1,8 @@
-{
-  pkgs,
-  wallpapers,
-  flakeDir,
-  lib,
-  ...
+{ pkgs
+, wallpapers
+, flakeDir
+, lib
+, ...
 }:
 
 let
