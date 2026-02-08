@@ -22,6 +22,7 @@
     ayugram-desktop
     discord
     obsidian
+    kdePackages.kdeconnect-kde
 
     # --- Development & Nix Tooling ---
     antigravity
