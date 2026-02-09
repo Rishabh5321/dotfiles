@@ -13,6 +13,10 @@
     material-black-colors
     nordic
 
+    # ===== OFFICE & PRODUCTIVITY =====
+    libreoffice # Office suite
+    onlyoffice-desktopeditors # Alternative office suite
+
     # --- Fonts ---
     nerd-fonts.hack
     noto-fonts # Google Noto fonts
