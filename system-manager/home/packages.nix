@@ -61,6 +61,14 @@
     obsidian
     kdePackages.kdeconnect-kde
 
+    # --- Games ---
+    lutris
+    heroic
+    protonplus
+    protonup-qt
+    steam
+    umu-launcher
+
     # --- Development & Nix Tooling ---
     antigravity
     nil
