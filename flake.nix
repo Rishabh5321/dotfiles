@@ -280,6 +280,21 @@
           };
         };
 
+      packages.${system} = import ./pkgs pkgs;
+
+      devShells.${system}.default = pkgs.mkShell {
+        packages = [
+          pkgs.git
+          pkgs.home-manager
+          pkgs.gnumake
+          pkgs.just
+        ];
+        name = "dotfiles";
+        shellHook = ''
+          echo "Welcome to the dotfiles dev shell!"
+        '';
+      };
+
       homeConfigurations = {
         "${username}" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;

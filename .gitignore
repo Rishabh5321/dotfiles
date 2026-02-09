@@ -3,3 +3,4 @@ result
 tmp/*
 .env
 .vscode
+.direnv
