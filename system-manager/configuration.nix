@@ -1,9 +1,8 @@
-{ config, pkgs, system, ... }:
+{ config, pkgs, system, lib, home-manager, ... }:
 
 {
   config = {
     nixpkgs.hostPlatform = system;
-
     
     environment.systemPackages = with pkgs; [
       btop
@@ -12,9 +11,9 @@
       git
     ];
 
+
+
     # Example: Manage etc files
     # environment.etc."foo.conf".text = "bar";
-    
-
   };
 }

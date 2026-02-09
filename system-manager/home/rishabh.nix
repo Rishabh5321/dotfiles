@@ -21,26 +21,27 @@ let
 in
 {
   imports = [
-    ./../modules/user/development/lazygit.nix
-    ./../modules/user/files
-    ./../modules/user/monitor
-    ./../modules/user/shells
-    ./../modules/user/shells/oh-my-posh.nix
-    ./../modules/user/terminal
-    ./../modules/user/utilities/atuin.nix
-    ./../modules/user/utilities/tealdeer.nix
-    ./../modules/user/utilities/zoxide.nix
+    ./../../modules/user/development/lazygit.nix
+    ./../../modules/user/files
+    ./../../modules/user/monitor
+    ./../../modules/user/shells
+    ./../../modules/user/shells/oh-my-posh.nix
+    ./../../modules/user/terminal
+    ./../../modules/user/utilities/atuin.nix
+    ./../../modules/user/utilities/tealdeer.nix
+    ./../../modules/user/utilities/zoxide.nix
 
     ./nix-settings.nix
     ./packages.nix
     ./power.nix
     ./theme.nix
 
-    ./../modules/desktop/Hypr-dankMaterialShell/home
+    ./../../modules/desktop/Hypr-dankMaterialShell/home
   ];
 
   home.shellAliases = {
     hms = "home-manager switch --flake ${flakeDir} -b bak";
+    sms = "nix run github:numtide/system-manager -- switch --flake ${flakeDir}";
   };
 
   home.file."Pictures/Wallpapers" = {

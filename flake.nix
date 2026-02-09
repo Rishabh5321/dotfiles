@@ -306,7 +306,6 @@
           pkgs.home-manager
           pkgs.gnumake
           pkgs.just
-          system-manager.packages.${system}.default
         ];
         name = "dotfiles";
         shellHook = ''
@@ -325,7 +324,7 @@
               programs.home-manager.enable = true;
             }
             inputs.stylix.homeManagerModules.stylix
-            ./home/${username}.nix
+            ./system-manager/home/${username}.nix
           ];
         };
       };
