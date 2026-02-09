@@ -8,6 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "edit_predictions": {
+    "provider": "zed",
     "mode": "eager",
     "copilot": {
       "proxy": null,
@@ -26,9 +27,6 @@
   "icon_theme": "Material Icon Theme",
   "git_panel": {
     "dock": "right"
-  },
-  "features": {
-    "edit_prediction_provider": "zed"
   },
   "base_keymap": "VSCode",
   "file_finder": {
