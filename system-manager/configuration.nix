@@ -1,7 +1,6 @@
-{
-  pkgs,
-  system,
-  ...
+{ pkgs
+, system
+, ...
 }:
 
 {
