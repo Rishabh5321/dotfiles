@@ -16,6 +16,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    system-manager = {
+      url = "github:numtide/system-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ######################
     # System Modules & Frameworks
     ######################
@@ -160,6 +165,7 @@
       nur
     , wallpapers-repo
     , lsfg-vk-flake
+    , system-manager
     , #, nix-colorizer
       #, plasma-manager
       ...
@@ -252,6 +258,18 @@
 
       overlays = import ./overlays { inherit inputs self system; };
 
+      systemConfigs = {
+        default = system-manager.lib.makeSystemConfig {
+          modules = [
+            ./system-manager/configuration.nix
+            {
+              nixpkgs.hostPlatform = system;
+            }
+          ];
+          extraSpecialArgs = commonArgs;
+        };
+      };
+
       nixosConfigurations =
         (builtins.listToAttrs (
           map
@@ -288,6 +306,7 @@
           pkgs.home-manager
           pkgs.gnumake
           pkgs.just
+          system-manager.packages.${system}.default
         ];
         name = "dotfiles";
         shellHook = ''
