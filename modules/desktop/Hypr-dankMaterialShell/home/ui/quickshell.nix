@@ -1,6 +1,7 @@
-{ inputs
-, pkgs
-, ...
+{
+  inputs,
+  pkgs,
+  ...
 }:
 {
   imports = [
@@ -77,34 +78,97 @@
           widgetTransparency = 1;
           shadowOpacity = 56;
           leftWidgets = [
-            { enabled = true; id = "launcherButton"; }
+            {
+              enabled = true;
+              id = "launcherButton";
+            }
             "workspaceSwitcher"
             "focusedWindow"
           ];
-          centerWidgets = [ "music" "clock" "weather" ];
+          centerWidgets = [
+            "music"
+            "clock"
+            "weather"
+          ];
           rightWidgets = [
-            { enabled = true; id = "idleInhibitor"; }
-            { enabled = true; id = "network_speed_monitor"; }
-            { enabled = true; id = "systemTray"; }
-            { enabled = true; id = "cpuUsage"; }
-            { enabled = true; id = "memUsage"; }
-            { enabled = true; id = "notificationButton"; }
-            { enabled = true; id = "battery"; }
-            { enabled = true; id = "controlCenterButton"; }
+            {
+              enabled = true;
+              id = "idleInhibitor";
+            }
+            {
+              enabled = true;
+              id = "network_speed_monitor";
+            }
+            {
+              enabled = true;
+              id = "systemTray";
+            }
+            {
+              enabled = true;
+              id = "cpuUsage";
+            }
+            {
+              enabled = true;
+              id = "memUsage";
+            }
+            {
+              enabled = true;
+              id = "notificationButton";
+            }
+            {
+              enabled = true;
+              id = "battery";
+            }
+            {
+              enabled = true;
+              id = "controlCenterButton";
+            }
           ];
         }
       ];
 
       # Control Center Widgets
       controlCenterWidgets = [
-        { enabled = true; id = "volumeSlider"; width = 50; }
-        { enabled = true; id = "brightnessSlider"; width = 50; }
-        { enabled = true; id = "wifi"; width = 50; }
-        { enabled = true; id = "bluetooth"; width = 50; }
-        { enabled = true; id = "audioOutput"; width = 50; }
-        { enabled = true; id = "audioInput"; width = 50; }
-        { enabled = true; id = "nightMode"; width = 50; }
-        { enabled = true; id = "darkMode"; width = 50; }
+        {
+          enabled = true;
+          id = "volumeSlider";
+          width = 50;
+        }
+        {
+          enabled = true;
+          id = "brightnessSlider";
+          width = 50;
+        }
+        {
+          enabled = true;
+          id = "wifi";
+          width = 50;
+        }
+        {
+          enabled = true;
+          id = "bluetooth";
+          width = 50;
+        }
+        {
+          enabled = true;
+          id = "audioOutput";
+          width = 50;
+        }
+        {
+          enabled = true;
+          id = "audioInput";
+          width = 50;
+        }
+        {
+          enabled = true;
+          id = "nightMode";
+          width = 50;
+        }
+        {
+          enabled = true;
+          id = "darkMode";
+          width = 50;
+        }
       ];
 
       # Matugen Template Configuration
@@ -132,11 +196,24 @@
 
       # Power & Locale
       use24HourClock = false; # Updated from JSON
-      batteryMonitorTimeout = 600; # Updated from JSON
-      batteryLockTimeout = 300;
-      batterySuspendTimeout = 600;
+      # Power Management
+      acMonitorTimeout = 120;
+      acLockTimeout = 60;
+      acSuspendTimeout = 300;
+      batteryMonitorTimeout = 120;
+      batteryLockTimeout = 60;
+      batterySuspendTimeout = 300;
+      batteryChargeLimit = 100;
       powerActionConfirm = true;
-      powerMenuActions = [ "reboot" "logout" "poweroff" "lock" "suspend" "restart" ];
+      powerMenuDefaultAction = "logout";
+      powerMenuActions = [
+        "reboot"
+        "logout"
+        "poweroff"
+        "lock"
+        "suspend"
+        "restart"
+      ];
 
       # Feature Toggles
       systemMonitorEnabled = false;

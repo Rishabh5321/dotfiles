@@ -1,8 +1,9 @@
-{ pkgs
-, wallpapers
-, flakeDir
-, lib
-, ...
+{
+  pkgs,
+  wallpapers,
+  flakeDir,
+  lib,
+  ...
 }:
 
 let
@@ -41,7 +42,6 @@ in
 
   home.shellAliases = {
     hms = "home-manager switch --flake ${flakeDir} -b bak";
-    sms = "nix run github:numtide/system-manager -- switch --flake ${flakeDir}";
   };
 
   home.file."Pictures/Wallpapers" = {
@@ -50,9 +50,13 @@ in
   };
 
   home.sessionVariables = {
-    XDG_DATA_DIRS = lib.mkForce "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
+    XDG_DATA_DIRS = lib.mkForce "$HOME/.nix-profile/share:/nix/var/nix/profiles/system-manager-current/share:$XDG_DATA_DIRS";
     QS_ICON_THEME = "Papirus-Dark";
   };
+
+  home.sessionPath = [
+    "/nix/var/nix/profiles/system-manager-current/bin"
+  ];
 
   targets.genericLinux.enable = true;
 

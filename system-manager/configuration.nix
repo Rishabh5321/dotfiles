@@ -1,19 +1,16 @@
-{ pkgs, system, ... }:
+{
+  pkgs,
+  system,
+  ...
+}:
 
 {
   config = {
     nixpkgs.hostPlatform = system;
+    system-manager.allowAnyDistro = true;
 
     environment.systemPackages = with pkgs; [
-      btop
-      ripgrep
-      fd
-      git
+      gh
     ];
-
-
-
-    # Example: Manage etc files
-    # environment.etc."foo.conf".text = "bar";
   };
 }
