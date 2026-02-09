@@ -1,9 +1,9 @@
-{ config, pkgs, system, lib, home-manager, ... }:
+{ pkgs, system, ... }:
 
 {
   config = {
     nixpkgs.hostPlatform = system;
-    
+
     environment.systemPackages = with pkgs; [
       btop
       ripgrep
