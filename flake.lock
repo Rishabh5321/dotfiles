@@ -1244,11 +1244,11 @@
         "userborn": "userborn"
       },
       "locked": {
-        "lastModified": 1770381702,
-        "narHash": "sha256-6tEoBVig+2KDF1eVRp7iKrzb3C3wTKMn7flRV1vEXHM=",
+        "lastModified": 1770630329,
+        "narHash": "sha256-Q0/JNws9SxY9wE/mCQ6WTA85MIgrJ+M0HDcJVUlk9Ds=",
         "owner": "numtide",
         "repo": "system-manager",
-        "rev": "56661d27dddf18475b2d1f4c06da0e445642ba02",
+        "rev": "442db31401bdbdadc59356232153448e05bce1db",
         "type": "github"
       },
       "original": {
@@ -1425,16 +1425,16 @@
         "systems": "systems_5"
       },
       "locked": {
-        "lastModified": 1770243776,
-        "narHash": "sha256-Nc7V8fmtW4but0LU0tEwjokRirDFuX6fmnmivmAvMZ8=",
+        "lastModified": 1770377964,
+        "narHash": "sha256-q2pnlX2IW0kg80GLFnwWd/GigIpkuZnyKPLhrgJql3E=",
         "owner": "jfroche",
         "repo": "userborn",
-        "rev": "9252a66ae12fff9f6e992310203a7aa763ba89ef",
+        "rev": "55c2cd7952c207a62736a5bbd9499ea73da18d24",
         "type": "github"
       },
       "original": {
         "owner": "jfroche",
-        "ref": "fix-existing-groups-members",
+        "ref": "system-manager",
         "repo": "userborn",
         "type": "github"
       }
