@@ -84,6 +84,7 @@
     wl-clipboard
     shared-mime-info
     mangohud
+    wgcf
 
     # --- Screenshots & Graphics ---
     grim
