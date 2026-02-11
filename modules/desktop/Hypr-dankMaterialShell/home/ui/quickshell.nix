@@ -13,15 +13,15 @@
     quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
     settings = {
       # Core Theme & Appearance
-      currentThemeName = "dynamic";
+      # currentThemeName = "dynamic";
       currentThemeCategory = "dynamic";
       matugenScheme = "scheme-content";
       runUserMatugenTemplates = true;
       widgetBackgroundColor = "sch";
       widgetColorMode = "colorful";
       cornerRadius = 12;
-      popupTransparency = 1;
-      dockTransparency = 1;
+      # popupTransparency = 1;
+      # dockTransparency = 1;
 
       # Cursor Settings (New)
       cursorSettings = {
