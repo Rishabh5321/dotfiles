@@ -57,12 +57,12 @@
 
     # --- Communication & Productivity ---
     ayugram-desktop
-    discord
+    # discord
     obsidian
     kdePackages.kdeconnect-kde
 
     # --- Games ---
-    lutris
+    # lutris
     heroic
     protonplus
     protonup-qt

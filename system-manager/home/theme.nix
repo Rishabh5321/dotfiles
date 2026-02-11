@@ -1,7 +1,7 @@
-{ wallpapers, wallpaper, pkgs, ... }:
+{ wallpapers, wallpaper, pkgs, lib, ... }:
 {
   gtk = {
-    enable = false;
+    enable = lib.mkForce false;
 
     # iconTheme = {
     #   enable = true;

@@ -21,14 +21,7 @@ let
 in
 {
   imports = [
-    ./../../modules/user/development/lazygit.nix
-    ./../../modules/user/files
-    ./../../modules/user/monitor
-    ./../../modules/user/shells
-    ./../../modules/user/terminal
-    ./../../modules/user/utilities/atuin.nix
-    ./../../modules/user/utilities/tealdeer.nix
-    ./../../modules/user/utilities/zoxide.nix
+    ./../../modules/user
 
     ./nix-settings.nix
     ./packages.nix
