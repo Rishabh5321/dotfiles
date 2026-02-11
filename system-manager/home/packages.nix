@@ -101,6 +101,7 @@
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.ab-download-manager
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.better-control
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
+    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
     # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
   ];

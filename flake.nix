@@ -266,7 +266,10 @@
               nixpkgs.hostPlatform = system;
             }
           ];
-          extraSpecialArgs = commonArgs;
+          extraSpecialArgs = commonArgs // {
+            inherit inputs;
+            outputs = self;
+          };
         };
       };
 
