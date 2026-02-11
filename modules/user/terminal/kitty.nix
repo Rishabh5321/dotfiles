@@ -26,6 +26,9 @@ _:
       # tab_bar_style = "powerline";
       # tab_powerline_style = "slanted";
       # tab_bar_align = "left";
+      #
+      window_padding_width = 5;
+      tab_bar_margin_width = 5;
 
       # When the current tab is closed, go back to the previous tab
       tab_switch_strategy = "previous";

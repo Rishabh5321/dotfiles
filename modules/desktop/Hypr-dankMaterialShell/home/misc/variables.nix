@@ -16,7 +16,7 @@ in
 
   # Program Options
   browser = "firefox"; # Set Default Browser (google-chrome-stable for google-chrome)
-  terminal = "kitty";
+  terminal = "alacritty";
 
   theShell = "zsh";
   host = "dell";
