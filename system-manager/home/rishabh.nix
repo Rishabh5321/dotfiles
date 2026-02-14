@@ -33,6 +33,7 @@ in
 
   home.shellAliases = {
     hms = "home-manager switch --flake ${flakeDir} -b bak";
+    hmsg = "cd dotfiles && git pull && home-manager switch --flake ${flakeDir} -b bak";
   };
 
   home.file."Pictures/Wallpapers" = {
