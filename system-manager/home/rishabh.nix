@@ -27,6 +27,7 @@ in
     ./packages.nix
     ./power.nix
     ./theme.nix
+    ./nh.nix
 
     ./../../modules/desktop/Hypr-dankMaterialShell/home
   ];

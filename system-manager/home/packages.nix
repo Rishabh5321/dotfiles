@@ -7,6 +7,9 @@
     papirus-icon-theme
     adwaita-icon-theme
     hicolor-icon-theme
+    dracula-icon-theme # Dracula icons
+    qogir-icon-theme # Qogir icons
+    # tela-icon-theme # Tela icons
 
     # --- GTK Themes ---
     orchis-theme
@@ -62,7 +65,9 @@
     kdePackages.kdeconnect-kde
 
     # --- Games ---
-    # lutris
+    aisleriot # Card Game
+    pysolfc # Solitaire Game
+    gamescope # Gaming compositor
     heroic
     protonplus
     protonup-qt
@@ -74,7 +79,7 @@
     nil
     nixd
     nixpkgs-fmt
-    gemini-cli
+    gemini-cli-bin
     geminicommit
 
     # --- System Utilities & Wayland ---
@@ -93,6 +98,17 @@
     librsvg
     kdePackages.qtsvg
     libsForQt5.qtsvg
+
+    # --- Media Player ---
+    jellyfin-media-player
+    vlc
+    pear-desktop
+
+    # ===== QT THEMING =====
+    kdePackages.qtstyleplugin-kvantum # Qt5/6 Kvantum plugin
+    libsForQt5.qtstyleplugin-kvantum # Qt5 Kvantum plugin
+    libsForQt5.qt5.qtbase # Qt5 base
+    libsForQt5.qt5.qtsvg # Qt5 SVG support
 
     # --- Custom / Flake Inputs ---
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.anymex
