@@ -308,7 +308,13 @@
           pkgs.git
           pkgs.home-manager
           pkgs.gnumake
-          pkgs.just
+          pkgs.nil # Nix LSP server
+          pkgs.nixd # Nix language server
+          pkgs.nixpkgs-fmt # Nix code formatter
+          pkgs.nixpkgs-review # Nixpkgs PR review tool
+          pkgs.nix-prefetch # Nix package prefetcher
+          pkgs.nix-prefetch-github # Fetch GitHub repos for Nix
+          pkgs.nix-update # Nix package update tool
         ];
         name = "dotfiles";
         shellHook = ''
