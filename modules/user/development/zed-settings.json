@@ -1,11 +1,3 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
 {
   "edit_predictions": {
     "provider": "zed",
@@ -46,10 +38,6 @@
   "tabs": {
     "show_diagnostics": "errors"
   },
-  // "indent_guides": {
-  //   "enabled": true,
-  //   "coloring": "indent_aware"
-  // },
   "inlay_hints": {
     "enabled": true
   },
@@ -61,27 +49,31 @@
     {
       "host": "server",
       "username": "rishabh",
+      "args": [],
       "projects": [
+        {
+          "paths": ["/home/rishabh"]
+        },
         {
           "paths": ["/mnt/Docker/Docker/Docker-Media-Template"]
         }
       ]
     }
   ],
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "Ayu Dark"
-  },
+  "ui_font_size": 16.0,
+  "buffer_font_size": 20.0,
+  "theme": "Ayu Dark",
   "languages": {
     "Python": {
-      "formatter": { "language_server": { "name": "ruff" } },
+      "formatter": {
+        "language_server": {
+          "name": "ruff"
+        }
+      },
       "language_servers": ["pyright", "ruff"]
     },
     "Nix": {
-      "language_servers": ["nil"],
+      "language_servers": ["nil", "!nixd"],
       "formatter": {
         "external": {
           "command": "nixpkgs-fmt",
@@ -93,13 +85,6 @@
       "hard_tabs": false
     }
   },
-  // Use zed commit editor
-  // "terminal": {
-  //   "font_family": "Aleo",
-  //   "env": {
-  //     "EDITOR": "zed --wait"
-  //   }
-  // },
   "lsp": {
     "nil": {
       "initialization_options": {
@@ -109,19 +94,16 @@
         "nix": {
           "flake": {
             "autoArchive": true
-            // "autoEvalInputs": true
           }
         }
       }
     }
   },
-  // Optional: File associations for Nix files
   "file_types": {
     "Nix": ["nix", "*.nix"],
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
     "JSON": ["json", "jsonc", "*.code-snippets"]
   },
-  // Turn off telemetry
   "telemetry": {
     "diagnostics": false,
     "metrics": false
@@ -132,17 +114,15 @@
     "dock": "left",
     "git_status": true
   },
-  // Move some unnecessary panels to the left
   "notification_panel": {
     "dock": "left"
   },
   "chat_panel": {
     "dock": "left"
-  }
-  // "outline_panel": {
-  //   "dock": "right"
-  // },
-  // "collaboration_panel": {
-  //   "dock": "left"
-  // }
+  },
+  "auto_install_extensions": {
+    "nix": true
+  },
+  "buffer_font_family": "Hack Nerd Font Mono",
+  "ui_font_family": "Noto Sans"
 }
