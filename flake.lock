@@ -74,11 +74,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1771124204,
-        "narHash": "sha256-R7vXXDc2ip29emJQ7Brj4oC4ONViTl95qp/MFyHXI3c=",
+        "lastModified": 1771288602,
+        "narHash": "sha256-1nW0r8+Fdgusjg75shdCXAYdqmAJzEOZffZ+mALMLSQ=",
         "owner": "caelestia-dots",
         "repo": "cli",
-        "rev": "a550eb79edbe0e4001b6b3621d6e6197a6b9c8eb",
+        "rev": "d88cc7ff793e7c66ba20465f81791990d7d3d151",
         "type": "github"
       },
       "original": {
