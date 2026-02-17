@@ -29,7 +29,7 @@ in
     ./theme.nix
     ./nh.nix
 
-    ./../../modules/desktop/Hypr-dankMaterialShell/home
+    ./../../modules/desktop/Sway-DMS/home
   ];
 
   home.shellAliases = {
