@@ -34,7 +34,8 @@ in
 
   home.shellAliases = {
     hms = "home-manager switch --flake ${flakeDir} -b bak";
-    hmsg = "cd dotfiles && git pull && home-manager switch --flake ${flakeDir} -b bak";
+    hmsg = "cd ~/dotfiles && git pull && home-manager switch --flake ${flakeDir} -b bak";
+    hmsu = "cd ~/dotfiles && git pull && home-manager switch --flake ${flakeDir} -b bak && sudo pacman -Syu";
   };
 
   home.file."Pictures/Wallpapers" = {
