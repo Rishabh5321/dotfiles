@@ -28,6 +28,7 @@ in
     ./power.nix
     ./theme.nix
     ./nh.nix
+    ./noctalia.nix
 
     ./../../modules/desktop/Sway-Noctalia/home
   ];
