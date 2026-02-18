@@ -332,7 +332,7 @@
             {
               programs.home-manager.enable = true;
             }
-            inputs.stylix.homeManagerModules.stylix
+            inputs.stylix.homeModules.stylix
             ./system-manager/home/${username}.nix
           ];
         };
