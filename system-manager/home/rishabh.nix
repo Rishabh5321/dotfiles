@@ -44,6 +44,14 @@ in
     recursive = true;
   };
 
+  xdg = {
+    enable = true;
+    systemDirs.data = [
+      "/usr/share"
+      "/usr/local/share"
+    ];
+  };
+
   home.sessionVariables = {
     XDG_DATA_DIRS = lib.mkForce "$HOME/.nix-profile/share:/nix/var/nix/profiles/system-manager-current/share:$XDG_DATA_DIRS";
     QS_ICON_THEME = "Papirus-Dark";

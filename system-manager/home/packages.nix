@@ -16,6 +16,11 @@
     material-black-colors
     nordic
 
+    # --- File Managers ---
+    thunar
+    nemo
+    # nautilus
+
     # ===== OFFICE & PRODUCTIVITY =====
     libreoffice # Office suite
     onlyoffice-desktopeditors # Alternative office suite

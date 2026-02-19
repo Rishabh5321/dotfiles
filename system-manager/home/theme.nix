@@ -14,7 +14,7 @@
   };
 
   stylix = {
-    enable = false;
+    enable = true;
     image = "${wallpapers}/${wallpaper}";
     polarity = "dark";
 
