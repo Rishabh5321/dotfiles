@@ -53,7 +53,7 @@
 
       # ===== EDITORS & IDEs =====
       # android-studio # Android IDE
-      antigravity # AI-powered text editor by Google
+      # antigravity # AI-powered text editor by Google
       code-cursor # AI-powered VS Code fork
       micro # Simple terminal editor
       # kiro # AI-powered text editor
@@ -196,6 +196,7 @@
       # inputs.grayjay.packages.${pkgs.stdenv.hostPlatform.system}.grayjay # Video platform client
       # inputs.gemini-cli.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli-stable # stable versions
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.ab-download-manager
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.antigravity
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.anymex
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.better-control # Device control
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
