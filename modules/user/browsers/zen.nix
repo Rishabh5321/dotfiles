@@ -14,6 +14,7 @@
     policies = {
       DisableAppUpdate = true;
       DisableTelemetry = true;
+      suppressXdgMigrationWarning = true;
       # find more options here: https://mozilla.github.io/policy-templates/
     };
   };
