@@ -51,11 +51,11 @@ with lib;
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
         # "sleep 5 &&"
-        "zen"
-        "obsidian"
-        "brave"
-        "discord"
-        "telegram-desktop"
+        # "zen"
+        # "obsidian"
+        # "brave"
+        # "discord"
+        # "telegram-desktop"
       ];
 
       # ── Monitor Setup ─────────────────────────────────────────────────────
