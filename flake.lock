@@ -1266,11 +1266,11 @@
         "userborn": "userborn"
       },
       "locked": {
-        "lastModified": 1771940472,
-        "narHash": "sha256-QGlUVLpdBE0peTmktCSf+SmUDAHWo7xpC8y0NhOJHM0=",
+        "lastModified": 1772131388,
+        "narHash": "sha256-yq7zeWc0te/X6FqU1EYrkpY0bZCjlvmSjJ3q7zLDfok=",
         "owner": "numtide",
         "repo": "system-manager",
-        "rev": "5897c87e4a0c5744c90a9bf368feacf19c5fffc5",
+        "rev": "0ed4f62665ce95db9a75f85592f956aeeff325c8",
         "type": "github"
       },
       "original": {
