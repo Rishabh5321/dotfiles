@@ -80,7 +80,7 @@
     umu-launcher
 
     # --- Development & Nix Tooling ---
-    antigravity
+    # antigravity
     nil
     nixd
     nixpkgs-fmt
@@ -116,6 +116,7 @@
     libsForQt5.qt5.qtsvg # Qt5 SVG support
 
     # --- Custom / Flake Inputs ---
+    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.antigravity
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.ab-download-manager
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.anymex
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.better-control
