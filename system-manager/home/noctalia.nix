@@ -1,29 +1,29 @@
 { lib, config, ... }:
 {
-  programs.noctalia-shell.settings = {
-    templates = lib.mapAttrs (_: _: lib.mkForce true) {
-      alacritty = false;
-      code = false;
-      discord = false;
-      discord_armcord = false;
-      discord_dorion = false;
-      discord_equibop = false;
-      discord_lightcord = false;
-      discord_vesktop = false;
-      discord_webcord = false;
-      enableUserTemplates = false;
-      foot = false;
-      fuzzel = false;
-      ghostty = false;
-      gtk = false;
-      kcolorscheme = false;
-      kitty = false;
-      pywalfox = false;
-      qt = false;
-      vicinae = false;
-      walker = false;
-    };
-  };
+  # programs.noctalia-shell.settings = {
+  #   templates = lib.mapAttrs (_: _: lib.mkForce true) {
+  #     alacritty = false;
+  #     code = false;
+  #     discord = false;
+  #     discord_armcord = false;
+  #     discord_dorion = false;
+  #     discord_equibop = false;
+  #     discord_lightcord = false;
+  #     discord_vesktop = false;
+  #     discord_webcord = false;
+  #     enableUserTemplates = false;
+  #     foot = false;
+  #     fuzzel = false;
+  #     ghostty = false;
+  #     gtk = false;
+  #     kcolorscheme = false;
+  #     kitty = false;
+  #     pywalfox = false;
+  #     qt = false;
+  #     vicinae = false;
+  #     walker = false;
+  #   };
+  # };
 
   systemd.user.services.noctalia-shell = {
     Unit.After = [ "graphical-session.target" ];
