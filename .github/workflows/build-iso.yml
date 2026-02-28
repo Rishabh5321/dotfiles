@@ -41,7 +41,7 @@ jobs:
         run: nix build .#nixosConfigurations.iso.config.system.build.isoImage
 
       - name: "Upload ISO artifact"
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: nixos-iso
           path: result/iso/nixos-*.iso
