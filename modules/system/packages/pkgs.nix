@@ -116,7 +116,7 @@
       gamescope # Gaming compositor
       heroic # Epic Games launcher
       hydralauncher
-      lutris # Gaming platform manager
+      # lutris # Gaming platform manager
       mangohud # Gaming overlay
       steam # Steam gaming platform
       umu-launcher # Umu

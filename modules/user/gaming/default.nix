@@ -3,7 +3,7 @@
 { ... }:
 {
   imports = [
-    ./lutris.nix
+    # ./lutris.nix
     #./mangohud.nix
   ];
 }
