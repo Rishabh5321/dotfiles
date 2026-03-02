@@ -26,35 +26,35 @@
       };
     */
 
-    fonts = {
+    # fonts = {
 
-      sansSerif = {
-        name = "Noto Sans";
-        package = pkgs.noto-fonts;
-      };
+    #   sansSerif = {
+    #     name = "Noto Sans";
+    #     package = pkgs.noto-fonts;
+    #   };
 
-      serif = {
-        name = "Noto Serif";
-        package = pkgs.noto-fonts;
-      };
+    #   serif = {
+    #     name = "Noto Serif";
+    #     package = pkgs.noto-fonts;
+    #   };
 
-      monospace = {
-        package = pkgs.nerd-fonts.hack;
-        name = "Hack Nerd Font Mono";
-      };
+    #   monospace = {
+    #     package = pkgs.nerd-fonts.hack;
+    #     name = "Hack Nerd Font Mono";
+    #   };
 
-      emoji = {
-        package = pkgs.noto-fonts-color-emoji;
-        name = "Noto Color Emoji";
-      };
+    #   emoji = {
+    #     package = pkgs.noto-fonts-color-emoji;
+    #     name = "Noto Color Emoji";
+    #   };
 
-      sizes = {
-        applications = 12;
-        terminal = 15;
-        desktop = 11;
-        popups = 12;
-      };
-    };
+    #   sizes = {
+    #     applications = 12;
+    #     terminal = 15;
+    #     desktop = 11;
+    #     popups = 12;
+    #   };
+    # };
 
     icons = {
       enable = true;
@@ -71,7 +71,7 @@
     };
 
     targets = {
-      font-packages.enable = true;
+      font-packages.enable = false;
       gtk.enable = false;
       waybar.enable = false;
       rofi.enable = false;
