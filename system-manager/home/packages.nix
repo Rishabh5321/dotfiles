@@ -22,7 +22,7 @@
     # nautilus
 
     # ===== OFFICE & PRODUCTIVITY =====
-    libreoffice # Office suite
+    # libreoffice # Office suite
     onlyoffice-desktopeditors # Alternative office suite
 
     # --- Fonts ---
