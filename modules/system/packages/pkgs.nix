@@ -164,7 +164,7 @@
       powertop # Power management
 
       # ===== OFFICE & PRODUCTIVITY =====
-      libreoffice # Office suite
+      # libreoffice # Office suite
       onlyoffice-desktopeditors # Alternative office suite
       # varia # Download Manager
 
