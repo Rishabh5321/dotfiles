@@ -962,11 +962,11 @@
         "noctalia-qs": "noctalia-qs"
       },
       "locked": {
-        "lastModified": 1772360636,
-        "narHash": "sha256-5zHPfjnsRdDqrs3cuEp2i8tTEsf4g8/Ih1YfJPW/YH4=",
+        "lastModified": 1772411325,
+        "narHash": "sha256-MxRMuvkvyoZKJtePKHn4kKORNP0CDvm5XkL+rhPjBzs=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "1fd249164b9193bf5e9343c8464a29265c3a4227",
+        "rev": "6eb4370f073518691972c7dad6bbf8cecdda9f2e",
         "type": "github"
       },
       "original": {
