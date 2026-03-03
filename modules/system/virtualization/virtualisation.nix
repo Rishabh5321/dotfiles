@@ -40,8 +40,8 @@
   services.spice-vdagentd.enable = true;
 
   systemd.tmpfiles.rules = [
-      "d /var/lib/libvirt/images 0770 root libvirtd -"
-    ];
+    "d /var/lib/libvirt/images 0770 root libvirtd -"
+  ];
 
   environment.sessionVariables.LIBVIRT_DEFAULT_URI = [ "qemu:///system" ];
 }
