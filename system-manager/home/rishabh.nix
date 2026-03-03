@@ -30,7 +30,7 @@ in
     ./nh.nix
     ./noctalia.nix
 
-    ./../../modules/desktop/Hypr-dankMaterialShell/home
+    ./../../modules/desktop/Hypr-Noctalia/home
   ];
 
   home.shellAliases = {
