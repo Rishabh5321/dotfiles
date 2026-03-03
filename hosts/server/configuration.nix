@@ -151,6 +151,7 @@
         aio-read-size = "1";
         deadtime = "15";
         vfs-objects = "fileid";
+        validUsers = [ "rishabh" ];
       };
     };
   };
