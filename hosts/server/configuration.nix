@@ -31,7 +31,21 @@
 
     ../../modules/system/security/users.nix
 
+    ../../modules/system/virtualization/default.nix
+
   ];
+
+  networking = {
+    # 1. Attach the physical port to the bridge
+    bridges."br0".interfaces = [ "enp2s0" ];
+
+    # 2. Tell the Firewall to stop blocking traffic on these interfaces
+    firewall.trustedInterfaces = [ "br0" "virbr0" ];
+
+    # 3. Ensure the bridge gets the host's IP, not the physical port
+    interfaces."br0".useDHCP = true;
+    interfaces."enp2s0".useDHCP = false;
+  };
 
   networking.hostName = "server"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
