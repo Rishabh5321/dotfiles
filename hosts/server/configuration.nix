@@ -124,34 +124,58 @@
 
   services.samba = {
     enable = true;
+    # The global section ensures Samba allows guests
     settings = {
+      global = {
+        "guest account" = "nobody";
+        "map to guest" = "bad user";
+      };
+
       "root" = {
-        path = "/"; # Replace with the directory you want to share
-        browseable = true; # Allow it to be seen in the network browser
-        readOnly = false; # Enable write access
-        validUsers = [ "rishabh" ]; # Use 'rishabh' as the username
+        path = "/";
+        browseable = true;
+        readOnly = false;
+        validUsers = [ "rishabh" ];
       };
+
       "mnt" = {
-        path = "/mnt"; # Replace with the directory you want to share
-        browseable = true; # Allow it to be seen in the network browser
-        readOnly = false; # Enable write access
-        validUsers = [ "rishabh" ]; # Use 'rishabh' as the username
+        path = "/mnt";
+        browseable = true;
+        readOnly = false;
+        validUsers = [ "rishabh" ];
       };
+
       "home" = {
-        path = "/home/rishabh"; # Replace with the directory you want to share
-        browseable = true; # Allow it to be seen in the network browser
-        readOnly = false; # Enable write access
-        validUsers = [ "rishabh" ]; # Use 'rishabh' as the username
+        path = "/home/rishabh";
+        browseable = true;
+        readOnly = false;
+        validUsers = [ "rishabh" ];
       };
+
+      # Public Share 1
       "gostream-mkv-virtual" = {
         path = "/mnt/gostream-mkv-virtual";
         browseable = "yes";
-        read-only = "yes";
+        "read only" = "yes";
+        "guest ok" = "yes";
+        "public" = "yes";
         oplocks = "no";
-        aio-read-size = "1";
+        "aio read size" = "1";
         deadtime = "15";
-        vfs-objects = "fileid";
-        validUsers = [ "rishabh" ];
+        "vfs objects" = "fileid";
+      };
+
+      # Public Share 2
+      "gostream-mkv-real" = {
+        path = "/mnt/gostream-mkv-real";
+        browseable = "yes";
+        "read only" = "yes";
+        "guest ok" = "yes";
+        "public" = "yes";
+        oplocks = "no";
+        "aio read size" = "1";
+        deadtime = "15";
+        "vfs objects" = "fileid";
       };
     };
   };
