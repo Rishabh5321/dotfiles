@@ -192,6 +192,7 @@
     smartmontools
     geminicommit
     smartmontools
+    distrobox
     # cloudflare-warp
   ];
 
