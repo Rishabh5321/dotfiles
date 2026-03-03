@@ -143,6 +143,15 @@
         readOnly = false; # Enable write access
         validUsers = [ "rishabh" ]; # Use 'rishabh' as the username
       };
+      "gostream-mkv-virtual" = {
+        path = "/mnt/gostream-mkv-virtual";
+        browseable = "yes";
+        read-only = "yes";
+        oplocks = "no";
+        aio-read-size = "1";
+        deadtime = "15";
+        vfs-objects = "fileid";
+      };
     };
   };
 
