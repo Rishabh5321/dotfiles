@@ -95,7 +95,6 @@
     shared-mime-info
     mangohud
     wgcf
-    cloudflare-warp
 
     # --- Screenshots & Graphics ---
     grim
