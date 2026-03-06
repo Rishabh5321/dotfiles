@@ -135,12 +135,12 @@
       # Power & Locale
       use24HourClock = false; # Updated from JSON
       # Power Management
-      acMonitorTimeout = 120;
-      acLockTimeout = 60;
-      acSuspendTimeout = 300;
-      batteryMonitorTimeout = 120;
-      batteryLockTimeout = 60;
-      batterySuspendTimeout = 300;
+      acMonitorTimeout = 600;
+      acLockTimeout = 600;
+      acSuspendTimeout = 1200;
+      batteryMonitorTimeout = 600;
+      batteryLockTimeout = 300;
+      batterySuspendTimeout = 1200;
       batteryChargeLimit = 100;
       powerActionConfirm = true;
       powerMenuDefaultAction = "logout";
