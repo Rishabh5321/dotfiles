@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 with lib;
 
@@ -9,31 +9,31 @@ let
   # This tries to read /etc/os-release during evaluation to dynamically configure PAM
   # based on whether the system is Arch-based, Debian-based, etc.
   osRelease = if builtins.pathExists "/etc/os-release" then builtins.readFile "/etc/os-release" else "";
-  
+
   isDebianOrUbuntu = builtins.match ".*ID(_LIKE)?=(debian|ubuntu).*" osRelease != null;
   isArch = builtins.match ".*ID(_LIKE)?=(arch|cachyos).*" osRelease != null;
   isFedora = builtins.match ".*ID(_LIKE)?=(fedora).*" osRelease != null;
-  
-  authInclude = 
+
+  authInclude =
     if cfg.authInclude != null then cfg.authInclude
     else if isDebianOrUbuntu then "common-auth"
     else if isArch then "system-auth"
     else if isFedora then "system-auth"
     else "system-auth"; # Fallback assuming system-auth is the most common default
-    
-  accountInclude = 
+
+  accountInclude =
     if isDebianOrUbuntu then "common-account"
     else if isArch then "system-auth"
     else if isFedora then "system-auth"
     else "system-auth";
-    
-  passwordInclude = 
+
+  passwordInclude =
     if isDebianOrUbuntu then "common-password"
     else if isArch then "system-auth"
     else if isFedora then "system-auth"
     else "system-auth";
 
-  sessionInclude = 
+  sessionInclude =
     if isDebianOrUbuntu then "common-session"
     else if isArch then "system-auth"
     else if isFedora then "system-auth"
@@ -47,7 +47,8 @@ let
     session include ${sessionInclude}
   '';
 
-in {
+in
+{
   options.system-manager.pam = {
     enable = mkEnableOption "Configure PAM for non-NixOS via system-manager";
 
@@ -72,7 +73,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.etc = lib.genAttrs (map (name: "pam.d/${name}") cfg.services) (name: {
+    environment.etc = lib.genAttrs (map (name: "pam.d/${name}") cfg.services) (_name: {
       text = pamConfigText;
       mode = "0644";
     });
