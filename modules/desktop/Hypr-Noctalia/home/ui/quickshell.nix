@@ -2,6 +2,7 @@
 , username
 , wallpaper
 , lib
+, pkgs
 , ...
 }:
 {
@@ -11,6 +12,7 @@
 
   programs.noctalia-shell = {
     enable = true;
+    package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
     systemd.enable = true;
     settings = {
       appLauncher = {
