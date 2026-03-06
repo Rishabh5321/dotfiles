@@ -31,7 +31,7 @@
     micro
     wget
     git
-    neofetch
+    fastfetch
     htop
     pciutils
     usbutils
