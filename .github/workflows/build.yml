@@ -63,7 +63,7 @@ jobs:
             HOSTS=$(echo '["${{ github.event.inputs.specific_host }}"]' | jq -c .)
           else
             # Otherwise build all hosts from the flake
-            HOSTS=$(nix flake show --json | jq -c '[.nixosConfigurations | keys[]]')
+            HOSTS=$(nix eval --json .#nixosConfigurations --apply 'builtins.attrNames' | jq -c .)
           fi
           echo "matrix={\"hostname\":$HOSTS}" >> "$GITHUB_OUTPUT"
 
