@@ -30,7 +30,7 @@ in
     ./nh.nix
     ./noctalia.nix
 
-    ./../../modules/desktop/Hypr-Noctalia/home
+    ./../../modules/desktop/Sway-DMS/home
   ];
 
   home.shellAliases = {
