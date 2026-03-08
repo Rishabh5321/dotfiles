@@ -21,6 +21,8 @@
     nemo
     # nautilus
 
+    kodi
+
     # ===== OFFICE & PRODUCTIVITY =====
     # libreoffice # Office suite
     onlyoffice-desktopeditors # Alternative office suite
