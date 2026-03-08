@@ -49,7 +49,7 @@
 
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''
-    /mnt/Media  *(rw,sync,no_subtree_check,fsid=1)
+    /mnt/Docker  *(rw,sync,no_subtree_check,fsid=1)
     /mnt/E_Disk *(rw,sync,no_subtree_check,fsid=2)
     /mnt/Raid   *(rw,sync,no_subtree_check,fsid=3)
     /home  *(rw,sync,no_subtree_check,fsid=4)
