@@ -31,7 +31,7 @@
 
     ../../modules/system/security/users.nix
 
-    ../../modules/system/virtualization/default.nix
+    # ../../modules/system/virtualization/default.nix
 
   ];
 
@@ -46,6 +46,12 @@
     interfaces."br0".useDHCP = true;
     interfaces."enp2s0".useDHCP = false;
   };
+
+  services.nfs.server.enable = true;
+  services.nfs.server.exports = ''
+      /mnt   *(rw,sync,no_subtree_check,fsid=1)
+      /home  *(rw,sync,no_subtree_check,fsid=2)
+    '';
 
   networking.hostName = "server"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

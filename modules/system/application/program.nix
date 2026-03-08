@@ -30,7 +30,7 @@
     #seahorse.enable = lib.mkForce true;
 
     # ===== VIRTUALIZATION =====
-    virt-manager.enable = true;
+    virt-manager.enable = false;
 
     # ===== GAMING =====
     gamemode.enable = true;

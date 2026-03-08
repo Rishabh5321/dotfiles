@@ -17,14 +17,14 @@
 
   virtualisation = {
     libvirtd = {
-      enable = true;
+      enable = false;
       onBoot = "ignore";
       onShutdown = "shutdown";
       qemu = {
         swtpm.enable = true;
       };
     };
-    spiceUSBRedirection.enable = true;
+    spiceUSBRedirection.enable = false;
     docker = {
       enable = true;
       rootless = {
