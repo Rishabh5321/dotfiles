@@ -49,9 +49,11 @@
 
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''
-      /mnt   *(rw,sync,no_subtree_check,fsid=1)
-      /home  *(rw,sync,no_subtree_check,fsid=2)
-    '';
+    /mnt/Media  *(rw,sync,no_subtree_check,fsid=1)
+    /mnt/E_Disk *(rw,sync,no_subtree_check,fsid=2)
+    /mnt/Raid   *(rw,sync,no_subtree_check,fsid=3)
+    /home  *(rw,sync,no_subtree_check,fsid=4)
+  '';
 
   networking.hostName = "server"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
