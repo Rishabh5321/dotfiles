@@ -23,7 +23,6 @@ with lib;
       variables = [ "--all" ];
     };
     settings = {
-      # xwayland.enable = true;
       env = [
         "NIXOS_OZONE_WL,1"
         "NIXPKGS_ALLOW_UNFREE,1"
@@ -44,18 +43,10 @@ with lib;
         "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "swaync # Start notification daemon"
-        # "caelestia shell -d"
-        # "nm-applet --indicator"
         "systemctl --user start hyprpolkitagent"
         "kdeconnect-indicator # Start kdeconnect indicator earlier"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
-        # "sleep 5 &&"
-        # "zen"
-        # "obsidian"
-        # "brave"
-        # "discord"
-        # "telegram-desktop"
       ];
 
       # ── Monitor Setup ─────────────────────────────────────────────────────
@@ -98,8 +89,6 @@ with lib;
       };
 
       gestures = {
-        # workspace_swipe = true
-        # workspace_swipe_fingers = 3
         workspace_swipe_distance = 300;
         workspace_swipe_cancel_ratio = 0.5;
         workspace_swipe_min_speed_to_force = 30;
@@ -119,10 +108,8 @@ with lib;
         disable_hyprland_logo = false;
         disable_splash_rendering = false;
         force_default_wallpaper = 0;
-        vfr = false;
+        vfr = true;
         vrr = 0;
-        # render_ahead_of_time = false
-        # render_ahead_safezone = 1
         enable_swallow = true;
         swallow_regex = "^(kitty|alacritty|foot|ghostty)$";
         swallow_exception_regex = "^(wev)$";
@@ -161,28 +148,13 @@ with lib;
       decoration = {
         rounding = 4;
 
-        # active_opacity = 1.0
-        # inactive_opacity = 0.95
-        # fullscreen_opacity = 1.0
-
         dim_inactive = false;
         dim_strength = 0.1;
         dim_special = 0.8;
 
-        # blur = {
-        #   enabled = true
-        #   size = 6
-        #   passes = 3
-        #   ignore_opacity = true
-        #   new_optimizations = true
-        #   xray = false
-        #   noise = 0.0117
-        #   contrast = 1.5000
-        #   brightness = 1.0
-        #   vibrancy = 0.2
-        #   vibrancy_darkness = 0.5
-        #   special = false
-        # }
+        blur = {
+          new_optimizations = true;
+        };
       };
 
       # ── Layout Settings ────────────────────────────────────────────────────
@@ -194,7 +166,6 @@ with lib;
         permanent_direction_override = false;
         special_scale_factor = 1.0;
         split_width_multiplier = 1.0;
-        # no_gaps_when_only = 0
         use_active_for_splits = true;
         default_split_ratio = 1.0;
       };
@@ -203,12 +174,7 @@ with lib;
         allow_small_split = false;
         special_scale_factor = 1.0;
         mfact = 0.55;
-        # new_is_master = true
-        # new_on_top = false
-        # no_gaps_when_only = 0
         orientation = "left";
-        # inherit_fullscreen = true;
-        # always_center_master = false
         smart_resizing = true;
         drop_at_cursor = true;
       };
@@ -218,14 +184,11 @@ with lib;
         # Application launchers
         "${modifier},Return,exec,${terminal}"
         "ALT,SPACE,exec,dms ipc call spotlight toggle"
-        # "${modifier},R,exec,rofi -show run"
         "${modifier},V,exec,dms ipc call clipboard toggle"
         "${modifier}ALT,W,exec,wallSelector"
         "${modifier},W,exec,${browser}"
         "CTRL,L,exec,dms ipc call lock lock"
-        # "${modifier},A,global,caelestia:session"
         "${modifier},E,exec,wofi-emoji"
-        # "${modifier},S,global,caelestia:screenshot"
         "${modifier}SHIFT,S,exec,grim -g \"$(slurp)\" - | swappy -f -"
         "${modifier},D,exec,discord"
         "${modifier},C,exec,hyprpicker -a"
@@ -241,7 +204,6 @@ with lib;
         "${modifier}SHIFT,F,togglefloating,"
         "${modifier}SHIFT,C,exit,"
         "${modifier}SHIFT,P,pin,"
-        # "${modifier}SHIFT,O,toggleopaque,"
 
         # Better control integration
         "${modifier}SHIFT,W,exec,better-control -w"

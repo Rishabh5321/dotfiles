@@ -7,7 +7,5 @@
     ./wayland.nix
     ./security.nix
     ./lockscreen.nix
-
-    # ./quickshell.nix
   ];
 }
