@@ -65,6 +65,7 @@
       alacritty # GPU-accelerated terminal
       atuin # Shell history with sync
       bat # Enhanced cat with syntax highlighting
+      bluetui
       bottom
       btop # Resource monitor
       eza # Modern ls replacement
