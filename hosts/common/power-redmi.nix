@@ -115,25 +115,25 @@ in
     SUBSYSTEM=="power_supply", ATTR{online}=="0", TAG+="systemd", ENV{SYSTEMD_WANTS}="power-unplugged-event.service"
   '';
 
-  boot.loader.grub.default = 4;
+  # boot.loader.grub.default = 4;
 
-  boot.loader.grub.extraEntries = ''
-    menuentry "CachyOS" {
-      insmod btrfs
-      search --set=root --fs-uuid d48a70c6-0ebf-417f-ad81-3be5a8deb8f0
+  # boot.loader.grub.extraEntries = ''
+  #   menuentry "CachyOS" {
+  #     insmod btrfs
+  #     search --set=root --fs-uuid d48a70c6-0ebf-417f-ad81-3be5a8deb8f0
 
-      linux /@/boot/vmlinuz-linux-cachyos root=UUID=d48a70c6-0ebf-417f-ad81-3be5a8deb8f0 rw quiet rootflags=subvol=@
+  #     linux /@/boot/vmlinuz-linux-cachyos root=UUID=d48a70c6-0ebf-417f-ad81-3be5a8deb8f0 rw quiet rootflags=subvol=@
 
-      # Load Intel microcode first, then the OS image
-      initrd /@/boot/intel-ucode.img /@/boot/initramfs-linux-cachyos.img
-    }
+  #     # Load Intel microcode first, then the OS image
+  #     initrd /@/boot/intel-ucode.img /@/boot/initramfs-linux-cachyos.img
+  #   }
 
-    # # Optional: A fallback entry for the LTS kernel you also have installed
-    menuentry "CachyOS (LTS)" {
-      insmod btrfs
-      search --set=root --fs-uuid d48a70c6-0ebf-417f-ad81-3be5a8deb8f0
-      linux /@/boot/vmlinuz-linux-cachyos-lts root=UUID=d48a70c6-0ebf-417f-ad81-3be5a8deb8f0 rw quiet rootflags=subvol=@
-      initrd /@/boot/intel-ucode.img /@/boot/initramfs-linux-cachyos-lts.img
-    }
-  '';
+  #   # # Optional: A fallback entry for the LTS kernel you also have installed
+  #   menuentry "CachyOS (LTS)" {
+  #     insmod btrfs
+  #     search --set=root --fs-uuid d48a70c6-0ebf-417f-ad81-3be5a8deb8f0
+  #     linux /@/boot/vmlinuz-linux-cachyos-lts root=UUID=d48a70c6-0ebf-417f-ad81-3be5a8deb8f0 rw quiet rootflags=subvol=@
+  #     initrd /@/boot/intel-ucode.img /@/boot/initramfs-linux-cachyos-lts.img
+  #   }
+  # '';
 }
