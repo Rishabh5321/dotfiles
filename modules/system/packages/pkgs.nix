@@ -116,7 +116,7 @@
       pysolfc # Solitaire Game
       gamescope # Gaming compositor
       heroic # Epic Games launcher
-      hydralauncher
+      # hydralauncher
       # lutris # Gaming platform manager
       mangohud # Gaming overlay
       steam # Steam gaming platform
@@ -203,10 +203,14 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.anymex
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.better-control # Device control
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.hydralauncher
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.mangayomi
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.grayjay
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
     ];
 
