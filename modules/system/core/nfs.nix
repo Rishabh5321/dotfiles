@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   fileSystems = {
     "/mnt/nfs/docker" = {
