@@ -60,6 +60,7 @@
       obsidian # Knowledge management
       vim # Classic text editor
       vscode # VS Code editor
+      zed
 
       # ===== TERMINAL APPLICATIONS =====
       alacritty # GPU-accelerated terminal
@@ -211,7 +212,6 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.zed-editor
     ];
 
   # ===== FONTS CONFIGURATION =====
