@@ -60,7 +60,7 @@
       obsidian # Knowledge management
       vim # Classic text editor
       vscode # VS Code editor
-      zed
+      zed-editor
 
       # ===== TERMINAL APPLICATIONS =====
       alacritty # GPU-accelerated terminal
