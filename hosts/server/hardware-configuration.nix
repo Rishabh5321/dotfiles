@@ -15,7 +15,7 @@
   boot.initrd.kernelModules = [ ];
   #boot.kernelParams = [ "radeon.runpm=0" "amdgpu.runpm=0" ];
   boot.blacklistedKernelModules = [ "amdgpu" "radeon" ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-intel" "fuse" ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [
     "modprobe.blacklist=amdgpu"
