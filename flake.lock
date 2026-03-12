@@ -1308,11 +1308,11 @@
         "userborn": "userborn"
       },
       "locked": {
-        "lastModified": 1773244020,
-        "narHash": "sha256-5XtzQvqW/LkdHMgs3hF54PtIHq3tkQc8VVDjAp5Nl2I=",
+        "lastModified": 1773257724,
+        "narHash": "sha256-PC7Vy++vu9669jGv61M7TczBUHiUpLOMrMZ76iv6ReQ=",
         "owner": "numtide",
         "repo": "system-manager",
-        "rev": "5855b1f463d2ac146decfe38a002d5b2464ab156",
+        "rev": "581b55868afd5869a2a54ea28c387531a1f2c39f",
         "type": "github"
       },
       "original": {
