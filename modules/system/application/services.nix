@@ -22,6 +22,9 @@ _: {
 
     davfs2.enable = true;
 
+    gnome.tracker-miners.enable = true;
+    gnome.tracker.enable = true;
+
     # ===== INPUT & HARDWARE =====
     # Touchpad and input device configuration
     libinput.enable = true;
