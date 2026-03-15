@@ -22,8 +22,8 @@ _: {
 
     davfs2.enable = true;
 
-    gnome.tracker-miners.enable = true;
-    gnome.tracker.enable = true;
+    gnome.localsearch.enable = true;
+    gnome.tinysparql.enable = true;
 
     # ===== INPUT & HARDWARE =====
     # Touchpad and input device configuration
