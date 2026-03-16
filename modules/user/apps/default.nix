@@ -3,7 +3,7 @@
 { ... }:
 {
   imports = [
-    ./discord.nix
+    # ./discord.nix
     ./obsidian.nix
   ];
 }
