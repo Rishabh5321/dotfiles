@@ -206,7 +206,7 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.hydralauncher
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.mangayomi
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.p-stream-desktop
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.opera
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.grayjay
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
