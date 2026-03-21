@@ -1,8 +1,7 @@
 name: update-flakes
 on:
   schedule:
-    - cron: "0 0 * * *"
-      timezone: "Asia/Kolkata"
+    - cron: "30 18 * * *"
   workflow_dispatch:
 
 permissions:
