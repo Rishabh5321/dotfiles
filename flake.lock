@@ -1062,11 +1062,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1774108192,
-        "narHash": "sha256-MOBntRy3q/0pmZGF8G+XRzdkHoPFhJTxAPH4aRVq/CQ=",
+        "lastModified": 1774184498,
+        "narHash": "sha256-tscUYNjBfi52Uwu40epdAhoFztsmroKBEBvr22oCnv4=",
         "owner": "noctalia-dev",
         "repo": "noctalia-qs",
-        "rev": "8b5f351cad86a0f03c0ee1a96ee65244e68f59e3",
+        "rev": "12dba9653ae2c0dd24bf2633e2572a8093b0df5e",
         "type": "github"
       },
       "original": {
