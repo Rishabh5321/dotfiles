@@ -99,6 +99,7 @@
     wgcf
 
     # --- Screenshots & Graphics ---
+    gsettings-desktop-schemas
     grim
     slurp
     swappy

@@ -140,6 +140,7 @@
       gparted # Partition manager
       gnome-keyring # Credential management
       gnome-system-monitor # System monitoring
+      gsettings-desktop-schemas # GSettings schemas for GLib/GIO
       grim # Screenshot tool
       mesa # Graphics drivers
       mission-center # System information
@@ -178,9 +179,12 @@
 
       # ===== QT THEMING =====
       kdePackages.qtstyleplugin-kvantum # Qt5/6 Kvantum plugin
+      kdePackages.qtwayland # Qt6 Wayland support
+      qt6.qtwayland # Qt6 Wayland support
       libsForQt5.qtstyleplugin-kvantum # Qt5 Kvantum plugin
       libsForQt5.qt5.qtbase # Qt5 base
       libsForQt5.qt5.qtsvg # Qt5 SVG support
+      libsForQt5.qt5.qtwayland # Qt5 Wayland support
 
       # ===== APPLICATIONS =====
       #deja-dup              # Backup tool

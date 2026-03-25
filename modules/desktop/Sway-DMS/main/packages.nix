@@ -10,7 +10,6 @@
     libsecret
     xdg-utils
     pwvucontrol
-    kdePackages.kdeconnect-kde
     swaylock
     swayidle
     wlogout

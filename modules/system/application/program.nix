@@ -4,6 +4,10 @@
   programs = {
     # ===== DESKTOP APPLICATIONS =====
     firefox.enable = true;
+    kdeconnect = {
+      enable = true;
+      package = pkgs.kdePackages.kdeconnect-kde;
+    };
 
     thunar = {
       enable = true;
