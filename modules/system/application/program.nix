@@ -1,4 +1,5 @@
 { pkgs
+, lib
 , ...
 }: {
   programs = {
@@ -6,7 +7,7 @@
     firefox.enable = true;
     kdeconnect = {
       enable = true;
-      package = pkgs.kdePackages.kdeconnect-kde;
+      package = lib.mkForce pkgs.kdePackages.kdeconnect-kde;
     };
 
     thunar = {
