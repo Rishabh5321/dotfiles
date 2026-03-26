@@ -9,8 +9,13 @@
     config = {
       common.default = [
         "gtk"
-        "gnome"
       ];
+      niri = {
+        default = [ "gtk" ];
+        # screencasting requires xdg-desktop-portal-gnome
+        "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
+      };
     };
   };
 }
