@@ -102,7 +102,6 @@ in
         "${modifier}+F".action.maximize-column = [ ];
         "${modifier}+Shift+F".action.toggle-window-floating = [ ];
         "${modifier}+Shift+C".action.quit = [ ];
-        "${modifier}+Shift+P".action.pin-window = [ ];
 
         "${modifier}+Left".action.focus-column-left = [ ];
         "${modifier}+Right".action.focus-column-right = [ ];
@@ -115,12 +114,12 @@ in
 
         "${modifier}+Shift+Left".action.move-column-left = [ ];
         "${modifier}+Shift+Right".action.move-column-right = [ ];
-        "${modifier}+Shift+Up".action.move-window-up-or-to-workspace-above = [ ];
-        "${modifier}+Shift+Down".action.move-window-down-or-to-workspace-below = [ ];
+        "${modifier}+Shift+Up".action.move-window-up-or-to-workspace-up = [ ];
+        "${modifier}+Shift+Down".action.move-window-down-or-to-workspace-down = [ ];
         "${modifier}+Shift+H".action.move-column-left = [ ];
         "${modifier}+Shift+L".action.move-column-right = [ ];
-        "${modifier}+Shift+K".action.move-window-up-or-to-workspace-above = [ ];
-        "${modifier}+Shift+J".action.move-window-down-or-to-workspace-below = [ ];
+        "${modifier}+Shift+K".action.move-window-up-or-to-workspace-up = [ ];
+        "${modifier}+Shift+J".action.move-window-down-or-to-workspace-down = [ ];
 
         "${modifier}+Ctrl+Left".action.set-column-width = "-10%";
         "${modifier}+Ctrl+Right".action.set-column-width = "+10%";
@@ -152,8 +151,6 @@ in
         "${modifier}+Shift+8".action.move-column-to-workspace = 8;
         "${modifier}+Shift+9".action.move-column-to-workspace = 9;
         "${modifier}+Shift+0".action.move-column-to-workspace = 10;
-
-        "${modifier}+Mouse-Left".action.drag-window = [ ];
 
         "XF86AudioRaiseVolume".action.spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+" ];
         "XF86AudioLowerVolume".action.spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-" ];
