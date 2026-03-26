@@ -27,6 +27,9 @@ in
       ];
 
       input = {
+        focus-follows-mouse = {
+          enable = true;
+        };
         mod-key = "Super";
         keyboard.xkb = {
           layout = "us";
@@ -102,6 +105,11 @@ in
         "${modifier}+F".action.maximize-column = [ ];
         "${modifier}+Shift+F".action.toggle-window-floating = [ ];
         "${modifier}+Shift+C".action.quit = [ ];
+
+        "${modifier}+WheelScrollDown".action.focus-column-right = [ ];
+        "${modifier}+WheelScrollUp".action.focus-column-left = [ ];
+        "${modifier}+Shift+WheelScrollDown".action.focus-window-down = [ ];
+        "${modifier}+Shift+WheelScrollUp".action.focus-window-up = [ ];
 
         "${modifier}+Left".action.focus-column-left = [ ];
         "${modifier}+Right".action.focus-column-right = [ ];
