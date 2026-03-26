@@ -184,7 +184,7 @@
     let
       system = "x86_64-linux";
       username = "rishabh";
-      wallpaper = "wall3.jpg";
+      wallpaper = "wall14.jpg";
       flakeDir = "/home/${username}/dotfiles ";
       wallpapers = "${wallpapers-repo}/src";
 
