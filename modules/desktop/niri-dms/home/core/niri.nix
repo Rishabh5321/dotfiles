@@ -1,12 +1,11 @@
-{ lib
-, pkgs
+{ pkgs
 , config
 , inputs
 , ...
 }:
 
 let
-  inherit (import ../misc/variables.nix) browser terminal extraMonitorSettings;
+  inherit (import ../misc/variables.nix) browser terminal;
   modifier = "Mod";
 in
 {
