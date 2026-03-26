@@ -21,6 +21,7 @@ in
         { command = [ "dbus-update-activation-environment" "--all" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" ]; }
         { command = [ "systemctl" "--user" "import-environment" "QT_QPA_PLATFORMTHEME" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" ]; }
         { command = [ "swaync" ]; }
+        { command = [ "kdeconnect-indicator" ]; }
         { command = [ "wl-paste" "--type" "text" "--watch" "cliphist" "store" ]; }
         { command = [ "wl-paste" "--type" "image" "--watch" "cliphist" "store" ]; }
         { command = [ "systemctl" "--user" "start" "hyprpolkitagent" ]; }
@@ -57,8 +58,9 @@ in
           { proportion = 0.33333; }
           { proportion = 0.5; }
           { proportion = 0.66667; }
+          { proportion = 1.0; }
         ];
-        default-column-width.proportion = 0.5;
+        default-column-width.proportion = 1.0;
         border = {
           width = 2;
           active = "#${config.stylix.base16Scheme.base0D}";
@@ -75,6 +77,7 @@ in
       window-rules = [
         {
           matches = [{ }];
+          open-maximized = true;
           geometry-corner-radius = {
             top-left = 12.0;
             top-right = 12.0;
