@@ -49,7 +49,7 @@
       gemini-cli-bin # AI
       lazygit # Git TUI client
       lazydocker # Docker container management
-      winboat # Windows
+      # winboat # Windows
 
       # ===== EDITORS & IDEs =====
       # android-studio # Android IDE
