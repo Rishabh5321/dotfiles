@@ -214,7 +214,7 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.grayjay
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio-v2
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
+      # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
