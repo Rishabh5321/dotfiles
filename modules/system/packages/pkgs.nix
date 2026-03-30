@@ -189,7 +189,7 @@
       # ===== APPLICATIONS =====
       #deja-dup              # Backup tool
       # grayjay # Video platform client
-      localsend # File sharing
+      packet # File sharing
       #pods                  # Podcast client
       #popcorntime           # Movie streaming
       #protonup-qt           # Proton version manager
