@@ -198,7 +198,7 @@
       #vivaldi-ffmpeg-codecs # Vivaldi media codecs
 
       #VPN
-      protonvpn-gui
+      proton-vpn
 
       # ===== FLAKE INPUTS =====
       # inputs.grayjay.packages.${pkgs.stdenv.hostPlatform.system}.grayjay # Video platform client
