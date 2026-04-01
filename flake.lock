@@ -1623,11 +1623,11 @@
     "wallpapers-repo": {
       "flake": false,
       "locked": {
-        "lastModified": 1769583037,
-        "narHash": "sha256-AIuRmd/Y0+hNg2zgtCUYvHhyNMMPyQd0RGsbOWAz+Dg=",
+        "lastModified": 1775041027,
+        "narHash": "sha256-XfH5iJKGwZokBaIKv1XBo60/seYZ9V7xRzaBXe9WwPM=",
         "owner": "Rishabh5321",
         "repo": "walls",
-        "rev": "8d358a00f1b12ed1523f29c65d4b38caab5859fb",
+        "rev": "20021db819a129d20a5f24f89c95473bcf47c0ef",
         "type": "github"
       },
       "original": {
