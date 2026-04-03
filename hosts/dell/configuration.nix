@@ -8,7 +8,7 @@
     ../../modules/system
     ../common/power-server.nix
     ../../modules/desktop/Sway-Noctalia/main
-    inputs.nixos-hardware.nixosModules.xiaomi-redmibook-15-pro-2021
+    # inputs.nixos-hardware.nixosModules.xiaomi-redmibook-15-pro-2021
   ];
 
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
