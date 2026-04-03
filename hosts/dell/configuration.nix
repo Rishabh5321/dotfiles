@@ -7,9 +7,29 @@
     ./hardware-configuration.nix
     ../../modules/system
     ../common/power-server.nix
-    ../../modules/desktop/Sway-Noctalia/main
+    ../../modules/desktop/Sway-DMS/main
     # inputs.nixos-hardware.nixosModules.xiaomi-redmibook-15-pro-2021
   ];
+
+  networking = {
+    # 1. Attach the physical port to the bridge
+    bridges."br0".interfaces = [ "enp2s0" ];
+
+    # 2. Tell the Firewall to stop blocking traffic on these interfaces
+    firewall.trustedInterfaces = [ "br0" "virbr0" ];
+
+    # 3. Ensure the bridge gets the host's IP, not the physical port
+    interfaces."br0".useDHCP = true;
+    interfaces."enp2s0".useDHCP = false;
+  };
+
+  services.nfs.server.enable = true;
+  services.nfs.server.exports = ''
+    /mnt/Docker  *(rw,sync,no_subtree_check,fsid=1)
+    /mnt/E_Disk *(rw,sync,no_subtree_check,fsid=2)
+    /mnt/Raid   *(rw,sync,no_subtree_check,fsid=3)
+    /home  *(rw,sync,no_subtree_check,fsid=4)
+  '';
 
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
