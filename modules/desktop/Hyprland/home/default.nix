@@ -13,7 +13,7 @@
     # Services
     ./services/gnome-keyring.nix
     ./services/swaync.nix
-    ./services/swww.nix
+    ./services/awww.nix
 
     # UI elements
     ./ui/rofi/rofi.nix

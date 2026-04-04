@@ -20,5 +20,5 @@ pkgs.writeShellScriptBin "wallSelector" ''
     exit 0
   fi
 
-  exec ${pkgs.swww}/bin/swww img "$chosen_wallpaper"
+  exec ${pkgs.awww}/bin/awww img "$chosen_wallpaper"
 ''

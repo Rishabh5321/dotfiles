@@ -8,7 +8,7 @@
     ../../modules/system
     ../common/power-server.nix
     ../common/power-redmi.nix
-    ../../modules/desktop/Sway-DMS/main
+    ../../modules/desktop/i3/main
     # inputs.nixos-hardware.nixosModules.xiaomi-redmibook-15-pro-2021
   ];
 

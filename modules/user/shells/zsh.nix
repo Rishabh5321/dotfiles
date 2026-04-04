@@ -75,7 +75,7 @@
       nix-switchu = "cd ~/dotfiles && git pull && nh os switch -u ~/dotfiles";
       nix-clean = "sudo nix-collect-garbage && sudo nix-collect-garbage -d && sudo rm /nix/var/nix/gcroots/auto/* && nix-collect-garbage && nix-collect-garbage -d";
       wallfetch = "cd ~/dotfiles && git fetch wallpaper && git subtree pull --prefix=wallpapers wallpaper main --squash && git push";
-      wallswitch = "swww img /home/${username}/Pictures/Wallpapers/${wallpaper}";
+      wallswitch = "awww img /home/${username}/Pictures/Wallpapers/${wallpaper}";
 
       # Python
       piv = "python -m venv .venv";

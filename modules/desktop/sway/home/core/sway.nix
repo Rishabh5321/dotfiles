@@ -23,14 +23,14 @@ with lib; {
       startup = [
         { command = "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
         { command = "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
-        { command = "swww-daemon"; always = true; }
+        { command = "awww-daemon"; always = true; }
         { command = "swaync"; always = true; }
         { command = "nm-applet --indicator"; always = true; }
         { command = "waybar"; always = true; }
         { command = "kdeconnect-indicator"; always = true; }
         { command = "wl-paste --type text --watch cliphist store"; always = true; }
         { command = "wl-paste --type image --watch cliphist store"; always = true; }
-        # { command = "sleep 10 && swww img ${wallpapers}/${wallpaper}"; always = true; }
+        # { command = "sleep 10 && awww img ${wallpapers}/${wallpaper}"; always = true; }
 
         # Open apps on specific workspaces
         { command = "swaymsg 'workspace number 1; exec zen'"; always = true; }

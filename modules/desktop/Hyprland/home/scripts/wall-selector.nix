@@ -11,6 +11,6 @@ pkgs.writeShellScriptBin "wallSelector" ''
   # Exit if no wallpaper was selected
   [ -z "$chosen" ] && exit;
 
-  # Set the selected wallpaper using swww
-  ${pkgs.swww}/bin/swww img ${wallpaperDir}/"$chosen"
+  # Set the selected wallpaper using awww
+  ${pkgs.awww}/bin/awww img ${wallpaperDir}/"$chosen"
 ''

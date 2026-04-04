@@ -12,7 +12,7 @@
       }
       {
         delay = 1500;
-        command = "${pkgs.xorg.xset}/bin/xset dpms force off";
+        command = "${pkgs.xset}/bin/xset dpms force off";
       }
     ];
   };
