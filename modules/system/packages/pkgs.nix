@@ -169,6 +169,7 @@
       # ===== OFFICE & PRODUCTIVITY =====
       # libreoffice # Office suite
       onlyoffice-desktopeditors # Alternative office suite
+      gopeed # Download Manager
       # varia # Download Manager
 
       # ===== THEMES & ICONS =====
