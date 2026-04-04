@@ -113,7 +113,7 @@ in
 
       startup = [
         { command = "nm-applet --indicator"; always = true; }
-        { command = "kdeconnect-indicator"; always = true; }
+        { command = "kdeconnectd && kdeconnect-indicator"; always = true; }
         { command = "dunst"; always = true; }
         { command = "feh --bg-fill ${wallpapers}/${wallpaper}"; always = true; }
         { command = "xsetroot -cursor_name left_ptr"; always = true; }
