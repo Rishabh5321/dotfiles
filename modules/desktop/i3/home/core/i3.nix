@@ -3,7 +3,7 @@
 let
   modifier = "Mod4"; # Use the Super key as the modifier
   browser = "firefox"; # Set default browser
-  terminal = "ghostty"; # Set default terminal
+  terminal = "kitty"; # Set default terminal
 in
 {
   xsession.enable = true;
