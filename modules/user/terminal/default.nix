@@ -4,6 +4,8 @@
 {
   imports = [
     ./alacritty.nix
+    ./bat.nix
+    ./bottom.nix
     # ./ghostty.nix
     ./kitty.nix
   ];
