@@ -6,7 +6,7 @@
 {
   imports = [
     ../modules/system/packages/nix_settings.nix
-    ./modules/pam.nix
+    # ./modules/pam.nix
   ];
 
   config = {
@@ -17,9 +17,9 @@
       gh
     ];
 
-    system-manager.pam = {
-      enable = true;
-      services = [ "hyprlock" "swaylock" ];
-    };
+    # system-manager.pam = {
+    #   enable = true;
+    #   services = [ "hyprlock" "swaylock" ];
+    # };
   };
 }
