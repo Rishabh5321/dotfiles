@@ -76,6 +76,7 @@
       # gnome-console # GNOME terminal
       htop # Process monitor
       jq # JSON processor
+      lm_sensors # Sensors
       # ranger # File manager
       tealdeer # Simplified man pages
       tree # Directory tree viewer
@@ -149,6 +150,7 @@
       networkmanagerapplet # Network management
       nload # Network monitoring
       nwg-look # GTK theme manager
+      pciutils
       podman-desktop # Container management GUI
       podman-tui # Container management TUI
       resources # System monitor
