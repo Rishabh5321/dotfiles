@@ -1,6 +1,7 @@
-{ pkgs
-, inputs
-, ...
+{
+  pkgs,
+  inputs,
+  ...
 }:
 {
 
@@ -10,8 +11,7 @@
     #   stremio = pkgs.callPackage ../../../pkgs/stremio-linux-shell.nix { };
     #   # fladder = pkgs.callPackage ../../../pkgs/fladder.nix { };
     # in
-    with pkgs;
-    [
+    with pkgs; [
 
       # ===== Custom Packages =====
       # stremio
@@ -223,6 +223,8 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
+
+      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta
     ];
 
   # ===== FONTS CONFIGURATION =====
