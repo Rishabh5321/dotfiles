@@ -32,7 +32,7 @@
     };
 
     # Keyring management (disabled)
-    #seahorse.enable = lib.mkForce true;
+    # seahorse.enable = lib.mkForce true;
 
     # ===== VIRTUALIZATION =====
     virt-manager.enable = false;

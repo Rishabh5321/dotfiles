@@ -108,6 +108,7 @@
       # stremio # Media streaming
       vlc # Multimedia player
       pear-desktop # YouTube Music client
+      eog # For Image Viewing
       qimgv # image viewer
       xnviewmp # image viewer
       # yazi # File manager
@@ -136,6 +137,7 @@
       cliphist # Clipboard manager
       # cloudflare-warp # VPN client
       # fast-cli # Internet speed test
+      duf # Disk usage in terminal
       gnome-disk-utility # Disk management
       gparted # Partition manager
       gnome-keyring # Credential management

@@ -3,8 +3,13 @@ _: {
     # ===== NETWORK & CONNECTIVITY =====
     # SSH daemon for remote access
     openssh = {
-      enable = true;
-      settings.PermitRootLogin = "prohibit-password"; # Security: disable root password login
+      enable = true; # Enable SSH
+      settings = {
+        PermitRootLogin = "no"; # Prevent root from SSH login
+        PasswordAuthentication = true; #Users can SSH using kb and password
+        KbdInteractiveAuthentication = true;
+      };
+      ports = [ 22 ];
     };
 
     # Cloudflare WARP VPN client
