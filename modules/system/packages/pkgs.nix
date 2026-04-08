@@ -1,7 +1,6 @@
-{
-  pkgs,
-  inputs,
-  ...
+{ pkgs
+, inputs
+, ...
 }:
 {
 
@@ -96,7 +95,7 @@
       discord # Gaming communication
       # ferdium # Multi-service messaging
       # telegram-desktop # Telegram client
-      # thunderbird-latest # Email client
+      thunderbird-latest # Email client
 
       # ===== MEDIA & ENTERTAINMENT =====
       jellyfin-media-player # Media center client
