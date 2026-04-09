@@ -274,7 +274,7 @@
           modules = [
             ./system-manager/configuration.nix
             {
-              nixpkgs.hostPlatform = system;
+              nixpkgs.stdenv.hostPlatform = system;
             }
           ];
           extraSpecialArgs = commonArgs // {

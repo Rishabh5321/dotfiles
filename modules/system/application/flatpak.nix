@@ -6,6 +6,7 @@ _:
       # "com.github.iwalton3.jellyfin-media-player"
       "tv.kodi.Kodi"
       "com.stremio.Stremio"
+      "ru.linux_gaming.PortProton"
       "io.github.giantpinkrobots.varia"
     ];
     update = {
