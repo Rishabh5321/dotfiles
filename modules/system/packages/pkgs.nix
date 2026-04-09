@@ -123,6 +123,7 @@
       # lutris # Gaming platform manager
       mangohud # Gaming overlay
       steam # Steam gaming platform
+      steam-rom-manager
       umu-launcher # Umu
 
       # ===== FILE MANAGEMENT =====
