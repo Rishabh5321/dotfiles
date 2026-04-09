@@ -115,6 +115,7 @@
 
       # ===== GAMING =====
       aisleriot # Card Game
+      protontricks # Proton compatibility tool
       pysolfc # Solitaire Game
       gamescope # Gaming compositor
       heroic # Epic Games launcher
