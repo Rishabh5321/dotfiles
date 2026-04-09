@@ -7,5 +7,4 @@
     ./pkgs.nix
     ./pkgs_stable.nix
   ];
-  services.tailscale.enable = true;
 }
