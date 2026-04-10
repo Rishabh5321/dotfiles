@@ -803,11 +803,11 @@
         "nixpkgs-nixcord": "nixpkgs-nixcord"
       },
       "locked": {
-        "lastModified": 1775752804,
-        "narHash": "sha256-ozKd2zUqg7R04ewLP8Jwzd83NtrDO6yCYxBiWuqcroM=",
+        "lastModified": 1775782305,
+        "narHash": "sha256-VaVFMlZybv5llQfao++bTGWQ7WV4sdACX4/YgM96Tas=",
         "owner": "FlameFlag",
         "repo": "nixcord",
-        "rev": "22d207ba01e99c0b49f824b80f5e7e81954f6c76",
+        "rev": "9284a0b46470bfac797f8e8be6f7b55459ecc5cf",
         "type": "github"
       },
       "original": {
