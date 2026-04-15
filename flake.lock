@@ -121,11 +121,11 @@
         "quickshell": "quickshell_2"
       },
       "locked": {
-        "lastModified": 1776201500,
-        "narHash": "sha256-97X9EasibpsPcTJv7eZcXuvXVtia/VF+Ez9n/fvzGRw=",
+        "lastModified": 1776241981,
+        "narHash": "sha256-mcJnat8GHgJ8czTrhtErNOwfLoxjndWBUSr7uqxSPjQ=",
         "owner": "caelestia-dots",
         "repo": "shell",
-        "rev": "90528c513f409296f26deb54a9371529e6a5dfb7",
+        "rev": "20dca094ecab5db2c1a361cd05bcac7fbd886635",
         "type": "github"
       },
       "original": {
