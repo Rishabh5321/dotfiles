@@ -27,4 +27,11 @@
   ];
 
   documentation.nixos.enable = false;
+
+  system.autoUpgradeOnShutdown = {
+    enable = true;
+    flake = "github:rishabh5321/dotfiles";
+    host = "dankmaterialbook";
+    minimumBatteryToProceedWithoutAC = 30;
+  };
 }

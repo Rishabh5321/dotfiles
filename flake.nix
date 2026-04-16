@@ -9,6 +9,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
+    upgrade-on-shutdown.url = "github:yeshey/nixos-upgrade-on-shutdown";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     determinate = {
@@ -172,6 +174,7 @@
     , nixpkgs
     , nixpkgs-stable
     , home-manager
+    , upgrade-on-shutdown
     , # , sddm-sugar-candy-nix
       nur
     , wallpapers-repo
@@ -247,6 +250,7 @@
             inputs.stylix.nixosModules.stylix
             inputs.nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
+            upgrade-on-shutdown.nixosModules.default
             # sddm-sugar-candy-nix.nixosModules.default
             nur.modules.nixos.default
             lsfg-vk-flake.nixosModules.default
