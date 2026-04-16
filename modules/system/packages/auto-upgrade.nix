@@ -1,13 +1,9 @@
-{ inputs, ... }: {
-  system.autoUpgrade = {
+{ ... }: {
+  system.autoUpgradeOnShutdown = {
     enable = true;
-    flake = inputs.self.outPath;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "-L" # print build logs
-    ];
-    dates = "8:30";
-    #randomizedDelaySec = "45min";
+    flake = "github:rishabh5321/dotfiles";
+    host = "dankmaterialbook";
+    useNom = false;
+    minimumBatteryToProceedWithoutAC = 80;
   };
 }
