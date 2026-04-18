@@ -57,6 +57,9 @@
     symbola
     terminus_font
 
+    # --- Browser ---
+    brave
+
     # --- Communication & Productivity ---
     ayugram-desktop
     # discord
