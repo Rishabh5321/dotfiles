@@ -20,7 +20,6 @@
 
     system-manager = {
       url = "github:numtide/system-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ######################
@@ -278,7 +277,7 @@
           modules = [
             ./system-manager/configuration.nix
             {
-              nixpkgs.stdenv.hostPlatform = system;
+              nixpkgs.hostPlatform = system;
             }
           ];
           extraSpecialArgs = commonArgs // {
