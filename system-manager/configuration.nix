@@ -15,7 +15,6 @@
 
     environment.systemPackages = with pkgs; [
       gh
-      # System-level CLI tools
       vim
       pciutils
       usbutils
