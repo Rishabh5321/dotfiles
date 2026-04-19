@@ -28,9 +28,9 @@ in
     ./power.nix
     ./theme.nix
     ./nh.nix
-    ./noctalia.nix
+    # ./noctalia.nix
 
-    ./../../modules/desktop/Sway-Noctalia/home
+    ./../../modules/desktop/Sway-DMS/home
   ];
 
   home.shellAliases = {
