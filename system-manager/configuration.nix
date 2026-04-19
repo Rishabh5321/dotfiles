@@ -6,7 +6,7 @@
 {
   imports = [
     ../modules/system/packages/nix_settings.nix
-    # ./modules/pam.nix
+    ./modules/pam.nix
   ];
 
   config = {
@@ -15,11 +15,21 @@
 
     environment.systemPackages = with pkgs; [
       gh
+      # System-level CLI tools
+      vim
+      pciutils
+      usbutils
+      curl
     ];
 
-    # system-manager.pam = {
-    #   enable = true;
-    #   services = [ "hyprlock" "swaylock" ];
-    # };
+    # Automate the Polkit/Auth fix from your README
+    systemd.tmpfiles.rules = [
+      "L+   /run/wrappers/bin/unix_chkpwd -    -    -   -   /usr/bin/unix_chkpwd"
+    ];
+
+    system-manager.pam = {
+      enable = true;
+      services = [ "hyprlock" "swaylock" "sway" "hyprland" ];
+    };
   };
 }

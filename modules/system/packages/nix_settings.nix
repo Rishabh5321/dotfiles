@@ -38,6 +38,9 @@
         "nix-command" # New nix CLI interface
         "flakes" # Flake system for reproducible configurations
       ];
+
+      # Allow specific users to communicate with the Nix daemon
+      trusted-users = [ "root" "@wheel" "rishabh" ];
     };
 
     # ===== GARBAGE COLLECTION (DISABLED) =====
