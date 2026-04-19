@@ -62,7 +62,7 @@
 
     # --- Communication & Productivity ---
     ayugram-desktop
-    # discord
+    discord
     obsidian
     kdePackages.kdeconnect-kde
 
