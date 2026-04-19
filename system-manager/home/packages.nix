@@ -21,7 +21,7 @@
     nemo
     # nautilus
 
-    kodi
+    # kodi
 
     # ===== OFFICE & PRODUCTIVITY =====
     # libreoffice # Office suite
@@ -125,7 +125,7 @@
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.mangayomi
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
-    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
+    # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
   ];
