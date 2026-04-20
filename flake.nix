@@ -203,6 +203,7 @@
           allowUnfreePredicate = _: true;
         };
         overlays = [
+          nur.overlays.default
           # inputs.hyprpanel.overlay
           # sddm-sugar-candy-nix.overlays.default
         ];
@@ -251,7 +252,7 @@
             home-manager.nixosModules.home-manager
             upgrade-on-shutdown.nixosModules.default
             # sddm-sugar-candy-nix.nixosModules.default
-            nur.modules.nixos.default
+            # nur.modules.nixos.default
             lsfg-vk-flake.nixosModules.default
             inputs.determinate.nixosModules.default
             # Home Manager configuration integrated into NixOS
