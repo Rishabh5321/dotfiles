@@ -51,6 +51,7 @@ in
       bind = ${modifier}, F, togglefullscreen
       bind = ${modifier}+SHIFT, F, togglefloating
       bind = ${modifier}+SHIFT, C, quit
+      bind = ${modifier}+SHIFT, R, reload_config
 
       # --- GLOBAL WORKSPACES ---
       # We removed the monitor index (the ', 0') from the end.
@@ -62,6 +63,11 @@ in
       bind = ${modifier}, 3, view, 3
       bind = ${modifier}, 4, view, 4
       bind = ${modifier}, 5, view, 5
+      bind = ${modifier}, 6, view, 6
+      bind = ${modifier}, 7, view, 7
+      bind = ${modifier}, 8, view, 8
+      bind = ${modifier}, 9, view, 9
+      # bind = ${modifier}, 0, view, 0
 
       # Move Window to Workspace
       bind = ${modifier}+SHIFT, 1, tag, 1
@@ -69,12 +75,29 @@ in
       bind = ${modifier}+SHIFT, 3, tag, 3
       bind = ${modifier}+SHIFT, 4, tag, 4
       bind = ${modifier}+SHIFT, 5, tag, 5
+      bind = ${modifier}+SHIFT, 6, tag, 6
+      bind = ${modifier}+SHIFT, 7, tag, 7
+      bind = ${modifier}+SHIFT, 8, tag, 8
+      bind = ${modifier}+SHIFT, 9, tag, 9
+      # bind = ${modifier}+SHIFT, 0, tag, 0
 
       # Switch Focus
       bind = ${modifier}, H, focusdir, left
       bind = ${modifier}, L, focusdir, right
       bind = ${modifier}, K, focusdir, up
       bind = ${modifier}, J, focusdir, down
+
+      # 3-finger: Window focus
+      gesturebind=none,left,3,focusdir,left
+      gesturebind=none,right,3,focusdir,right
+      gesturebind=none,up,3,focusdir,up
+      gesturebind=none,down,3,focusdir,down
+
+      # 4-finger: Workspace navigation
+      gesturebind=none,left,4,viewtoright_have_client
+      gesturebind=none,right,4,viewtoleft_have_client
+      gesturebind=none,up,4,toggleoverview
+      gesturebind=none,down,4,toggleoverview
 
       # Startup
       exec-once = swaync
