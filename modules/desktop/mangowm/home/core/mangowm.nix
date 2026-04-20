@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, ... }:
 
 let
   inherit (import ../misc/variables.nix) browser terminal extraMonitorSettings;

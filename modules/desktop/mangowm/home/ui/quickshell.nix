@@ -202,7 +202,7 @@
       matugenTemplateVscode = true;
 
       # Power & Locale
-      use24HourClock = false; 
+      use24HourClock = false;
       # Power Management
       acMonitorTimeout = 120;
       acLockTimeout = 60;
