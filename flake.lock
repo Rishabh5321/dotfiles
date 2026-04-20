@@ -733,7 +733,7 @@
         "type": "github"
       }
     },
-    "mangowm": {
+    "mango": {
       "inputs": {
         "flake-parts": "flake-parts_2",
         "nixpkgs": [
@@ -1437,7 +1437,7 @@
         "ghostty": "ghostty",
         "home-manager": "home-manager_2",
         "lsfg-vk-flake": "lsfg-vk-flake",
-        "mangowm": "mangowm",
+        "mango": "mango",
         "niri": "niri",
         "nix-flatpak": "nix-flatpak",
         "nix-gaming": "nix-gaming",
@@ -1461,7 +1461,7 @@
     "scenefx": {
       "inputs": {
         "nixpkgs": [
-          "mangowm",
+          "mango",
           "nixpkgs"
         ]
       },

@@ -1,8 +1,8 @@
 { inputs, ... }:
 {
-  imports = [
-    inputs.mangowm.nixosModules.mango
-  ];
+  # imports = [
+  #   inputs.mango.nixosModules.mango
+  # ];
 
   programs.mango = {
     enable = true;

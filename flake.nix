@@ -93,7 +93,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    mangowm = {
+    mango = {
       url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -259,6 +259,7 @@
             # sddm-sugar-candy-nix.nixosModules.default
             # nur.modules.nixos.default
             lsfg-vk-flake.nixosModules.default
+            inputs.mango.nixosModules.mango
             inputs.determinate.nixosModules.default
             # Home Manager configuration integrated into NixOS
             {
