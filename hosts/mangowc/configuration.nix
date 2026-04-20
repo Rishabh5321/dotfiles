@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
     ../../modules/system
     ../common/power-redmi.nix
-    ../../modules/desktop/sway/main
+    ../../modules/desktop/mangowm/main
     inputs.nixos-hardware.nixosModules.xiaomi-redmibook-15-pro-2021
     #./testing-pkgs.nix
     #./aagl.nix
@@ -15,7 +15,7 @@
 
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  networking.hostName = "swaybook"; # Define your hostname.
+  networking.hostName = "swaydms"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
