@@ -19,8 +19,6 @@
       runUserMatugenTemplates = true;
       widgetBackgroundColor = "sch";
       widgetColorMode = "colorful";
-      controlCenterTileColorMode = "primary";
-      buttonColorMode = "primary";
       cornerRadius = 12;
       popupTransparency = 1;
       dockTransparency = 1;
@@ -79,72 +77,150 @@
           widgetTransparency = 1;
           shadowOpacity = 56;
           leftWidgets = [
-            { enabled = true; id = "launcherButton"; }
+            {
+              enabled = true;
+              id = "launcherButton";
+            }
             "workspaceSwitcher"
             "focusedWindow"
           ];
-          centerWidgets = [ "music" "clock" "weather" ];
+          centerWidgets = [
+            "music"
+            "clock"
+            "weather"
+          ];
           rightWidgets = [
-            { enabled = true; id = "idleInhibitor"; }
-            { enabled = true; id = "network_speed_monitor"; }
-            { enabled = true; id = "systemTray"; }
-            { enabled = true; id = "cpuUsage"; }
-            { enabled = true; id = "memUsage"; }
-            { enabled = true; id = "notificationButton"; }
-            { enabled = true; id = "battery"; }
-            { enabled = true; id = "controlCenterButton"; }
+            # {
+            #   enabled = true;
+            #   id = "systemUpdate";
+            # }
+            # {
+            #   enabled = true;
+            #   id = "dankKDEConnect";
+            # }
+            {
+              enabled = true;
+              id = "idleInhibitor";
+            }
+            {
+              enabled = true;
+              id = "network_speed_monitor";
+            }
+            {
+              enabled = true;
+              id = "systemTray";
+            }
+            {
+              enabled = true;
+              id = "cpuUsage";
+            }
+            {
+              enabled = true;
+              id = "memUsage";
+            }
+            {
+              enabled = true;
+              id = "notificationButton";
+            }
+            {
+              enabled = true;
+              id = "battery";
+            }
+            {
+              enabled = true;
+              id = "controlCenterButton";
+            }
           ];
         }
       ];
 
       # Control Center Widgets
       controlCenterWidgets = [
-        { enabled = true; id = "volumeSlider"; width = 50; }
-        { enabled = true; id = "brightnessSlider"; width = 50; }
-        { enabled = true; id = "wifi"; width = 50; }
-        { enabled = true; id = "bluetooth"; width = 50; }
-        { enabled = true; id = "audioOutput"; width = 50; }
-        { enabled = true; id = "audioInput"; width = 50; }
-        { enabled = true; id = "nightMode"; width = 50; }
-        { enabled = true; id = "darkMode"; width = 50; }
+        {
+          enabled = true;
+          id = "volumeSlider";
+          width = 50;
+        }
+        {
+          enabled = true;
+          id = "brightnessSlider";
+          width = 50;
+        }
+        {
+          enabled = true;
+          id = "wifi";
+          width = 50;
+        }
+        {
+          enabled = true;
+          id = "bluetooth";
+          width = 50;
+        }
+        {
+          enabled = true;
+          id = "audioOutput";
+          width = 50;
+        }
+        {
+          enabled = true;
+          id = "audioInput";
+          width = 50;
+        }
+        {
+          enabled = true;
+          id = "nightMode";
+          width = 50;
+        }
+        {
+          enabled = true;
+          id = "darkMode";
+          width = 50;
+        }
       ];
 
       # Matugen Template Configuration
-      runDmsMatugenTemplates = false;
-      matugenTemplateGtk = false;
-      matugenTemplateNiri = false;
-      matugenTemplateHyprland = false;
-      matugenTemplateMangowc = false;
-      matugenTemplateQt5ct = false;
-      matugenTemplateQt6ct = false;
-      matugenTemplateFirefox = false;
-      matugenTemplatePywalfox = false;
-      matugenTemplateZenBrowser = false;
-      matugenTemplateVesktop = false;
-      matugenTemplateEquibop = false;
-      matugenTemplateGhostty = false;
-      matugenTemplateKitty = false;
-      matugenTemplateFoot = false;
-      matugenTemplateAlacritty = false;
-      matugenTemplateNeovim = false;
-      matugenTemplateWezterm = false;
-      matugenTemplateDgop = false;
-      matugenTemplateKcolorscheme = false;
-      matugenTemplateVscode = false;
+      runDmsMatugenTemplates = true;
+      matugenTemplateGtk = true;
+      matugenTemplateNiri = true;
+      matugenTemplateHyprland = true;
+      matugenTemplateMangowc = true;
+      matugenTemplateQt5ct = true;
+      matugenTemplateQt6ct = true;
+      matugenTemplateFirefox = true;
+      matugenTemplatePywalfox = true;
+      matugenTemplateZenBrowser = true;
+      matugenTemplateVesktop = true;
+      matugenTemplateEquibop = true;
+      matugenTemplateGhostty = true;
+      matugenTemplateKitty = true;
+      matugenTemplateFoot = true;
+      matugenTemplateAlacritty = true;
+      matugenTemplateNeovim = true;
+      matugenTemplateWezterm = true;
+      matugenTemplateDgop = true;
+      matugenTemplateKcolorscheme = true;
+      matugenTemplateVscode = true;
 
       # Power & Locale
       use24HourClock = false; # Updated from JSON
       # Power Management
-      acMonitorTimeout = 600;
-      acLockTimeout = 600;
-      # acSuspendTimeout = 1200;
-      batteryMonitorTimeout = 600;
-      batteryLockTimeout = 300;
-      # batterySuspendTimeout = 1200;
+      acMonitorTimeout = 120;
+      acLockTimeout = 60;
+      acSuspendTimeout = 300;
+      batteryMonitorTimeout = 120;
+      batteryLockTimeout = 60;
+      batterySuspendTimeout = 300;
       batteryChargeLimit = 100;
       powerActionConfirm = true;
       powerMenuDefaultAction = "logout";
-      powerMenuActions = [ "reboot" "logout" "poweroff" "lock" "suspend" "restart" ];
+      powerMenuActions = [
+        "reboot"
+        "logout"
+        "poweroff"
+        "lock"
+        "suspend"
+        "restart"
+      ];
 
       # Feature Toggles
       systemMonitorEnabled = false;
@@ -155,10 +231,4 @@
     };
   };
 
-  # Environment fix for DMS executable paths
-  # systemd.user.services.dms = {
-  #   Service = {
-  #     Environment = lib.mkForce "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/${config.home.username}/bin:${config.home.profileDirectory}/bin:$PATH";
-  #   };
-  # };
 }

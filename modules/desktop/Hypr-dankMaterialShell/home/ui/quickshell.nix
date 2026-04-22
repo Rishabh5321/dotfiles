@@ -90,14 +90,14 @@
             "weather"
           ];
           rightWidgets = [
-            {
-              enabled = true;
-              id = "systemUpdate";
-            }
-            {
-              enabled = true;
-              id = "dankKDEConnect";
-            }
+            # {
+            #   enabled = true;
+            #   id = "systemUpdate";
+            # }
+            # {
+            #   enabled = true;
+            #   id = "dankKDEConnect";
+            # }
             {
               enabled = true;
               id = "idleInhibitor";
