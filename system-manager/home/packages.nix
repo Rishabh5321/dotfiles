@@ -58,7 +58,7 @@
     terminus_font
 
     # --- Browser ---
-    brave
+    # brave
 
     # --- Communication & Productivity ---
     ayugram-desktop
