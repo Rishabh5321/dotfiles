@@ -206,24 +206,22 @@
       #VPN
       proton-vpn
 
-      # ===== FLAKE INPUTS =====
-      # inputs.grayjay.packages.${pkgs.stdenv.hostPlatform.system}.grayjay # Video platform client
-      # inputs.gemini-cli.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli-stable # stable versions
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.ab-download-manager
+      # --- Custom / Flake Inputs ---
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.antigravity
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.ab-download-manager
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.anymex
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.better-control # Device control
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.better-control
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.brave-origin
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.helium
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.hydralauncher
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.mangayomi
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.opera
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.grayjay
-      # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio-v2
-      # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.skystream
+      # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
 
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta
     ];
