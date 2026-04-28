@@ -547,11 +547,11 @@
         "zon2nix": "zon2nix"
       },
       "locked": {
-        "lastModified": 1777307369,
-        "narHash": "sha256-mfh7QvoOWq/Y4CFuIYvgJXh62SPa9giaoQWJIBFmrok=",
+        "lastModified": 1777322026,
+        "narHash": "sha256-HHHgWuBssEBMfV5hOFdFxp0WUXiwfl20NfkjU/ZNuC8=",
         "owner": "ghostty-org",
         "repo": "ghostty",
-        "rev": "34cbb5fa8180c1f5f7cb874377af23904cd4c36a",
+        "rev": "6590196661f769dd8f2b3e85d6c98262c4ec5b3b",
         "type": "github"
       },
       "original": {
@@ -1887,11 +1887,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776888758,
-        "narHash": "sha256-OlQexlc8pMXAPhGrT89MtDcPCJv8MsFJcxFPMibRBho=",
+        "lastModified": 1777234348,
+        "narHash": "sha256-fKw44a4qbUuI5eTG8k0gPbqMV5TOrjYF35PBzsYgd2U=",
         "ref": "refs/heads/main",
-        "rev": "a380ec6969faf5fae32f08b96f8529a3bca55d42",
-        "revCount": 1672,
+        "rev": "2c781c0609ecda600ab98f98cca417bbd981bd53",
+        "revCount": 1677,
         "type": "git",
         "url": "https://codeberg.org/jcollie/zig-overlay.git"
       },
@@ -1909,11 +1909,11 @@
         "zig": "zig_2"
       },
       "locked": {
-        "lastModified": 1776999674,
-        "narHash": "sha256-dEuWd2li80+H7f0k7RA25/Od49G91Pn3El3TcbEpONw=",
+        "lastModified": 1777314365,
+        "narHash": "sha256-eLxQaD0wc96Neqkln8wHS0rNq/chPODifFkhwrwilEU=",
         "owner": "jcollie",
         "repo": "zon2nix",
-        "rev": "fe860f11b076bba30708d1efb4830459ecf85f0d",
+        "rev": "a5a1d412ad1ab6305511997bbc92b3a9dd6cb784",
         "type": "github"
       },
       "original": {
