@@ -224,6 +224,7 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
 
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta
+      inputs.skwd-wall.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
   # ===== FONTS CONFIGURATION =====

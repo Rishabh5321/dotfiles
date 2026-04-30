@@ -141,6 +141,8 @@
       flake = false;
     };
 
+    skwd-wall.url = "github:liixini/skwd-wall";
+
     ######################
     # Inactive/Commented
     ######################
