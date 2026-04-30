@@ -1,9 +1,9 @@
 _: {
   system.autoUpgradeOnShutdown = {
     enable = true;
-    flake = "github:rishabh5321/dotfiles";
+    flake = "github:Rishabh5321/dotfiles";
     # host = "dankmaterialbook";
     # useNom = false;
-    minimumBatteryToProceedWithoutAC = 80;
+    minimumBatteryToProceedWithoutAC = 40;
   };
 }
