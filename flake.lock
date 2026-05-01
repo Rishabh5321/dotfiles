@@ -1914,11 +1914,11 @@
         "nixpkgs": "nixpkgs_14"
       },
       "locked": {
-        "lastModified": 1777484042,
-        "narHash": "sha256-4opTnZ7u8zOAEXIo6f+COSO67zq7DuIp/U0C+JcWDr0=",
+        "lastModified": 1777647788,
+        "narHash": "sha256-lX8iprrKH2k/6G/7FF1kAvV/725mPick3NBI5VaFpO0=",
         "owner": "yeshey",
         "repo": "nixos-upgrade-on-shutdown",
-        "rev": "c88467b73bf72e54a5fbc6afde6383421a6eae6d",
+        "rev": "3e5b51eeb1a44175b6242c7d0af9b92351f7ecd2",
         "type": "github"
       },
       "original": {
