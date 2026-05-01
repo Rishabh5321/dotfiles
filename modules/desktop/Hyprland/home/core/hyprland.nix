@@ -245,8 +245,8 @@ with lib; {
       bind = ${modifier}SHIFT,P,pin,
       # bind = ${modifier}SHIFT,O,toggleopaque,
 
-      # Better control integration
-      bind = ${modifier}SHIFT,W,exec,better-control -w
+      # wall control integration
+      bind = ${modifier}SHIFT,W,exec,skwd wall toggle
 
       # ── Enhanced Window Movement ───────────────────────────────────────────
       bind = ${modifier}SHIFT,left, movewindow,l

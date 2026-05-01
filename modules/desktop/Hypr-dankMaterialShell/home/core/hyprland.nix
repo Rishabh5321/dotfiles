@@ -220,7 +220,7 @@ with lib;
         "${modifier}SHIFT,C,exit,"
         "${modifier}SHIFT,P,pin,"
 
-        # Better control integration
+        # Wall integration
         "${modifier}SHIFT,W,exec,skwd wall toggle"
 
         # ── Enhanced Window Movement ───────────────────────────────────────────
