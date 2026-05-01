@@ -169,6 +169,7 @@
       winetricks # Windows compatibility
       wl-clipboard # Wayland clipboard
       dig # DNS lookup
+      killall
       powertop # Power management
 
       # ===== OFFICE & PRODUCTIVITY =====
