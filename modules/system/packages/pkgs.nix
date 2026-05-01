@@ -169,6 +169,7 @@
       winetricks # Windows compatibility
       wl-clipboard # Wayland clipboard
       dig # DNS lookup
+      killall
       powertop # Power management
 
       # ===== OFFICE & PRODUCTIVITY =====
@@ -224,6 +225,7 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
 
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta
+      inputs.skwd-wall.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
   # ===== FONTS CONFIGURATION =====

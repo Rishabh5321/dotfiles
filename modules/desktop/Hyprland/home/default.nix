@@ -21,7 +21,7 @@
     ./ui/rofi/config-long.nix
     ./ui/rofi/config-wallpaper.nix
     ./ui/wlogout.nix
-    ./ui/hyprpanel.nix
+    ./ui/waybar/waybar-ddubs.nix
     # vars.waybarChoice
 
     # Misc

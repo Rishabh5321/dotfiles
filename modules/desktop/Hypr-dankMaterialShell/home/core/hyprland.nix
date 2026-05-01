@@ -220,8 +220,8 @@ with lib;
         "${modifier}SHIFT,C,exit,"
         "${modifier}SHIFT,P,pin,"
 
-        # Better control integration
-        "${modifier}SHIFT,W,exec,better-control -w"
+        # Wall integration
+        "${modifier}SHIFT,W,exec,skwd wall toggle"
 
         # ── Enhanced Window Movement ───────────────────────────────────────────
         "${modifier}SHIFT,left, movewindow,l"

@@ -58,6 +58,7 @@ with lib; {
           };
         };
         "network" = {
+          interval = 1; # Add this to get real-time updates
           format-icons = [
             "󰤯"
             "󰤟"
@@ -65,9 +66,9 @@ with lib; {
             "󰤥"
             "󰤨"
           ];
-          format-ethernet = " {bandwidthDownOctets}";
-          format-wifi = "{icon} {signalStrength}%";
-          format-disconnected = "󰤮";
+          format-ethernet = "󰈀  {bandwidthDownBytes}  {bandwidthUpBytes}";
+          format-wifi = "{icon}  {bandwidthDownBytes}  {bandwidthUpBytes}";
+          format-disconnected = "󰤮 Disconnected";
           tooltip = false;
         };
         "tray" = {

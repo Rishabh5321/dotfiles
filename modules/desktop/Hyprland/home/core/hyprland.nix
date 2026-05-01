@@ -50,6 +50,7 @@ with lib; {
       exec-once = kdeconnect-indicator # Start kdeconnect indicator earlier
       exec-once = wl-paste --type text --watch cliphist store
       exec-once = wl-paste --type image --watch cliphist store
+      exec-once = killall -q waybar;sleep .5 && waybar
 
       # ── Monitor Setup ─────────────────────────────────────────────────────
       monitor = eDP-1,1920x1080@60,0x0,1
@@ -245,8 +246,8 @@ with lib; {
       bind = ${modifier}SHIFT,P,pin,
       # bind = ${modifier}SHIFT,O,toggleopaque,
 
-      # Better control integration
-      bind = ${modifier}SHIFT,W,exec,better-control -w
+      # wall control integration
+      bind = ${modifier}SHIFT,W,exec,skwd wall toggle
 
       # ── Enhanced Window Movement ───────────────────────────────────────────
       bind = ${modifier}SHIFT,left, movewindow,l

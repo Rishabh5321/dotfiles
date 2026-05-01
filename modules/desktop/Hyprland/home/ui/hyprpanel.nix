@@ -1,11 +1,6 @@
-{ config, pkgs, username, wallpaper, ... }:
+{ pkgs, username, wallpaper, ... }:
 let
-  accent = "#${config.lib.stylix.colors.base0D}";
-  accent-alt = "#${config.lib.stylix.colors.base03}";
-  background = "#${config.lib.stylix.colors.base00}";
-  background-alt = "#${config.lib.stylix.colors.base01}";
-  foreground = "#${config.lib.stylix.colors.base05}";
-  rounding = 6; # More square look
+  rounding = 6; # Keeping this for the square UI look
 in
 {
   programs.hyprpanel = {
@@ -15,6 +10,8 @@ in
     settings = {
       tear = true;
       scalingPriority = "hyprland";
+
+      # Matugen Integration
       theme.matugen = true;
       wallpaper.pywal = true;
       wallpaper.enable = true;
@@ -61,68 +58,25 @@ in
         font.weight = "500";
 
         bar = {
-          background = "rgba(0, 0, 0, 0)";
-          # blur = true;
+          background = "rgba(0, 0, 0, 0)"; # Transparent bar background
           outer_spacing = "1.1rem";
           dropdownGap = "2.3em";
 
           buttons = {
             monochrome = true;
-            text = "${foreground}";
             radius = "${toString rounding}px";
-            background = "${background-alt}cc";
-            icon = "${accent}";
-            hover = "${accent}22"; # Soft hover
-            workspaces = {
-              hover = "${accent}33";
-              active = "${accent}";
-              available = "${accent-alt}aa";
-            };
-            notifications = {
-              background = "${background-alt}cc";
-              hover = "${accent}22";
-              total = "${accent}";
-              icon = "${accent}";
-            };
             enableBorders = false;
+            # Color attributes removed to let Matugen take over
           };
+
           menus = {
             monochrome = true;
-            background = "${background}"; # Fully opaque menu
-            blur = false; # No transparency for menus
-            cards = "${background-alt}";
+            blur = false;
             card_radius = "${toString rounding}px";
-            label = "${foreground}";
-            text = "${foreground}";
             border = {
-              color = "${accent}";
               radius = "${toString rounding}px";
             };
-            popover = {
-              text = "${foreground}";
-              background = "${background-alt}";
-            };
-            listitems.active = "${accent}";
-            icons.active = "${accent}";
-            switch.enabled = "${accent}";
-            buttons = {
-              default = "${accent}";
-              active = "${accent}";
-            };
-            iconbuttons.active = "${accent}";
-            progressbar.foreground = "${accent}";
-            slider.primary = "${accent}";
-            tooltip = {
-              background = "${background-alt}";
-              text = "${foreground}";
-            };
-            dropdownmenu = {
-              background = "${background-alt}";
-              text = "${foreground}";
-            };
             menu.media = {
-              background.color = "${background-alt}";
-              card.color = "${background-alt}";
               card.tint = 90;
             };
           };
@@ -130,25 +84,11 @@ in
 
         notification = {
           border_radius = "${toString rounding}px";
-          background = "${background-alt}";
           blur = false;
-          actions = {
-            background = "${accent}";
-            text = "${foreground}";
-          };
-          label = "${accent}";
-          border = "${background-alt}";
-          text = "${foreground}";
-          labelicon = "${accent}";
         };
 
         osd = {
-          bar_color = "${accent}";
-          bar_overflow_color = "${accent-alt}";
-          icon = "${background}";
-          icon_container = "${accent}";
-          label = "${accent}";
-          bar_container = "${background-alt}";
+          # Color attributes removed
         };
       };
     };

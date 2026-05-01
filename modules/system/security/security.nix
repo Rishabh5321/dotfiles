@@ -15,8 +15,5 @@ _: {
         })
       '';
     };
-    pam.services.sddm = {
-      text = ''auth include login '';
-    };
   };
 }

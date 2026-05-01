@@ -40,8 +40,8 @@
 
           LoginFieldBackgroundColor = "#${base00}";
           PasswordFieldBackgroundColor = "${base00}";
-          LoginFieldTextColo = "${base0D}";
-          PasswordFieldTestColor = "${base0D}";
+          LoginFieldTextColor = "${base0D}";
+          PasswordFieldTextColor = "${base0D}";
           UserIconColor = "${base0D}";
           PasswordIconColor = "${base0D}";
 
