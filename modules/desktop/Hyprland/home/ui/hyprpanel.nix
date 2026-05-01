@@ -1,4 +1,4 @@
-{ config, pkgs, username, wallpaper, ... }:
+{ pkgs, username, wallpaper, ... }:
 let
   rounding = 6; # Keeping this for the square UI look
 in
