@@ -210,6 +210,11 @@
           allowUnfreePredicate = _: true;
         };
         overlays = [
+          (_: prev: {
+            openldap = prev.openldap.overrideAttrs {
+              doCheck = !prev.stdenv.hostPlatform.isi686;
+            };
+          })
           nur.overlays.default
           # inputs.hyprpanel.overlay
           # sddm-sugar-candy-nix.overlays.default
