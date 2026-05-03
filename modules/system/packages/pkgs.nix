@@ -220,7 +220,7 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio-v2
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.skystream
-      # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
 
