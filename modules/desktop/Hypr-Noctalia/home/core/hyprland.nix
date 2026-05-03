@@ -57,7 +57,7 @@ with lib;
         "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "swaync # Start notification daemon"
-        # "caelestia shell -d"
+        "noctalia-shell"
         # "nm-applet --indicator"
         "systemctl --user start hyprpolkitagent"
         "kdeconnect-indicator # Start kdeconnect indicator earlier"

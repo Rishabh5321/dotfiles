@@ -1,6 +1,6 @@
 { ... }: {
   imports = [
-    #./cache.nix
+    ./cache.nix
     ./sddm.nix
     ./hardware.nix
     ./services.nix
