@@ -914,11 +914,11 @@
         "nixpkgs-nixcord": "nixpkgs-nixcord"
       },
       "locked": {
-        "lastModified": 1777999064,
-        "narHash": "sha256-SrwD8kYIMU11Gsw+2oLu48jgy1e9/6q6kMMS4LVq53A=",
+        "lastModified": 1778085787,
+        "narHash": "sha256-T6gPLeeLodC7ke9U1ZcKNI/oXrFFn1lcBM3txDbBGYA=",
         "owner": "FlameFlag",
         "repo": "nixcord",
-        "rev": "435717fe5daad9c77b3042ea9bdd1f054715e498",
+        "rev": "2de93aa507bc5e245fbca7aa5b3f428dac26670f",
         "type": "github"
       },
       "original": {
