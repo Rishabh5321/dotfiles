@@ -10,11 +10,11 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" "btrfs" "i915" "fuse" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" "btrfs" "fuse" ];
   #boot.kernelParams = [ "radeon.si_support=0" "amdgpu.si_support=1" "radeon.cik_support=0" "amdgpu.cik_support=1" ];
   boot.initrd.kernelModules = [ ];
   #boot.kernelParams = [ "radeon.runpm=0" "amdgpu.runpm=0" ];
-  boot.blacklistedKernelModules = [ "amdgpu" "radeon" ];
+  boot.blacklistedKernelModules = [ "amdgpu" "radeon" "ntsync" ];
   boot.kernelModules = [ "kvm-intel" "fuse" ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [
@@ -69,23 +69,4 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  # systemd.tmpfiles.rules = [
-  #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-  # ];
-
-  # hardware.graphics = {
-  #   extraPackages = with pkgs; [
-  #     rocmPackages.clr.icd
-  #     amdvlk
-  #   ];
-  #   extraPackages32 = with pkgs; [
-  #     driversi686Linux.amdvlk
-  #   ];
-  # };
-
-  # environment.variables = {
-  #   ROC_ENABLE_PRE_VEGA = "1";
-  # };
-
 }
