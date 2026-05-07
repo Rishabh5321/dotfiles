@@ -7,7 +7,7 @@
   # You can import other home-manager modules here
   imports = [
     ../../modules/user
-    ../../modules/desktop/i3/home
+    ../../modules/desktop/sway/home
     #../../modules/desktop/Gnome/home
     #./gnome.nix
     # Or modules exported from other flakes (such as nix-colors):
