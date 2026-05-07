@@ -206,10 +206,10 @@
       # Power Management
       acMonitorTimeout = 120;
       acLockTimeout = 60;
-      acSuspendTimeout = 300;
+      acSuspendTimeout = 0;
       batteryMonitorTimeout = 120;
       batteryLockTimeout = 60;
-      batterySuspendTimeout = 300;
+      batterySuspendTimeout = 0;
       batteryChargeLimit = 100;
       powerActionConfirm = true;
       powerMenuDefaultAction = "logout";
