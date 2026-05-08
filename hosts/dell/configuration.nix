@@ -9,6 +9,7 @@
     ../common/power-server.nix
     ../common/power-redmi.nix
     ../../modules/desktop/Sway-DMS/main
+    ../common/serve.nix
 
     inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
     inputs.nixos-hardware.nixosModules.common-gpu-intel
