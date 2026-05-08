@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, username, ... }:
 
 
 {
@@ -13,10 +13,17 @@
       kdePackages.qtmultimedia
       kdePackages.qtvirtualkeyboard
     ];
-    settings.Theme = {
-      CursorTheme = config.stylix.cursor.name;
-      CursorSize = config.stylix.cursor.size;
-    };
+    settings =
+      {
+        Autologin = {
+          Session = "sway";
+          User = "${username}";
+        };
+        Theme = {
+          CursorTheme = config.stylix.cursor.name;
+          CursorSize = config.stylix.cursor.size;
+        };
+      };
   };
 
   environment.systemPackages = [

@@ -33,6 +33,8 @@ with lib; {
         { command = "wl-paste --type image --watch cliphist store"; always = true; }
         { command = "systemctl --user import-environment SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
         { command = "dbus-update-activation-environment --systemd --all"; always = true; }
+        { command = "sleep 3 && dms ipc call lock lock"; always = true; }
+
         # { command = "sleep 10 && awww img ${wallpapers}/${wallpaper}"; always = true; }
 
         # Open apps on specific workspaces

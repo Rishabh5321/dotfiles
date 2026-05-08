@@ -1,7 +1,7 @@
 { ... }: {
   imports = [
     ./hardware.nix
-    ./lockscreen.nix
+    ./sddm.nix
     ./services.nix
     ./packages.nix
     ./wayland.nix
