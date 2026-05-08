@@ -1,14 +1,10 @@
-{ pkgs, ... }:
+{ ... }:
 {
-  environment.systemPackages = [ pkgs.nix-serve ];
-  systemd.services.nix-serve = {
+  services.nix-serve = {
     enable = true;
-    description = "Nix Serve";
-    after = [ "network.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.nix-serve}/bin/nix-serve --port 5500 --bind 0.0.0.0 --secret-key-file /var/lib/nix-serve/secret-key.pem";
-      Restart = "always";
-    };
-    wantedBy = [ "multi-user.target" ];
+    bindAddress = "0.0.0.0";
+    port = 5000;
+    openFirewall = true;
+    secretKeyFile = "/var/cache-priv-key.pem";
   };
 }
