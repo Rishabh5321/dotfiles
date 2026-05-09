@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   services.nix-serve = {
     enable = true;
