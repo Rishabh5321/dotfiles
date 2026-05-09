@@ -3,8 +3,8 @@
 { ... }:
 {
   imports = [
-    ./cava.nix
-    ./seanime.nix
-    ./spicetify.nix
+    # ./cava.nix
+    # ./seanime.nix
+    # ./spicetify.nix
   ];
 }

@@ -4,7 +4,7 @@
     ./flatpak.nix
     ./gaming.nix
     # ./kodi.nix
-    ./lossless.nix
+    # ./lossless.nix
     ./program.nix
     #./proton.nix
     ./services.nix

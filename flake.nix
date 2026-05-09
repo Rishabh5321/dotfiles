@@ -16,6 +16,7 @@
       url = "github:numtide/system-manager";
     };
     upgrade-on-shutdown.url = "github:yeshey/nixos-upgrade-on-shutdown";
+    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
 
     # ==========================
     # System Modules & Frameworks
@@ -200,7 +201,6 @@
 
             # Common NixOS modules
             # inputs.darkmatter-grub-theme.nixosModule
-            # inputs.distro-grub-themes.nixosModules.${system}.default
             inputs.stylix.nixosModules.stylix
             inputs.nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
@@ -210,6 +210,7 @@
             lsfg-vk-flake.nixosModules.default
             inputs.mango.nixosModules.mango
             inputs.determinate.nixosModules.default
+            inputs.distro-grub-themes.nixosModules.${system}.default
             # Home Manager configuration integrated into NixOS
             {
               home-manager = {

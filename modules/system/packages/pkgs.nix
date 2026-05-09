@@ -12,19 +12,8 @@
     # in
     with pkgs; [
 
-      # ===== Custom Packages =====
-      # stremio
-      # fladder
-
-      # ===== NUR =====
-      # nur.repos.colorman.speed-cloudflare-cli
-      # nur.repos.mio.jellyfin-media-player
-      # nur.repos.zerozawa.Fladder
-      # nur.repos.lonerOrz.abdm
-      # nur.repos.charmbracelet.crush
-
       # ===== DEVELOPMENT TOOLS =====
-      act # GitHub Actions local runner
+      # act # GitHub Actions local runner
       android-tools # ADB and fastboot
       # cachix # Binary cache management
       docker # Container runtime
@@ -33,13 +22,13 @@
       gh # GitHub CLI
       github-desktop # GitHub GUI client
       # gitnuro # Git GUI client
-      nil # Nix LSP server
-      nixd # Nix language server
-      nixpkgs-fmt # Nix code formatter
-      nixpkgs-review # Nixpkgs PR review tool
-      nix-prefetch # Nix package prefetcher
-      nix-prefetch-github # Fetch GitHub repos for Nix
-      nix-update # Nix package update tool
+      # nil # Nix LSP server
+      # nixd # Nix language server
+      # nixpkgs-fmt # Nix code formatter
+      # nixpkgs-review # Nixpkgs PR review tool
+      # nix-prefetch # Nix package prefetcher
+      # nix-prefetch-github # Fetch GitHub repos for Nix
+      # nix-update # Nix package update tool
       nh # Nix helper
       openssl # Cryptography toolkit
       geminicommit # Gemini commit message generator
@@ -53,13 +42,13 @@
       # ===== EDITORS & IDEs =====
       # android-studio # Android IDE
       # antigravity # AI-powered text editor by Google
-      code-cursor # AI-powered VS Code fork
+      # code-cursor # AI-powered VS Code fork
       micro # Simple terminal editor
       # kiro # AI-powered text editor
       obsidian # Knowledge management
       vim # Classic text editor
       vscode # VS Code editor
-      zed-editor
+      zed-editor # zed
 
       # ===== TERMINAL APPLICATIONS =====
       alacritty # GPU-accelerated terminal
@@ -95,7 +84,7 @@
       discord # Gaming communication
       # ferdium # Multi-service messaging
       # telegram-desktop # Telegram client
-      thunderbird-latest # Email client
+      # thunderbird-latest # Email client
 
       # ===== MEDIA & ENTERTAINMENT =====
       jellyfin-media-player # Media center client
@@ -110,7 +99,7 @@
       pear-desktop # YouTube Music client
       eog # For Image Viewing
       qimgv # image viewer
-      xnviewmp # image viewer
+      # xnviewmp # image viewer
       # yazi # File manager
 
       # ===== GAMING =====
@@ -129,7 +118,7 @@
       # ===== FILE MANAGEMENT =====
       file-roller # Archive manager
       filezilla # FTP client
-      kdePackages.dolphin # KDE file manager
+      # kdePackages.dolphin # KDE file manager
       nautilus # GNOME file manager
       qbittorrent # BitTorrent client
       unrar # RAR extraction
@@ -153,8 +142,8 @@
       nwg-look # GTK theme manager
       pciutils
       podman-desktop # Container management GUI
-      podman-tui # Container management TUI
-      resources # System monitor
+      # podman-tui # Container management TUI
+      # resources # System monitor
       # rquickshare # File sharing
       samba # SMB/CIFS support
       slurp # Screen area selection
@@ -194,15 +183,15 @@
       libsForQt5.qt5.qtwayland # Qt5 Wayland support
 
       # ===== APPLICATIONS =====
-      #deja-dup              # Backup tool
+      # deja-dup              # Backup tool
       # grayjay # Video platform client
       packet # File sharing
-      #pods                  # Podcast client
-      #popcorntime           # Movie streaming
-      #protonup-qt           # Proton version manager
-      #resilio-sync          # File synchronization
-      #vivaldi               # Vivaldi browser
-      #vivaldi-ffmpeg-codecs # Vivaldi media codecs
+      # pods                  # Podcast client
+      # popcorntime           # Movie streaming
+      # protonup-qt           # Proton version manager
+      # resilio-sync          # File synchronization
+      # vivaldi               # Vivaldi browser
+      # vivaldi-ffmpeg-codecs # Vivaldi media codecs
 
       #VPN
       proton-vpn
@@ -210,22 +199,22 @@
       # --- Custom / Flake Inputs ---
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.antigravity
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.ab-download-manager
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.anymex
+      # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.anymex
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.better-control
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.brave-origin
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.helium
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.hydralauncher
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.mangayomi
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio-v2
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.skystream
+      # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio-v2
+      # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
+      # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.skystream
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
 
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta
-      inputs.skwd-wall.packages.${pkgs.stdenv.hostPlatform.system}.default
+      # inputs.skwd-wall.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
   # ===== FONTS CONFIGURATION =====

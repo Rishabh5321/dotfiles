@@ -17,16 +17,24 @@
     # inputs.nixos-hardware.nixosModules.xiaomi-redmibook-15-pro-2021
   ];
 
-  networking = {
-    # 1. Attach the physical port to the bridge
-    bridges."br0".interfaces = [ "enp2s0" ];
+  # networking = {
+  #   # 1. Attach the physical port to the bridge
+  #   bridges."br0".interfaces = [ "enp2s0" ];
 
-    # 2. Tell the Firewall to stop blocking traffic on these interfaces
-    firewall.trustedInterfaces = [ "br0" "virbr0" ];
+  #   # 2. Tell the Firewall to stop blocking traffic on these interfaces
+  #   firewall.trustedInterfaces = [ "br0" "virbr0" ];
 
-    # 3. Ensure the bridge gets the host's IP, not the physical port
-    interfaces."br0".useDHCP = true;
-    interfaces."enp2s0".useDHCP = false;
+  #   # 3. Ensure the bridge gets the host's IP, not the physical port
+  #   interfaces."br0".useDHCP = true;
+  #   interfaces."enp2s0".useDHCP = false;
+  # };
+
+  system.autoUpgradeOnShutdown = {
+    enable = true;
+    flake = "github:Rishabh5321/dotfiles";
+    host = "dell";
+    # useNom = false;
+    minimumBatteryToProceedWithoutAC = 40;
   };
 
   services.nfs.server.enable = true;

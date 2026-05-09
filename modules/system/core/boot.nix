@@ -65,16 +65,16 @@
   stylix = {
     targets = {
       grub = {
-        enable = true;
+        enable = false;
         useWallpaper = true;
       };
       plymouth.enable = false;
     };
   };
 
-  # ===== ALTERNATIVE GRUB THEMES (DISABLED) =====
-  # distro-grub-themes = {
-  #   enable = true;
-  #   theme = "nixos";
-  # };
+  # ===== ALTERNATIVE GRUB THEMES =====
+  distro-grub-themes = {
+    enable = true;
+    theme = "nixos";
+  };
 }
