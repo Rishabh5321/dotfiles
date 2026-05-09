@@ -14,7 +14,7 @@
     ./ui/quickshell.nix
 
     # Misc
-    ./misc/emoji.nix
+    # ./misc/emoji.nix
     ./misc/swappy.nix
     ./misc/xdg.nix
     ./misc/session-variables.nix
@@ -24,7 +24,7 @@
   home.packages = import ./scripts/default.nix { inherit pkgs username host; };
 
   # Icons for wlogout
-  home.file.".config/wlogout/icons" = {
-    source = ../../Hyprland/home/wlogout;
-  };
+  # home.file.".config/wlogout/icons" = {
+  #   source = ../../Hyprland/home/wlogout;
+  # };
 }

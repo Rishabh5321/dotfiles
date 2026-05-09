@@ -10,13 +10,13 @@
     libsecret
     xdg-utils
     pwvucontrol
-    swaylock
-    swayidle
-    wlogout
+    # swaylock
+    # swayidle
+    # wlogout
     grim
     slurp
     wl-clipboard
-    swaynotificationcenter
+    # swaynotificationcenter
     rofi
   ];
 }

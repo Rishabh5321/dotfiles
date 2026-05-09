@@ -25,7 +25,7 @@ with lib; {
         { command = "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
         # { command = "dms run"; always = true; }
         # { command = "awww-daemon"; always = true; }
-        { command = "swaync"; always = true; }
+        # { command = "swaync"; always = true; }
         { command = "nm-applet --indicator"; always = true; }
         # { command = "waybar"; always = true; }
         { command = "kdeconnect-indicator"; always = true; }
@@ -33,7 +33,7 @@ with lib; {
         { command = "wl-paste --type image --watch cliphist store"; always = true; }
         { command = "systemctl --user import-environment SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
         { command = "dbus-update-activation-environment --systemd --all"; always = true; }
-        { command = "sleep 3 && dms ipc call lock lock"; always = true; }
+        { command = "sleep 2 && dms ipc call lock lock"; always = true; }
 
         # { command = "sleep 10 && awww img ${wallpapers}/${wallpaper}"; always = true; }
 
@@ -53,7 +53,7 @@ with lib; {
         "${modifier}+w" = "exec ${swayVars.browser}";
         "Ctrl+l" = "exec dms ipc call lock lock";
         "${modifier}+e" = "exec dms ipc call spotlight toggleQuery ':' ";
-        "${modifier}+s" = "exec screenshootin";
+        "${modifier}+Shift+s" = "exec screenshootin";
         "${modifier}+d" = "exec discord";
         "${modifier}+c" = "exec hyprpicker -a"; # hyprpicker works on sway too
         "${modifier}+t" = "exec thunar";
@@ -171,8 +171,8 @@ with lib; {
 
       # Remove gaps when only one window is present on workspace
       for_window [tiling] border pixel 2
-      for_window [tiling] gaps inner 4
-      for_window [tiling] gaps outer 8
+      for_window [tiling] gaps inner 2
+      for_window [tiling] gaps outer 4
       smart_gaps on
       smart_borders on
     '';
