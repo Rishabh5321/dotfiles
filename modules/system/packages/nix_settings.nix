@@ -5,6 +5,18 @@
       # ===== BINARY CACHE CONFIGURATION =====
       # Primary and community binary caches for faster builds
       substituters = [
+        "http://192.168.1.100:5000"
+        "https://cache.nixos.org?priority=10" #official
+
+        "https://rishabh5321.cachix.org" # Personal cache
+        "https://nixpkgs-wayland.cachix.org" # Wayland packages
+        "https://cosmic.cachix.org/" # COSMIC desktop environment
+        "https://nix-config.cachix.org" # Community configurations
+        "https://nix-community.cachix.org" # Nix community packages
+      ];
+
+      trusted-substituters = [
+        "http://192.168.1.100:5000"
         "https://cache.nixos.org?priority=10" #official
 
         "https://rishabh5321.cachix.org" # Personal cache
@@ -16,6 +28,7 @@
 
       # Public keys for verifying cache authenticity
       trusted-public-keys = [
+        "local-server:jBGCgt0sqYIcZhA4L9kpw5jgk+D8yXkAX+4cD1S1Les="
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
 
         "rishabh5321.cachix.org-1:mxfBIH2XElE6ieFXXYBA9Ame4mVTbAf1TGR843siggk="
