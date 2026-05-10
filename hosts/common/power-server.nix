@@ -3,6 +3,8 @@ _: {
 
   services.logind.settings.Login.HandleLidSwitchDocked = "ignore";
 
+  services.logind.settings.Login.HandlePowerKey = "ignore";
+
   # Disable GNOMEs power management
   # services.power-profiles-daemon.enable = true;
 
