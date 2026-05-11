@@ -6,7 +6,7 @@
     ./atuin.nix
     #./libnotify.nix
     ./tealdeer.nix
-    ./wofi.nix
+    # ./wofi.nix
     ./zoxide.nix
   ];
 }
