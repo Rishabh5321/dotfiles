@@ -111,6 +111,7 @@
       url = "github:pabloaul/lsfg-vk-flake/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    surge.url = "github:SurgeDM/Surge";
 
     # ==========================
     # Personal Projects

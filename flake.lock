@@ -1168,6 +1168,22 @@
     },
     "nixpkgs_13": {
       "locked": {
+        "lastModified": 1777954456,
+        "narHash": "sha256-hGdgeU2Nk87RAuZyYjyDjFL6LK7dAZN5RE9+hrDTkDU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "549bd84d6279f9852cae6225e372cc67fb91a4c1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_14": {
+      "locked": {
         "lastModified": 1777578337,
         "narHash": "sha256-Ad49moKWeXtKBJNy2ebiTQUEgdLyvGmTeykAQ9xM+Z4=",
         "owner": "NixOS",
@@ -1182,7 +1198,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_14": {
+    "nixpkgs_15": {
       "locked": {
         "lastModified": 1777578337,
         "narHash": "sha256-Ad49moKWeXtKBJNy2ebiTQUEgdLyvGmTeykAQ9xM+Z4=",
@@ -1572,6 +1588,7 @@
         "skwd-wall": "skwd-wall",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
+        "surge": "surge",
         "system-manager": "system-manager",
         "upgrade-on-shutdown": "upgrade-on-shutdown",
         "wallpapers-repo": "wallpapers-repo",
@@ -1691,10 +1708,28 @@
         "type": "github"
       }
     },
+    "surge": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_13"
+      },
+      "locked": {
+        "lastModified": 1778485934,
+        "narHash": "sha256-s4iZC/TG6Bwm9cfwv6HDP76OHn/fUumFoZ4EhiJz1PA=",
+        "owner": "SurgeDM",
+        "repo": "Surge",
+        "rev": "74e14dd984156149c230f8996b1c61b9170a0e48",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SurgeDM",
+        "repo": "Surge",
+        "type": "github"
+      }
+    },
     "system-manager": {
       "inputs": {
         "flake-compat": "flake-compat_6",
-        "nixpkgs": "nixpkgs_13",
+        "nixpkgs": "nixpkgs_14",
         "userborn": "userborn"
       },
       "locked": {
@@ -1905,7 +1940,7 @@
     "upgrade-on-shutdown": {
       "inputs": {
         "flake-parts": "flake-parts_8",
-        "nixpkgs": "nixpkgs_14"
+        "nixpkgs": "nixpkgs_15"
       },
       "locked": {
         "lastModified": 1777647788,
