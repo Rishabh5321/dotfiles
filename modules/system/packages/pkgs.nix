@@ -211,7 +211,6 @@
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.skystream
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
 
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta
       inputs.surge.packages.${pkgs.stdenv.hostPlatform.system}.default
