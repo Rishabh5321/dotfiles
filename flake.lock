@@ -1713,11 +1713,11 @@
         "nixpkgs": "nixpkgs_13"
       },
       "locked": {
-        "lastModified": 1778485934,
-        "narHash": "sha256-s4iZC/TG6Bwm9cfwv6HDP76OHn/fUumFoZ4EhiJz1PA=",
+        "lastModified": 1778732998,
+        "narHash": "sha256-epJ2maO+p+bWyMxPfKvOXbghf6v9gt+9T7QnGOnGr/M=",
         "owner": "SurgeDM",
         "repo": "Surge",
-        "rev": "74e14dd984156149c230f8996b1c61b9170a0e48",
+        "rev": "44df933cc044ca3b145b282f7e32acfa6f9c178b",
         "type": "github"
       },
       "original": {
