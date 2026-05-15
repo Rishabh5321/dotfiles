@@ -8,12 +8,12 @@
     };
     timeouts = [
       {
-        timeout = 300;
+        timeout = 100;
         command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
         resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
       }
       {
-        timeout = 310;
+        timeout = 110;
         command = "noctalia-shell ipc call lockScreen lock";
       }
     ];
