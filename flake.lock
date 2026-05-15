@@ -157,15 +157,14 @@
         "flake-compat": "flake-compat",
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "quickshell": "quickshell_3"
+        ]
       },
       "locked": {
-        "lastModified": 1778697524,
-        "narHash": "sha256-a09nur9iU93qw5CmnE8Nr3a6I4xN3Gs3Xl8+0nt+d7M=",
+        "lastModified": 1778805162,
+        "narHash": "sha256-t40Z8YhIy8lUBn8yZ2jeuIeKUwvKB2QKCuquZvaceV8=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "5bde54fa89d55accb7437bf2bd093be03e4dd986",
+        "rev": "0a892a4a9ecc844edc62cba5ed947e5b9e6226fe",
         "type": "github"
       },
       "original": {
@@ -1504,28 +1503,6 @@
     "quickshell_3": {
       "inputs": {
         "nixpkgs": [
-          "dankMaterialShell",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1776854048,
-        "narHash": "sha256-lLbV66V3RMNp1l8/UelmR4YzoJ5ONtgvEtiUMJATH/o=",
-        "ref": "refs/heads/master",
-        "rev": "783c953987dc56ff0601abe6845ed96f1d00495a",
-        "revCount": 806,
-        "type": "git",
-        "url": "https://git.outfoxxed.me/quickshell/quickshell"
-      },
-      "original": {
-        "rev": "783c953987dc56ff0601abe6845ed96f1d00495a",
-        "type": "git",
-        "url": "https://git.outfoxxed.me/quickshell/quickshell"
-      }
-    },
-    "quickshell_4": {
-      "inputs": {
-        "nixpkgs": [
           "nixpkgs"
         ]
       },
@@ -1543,7 +1520,7 @@
         "type": "github"
       }
     },
-    "quickshell_5": {
+    "quickshell_4": {
       "inputs": {
         "nixpkgs": "nixpkgs_11"
       },
@@ -1584,7 +1561,7 @@
         "noctalia": "noctalia",
         "noctalia-qs": "noctalia-qs",
         "nur": "nur",
-        "quickshell": "quickshell_4",
+        "quickshell": "quickshell_3",
         "skwd-wall": "skwd-wall",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
@@ -1637,7 +1614,7 @@
     "skwd-wall": {
       "inputs": {
         "nixpkgs": "nixpkgs_10",
-        "quickshell": "quickshell_5",
+        "quickshell": "quickshell_4",
         "skwd-daemon": "skwd-daemon"
       },
       "locked": {
