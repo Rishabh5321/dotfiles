@@ -1690,11 +1690,11 @@
         "nixpkgs": "nixpkgs_13"
       },
       "locked": {
-        "lastModified": 1778732998,
-        "narHash": "sha256-epJ2maO+p+bWyMxPfKvOXbghf6v9gt+9T7QnGOnGr/M=",
+        "lastModified": 1778823636,
+        "narHash": "sha256-EyZIDq2mSHRxaF7iJhFfkuokeWRkbGfYl0s0cryN/R0=",
         "owner": "SurgeDM",
         "repo": "Surge",
-        "rev": "44df933cc044ca3b145b282f7e32acfa6f9c178b",
+        "rev": "eebbc055baccff30de013e28d7de3ec4927a5ce6",
         "type": "github"
       },
       "original": {
