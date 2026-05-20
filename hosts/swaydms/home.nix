@@ -8,6 +8,7 @@
   imports = [
     ../../modules/user
     ../../modules/desktop/Sway-DMS/home
+    ../../modules/desktop/Hypr-Caelestia/home/core/hyprland.nix
     #../../modules/desktop/Gnome/home
     #./gnome.nix
     # Or modules exported from other flakes (such as nix-colors):

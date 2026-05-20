@@ -15,6 +15,7 @@ with lib;
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
+    configType = "hyprlang";
     portalPackage =
       pkgs.xdg-desktop-portal-hyprland;
     systemd = {
@@ -83,6 +84,15 @@ with lib;
         "col.inactive_border" = "rgb(${config.stylix.base16Scheme.base00})";
       };
 
+      render = {
+        direct_scanout = true;
+      };
+
+      cursor = {
+        no_hardware_cursors = false;
+        enable_hyprcursor = true;
+      };
+
       # ── Input Settings ─────────────────────────────────────────────────────
       input = {
         kb_layout = "us";
@@ -123,8 +133,7 @@ with lib;
         disable_hyprland_logo = false;
         disable_splash_rendering = false;
         force_default_wallpaper = 0;
-        vfr = true;
-        vrr = 0;
+        vrr = 1;
         enable_swallow = true;
         swallow_regex = "^(kitty|alacritty|foot|ghostty)$";
         swallow_exception_regex = "^(wev)$";
@@ -174,7 +183,7 @@ with lib;
 
       # ── Layout Settings ────────────────────────────────────────────────────
       dwindle = {
-        pseudotile = true;
+        # pseudotile = true;
         preserve_split = true;
         smart_split = false;
         smart_resizing = true;
@@ -203,7 +212,7 @@ with lib;
         "${modifier}ALT,W,exec,wallSelector"
         "${modifier},W,exec,${browser}"
         "CTRL,L,exec,dms ipc call lock lock"
-        "${modifier},E,exec,wofi-emoji"
+        "${modifier},E,exec,dms ipc call spotlight toggleQuery ':'"
         "${modifier}SHIFT,S,exec,grim -g \"$(slurp)\" - | swappy -f -"
         "${modifier},D,exec,discord"
         "${modifier},C,exec,hyprpicker -a"
@@ -214,7 +223,7 @@ with lib;
         # Window management
         "${modifier},Q,killactive,"
         "${modifier},P,pseudo,"
-        "${modifier}SHIFT,I,togglesplit,"
+        # "${modifier}SHIFT,I,togglesplit,"
         "${modifier},F,fullscreen,"
         "${modifier}SHIFT,F,togglefloating,"
         "${modifier}SHIFT,C,exit,"

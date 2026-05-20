@@ -2,7 +2,7 @@
 
   environment.systemPackages = with pkgs; [
     brightnessctl
-    wofi-emoji
+    # wofi-emoji
     lazydocker
     pavucontrol
     libsecret
