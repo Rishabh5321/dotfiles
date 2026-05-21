@@ -8,22 +8,22 @@ let
   inherit (import ../misc/variables.nix) browser terminal extraMonitorSettings;
   modifier = "SUPER";
 in
+with lib;
 {
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
 
   wayland.windowManager.hyprland = {
     enable = true;
-    configType = "hyprlang";
     package = pkgs.hyprland;
+    configType = "hyprlang";
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
     systemd = {
       enable = true;
       enableXdgAutostart = true;
       variables = [ "--all" ];
     };
-
     settings = {
-      # ── Environment Variables ─────────────────────────────────────────────
+      # xwayland.enable = true;
       env = [
         "NIXOS_OZONE_WL, 1"
         "NIXPKGS_ALLOW_UNFREE, 1"
@@ -37,23 +37,35 @@ in
         "QT_AUTO_SCREEN_SCALE_FACTOR, 1"
         "SDL_VIDEODRIVER, x11"
         "MOZ_ENABLE_WAYLAND, 1"
+        # This is to make electron apps start in wayland
         "ELECTRON_OZONE_PLATFORM_HINT,wayland"
+        # Disabling this by default as it can result in inop cfg
+        # Added card2 in case this gets enabled. For better coverage
+        # This is mostly needed by Hybrid laptops.
+        # but if you have multiple discrete GPUs this will set order
+        #"AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1:/dev/card2"
         "GDK_SCALE,1"
         "QT_SCALE_FACTOR,1"
         "EDITOR,nvim"
-        "TERMINAL,${terminal}"
-        "XDG_TERMINAL_EMULATOR,${terminal}"
+        # Set terminal and xdg_terminal_emulator to kitty
+        # To provent yazi from starting xterm when run from rofi menu
+        # You can set to your preferred terminal if you you like
+        # ToDo: Pull default terminal from config
+        "TERMINAL,kitty"
+        "XDG_TERMINAL_EMULATOR,kitty"
       ];
-
       # ── Startup Programs ──────────────────────────────────────────────────
       "exec-once" = [
         "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        # "swaync"
+        "swaync # Start notification daemon"
+        # "caelestia shell -d"
+        # "nm-applet --indicator"
         "systemctl --user start hyprpolkitagent"
-        "kdeconnect-indicator"
+        "kdeconnect-indicator # Start kdeconnect indicator earlier"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
+        # "sleep 5 &&"
         "zen"
         "obsidian"
         "brave"
@@ -62,7 +74,8 @@ in
       ];
 
       # ── Monitor Setup ─────────────────────────────────────────────────────
-      monitor = [ "eDP-1,1920x1080@60,0x0,1" ]
+      monitor =
+        [ "eDP-1,1920x1080@60,0x0,1" ]
         ++ (lib.filter (s: s != "") (lib.splitString "\n" extraMonitorSettings));
 
       # ── General Settings ──────────────────────────────────────────────────
@@ -79,7 +92,7 @@ in
         "col.inactive_border" = "rgb(${config.stylix.base16Scheme.base00})";
       };
 
-      # ── Input Settings ────────────────────────────────────────────────────
+      # ── Input Settings ─────────────────────────────────────────────────────
       input = {
         kb_layout = "us";
         kb_options = "grp:alt_shift_toggle,caps:super";
@@ -100,13 +113,14 @@ in
       };
 
       gestures = {
+        # workspace_swipe = true
+        # workspace_swipe_fingers = 3
         workspace_swipe_distance = 300;
         workspace_swipe_cancel_ratio = 0.5;
         workspace_swipe_min_speed_to_force = 30;
         workspace_swipe_create_new = true;
       };
 
-      # Note: This looks like a hyprgrass/plugin setting. Left as-is.
       "gesture" = "3, horizontal, workspace";
 
       misc = {
@@ -120,8 +134,10 @@ in
         disable_hyprland_logo = false;
         disable_splash_rendering = false;
         force_default_wallpaper = 0;
-        # vfr = false;
+        vfr = false;
         vrr = 0;
+        # render_ahead_of_time = false
+        # render_ahead_safezone = 1
         enable_swallow = true;
         swallow_regex = "^(kitty|alacritty|foot|ghostty)$";
         swallow_exception_regex = "^(wev)$";
@@ -130,6 +146,7 @@ in
       # ── Snappier Animations ───────────────────────────────────────────────
       animations = {
         enabled = "yes";
+
         bezier = [
           "snap, 0.1, 0, 0.2, 1"
           "linear, 0, 0, 1, 1"
@@ -144,6 +161,7 @@ in
           "easeOutCirc, 0, 0.55, 0.45, 1"
           "easeOutExpo, 0.16, 1, 0.3, 1"
         ];
+
         animation = [
           "windows, 1, 3, md3_decel, slide"
           "windowsIn, 1, 3, md3_decel, slide"
@@ -165,23 +183,44 @@ in
         ];
       };
 
-      # ── Decoration ────────────────────────────────────────────────────────
+      # ── Decoration ─────────────────────────────────────────────────────────
       decoration = {
         rounding = 4;
+
+        # active_opacity = 1.0
+        # inactive_opacity = 0.95
+        # fullscreen_opacity = 1.0
+
         dim_inactive = false;
         dim_strength = 0.1;
         dim_special = 0.8;
+
+        # blur = {
+        #   enabled = true
+        #   size = 6
+        #   passes = 3
+        #   ignore_opacity = true
+        #   new_optimizations = true
+        #   xray = false
+        #   noise = 0.0117
+        #   contrast = 1.5000
+        #   brightness = 1.0
+        #   vibrancy = 0.2
+        #   vibrancy_darkness = 0.5
+        #   special = false
+        # }
       };
 
-      # ── Layout Settings ───────────────────────────────────────────────────
+      # ── Layout Settings ────────────────────────────────────────────────────
       dwindle = {
-        # pseudotile = true;
+        pseudotile = true;
         preserve_split = true;
         smart_split = false;
         smart_resizing = true;
         permanent_direction_override = false;
         special_scale_factor = 1.0;
         split_width_multiplier = 1.0;
+        # no_gaps_when_only = 0
         use_active_for_splits = true;
         default_split_ratio = 1.0;
       };
@@ -190,20 +229,27 @@ in
         allow_small_split = false;
         special_scale_factor = 1.0;
         mfact = 0.55;
+        # new_is_master = true
+        # new_on_top = false
+        # no_gaps_when_only = 0
         orientation = "left";
+        # inherit_fullscreen = true;
+        # always_center_master = false
         smart_resizing = true;
         drop_at_cursor = true;
       };
 
-      # ── Keybindings ───────────────────────────────────────────────────────
+      # ── Keybindings ────────────────────────────────────────────────────────
       bind = [
         # Application launchers
         "${modifier},Return,exec,${terminal}"
         "ALT,SPACE,global,caelestia:launcher"
+        # "${modifier},R,exec,rofi -show run"
         "${modifier},V,exec,caelestia clipboard"
         "${modifier}ALT,W,exec,wallSelector"
         "${modifier},W,exec,${browser}"
         "CTRL,L,global,caelestia:lock"
+        # "${modifier},A,global,caelestia:session"
         "${modifier},E,exec,caelestia emoji -p"
         "${modifier},S,global,caelestia:screenshot"
         "${modifier}SHIFT,S,exec,grim -g \"$(slurp)\" - | swappy -f -"
@@ -216,14 +262,17 @@ in
         # Window management
         "${modifier},Q,killactive,"
         "${modifier},P,pseudo,"
-        # "${modifier}SHIFT,I,togglesplit,"
+        "${modifier}SHIFT,I,togglesplit,"
         "${modifier},F,fullscreen,"
         "${modifier}SHIFT,F,togglefloating,"
         "${modifier}SHIFT,C,exit,"
         "${modifier}SHIFT,P,pin,"
+        # "${modifier}SHIFT,O,toggleopaque,"
+
+        # Better control integration
         "${modifier}SHIFT,W,exec,better-control -w"
 
-        # Enhanced Window Movement
+        # ── Enhanced Window Movement ───────────────────────────────────────────
         "${modifier}SHIFT,left, movewindow,l"
         "${modifier}SHIFT,right,movewindow,r"
         "${modifier}SHIFT,up,   movewindow,u"
@@ -243,7 +292,7 @@ in
         "${modifier}CONTROL,k,    resizeactive,0 -50"
         "${modifier}CONTROL,j,    resizeactive,0 50"
 
-        # Focus Movement
+        # ── Focus Movement ─────────────────────────────────────────────────────
         "${modifier},left, movefocus,l"
         "${modifier},right,movefocus,r"
         "${modifier},up,   movefocus,u"
@@ -252,6 +301,29 @@ in
         "${modifier},k,    movefocus,u"
         "${modifier},j,    movefocus,d"
         "${modifier},l,    movefocus,r"
+
+        # ── Workspaces ─────────────────────────────────────────────────────────
+        "${modifier},1,workspace,1"
+        "${modifier},2,workspace,2"
+        "${modifier},3,workspace,3"
+        "${modifier},4,workspace,4"
+        "${modifier},5,workspace,5"
+        "${modifier},6,workspace,6"
+        "${modifier},7,workspace,7"
+        "${modifier},8,workspace,8"
+        "${modifier},9,workspace,9"
+        "${modifier},0,workspace,10"
+
+        "${modifier}SHIFT,1,movetoworkspace,1"
+        "${modifier}SHIFT,2,movetoworkspace,2"
+        "${modifier}SHIFT,3,movetoworkspace,3"
+        "${modifier}SHIFT,4,movetoworkspace,4"
+        "${modifier}SHIFT,5,movetoworkspace,5"
+        "${modifier}SHIFT,6,movetoworkspace,6"
+        "${modifier}SHIFT,7,movetoworkspace,7"
+        "${modifier}SHIFT,8,movetoworkspace,8"
+        "${modifier}SHIFT,9,movetoworkspace,9"
+        "${modifier}SHIFT,0,movetoworkspace,10"
 
         # Special workspace (scratchpad)
         "${modifier}SHIFT,SPACE,movetoworkspace,special"
@@ -263,34 +335,33 @@ in
         "${modifier},mouse_down,workspace,e+1"
         "${modifier},mouse_up,  workspace,e-1"
 
-        # Mouse Bindings (Mapped to keyboard key trigger)
+        # ── Mouse Bindings ─────────────────────────────────────────────────────
         "${modifier},mouse:274,togglefloating"
 
-        # Grouping
+        # ── Grouping ───────────────────────────────────────────────────────────
         "${modifier},G,togglegroup"
         "ALT,Tab,changegroupactive"
         "${modifier}ALT,Tab,cyclenext,prev"
 
-        # Quick Actions
+        # ── Quick Actions ──────────────────────────────────────────────────────
         "${modifier}ALT,L,exec,swaylock"
         "${modifier}ALT,R,exec,hyprctl reload"
         "${modifier}ALT,K,exec,hyprctl kill"
         "CTRLALT,Delete,exec,wlogout"
-      ] ++ workspaceBinds; # <-- Injects the dynamically generated workspaces here
+      ];
 
       bindm = [
         "${modifier},mouse:272,movewindow"
         "${modifier},mouse:273,resizewindow"
       ];
 
-      # ── Media Keys ────────────────────────────────────────────────────────
+      # ── Media Keys ─────────────────────────────────────────────────────────
       bindel = [
         ",XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
         ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
         ",XF86MonBrightnessUp,  exec,brightnessctl set +5%"
       ];
-
       bindl = [
         ",XF86AudioMute,        exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ",XF86AudioPlay,        exec,playerctl play-pause"
