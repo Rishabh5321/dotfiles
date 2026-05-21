@@ -194,3 +194,20 @@ jobs:
 
             View run details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           format: markdown # Use markdown formatting for the message
+
+  all_builds_passed:
+    name: All Builds Passed
+    needs: [build_config]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check build matrix status
+        run: |
+          # needs.build_config.result will only be 'success' if all matrix jobs pass
+          if [[ "${{ needs.build_config.result }}" == "success" ]]; then
+            echo "All matrix builds passed successfully!"
+            exit 0
+          else
+            echo "One or more matrix builds failed or were cancelled."
+            exit 1
+          fi
