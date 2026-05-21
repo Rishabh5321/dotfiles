@@ -1618,11 +1618,11 @@
         "skwd-daemon": "skwd-daemon"
       },
       "locked": {
-        "lastModified": 1779106979,
-        "narHash": "sha256-3Behf+0B2mECBGyY45/QZHBoeD44N6fJ3KfbgM/OWJI=",
+        "lastModified": 1779352230,
+        "narHash": "sha256-3mGuD7BkqCRld84t626lo9ojRoaGnP1egLgS+0kpw/g=",
         "owner": "liixini",
         "repo": "skwd-wall",
-        "rev": "b2a808e22f739ff63e7e62c75526095b9f01a30a",
+        "rev": "010da1e690835138636123ee805bd798bb63d45d",
         "type": "github"
       },
       "original": {
