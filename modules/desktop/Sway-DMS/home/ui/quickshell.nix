@@ -85,9 +85,8 @@
             "focusedWindow"
           ];
           centerWidgets = [
-            "music"
-            "clock"
-            "weather"
+            # "music"
+            # "weather"
           ];
           rightWidgets = [
             # {
@@ -129,6 +128,10 @@
             {
               enabled = true;
               id = "controlCenterButton";
+            }
+            {
+              enabled = true;
+              id = "clock";
             }
           ];
         }
