@@ -208,12 +208,12 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.mangayomi
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio-v2
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
-      # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.skystream
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.skystream
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
 
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta
-      inputs.surge.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
       # inputs.skwd-wall.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
