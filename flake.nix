@@ -5,7 +5,7 @@
     # ==========================
     # Core Nixpkgs & Infrastructure
     # ==========================
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     determinate = {
@@ -154,11 +154,11 @@
           allowUnfreePredicate = _: true;
         };
         overlays = [
-          (_: prev: {
-            openldap = prev.openldap.overrideAttrs {
-              doCheck = !prev.stdenv.hostPlatform.isi686;
-            };
-          })
+          # (_: prev: {
+          #   openldap = prev.openldap.overrideAttrs {
+          #     doCheck = !prev.stdenv.hostPlatform.isi686;
+          #   };
+          # })
           nur.overlays.default
           # inputs.hyprpanel.overlay
           # sddm-sugar-candy-nix.overlays.default
