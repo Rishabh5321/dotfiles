@@ -1,4 +1,4 @@
-{...}:
+_:
 {
   security.sudo.extraConfig = # sh
     ''
