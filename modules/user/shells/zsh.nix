@@ -62,6 +62,7 @@
       icat = "kitten icat";
       dsize = "du -hs";
       findw = "grep -rl";
+      please = "sudo $(fc -ln -1)";
 
       # Filesystem display
       l = "eza";
