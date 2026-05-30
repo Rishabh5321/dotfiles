@@ -30,6 +30,8 @@ _: {
     gnome.localsearch.enable = true;
     gnome.tinysparql.enable = true;
 
+    dbus.implementation = "broker";
+
     # ===== INPUT & HARDWARE =====
     # Touchpad and input device configuration
     libinput.enable = true;
