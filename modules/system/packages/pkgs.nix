@@ -94,7 +94,7 @@
       mpv-unwrapped # Video player
       # kodi # Media center client
       # spotify # Music streaming
-      stremio-linux-shell # Media streaming
+      # stremio-linux-shell # Media streaming
       vlc # Multimedia player
       pear-desktop # YouTube Music client
       eog # For Image Viewing
@@ -209,7 +209,7 @@
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio-v2
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.skystream
-      # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio-enhanced
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
 
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta
