@@ -22,8 +22,8 @@
       gh # GitHub CLI
       github-desktop # GitHub GUI client
       # gitnuro # Git GUI client
-      # nil # Nix LSP server
-      # nixd # Nix language server
+      nil # Nix LSP server
+      nixd # Nix language server
       # nixpkgs-fmt # Nix code formatter
       # nixpkgs-review # Nixpkgs PR review tool
       # nix-prefetch # Nix package prefetcher

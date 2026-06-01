@@ -1,128 +1,209 @@
 {
-  "edit_predictions": {
-    "provider": "zed",
-    "mode": "eager",
-    "copilot": {
-      "proxy": null,
-      "proxy_no_verify": null,
-      "enterprise_uri": null
-    },
-    "enabled_in_text_threads": false
-  },
-  "agent": {
-    "model_parameters": [],
-    "default_model": {
-      "provider": "google",
-      "model": "gemini-2.5-flash"
-    }
-  },
-  "icon_theme": "Material Icon Theme",
-  "git_panel": {
-    "dock": "right"
-  },
-  "base_keymap": "VSCode",
-  "file_finder": {
-    "modal_width": "medium"
-  },
-  "vim_mode": false,
-  "vim": {
-    "enable_vim_sneak": true
-  },
-  "relative_line_numbers": "enabled",
-  "tab_bar": {
-    "show": true
-  },
-  "scrollbar": {
-    "show": "never"
-  },
-  "tabs": {
-    "show_diagnostics": "errors"
-  },
-  "inlay_hints": {
-    "enabled": true
-  },
-  "centered_layout": {
-    "left_padding": 0.15,
-    "right_padding": 0.15
-  },
-  "ssh_connections": [
-    {
-      "host": "server",
-      "username": "rishabh",
-      "args": [],
-      "projects": [
-        {
-          "paths": ["/home/rishabh"]
-        },
-        {
-          "paths": ["/mnt/Docker/Docker/Docker-Media-Template"]
-        }
-      ]
-    }
-  ],
-  "ui_font_size": 16.0,
-  "buffer_font_size": 20.0,
-  "theme": "Ayu Dark",
-  "languages": {
-    "Python": {
-      "formatter": {
-        "language_server": {
-          "name": "ruff"
-        }
-      },
-      "language_servers": ["pyright", "ruff"]
-    },
-    "Nix": {
-      "language_servers": ["nil", "!nixd"],
-      "formatter": {
-        "external": {
-          "command": "nixpkgs-fmt",
-          "arguments": []
-        }
-      },
-      "format_on_save": "on",
-      "tab_size": 2,
-      "hard_tabs": false
-    }
-  },
-  "lsp": {
-    "nil": {
-      "initialization_options": {
-        "formatting": {
-          "command": ["nixpkgs-fmt"]
-        },
-        "nix": {
-          "flake": {
-            "autoArchive": true
-          }
-        }
-      }
-    }
-  },
-  "file_types": {
-    "Nix": ["nix", "*.nix"],
-    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-    "JSON": ["json", "jsonc", "*.code-snippets"]
-  },
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false
-  },
-  "project_panel": {
-    "hide_gitignore": false,
-    "button": true,
-    "dock": "left",
-    "git_status": true
-  },
-  "notification_panel": {
-    "dock": "left"
-  },
-  "chat_panel": {
-    "dock": "left"
-  },
-  "auto_install_extensions": {
-    "nix": true
-  },
-  "buffer_font_family": "Hack Nerd Font Mono",
-  "ui_font_family": "Noto Sans"
+	"colorize_brackets": true,
+	"code_lens": "on",
+	"toolbar": {
+		"code_actions": true
+	},
+	"show_signature_help_after_edits": true,
+	"auto_signature_help": true,
+	"redact_private_values": true,
+	"cli_default_open_behavior": "existing_window",
+	"edit_predictions": {
+		"provider": "copilot"
+	},
+	"agent": {
+		"model_parameters": [],
+		"default_model": {
+			"provider": "google",
+			"model": "gemini-2.5-flash"
+		}
+	},
+	"icon_theme": {
+		"mode": "dark",
+		"light": "Catppuccin Mocha",
+		"dark": "Catppuccin Mocha"
+	},
+	"git": {
+		"inline_blame": {
+			"enabled": true
+		}
+	},
+	"status_bar": {
+		"experimental.show": true
+	},
+	"gutter": {
+		"line_numbers": true
+	},
+	"buffer_font_fallbacks": [
+		"Maple Mono NF",
+		"JetBrainsMono Nerd Font Mono",
+		"Menlo",
+		"Monaco",
+		"Courier New"
+	],
+	"show_whitespaces": "all",
+	"show_edit_predictions": true,
+	"hard_tabs": true,
+	"git_panel": {
+		"tree_view": true,
+		"dock": "right"
+	},
+	"cursor_shape": "bar",
+	"cursor_blink": true,
+	"use_system_window_tabs": true,
+	"base_keymap": "VSCode",
+	"file_finder": {
+		"modal_max_width": "medium"
+	},
+	"vim_mode": false,
+	"vim": {
+		"enable_vim_sneak": true
+	},
+	"relative_line_numbers": "enabled",
+	"tab_bar": {
+		"show": true
+	},
+	"scrollbar": {
+		"show": "never"
+	},
+	"tabs": {
+		"show_diagnostics": "errors"
+	},
+	"indent_guides": {
+		"enabled": true,
+		"coloring": "indent_aware"
+	},
+	"inlay_hints": {
+		"enabled": true
+	},
+	"centered_layout": {
+		"left_padding": 0.15,
+		"right_padding": 0.15
+	},
+	"ssh_connections": [
+		{
+			"host": "server",
+			"username": "rishabh",
+			"args": [],
+			"projects": [
+				{
+					"paths": ["/home/rishabh"]
+				},
+				{
+					"paths": ["/mnt/Docker/Docker/Docker-Media-Template"]
+				}
+			]
+		}
+	],
+	"ui_font_size": 15,
+	"buffer_font_size": 17,
+	"theme": {
+		"mode": "dark",
+		"light": "Maple Light",
+		"dark": "Maple Dark"
+	},
+	"languages": {
+		"Python": {
+			"formatter": {
+				"language_server": {
+					"name": "ruff"
+				}
+			},
+			"language_servers": ["pyright", "ruff"]
+		},
+		"Nix": {
+			"language_servers": ["nil", "!nixd"],
+			"formatter": {
+				"external": {
+					"command": "nixpkgs-fmt",
+					"arguments": []
+				}
+			},
+			"format_on_save": "on",
+			"tab_size": 2,
+			"hard_tabs": false
+		}
+	},
+	"terminal": {
+		"show_count_badge": true,
+		"font_size": 13.0,
+		"font_family": "Maple Mono NF",
+		"env": {
+			"EDITOR": "zed --wait"
+		}
+	},
+	"lsp": {
+		"nil": {
+			"initialization_options": {
+				"formatting": {
+					"command": ["nixpkgs-fmt"]
+				},
+				"nix": {
+					"flake": {
+						"autoArchive": true
+					}
+				}
+			}
+		}
+	},
+	"file_scan_exclusions": [
+		"**/.git",
+		"**/.svn",
+		"**/.hg",
+		"**/CVS",
+		"**/.DS_Store",
+		"**/Thumbs.db",
+		"**/.classpath",
+		"**/.settings",
+		// above is default from Zed
+		"**/out",
+		"**/dist",
+		"**/.husky",
+		"**/.turbo",
+		"**/.vscode-test",
+		"**/.vscode",
+		"**/.next",
+		"**/.storybook",
+		"**/.tap",
+		"**/.nyc_output",
+		"**/report",
+		"**/node_modules"
+	],
+	"file_types": {
+		"Nix": ["nix", "*.nix"],
+		"Dockerfile": ["Dockerfile", "Dockerfile.*"],
+		"JSON": ["json", "jsonc", "*.code-snippets"]
+	},
+	"telemetry": {
+		"diagnostics": false,
+		"metrics": false
+	},
+	"project_panel": {
+		"auto_fold_dirs": false,
+		"button": true,
+		"dock": "right",
+		"git_status": true
+	},
+	"notification_panel": {
+		"dock": "left"
+	},
+	"outline_panel": {
+		"dock": "right"
+	},
+	"collaboration_panel": {
+		"dock": "right"
+	},
+	"chat_panel": {
+		"dock": "left"
+	},
+	"auto_install_extensions": {
+		"nix": true
+	},
+	"autosave": {
+		"after_delay": {
+			"milliseconds": 1000
+		}
+	},
+	"buffer_font_family": "Maple Mono NF",
+	"ui_font_family": "Noto Sans"
 }
