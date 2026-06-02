@@ -1946,11 +1946,11 @@
     "wallpapers-repo": {
       "flake": false,
       "locked": {
-        "lastModified": 1777279923,
-        "narHash": "sha256-PDuxo7UlduprIC1p5V3s0ROA5MXhXI1isCYfJKOpjNc=",
+        "lastModified": 1780372739,
+        "narHash": "sha256-r5RrWTRu1fPpqHyRkAhyOz5RQh8TmSFdaTcC9eJZgy0=",
         "owner": "Rishabh5321",
         "repo": "walls",
-        "rev": "2f6d7268e6d05a0c31597b88ce1d48ebb691fefb",
+        "rev": "0c71b7433533dbdf44a3c10073918bede34fd2b9",
         "type": "github"
       },
       "original": {
