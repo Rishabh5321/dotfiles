@@ -6,8 +6,7 @@
 }:
 
 let
-  inherit (import ../misc/variables.nix) browser terminal;
-  modifier = "Mod";
+  inherit (import ../misc/variables.nix) terminal;
   stylixEnabled = if config ? stylix then config.stylix.enable else false;
 in
 {

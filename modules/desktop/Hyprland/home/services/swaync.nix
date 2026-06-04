@@ -1,11 +1,23 @@
-{ config, lib, ... }:
+{ config, ... }:
 let
   stylixEnabled = config ? stylix && config.stylix.enable;
   palette = if stylixEnabled then config.stylix.base16Scheme else {
-    base00 = "000000"; base01 = "000000"; base02 = "000000"; base03 = "000000";
-    base04 = "000000"; base05 = "000000"; base06 = "000000"; base07 = "000000";
-    base08 = "000000"; base09 = "000000"; base0A = "000000"; base0B = "000000";
-    base0C = "000000"; base0D = "000000"; base0E = "000000"; base0F = "000000";
+    base00 = "000000";
+    base01 = "000000";
+    base02 = "000000";
+    base03 = "000000";
+    base04 = "000000";
+    base05 = "000000";
+    base06 = "000000";
+    base07 = "000000";
+    base08 = "000000";
+    base09 = "000000";
+    base0A = "000000";
+    base0B = "000000";
+    base0C = "000000";
+    base0D = "000000";
+    base0E = "000000";
+    base0F = "000000";
   };
 in
 {
@@ -68,252 +80,253 @@ in
       }
     }
   '';
-  home.file.".config/swaync/style.css".text = if stylixEnabled then ''
-    * {
-      font-family: JetBrainsMono Nerd Font Mono;
-      font-weight: bold;
-    }
-    .control-center .notification-row:focus,
-    .control-center .notification-row:hover {
-      opacity: 0.9;
-      background: #${palette.base00}
-    }
-    .notification-row {
-      outline: none;
-      margin: 12px;
-      padding: 0;
-    }
-    .notification {
-      background: transparent;
-      padding: 0;
-      margin: 0px;
-    }
-    .notification-content {
-      background: #${palette.base00};
-      padding: 15px;
-      border-radius: 16px;
-      border: 2px solid #${palette.base0B};
-      margin: 0;
-    }
-    .notification-default-action {
-      margin: 0;
-      padding: 0;
-      border-radius: 16px;
-    }
-    .close-button {
-      background: #${palette.base08};
-      color: #${palette.base00};
-      text-shadow: none;
-      padding: 0;
-      border-radius: 16px;
-      margin-top: 5px;
-      margin-right: 5px;
-    }
-    .close-button:hover {
-      box-shadow: none;
-      background: #${palette.base0D};
-      transition: all .15s ease-in-out;
-      border: none
-    }
-    .notification-action {
-      border: 2px solid #${palette.base0B};
-      border-top: none;
-      border-radius: 16px;
-    }
-    .notification-default-action:hover,
-    .notification-action:hover {
-      color: #${palette.base0B};
-      background: #${palette.base0B}
-    }
-    .notification-default-action {
-      border-radius: 16px;
-      margin: 0px;
-    }
-    .notification-default-action:not(:only-child) {
-      border-bottom-left-radius: 16px;
-      border-bottom-right-radius: 16px
-    }
-    .notification-action:first-child {
-      border-bottom-left-radius: 16px;
-      background: #${palette.base00}
-    }
-    .notification-action:last-child {
-      border-bottom-right-radius: 16px;
-      background: #${palette.base00}
-    }
-    .inline-reply {
-      margin-top: 8px
-    }
-    .inline-reply-entry {
-      background: #${palette.base00};
-      color: #${palette.base05};
-      caret-color: #${palette.base05};
-      border: 1px solid #${palette.base09};
-      border-radius: 16px
-    }
-    .inline-reply-button {
-      margin-left: 4px;
-      background: #${palette.base00};
-      border: 1px solid #${palette.base09};
-      border-radius: 16px;
-      color: #${palette.base05}
-    }
-    .inline-reply-button:disabled {
-      background: initial;
-      color: #${palette.base03};
-      border: 1px solid transparent
-    }
-    .inline-reply-button:hover {
-      background: #${palette.base00}
-    }
-    .body-image {
-      margin-top: 6px;
-      background-color: #${palette.base05};
-      border-radius: 16px
-    }
-    .summary {
-      font-size: 16px;
-      font-weight: 700;
-      background: transparent;
-      color: rgba(158, 206, 106, 1);
-      text-shadow: none
-    }
-    .time {
-      font-size: 16px;
-      font-weight: 700;
-      background: transparent;
-      color: #${palette.base05};
-      text-shadow: none;
-      margin-right: 18px
-    }
-    .body {
-      font-size: 15px;
-      font-weight: 400;
-      background: transparent;
-      color: #${palette.base05};
-      text-shadow: none
-    }
-    .control-center {
-      background: #${palette.base00};
-      border: 2px solid #${palette.base0C};
-      border-radius: 16px;
-    }
-    .control-center-list {
-      background: transparent
-    }
-    .control-center-list-placeholder {
-      opacity: .5
-    }
-    .floating-notifications {
-      background: transparent
-    }
-    .blank-window {
-      background: alpha(black, 0)
-    }
-    .widget-title {
-      color: #${palette.base0B};
-      background: #${palette.base00};
-      padding: 10px;
-      margin: 10px;
-      font-size: 1.5rem;
-      border-radius: 16px;
-    }
-    .widget-title>button {
-      font-size: 1rem;
-      color: #${palette.base05};
-      text-shadow: none;
-      background: #${palette.base00};
-      box-shadow: none;
-      border-radius: 16px;
-    }
-    .widget-title>button:hover {
-      background: #${palette.base08};
-      color: #${palette.base00};
-    }
-    .widget-dnd {
-      background: #${palette.base00};
-      padding: 10px;
-      margin: 10px;
-      border-radius: 16px;
-      font-size: large;
-      color: #${palette.base0B};
-    }
-    .widget-dnd>switch {
-      border-radius: 16px;
-      background: #${palette.base0B};
-    }
-    .widget-dnd>switch:checked {
-      background: #${palette.base08};
-      border: 1px solid #${palette.base08};
-    }
-    .widget-dnd>switch slider {
-      background: #${palette.base00};
-      border-radius: 16px
-    }
-    .widget-dnd>switch:checked slider {
-      background: #${palette.base00};
-      border-radius: 16px
-    }
-    .widget-label {
+  home.file.".config/swaync/style.css".text =
+    if stylixEnabled then ''
+      * {
+        font-family: JetBrainsMono Nerd Font Mono;
+        font-weight: bold;
+      }
+      .control-center .notification-row:focus,
+      .control-center .notification-row:hover {
+        opacity: 0.9;
+        background: #${palette.base00}
+      }
+      .notification-row {
+        outline: none;
+        margin: 12px;
+        padding: 0;
+      }
+      .notification {
+        background: transparent;
+        padding: 0;
+        margin: 0px;
+      }
+      .notification-content {
+        background: #${palette.base00};
+        padding: 15px;
+        border-radius: 16px;
+        border: 2px solid #${palette.base0B};
+        margin: 0;
+      }
+      .notification-default-action {
+        margin: 0;
+        padding: 0;
+        border-radius: 16px;
+      }
+      .close-button {
+        background: #${palette.base08};
+        color: #${palette.base00};
+        text-shadow: none;
+        padding: 0;
+        border-radius: 16px;
+        margin-top: 5px;
+        margin-right: 5px;
+      }
+      .close-button:hover {
+        box-shadow: none;
+        background: #${palette.base0D};
+        transition: all .15s ease-in-out;
+        border: none
+      }
+      .notification-action {
+        border: 2px solid #${palette.base0B};
+        border-top: none;
+        border-radius: 16px;
+      }
+      .notification-default-action:hover,
+      .notification-action:hover {
+        color: #${palette.base0B};
+        background: #${palette.base0B}
+      }
+      .notification-default-action {
+        border-radius: 16px;
+        margin: 0px;
+      }
+      .notification-default-action:not(:only-child) {
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px
+      }
+      .notification-action:first-child {
+        border-bottom-left-radius: 16px;
+        background: #${palette.base00}
+      }
+      .notification-action:last-child {
+        border-bottom-right-radius: 16px;
+        background: #${palette.base00}
+      }
+      .inline-reply {
+        margin-top: 8px
+      }
+      .inline-reply-entry {
+        background: #${palette.base00};
+        color: #${palette.base05};
+        caret-color: #${palette.base05};
+        border: 1px solid #${palette.base09};
+        border-radius: 16px
+      }
+      .inline-reply-button {
+        margin-left: 4px;
+        background: #${palette.base00};
+        border: 1px solid #${palette.base09};
+        border-radius: 16px;
+        color: #${palette.base05}
+      }
+      .inline-reply-button:disabled {
+        background: initial;
+        color: #${palette.base03};
+        border: 1px solid transparent
+      }
+      .inline-reply-button:hover {
+        background: #${palette.base00}
+      }
+      .body-image {
+        margin-top: 6px;
+        background-color: #${palette.base05};
+        border-radius: 16px
+      }
+      .summary {
+        font-size: 16px;
+        font-weight: 700;
+        background: transparent;
+        color: rgba(158, 206, 106, 1);
+        text-shadow: none
+      }
+      .time {
+        font-size: 16px;
+        font-weight: 700;
+        background: transparent;
+        color: #${palette.base05};
+        text-shadow: none;
+        margin-right: 18px
+      }
+      .body {
+        font-size: 15px;
+        font-weight: 400;
+        background: transparent;
+        color: #${palette.base05};
+        text-shadow: none
+      }
+      .control-center {
+        background: #${palette.base00};
+        border: 2px solid #${palette.base0C};
+        border-radius: 16px;
+      }
+      .control-center-list {
+        background: transparent
+      }
+      .control-center-list-placeholder {
+        opacity: .5
+      }
+      .floating-notifications {
+        background: transparent
+      }
+      .blank-window {
+        background: alpha(black, 0)
+      }
+      .widget-title {
+        color: #${palette.base0B};
+        background: #${palette.base00};
+        padding: 10px;
         margin: 10px;
-    }
-    .widget-label>label {
-      font-size: 1rem;
-      color: #${palette.base05};
-    }
-    .widget-mpris {
-      color: #${palette.base05};
-      padding: 10px;
-      margin: 10px;
-      border-radius: 16px;
-    }
-    .widget-mpris > box > button {
-      border-radius: 16px;
-    }
-    .widget-mpris-player {
-      padding: 10px;
-      margin: 10px
-    }
-    .widget-mpris-title {
-      font-weight: 700;
-      font-size: 1.25rem
-    }
-    .widget-mpris-subtitle {
-      font-size: 1.1rem
-    }
-    .widget-menubar>box>.menu-button-bar>button {
-      border: none;
-      background: transparent
-    }
-    .topbar-buttons>button {
-      border: none;
-      background: transparent
-    }
-    .widget-volume {
-      background: #${palette.base01};
-      padding: 10px;
-      margin: 10px;
-      border-radius: 16px;
-      font-size: x-large;
-      color: #${palette.base05};
-    }
-    .widget-volume>box>button {
-      background: #${palette.base0B};
-      border: none
-    }
-    .per-app-volume {
-      background-color: #${palette.base00};
-      padding: 4px 8px 8px;
-      margin: 0 8px 8px;
-      border-radius: 16px;
-    }
-    .widget-backlight {
-      background: #${palette.base01};
-      padding: 10px;
-      margin: 10px;
-      border-radius: 16px;
-      font-size: x-large;
-      color: #${palette.base05}
-    }
-  '' else "";
+        font-size: 1.5rem;
+        border-radius: 16px;
+      }
+      .widget-title>button {
+        font-size: 1rem;
+        color: #${palette.base05};
+        text-shadow: none;
+        background: #${palette.base00};
+        box-shadow: none;
+        border-radius: 16px;
+      }
+      .widget-title>button:hover {
+        background: #${palette.base08};
+        color: #${palette.base00};
+      }
+      .widget-dnd {
+        background: #${palette.base00};
+        padding: 10px;
+        margin: 10px;
+        border-radius: 16px;
+        font-size: large;
+        color: #${palette.base0B};
+      }
+      .widget-dnd>switch {
+        border-radius: 16px;
+        background: #${palette.base0B};
+      }
+      .widget-dnd>switch:checked {
+        background: #${palette.base08};
+        border: 1px solid #${palette.base08};
+      }
+      .widget-dnd>switch slider {
+        background: #${palette.base00};
+        border-radius: 16px
+      }
+      .widget-dnd>switch:checked slider {
+        background: #${palette.base00};
+        border-radius: 16px
+      }
+      .widget-label {
+          margin: 10px;
+      }
+      .widget-label>label {
+        font-size: 1rem;
+        color: #${palette.base05};
+      }
+      .widget-mpris {
+        color: #${palette.base05};
+        padding: 10px;
+        margin: 10px;
+        border-radius: 16px;
+      }
+      .widget-mpris > box > button {
+        border-radius: 16px;
+      }
+      .widget-mpris-player {
+        padding: 10px;
+        margin: 10px
+      }
+      .widget-mpris-title {
+        font-weight: 700;
+        font-size: 1.25rem
+      }
+      .widget-mpris-subtitle {
+        font-size: 1.1rem
+      }
+      .widget-menubar>box>.menu-button-bar>button {
+        border: none;
+        background: transparent
+      }
+      .topbar-buttons>button {
+        border: none;
+        background: transparent
+      }
+      .widget-volume {
+        background: #${palette.base01};
+        padding: 10px;
+        margin: 10px;
+        border-radius: 16px;
+        font-size: x-large;
+        color: #${palette.base05};
+      }
+      .widget-volume>box>button {
+        background: #${palette.base0B};
+        border: none
+      }
+      .per-app-volume {
+        background-color: #${palette.base00};
+        padding: 4px 8px 8px;
+        margin: 0 8px 8px;
+        border-radius: 16px;
+      }
+      .widget-backlight {
+        background: #${palette.base01};
+        padding: 10px;
+        margin: 10px;
+        border-radius: 16px;
+        font-size: x-large;
+        color: #${palette.base05}
+      }
+    '' else "";
 }
