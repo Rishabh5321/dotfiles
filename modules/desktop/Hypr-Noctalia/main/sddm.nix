@@ -1,85 +1,45 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
-
+let
+  stylixEnabled = config ? stylix && config.stylix.enable;
+in
 {
-
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
     theme = "sddm-astronaut-theme";
     package = pkgs.kdePackages.sddm;
     extraPackages = with pkgs; [
+      # kdePackages.qt6-declarative
+      kdePackages.qtsvg
       kdePackages.qtsvg
       kdePackages.qtmultimedia
       kdePackages.qtvirtualkeyboard
     ];
-    settings.Theme = {
+    settings.Theme = lib.mkIf stylixEnabled {
       CursorTheme = config.stylix.cursor.name;
       CursorSize = config.stylix.cursor.size;
     };
   };
 
   environment.systemPackages = [
-    (
+    (if stylixEnabled then
+      let
+        colors = config.lib.stylix.colors.withHashtag;
+      in
       pkgs.sddm-astronaut.override {
-        themeConfig = with config.lib.stylix.colors.withHashtag; {
-          Font = "JetBrainsMono";
-          FontSize = "12";
+        themeConfig = {
           Background = "${config.stylix.image}";
-          CropBackground = "false";
-          BackgroundHorizontalAlignment = "center";
-          BackgroundVerticalAlignment = "center";
-          DimBackground = "0.0";
-          HeaderTextColor = "${base07}";
-          DateTextColor = "${base07}";
-          TimeTextColor = "${base07}";
-
-          FormBackgroundColor = "${base00}";
-          BackgroundColor = "${base00}";
-          DimBackgroundColor = "${base00}";
-
-          LoginFieldBackgroundColor = "#${base00}";
-          PasswordFieldBackgroundColor = "${base00}";
-          LoginFieldTextColo = "${base0D}";
-          PasswordFieldTestColor = "${base0D}";
-          UserIconColor = "${base0D}";
-          PasswordIconColor = "${base0D}";
-
-          PlaceholderTextColor = "${base02}";
-          WarningColor = "${base0A}";
-
-          LoginButtonTextColor = "${base0D}";
-          LoginButtonBackgroundColor = "${base00}";
-          SystemButtonsIconsColor = "${base0D}";
-          SessionButtonTextColor = "${base0D}";
-          VirtualKeyboardButtonTextColor = "${base0D}";
-
-          DropdownTextColor = "${base0D}";
-          DropdownSelectedBackgroundColor = "${base00}";
-          DropdownBackgroundColor = "${base00}";
-
-          HighlightTextColor = "${base0D}";
-          HighlightBackgroundColor = "${base0D}";
-          HighlightBorderColor = "${base0D}";
-
-          HoverUserIconColor = "${base0A}";
-          HoverPasswordIconColor = "${base0A}";
-          HoverSystemButtonsIconsColor = "${base0A}";
-          HoverSessionButtonTextColor = "${base0A}";
-          HoverVirtualKeyboardButtonTextColor = "${base0A}";
-
+          CursorColor = colors.base05;
+          FullBlur = "true";
           PartialBlur = "true";
-          BlurMax = "35";
-          Blur = "2.0";
-
-          HourFormat = "h:mm AP";
-
+          HeaderTextColor = colors.base05;
           HaveFormBackground = "false";
-          FormPosition = "right";
-
+          FormPosition = "left";
         };
       }
-    )
+    else
+      pkgs.sddm-astronaut)
   ];
 
   security.pam.services.sddm.enableGnomeKeyring = true;

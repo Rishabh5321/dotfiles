@@ -1,5 +1,11 @@
 { pkgs, lib, config, ... }:
 let
+  palette = if (config ? stylix && config.stylix.enable) then config.lib.stylix.colors else {
+    base00 = "000000"; base01 = "1e1e2e"; base02 = "313244"; base03 = "45475a";
+    base04 = "585b70"; base05 = "cdd6f4"; base06 = "f5e0dc"; base07 = "b4befe";
+    base08 = "f38ba8"; base09 = "fab387"; base0A = "f9e2af"; base0B = "a6e3a1";
+    base0C = "94e2d5"; base0D = "89b4fa"; base0E = "cba6f7"; base0F = "f2cdcd";
+  };
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
 in
 with lib;
@@ -349,40 +355,40 @@ with lib;
         /* Applies to all modules for consistency */
         #workspaces, #window, #clock, #battery, #pulseaudio, #network, #cpu, #memory, #idle_inhibitor, #tray, #custom-notification, #custom-exit, #custom-startmenu, #custom-hyprbindings {
           padding: 0px 12px; /* Horizontal padding for spacing inside the bar */
-          background-color: #${config.lib.stylix.colors.base01};
+          background-color: #${palette.base01};
           margin: 4px 0px;   /* Vertical margin to center modules in the bar */
           font-weight: bold;
         }
         /* --- Hover Effects for Interactivity --- */
         #clock:hover, #battery:hover, #pulseaudio:hover, #network:hover, #cpu:hover, #memory:hover, #idle_inhibitor:hover, #custom-notification:hover {
-          background-color: #${config.lib.stylix.colors.base01};
+          background-color: #${palette.base01};
         }
         /* --- Workspaces --- */
         #workspaces {
-          background-color: #${config.lib.stylix.colors.base01};
+          background-color: #${palette.base01};
           margin-left: 6px;
           padding: 0 5px;
         }
 
         #workspaces button {
-          color: #${config.lib.stylix.colors.base04}; /* Inactive workspace color */
+          color: #${palette.base04}; /* Inactive workspace color */
           padding: 0px 5px;
           transition: ${betterTransition};
         }
 
         #workspaces button:hover {
-          background-color: #${config.lib.stylix.colors.base02};
-          color: #${config.lib.stylix.colors.base06};
+          background-color: #${palette.base02};
+          color: #${palette.base06};
         }
 
         #workspaces button.focused {
-          background-color: #${config.lib.stylix.colors.base0D}; /* Use a bright accent for focus */
-          color: #${config.lib.stylix.colors.base00};
+          background-color: #${palette.base0D}; /* Use a bright accent for focus */
+          color: #${palette.base00};
         }
 
         #workspaces button.urgent {
-          background-color: #${config.lib.stylix.colors.base08}; /* Use red for urgent workspaces */
-          color: #${config.lib.stylix.colors.base00};
+          background-color: #${palette.base08}; /* Use red for urgent workspaces */
+          color: #${palette.base00};
         }
       ''
     ];

@@ -16,6 +16,8 @@
   isoImage.makeUsbBootable = true;
   isoImage.volumeID = "NIXOS_ISO";
 
+  stylix.enable = lib.mkForce false;
+
   # Network configuration
   networking.hostName = "nixos-iso";
   networking.networkmanager.enable = true;

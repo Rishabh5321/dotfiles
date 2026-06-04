@@ -6,35 +6,11 @@
       wayland = {
         enable = true;
       };
-      # config, lib, wallpaper,   Need to be set this in the headers before enabling sddm-nix
-      # package = pkgs.kdePackages.sddm;
       extraPackages = with pkgs; [
         kdePackages.qtsvg
         kdePackages.qtmultimedia
         kdePackages.qtvirtualkeyboard
       ];
-      # theme = "black_hole";
-      # settings = {
-      #   Autologin = {
-      #     Session = "hyprland";
-      #     User = "rishabh";
-      #   };
-      # };
-      # sugarCandyNix = {
-      #   enable = true;
-      #   settings = {
-      #     # General settings
-      #     AccentColor = "#${config.stylix.base16Scheme.base0B}";
-      #     Background = "${lib.cleanSource wallpapers}/${wallpaper}";
-      #     Font = "JetBrainsMono Nerd Font Mono";
-      #     # Form settings
-      #     HeaderText = "Welcome!";
-      #     FormPosition = "left";
-      #     HaveFormBackground = true;
-      #     PartialBlur = true;
-      #     HourFormat = "h:m:s ap";
-      #   };
-      # };
       autoNumlock = true;
     };
   };

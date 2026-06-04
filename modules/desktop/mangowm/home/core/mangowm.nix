@@ -1,8 +1,15 @@
-{ config, inputs, ... }:
+{ config, inputs, lib, ... }:
 
 let
   inherit (import ../misc/variables.nix) browser terminal extraMonitorSettings;
   modifier = "SUPER";
+  stylixEnabled = if config ? stylix then config.stylix.enable else false;
+  palette = if stylixEnabled then config.stylix.base16Scheme else {
+    base00 = "000000"; base01 = "1e1e2e"; base02 = "313244"; base03 = "45475a";
+    base04 = "585b70"; base05 = "cdd6f4"; base06 = "f5e0dc"; base07 = "b4befe";
+    base08 = "f38ba8"; base09 = "fab387"; base0A = "f9e2af"; base0B = "a6e3a1";
+    base0C = "94e2d5"; base0D = "89b4fa"; base0E = "cba6f7"; base0F = "f2cdcd";
+  };
 in
 {
   imports = [
@@ -36,8 +43,8 @@ in
       gappov = 4
 
       # Colors
-      focuscolor = 0x${config.stylix.base16Scheme.base0D}ff
-      rootcolor = 0x${config.stylix.base16Scheme.base00}ff
+      focuscolor = 0x${palette.base0D}ff
+      rootcolor = 0x${palette.base00}ff
 
       # Keybindings - Applications
       bind = ${modifier}, Return, spawn, ${terminal}

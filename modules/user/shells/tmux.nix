@@ -23,23 +23,42 @@
       disableConfirmationPrompt = true;
       extraConfig =
         let
-          background = "${config.lib.stylix.colors.base01}";
-          foreground = "${config.lib.stylix.colors.base04}";
+          palette = if (config ? stylix && config.stylix.enable) then config.lib.stylix.colors else {
+            base00 = "000000";
+            base01 = "1e1e2e";
+            base02 = "313244";
+            base03 = "45475a";
+            base04 = "585b70";
+            base05 = "cdd6f4";
+            base06 = "f5e0dc";
+            base07 = "b4befe";
+            base08 = "f38ba8";
+            base09 = "fab387";
+            base0A = "f9e2af";
+            base0B = "a6e3a1";
+            base0C = "94e2d5";
+            base0D = "89b4fa";
+            base0E = "cba6f7";
+            base0F = "f2cdcd";
+          };
+
+          background = "${palette.base01}";
+          foreground = "${palette.base04}";
 
           r_arrow = { fg, bg }: ''#[fg=#${fg},bg=#${bg}]'';
           l_arrow = { fg, bg }: ''#[fg=#${fg},bg=#${bg}]'';
 
           color_1 = {
-            fg = "${config.lib.stylix.colors.base00}";
-            bg = "${config.lib.stylix.colors.base08}";
+            fg = "${palette.base00}";
+            bg = "${palette.base08}";
           };
           color_2 = {
-            fg = "${config.lib.stylix.colors.base00}";
-            bg = "${config.lib.stylix.colors.base0A}";
+            fg = "${palette.base00}";
+            bg = "${palette.base0A}";
           };
           color_3 = {
-            fg = "${config.lib.stylix.colors.base00}";
-            bg = "${config.lib.stylix.colors.base0B}";
+            fg = "${palette.base00}";
+            bg = "${palette.base0B}";
           };
           toString =
             { fg
@@ -137,7 +156,7 @@
           set -g status-left '${icon}'
 
 
-          set -g pane-active-border-style 'fg=#${config.lib.stylix.colors.base0D}'
+          set -g pane-active-border-style 'fg=#${palette.base0D}'
           # windows
           set -g window-status-style 'fg=#${color_2.bg} bg=#${background}'
           set -g window-status-format ' #I:#W '

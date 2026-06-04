@@ -4,6 +4,12 @@
 , ...
 }:
 let
+  palette = if (config ? stylix && config.stylix.enable) then config.lib.stylix.colors else {
+    base00 = "000000"; base01 = "1e1e2e"; base02 = "313244"; base03 = "45475a";
+    base04 = "585b70"; base05 = "cdd6f4"; base06 = "f5e0dc"; base07 = "b4befe";
+    base08 = "f38ba8"; base09 = "fab387"; base0A = "f9e2af"; base0B = "a6e3a1";
+    base0C = "94e2d5"; base0D = "89b4fa"; base0E = "cba6f7"; base0F = "f2cdcd";
+  };
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
   inherit (import ../../misc/variables.nix) clock24h;
 in
@@ -198,9 +204,9 @@ with lib; {
         /* --- The Main Bar --- */
         window#waybar {
           /* A solid background color from your stylix theme for a clean, bold look. */
-          background: #${config.lib.stylix.colors.base00};
-          border: 1px solid #${config.lib.stylix.colors.base03}; /* A subtle border for definition */
-          color: #${config.lib.stylix.colors.base05}; /* Default text color */
+          background: #${palette.base00};
+          border: 1px solid #${palette.base03}; /* A subtle border for definition */
+          color: #${palette.base05}; /* Default text color */
           transition: ${betterTransition};
         }
 
@@ -208,42 +214,42 @@ with lib; {
         /* Applies to all modules for consistency */
         #workspaces, #window, #clock, #battery, #pulseaudio, #network, #cpu, #memory, #idle_inhibitor, #tray, #custom-notification, #custom-exit, #custom-startmenu, #custom-hyprbindings {
           padding: 0px 12px; /* Horizontal padding for spacing inside the bar */
-          background-color: #${config.lib.stylix.colors.base01};
+          background-color: #${palette.base01};
           margin: 4px 0px;   /* Vertical margin to center modules in the bar */
           font-weight: bold;
         }
 
         /* --- Hover Effects for Interactivity --- */
         #clock:hover, #battery:hover, #pulseaudio:hover, #network:hover, #cpu:hover, #memory:hover, #idle_inhibitor:hover, #custom-notification:hover {
-          background-color: #${config.lib.stylix.colors.base01};
+          background-color: #${palette.base01};
         }
 
         /* --- Workspaces --- */
         #workspaces {
-          background-color: #${config.lib.stylix.colors.base01};
+          background-color: #${palette.base01};
           margin-left: 6px;
           padding: 0 5px;
         }
 
         #workspaces button {
-          color: #${config.lib.stylix.colors.base04}; /* Inactive workspace color */
+          color: #${palette.base04}; /* Inactive workspace color */
           padding: 0px 5px;
           transition: ${betterTransition};
         }
 
         #workspaces button:hover {
-          background-color: #${config.lib.stylix.colors.base02};
-          color: #${config.lib.stylix.colors.base06};
+          background-color: #${palette.base02};
+          color: #${palette.base06};
         }
 
         #workspaces button.focused {
-          background-color: #${config.lib.stylix.colors.base0D}; /* Use a bright accent for focus */
-          color: #${config.lib.stylix.colors.base00};
+          background-color: #${palette.base0D}; /* Use a bright accent for focus */
+          color: #${palette.base00};
         }
 
         #workspaces button.urgent {
-          background-color: #${config.lib.stylix.colors.base08}; /* Use red for urgent workspaces */
-          color: #${config.lib.stylix.colors.base00};
+          background-color: #${palette.base08}; /* Use red for urgent workspaces */
+          color: #${palette.base00};
         }
 
         /* --- Right Aligned Modules --- */
@@ -253,40 +259,40 @@ with lib; {
 
         /* --- State-Based Coloring for Glanceable Info --- */
         #memory.warning, #cpu.warning, #battery.warning {
-          color: #${config.lib.stylix.colors.base0A}; /* Yellow for warning */
+          color: #${palette.base0A}; /* Yellow for warning */
         }
 
         #memory.critical, #cpu.critical, #battery.critical {
-          color: #${config.lib.stylix.colors.base08}; /* Red for critical */
+          color: #${palette.base08}; /* Red for critical */
         }
 
         #battery.charging, #battery.plugged {
-          color: #${config.lib.stylix.colors.base0B}; /* Green/Blue for charging */
+          color: #${palette.base0B}; /* Green/Blue for charging */
         }
 
         #network.disconnected {
-          color: #${config.lib.stylix.colors.base08};
+          color: #${palette.base08};
         }
 
         /* --- Specific Module Tweaks --- */
         #clock {
-          color: #${config.lib.stylix.colors.base0E}; /* A distinct color for the clock */
+          color: #${palette.base0E}; /* A distinct color for the clock */
         }
 
         #window {
           /* The window title can be less prominent */
-          color: #${config.lib.stylix.colors.base04};
+          color: #${palette.base04};
           font-weight: normal;
         }
 
         /* --- Tooltips --- */
         tooltip {
-          background: #${config.lib.stylix.colors.base00};
-          border: 1px solid #${config.lib.stylix.colors.base0B};
+          background: #${palette.base00};
+          border: 1px solid #${palette.base0B};
         }
 
         tooltip label {
-          color: #${config.lib.stylix.colors.base05};
+          color: #${palette.base05};
         }
       ''
     ];

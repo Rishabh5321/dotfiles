@@ -130,6 +130,7 @@
     , wallpapers-repo
     , lsfg-vk-flake
     , system-manager
+    , niri
     , #, nix-colorizer
       #, plasma-manager
       ...

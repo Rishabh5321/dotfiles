@@ -1,12 +1,14 @@
 { pkgs
 , config
 , inputs
+, lib
 , ...
 }:
 
 let
   inherit (import ../misc/variables.nix) browser terminal;
   modifier = "Mod";
+  stylixEnabled = if config ? stylix then config.stylix.enable else false;
 in
 {
   imports = [
@@ -14,56 +16,37 @@ in
   ];
 
   programs.niri = {
-    package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
+    package = inputs.niri.packages.${pkgs.system}.niri-unstable;
     settings = {
-      spawn-at-startup = [
-        { command = [ "dbus-update-activation-environment" "--all" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" ]; }
-        { command = [ "systemctl" "--user" "import-environment" "QT_QPA_PLATFORMTHEME" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" ]; }
-        { command = [ "swaync" ]; }
-        { command = [ "kdeconnect-indicator" ]; }
-        { command = [ "wl-paste" "--type" "text" "--watch" "cliphist" "store" ]; }
-        { command = [ "wl-paste" "--type" "image" "--watch" "cliphist" "store" ]; }
-        { command = [ "systemctl" "--user" "start" "hyprpolkitagent" ]; }
-      ];
-
       input = {
-        focus-follows-mouse = {
-          enable = true;
-        };
-        mod-key = "Super";
-        keyboard.xkb = {
-          layout = "us";
-          options = "grp:alt_shift_toggle,caps:super";
-        };
+        keyboard.xkb.layout = "us";
         touchpad = {
           tap = true;
           natural-scroll = true;
-          dwt = true;
         };
-        mouse.accel-profile = "flat";
+        mouse.natural-scroll = true;
       };
 
-      outputs."eDP-1" = {
-        mode = { width = 1920; height = 1080; refresh = 60.0; };
-        scale = 1.0;
-        transform = { rotation = 0; };
-        position = { x = 0; y = 0; };
+      outputs = {
+        "eDP-1" = {
+          mode = { width = 1920; height = 1080; refresh = 60.0; };
+          scale = 1.0;
+        };
       };
 
       layout = {
-        gaps = 4;
+        gaps = 8;
         center-focused-column = "never";
         preset-column-widths = [
-          { proportion = 0.33333; }
-          { proportion = 0.5; }
-          { proportion = 0.66667; }
-          { proportion = 1.0; }
+          { proportion = 1.0 / 3.0; }
+          { proportion = 1.0 / 2.0; }
+          { proportion = 2.0 / 3.0; }
         ];
         default-column-width.proportion = 1.0;
         border = {
           width = 2;
-          active = "#${config.stylix.base16Scheme.base0D}";
-          inactive = "#${config.stylix.base16Scheme.base00}";
+          active = if stylixEnabled then "#${config.stylix.base16Scheme.base0D}" else "#ffffff";
+          inactive = if stylixEnabled then "#${config.stylix.base16Scheme.base00}" else "#000000";
         };
         struts = {
           left = 0;
@@ -73,94 +56,31 @@ in
         };
       };
 
-      window-rules = [
-        {
-          matches = [{ }];
-          open-maximized = true;
-          geometry-corner-radius = {
-            top-left = 12.0;
-            top-right = 12.0;
-            bottom-left = 12.0;
-            bottom-right = 12.0;
-          };
-          clip-to-geometry = true;
-          focus-ring.enable = false;
-        }
-      ];
+      spawn-at-startup = [
+        { command = [ "${pkgs.waybar}/bin/waybar" ]; }
+        { command = [ "${pkgs.swaynotificationcenter}/bin/swaync" ]; }
+      ] ++ lib.optional stylixEnabled { command = [ "${pkgs.swaybg}/bin/swaybg" "-i" config.stylix.image ]; };
 
       binds = {
-        "${modifier}+Return".action.spawn = [ terminal ];
-        "Alt+Space".action.spawn = [ "dms" "ipc" "call" "spotlight" "toggle" ];
-        "${modifier}+V".action.spawn = [ "dms" "ipc" "call" "clipboard" "toggle" ];
-        "${modifier}+Alt+W".action.spawn = [ "wallSelector" ];
-        "${modifier}+W".action.spawn = [ browser ];
-        "Ctrl+L".action.spawn = [ "dms" "ipc" "call" "lock" "lock" ];
-        "${modifier}+E".action.spawn = [ "wofi-emoji" ];
-        "${modifier}+Shift+S".action.screenshot = [ ];
-        "${modifier}+D".action.spawn = [ "discord" ];
-        "${modifier}+C".action.spawn = [ "hyprpicker" "-a" ];
-        "${modifier}+T".action.spawn = [ "thunar" ];
-        "${modifier}+M".action.spawn = [ "spotify" ];
-        "${modifier}+N".action.spawn = [ "swaync-client" "-t" "-sw" ];
-
-        "${modifier}+Q".action.close-window = [ ];
-        "${modifier}+F".action.maximize-column = [ ];
-        "${modifier}+Shift+F".action.toggle-window-floating = [ ];
-        "${modifier}+Shift+C".action.quit = [ ];
-
-        "${modifier}+WheelScrollDown".action.focus-column-right = [ ];
-        "${modifier}+WheelScrollUp".action.focus-column-left = [ ];
-        "${modifier}+Shift+WheelScrollDown".action.focus-window-down = [ ];
-        "${modifier}+Shift+WheelScrollUp".action.focus-window-up = [ ];
-
-        "${modifier}+Left".action.focus-column-left = [ ];
-        "${modifier}+Right".action.focus-column-right = [ ];
-        "${modifier}+Up".action.focus-window-up = [ ];
-        "${modifier}+Down".action.focus-window-down = [ ];
-        "${modifier}+H".action.focus-column-left = [ ];
-        "${modifier}+L".action.focus-column-right = [ ];
-        "${modifier}+K".action.focus-window-up = [ ];
-        "${modifier}+J".action.focus-window-down = [ ];
-
-        "${modifier}+Shift+Left".action.move-column-left = [ ];
-        "${modifier}+Shift+Right".action.move-column-right = [ ];
-        "${modifier}+Shift+Up".action.move-window-up-or-to-workspace-up = [ ];
-        "${modifier}+Shift+Down".action.move-window-down-or-to-workspace-down = [ ];
-        "${modifier}+Shift+H".action.move-column-left = [ ];
-        "${modifier}+Shift+L".action.move-column-right = [ ];
-        "${modifier}+Shift+K".action.move-window-up-or-to-workspace-up = [ ];
-        "${modifier}+Shift+J".action.move-window-down-or-to-workspace-down = [ ];
-
-        "${modifier}+Ctrl+Left".action.set-column-width = "-10%";
-        "${modifier}+Ctrl+Right".action.set-column-width = "+10%";
-        "${modifier}+Ctrl+Up".action.set-window-height = "-10%";
-        "${modifier}+Ctrl+Down".action.set-window-height = "+10%";
-        "${modifier}+Ctrl+H".action.set-column-width = "-10%";
-        "${modifier}+Ctrl+L".action.set-column-width = "+10%";
-        "${modifier}+Ctrl+K".action.set-window-height = "-10%";
-        "${modifier}+Ctrl+J".action.set-window-height = "+10%";
-
-        "${modifier}+1".action.focus-workspace = 1;
-        "${modifier}+2".action.focus-workspace = 2;
-        "${modifier}+3".action.focus-workspace = 3;
-        "${modifier}+4".action.focus-workspace = 4;
-        "${modifier}+5".action.focus-workspace = 5;
-        "${modifier}+6".action.focus-workspace = 6;
-        "${modifier}+7".action.focus-workspace = 7;
-        "${modifier}+8".action.focus-workspace = 8;
-        "${modifier}+9".action.focus-workspace = 9;
-        "${modifier}+0".action.focus-workspace = 10;
-
-        "${modifier}+Shift+1".action.move-column-to-workspace = 1;
-        "${modifier}+Shift+2".action.move-column-to-workspace = 2;
-        "${modifier}+Shift+3".action.move-column-to-workspace = 3;
-        "${modifier}+Shift+4".action.move-column-to-workspace = 4;
-        "${modifier}+Shift+5".action.move-column-to-workspace = 5;
-        "${modifier}+Shift+6".action.move-column-to-workspace = 6;
-        "${modifier}+Shift+7".action.move-column-to-workspace = 7;
-        "${modifier}+Shift+8".action.move-column-to-workspace = 8;
-        "${modifier}+Shift+9".action.move-column-to-workspace = 9;
-        "${modifier}+Shift+0".action.move-column-to-workspace = 10;
+        "Mod+Return".action.spawn = [ terminal ];
+        "Mod+D".action.spawn = [ "rofi" "-show" "drun" ];
+        "Mod+Q".action.close-window = { };
+        "Mod+Left".action.focus-column-left = { };
+        "Mod+Right".action.focus-column-right = { };
+        "Mod+Up".action.focus-window-up = { };
+        "Mod+Down".action.focus-window-down = { };
+        "Mod+Shift+Left".action.move-column-left = { };
+        "Mod+Shift+Right".action.move-column-right = { };
+        "Mod+F".action.maximize-column = { };
+        "Mod+Shift+F".action.fullscreen-window = { };
+        "Mod+C".action.center-column = { };
+        "Mod+Minus".action.set-column-width = "-10%";
+        "Mod+Equal".action.set-column-width = "+10%";
+        "Mod+Shift+Minus".action.set-window-height = "-10%";
+        "Mod+Shift+Equal".action.set-window-height = "+10%";
+        "Mod+V".action.spawn = [ "cliphist" "list" "|" "rofi" "-dmenu" "|" "cliphist" "decode" "|" "wl-copy" ];
+        "Mod+Shift+E".action.quit = { };
+        "Mod+Shift+P".action.spawn = [ "swaylock" ];
 
         "XF86AudioRaiseVolume".action.spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+" ];
         "XF86AudioLowerVolume".action.spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-" ];
