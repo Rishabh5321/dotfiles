@@ -12,6 +12,21 @@
     # in
     with pkgs; [
 
+      # --- Desktop & UI Customization ---
+      nwg-look
+      afterglow-cursors-recolored
+      papirus-icon-theme
+      adwaita-icon-theme
+      hicolor-icon-theme
+      dracula-icon-theme # Dracula icons
+      qogir-icon-theme # Qogir icons
+      # tela-icon-theme # Tela icons
+
+      # --- GTK Themes ---
+      orchis-theme
+      material-black-colors
+      nordic
+
       # ===== DEVELOPMENT TOOLS =====
       # act # GitHub Actions local runner
       android-tools # ADB and fastboot
