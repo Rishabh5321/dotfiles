@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, username, ... }:
 
 let
   stylixEnabled = config ? stylix && config.stylix.enable;
@@ -18,6 +18,10 @@ in
       kdePackages.qtvirtualkeyboard
     ];
     settings = {
+      Autologin = {
+        Session = "sway";
+        User = "${username}";
+      };
       Theme = lib.mkIf stylixEnabled {
         CursorTheme = config.stylix.cursor.name;
         CursorSize = config.stylix.cursor.size;
