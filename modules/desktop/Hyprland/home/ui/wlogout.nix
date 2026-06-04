@@ -1,4 +1,14 @@
-{ config, ... }: {
+{ config, lib, ... }:
+let
+  stylixEnabled = config ? stylix && config.stylix.enable;
+  palette = if stylixEnabled then config.stylix.base16Scheme else {
+    base00 = "000000"; base01 = "000000"; base02 = "000000"; base03 = "000000";
+    base04 = "000000"; base05 = "000000"; base06 = "000000"; base07 = "000000";
+    base08 = "000000"; base09 = "000000"; base0A = "000000"; base0B = "000000";
+    base0C = "000000"; base0D = "000000"; base0E = "000000"; base0F = "000000";
+  };
+in
+{
   programs.wlogout = {
     enable = true;
     layout = [
@@ -39,7 +49,7 @@
         "keybind" = "h";
       }
     ];
-    style = ''
+    style = lib.mkIf stylixEnabled ''
       * {
         font-family: "JetBrainsMono NF", FontAwesome, sans-serif;
       	background-image: none;
@@ -49,14 +59,14 @@
       	background-color: rgba(12, 12, 12, 0.1);
       }
       button {
-      	color: #${config.stylix.base16Scheme.base05};
+      	color: #${palette.base05};
         font-size:20px;
         background-repeat: no-repeat;
       	background-position: center;
       	background-size: 25%;
       	border-style: solid;
       	background-color: rgba(12, 12, 12, 0.3);
-      	border: 3px solid #${config.stylix.base16Scheme.base05};
+      	border: 3px solid #${palette.base05};
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         border-radius: 90px;
         margin: 20px;
@@ -64,9 +74,9 @@
       button:focus,
       button:active,
       button:hover {
-        color: #${config.stylix.base16Scheme.base00};
-        background-color: #${config.stylix.base16Scheme.base0B};
-        border: 3px solid #${config.stylix.base16Scheme.base0B};
+        color: #${palette.base00};
+        background-color: #${palette.base0B};
+        border: 3px solid #${palette.base0B};
       }
       #logout {
       	margin: 10px;

@@ -1,10 +1,17 @@
 { pkgs
 , config
+, lib
 , ...
 }:
 let
   swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
   transition = "transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);";
+  palette = if (config ? stylix && config.stylix.enable) then config.lib.stylix.colors else {
+    base00 = "000000"; base01 = "1e1e2e"; base02 = "313244"; base03 = "45475a";
+    base04 = "585b70"; base05 = "cdd6f4"; base06 = "f5e0dc"; base07 = "b4befe";
+    base08 = "f38ba8"; base09 = "fab387"; base0A = "f9e2af"; base0B = "a6e3a1";
+    base0C = "94e2d5"; base0D = "89b4fa"; base0E = "cba6f7"; base0F = "f2cdcd";
+  };
   animateBlink = ''
     margin: 4px 0;
     animation-name: blink;
@@ -19,9 +26,9 @@ let
     }
   '';
 in
-{
-  config = with config.lib.stylix.colors; {
-    stylix.targets.waybar.enable = false;
+with palette; {
+  config = {
+    stylix.targets.waybar.enable = lib.mkIf (config ? stylix) false;
     programs.waybar = {
       enable = true;
       systemd = {

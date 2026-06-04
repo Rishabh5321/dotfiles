@@ -1,9 +1,16 @@
-{ pkgs, wallpaper, wallpapers, ... }:
+{ pkgs, wallpaper, wallpapers, config, lib, ... }:
 
 let
   modifier = "Mod4"; # Use the Super key as the modifier
   browser = "firefox"; # Set default browser
   terminal = "kitty"; # Set default terminal
+  stylixEnabled = if config ? stylix then config.stylix.enable else false;
+  palette = if stylixEnabled then config.lib.stylix.colors else {
+    base00 = "000000"; base01 = "1e1e2e"; base02 = "313244"; base03 = "45475a";
+    base04 = "585b70"; base05 = "cdd6f4"; base06 = "f5e0dc"; base07 = "b4befe";
+    base08 = "f38ba8"; base09 = "fab387"; base0A = "f9e2af"; base0B = "a6e3a1";
+    base0C = "94e2d5"; base0D = "89b4fa"; base0E = "cba6f7"; base0F = "f2cdcd";
+  };
 in
 {
   xsession.enable = true;
@@ -31,23 +38,23 @@ in
           };
         }
       ];
-      # colors = {
-      #   background = "#${config.stylix.base16Scheme.base00}";
-      #   focused = {
-      #     border = "#${config.stylix.base16Scheme.base0D}";
-      #     background = "#${config.stylix.base16Scheme.base0D}";
-      #     text = "#${config.stylix.base16Scheme.base00}";
-      #     indicator = "#${config.stylix.base16Scheme.base0B}";
-      #     childBorder = "#${config.stylix.base16Scheme.base0D}";
-      #   };
-      #   unfocused = {
-      #     border = "#${config.stylix.base16Scheme.base00}";
-      #     background = "#${config.stylix.base16Scheme.base00}";
-      #     text = "#${config.stylix.base16Scheme.base05}";
-      #     indicator = "#${config.stylix.base16Scheme.base00}";
-      #     childBorder = "#${config.stylix.base16Scheme.base00}";
-      #   };
-      # };
+      colors = lib.mkIf stylixEnabled {
+        background = "#${palette.base00}";
+        focused = {
+          border = "#${palette.base0D}";
+          background = "#${palette.base0D}";
+          text = "#${palette.base00}";
+          indicator = "#${palette.base0B}";
+          childBorder = "#${palette.base0D}";
+        };
+        unfocused = {
+          border = "#${palette.base00}";
+          background = "#${palette.base00}";
+          text = "#${palette.base05}";
+          indicator = "#${palette.base00}";
+          childBorder = "#${palette.base00}";
+        };
+      };
 
       keybindings = {
         "${modifier}+Return" = "exec ${terminal}";

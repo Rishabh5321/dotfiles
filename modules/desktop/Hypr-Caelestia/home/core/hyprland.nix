@@ -7,6 +7,13 @@
 let
   inherit (import ../misc/variables.nix) browser terminal extraMonitorSettings;
   modifier = "SUPER";
+  stylixEnabled = config ? stylix && config.stylix.enable;
+  palette = if stylixEnabled then config.stylix.base16Scheme else {
+    base00 = "000000"; base01 = "1e1e2e"; base02 = "313244"; base03 = "45475a";
+    base04 = "585b70"; base05 = "cdd6f4"; base06 = "f5e0dc"; base07 = "b4befe";
+    base08 = "f38ba8"; base09 = "fab387"; base0A = "f9e2af"; base0B = "a6e3a1";
+    base0C = "94e2d5"; base0D = "89b4fa"; base0E = "cba6f7"; base0F = "f2cdcd";
+  };
 in
 with lib;
 {
@@ -88,8 +95,8 @@ with lib;
         extend_border_grab_area = 15;
         hover_icon_on_border = true;
         allow_tearing = false;
-        "col.active_border" = "rgb(${config.stylix.base16Scheme.base0D}) rgb(${config.stylix.base16Scheme.base0B}) 45deg";
-        "col.inactive_border" = "rgb(${config.stylix.base16Scheme.base00})";
+        "col.active_border" = lib.mkIf stylixEnabled "rgb(${palette.base0D}) rgb(${palette.base0B}) 45deg";
+        "col.inactive_border" = lib.mkIf stylixEnabled "rgb(${palette.base00})";
       };
 
       # ── Input Settings ─────────────────────────────────────────────────────

@@ -34,7 +34,7 @@
     flake = "github:Rishabh5321/dotfiles";
     host = "dell";
     # useNom = false;
-    minimumBatteryToProceedWithoutAC = 40;
+    # minimumBatteryToProceedWithoutAC = 40;
   };
 
   services.nfs.server.enable = true;
@@ -49,6 +49,8 @@
 
   networking.hostName = "dell"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  stylix.enable = false;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

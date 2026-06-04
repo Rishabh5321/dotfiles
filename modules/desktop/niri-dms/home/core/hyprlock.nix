@@ -6,9 +6,14 @@
 , ...
 }:
 let
-  color0 = "rgb(${config.stylix.base16Scheme.base00})";
-  color5 = "rgb(${config.stylix.base16Scheme.base05})";
-  color14 = "rgb(${config.stylix.base16Scheme.base0E})";
+  palette = if config.stylix.enable then config.stylix.base16Scheme else {
+    base00 = "000000";
+    base05 = "ffffff";
+    base0E = "ff00ff";
+  };
+  color0 = "rgb(${palette.base00})";
+  color5 = "rgb(${palette.base05})";
+  color14 = "rgb(${palette.base0E})";
 in
 {
   programs.hyprlock = {

@@ -63,6 +63,8 @@ in
 
   targets.genericLinux.enable = true;
 
+  stylix.enable = lib.mkForce true;
+
   home.username = "rishabh";
   home.homeDirectory = "/home/rishabh";
 

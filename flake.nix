@@ -130,6 +130,7 @@
     , wallpapers-repo
     , lsfg-vk-flake
     , system-manager
+    , niri
     , #, nix-colorizer
       #, plasma-manager
       ...
@@ -154,11 +155,11 @@
           allowUnfreePredicate = _: true;
         };
         overlays = [
-          (_: prev: {
-            openldap = prev.openldap.overrideAttrs {
-              doCheck = !prev.stdenv.hostPlatform.isi686;
-            };
-          })
+          # (_: prev: {
+          #   openldap = prev.openldap.overrideAttrs {
+          #     doCheck = !prev.stdenv.hostPlatform.isi686;
+          #   };
+          # })
           nur.overlays.default
           # inputs.hyprpanel.overlay
           # sddm-sugar-candy-nix.overlays.default

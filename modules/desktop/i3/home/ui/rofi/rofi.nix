@@ -1,9 +1,20 @@
 { pkgs
 , config
+, lib
 , wallpaper
 , wallpapers
 , ...
-}: {
+}:
+let
+  stylixEnabled = if config ? stylix then config.stylix.enable else false;
+  palette = if stylixEnabled then config.lib.stylix.colors else {
+    base00 = "000000"; base01 = "1e1e2e"; base02 = "313244"; base03 = "45475a";
+    base04 = "585b70"; base05 = "cdd6f4"; base06 = "f5e0dc"; base07 = "b4befe";
+    base08 = "f38ba8"; base09 = "fab387"; base0A = "f9e2af"; base0B = "a6e3a1";
+    base0C = "94e2d5"; base0D = "89b4fa"; base0E = "cba6f7"; base0F = "f2cdcd";
+  };
+in
+{
   programs = {
     rofi = {
       enable = true;
@@ -22,17 +33,17 @@
         let
           inherit (config.lib.formats.rasi) mkLiteral;
         in
-        {
+        lib.mkIf stylixEnabled {
           "*" = {
-            bg = mkLiteral "#${config.stylix.base16Scheme.base00}";
-            bg-alt = mkLiteral "#${config.stylix.base16Scheme.base09}";
-            foreground = mkLiteral "#${config.stylix.base16Scheme.base01}";
-            selected = mkLiteral "#${config.stylix.base16Scheme.base08}";
-            active = mkLiteral "#${config.stylix.base16Scheme.base0B}";
-            text-selected = mkLiteral "#${config.stylix.base16Scheme.base00}";
-            text-color = mkLiteral "#${config.stylix.base16Scheme.base05}";
-            border-color = mkLiteral "#${config.stylix.base16Scheme.base0F}";
-            urgent = mkLiteral "#${config.stylix.base16Scheme.base0E}";
+            bg = mkLiteral "#${palette.base00}";
+            bg-alt = mkLiteral "#${palette.base09}";
+            foreground = mkLiteral "#${palette.base01}";
+            selected = mkLiteral "#${palette.base08}";
+            active = mkLiteral "#${palette.base0B}";
+            text-selected = mkLiteral "#${palette.base00}";
+            text-color = mkLiteral "#${palette.base05}";
+            border-color = mkLiteral "#${palette.base0F}";
+            urgent = mkLiteral "#${palette.base0E}";
           };
           "window" = {
             transparency = "real";

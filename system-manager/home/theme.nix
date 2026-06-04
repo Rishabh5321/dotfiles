@@ -1,90 +1,62 @@
-{ wallpapers, wallpaper, pkgs, lib, ... }:
+{ wallpapers, wallpaper, pkgs, lib, options, config, ... }:
+let
+  hasStylix = options ? stylix;
+  stylixEnabled = if hasStylix then config.stylix.enable else false;
+in
 {
-  gtk = {
-    enable = lib.mkForce false;
+  config = lib.mkMerge [
+    {
+      gtk = {
+        enable = lib.mkForce false;
 
-    # iconTheme = {
-    #   enable = true;
-    #   package = pkgs.papirus-icon-theme;
-    # };
+        # iconTheme = {
+        #   enable = true;
+        #   package = pkgs.papirus-icon-theme;
+        # };
 
-    theme = {
-      name = "adw-gtk3";
-    };
-  };
-
-  stylix = {
-    enable = false;
-    image = "${wallpapers}/${wallpaper}";
-    polarity = "dark";
-
-    /*
-      cursor = {
-      package = pkgs.afterglow-cursors-recolored;
-      name = "Afterglow-Recolored-Catppuccin-Flamingo";
-      size = 24;
+        theme = {
+          name = "adw-gtk3";
+        };
       };
-    */
+    }
+    (lib.optionalAttrs hasStylix {
+      stylix = {
+        enable = lib.mkOptionDefault false;
 
-    # fonts = {
+        image = lib.mkIf stylixEnabled "${wallpapers}/${wallpaper}";
+        polarity = lib.mkIf stylixEnabled "dark";
 
-    #   sansSerif = {
-    #     name = "Noto Sans";
-    #     package = pkgs.noto-fonts;
-    #   };
+        icons = lib.mkIf stylixEnabled {
+          enable = true;
+          package = pkgs.papirus-icon-theme;
+          dark = "Papirus-Dark";
+          light = "Papirus-Light";
+        };
 
-    #   serif = {
-    #     name = "Noto Serif";
-    #     package = pkgs.noto-fonts;
-    #   };
+        opacity = lib.mkIf stylixEnabled {
+          applications = 1.0;
+          popups = 1.0;
+          terminal = 1.0;
+          desktop = 1.0;
+        };
 
-    #   monospace = {
-    #     package = pkgs.nerd-fonts.hack;
-    #     name = "Hack Nerd Font Mono";
-    #   };
-
-    #   emoji = {
-    #     package = pkgs.noto-fonts-color-emoji;
-    #     name = "Noto Color Emoji";
-    #   };
-
-    #   sizes = {
-    #     applications = 12;
-    #     terminal = 15;
-    #     desktop = 11;
-    #     popups = 12;
-    #   };
-    # };
-
-    icons = {
-      enable = true;
-      package = pkgs.papirus-icon-theme;
-      dark = "Papirus-Dark";
-      light = "Papirus-Light";
-    };
-
-    opacity = {
-      applications = 1.0;
-      popups = 1.0;
-      terminal = 1.0;
-      desktop = 1.0;
-    };
-
-    targets = {
-      font-packages.enable = false;
-      gtk.enable = false;
-      waybar.enable = false;
-      rofi.enable = false;
-      wofi.enable = false;
-      qt.enable = true;
-      qt.platform = "qtct";
-      hyprland.enable = false;
-      swaylock.enable = false;
-      dank-material-shell.enable = false;
-      hyprpanel.enable = false;
-      # zed.enable = true;
-      zen-browser.enable = false;
-      # spicetify.enable = false;
-    };
-  };
+        targets = lib.mkIf stylixEnabled {
+          font-packages.enable = false;
+          gtk.enable = false;
+          waybar.enable = false;
+          rofi.enable = false;
+          wofi.enable = false;
+          qt.enable = true;
+          qt.platform = "qtct";
+          hyprland.enable = false;
+          swaylock.enable = false;
+          dank-material-shell.enable = false;
+          hyprpanel.enable = false;
+          # zed.enable = true;
+          zen-browser.enable = false;
+          # spicetify.enable = false;
+        };
+      };
+    })
+  ];
 }

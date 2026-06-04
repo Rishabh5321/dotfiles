@@ -4,6 +4,24 @@
 , ...
 }:
 let
+  palette = if (config ? stylix && config.stylix.enable) then config.lib.stylix.colors else {
+    base00 = "000000";
+    base01 = "1e1e2e";
+    base02 = "313244";
+    base03 = "45475a";
+    base04 = "585b70";
+    base05 = "cdd6f4";
+    base06 = "f5e0dc";
+    base07 = "b4befe";
+    base08 = "f38ba8";
+    base09 = "fab387";
+    base0A = "f9e2af";
+    base0B = "a6e3a1";
+    base0C = "94e2d5";
+    base0D = "89b4fa";
+    base0E = "cba6f7";
+    base0F = "f2cdcd";
+  };
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
   inherit (import ../../misc/variables.nix) clock24h;
 in
@@ -192,8 +210,8 @@ with lib; {
           background: rgba(0,0,0,0);
         }
         #workspaces {
-          color: #${config.lib.stylix.colors.base00};
-          background: #${config.lib.stylix.colors.base01};
+          color: #${palette.base00};
+          background: #${palette.base01};
           margin: 4px 4px;
           padding: 5px 5px;
           border-radius: 16px;
@@ -203,8 +221,8 @@ with lib; {
           padding: 0px 5px;
           margin: 0px 3px;
           border-radius: 16px;
-          color: #${config.lib.stylix.colors.base00};
-          background: linear-gradient(45deg, #${config.lib.stylix.colors.base08}, #${config.lib.stylix.colors.base0D});
+          color: #${palette.base00};
+          background: linear-gradient(45deg, #${palette.base08}, #${palette.base0D});
           opacity: 0.5;
           transition: ${betterTransition};
         }
@@ -213,8 +231,8 @@ with lib; {
           padding: 0px 5px;
           margin: 0px 3px;
           border-radius: 16px;
-          color: #${config.lib.stylix.colors.base00};
-          background: linear-gradient(45deg, #${config.lib.stylix.colors.base08}, #${config.lib.stylix.colors.base0D});
+          color: #${palette.base00};
+          background: linear-gradient(45deg, #${palette.base08}, #${palette.base0D});
           transition: ${betterTransition};
           opacity: 1.0;
           min-width: 40px;
@@ -222,31 +240,31 @@ with lib; {
         #workspaces button:hover {
           font-weight: bold;
           border-radius: 16px;
-          color: #${config.lib.stylix.colors.base00};
-          background: linear-gradient(45deg, #${config.lib.stylix.colors.base08}, #${config.lib.stylix.colors.base0D});
+          color: #${palette.base00};
+          background: linear-gradient(45deg, #${palette.base08}, #${palette.base0D});
           opacity: 0.8;
           transition: ${betterTransition};
         }
         tooltip {
-          background: #${config.lib.stylix.colors.base00};
-          border: 1px solid #${config.lib.stylix.colors.base08};
+          background: #${palette.base00};
+          border: 1px solid #${palette.base08};
           border-radius: 12px;
         }
         tooltip label {
-          color: #${config.lib.stylix.colors.base08};
+          color: #${palette.base08};
         }
         #window, #pulseaudio, #cpu, #memory, #idle_inhibitor {
           font-weight: bold;
           margin: 4px 0px;
           margin-left: 7px;
           padding: 0px 18px;
-          background: #${config.lib.stylix.colors.base04};
-          color: #${config.lib.stylix.colors.base00};
+          background: #${palette.base04};
+          color: #${palette.base00};
           border-radius: 24px 10px 24px 10px;
         }
         #custom-startmenu {
-          color: #${config.lib.stylix.colors.base0B};
-          background: #${config.lib.stylix.colors.base02};
+          color: #${palette.base0B};
+          background: #${palette.base02};
           font-size: 28px;
           margin: 0px;
           padding: 0px 30px 0px 15px;
@@ -255,8 +273,8 @@ with lib; {
         #custom-hyprbindings, #network, #battery,
         #custom-notification, #tray, #custom-exit {
           font-weight: bold;
-          background: #${config.lib.stylix.colors.base0F};
-          color: #${config.lib.stylix.colors.base00};
+          background: #${palette.base0F};
+          color: #${palette.base00};
           margin: 4px 0px;
           margin-right: 7px;
           border-radius: 10px 24px 10px 24px;
@@ -265,7 +283,7 @@ with lib; {
         #clock {
           font-weight: bold;
           color: #0D0E15;
-          background: linear-gradient(90deg, #${config.lib.stylix.colors.base0E}, #${config.lib.stylix.colors.base0C});
+          background: linear-gradient(90deg, #${palette.base0E}, #${palette.base0C});
           margin: 0px;
           padding: 0px 15px 0px 30px;
           border-radius: 0px 0px 0px 40px;

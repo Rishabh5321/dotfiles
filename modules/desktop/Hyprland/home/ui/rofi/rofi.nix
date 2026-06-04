@@ -1,7 +1,18 @@
 { pkgs
 , config
+, lib
 , ...
-}: {
+}:
+let
+  stylixEnabled = if config ? stylix then config.stylix.enable else false;
+  palette = if stylixEnabled then config.lib.stylix.colors else {
+    base00 = "000000"; base01 = "1e1e2e"; base02 = "313244"; base03 = "45475a";
+    base04 = "585b70"; base05 = "cdd6f4"; base06 = "f5e0dc"; base07 = "b4befe";
+    base08 = "f38ba8"; base09 = "fab387"; base0A = "f9e2af"; base0B = "a6e3a1";
+    base0C = "94e2d5"; base0D = "89b4fa"; base0E = "cba6f7"; base0F = "f2cdcd";
+  };
+in
+{
   programs = {
     rofi = {
       enable = true;
@@ -20,15 +31,15 @@
         let
           inherit (config.lib.formats.rasi) mkLiteral;
         in
-        {
+        lib.mkIf stylixEnabled {
           "*" = {
-            bg = mkLiteral "#${config.stylix.base16Scheme.base00}";
-            bg-alt = mkLiteral "#${config.stylix.base16Scheme.base01}";
-            foreground = mkLiteral "#${config.stylix.base16Scheme.base07}"; # Kept as base07 for bright white
-            text-selected = mkLiteral "#${config.stylix.base16Scheme.base00}";
-            selected = mkLiteral "#${config.stylix.base16Scheme.base0D}";
-            active = mkLiteral "#${config.stylix.base16Scheme.base0B}";
-            urgent = mkLiteral "#${config.stylix.base16Scheme.base08}";
+            bg = mkLiteral "#${palette.base00}";
+            bg-alt = mkLiteral "#${palette.base01}";
+            foreground = mkLiteral "#${palette.base07}"; # Kept as base07 for bright white
+            text-selected = mkLiteral "#${palette.base00}";
+            selected = mkLiteral "#${palette.base0D}";
+            active = mkLiteral "#${palette.base0B}";
+            urgent = mkLiteral "#${palette.base08}";
           };
           "window" = {
             width = mkLiteral "1000px";
@@ -122,10 +133,9 @@
             cursor = mkLiteral "pointer";
           };
 
-          # --- KEY CHANGES ARE HERE ---
           "element normal.normal" = {
             background-color = mkLiteral "inherit";
-            text-color = mkLiteral "@foreground"; # Explicitly set to white, instead of 'inherit'
+            text-color = mkLiteral "@foreground";
           };
           "element normal.urgent" = {
             background-color = mkLiteral "@urgent";
@@ -137,7 +147,7 @@
           };
           "element alternate.normal" = {
             background-color = mkLiteral "inherit";
-            text-color = mkLiteral "@foreground"; # Explicitly set to white, instead of 'inherit'
+            text-color = mkLiteral "@foreground";
           };
           "element alternate.urgent" = {
             background-color = mkLiteral "@urgent";
@@ -147,7 +157,6 @@
             background-color = mkLiteral "@active";
             text-color = mkLiteral "@text-selected";
           };
-          # --- END OF KEY CHANGES ---
 
           "element selected.normal" = {
             background-color = mkLiteral "@selected";
