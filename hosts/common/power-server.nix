@@ -19,7 +19,7 @@ _: {
   #  autoSuspend = false;
   #};
 
-  # powerManagement.enable = true;
-  # powerManagement.cpuFreqGovernor = "performance";
+  powerManagement.enable = true;
+  powerManagement.cpuFreqGovernor = "performance";
 
 }

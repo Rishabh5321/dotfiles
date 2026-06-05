@@ -81,6 +81,7 @@
       jq # JSON processor
       lm_sensors # Sensors
       # ranger # File manager
+      s-tui
       tealdeer # Simplified man pages
       tree # Directory tree viewer
       # typer # Interactive typing test

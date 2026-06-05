@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
     ../../modules/system
     ../common/power-server.nix
-    ../common/power-redmi.nix
+    # ../common/power-redmi.nix
     ../../modules/desktop/Sway-DMS/main
     ../common/serve.nix
 
