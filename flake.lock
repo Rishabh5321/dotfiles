@@ -1597,11 +1597,11 @@
         "nixpkgs": "nixpkgs_13"
       },
       "locked": {
-        "lastModified": 1779716973,
-        "narHash": "sha256-LNfLty/M53P8jBf4JW4wwqYT5wYqLG+xNhpGaRrb5MM=",
+        "lastModified": 1780770894,
+        "narHash": "sha256-InTx3yjTSGSTpjoRylJuRiJWWVF0zaf24FofE5zGvS4=",
         "owner": "liixini",
         "repo": "skwd-daemon",
-        "rev": "79aa8075fc12cc0bbadf3a08408d15fc777744c4",
+        "rev": "9887ef668c0e4a9dccf691efdcce466b76de371c",
         "type": "github"
       },
       "original": {
@@ -1617,11 +1617,11 @@
         "skwd-daemon": "skwd-daemon"
       },
       "locked": {
-        "lastModified": 1780672069,
-        "narHash": "sha256-6Nf+G4ZWK1uhMnQo7N/LrjgH7vtkWpXhNc2BJRCiyuE=",
+        "lastModified": 1780770840,
+        "narHash": "sha256-Rw69FMm8yx0T2Ez7LChzA7rzILNfy5LcHoIr4/dRQrM=",
         "owner": "liixini",
         "repo": "skwd-wall",
-        "rev": "697f4d3b68761c693e802e89b5fbb85ec7b25f5d",
+        "rev": "5d66eaab605bd98ba30d90b485873873c4fa0d95",
         "type": "github"
       },
       "original": {
