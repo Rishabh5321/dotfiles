@@ -13,8 +13,8 @@
       "context.properties" = {
         "default.clock.rate" = 48000;
         "default.clock.quantum" = 256;
-        "default.clock.min-quantum" = 32;    # Allow it to drop for extreme low latency
-        "default.clock.max-quantum" = 8192;  # CRITICAL: Allow large buffers for Bluetooth
+        "default.clock.min-quantum" = 32; # Allow it to drop for extreme low latency
+        "default.clock.max-quantum" = 8192; # CRITICAL: Allow large buffers for Bluetooth
       };
     };
 
