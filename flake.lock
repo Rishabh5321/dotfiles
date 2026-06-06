@@ -1671,11 +1671,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1780684162,
-        "narHash": "sha256-7HslPhFlg9tD5t+E8c5nL9v85TehwSWvwSmk+tarBnI=",
+        "lastModified": 1780701809,
+        "narHash": "sha256-u7AUNs6U6eD1os4+ghbr1gH4QjPWzOdKvpeM+E+XRKM=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "e14dbcb3e8ed94de5e85ed9ad133b6017480f86c",
+        "rev": "3a02d9f73608641b28e08b26acb0b0b47c05f14b",
         "type": "github"
       },
       "original": {
