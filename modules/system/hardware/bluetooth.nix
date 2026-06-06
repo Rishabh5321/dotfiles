@@ -1,13 +1,13 @@
 { pkgs, ... }:
-
 {
   hardware.bluetooth = {
     enable = true;
+    powerOnBoot = true;
     settings = {
       General = {
         Enable = "Source,Sink,Media,Socket";
-        AutoEnable = true;
-        ControllerMode = "bredr";
+        Experimental = true; # Frequently helps with modern headset stability
+        ControllerMode = "dual"; # Re-enable LE to allow proper handshakes
       };
     };
   };
