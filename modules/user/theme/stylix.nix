@@ -15,6 +15,11 @@ in
           name = "Nordic-darker";
           package = pkgs.nordic;
         };
+        iconTheme = {
+          name = "Papirus-Dark";
+          package = pkgs.papirus-icon-theme;
+        };
+        gtk4.theme = config.gtk.theme;
       };
 
       qt = {
