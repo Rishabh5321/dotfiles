@@ -110,7 +110,7 @@
       mpv-unwrapped # Video player
       # kodi # Media center client
       # spotify # Music streaming
-      stremio-linux-shell # Media streaming
+      # stremio-linux-shell # Media streaming
       vlc # Multimedia player
       pear-desktop # YouTube Music client
       eog # For Image Viewing
