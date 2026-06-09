@@ -8,13 +8,14 @@ in
     {
       gtk = {
         enable = true;
-        theme = if stylixEnabled then {
-          name = "adw-gtk3";
-          package = pkgs.adw-gtk3;
-        } else {
-          name = "Nordic-darker";
-          package = pkgs.nordic;
-        };
+        theme =
+          if stylixEnabled then {
+            name = "adw-gtk3";
+            package = pkgs.adw-gtk3;
+          } else {
+            name = "Nordic-darker";
+            package = pkgs.nordic;
+          };
         iconTheme = {
           name = "Papirus-Dark";
           package = pkgs.papirus-icon-theme;
