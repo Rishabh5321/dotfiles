@@ -19,6 +19,12 @@ in
           name = "Papirus-Dark";
           package = pkgs.papirus-icon-theme;
         };
+        colorScheme = "dark";
+        cursorTheme = {
+          package = pkgs.capitaine-cursors;
+          name = "capitaine-cursors";
+          size = 16;
+        };
         gtk4.theme = config.gtk.theme;
       };
 
