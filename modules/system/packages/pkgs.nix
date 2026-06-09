@@ -23,8 +23,6 @@
       # tela-icon-theme # Tela icons
 
       # --- GTK Themes ---
-      orchis-theme
-      material-black-colors
       nordic
 
       # ===== DEVELOPMENT TOOLS =====

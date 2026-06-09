@@ -1,14 +1,19 @@
-{ lib, config, options, ... }:
+{ lib, config, options, pkgs, ... }:
 let
   hasStylix = options ? stylix;
+  stylixEnabled = hasStylix && config.stylix.enable;
 in
 {
   config = lib.mkMerge [
     {
       gtk = {
         enable = true;
-        theme = {
+        theme = if stylixEnabled then {
           name = "adw-gtk3";
+          package = pkgs.adw-gtk3;
+        } else {
+          name = "Nordic-darker";
+          package = pkgs.nordic;
         };
       };
 
@@ -23,6 +28,7 @@ in
         waybar.enable = false;
         rofi.enable = false;
         wofi.enable = false;
+        gtk.enable = false;
         qt.enable = true;
         qt.platform = "qtct";
         hyprland.enable = false;
