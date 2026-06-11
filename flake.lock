@@ -1379,27 +1379,27 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "noctalia-qs": [
-          "noctalia-qs"
-        ]
+        "noctalia-qs": "noctalia-qs"
       },
       "locked": {
-        "lastModified": 1780803063,
-        "narHash": "sha256-pthUzeY81Gx1PTKCP4gYTwZYUxNpKZh2pOLPa9ZyofI=",
+        "lastModified": 1780949817,
+        "narHash": "sha256-2oJuPyt+4dd+ZzO7TFqpmkSAAYpRg9SF4eV8kJGl6Tk=",
         "owner": "noctalia-dev",
-        "repo": "noctalia-shell",
-        "rev": "5311e14d2000af2f523789c76a3d869dcb42f130",
+        "repo": "noctalia",
+        "rev": "f816591afc2f2f606d1f0cf70b51e95c04a7a8aa",
         "type": "github"
       },
       "original": {
         "owner": "noctalia-dev",
-        "repo": "noctalia-shell",
+        "ref": "legacy-v4",
+        "repo": "noctalia",
         "type": "github"
       }
     },
     "noctalia-qs": {
       "inputs": {
         "nixpkgs": [
+          "noctalia",
           "nixpkgs"
         ],
         "systems": "systems_4",
@@ -1595,7 +1595,6 @@
         "nixpkgs": "nixpkgs_10",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "noctalia": "noctalia",
-        "noctalia-qs": "noctalia-qs",
         "nur": "nur",
         "quickshell": "quickshell_3",
         "skwd-wall": "skwd-wall",
@@ -1913,6 +1912,7 @@
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
+          "noctalia",
           "noctalia-qs",
           "nixpkgs"
         ]
