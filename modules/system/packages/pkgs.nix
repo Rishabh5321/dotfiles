@@ -28,6 +28,7 @@
       # ===== DEVELOPMENT TOOLS =====
       # act # GitHub Actions local runner
       android-tools # ADB and fastboot
+      antigravity-cli # Antigravity Agent
       # cachix # Binary cache management
       docker # Container runtime
       docker-compose # Multi-container orchestration
@@ -47,7 +48,7 @@
       geminicommit # Gemini commit message generator
       # zed-editor # Editor
       # nix-fast-build # Building flakes
-      gemini-cli-bin # AI
+      # gemini-cli-bin # AI
       lazygit # Git TUI client
       lazydocker # Docker container management
       # winboat # Windows
