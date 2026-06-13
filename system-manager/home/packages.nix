@@ -101,7 +101,7 @@
     swappy
     librsvg
     kdePackages.qtsvg
-    libsForQt5.qtsvg
+    qtsvg
 
     # --- Media Player ---
     delfin
@@ -111,9 +111,9 @@
 
     # ===== QT THEMING =====
     kdePackages.qtstyleplugin-kvantum # Qt5/6 Kvantum plugin
-    libsForQt5.qtstyleplugin-kvantum # Qt5 Kvantum plugin
-    libsForQt5.qt5.qtbase # Qt5 base
-    libsForQt5.qt5.qtsvg # Qt5 SVG support
+    qt6Packages.qtstyleplugin-kvantum # Qt5 Kvantum plugin
+    qt5.qtbase # Qt5 base
+    qt5.qtsvg # Qt5 SVG support
 
     # --- Custom / Flake Inputs ---
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.antigravity

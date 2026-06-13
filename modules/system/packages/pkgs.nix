@@ -192,10 +192,10 @@
       kdePackages.qtstyleplugin-kvantum # Qt5/6 Kvantum plugin
       kdePackages.qtwayland # Qt6 Wayland support
       qt6.qtwayland # Qt6 Wayland support
-      libsForQt5.qtstyleplugin-kvantum # Qt5 Kvantum plugin
-      libsForQt5.qt5.qtbase # Qt5 base
-      libsForQt5.qt5.qtsvg # Qt5 SVG support
-      libsForQt5.qt5.qtwayland # Qt5 Wayland support
+      qt6Packages.qtstyleplugin-kvantum # Qt5 Kvantum plugin
+      qt5.qtbase # Qt5 base
+      qt5.qtsvg # Qt5 SVG support
+      qt5.qtwayland # Qt5 Wayland support
 
       # ===== APPLICATIONS =====
       # deja-dup              # Backup tool
