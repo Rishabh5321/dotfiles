@@ -95,7 +95,7 @@
 
       # ===== COMMUNICATION & SOCIAL =====
       ayugram-desktop
-      # beeper # Universal chat client
+      beeper # Universal chat client
       discord # Gaming communication
       # ferdium # Multi-service messaging
       # telegram-desktop # Telegram client
