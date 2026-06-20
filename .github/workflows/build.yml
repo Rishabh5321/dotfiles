@@ -41,7 +41,7 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v22
@@ -95,7 +95,7 @@ jobs:
           remove-existing-swap-files: true
 
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v22
@@ -138,7 +138,7 @@ jobs:
     if: always() # Run this job even if some matrix builds failed
     steps:
       - name: Checkout repository # Needed to access workflow details potentially
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Determine overall status
         id: determine_status
