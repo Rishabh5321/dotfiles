@@ -991,11 +991,11 @@
         "nixpkgs": "nixpkgs_9"
       },
       "locked": {
-        "lastModified": 1782161863,
-        "narHash": "sha256-Nr8HtMcApIoxFm/ZSRxXulTChAoy3qW9ZbcxUPN9Rdw=",
+        "lastModified": 1782166108,
+        "narHash": "sha256-/EtnQBcKbsaCAGQ5VRcplrHRkR4ryqyLMpBfkVuG9Xw=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "aa741c485b8a056bec04fe64994e17ae7b7e9a03",
+        "rev": "875776f0252fcb8618bb948640a0d1f7a5b362be",
         "type": "github"
       },
       "original": {
