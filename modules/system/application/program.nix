@@ -10,13 +10,15 @@
       package = lib.mkForce pkgs.kdePackages.kdeconnect-kde;
     };
 
-    # thunar = {
-    #   enable = true;
-    #   plugins = with pkgs; [
-    #     thunar-archive-plugin
-    #     thunar-volman
-    #   ];
-    # };
+    thunar = {
+      enable = true;
+      plugins = with pkgs; [
+        thunar-archive-plugin
+        thunar-media-tags-plugin
+        thunar-volman
+        tumbler
+      ];
+    };
 
     # ===== SYSTEM UTILITIES =====
     dconf.enable = true;
