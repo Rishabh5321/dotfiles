@@ -141,11 +141,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1783192766,
-        "narHash": "sha256-CO6UBey3lyV9NalMO5D/Qu4VcYfvO7euD0xffz+Ksxc=",
+        "lastModified": 1783279404,
+        "narHash": "sha256-U/Z9V0IXsJy/ODi4Ht2gaZoU/CwKH2qAe3sxCNJJ0gU=",
         "owner": "Rishabh5321",
         "repo": "custom-packages-flake",
-        "rev": "c6861c27ac0c072efc1aaac06e95b86140519617",
+        "rev": "6996baf808d01a8d78572efdcbdacba4c88b92c1",
         "type": "github"
       },
       "original": {
