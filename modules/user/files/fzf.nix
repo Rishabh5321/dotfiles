@@ -12,6 +12,8 @@
       "--color=16"
     ];
 
+    historyWidget.command = "";
+
     defaultCommand = "rg --files --hidden --glob=!.git/";
   };
 }

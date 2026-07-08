@@ -29,7 +29,7 @@
       ];
 
       trusted-substituters = [
-        "http://192.168.1.100:5000"
+        # "http://192.168.1.100:5000"
         "https://cache.nixos.org?priority=10" # official
 
         "https://rishabh5321.cachix.org" # Personal cache
