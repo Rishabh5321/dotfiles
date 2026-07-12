@@ -1004,6 +1004,27 @@
         "type": "github"
       }
     },
+    "nixos-plymouth-theme": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783522054,
+        "narHash": "sha256-uN9OFlul1I93D8lGC7F2wNRzPek5DlzsHZX9AnFQOWw=",
+        "owner": "ed7ed",
+        "repo": "nixos-plymouth-theme",
+        "rev": "921d2720f0b44babe490f6a161be0ae6c625f1b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ed7ed",
+        "ref": "main",
+        "repo": "nixos-plymouth-theme",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1783522502,
@@ -1595,6 +1616,7 @@
         "nixcord": "nixcord",
         "nixgl": "nixgl",
         "nixos-hardware": "nixos-hardware",
+        "nixos-plymouth-theme": "nixos-plymouth-theme",
         "nixpkgs": "nixpkgs_10",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "noctalia": "noctalia",

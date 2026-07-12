@@ -85,6 +85,8 @@
     #   url = "gitlab:VandalByte/darkmatter-grub-theme";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    nixos-plymouth-theme.url = "github:ed7ed/nixos-plymouth-theme/main";
+    nixos-plymouth-theme.inputs.nixpkgs.follows = "nixpkgs";
 
     # ==========================
     # Applications & Gaming

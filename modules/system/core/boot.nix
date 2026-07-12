@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   boot = {
     # ===== KERNEL CONFIGURATION =====
     kernelPackages = pkgs.linuxPackages_latest;
@@ -37,9 +37,9 @@
 
     # ===== BOOT SPLASH SCREEN =====
     plymouth = {
-      enable = false;
-      theme = "black_hud";
-      themePackages = [ pkgs.adi1090x-plymouth-themes ];
+      enable = true;
+      theme = "nixos";
+      themePackages = [ inputs.nixos-plymouth-theme.packages.${pkgs.stdenv.hostPlatform.system}.default ];
     };
 
     # ===== TEMPORARY FILESYSTEM =====
