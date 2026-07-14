@@ -1,6 +1,14 @@
 { pkgs, ... }: {
   services.xserver.desktopManager.kodi = {
     enable = true;
-    package = pkgs.kodi.withPackages (p: with p; [ inputstream-adaptive inputstreamhelper pvr-iptvsimple ]);
+    package = pkgs.kodi-wayland.withPackages (p: with p; [
+      inputstreamhelper
+      inputstream-adaptive
+      inputstream-ffmpegdirect
+      inputstream-rtmp
+      vfs-libarchive
+      vfs-rar
+      youtube
+    ]);
   };
 }

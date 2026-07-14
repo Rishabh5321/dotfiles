@@ -4,7 +4,7 @@ _:
     enable = true;
     packages = [
       # "com.github.iwalton3.jellyfin-media-player"
-      "tv.kodi.Kodi"
+      # "tv.kodi.Kodi"
       "com.stremio.Stremio"
       "ru.linux_gaming.PortProton"
       # "io.github.giantpinkrobots.varia"
