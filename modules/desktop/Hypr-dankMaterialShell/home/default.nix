@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, username, host, ... }:
 
 {
   imports = [
@@ -18,5 +18,7 @@
     ./misc/xdg.nix
     ./misc/session-variables.nix
   ];
+
+  home.packages = import ./scripts/default.nix { inherit pkgs username host; };
 
 }
