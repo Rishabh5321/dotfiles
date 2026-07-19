@@ -1717,11 +1717,11 @@
         "systems": "systems_6"
       },
       "locked": {
-        "lastModified": 1784442826,
-        "narHash": "sha256-oXizZ5p9MdNicgEPw7mkZD0gezVlCbgeG6aAjXpDyHA=",
+        "lastModified": 1784481035,
+        "narHash": "sha256-nC0QN+GPTnA5i+WBx8S2rG8+VFh+EeBnEe5mU3hlAcQ=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "47c9223179f533174b719a53209aa9ab3e2f4e9c",
+        "rev": "a6baa7464f9b21a106dcfabb0bdcfe96fb434409",
         "type": "github"
       },
       "original": {
