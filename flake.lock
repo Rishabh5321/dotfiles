@@ -157,11 +157,11 @@
     "dank-qml-common": {
       "flake": false,
       "locked": {
-        "lastModified": 1784647395,
-        "narHash": "sha256-kcLSJC8XBzmWoSBc90Zn81qrNsqWMkwQ1m/zZixOw30=",
+        "lastModified": 1784935106,
+        "narHash": "sha256-aVgOBRynme6XNKYCZlf/oCjPDZFwddyUQPRRkEupC3c=",
         "owner": "AvengeMedia",
         "repo": "dank-qml-common",
-        "rev": "1919595f0dde4f5bf5ac0baa1902ff6d070971d5",
+        "rev": "a172b39841d8f42bac46ac133b76cade1fae91b4",
         "type": "github"
       },
       "original": {
@@ -179,11 +179,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1784830217,
-        "narHash": "sha256-6MvMw45RSORjINmFd3Lfz9VX9sH8+xTb5WNZiWIKbDw=",
+        "lastModified": 1784936204,
+        "narHash": "sha256-XNbDvIaPzqqIpgJynqSADAj7Yf8KlGJTo5S/fQJUBxs=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "8af71036cca800064f3fb22dd201109ade6c5ee9",
+        "rev": "8bb7396362357650a80dcc8d81407095c91c7dcf",
         "type": "github"
       },
       "original": {
