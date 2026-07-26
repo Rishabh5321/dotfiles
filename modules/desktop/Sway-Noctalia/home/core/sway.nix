@@ -23,7 +23,7 @@ with lib; {
       startup = [
         { command = "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
         { command = "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
-        { command = "noctalia-shell"; always = true; }
+        { command = "sleep 2 && noctalia-shell"; always = false; }
         # { command = "awww-daemon"; always = true; }
         { command = "swaync"; always = true; }
         { command = "nm-applet --indicator"; always = true; }
@@ -33,7 +33,7 @@ with lib; {
         { command = "wl-paste --type image --watch cliphist store"; always = true; }
         { command = "systemctl --user import-environment SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
         { command = "dbus-update-activation-environment --systemd --all"; always = true; }
-        { command = "sleep 1 && noctalia-shell ipc call lockScreen lock"; always = true; }
+        { command = "sleep 5 && noctalia-shell ipc call lockScreen lock"; always = true; }
         # { command = "sleep 10 && awww img ${wallpapers}/${wallpaper}"; always = true; }
 
         # Open apps on specific workspaces
