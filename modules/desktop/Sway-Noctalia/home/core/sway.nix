@@ -53,7 +53,7 @@ with lib; {
         "Ctrl+l" = "exec noctalia-shell ipc call lockScreen lock";
         "Ctrl+Alt+l" = "exec noctalia-shell ipc call sessionMenu toggle";
         "${modifier}+e" = "exec noctalia-shell ipc call launcher emoji";
-        "${modifier}+s" = "exec screenshootin";
+        "${modifier}+Shift+s" = "exec screenshootin";
         "${modifier}+d" = "exec discord";
         "${modifier}+c" = "exec hyprpicker -a"; # hyprpicker works on sway too
         "${modifier}+t" = "exec thunar";

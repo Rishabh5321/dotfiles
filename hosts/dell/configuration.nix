@@ -11,10 +11,10 @@
     ../../modules/desktop/Sway-Noctalia/main
     # ../common/serve.nix
 
-    inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
-    inputs.nixos-hardware.nixosModules.common-gpu-intel
-    inputs.nixos-hardware.nixosModules.common-pc-ssd
-    # inputs.nixos-hardware.nixosModules.xiaomi-redmibook-15-pro-2021
+    # inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
+    # inputs.nixos-hardware.nixosModules.common-gpu-intel
+    # inputs.nixos-hardware.nixosModules.common-pc-ssd
+    inputs.nixos-hardware.nixosModules.xiaomi-redmibook-15-pro-2021
   ];
 
   # networking = {

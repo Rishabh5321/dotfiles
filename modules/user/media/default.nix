@@ -3,6 +3,7 @@
 { ... }:
 {
   imports = [
+    ./mpv.nix
     # ./cava.nix
     # ./seanime.nix
     # ./spicetify.nix

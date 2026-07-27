@@ -106,7 +106,7 @@
       # mangayomi # Manga reader
       # miru # Video streaming client
       delfin # jellyfin media player
-      mpv-unwrapped # Video player
+      # mpv-unwrapped # Video player
       # kodi # Media center client
       # spotify # Music streaming
       # stremio-linux-shell # Media streaming
