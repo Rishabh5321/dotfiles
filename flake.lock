@@ -951,11 +951,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1785123476,
-        "narHash": "sha256-QifeDk2VwwkW63y2hsioQnGUm4wZcpqIQZ1x0nI7YiE=",
+        "lastModified": 1785207248,
+        "narHash": "sha256-SrVCwM5vEDVDiHasiYgoakQWTfyog/MU63PFz2RneBU=",
         "owner": "fufexan",
         "repo": "nix-gaming",
-        "rev": "347564af79e40412385c90ee362e542e680a7176",
+        "rev": "424ce3e87bef8b7f2e6fa3c748cfaaafcf0d4c9b",
         "type": "github"
       },
       "original": {
