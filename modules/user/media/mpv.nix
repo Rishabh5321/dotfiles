@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+_:
 {
   programs.mpv = {
     enable = true;
