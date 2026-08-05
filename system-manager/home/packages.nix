@@ -149,7 +149,7 @@
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.skystream
     # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
-    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio-enhanced
+    # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio-enhanced
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
   ];
 }
