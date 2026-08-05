@@ -30,7 +30,7 @@ in
     ./nh.nix
     # ./noctalia.nix
 
-    ./../../modules/desktop/Hypr-dankMaterialShell/home
+    ./../../modules/desktop/Sway-DMS/home
   ];
 
   home.shellAliases = {
@@ -63,7 +63,7 @@ in
 
   targets.genericLinux.enable = true;
 
-  stylix.enable = lib.mkForce true;
+  stylix.enable = lib.mkForce false;
 
   home.username = "rishabh";
   home.homeDirectory = "/home/rishabh";

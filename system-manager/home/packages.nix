@@ -1,5 +1,6 @@
 { pkgs, inputs, ... }:
 {
+  fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     # --- Desktop & UI Customization ---
     nwg-look
@@ -27,35 +28,42 @@
     # libreoffice # Office suite
     onlyoffice-desktopeditors # Alternative office suite
 
-    # --- Fonts ---
-    dejavu_fonts
-    fira-code
-    fira-code-symbols
-    font-awesome
-    hackgen-nf-font
-    ibm-plex
-    inter
-    jetbrains-mono
-    material-icons
-    maple-mono.NF
-    minecraftia
-    nerd-fonts.im-writing
-    nerd-fonts.blex-mono
-    nerd-fonts.iosevka-term
-    nerd-fonts.lilex
-    nerd-fonts.ubuntu
+    # ===== SYSTEM FONTS =====
+    noto-fonts # Google Noto fonts
+    noto-fonts-color-emoji # Emoji support
+    noto-fonts-cjk-sans # CJK language support
+    font-awesome # Icon font
+    # symbola # Unicode symbols
+    powerline # Powerline symbols
+
+    # ===== PROGRAMMING FONTS =====
+    fira-code # Ligature programming font
+    fira-code-symbols # Fira Code symbols
+
+    # ===== ICON FONTS =====
+    material-icons # Material Design icons
+    material-symbols # Material Symbols icons
+
+    # ===== NERD FONTS =====
+    nerd-fonts.ubuntu-sans # Ubuntu Sans with icons
+    nerd-fonts.ubuntu-mono # Ubuntu Mono with icons
+    nerd-fonts.ubuntu # Ubuntu with icons
+    nerd-fonts.roboto-mono # Roboto Mono with icons
+    nerd-fonts.profont # ProFont with icons
+    nerd-fonts.noto # Noto with icons
+    nerd-fonts.monaspace # Monaspace with icons
+    nerd-fonts.meslo-lg # Meslo LG with icons
+    nerd-fonts.jetbrains-mono # JetBrains Mono with icons
+    nerd-fonts.caskaydia-cove
+    nerd-fonts.meslo-lg
     nerd-fonts.jetbrains-mono
-    nerd-fonts.fira-mono
-    noto-fonts
-    noto-fonts-color-emoji
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    noto-fonts-monochrome-emoji
-    powerline-fonts
+    nerd-fonts.symbols-only
+
     roboto
-    roboto-mono
-    symbola
-    terminus_font
+    (google-fonts.override { fonts = [ "Inter" ]; })
+
+    # Monospace
+    jetbrains-mono
 
     # --- Browser ---
     # brave
@@ -101,7 +109,7 @@
     swappy
     librsvg
     kdePackages.qtsvg
-    qtsvg
+    qt6.qtsvg
 
     # --- Media Player ---
     delfin
@@ -130,6 +138,6 @@
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.skystream
     # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
-    inputs.surge.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
   ];
 }
