@@ -117,6 +117,14 @@
     vlc
     pear-desktop
 
+    antigravity-cli
+    brave
+    kiro
+    kiro-cli
+    vscode # VS Code editor
+    firefox
+    google-chrome
+
     # ===== QT THEMING =====
     kdePackages.qtstyleplugin-kvantum # Qt5/6 Kvantum plugin
     qt6Packages.qtstyleplugin-kvantum # Qt5 Kvantum plugin
@@ -133,11 +141,13 @@
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.helium
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.hydralauncher
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.mangayomi
+    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.nuvio
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.skystream
     # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
+    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio-enhanced
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
   ];
 }

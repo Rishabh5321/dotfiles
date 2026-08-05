@@ -49,11 +49,12 @@ in
     systemDirs.data = [
       "/usr/share"
       "/usr/local/share"
+      "/var/lib/flatpak/exports/share"
     ];
   };
 
   home.sessionVariables = {
-    XDG_DATA_DIRS = lib.mkForce "$HOME/.nix-profile/share:/nix/var/nix/profiles/system-manager-current/share:$XDG_DATA_DIRS";
+    XDG_DATA_DIRS = lib.mkForce "$HOME/.nix-profile/share:/nix/var/nix/profiles/system-manager-current/share:$HOME/.local/share:/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share\${XDG_DATA_DIRS:+:\$XDG_DATA_DIRS}";
     QS_ICON_THEME = "Papirus-Dark";
   };
 
