@@ -33,7 +33,7 @@ with lib; {
         { command = "wl-paste --type image --watch cliphist store"; always = true; }
         { command = "systemctl --user import-environment SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
         { command = "dbus-update-activation-environment --systemd --all"; always = true; }
-        { command = "sleep 5 && dms ipc call lock lock"; always = true; }
+        { command = "sleep 3 && for i in $(seq 1 30); do dms ipc call lock lock && break; sleep 1; done"; always = false; }
 
         # { command = "sleep 10 && awww img ${wallpapers}/${wallpaper}"; always = true; }
 
