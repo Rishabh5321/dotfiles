@@ -13,8 +13,8 @@ in
             name = "adw-gtk3";
             package = pkgs.adw-gtk3;
           } else {
-            name = "Nordic-darker";
-            package = pkgs.nordic;
+            name = "Orchis-Dark";
+            package = pkgs.orchis-theme;
           };
         iconTheme = {
           name = "Papirus-Dark";

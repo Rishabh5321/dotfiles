@@ -23,7 +23,7 @@
       # tela-icon-theme # Tela icons
 
       # --- GTK Themes ---
-      nordic
+      # nordic
 
       # ===== DEVELOPMENT TOOLS =====
       # act # GitHub Actions local runner

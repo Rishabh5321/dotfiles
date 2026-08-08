@@ -15,7 +15,7 @@
     # --- GTK Themes ---
     orchis-theme
     material-black-colors
-    nordic
+    # nordic
 
     # --- File Managers ---
     thunar
