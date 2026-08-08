@@ -817,11 +817,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1786112973,
-        "narHash": "sha256-Fxf3pi3UQVRyrwoGgfhG+5UZ41EjPzHQspZRiyYluqQ=",
+        "lastModified": 1786180064,
+        "narHash": "sha256-ZN63SZIZas9mq6rxsFh+xokosS9LSOPlfcxX13B8nTs=",
         "owner": "mangowm",
         "repo": "mango",
-        "rev": "e2ddd497098ae1929cfb4c7ea2c9366a9d5ec064",
+        "rev": "d049af362b05934c1daa154e31ed02c8d8715221",
         "type": "github"
       },
       "original": {
