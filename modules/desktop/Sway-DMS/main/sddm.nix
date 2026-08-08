@@ -1,4 +1,4 @@
-{ pkgs, config, lib, username, ... }:
+{ pkgs, config, lib, ... }:
 
 let
   stylixEnabled = config ? stylix && config.stylix.enable;
