@@ -2,6 +2,7 @@
 , wallpapers
 , flakeDir
 , lib
+, config
 , ...
 }:
 
@@ -38,6 +39,9 @@ in
     hmsg = "cd ~/dotfiles && git pull && home-manager switch --flake ${flakeDir} -b bak";
     hmsu = "cd ~/dotfiles && git pull && home-manager switch --flake ${flakeDir} -b bak && sudo pacman -Syu && flatpak update";
   };
+
+  # Link Nix profile fonts to ~/.local/share/fonts for non-NixOS systems
+  home.file.".local/share/fonts".source = config.lib.file.mkOutOfStoreSymlink "${config.home.profileDirectory}/share/fonts";
 
   home.file."Pictures/Wallpapers" = {
     source = wallpapers;

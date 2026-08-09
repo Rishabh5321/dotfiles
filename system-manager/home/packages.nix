@@ -122,7 +122,7 @@
     opencode-desktop
     kiro
     kiro-cli
-    qwen-code
+    # qwen-code
     vscode # VS Code editor
     firefox
     google-chrome

@@ -54,6 +54,9 @@ _:
 
       # Terminal Colors
       term = "xterm-256color";
+
+      # Emoji Fallback
+      symbol_map = "U+1F300-U+1F5FF,U+1F600-U+1F64F,U+1F680-U+1F6FF,U+1F700-U+1F77F,U+1F780-U+1F7FF,U+1F800-U+1F8FF,U+1F900-U+1F9FF,U+2600-U+26FF,U+2700-U+27BF Noto Color Emoji";
     };
   };
 }

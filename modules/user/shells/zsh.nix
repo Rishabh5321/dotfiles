@@ -44,7 +44,7 @@
 
       # Auto-start tmux if not already inside one
       if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -n "$PS1" ]; then
-        tmux attach-session -t default || tmux new-session -s default
+        tmux -u attach-session -t default || tmux -u new-session -s default
       fi
 
       if [ -f $HOME/.zshrc-personal ]; then

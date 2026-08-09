@@ -167,6 +167,8 @@
 
           # set-option -g status-position top
           set -s default-terminal 'tmux-256color'
+          set -as terminal-features ",xterm-256color:RGB"
+          set -ag terminal-overrides ",xterm-256color:Tc,*:UTF-8"
 
 
 
