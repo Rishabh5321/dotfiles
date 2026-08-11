@@ -126,6 +126,7 @@
     vscode # VS Code editor
     firefox
     google-chrome
+    zed-editor
 
     # ===== QT THEMING =====
     kdePackages.qtstyleplugin-kvantum # Qt5/6 Kvantum plugin
