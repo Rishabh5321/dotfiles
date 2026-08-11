@@ -1200,11 +1200,11 @@
     },
     "nixpkgs_11": {
       "locked": {
-        "lastModified": 1786106723,
-        "narHash": "sha256-zDSUbpoeo/9ZmD2+wXnzxoo1+uhL8vxc0b8yuYMKYq0=",
+        "lastModified": 1786384358,
+        "narHash": "sha256-RzPPiWeUtuvymnpuEWsdtzli5w4kjZs49FqEs3/1u+I=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f13ff45afd1bb73e640eaa08a7066dbed07e3238",
+        "rev": "2fcb964de67fcf60b43471c55d5d99e61a9ccb5a",
         "type": "github"
       },
       "original": {
@@ -1231,11 +1231,11 @@
     },
     "nixpkgs_13": {
       "locked": {
-        "lastModified": 1786106723,
-        "narHash": "sha256-zDSUbpoeo/9ZmD2+wXnzxoo1+uhL8vxc0b8yuYMKYq0=",
+        "lastModified": 1786384358,
+        "narHash": "sha256-RzPPiWeUtuvymnpuEWsdtzli5w4kjZs49FqEs3/1u+I=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f13ff45afd1bb73e640eaa08a7066dbed07e3238",
+        "rev": "2fcb964de67fcf60b43471c55d5d99e61a9ccb5a",
         "type": "github"
       },
       "original": {
@@ -1680,11 +1680,11 @@
         "skwd-daemon": "skwd-daemon"
       },
       "locked": {
-        "lastModified": 1786286566,
-        "narHash": "sha256-+RHswPQx3vr+tDSJYu6SYgb4jwAaOT2Tj9m2DmGWAnY=",
+        "lastModified": 1786400673,
+        "narHash": "sha256-6sdjUcRfMb5Q3FGkWcwYODOlwXEvdfZL7dQo/osKW3s=",
         "owner": "liixini",
         "repo": "skwd-wall",
-        "rev": "931e4a8eee79bd0d625e4292418a7c9832adfb46",
+        "rev": "433bc3090d617748114e8b5d0750b13596312b84",
         "type": "github"
       },
       "original": {
