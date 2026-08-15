@@ -31,7 +31,9 @@ in
     ./nh.nix
     # ./noctalia.nix
 
-    ./../../modules/desktop/Sway-DMS/home
+    ./../../modules/desktop/Hypr-dankMaterialShell/home
+
+    # ./../../modules/desktop/Sway-DMS/home
   ];
 
   home.shellAliases = {

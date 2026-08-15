@@ -89,7 +89,6 @@
     nil
     nixd
     nixpkgs-fmt
-    gemini-cli-bin
     geminicommit
 
     # --- System Utilities & Wayland ---
