@@ -179,7 +179,7 @@ jobs:
           echo "ref_info=$REF_INFO" >> "$GITHUB_OUTPUT"
 
       - name: Send Telegram Message
-        uses: appleboy/telegram-action@v1.0.1 # Use a Telegram action
+        uses: appleboy/telegram-action@v1.0.2 # Use a Telegram action
         with:
           to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
