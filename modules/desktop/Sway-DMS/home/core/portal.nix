@@ -4,17 +4,19 @@
     enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-wlr
     ];
     config = {
       common.default = [
         "gtk"
       ];
       sway = {
-        default = [ "gtk" ];
-        # screencasting requires xdg-desktop-portal-gnome
-        "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
-        "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
+        default = [
+          "wlr"
+          "gtk"
+        ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
       };
     };
   };

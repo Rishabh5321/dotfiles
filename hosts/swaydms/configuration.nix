@@ -8,6 +8,7 @@
     ../../modules/system
     ../common/power-redmi.nix
     ../../modules/desktop/Sway-DMS/main
+    ../common/power-server.nix
     inputs.nixos-hardware.nixosModules.xiaomi-redmibook-15-pro-2021
     #./testing-pkgs.nix
     #./aagl.nix

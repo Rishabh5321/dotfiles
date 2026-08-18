@@ -113,11 +113,11 @@
     # --- Media Player ---
     delfin
     jellyfin-media-player
-    vlc
+    # vlc
     pear-desktop
 
     antigravity-cli
-    brave
+    # brave
     opencode-desktop
     kiro
     kiro-cli
@@ -138,9 +138,9 @@
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.ab-download-manager
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.anymex
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.better-control
-    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.brave-origin
+    # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.brave-origin
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
-    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.helium
+    # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.helium
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.hydralauncher
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.mangayomi
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.nuvio
@@ -151,5 +151,6 @@
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
     # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio-enhanced
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.surge
+    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.zcode
   ];
 }

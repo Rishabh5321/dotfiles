@@ -77,6 +77,7 @@ with lib;
       "exec-once" = [
         "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "systemctl --user restart xdg-desktop-portal 2>/dev/null || true"
         "swaync # Start notification daemon"
         "systemctl --user start hyprpolkitagent"
         "kdeconnect-indicator # Start kdeconnect indicator earlier"
