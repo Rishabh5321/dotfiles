@@ -51,8 +51,6 @@
       # gemini-cli-bin # AI
       lazygit # Git TUI client
       lazydocker # Docker container management
-      kiro
-      kiro-cli
       # winboat # Windows
 
       # ===== EDITORS & IDEs =====

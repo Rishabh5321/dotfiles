@@ -119,8 +119,6 @@
     antigravity-cli
     # brave
     opencode-desktop
-    kiro
-    kiro-cli
     # qwen-code
     vscode # VS Code editor
     firefox
