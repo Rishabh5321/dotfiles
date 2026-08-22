@@ -1,6 +1,7 @@
 { ... }: {
   imports = [
-    ./sddm.nix
+    # ./sddm.nix
+    ./ly.nix
     ./services.nix
     ./packages.nix
     ./wayland.nix
