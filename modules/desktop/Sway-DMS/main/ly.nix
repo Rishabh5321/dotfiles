@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+_:
 
 {
   # 1. Enable the Ly display manager
