@@ -45,7 +45,7 @@ in
         qt.platform = "qtct";
         hyprland.enable = false;
         swaylock.enable = false;
-        hyprpanel.enable = false;
+        # hyprpanel.enable = false;
         # zed.enable = true;
         dank-material-shell.enable = false;
         zen-browser.enable = false;
