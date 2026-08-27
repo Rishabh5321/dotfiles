@@ -20,6 +20,30 @@ with lib; {
         outer = 0;
       };
 
+      colors = {
+        focused = {
+          border = "#89b4fa";
+          background = "#89b4fa";
+          text = "#1e1e2e";
+          indicator = "#89b4fa";
+          childBorder = "#89b4fa";
+        };
+        focusedInactive = {
+          border = "#313244";
+          background = "#313244";
+          text = "#cdd6f4";
+          indicator = "#313244";
+          childBorder = "#313244";
+        };
+        unfocused = {
+          border = "#313244";
+          background = "#1e1e2e";
+          text = "#cdd6f4";
+          indicator = "#313244";
+          childBorder = "#313244";
+        };
+      };
+
       startup = [
         { command = "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
         { command = "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
@@ -35,8 +59,9 @@ with lib; {
         "${modifier}+v" = "exec cliphist list | rofi -dmenu | cliphist decode | wl-copy";
         "${modifier}+w" = "exec ${swayVars.browser}";
         "Ctrl+Shift+l" = "exec wlogout";
-        "${modifier}+s" = "exec grim -g \"$(slurp)\" - | wl-copy";
+        "${modifier}+s" = "exec grim -g \"$(slurp)\" - | swappy -f -";
         "${modifier}+Alt+w" = "exec wallpaper-picker";
+        "${modifier}+Shift+n" = "exec swaync-client -t -sw";
 
         "${modifier}+q" = "kill";
         "${modifier}+p" = "splittoggle";
@@ -109,12 +134,12 @@ with lib; {
       };
 
       window = {
-        border = 1;
+        border = 0;
         titlebar = false;
       };
 
       floating = {
-        border = 1;
+        border = 2;
         titlebar = false;
       };
     };

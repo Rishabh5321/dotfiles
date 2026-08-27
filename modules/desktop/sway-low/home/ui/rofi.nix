@@ -14,6 +14,7 @@
         display-filebrowser = " File";
         terminal = "kitty";
       };
+      theme = ./theme.rasi;
     };
   };
 }

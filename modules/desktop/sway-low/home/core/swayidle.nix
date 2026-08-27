@@ -8,12 +8,12 @@
     };
     timeouts = [
       {
-        timeout = 60;
+        timeout = 300;
         command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
         resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
       }
       {
-        timeout = 60;
+        timeout = 300;
         command = "${pkgs.systemd}/bin/loginctl lock-session";
       }
     ];

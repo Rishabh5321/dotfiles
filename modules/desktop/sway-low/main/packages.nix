@@ -5,6 +5,7 @@
     pavucontrol
     grim
     slurp
+    swappy
     wl-clipboard
     rofi
     swaylock-effects

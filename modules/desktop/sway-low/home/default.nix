@@ -11,5 +11,6 @@
     ./ui/wlogout.nix
     ./misc/session-variables.nix
     ./misc/xdg.nix
+    ./misc/swappy.nix
   ];
 }
