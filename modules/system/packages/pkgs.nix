@@ -44,6 +44,8 @@
       # nix-prefetch-github # Fetch GitHub repos for Nix
       # nix-update # Nix package update tool
       nh # Nix helper
+      opencode # CLI Coding
+      opencode-desktop
       openssl # Cryptography toolkit
       geminicommit # Gemini commit message generator
       # zed-editor # Editor

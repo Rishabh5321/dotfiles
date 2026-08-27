@@ -7,7 +7,7 @@
   # You can import other home-manager modules here
   imports = [
     ../../modules/user
-    ../../modules/desktop/Sway-DMS/home
+    ../../modules/desktop/sway-low/home
   ];
 
   nixpkgs = {
