@@ -20,6 +20,7 @@
           "network"
           "tray"
           "battery"
+          "custom/swaync"
           "clock"
         ];
         "sway/workspaces" = {
@@ -78,6 +79,26 @@
           format-charging = "󰂄 {capacity}%";
           format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
         };
+        "custom/swaync" = {
+          tooltip = false;
+          format = "{} {icon}";
+          format-icons = {
+            notification = "<span foreground='red'><sup></sup></span>";
+            none = "";
+            dnd-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-none = "";
+            inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            inhibited-none = "";
+            dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-inhibited-none = "";
+          };
+          return-type = "json";
+          exec-if = "which swaync-client";
+          exec = "swaync-client -swb";
+          on-click = "swaync-client -t -sw";
+          on-click-right = "swaync-client -d -sw";
+          escape = true;
+        };
       }
     ];
     style = ''
@@ -129,6 +150,10 @@
       }
       #tray {
         padding: 0 8px;
+      }
+      #custom-swaync {
+        color: #f38ba8;
+        padding: 0 10px;
       }
     '';
   };
