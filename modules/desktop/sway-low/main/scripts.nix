@@ -7,6 +7,8 @@ let
       echo -en "$(basename "$img")\0icon\x1f$img\n"
     done | rofi -dmenu -show-icons -theme-str 'window { width: 800px; } listview { columns: 4; lines: 3; spacing: 20px; } element-icon { size: 150px; } element-text { horizontal-align: 0.5; } element { orientation: vertical; border-radius: 12px; }' -p "Wallpaper")
     if [ -n "$FILE" ]; then
+      mkdir -p ~/.cache
+      echo "$DIR/$FILE" > ~/.cache/current_wallpaper
       swaymsg output '*' bg "$DIR/$FILE" fill
     fi
   '';
