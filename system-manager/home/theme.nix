@@ -51,7 +51,7 @@ in
           hyprland.enable = false;
           swaylock.enable = false;
           dank-material-shell.enable = false;
-          hyprpanel.enable = false;
+          # hyprpanel.enable = false;
           # zed.enable = true;
           zen-browser.enable = false;
           # spicetify.enable = false;

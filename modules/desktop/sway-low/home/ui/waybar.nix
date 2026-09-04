@@ -37,8 +37,8 @@
         };
         "network" = {
           interval = 2;
-          format-wifi = "󰤨 {signalStrength}%";
-          format-ethernet = "󰈀 {bandwidthDownBits}";
+          format-wifi = "󰤨 {signalStrength:>3}% ↓ {bandwidthDownBytes:>10} ↑ {bandwidthUpBytes:>10}";
+          format-ethernet = "󰈀 ↓ {bandwidthDownBytes:>10} ↑ {bandwidthUpBytes:>10}";
           format-disconnected = "󰤭";
           tooltip-format = "{ifname}: {ipaddr}";
         };
