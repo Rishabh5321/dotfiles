@@ -48,7 +48,9 @@ with lib; {
         { command = "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
         { command = "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"; always = true; }
         { command = "waybar"; always = true; }
+        { command = "awww-daemon"; always = true; }
         { command = "nm-applet --indicator"; always = true; }
+        { command = "kdeconnect-indicator"; always = true; }
         { command = "wl-paste --type text --watch cliphist store"; always = true; }
         { command = "wl-paste --type image --watch cliphist store"; always = true; }
         { command = "if [ -f ~/.cache/current_wallpaper ]; then swaymsg output '*' bg \"$(cat ~/.cache/current_wallpaper)\" fill; fi"; always = true; }
