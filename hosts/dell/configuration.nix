@@ -8,7 +8,7 @@
     ../../modules/system
     ../common/power-server.nix
     # ../common/power-redmi.nix
-    ../../modules/desktop/sway-low/main
+    ../../modules/desktop/Sway-DMS/main
     # ../common/serve.nix
 
     # inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
