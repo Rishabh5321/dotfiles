@@ -1,4 +1,4 @@
-{ pkgs, nur, ... }:
+{ pkgs, ... }:
 {
   virtualisation.waydroid = {
     enable = true;
