@@ -142,9 +142,6 @@
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.hydralauncher
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.mangayomi
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.nuvio
-    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio
-    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
-    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.skystream
     # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
     # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio-enhanced
