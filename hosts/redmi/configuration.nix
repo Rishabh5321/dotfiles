@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
     ../../modules/system
     ../common/power-redmi.nix
-    ../../modules/desktop/Hyprland/main
+    ../../modules/desktop/Hypr-dankMaterialShell/main
     inputs.nixos-hardware.nixosModules.xiaomi-redmibook-15-pro-2021
     #./testing-pkgs.nix
     #./aagl.nix
