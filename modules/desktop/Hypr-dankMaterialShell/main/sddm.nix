@@ -18,10 +18,10 @@ in
       kdePackages.qtvirtualkeyboard
     ];
     settings = {
-      Autologin = {
-        Session = "hyprland";
-        User = "${username}";
-      };
+      # Autologin = {
+      #   Session = "hyprland";
+      #   User = "${username}";
+      # };
       Theme = lib.mkIf stylixEnabled {
         CursorTheme = config.stylix.cursor.name;
         CursorSize = config.stylix.cursor.size;
