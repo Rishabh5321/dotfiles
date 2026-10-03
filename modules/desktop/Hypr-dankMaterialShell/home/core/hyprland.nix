@@ -165,7 +165,7 @@ let
     "kdeconnect-indicator # Start kdeconnect indicator earlier"
     "wl-paste --type text --watch cliphist store"
     "wl-paste --type image --watch cliphist store"
-    "sleep 5 && dms ipc call lock lock"
+    # "sleep 5 && dms ipc call lock lock"
   ];
 
   monitorList =
