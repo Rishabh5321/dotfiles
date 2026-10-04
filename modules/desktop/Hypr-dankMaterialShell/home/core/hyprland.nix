@@ -286,6 +286,13 @@ with lib;
               };
             };
 
+            group = {
+              # Hyprland >= 0.55 defaults this to true: a new window opened while
+              # another one is focused gets merged into its group, so closing /
+              # killing one takes the whole group with it.
+              auto_group = false;
+            };
+
             gestures = {
               workspace_swipe_distance = 300;
               workspace_swipe_cancel_ratio = 0.5;
@@ -396,7 +403,11 @@ with lib;
         (bind (k [ ] "N") (exec "swaync-client -t -sw") { })
 
         # Window management
-        (bind (k [ ] "Q") (dsp "window.kill" null) { })
+        # `window.close` asks the client to close just that toplevel, so other
+        # windows of the same app survive. `window.kill` SIGKILLs the whole
+        # client process, which takes down every window it owns.
+        (bind (k [ ] "Q") (dsp "window.close" null) { })
+        (bind (k [ "SHIFT" ] "Q") (dsp "window.kill" null) { })
         (bind (k [ ] "P") (dsp "window.pseudo" null) { })
         # (bind (k [ "SHIFT" ] "I") (dsp "layout" ...) { })
         (bind (k [ ] "F") (dsp "window.fullscreen" null) { })
