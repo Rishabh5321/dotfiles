@@ -80,7 +80,6 @@
       url = "github:Rishabh5321/walls";
       flake = false;
     };
-    skwd-wall.url = "github:liixini/skwd-wall";
     # darkmatter-grub-theme = {
     #   url = "gitlab:VandalByte/darkmatter-grub-theme";
     #   inputs.nixpkgs.follows = "nixpkgs";
