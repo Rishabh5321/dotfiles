@@ -229,6 +229,7 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
 
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta
+      inputs.surge.packages.${pkgs.stdenv.hostPlatform.system}.default
       # inputs.skwd-wall.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 

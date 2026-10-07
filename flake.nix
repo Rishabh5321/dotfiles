@@ -80,6 +80,8 @@
       url = "github:Rishabh5321/walls";
       flake = false;
     };
+    blip.url = "github:blip-net/nix";
+    surge.url = "github:SurgeDM/Surge";
     # darkmatter-grub-theme = {
     #   url = "gitlab:VandalByte/darkmatter-grub-theme";
     #   inputs.nixpkgs.follows = "nixpkgs";

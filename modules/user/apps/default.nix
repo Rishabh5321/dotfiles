@@ -4,6 +4,7 @@
 {
   imports = [
     # ./discord.nix
+    ./blip.nix
     ./obsidian.nix
   ];
 }
