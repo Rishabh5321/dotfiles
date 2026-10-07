@@ -176,11 +176,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1790920093,
-        "narHash": "sha256-1Y0R/o28pHuSyoJP8bJDR76hha/9s8WwAqbW/PH/bbs=",
+        "lastModified": 1791382255,
+        "narHash": "sha256-qK9TxwCOuwmcuo346IwgBiLtgxPowP0UYQvARhw3Tog=",
         "owner": "Rishabh5321",
         "repo": "custom-packages-flake",
-        "rev": "561a207332129d43186df809692edf244868a463",
+        "rev": "2641b08c0f107f98ea850552cc684f083f423296",
         "type": "github"
       },
       "original": {
@@ -1363,11 +1363,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1790822859,
-        "narHash": "sha256-69xHQhAeMAD2wDXO7T2pcOZIF9Sga2W+JkmY2a11Ops=",
+        "lastModified": 1791260994,
+        "narHash": "sha256-Miqqk/ammqnTUxaoCyvtwoPeLbI1ksFyLxi/CazZpWY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c59305bab2065cfecc4944690d9eedbb56f3a9fa",
+        "rev": "151fa4e8ddfdd8dd25d945ad94ed54a13de9f6e4",
         "type": "github"
       },
       "original": {
@@ -1658,6 +1658,7 @@
         "noctalia": "noctalia",
         "nur": "nur",
         "quickshell": "quickshell_3",
+        "serpantinum": "serpantinum",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "surge": "surge",
@@ -1687,6 +1688,43 @@
       "original": {
         "owner": "wlrfx",
         "repo": "scenefx",
+        "type": "github"
+      }
+    },
+    "serpantinum": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "serpantinum-wallpapers": "serpantinum-wallpapers"
+      },
+      "locked": {
+        "lastModified": 1791370652,
+        "narHash": "sha256-V7V09OuG69FMTgOGG5JiSbHmIW4+U9qNKLhxN+7NtV0=",
+        "owner": "ilyamiro",
+        "repo": "serpantinum",
+        "rev": "a0d8292f36b0f28c4d939fb9921fd7de475aa858",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ilyamiro",
+        "repo": "serpantinum",
+        "type": "github"
+      }
+    },
+    "serpantinum-wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1789127588,
+        "narHash": "sha256-L3xRtDXH1ERwVIP+ztT6qn7YYh3aHpfpy1/nvyjvKIc=",
+        "owner": "ilyamiro",
+        "repo": "shell-wallpapers",
+        "rev": "4f5994aff60403f88d3f0378e6f9c9d0a00b0289",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ilyamiro",
+        "repo": "shell-wallpapers",
         "type": "github"
       }
     },
