@@ -219,6 +219,7 @@
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.anymex
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.better-control
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.brave-origin
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.cage-xtmapper
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.helium
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.hydralauncher
@@ -229,7 +230,7 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
 
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta
-      inputs.surge.packages.${pkgs.stdenv.hostPlatform.system}.default
+      # inputs.surge.packages.${pkgs.stdenv.hostPlatform.system}.default
       # inputs.skwd-wall.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
