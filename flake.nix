@@ -92,6 +92,10 @@
     # };
     nixos-plymouth-theme.url = "github:ed7ed/nixos-plymouth-theme/main";
     nixos-plymouth-theme.inputs.nixpkgs.follows = "nixpkgs";
+    qylock = {
+      url = "github:Darkkal44/qylock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # ==========================
     # Applications & Gaming
@@ -205,6 +209,7 @@
             # Common NixOS modules
             # inputs.darkmatter-grub-theme.nixosModule
             inputs.stylix.nixosModules.stylix
+            inputs.qylock.nixosModules.default
             inputs.nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
             upgrade-on-shutdown.nixosModules.default
