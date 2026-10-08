@@ -1756,11 +1756,11 @@
         "serpantinum-wallpapers": "serpantinum-wallpapers"
       },
       "locked": {
-        "lastModified": 1791410906,
-        "narHash": "sha256-iCmssG7QKEWRf0i2UVtLVfimCOAH93ltUNwETpITsko=",
+        "lastModified": 1791499653,
+        "narHash": "sha256-Hba47WsjGFl/coFu5dRZa5HvZuk6uBIfwdlVuo4J4HE=",
         "owner": "ilyamiro",
         "repo": "serpantinum",
-        "rev": "8c3ea64566e0a277bdf44065a6c489a850572875",
+        "rev": "fa371066fadc54c06474a59fc5cf64693f38548a",
         "type": "github"
       },
       "original": {
