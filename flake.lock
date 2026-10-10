@@ -1844,11 +1844,11 @@
         "nixpkgs": "nixpkgs_12"
       },
       "locked": {
-        "lastModified": 1791560899,
-        "narHash": "sha256-7fGllJCkHydp5/pdHusKuQ7ts25PAj1llrYma53Yv/M=",
+        "lastModified": 1791654818,
+        "narHash": "sha256-gfQY+0X/y5K2lsLqptEWI7x3JAKhAOYk3F4v0MMzutU=",
         "owner": "SurgeDM",
         "repo": "Surge",
-        "rev": "5451729771400637c2e36a3ea4f24171426ef901",
+        "rev": "b8d858d2ec6aec7084c4111edf10a99b1e9f68f3",
         "type": "github"
       },
       "original": {
