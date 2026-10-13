@@ -90,11 +90,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1791754194,
-        "narHash": "sha256-X2xLTiH+L4haCaxlZHKIja/05zSABFbZT+qNsG/TssQ=",
+        "lastModified": 1791849471,
+        "narHash": "sha256-AeqM/I/Sn6hEAL6+UbJi/wnBxueAmEyIZ87okSVejWw=",
         "owner": "blip-net",
         "repo": "nix",
-        "rev": "43c64f720304bdc39cfc98a47e22127f806306e1",
+        "rev": "34dee223931f7ff3eddcf98f089c925569bfb7e8",
         "type": "github"
       },
       "original": {
