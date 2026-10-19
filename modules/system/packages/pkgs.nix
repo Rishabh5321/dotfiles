@@ -217,6 +217,7 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.antigravity
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.ab-download-manager
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.anymex
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.bitchord
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.better-control
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.brave-origin
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.cage-xtmapper
@@ -228,6 +229,7 @@
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio-enhanced
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.teledrive
 
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta
       # inputs.surge.packages.${pkgs.stdenv.hostPlatform.system}.default
