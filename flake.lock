@@ -661,11 +661,11 @@
         "zon2nix": "zon2nix"
       },
       "locked": {
-        "lastModified": 1792526745,
-        "narHash": "sha256-vzucLBLn+za+aroGb+BaHy/D7aLdr2ZpCat5//SF180=",
+        "lastModified": 1792616904,
+        "narHash": "sha256-xL0lDmnRW6lxC4eOEuKMi+4UDMyUG5yg8O3QKRALxNc=",
         "owner": "ghostty-org",
         "repo": "ghostty",
-        "rev": "96a5131a15281765aff5835dbd9e1c714cddcd3f",
+        "rev": "f54340ad77814fe319d136e5e915d6a48de8dd23",
         "type": "github"
       },
       "original": {
@@ -2270,71 +2270,23 @@
         "type": "github"
       }
     },
-    "zig_2": {
-      "inputs": {
-        "nixpkgs": [
-          "ghostty",
-          "zon2nix",
-          "nixpkgs"
-        ],
-        "zon2nix": "zon2nix_2"
-      },
-      "locked": {
-        "lastModified": 1791058473,
-        "narHash": "sha256-D5RPUNznXdjaJowpWBU/PsUy0Wf0GKeYam2AgncVBtQ=",
-        "ref": "refs/heads/main",
-        "rev": "37d17efdfa349f71f687e08746c19f67e0192b19",
-        "revCount": 1735,
-        "type": "git",
-        "url": "https://git.jcollie.dev/jeff/zig-overlay.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.jcollie.dev/jeff/zig-overlay.git"
-      }
-    },
     "zon2nix": {
       "inputs": {
         "nixpkgs": [
           "ghostty",
           "nixpkgs"
-        ],
-        "zig": "zig_2"
-      },
-      "locked": {
-        "lastModified": 1790983378,
-        "narHash": "sha256-RB1SiCcumk7Y9NkBKJDq/Hg0NLyCmX/TX02EXp7QRco=",
-        "owner": "jcollie",
-        "repo": "zon2nix",
-        "rev": "d1c869946e98c380ff474c6bd30e2fe2f5110473",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jcollie",
-        "repo": "zon2nix",
-        "type": "github"
-      }
-    },
-    "zon2nix_2": {
-      "inputs": {
-        "nixpkgs": [
-          "ghostty",
-          "zon2nix",
-          "zig",
-          "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1790583033,
-        "narHash": "sha256-Eo3hR521Yc2Gsqw7m/aqd5sn3/qi0XoSpJBIPPIYKkg=",
+        "lastModified": 1791779206,
+        "narHash": "sha256-2eQfccAcXv3LX5wN6ducp5CCcWRnrxgu9PI4y09IkDA=",
         "owner": "jcollie",
         "repo": "zon2nix",
-        "rev": "8e91c0d44aa49d0ac415f7e3046662e9aa754335",
+        "rev": "50f67839e45548957a1e924db1fdea7ef4dc5a55",
         "type": "github"
       },
       "original": {
         "owner": "jcollie",
-        "ref": "v0.9.0",
         "repo": "zon2nix",
         "type": "github"
       }
