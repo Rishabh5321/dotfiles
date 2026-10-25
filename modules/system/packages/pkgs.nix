@@ -44,7 +44,7 @@
       # nix-prefetch-github # Fetch GitHub repos for Nix
       # nix-update # Nix package update tool
       nh # Nix helper
-      opencode # CLI Coding
+      # opencode # CLI Coding
       opencode-desktop
       openssl # Cryptography toolkit
       geminicommit # Gemini commit message generator
@@ -225,6 +225,7 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.helium
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.hydralauncher
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.mangayomi
+      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.opencode
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio-v2
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio-enhanced
