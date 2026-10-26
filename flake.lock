@@ -1317,16 +1317,16 @@
     },
     "nixpkgs_12": {
       "locked": {
-        "lastModified": 1785967620,
-        "narHash": "sha256-IItrdb7Puk05RqOBWZYFC5X6Wl1sJmCfh5MWVHw5iMM=",
+        "lastModified": 1792898606,
+        "narHash": "sha256-Mg3rRjsbMqhSMxop5PYMXos8SwAjejrxSgVThTvP9eg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b7c2ada94fe99c15b0dbcf4d11fd7850b957a436",
+        "rev": "1f607aa79b6356ed45d3cd3c8079c196e79efa2c",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-unstable",
+        "ref": "nixos-26.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -1844,11 +1844,11 @@
         "nixpkgs": "nixpkgs_12"
       },
       "locked": {
-        "lastModified": 1792913541,
-        "narHash": "sha256-Z1zssP9fzTfLF1oir4Gn1NBK+Xy7qtVOBnaxvifouEc=",
+        "lastModified": 1793045067,
+        "narHash": "sha256-zyqo2UNRRgdzGycrdIkwtS7cJVu0eXhL9Favnk23q2s=",
         "owner": "SurgeDM",
         "repo": "Surge",
-        "rev": "4ef7f4b1336e5dd31c6115033b0723309dbb932c",
+        "rev": "6a49211e6a4b50be572b18db43c499b09eba71b0",
         "type": "github"
       },
       "original": {
