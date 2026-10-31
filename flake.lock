@@ -1757,11 +1757,11 @@
         "ski": "ski"
       },
       "locked": {
-        "lastModified": 1793403310,
-        "narHash": "sha256-QjlWA8YKqYjEnMZhTze7+RKHK0aiU63btqOrKLqQLfY=",
+        "lastModified": 1793471030,
+        "narHash": "sha256-msFrFlWBLnvDWSZck7fYiP2mArCJOOTKAe7JlsPVKMY=",
         "owner": "ilyamiro",
         "repo": "serpantinum",
-        "rev": "4caf15d3cc7fd670432ad19ce58a3fdfd1ea0737",
+        "rev": "361968924cd7c954affbd00e6dc30340c6c4cb80",
         "type": "github"
       },
       "original": {
