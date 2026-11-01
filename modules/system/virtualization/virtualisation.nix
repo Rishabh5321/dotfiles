@@ -11,7 +11,7 @@
     virtio-win
     win-spice
     adwaita-icon-theme
-    libguestfs # Useful for accessing VM disks from the host
+    # libguestfs # Useful for accessing VM disks from the host
     bridge-utils # For managing virtual networks
   ];
 
