@@ -10,7 +10,7 @@
   programs.dank-material-shell = {
     enable = true;
     systemd.enable = true;
-    quickshell.package =pkgs.quickshell;
+    quickshell.package = pkgs.quickshell;
     settings = {
       # Core Theme & Appearance
       currentThemeName = "dynamic";
