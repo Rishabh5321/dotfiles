@@ -1689,11 +1689,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793590455,
-        "narHash": "sha256-o+QBPwG7bx3c6BNl7UNQXQ+Gqs9u4LoNOdTEJizLYEU=",
+        "lastModified": 1793774383,
+        "narHash": "sha256-uTPmmZ/khZVpImOGqgFKPqMtJ1M/GGvQxLsQ7Dk60JQ=",
         "owner": "Darkkal44",
         "repo": "qylock",
-        "rev": "217272d3cf8240af09560d6ddc9b5bf80bcb27be",
+        "rev": "c2933f27b655a999911e6699e1b2c67e59cbd428",
         "type": "github"
       },
       "original": {
