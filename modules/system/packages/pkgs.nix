@@ -45,7 +45,7 @@
       # nix-update # Nix package update tool
       nh # Nix helper
       # opencode # CLI Coding
-      opencode-desktop
+      # opencode-desktop
       openssl # Cryptography toolkit
       geminicommit # Gemini commit message generator
       # zed-editor # Editor

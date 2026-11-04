@@ -118,7 +118,7 @@
 
     antigravity-cli
     # brave
-    opencode-desktop
+    # opencode-desktop
     # qwen-code
     vscode # VS Code editor
     firefox
