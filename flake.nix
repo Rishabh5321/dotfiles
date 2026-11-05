@@ -158,6 +158,9 @@
         config = {
           allowUnfree = true;
           allowUnfreePredicate = _: true;
+          problems.handlers = {
+            "gtk+".broken = "warn"; # or "ignore"
+          };
         };
         overlays = [
           # (_: prev: {

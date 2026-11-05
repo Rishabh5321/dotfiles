@@ -90,6 +90,9 @@
       # Allow proprietary software packages
       allowUnfree = true;
       android_sdk.accept_license = true;
+      problems.handlers = {
+        "gtk+".broken = "warn"; # or "ignore"
+      };
     };
   };
 }
