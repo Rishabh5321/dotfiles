@@ -90,7 +90,7 @@
       zsh # Advanced shell
 
       # ===== WEB BROWSERS =====
-      brave # Privacy-focused browser
+      # brave # Privacy-focused browser
       firefox # Mozilla Firefox
       google-chrome # Google Chrome
       # librewolf # Privacy-hardened Firefox
