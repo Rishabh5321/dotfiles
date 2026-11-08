@@ -2,6 +2,10 @@
 
 let
   stylixEnabled = config ? stylix && config.stylix.enable;
+  # The greeter only sees NixOS-level packages, not Home Manager ones,
+  # so the cursor theme must exist system-wide (see environment.systemPackages below).
+  cursorTheme = if stylixEnabled then config.stylix.cursor.name else "capitaine-cursors";
+  cursorSize = if stylixEnabled then config.stylix.cursor.size else 16;
 in
 {
 
@@ -22,9 +26,17 @@ in
       #   Session = "hyprland";
       #   User = "${username}";
       # };
-      Theme = lib.mkIf stylixEnabled {
-        CursorTheme = config.stylix.cursor.name;
-        CursorSize = config.stylix.cursor.size;
+      General.GreeterEnvironment = lib.concatStringsSep "," [
+        "XCURSOR_THEME=${cursorTheme}"
+        "XCURSOR_SIZE=${toString cursorSize}"
+        # Nix-patched libXcursor does not search /run/current-system/sw/share/icons
+        # (there is no /usr/share/icons on NixOS), so point it there explicitly,
+        # otherwise the greeter's compositor can't find the theme and shows no cursor.
+        "XCURSOR_PATH=/run/current-system/sw/share/icons"
+      ];
+      Theme = {
+        CursorTheme = cursorTheme;
+        CursorSize = cursorSize;
       };
     };
   };
@@ -47,7 +59,9 @@ in
       }
     else
       pkgs.sddm-astronaut)
-  ];
+    # Install the fallback cursor theme system-wide so the greeter can use it
+    # (this also covers the stylix-enabled case; stylix may switch themes via its own cursor package)
+  ] ++ lib.optionals (!stylixEnabled) [ pkgs.capitaine-cursors ];
 
   security.pam.services.sddm.enableGnomeKeyring = true;
   security.pam.services.hyprlock.enableGnomeKeyring = true;
