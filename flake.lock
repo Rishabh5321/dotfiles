@@ -1769,11 +1769,11 @@
         "ski": "ski"
       },
       "locked": {
-        "lastModified": 1794267287,
-        "narHash": "sha256-gV9rn01rsVBbaQnQ9Gve8JwyucpJh9L16yjN6098+U4=",
+        "lastModified": 1794348182,
+        "narHash": "sha256-aXGdlzV36s/EW/6Mp1e8EcFKR7cLSAThWZDj1GS57FU=",
         "owner": "ilyamiro",
         "repo": "serpantinum",
-        "rev": "01f7c4dce9e6852c7247312dda6741ece1e194d1",
+        "rev": "31dcf21d0a596e36bad5ec0129102d5be4f812d2",
         "type": "github"
       },
       "original": {
@@ -1801,11 +1801,11 @@
     "ski": {
       "flake": false,
       "locked": {
-        "lastModified": 1793704142,
-        "narHash": "sha256-wxnRqzcNTWfa9ZlHkFtwJIlhxmgo+YYSmGKozIjLiBg=",
+        "lastModified": 1794135603,
+        "narHash": "sha256-qiNSb+vTGfmaTW62hgHC+uEj/xWyrbxgNAyObMTgne8=",
         "owner": "ilyamiro",
         "repo": "Ski",
-        "rev": "807c744724bb7f34de09f737973aa73391a931b1",
+        "rev": "afff38b542c0dc74d204b275e70a5d0d0a8f5de9",
         "type": "github"
       },
       "original": {
