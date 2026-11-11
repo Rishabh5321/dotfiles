@@ -240,20 +240,20 @@
 
       overlays = import ./overlays { inherit inputs self system; };
 
-      systemConfigs = {
-        default = system-manager.lib.makeSystemConfig {
-          modules = [
-            ./system-manager/configuration.nix
-            {
-              nixpkgs.hostPlatform = system;
-            }
-          ];
-          specialArgs = commonArgs // {
-            inherit inputs;
-            outputs = self;
-          };
-        };
-      };
+      # systemConfigs = {
+      #   default = system-manager.lib.makeSystemConfig {
+      #     modules = [
+      #       ./system-manager/configuration.nix
+      #       {
+      #         nixpkgs.hostPlatform = system;
+      #       }
+      #     ];
+      #     specialArgs = commonArgs // {
+      #       inherit inputs;
+      #       outputs = self;
+      #     };
+      #   };
+      # };
 
       nixosConfigurations =
         (builtins.listToAttrs (
