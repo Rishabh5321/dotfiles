@@ -135,7 +135,6 @@
       nur
     , wallpapers-repo
     , lsfg-vk-flake
-    , system-manager
     , #, nix-colorizer
       #, plasma-manager
       ...
