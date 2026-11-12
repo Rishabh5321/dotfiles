@@ -133,12 +133,15 @@ with lib; {
 
       "gesture" = "3, horizontal, workspace";
 
+      layers = {
+        layers_hog_keyboard_focus = true;
+      };
+
       misc = {
         initial_workspace_tracking = 0;
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = true;
         always_follow_on_dnd = true;
-        layers_hog_keyboard_focus = true;
         animate_manual_resizes = false;
         animate_mouse_windowdragging = false;
         disable_hyprland_logo = false;
@@ -198,7 +201,6 @@ with lib; {
         smart_split = false;
         smart_resizing = true;
         permanent_direction_override = false;
-        special_scale_factor = 1.0;
         split_width_multiplier = 1.0;
         # no_gaps_when_only = 0
         use_active_for_splits = true;
@@ -207,7 +209,6 @@ with lib; {
 
       master = {
         allow_small_split = false;
-        special_scale_factor = 1.0;
         mfact = 0.55;
         orientation = "left";
         smart_resizing = true;
