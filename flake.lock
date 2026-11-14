@@ -192,11 +192,11 @@
     "dank-qml-common": {
       "flake": false,
       "locked": {
-        "lastModified": 1794538799,
-        "narHash": "sha256-uyTjfcYsWlk2i0eaZ+3GhtSJ1SYDN43oq1EiSpUNGqw=",
+        "lastModified": 1794676174,
+        "narHash": "sha256-yQe0Ac4HcatProEJWLKEnbVdhv6F05hD5gzkyZew6o0=",
         "owner": "duxlabs-dev",
         "repo": "dux-qml-common",
-        "rev": "0a57c6699cdf4394348e759b35e70b0820751490",
+        "rev": "de654475cc559fa976a8c205ff373d1882898d67",
         "type": "github"
       },
       "original": {
@@ -215,11 +215,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794599666,
-        "narHash": "sha256-+RoOROikHANO9CAdv5jODWa+7yb+U2v56ATi+9mUefc=",
+        "lastModified": 1794693661,
+        "narHash": "sha256-3zywX821Z6mJecEDrzGJySgEwuZOqapP5Zr/zWE2RRQ=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "cfea859d6cf08f4e8067f40914d0e52c49d7d2e2",
+        "rev": "964c364d57116f26e4485fa4690a58e73fa11fae",
         "type": "github"
       },
       "original": {
