@@ -1916,11 +1916,11 @@
         "userborn": "userborn"
       },
       "locked": {
-        "lastModified": 1793917754,
-        "narHash": "sha256-Gaaoat8QN6fa/Y/n7SV7vjHQjGJDDa4G92Rco8/xl8E=",
+        "lastModified": 1794675770,
+        "narHash": "sha256-CSYQ71PDu1ba18yrGo1XtxXUI5X1lR1M4fpqEPyVgWI=",
         "owner": "numtide",
         "repo": "system-manager",
-        "rev": "7dc61e113afa23d51ceb92feb186dc708297efb3",
+        "rev": "d6acd046a24810781d447346149fcf5f8a6a4813",
         "type": "github"
       },
       "original": {
