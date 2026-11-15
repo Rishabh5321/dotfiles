@@ -1791,11 +1791,11 @@
         "ski": "ski"
       },
       "locked": {
-        "lastModified": 1794691308,
-        "narHash": "sha256-Yw/5AkjBrGnzK9QFJt5yWRNS1YBfVHTPlYQui532ijA=",
+        "lastModified": 1794766340,
+        "narHash": "sha256-0gk20vDvHdqmMwgv+omFYhGb4QYZzA466dQ3E+mW0kM=",
         "owner": "ilyamiro",
         "repo": "serpantinum",
-        "rev": "41d24f6e2c263377a72adea977d4e9994e2df5c7",
+        "rev": "54fe20493dbf43d20d35e3706ee4bcd26a3a7636",
         "type": "github"
       },
       "original": {
