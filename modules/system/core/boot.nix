@@ -44,8 +44,7 @@
 
     # ===== TEMPORARY FILESYSTEM =====
     tmp = {
-      useTmpfs = false;
-      tmpfsSize = "30%";
+      cleanOnBoot = true;
     };
 
     # ===== APPLICATION SUPPORT =====

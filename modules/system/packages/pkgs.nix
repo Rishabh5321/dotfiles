@@ -224,7 +224,7 @@
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.helium
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.hydralauncher
-      inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.mangayomi
+      # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.mangayomi
       inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.opencode
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.playtorrio-v2
       # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.shonenx

@@ -140,7 +140,7 @@
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.fladder
     # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.helium
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.hydralauncher
-    inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.mangayomi
+    # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.mangayomi
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.nuvio
     # inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.stremio
     inputs.custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.sorayomi
