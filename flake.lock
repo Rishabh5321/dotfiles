@@ -1896,11 +1896,11 @@
         "nixpkgs": "nixpkgs_12"
       },
       "locked": {
-        "lastModified": 1795547901,
-        "narHash": "sha256-CoAkTKhnQXiq4x4xYajgx3dTw9/dxOzwBgRMXlOBv54=",
+        "lastModified": 1795593729,
+        "narHash": "sha256-pZS+pa4Y8s45a01LovXc2wlq/XQOPkYM/g1IwhJAHvw=",
         "owner": "SurgeDM",
         "repo": "Surge",
-        "rev": "a560cd207c235ed800a367c5019dc9f3b8bbabc5",
+        "rev": "386f262c23a6814b34ce2d3b6c8d4b9eea5b9eb0",
         "type": "github"
       },
       "original": {
